@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>constructor와 ngOnInit 차이점 - Mina&#39;s World</title>
+
+
+    <meta name="description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta name="keywords" content="Angular,contructor,ngOninit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="constructor와 ngOnInit 차이점">
+<meta property="og:url" content="https://minami-choi.github.io/2018/04/26/constructorVsNgOnInit/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+<meta property="og:updated_time" content="2019-11-23T13:37:26.081Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="constructor와 ngOnInit 차이점">
+<meta name="twitter:description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                밍코더
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="constructor와 ngOnInit 차이점">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-04-26T13:02:17.000Z">2018-04-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Angular/">Angular</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 755 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                constructor와 ngOnInit 차이점
+            
+        </h1>
+        <div class="content">
+            <h1><span id="constructor와-ngoninit-차이점">constructor와 ngOnInit 차이점</span></h1>
+<p>앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.<br>
+constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?</p>
+<a id="more"></a>
+<p><a href="https://toddmotto.com/angular-constructor-ngoninit-lifecycle-hook" target="_blank" rel="noopener">https://toddmotto.com/angular-constructor-ngoninit-lifecycle-hook</a> 의 글을 참고했다.</p>
+<h2><span id="constructor와-ngoninit은-뭐가-다른걸까">constructor와 ngOnInit은 뭐가 다른걸까?</span></h2>
+<p>ES6 클래스(앵귤러에서는 TypeScript)에서 constructor 메소드는 클래스 자체의 기능이다. 반면 ngOnInit()은 앵귤러의 기능.<br>
+constructor가 호출될 때는 앵귤러의 컨트롤을 벗어난다.<br>
+이 의미는, 앵귤러가 컴포넌트 초기화를 마쳤는지 알기에는 적당한 위치가 아니다.</p>
+<p>컴포넌트를 살펴보면</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent &#123;</span><br><span class="line">  // this is called by the JavaScript engine</span><br><span class="line">  // rather than Angular</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">constructor</span></span>() &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'Constructor initialised'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// internally calls the constructor</span><br><span class="line">new ExampleComponent();</span><br></pre></td></tr></table></figure>
+<p>여기서 가장 중요한 점은! 앵귤러가 아니라 JavaScript 엔진이 constructor를 호출한다는 것! 이 때문에 ngOnInit이라는 lifecycle이 생겼다.<br>
+이 lifehook을 추가하면서, 컴포넌트의 초기화가 끝난 후 앵귤러는 그 메소드를 실행시킨다. ngOnInit()이라는 네이밍에서 알 수 있듯이 이 메소드는 컴포넌트의 lifecycle 중 하나다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, OnInit &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent implements OnInit &#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">constructor</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  // called on demand by Angular</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'ngOnInit fired'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const instance = new ExampleComponent();</span><br><span class="line"></span><br><span class="line">// Angular calls this when necessary</span><br><span class="line">instance.ngOnInit();</span><br></pre></td></tr></table></figure>
+<h2><span id="constructor의-용도">Constructor의 용도</span></h2>
+<p>constructor는 컴포넌트에 의존성 주입을 하기에 알맞은 위치다.<br>
+constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존성을 어떤 프로퍼티에 매핑할지 앵귤러에 알려준다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, ElementRef &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">import &#123; Router &#125; from <span class="hljs-string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent &#123;</span><br><span class="line">  constructor(</span><br><span class="line">    private router: Router,</span><br><span class="line">    private el: ElementRef</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 코드에서 Router는 this.router에 바인드되고, 컴포넌트 클래스 안에서 this.router로 접근가능하다.</p>
+<h2><span id="ngoninit">ngOnInit</span></h2>
+<p>ngOnInit은 앵귤러가 컴포넌트를 초기화를 완료했다는 것을 우리에게 알려주기 위해서 만들어졌다.</p>
+<p>이 단계는 컴포넌트에서 바인드한 프로퍼티에 첫 변경 감지가 되는 범위까지 포함되어 있다. @Input() 데코레이터를 사용하는 경우를 예로 들 수 있다</p>
+<p>이 때문에 @Input()프로퍼티는 ngOnInit에서 읽어들일 수 있고, constructor에서는 undefined가 된다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, ElementRef, Input, OnInit &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">import &#123; Router &#125; from <span class="hljs-string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent implements OnInit &#123;</span><br><span class="line">  @Input()</span><br><span class="line">  person: Person;</span><br><span class="line"></span><br><span class="line">  constructor(</span><br><span class="line">    private router: Router,</span><br><span class="line">    private el: ElementRef</span><br><span class="line">  ) &#123;</span><br><span class="line">    // undefined</span><br><span class="line">    console.log(this.person);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.el.nativeElement.style.display = <span class="hljs-string">'none'</span>;</span><br><span class="line">    // &#123; name: <span class="hljs-string">'Todd Motto'</span>, location: <span class="hljs-string">'England, UK'</span> &#125;</span><br><span class="line">    console.log(this.person);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ngOnInit()는 바인딩한 값을 읽어들이는 것을 보장하는 lifecycle hook이다.</p>
+<h3><span id="contructor에서는-의존성-주입에-대한-작업을-하고-변수-초기화-작업은-ngoninit에서-하도록하쟈~">contructor에서는 의존성 주입에 대한 작업을 하고, 변수 초기화 작업은 ngOnInit()에서 하도록하쟈~!</span></h3>
+<blockquote>
+<p><strong>[참고] 변경감지(Change Detection)가 일어나는 순서</strong> 1. update bound properties for all child components/directives 2. call ngOnInit, OnChanges and ngDoCheck lifecycle hooks on all child components/directives 3. update DOM for the current component 4. run change detection for a child component call ngAfterViewInit lifecycle hook for all child components/directives</p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Angular/">Angular</a>, <a class="has-link-grey -link" href="/tags/contructor/">contructor</a>, <a class="has-link-grey -link" href="/tags/ngOninit/">ngOninit</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/04/27/angular-component-overview/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Angular의 Component에 대한 정리</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/04/24/quicksort/">
+                <span class="level-item">퀵 정렬(quicksort)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2018/04/26/constructorVsNgOnInit/';
+        this.page.identifier = '2018/04/26/constructorVsNgOnInit/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            42
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            78
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://minami-choi.github.io">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://www.facebook.com/minaminachoi">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/coder_minachoi">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
+            <span class="level-start">
+                <span class="level-item">이직일기</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">41</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/Essay/이직일기/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
+                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/01/study-modular-code/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
+                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/07/study-high-order-javascript/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 고계 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-07T03:20:46.000Z">2019-03-07</time></div>
+                    <a href="/2019/03/07/study-high-order-javascript/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 고계 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
+                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/Essay/이직일기/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
+                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/01/study-modular-code/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
+                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/07/study-high-order-javascript/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 고계 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-07T03:20:46.000Z">2019-03-07</time></div>
+                    <a href="/2019/03/07/study-high-order-javascript/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 고계 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
+                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    밍코더
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

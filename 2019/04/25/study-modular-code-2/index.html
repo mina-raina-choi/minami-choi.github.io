@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째 - Mina&#39;s World</title>
+
+
+    <meta name="description" content="지난 글에 이어서 함수 파이프라인을 합성 문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분 함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정 람다JS 함수 R.compose로">
+<meta name="keywords" content="함수형 자바스크립트,재사용 가능한, 모듈적인 코드로">
+<meta property="og:type" content="article">
+<meta property="og:title" content="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+<meta property="og:url" content="https://minami-choi.github.io/2019/04/25/study-modular-code-2/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="지난 글에 이어서 함수 파이프라인을 합성 문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분 함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정 람다JS 함수 R.compose로">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+<meta property="og:updated_time" content="2019-11-23T13:32:50.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+<meta name="twitter:description" content="지난 글에 이어서 함수 파이프라인을 합성 문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분 함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정 람다JS 함수 R.compose로">
+<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                밍코더
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 minutes read (About 1787 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째
+            
+        </h1>
+        <div class="content">
+            <p>지난 글에 이어서</p>
+<h2><span id="함수-파이프라인을-합성">함수 파이프라인을 합성</span></h2>
+<p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
+<p>함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것</p>
+<h3><span id="함수-합성-서술과-평가를-구분">함수 합성: 서술과 평가를 구분</span></h3>
+<p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>
+람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
+<a id="more"></a>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> R = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ramda"</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">"lodash"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> str = <span class="hljs-string">`We can only see a short distance ahead</span></span><br><span class="line"><span class="hljs-string">            but we can see plenty there that needs to be done.`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> explode = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.split(<span class="hljs-regexp">/\s+/</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> count = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.length</span><br><span class="line"><span class="hljs-keyword">const</span> countWords = R.compose(count, explode)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"countWords(str)"</span>, countWords(str))</span><br></pre></td></tr></table></figure>
+<p>흥미로운 사실은 countWords를 실행하기 전에는 아무 평가도 하지 않는다는 점<br>
+합성이 끝나면 해당 인수(countWords에 전달하는 인수)를 받아 호출되기를 기다리는 또다른 함수가 반환된다.<br>
+함수의 서술부와 평가부를 분리하는 함수합성의 미학!</p>
+<p>합성은 함수의 출력과 입력을 연결하여 진정한 함수 파이프라인을 완성한다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// compose 구현부</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compose</span>(<span class="hljs-params"><span class="hljs-regexp">/* 함수 */</span></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span></span><br><span class="line">  <span class="hljs-keyword">let</span> start = args.length - <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// compose는 실제 인수를 넣고 호출한 또다른함수를 출력</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> i = start</span><br><span class="line">    <span class="hljs-comment">// 전달된 인수를 넣고 동적으로 함수를 적용</span></span><br><span class="line">    <span class="hljs-keyword">let</span> result = args[start].apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>)</span><br><span class="line">    <span class="hljs-keyword">while</span> (i--)</span><br><span class="line">      <span class="hljs-comment">// 이전 단계 반환값을 다시 인수로 넣고 그다음함수를 계속 반복</span></span><br><span class="line">      result = args[i].call(<span class="hljs-keyword">this</span>, result)</span><br><span class="line">    <span class="hljs-keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> trim = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.replace(<span class="hljs-regexp">/\s*|\s$/g</span>, <span class="hljs-string">""</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> nomarlize = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.replace(<span class="hljs-regexp">/\-/g</span>, <span class="hljs-string">""</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> validLength = <span class="hljs-function">(<span class="hljs-params">param, str</span>) =&gt;</span> str.length === param</span><br><span class="line"><span class="hljs-keyword">const</span> checkLengthSsn = _.partial(validLength, <span class="hljs-number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> clearInput = R.compose(nomarlize, trim)</span><br><span class="line"><span class="hljs-keyword">const</span> isValidSsn = R.compose(checkLengthSsn, clearInput)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"clearInput(` 444-44-444`)"</span>, clearInput(<span class="hljs-string">` 444-44-444`</span>))</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"isValidSsn(` 444-44-444`)"</span>, isValidSsn(<span class="hljs-string">` 444-44-444`</span>))</span><br></pre></td></tr></table></figure>
+<p>이런 개념을 바탕으로 단순한 함수들을 조합해서 전체 프로그램을 구축하는 것.</p>
+<p><img src="compose.jpg" alt="compose"></p>
+<p>합성은 결합 가능한 연산 conjunctive operation 이라서 논리 AND 연산자로 원소를 합칠 수 있다.</p>
+<h3><span id="함수형-라이브러리로-합성">함수형 라이브러리로 합성</span></h3>
+<p>람다JS 같은 함수형 라이브러리는 처음부터 커링을 염두에 두고 모든 함수를 구성했기 때문에 파이프라인으로 합성하면 함수를 다용도로 활용할 수 있다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> students = [<span class="hljs-string">"Rosser"</span>, <span class="hljs-string">"Turing"</span>, <span class="hljs-string">"Kleene"</span>, <span class="hljs-string">"Church"</span>]</span><br><span class="line"><span class="hljs-keyword">const</span> grades = [<span class="hljs-number">80</span>, <span class="hljs-number">100</span>, <span class="hljs-number">90</span>, <span class="hljs-number">99</span>]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 가장 똑똑한 학생 구하기</span></span><br><span class="line"><span class="hljs-keyword">const</span> smartestStudent = R.compose(R.head, R.pluck(<span class="hljs-number">0</span>), R.reverse, R.sortBy(R.prop(<span class="hljs-number">1</span>)), R.zip)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ret = smartestStudent(students, grades)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"ret"</span>, ret)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 알기 쉽게 함수 별칭을 사용</span></span><br><span class="line"><span class="hljs-keyword">const</span> first = R.head</span><br><span class="line"><span class="hljs-keyword">const</span> getName = R.pluck(<span class="hljs-number">0</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> reverse = R.reverse</span><br><span class="line"><span class="hljs-keyword">const</span> sortByGrade = R.sortBy(R.prop(<span class="hljs-number">1</span>))</span><br><span class="line"><span class="hljs-keyword">const</span> combine = R.zip</span><br><span class="line"></span><br><span class="line">R.compose(first, getName, reverse, sortByGrade, combine)</span><br></pre></td></tr></table></figure>
+<h3><span id="순수분순-함수-다루기">순수/분순 함수 다루기</span></h3>
+<p>불순한 impure한 코드는 실행 후 부수효과가 드러나고 외부 디펜던시 탓에 구성함수의 스코프 바깥에서 데이터에 접근할 수 밖에 없다.<br>
+실세계에서는 순수/불순한 코드가 섞여있을 수 밖에 없으므로 양쪽을 확실하게 구분하고 가급적 불순코드를 (가장 좋게는 단일함수로) 격리하는 방법을 찾아야한다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 커링 및 합성을 응용한 showStudent 프로그램</span></span><br><span class="line"><span class="hljs-keyword">const</span> findObject = R.curry(<span class="hljs-function">(<span class="hljs-params">db, id</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">// 리팩터링한 find() 메서드는 저장소 객체를 매개변수로 받기 때문에 합성하기 쉽다</span></span><br><span class="line">  <span class="hljs-keyword">const</span> obj = find(db, id)</span><br><span class="line">  <span class="hljs-keyword">if</span> (obj === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`IDrk [<span class="hljs-subst">$&#123;id&#125;</span>]인 객체는 없습니다`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> obj</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// students 객체 저장소를 가리키게 하여 findObject를 부분평가하면 결국 findStudent라는 새함수가 생성</span></span><br><span class="line"><span class="hljs-keyword">const</span> findStudent = findObject(DB(<span class="hljs-string">"students"</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> csv = <span class="hljs-function">(<span class="hljs-params">&#123; ssn, firstname, lastname &#125;</span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;ssn&#125;</span>, <span class="hljs-subst">$&#123;firstname&#125;</span>, <span class="hljs-subst">$&#123;lastname&#125;</span>`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> append = R.curry(<span class="hljs-function">(<span class="hljs-params">elementId, info</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(elementId).innerHTML = info</span><br><span class="line">  <span class="hljs-keyword">return</span> info</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> showStudent = R.compose(append(<span class="hljs-string">"#student-info"</span>), csv, findStudent, normalize, trim)</span><br><span class="line"></span><br><span class="line">showStudent(<span class="hljs-string">"4444-4444"</span>)</span><br></pre></td></tr></table></figure>
+<h3><span id="무인수-프로그래밍">무인수 프로그래밍</span></h3>
+<p><code>R.compose(first, getName, reverse, sortByGrade, combine)</code><br>
+기존의 함수 선언과 달리 자신의 구성함수의 매개변수를하나도 드러내지 않는다.<br>
+compose또는 pipe 함수를 사용하면 인수를 선언할 필요가 없기 때문에 간결하면서도 선언적인 무인수 코드를 작성할 수 있다.</p>
+<p>무인수스타일코드<br>
+이 함수들이 어떤 형식의 인수를 받는지, 전체 표현식 안에서 어떻게 연결되는지 아무 선언도 하지 않는다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> runProgram = R.pipe(R.map(R.toLower), R.uniq, R.sortBy(R.identity))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ret = runProgram([</span><br><span class="line">  <span class="hljs-string">"Functional"</span>,</span><br><span class="line">  <span class="hljs-string">"Programming"</span>,</span><br><span class="line">  <span class="hljs-string">"CUrry"</span>,</span><br><span class="line">  <span class="hljs-string">"Memoization"</span>,</span><br><span class="line">  <span class="hljs-string">"Partial"</span>,</span><br><span class="line">  <span class="hljs-string">"Curry"</span>,</span><br><span class="line">  <span class="hljs-string">"Programming"</span></span><br><span class="line">])</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"ret"</span>, ret)</span><br></pre></td></tr></table></figure>
+<h2><span id="함수-조합기로-제어흐름을-관리">함수 조합기로 제어흐름을 관리</span></h2>
+<p>조건 로직을 구사하거나 다수의 함수를 차례로 실행하는 경우, 애플리케이션의 제어흐름을 관리하는 데 유용한 유틸리티</p>
+<p>조합기 - 함수 또는 다른 조합기 같은 기본 장치를 조합하여 제어로직처럼 작동시킬 수 있는 고계함수, 조합기는 대부분 함수형 프로그램이 잘 흘러가도록 조정하는 일이 주임무라 자신의 변수를 선언하거나 비즈니스 로직을 두진않는다.<br>
+compose, pipe이외에도 종류가 많지만 자주 쓰는 것들 정리해보면</p>
+<p><code>항등(identity)</code><br>
+주어진 인수와 똑같은 값을 반환하는 함수<br>
+identity :: (a) -&gt; a</p>
+<p><code>탭(tap)</code><br>
+코드 추가 없이 void 함수(로깅이나 파일/HTML 페이지 쓰기 등)를 연결하여 합성할 때 유용. 자신을 함수에 넘기고 자신을 돌려받는다.<br>
+tap :: (a -&gt; *) -&gt; a -&gt; a</p>
+<p><code>선택(alternation) - OR-조합기</code><br>
+alt 조합기는 함수 호술시 기본 응답을 제공하는 단순 조건 로직을 수행<br>
+함수2개를 받아 false, null, undefined가 아닌 값이 있으면 첫 번째 함수의 결과를, 그렇지 않으면 두번째 함수의 결과를 반환.</p>
+<p><code>순차열(sequence) - S-조합기</code><br>
+함수 순차열의 순회, 2개 또는 더 많은 함수를 인수로 받아, 동일한 값에 대해 각 함수를 차례로 실행하는 또다른 함수를 반환.<br>
+이 조합기를 이용하면 서로 연관되어 있지만 독립적인 일련의 연산을 수행할 수 있다.</p>
+<p><code>포크(fork) 또는 조인(join)</code><br>
+포크 조합기는 하나의 자원을 두가지방법으로 처리후 그 결과를 다시 조합한다.<br>
+하나의 조인 함수와 주어진 입력을 처리할 종단함수 2개를 받는다.</p>
+<p><img src="fork-join.jpg" alt="fork-join"></p>
+<p>함수형 프로그래밍은 불변성, 순수성이 기본 원리이므로 프로그램을 구성하는 함수의 모듈성과 재사용성을 세세하게 조절할 수 있다. 자바스크립트에서는 함수를 이용해서 모듈을 구현할 수 있다고 했는데 마찬가지로 전체 모듈을 합성하고 재사용하는 일도 얼마든지 가능하다</p>
+<p>이장에서 배운 기법들로 순수함수를 추상하여 합성 가능한 형태로 만드는 게 목적이다.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/재사용-가능한-모듈적인-코드로/">재사용 가능한, 모듈적인 코드로</a>, <a class="has-link-grey -link" href="/tags/함수형-자바스크립트/">함수형 자바스크립트</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/11/23/Essay/이직일기/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">이직 준비 시작</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/01/study-modular-code/">
+                <span class="level-item">스터디 - 재사용 가능한, 모듈적인 코드로</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2019/04/25/study-modular-code-2/';
+        this.page.identifier = '2019/04/25/study-modular-code-2/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            42
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            78
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://minami-choi.github.io">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://www.facebook.com/minaminachoi">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com/coder_minachoi">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
+            <span class="level-start">
+                <span class="level-item">이직일기</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">41</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1</span>
+        <span>함수 파이프라인을 합성</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.1</span>
+        <span>함수 합성: 서술과 평가를 구분</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.2</span>
+        <span>함수형 라이브러리로 합성</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.3</span>
+        <span>순수/분순 함수 다루기</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.4</span>
+        <span>무인수 프로그래밍</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">2</span>
+        <span>함수 조합기로 제어흐름을 관리</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/Essay/이직일기/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
+                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/01/study-modular-code/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
+                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/07/study-high-order-javascript/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 고계 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-07T03:20:46.000Z">2019-03-07</time></div>
+                    <a href="/2019/03/07/study-high-order-javascript/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 고계 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
+                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1</span>
+        <span>함수 파이프라인을 합성</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.1</span>
+        <span>함수 합성: 서술과 평가를 구분</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.2</span>
+        <span>함수형 라이브러리로 합성</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.3</span>
+        <span>순수/분순 함수 다루기</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1.4</span>
+        <span>무인수 프로그래밍</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">2</span>
+        <span>함수 조합기로 제어흐름을 관리</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/23/Essay/이직일기/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
+                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/04/01/study-modular-code/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
+                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/07/study-high-order-javascript/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 고계 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-07T03:20:46.000Z">2019-03-07</time></div>
+                    <a href="/2019/03/07/study-high-order-javascript/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 고계 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
+                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    밍코더
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
