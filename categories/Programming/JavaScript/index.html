@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: JavaScript - Mina&#39;s World</title>
+<title>Categoria: JavaScript - Mina&#39;s World</title>
 
 
     <meta property="og:type" content="website">
@@ -133,7 +133,7 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
+            <li><a href="/categories">Categorias</a></li>
             
             <li><a href="/categories/Programming/">Programming</a></li>
             
@@ -180,12 +180,9 @@
         </h1>
         <div class="content">
             <p>지난 글에 이어서</p>
-<h2>함수 파이프라인을 합성</h2>
-<p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
+<h2 id="함수-파이프라인을-합성"><a href="#함수-파이프라인을-합성" class="headerlink" title="함수 파이프라인을 합성"></a>함수 파이프라인을 합성</h2><p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
 <p>함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것</p>
-<h3>함수 합성: 서술과 평가를 구분</h3>
-<p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>
-람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
+<h3 id="함수-합성-서술과-평가를-구분"><a href="#함수-합성-서술과-평가를-구분" class="headerlink" title="함수 합성: 서술과 평가를 구분"></a>함수 합성: 서술과 평가를 구분</h3><p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
         </div>
         
         
@@ -326,10 +323,8 @@
 <li>클로저의 활용</li>
 </ol>
 </blockquote>
-<h2>왜 자바스크립트인가?</h2>
-<ol>
-<li>
-<p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
+<h2 id="왜-자바스크립트인가"><a href="#왜-자바스크립트인가" class="headerlink" title="왜 자바스크립트인가?"></a>왜 자바스크립트인가?</h2><ol>
+<li><p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
         </div>
         
         
@@ -388,8 +383,7 @@
             
         </h1>
         <div class="content">
-            <h3>문제 상황</h3>
-<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
+            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -448,9 +442,7 @@
             
         </h1>
         <div class="content">
-            <h2>화살표 함수(arrow-function)와 function 차이점</h2>
-<p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>
-(원래 나타내던 this를 그대로 쓴다)</p>
+            <h2 id="화살표-함수-arrow-function-와-function-차이점"><a href="#화살표-함수-arrow-function-와-function-차이점" class="headerlink" title="화살표 함수(arrow-function)와 function 차이점"></a>화살표 함수(arrow-function)와 function 차이점</h2><p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>(원래 나타내던 this를 그대로 쓴다)</p>
 <p>앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.</p>
         </div>
         
@@ -515,11 +507,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            42
+                            43
                         </p>
                     </a>
                 </div>
@@ -527,7 +519,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -539,7 +531,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -552,7 +544,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -597,7 +589,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -622,7 +614,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">41</span>
+                <span class="level-item tag">42</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -630,7 +622,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -686,21 +678,40 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -765,25 +776,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -791,7 +783,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -801,7 +793,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -904,21 +896,40 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -983,25 +994,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1009,7 +1001,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -1019,7 +1011,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1273,10 +1265,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

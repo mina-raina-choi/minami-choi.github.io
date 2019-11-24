@@ -10,19 +10,19 @@
 <title>android.view.InflateException 해결 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="android.view.InflateException 문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
-<meta name="keywords" content="안드로이드,android,InflateException">
+    <meta name="description" content="android.view.InflateException문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="keywords" content="android,안드로이드,InflateException">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android.view.InflateException 해결">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/01/android-inflateException/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="android.view.InflateException 문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta property="og:description" content="android.view.InflateException문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:34:48.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android.view.InflateException 해결">
-<meta name="twitter:description" content="android.view.InflateException 문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="twitter:description" content="android.view.InflateException문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -121,7 +121,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -179,32 +179,28 @@
             
         </h1>
         <div class="content">
-            <h2><span id="androidviewinflateexception">android.view.InflateException</span></h2>
-<h3><span id="문제-상황">문제 상황</span></h3>
-<p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
+            <h2><span id="androidviewinflateexception">android.view.InflateException</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
 <a id="more"></a>
+
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Binary XML file line #25: Error inflating class fragment</span></span><br><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Error inflating class fragment</span></span><br><span class="line">Caused by: java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
+
 <p>검색을 통해 알아보니 <code>android.view.InflateException</code> 에러는 아래와 같은 경우 발생한다고 한다.</p>
 <ol>
-<li>
-<p>xml에 값을 잘못 넣었을 경우</p>
+<li><p>xml에 값을 잘못 넣었을 경우</p>
 </li>
-<li>
-<p>CustomView의 생성자 함수를 제대로 만들어주지 않았을 경우</p>
+<li><p>CustomView의 생성자 함수를 제대로 만들어주지 않았을 경우</p>
 <blockquote>
-<p>[참고]<br>
-CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
+<p>[참고]<br>CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&gt; public CustomView(Context context, AttributeSet attrs)&#123;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<pre><code>super(context, attrs);
-</code></pre>
-<p>}</p>
+<pre><code>super(context, attrs);</code></pre><p>}</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h3><span id="해결-방법">해결 방법</span></h3>
-<p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
+<h3><span id="해결-방법">해결 방법</span></h3><p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;fragment</span><br><span class="line">android:id=<span class="hljs-string">"@+id/mapFragment"</span></span><br><span class="line">android:layout_width=<span class="hljs-string">"match_parent"</span></span><br><span class="line">android:layout_height=<span class="hljs-string">"wrap_content"</span></span><br><span class="line">app:layout_constraintLeft_toLeftOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintRight_toRightOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintTop_toBottomOf=<span class="hljs-string">"@+id/guideline"</span></span><br><span class="line">app:layout_constraintBottom_toBottomOf=<span class="hljs-string">"parent"</span></span><br><span class="line">class=<span class="hljs-string">"com.example.minachoi.findjuyou.fragment.MapFragment"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
 <p>이렇게 class값을 넣어주니 제대로 build되었다.</p>
 
         </div>
@@ -252,7 +248,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -314,11 +310,11 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            42
+                            43
                         </p>
                     </a>
                 </div>
@@ -326,7 +322,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -338,7 +334,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -351,7 +347,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -396,7 +392,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -421,7 +417,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">41</span>
+                <span class="level-item tag">42</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -429,7 +425,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -486,7 +482,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
@@ -509,21 +505,40 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -588,25 +603,6 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -614,7 +610,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -624,7 +620,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -728,7 +724,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
@@ -751,21 +747,40 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -830,25 +845,6 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -856,7 +852,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -866,7 +862,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1120,10 +1116,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

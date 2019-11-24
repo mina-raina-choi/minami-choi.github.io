@@ -10,19 +10,19 @@
 <title>for문, foreach문, for~in문, for~of문 차이점 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
+    <meta name="description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
 <meta name="keywords" content="for문,foreach문,for~in문,for~of문">
 <meta property="og:type" content="article">
 <meta property="og:title" content="for문, foreach문, for~in문, for~of문 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/13/for-foreach-forin-forof/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
+<meta property="og:description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:43.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="for문, foreach문, for~in문, for~of문 차이점">
-<meta name="twitter:description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
+<meta name="twitter:description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,28 +175,18 @@
             
         </h1>
         <div class="content">
-            <h1><span id="for문-foreach문-for~in문-for~of문-차이점">for문, foreach문, for~in문, for~of문 차이점</span></h1>
-<p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
-<h3><span id="foreach">foreach</span></h3>
-<ol>
-<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>
-(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
-<li>You can’t return from the enclosing function using a return statement.<br>
-(return을 사용해 해당 function을 마무리하지 못함)<a id="more"></a>
+            <h1><span id="for문-foreach문-forin문-forof문-차이점">for문, foreach문, for<del>in문, for</del>of문 차이점</span></h1><p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
+<h3><span id="foreach">foreach</span></h3><ol>
+<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
+<li>You can’t return from the enclosing function using a return statement.<br>(return을 사용해 해당 function을 마무리하지 못함)<a id="more"></a>
+
 </li>
 </ol>
-<h3><span id="for~in">for~in</span></h3>
-<p>Object 프로퍼티를 반복하기 위해 만들어졌다.<br>
-물론 array를 반복시킬 수도 있다.<br>
-index값이 string형이므로 주의가 필요하다.</p>
+<h3><span id="for~in">for~in</span></h3><p>Object 프로퍼티를 반복하기 위해 만들어졌다.<br>물론 array를 반복시킬 수도 있다.<br>index값이 string형이므로 주의가 필요하다.</p>
 <blockquote>
-<p>Important<br>
-If you are expecting a number but in fact have a string this can cause problems, for example “1” + “2” is the string “12” and not the number 3.</p>
+<p>Important<br>If you are expecting a number but in fact have a string this can cause problems, for example “1” + “2” is the string “12” and not the number 3.</p>
 </blockquote>
-<h3><span id="for~of">for~of</span></h3>
-<p>ES6부터 for~of구문 사용가능하다.<br>
-for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br>
-현재 사용가능한 가장 간결한 방법이다!</p>
+<h3><span id="for~of">for~of</span></h3><p>ES6부터 for<del>of구문 사용가능하다.<br>for</del>of구문에서는 break, continue, return을 모두 사용할 수 있다.<br>현재 사용가능한 가장 간결한 방법이다!</p>
 
         </div>
         
@@ -243,7 +233,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -305,11 +295,11 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            42
+                            43
                         </p>
                     </a>
                 </div>
@@ -317,7 +307,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -329,7 +319,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -342,7 +332,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -387,7 +377,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -412,7 +402,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">41</span>
+                <span class="level-item tag">42</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -420,7 +410,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -476,21 +466,40 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -555,25 +564,6 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -581,7 +571,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -591,7 +581,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -694,21 +684,40 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -773,25 +782,6 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -799,7 +789,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -809,7 +799,7 @@ for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1063,10 +1053,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

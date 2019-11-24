@@ -10,19 +10,19 @@
 <title>엑셀에서 json파일 추출하기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="엑셀에서 json파일 추출하기 회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+    <meta name="description" content="엑셀에서 json파일 추출하기회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="keywords" content="엑셀,excel to json,csv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="엑셀에서 json파일 추출하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/28/excel-to-json/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="엑셀에서 json파일 추출하기 회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta property="og:description" content="엑셀에서 json파일 추출하기회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:38.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="엑셀에서 json파일 추출하기">
-<meta name="twitter:description" content="엑셀에서 json파일 추출하기 회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta name="twitter:description" content="엑셀에서 json파일 추출하기회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,30 +175,20 @@
             
         </h1>
         <div class="content">
-            <h1><span id="엑셀에서-json파일-추출하기">엑셀에서 json파일 추출하기</span></h1>
-<p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>
-앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
+            <h1><span id="엑셀에서-json파일-추출하기">엑셀에서 json파일 추출하기</span></h1><p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
 <a id="more"></a>
+
 <p>약간의 검토를 해보니 excel파일에서 json을 추출하는 방법이 있다는 것을 알게되어 정리를 해두게 되었다.</p>
-<h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3>
-<h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3>
-<ol>
+<h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3><h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3><ol>
 <li>Option1 : 변환할 csv 파일 선택</li>
 </ol>
 <p><img src="/images/choose-csv.png" alt></p>
 <ol start="2">
 <li>Options2 : First row is column names 옵션 체크</li>
-<li>Options4 : 출력할 형태 만들기<br>
-i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>
-{lb} : left bracket {<br>
-{br} : Line break<br>
-{rb} : right bracket }<br>
-{f1} : 첫번째 필드값<br>
-{h1} : 첫번째 헤드값</li>
+<li>Options4 : 출력할 형태 만들기<br>i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>{lb} : left bracket {<br>{br} : Line break<br>{rb} : right bracket }<br>{f1} : 첫번째 필드값<br>{h1} : 첫번째 헤드값</li>
 </ol>
 <p><img src="/images/option4.png" alt></p>
 <h3><span id="3-convert-csv-to-json-via-template-버튼-클릭하면-결과물이-나온다">3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다.</span></h3>
-
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -244,7 +234,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -306,11 +296,11 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            42
+                            43
                         </p>
                     </a>
                 </div>
@@ -318,7 +308,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -330,7 +320,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -343,7 +333,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -388,7 +378,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -413,7 +403,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">41</span>
+                <span class="level-item tag">42</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -421,7 +411,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -477,21 +467,40 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -556,25 +565,6 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -582,7 +572,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -592,7 +582,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -695,21 +685,40 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -774,25 +783,6 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -800,7 +790,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -810,7 +800,7 @@ i. <a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1064,10 +1054,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

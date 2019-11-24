@@ -10,19 +10,19 @@
 <title>formGroup 하위에 [(ngModel)] 사용시 발생하는 error - Mina&#39;s World</title>
 
 
-    <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+    <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="keywords" content="Angular,formgroup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/06/angular-formgroup-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:36:28.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
-<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -121,7 +121,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -179,21 +179,17 @@
             
         </h1>
         <div class="content">
-            <h2><span id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</span></h2>
-<h3><span id="문제-상황">문제 상황</span></h3>
-<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2><span id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
 <a id="more"></a>
+
 <p><img src="/images/formgrouperror.png" alt></p>
-<h3><span id="해결-방법">해결 방법</span></h3>
-<ol>
-<li>
-<p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
+<h3><span id="해결-방법">해결 방법</span></h3><ol>
+<li><p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
 </li>
-<li>
-<p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
+<li><p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># 1번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> formControlName=<span class="hljs-string">"selectedToken"</span></span><br><span class="line">(change)=<span class="hljs-string">"selectSendToken()"</span>  [(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span>&gt;</span><br><span class="line">    &lt;option *ngFor=<span class="hljs-string">"let token of global.sendTokenOptions"</span> [ngValue]=<span class="hljs-string">"token"</span>&gt;</span><br><span class="line">        &#123;&#123;token.symbol&#125;&#125;(&#123;&#123;token.name&#125;&#125;)</span><br><span class="line">    &lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> (change)=<span class="hljs-string">"selectSendToken()"</span></span><br><span class="line">[(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span> [ngModelOptions]=<span class="hljs-string">"&#123;standalone: true&#125;"</span>&gt;</span><br><span class="line">....</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-<pre><code></code></pre>
-</li>
+
+<pre><code></code></pre></li>
 </ol>
 
         </div>
@@ -241,7 +237,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -303,11 +299,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            42
+                            43
                         </p>
                     </a>
                 </div>
@@ -315,7 +311,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -327,7 +323,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -340,7 +336,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -385,7 +381,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -410,7 +406,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">41</span>
+                <span class="level-item tag">42</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -418,7 +414,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -475,7 +471,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
@@ -498,21 +494,40 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -577,25 +592,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -603,7 +599,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -613,7 +609,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -717,7 +713,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
@@ -740,21 +736,40 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-24T14:13:05.000Z">2019-11-24</time></div>
+                    <a href="/2019/11/24/Programming/Algorithm/hash-no-completion/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 완주하지 못한 선수</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2019/11/23/Essay/이직일기/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시작">
+                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="이직 준비 시이작~!">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T13:25:10.000Z">2019-11-23</time></div>
-                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시작</a>
+                    <a href="/2019/11/23/Essay/이직일기/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이직 준비 시이작~!</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Essay/">Essay</a> / <a class="has-link-grey -link" href="/categories/Essay/이직일기/">이직일기</a>
                     </p>
@@ -819,25 +834,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/08/12/java-incompatible-type-error/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="자바에서 Incompatible types error">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-12T07:35:11.000Z">2018-08-12</time></div>
-                    <a href="/2018/08/12/java-incompatible-type-error/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바에서 Incompatible types error</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -845,7 +841,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -855,7 +851,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1109,10 +1105,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
