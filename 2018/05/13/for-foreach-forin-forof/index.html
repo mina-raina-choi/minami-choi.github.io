@@ -10,19 +10,19 @@
 <title>for문, foreach문, for~in문, for~of문 차이점 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
+    <meta name="description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
 <meta name="keywords" content="for문,foreach문,for~in문,for~of문">
 <meta property="og:type" content="article">
 <meta property="og:title" content="for문, foreach문, for~in문, for~of문 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/13/for-foreach-forin-forof/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
+<meta property="og:description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:43.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="for문, foreach문, for~in문, for~of문 차이점">
-<meta name="twitter:description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
+<meta name="twitter:description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,18 +175,28 @@
             
         </h1>
         <div class="content">
-            <h1><span id="for문-foreach문-forin문-forof문-차이점">for문, foreach문, for<del>in문, for</del>of문 차이점</span></h1><p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
-<h3><span id="foreach">foreach</span></h3><ol>
-<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
-<li>You can’t return from the enclosing function using a return statement.<br>(return을 사용해 해당 function을 마무리하지 못함)<a id="more"></a>
-
+            <h1><span id="for문-foreach문-for~in문-for~of문-차이점">for문, foreach문, for~in문, for~of문 차이점</span></h1>
+<p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
+<h3><span id="foreach">foreach</span></h3>
+<ol>
+<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>
+(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
+<li>You can’t return from the enclosing function using a return statement.<br>
+(return을 사용해 해당 function을 마무리하지 못함)<a id="more"></a>
 </li>
 </ol>
-<h3><span id="for~in">for~in</span></h3><p>Object 프로퍼티를 반복하기 위해 만들어졌다.<br>물론 array를 반복시킬 수도 있다.<br>index값이 string형이므로 주의가 필요하다.</p>
+<h3><span id="for~in">for~in</span></h3>
+<p>Object 프로퍼티를 반복하기 위해 만들어졌다.<br>
+물론 array를 반복시킬 수도 있다.<br>
+index값이 string형이므로 주의가 필요하다.</p>
 <blockquote>
-<p>Important<br>If you are expecting a number but in fact have a string this can cause problems, for example “1” + “2” is the string “12” and not the number 3.</p>
+<p>Important<br>
+If you are expecting a number but in fact have a string this can cause problems, for example “1” + “2” is the string “12” and not the number 3.</p>
 </blockquote>
-<h3><span id="for~of">for~of</span></h3><p>ES6부터 for<del>of구문 사용가능하다.<br>for</del>of구문에서는 break, continue, return을 모두 사용할 수 있다.<br>현재 사용가능한 가장 간결한 방법이다!</p>
+<h3><span id="for~of">for~of</span></h3>
+<p>ES6부터 for~of구문 사용가능하다.<br>
+for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br>
+현재 사용가능한 가장 간결한 방법이다!</p>
 
         </div>
         
@@ -299,7 +309,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            44
+                            45
                         </p>
                     </a>
                 </div>
@@ -402,7 +412,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">43</span>
+                <span class="level-item tag">44</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -410,7 +420,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -468,6 +478,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -545,25 +574,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -581,7 +591,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -689,6 +699,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -763,25 +792,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -799,7 +809,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>

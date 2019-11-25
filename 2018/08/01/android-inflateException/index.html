@@ -10,19 +10,19 @@
 <title>android.view.InflateException 해결 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="android.view.InflateException문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
-<meta name="keywords" content="android,안드로이드,InflateException">
+    <meta name="description" content="android.view.InflateException 문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="keywords" content="안드로이드,android,InflateException">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android.view.InflateException 해결">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/01/android-inflateException/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="android.view.InflateException문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta property="og:description" content="android.view.InflateException 문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:34:48.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android.view.InflateException 해결">
-<meta name="twitter:description" content="android.view.InflateException문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="twitter:description" content="android.view.InflateException 문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,28 +179,32 @@
             
         </h1>
         <div class="content">
-            <h2><span id="androidviewinflateexception">android.view.InflateException</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
+            <h2><span id="androidviewinflateexception">android.view.InflateException</span></h2>
+<h3><span id="문제-상황">문제 상황</span></h3>
+<p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
 <a id="more"></a>
-
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Binary XML file line #25: Error inflating class fragment</span></span><br><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Error inflating class fragment</span></span><br><span class="line">Caused by: java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
-
 <p>검색을 통해 알아보니 <code>android.view.InflateException</code> 에러는 아래와 같은 경우 발생한다고 한다.</p>
 <ol>
-<li><p>xml에 값을 잘못 넣었을 경우</p>
+<li>
+<p>xml에 값을 잘못 넣었을 경우</p>
 </li>
-<li><p>CustomView의 생성자 함수를 제대로 만들어주지 않았을 경우</p>
+<li>
+<p>CustomView의 생성자 함수를 제대로 만들어주지 않았을 경우</p>
 <blockquote>
-<p>[참고]<br>CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
+<p>[참고]<br>
+CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&gt; public CustomView(Context context, AttributeSet attrs)&#123;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<pre><code>super(context, attrs);</code></pre><p>}</p>
+<pre><code>super(context, attrs);
+</code></pre>
+<p>}</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
-<h3><span id="해결-방법">해결 방법</span></h3><p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
+<h3><span id="해결-방법">해결 방법</span></h3>
+<p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;fragment</span><br><span class="line">android:id=<span class="hljs-string">"@+id/mapFragment"</span></span><br><span class="line">android:layout_width=<span class="hljs-string">"match_parent"</span></span><br><span class="line">android:layout_height=<span class="hljs-string">"wrap_content"</span></span><br><span class="line">app:layout_constraintLeft_toLeftOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintRight_toRightOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintTop_toBottomOf=<span class="hljs-string">"@+id/guideline"</span></span><br><span class="line">app:layout_constraintBottom_toBottomOf=<span class="hljs-string">"parent"</span></span><br><span class="line">class=<span class="hljs-string">"com.example.minachoi.findjuyou.fragment.MapFragment"</span>/&gt;</span><br></pre></td></tr></table></figure>
-
 <p>이렇게 class값을 넣어주니 제대로 build되었다.</p>
 
         </div>
@@ -314,7 +318,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            44
+                            45
                         </p>
                     </a>
                 </div>
@@ -417,7 +421,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">43</span>
+                <span class="level-item tag">44</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -425,7 +429,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -510,6 +514,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -584,25 +607,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -620,7 +624,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -752,6 +756,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -826,25 +849,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -862,7 +866,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>

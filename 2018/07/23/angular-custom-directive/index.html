@@ -10,19 +10,19 @@
 <title>앵귤러에서 커스텀 디렉티브 만들기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="Angular5 / Custom Directive빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자. https://codecraft.tv/courses/angular/custom-directives/overview/ 참고. 우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!컴포넌트는 디렉티브의 모든 특징을">
+    <meta name="description" content="Angular5 / Custom Directive 빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자. https://codecraft.tv/courses/angular/custom-directives/overview/ 참고. 우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문! 컴포넌트는 디렉티브의 모든 특">
 <meta name="keywords" content="Angular,Directive,Custom Directive">
 <meta property="og:type" content="article">
 <meta property="og:title" content="앵귤러에서 커스텀 디렉티브 만들기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/07/23/angular-custom-directive/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular5 / Custom Directive빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자. https://codecraft.tv/courses/angular/custom-directives/overview/ 참고. 우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!컴포넌트는 디렉티브의 모든 특징을">
+<meta property="og:description" content="Angular5 / Custom Directive 빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자. https://codecraft.tv/courses/angular/custom-directives/overview/ 참고. 우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문! 컴포넌트는 디렉티브의 모든 특">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:36:08.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="앵귤러에서 커스텀 디렉티브 만들기">
-<meta name="twitter:description" content="Angular5 / Custom Directive빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자. https://codecraft.tv/courses/angular/custom-directives/overview/ 참고. 우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!컴포넌트는 디렉티브의 모든 특징을">
+<meta name="twitter:description" content="Angular5 / Custom Directive 빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자. https://codecraft.tv/courses/angular/custom-directives/overview/ 참고. 우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문! 컴포넌트는 디렉티브의 모든 특">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,64 +179,87 @@
             
         </h1>
         <div class="content">
-            <h1><span id="angular5-custom-directive">Angular5 / Custom Directive</span></h1><p>빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자.</p>
+            <h1><span id="angular5-custom-directive">Angular5 / Custom Directive</span></h1>
+<p>빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자.</p>
 <p><a href="https://codecraft.tv/courses/angular/custom-directives/overview/" target="_blank" rel="noopener">https://codecraft.tv/courses/angular/custom-directives/overview/</a> 참고.</p>
-<p>우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!<br>컴포넌트는 디렉티브의 모든 특징을 가지고 있다. 거기에 view를 가지고 있는 것이 컴포넌트다.<br>that is to say they have a template and some HTML that is injected into the DOM when we use it.</p>
+<p>우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!<br>
+컴포넌트는 디렉티브의 모든 특징을 가지고 있다. 거기에 view를 가지고 있는 것이 컴포넌트다.<br>
+that is to say they have a template and some HTML that is injected into the DOM when we use it.</p>
 <a id="more"></a>
-
 <p>또다른 차이점은 하나의 html 엘리먼트에 하나의 컴포넌트만 가질 수 있는데, 디렉티브의 경우 하나의 엘리먼트에 여러 디렉티브를 연결할 수 있다.</p>
 <p>이번 글에서 아래와 같은 것을 알아보자.</p>
 <pre><code>1. @Directive 데코레이터를 사용해서 커스텀 디렉티브를 만드는 법
 2. 디렉티브가 이벤트를 인지하고 연관된 host element의 프로퍼티변경을 인지하는 법
 3. 엘리먼트에 정의된 input을 가져올 수 있도록 디렉티브를 구성하는 방법
-[aDirective]={config: &apos;value&apos;} 와 같이.</code></pre><h2><span id="creating-a-custom-directive">Creating a custom directive</span></h2><pre><code>1. @Directive 데코레이터를 사용해서 기본 디렉티브를 만드는 방법
+[aDirective]={config: 'value'} 와 같이.
+</code></pre>
+<h2><span id="creating-a-custom-directive">Creating a custom directive</span></h2>
+<pre><code>1. @Directive 데코레이터를 사용해서 기본 디렉티브를 만드는 방법
 2.  셀렉터를 사용해서, 어트리뷰트를 기반으로 하는 디렉티브와 엘리먼트를 연결하는 법
-3. 디렉티브와 연결된 엘리먼트의 raw DOM 엘리먼트와 상호작용하는 방법</code></pre><h3><span id="directive-decorator">Directive decorator</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"card card-block"</span> ccCardHover&gt;...&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
+3. 디렉티브와 연결된 엘리먼트의 raw DOM 엘리먼트와 상호작용하는 방법
+</code></pre>
+<h3><span id="directive-decorator">Directive decorator</span></h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"card card-block"</span> ccCardHover&gt;...&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>위와 같이 ccCardHover라는 디렉티브를 card 블록에 붙일 수 있다.</p>
 <blockquote>
-<p>[참고]<br>앵귤러팀은 디렉티브를 어트리뷰트로 사용할 때, 디렉티브의 이름에 접두어를 붙이는 것을 추천했다. 여기서는 ‘cc’를 접두어로 사용했다.</p>
+<p>[참고]<br>
+앵귤러팀은 디렉티브를 어트리뷰트로 사용할 때, 디렉티브의 이름에 접두어를 붙이는 것을 추천했다. 여기서는 'cc’를 접두어로 사용했다.</p>
 </blockquote>
 <p>Class에 @Directive라는 데코레이터를 붙이면 디렉티브를 만들 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Directive &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">@Directive(&#123;</span><br><span class="line">  selector:<span class="hljs-string">"[ccCardHover]"</span></span><br><span class="line">&#125;)</span><br><span class="line">class CardHoverDirective &#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="attribute-selector">Attribute selector</span></h3><p>컴포넌트를 만드는 것과 비슷한 데, selector를 []으로 감싼 것이 다르다.<br>이것을 이해하기 위해서 우리는 selector attribute는 CSS 매칭 규칙을 사용해서 컴포넌트/디렉티브를 HTML 요소와 매치한다는 것을 먼저 이해할 필요가 있다.</p>
+<h3><span id="attribute-selector">Attribute selector</span></h3>
+<p>컴포넌트를 만드는 것과 비슷한 데, selector를 []으로 감싼 것이 다르다.<br>
+이것을 이해하기 위해서 우리는 selector attribute는 CSS 매칭 규칙을 사용해서 컴포넌트/디렉티브를 HTML 요소와 매치한다는 것을 먼저 이해할 필요가 있다.</p>
 <p>특정 element를 매치하려면 CSS에서는 아래와 같이 element의 이름으로 스타일 매칭한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">	스타일 설정</span><br><span class="line">	&#125;</span><br><span class="line">p &#123;…​&#125;….</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// selector:<span class="hljs-string">".ccCardHover"</span></span><br><span class="line">// 위와 같은 경우 class로 쓰임</span><br><span class="line">&lt;div class=<span class="hljs-string">"card card-block ccCardHover"</span>&gt;...&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>디렉티브를 특정 속성을 가진 엘리먼트에 연관시키고자 한다.<br>CSS에서 이를 수행하려면 속성이름을 []으로 감싸야한다. 그래서 selector는 [ccCardHover]이다.</p>
-<h3><span id="directive-constructor">Directive constructor</span></h3><p>디렉티브가 생성될 때, 앵귤러는 ElementRef를 주입할 수 있다.<br>ElementRef는 디렉티브가 연결된 DOM 요소에 직접 액세스를 할 수 있게 한다.</p>
+<p>디렉티브를 특정 속성을 가진 엘리먼트에 연관시키고자 한다.<br>
+CSS에서 이를 수행하려면 속성이름을 []으로 감싸야한다. 그래서 selector는 [ccCardHover]이다.</p>
+<h3><span id="directive-constructor">Directive constructor</span></h3>
+<p>디렉티브가 생성될 때, 앵귤러는 ElementRef를 주입할 수 있다.<br>
+ElementRef는 디렉티브가 연결된 DOM 요소에 직접 액세스를 할 수 있게 한다.</p>
 <p><code>el.nativeElement.style.backgroundColor = &quot;gray&quot;;</code></p>
 <p>위는 card의 배경색을 회색으로 변경한다.</p>
 <p>ElementRef는 nativeElement 프로퍼티를 통해 액세스할 수 있는 실제 DOM 엘리먼트의 래퍼다.</p>
 <p>ElementRef는 지시어가 첨부 된 DOM 요소에 직접 액세스 할 수있게합니다. 카드의 배경색을 회색으로 변경하는 데 사용합시다. ElementRef 자체는 다음과 같이 nativeElement 속성을 통해 액세스 할 수있는 실제 DOM 요소의 래퍼입니다.</p>
-<p>그러나 이것은 앱이 항상 브라우저환경에서 동작하는 것을 가정한다.<br>앵귤러는 노드를 통한 서버사이드, 모바일디바이스 등등 다양한 환경에서 동작하도록 설계되었다. 그래서 앵귤러는 Renderer를 통해 엘리먼트에 어트리뷰트를 세팅함으로써 플랫폼에 독립적인 방법을 제공한다.</p>
+<p>그러나 이것은 앱이 항상 브라우저환경에서 동작하는 것을 가정한다.<br>
+앵귤러는 노드를 통한 서버사이드, 모바일디바이스 등등 다양한 환경에서 동작하도록 설계되었다. 그래서 앵귤러는 Renderer를 통해 엘리먼트에 어트리뷰트를 세팅함으로써 플랫폼에 독립적인 방법을 제공한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Renderer &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">class CardHoverDirective &#123;</span><br><span class="line">  constructor(private el: ElementRef,</span><br><span class="line">              private renderer: Renderer) &#123;</span><br><span class="line">    renderer.setElementStyle(el.nativeElement, <span class="hljs-string">'backgroundColor'</span>, <span class="hljs-string">'gray'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2><span id="hostlistener-amp-hostbinding">HostListener &amp; HostBinding</span></h2><pre><code>1. 디렉티브를 붙인 host element에서 발생된 이벤트에 반응하는 방법
-2. 인풋 프로퍼티에 바인딩하여 host element를 조작하는 방법</code></pre><h3><span id="hostlistener">HostListener</span></h3><p>위에서 우리는 ccCardHover라는 디렉티브를 만들었는데, ccCardHover가 있는 엘리먼트의 배경색을 단순히 회색으로 바꾸었다.<br>하지만 디렉티브의 네이밍처럼 hover가 되었을 때만 배경색을 바꾸기 위해서는 유저가 host element를 hover하는지를 감지해야한다. 앵귤러에서는 <code>@HostListener</code> 데코레이터를 통해 이를 쉽게 할 수 있다.</p>
+<h2><span id="hostlistener-amp-hostbinding">HostListener &amp; HostBinding</span></h2>
+<pre><code>1. 디렉티브를 붙인 host element에서 발생된 이벤트에 반응하는 방법
+2. 인풋 프로퍼티에 바인딩하여 host element를 조작하는 방법
+</code></pre>
+<h3><span id="hostlistener">HostListener</span></h3>
+<p>위에서 우리는 ccCardHover라는 디렉티브를 만들었는데, ccCardHover가 있는 엘리먼트의 배경색을 단순히 회색으로 바꾸었다.<br>
+하지만 디렉티브의 네이밍처럼 hover가 되었을 때만 배경색을 바꾸기 위해서는 유저가 host element를 hover하는지를 감지해야한다. 앵귤러에서는 <code>@HostListener</code> 데코레이터를 통해 이를 쉽게 할 수 있다.</p>
 <p>이것은 인자로 넘긴 이벤트를 받아들이는 function 데코레이터다. Host element에서 해당 이벤트가 발생하면 연결된 functions을 실행한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@HostListener(<span class="hljs-string">'mouseover'</span>) <span class="hljs-function"><span class="hljs-title">onHover</span></span>() &#123;</span><br><span class="line">  window.alert(<span class="hljs-string">"hover"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="hostbinding">HostBinding</span></h3><p>Host element에서의 이벤트발생을 캐치할 수 있는 거처럼 host element에 있는 input 프로퍼티에도 <code>@HostBinding</code>을 통해 바인드할 수 있다.</p>
+<h3><span id="hostbinding">HostBinding</span></h3>
+<p>Host element에서의 이벤트발생을 캐치할 수 있는 거처럼 host element에 있는 input 프로퍼티에도 <code>@HostBinding</code>을 통해 바인드할 수 있다.</p>
 <p>이 디렉티브는 host element의 프로퍼티를 바꿀 수 있다. host element에 적용된 클래스 리스트와 같은…</p>
 <p><code>@HostBinding</code> 데코레이터를 사용해 디렉티브는 내부 프로퍼티를 host element 에 있는 input 프로퍼티에 연결할 수 있다. 그래서 내부 프로퍼티가 변경되면 host element에 있는 input 프로퍼티도 변경될 거다.</p>
 <p>그러기 위해서는 바인드의 재료로 사용할 수 있는 디렉티브의 프로퍼티가 필요하다.</p>
-<p>Boolean형의 ishovering이라는 프로퍼티를 선언해서,<br>onmouseover(), onmouseout()에 따라 true, false값을 세팅하자.</p>
-<p>이제 host element의 input프로퍼티에 소스프로퍼티를 연결해야하는데,<br>Ishovering에 <code>@HostBinding</code>데코레이터를 붙인다.<br><code>@HostBinding</code>은 하나의 파라미터를 가지는데, host element에 바인드할 프로퍼티의 이름이다.</p>
+<p>Boolean형의 ishovering이라는 프로퍼티를 선언해서,<br>
+onmouseover(), onmouseout()에 따라 true, false값을 세팅하자.</p>
+<p>이제 host element의 input프로퍼티에 소스프로퍼티를 연결해야하는데,<br>
+Ishovering에 <code>@HostBinding</code>데코레이터를 붙인다.<br>
+<code>@HostBinding</code>은 하나의 파라미터를 가지는데, host element에 바인드할 프로퍼티의 이름이다.</p>
 <p><code>[class.&lt;class-name&gt;]</code> 프로퍼티를 사용해 ngClass 문법을 이용할 수도 있다.</p>
 <p><code>@HostListener</code>와 <code>@HostBinding</code> 데코레이터를 사용하면 호스트 요소의 출력 이벤트를 수신 할 수 있으며 호스트 요소의 입력 속성에도 바인딩 할 수 있습니다.</p>
-<h2><span id="inputs-amp-configuration">Inputs &amp; Configuration</span></h2><pre><code>1. 디렉티브를 구성가능하게 만드는 방법을 알아보자</code></pre><p>Configuration</p>
-<p>위에서 ccCardHover 디렉티브를 완성했는데 이는 재사용하기 불편하다.<br>이번에는 ccCardHover를 구성가능하도록 바꿔서 다른 상황에서도 사용할 수 있게끔 해보자.</p>
-<p>구성 파라미터 중 하나는 숨기거나 보이길 원하는 element를 선택할 수 있는 query selector다.<br><code>let part = this.el.nativeElement.querySelector(&#39;.card-text&#39;);</code></p>
+<h2><span id="inputs-amp-configuration">Inputs &amp; Configuration</span></h2>
+<pre><code>1. 디렉티브를 구성가능하게 만드는 방법을 알아보자
+</code></pre>
+<p>Configuration</p>
+<p>위에서 ccCardHover 디렉티브를 완성했는데 이는 재사용하기 불편하다.<br>
+이번에는 ccCardHover를 구성가능하도록 바꿔서 다른 상황에서도 사용할 수 있게끔 해보자.</p>
+<p>구성 파라미터 중 하나는 숨기거나 보이길 원하는 element를 선택할 수 있는 query selector다.<br>
+<code>let part = this.el.nativeElement.querySelector('.card-text');</code></p>
 <p>첫번째로 해야할 것은 query selector를 디렉티브의 속성으로 이동하는거다. 객체의 속성으로 세팅하면 되겠다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">config: any = &#123;</span><br><span class="line">  querySelector: <span class="hljs-string">'.card-text'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>이런 식으로 config에 매개변수를 추가하고 싶다면 config 객체에 프로퍼티를 추가하면 된다.</p>
-<p>하드코딩된 selector대신 config객체를 이용해 select할 수 있다.<br><code>let part = this.el.nativeElement.querySelector(this.config.querySelector);</code></p>
+<p>하드코딩된 selector대신 config객체를 이용해 select할 수 있다.<br>
+<code>let part = this.el.nativeElement.querySelector(this.config.querySelector);</code></p>
 <p>마지막으로 config 프로퍼티를 디렉티브의 input binding으로 만든다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@Input() config: Object = &#123;</span><br><span class="line">  querySelector: <span class="hljs-string">'.card-text'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>위와 같이 표준 Input 프로퍼티 바인딩을 사용해서 디렉티브를 구성할 수 있다.</p>
 
         </div>
@@ -350,7 +373,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            44
+                            45
                         </p>
                     </a>
                 </div>
@@ -453,7 +476,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">43</span>
+                <span class="level-item tag">44</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -461,7 +484,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -570,6 +593,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -644,25 +686,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -680,7 +703,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -836,6 +859,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -910,25 +952,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -946,7 +969,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>

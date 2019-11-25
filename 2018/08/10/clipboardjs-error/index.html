@@ -10,19 +10,19 @@
 <title>clipboard.js 문자열 복사 에러 해결 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="문제 상황&amp;lt;input type=&quot;text&quot; [value]=&quot;address.addr&quot; id=&quot;&amp;#123;&amp;#123; address.addr + 1 &amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;button type=&quot;button&quot; (click)=&quot;copyAddr(address.addr)&quot;id=&quot;copyWalletAddr&quot; attr.data-clipboard-ta">
+    <meta name="description" content="문제 상황 &amp;lt;input type=&quot;text&quot; [value]=&quot;address.addr&quot; id=&quot;&amp;#123;&amp;#123; address.addr + 1 &amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;button type=&quot;button&quot; (click)=&quot;copyAddr(address.addr)&quot;id=&quot;copyWalletAddr&quot; attr.data-clipboard-t">
 <meta name="keywords" content="clipboard.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="clipboard.js 문자열 복사 에러 해결">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/10/clipboardjs-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 상황&amp;lt;input type=&quot;text&quot; [value]=&quot;address.addr&quot; id=&quot;&amp;#123;&amp;#123; address.addr + 1 &amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;button type=&quot;button&quot; (click)=&quot;copyAddr(address.addr)&quot;id=&quot;copyWalletAddr&quot; attr.data-clipboard-ta">
+<meta property="og:description" content="문제 상황 &amp;lt;input type=&quot;text&quot; [value]=&quot;address.addr&quot; id=&quot;&amp;#123;&amp;#123; address.addr + 1 &amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;button type=&quot;button&quot; (click)=&quot;copyAddr(address.addr)&quot;id=&quot;copyWalletAddr&quot; attr.data-clipboard-t">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:20.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="clipboard.js 문자열 복사 에러 해결">
-<meta name="twitter:description" content="문제 상황&amp;lt;input type=&quot;text&quot; [value]=&quot;address.addr&quot; id=&quot;&amp;#123;&amp;#123; address.addr + 1 &amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;button type=&quot;button&quot; (click)=&quot;copyAddr(address.addr)&quot;id=&quot;copyWalletAddr&quot; attr.data-clipboard-ta">
+<meta name="twitter:description" content="문제 상황 &amp;lt;input type=&quot;text&quot; [value]=&quot;address.addr&quot; id=&quot;&amp;#123;&amp;#123; address.addr + 1 &amp;#125;&amp;#125;&quot;&amp;gt;&amp;lt;button type=&quot;button&quot; (click)=&quot;copyAddr(address.addr)&quot;id=&quot;copyWalletAddr&quot; attr.data-clipboard-t">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,15 +179,17 @@
             
         </h1>
         <div class="content">
-            <h3><span id="문제-상황">문제 상황</span></h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
-
+            <h3><span id="문제-상황">문제 상황</span></h3>
+<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
 <p>clipboard.js 라이브러리를 사용해서 문자열을 복사하는데 특정 경우에 아래와 같은 에러가 떴다.</p>
-<p><code>ERROR DOMException: Failed to execute &#39;querySelector&#39; on &#39;Document&#39;: &#39;#1Aivvfv3etgiaVvSqSFNrGoFAyyxLbHyWL1&#39; is not a valid selector.</code></p>
-<h3><span id="해결-방법">해결 방법</span></h3><p><code>attr.data-clipboard-target</code> 속성을 통해, <code>해당 id의 input value</code>를 복사한다.<br>id 값은 숫자로 시작할 수 없다.<br>지갑주소가 숫자로 시작해서 버그가 발생했다.<br>지갑주소 앞에 “wallet”이라는 문자열을 추가해줌으로써 해결했다.</p>
+<p><code>ERROR DOMException: Failed to execute 'querySelector' on 'Document': '#1Aivvfv3etgiaVvSqSFNrGoFAyyxLbHyWL1' is not a valid selector.</code></p>
+<h3><span id="해결-방법">해결 방법</span></h3>
+<p><code>attr.data-clipboard-target</code> 속성을 통해, <code>해당 id의 input value</code>를 복사한다.<br>
+id 값은 숫자로 시작할 수 없다.<br>
+지갑주소가 숫자로 시작해서 버그가 발생했다.<br>
+지갑주소 앞에 &quot;wallet&quot;이라는 문자열을 추가해줌으로써 해결했다.</p>
 <figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">'wallet'</span> <span class="hljs-string">+</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">'wallet'</span> <span class="hljs-string">+</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -300,7 +302,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            44
+                            45
                         </p>
                     </a>
                 </div>
@@ -403,7 +405,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">43</span>
+                <span class="level-item tag">44</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -411,7 +413,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">12</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -492,6 +494,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -566,25 +587,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -602,7 +604,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -730,6 +732,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/25/Programming/Algorithm/hash-camouflage/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 위장">
@@ -804,25 +825,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/01/study-modular-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-01T14:57:27.000Z">2019-04-01</time></div>
-                    <a href="/2019/04/01/study-modular-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -840,7 +842,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
