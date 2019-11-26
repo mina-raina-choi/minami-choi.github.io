@@ -10,19 +10,19 @@
 <title>Angular에서 ObjectUnsubscribedError 해결방법 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+    <meta name="description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta name="keywords" content="Angular,ObjectUnsubscribedError">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular에서 ObjectUnsubscribedError 해결방법">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/23/angular-ObjectUnsubscribedError/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<meta property="og:description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:00.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular에서 ObjectUnsubscribedError 해결방법">
-<meta name="twitter:description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<meta name="twitter:description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,18 +179,15 @@
             
         </h1>
         <div class="content">
-            <h1><span id="objectunsubscribederror-해결방법">ObjectUnsubscribedError 해결방법</span></h1>
-<p>어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!<br>
-그렇지 않으면 메모리릭이 발생할 수 있다.</p>
+            <h1><span id="objectunsubscribederror-해결방법">ObjectUnsubscribedError 해결방법</span></h1><p>어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!<br>그렇지 않으면 메모리릭이 발생할 수 있다.</p>
 <a id="more"></a>
-<p>보통 ngOnInit()에서 subscribe하고 ngOnDestroy()에서 unsubscribe를 하는데<br>
-다른 페이지에서 해당페이지로 돌아오기 위해 백버튼을 누르면 ObjectUnsubscribedError 에러 발생했다.</p>
-<h3><span id="해결방법">해결방법</span></h3>
-<ol>
-<li>eventEmitter를 바로 ngOnInit()에서 subscribe하는 게 아니라,<br>
-eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아서 사용하고, 그걸 unsubscribe해야한다.</li>
+
+<p>보통 ngOnInit()에서 subscribe하고 ngOnDestroy()에서 unsubscribe를 하는데<br>다른 페이지에서 해당페이지로 돌아오기 위해 백버튼을 누르면 ObjectUnsubscribedError 에러 발생했다.</p>
+<h3><span id="해결방법">해결방법</span></h3><ol>
+<li>eventEmitter를 바로 ngOnInit()에서 subscribe하는 게 아니라,<br>eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아서 사용하고, 그걸 unsubscribe해야한다.</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">changedMyWalletList: EventEmitter&lt;any&gt; = new EventEmitter&lt;any&gt;();</span><br></pre></td></tr></table></figure>
+
 <pre><code>changedMyWalletList을 구독한다고치면,
 
 나는 그동안
@@ -201,14 +198,11 @@ eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아�
 
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">subscriberForMyWalletList: any;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.subscriberForMyWalletList = this.changedMyWalletList.subscribe(()=&gt; &#123;</span><br><span class="line">        ~~~~</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnDestroy</span></span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!this.subscriberForMyWalletList.closed)</span><br><span class="line">        this.subscriberForMyWalletList.unsubscribe();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-이렇게 사용해야 한다.
-</code></pre>
-<ol start="2">
-<li>rxjs의 takeWhile을 사용<br>
-import ‘rxjs/add/operator/takeWhile’ 를 하고<br>
-this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
+이렇게 사용해야 한다.</code></pre><ol start="2">
+<li>rxjs의 takeWhile을 사용<br>import ‘rxjs/add/operator/takeWhile’ 를 하고<br>this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">isSubscribing: boolean  = <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.moveToSendCard</span><br><span class="line">        .takeWhile(()=&gt;this.isSubscribing)</span><br><span class="line">        .subscribe(() =&gt; &#123;</span><br><span class="line">            ~~~~</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnDestroy</span></span>() &#123;</span><br><span class="line">    this.isSubscribing = <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>첫번째 방법은 구독해야할 것들마다 일일이 subscriber변수를 할당해줘야 해서 번거로우므로 takeWhile을 사용하는 게 더 간편하겠다!</strong></p>
 
         </div>
@@ -322,7 +316,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            45
+                            46
                         </p>
                     </a>
                 </div>
@@ -425,7 +419,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">45</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -433,7 +427,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -514,6 +508,25 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -588,25 +601,6 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -624,7 +618,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -752,6 +746,25 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -826,25 +839,6 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -862,7 +856,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>

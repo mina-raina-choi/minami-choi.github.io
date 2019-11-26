@@ -192,52 +192,43 @@
 </blockquote>
 <p><code>모듈성</code>은 프로그램을 더 작고 독립적인 부분으로 나눌 수 있는 정도를 뜻한다. <code>모듈적 프로그램modular program</code>은 자신을 구성하는 부속들로부터 자신의 의미를 도출할 수 있다는 점에서 뚜렷이 구분된다. 이들 부속품은 다른 시스템에 그대로 또는 더 쪼개서 통합할 수 있는 재사용 가능한 컴포넌트다. 이러한 코드는 <code>생산성을 높일</code> 뿐만 아니라 <code>코드 유지보수성 및 가독성</code>을 향상시키는데 도움이 된다.</p>
 <a id="more"></a>
+
 <p>3장에서는 하나의 래퍼 객체를 중심으로 단단히 결합된 메서드 체인으로 문제를 해결했다. 4장에서는 <code>함수 합성</code>을 통해 느슨하게 결합된 <code>파이프라인</code>을 만들고, 보다 유연한 독립적인 컴포넌트를 만들어보자. 이렇게 하려면 먼저 코드를 적정 수준으로 추상해야한다. 이 때 <code>람다JS</code>라는 함수형 프레임워크의 도움을 받아 부분 평가 및 합성 같은 주요 함수형 기법을 어떻게 구사하는지 살펴보자.</p>
-<h2><span id="메서드-체인-대-함수-파이프라인">메서드 체인 대 함수 파이프라인</span></h2>
-<p>3장에서는 메서드 체인으로 함수를 연결했다. <code>파이프라이닝</code>은 함수를 연결하는 또다른 기법이다.<br>
-<code>함수</code>란 입력 형식과 출력 형식 간의 수학적인 매핑을 뜻한다.</p>
+<h2><span id="메서드-체인-대-함수-파이프라인">메서드 체인 대 함수 파이프라인</span></h2><p>3장에서는 메서드 체인으로 함수를 연결했다. <code>파이프라이닝</code>은 함수를 연결하는 또다른 기법이다.<br><code>함수</code>란 입력 형식과 출력 형식 간의 수학적인 매핑을 뜻한다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[참고]함수형 커뮤니티에서는 하스켈 언어 표기법을 많이 쓴다.</span><br><span class="line">&lt;function-name&gt; :: &lt;inputs&gt; -&gt; &lt;outputs&gt;</span><br></pre></td></tr></table></figure>
+
 <p>함수 체이닝과 파이프라이닝을 이해하려면 함수를 형식 간의 매핑으로 바라봐야한다.</p>
 <ul>
 <li>메서드를 체이닝 (단단한 결합, 제한된 표현성)</li>
 <li>함수 파이프라인을 배열 (느슨한 결합, 유연성)</li>
 </ul>
-<h3><span id="메소드를-여럿-체이닝">메소드를 여럿 체이닝</span></h3>
-<p>map, filter 함수는 배열을 넘겨받아 새 배열을 돌려준다고 했다.</p>
+<h3><span id="메소드를-여럿-체이닝">메소드를 여럿 체이닝</span></h3><p>map, filter 함수는 배열을 넘겨받아 새 배열을 돌려준다고 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">_.chain(names) <span class="hljs-comment">// 뒤에 점(.)을 붙여 로대시JS의 다른 메서드를 호출</span></span><br><span class="line">  .filter(isValid)</span><br><span class="line">  .map(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.replace(<span class="hljs-regexp">/_/</span>, <span class="hljs-string">" "</span>))</span><br><span class="line">  .uniq()</span><br><span class="line">  .map(_.startCase)</span><br><span class="line">  .sort()</span><br><span class="line">  .value()</span><br></pre></td></tr></table></figure>
+
 <p>명령형에 비해 구조적으로도 향상됐고, 가독성도 좋아졌다. 하지만 <code>로대시JS가 제공하는 연산만 쓸 수 있기 때문에 다른 (또는 직접 만든) 라이브러리 함수를 쉽게 연결할 수 없다.</code></p>
-<p>고수준에서 보면 배열 메서드의 순차열은 아래와 같다. 여기서 체인을 끊어버리고 독립적인 함수열을 자유롭게 배열할 수 있으면 좋겠다.(우리가 만든 메서드나 다른 라이브러리의 메서드를 자유롭게 연산 과정에 추가할 수 있으면 좋겠다.) 그래서 <code>함수 파이프라인</code>이 필요한 것이다.<br>
-<img src="method-chain.jpg" alt="home_posts_tag-false"></p>
-<h3><span id="함수를-파이프라인에-나열">함수를 파이프라인에 나열</span></h3>
-<p>함수형 프로그래밍에서는 메서드 체이닝의 한계에서 벗어나, 출신에 관계없이 어떤 함수라도 유연하게 결합할 수 있다. <code>파이프라인pipeline</code>이란 한 함수의 출력이 다음 함수의 입력이 되게끔 느슨하게 배열한, 방향성directional 함수 순차열이다.</p>
-<p>아래는 서로다른 객체형을 다루는 함수를 연결한 파이프라인의 개념도다.<br>
-<img src="pipeline.jpg" alt="home_posts_tag-false"></p>
+<p>고수준에서 보면 배열 메서드의 순차열은 아래와 같다. 여기서 체인을 끊어버리고 독립적인 함수열을 자유롭게 배열할 수 있으면 좋겠다.(우리가 만든 메서드나 다른 라이브러리의 메서드를 자유롭게 연산 과정에 추가할 수 있으면 좋겠다.) 그래서 <code>함수 파이프라인</code>이 필요한 것이다.<br><img src="method-chain.jpg" alt="home_posts_tag-false"></p>
+<h3><span id="함수를-파이프라인에-나열">함수를 파이프라인에 나열</span></h3><p>함수형 프로그래밍에서는 메서드 체이닝의 한계에서 벗어나, 출신에 관계없이 어떤 함수라도 유연하게 결합할 수 있다. <code>파이프라인pipeline</code>이란 한 함수의 출력이 다음 함수의 입력이 되게끔 느슨하게 배열한, 방향성directional 함수 순차열이다.</p>
+<p>아래는 서로다른 객체형을 다루는 함수를 연결한 파이프라인의 개념도다.<br><img src="pipeline.jpg" alt="home_posts_tag-false"></p>
 <p>이 장에서는 함수 호출을 위의 그림과 같이 고수준의 간명한 함수 파이프라인으로 배열하는 기법을 연구한다.</p>
-<p><code>체이닝과 파이프라인의 접근방법 차이</code><br>
-체이닝 - 객체 메서드를 통해 함수들을 단단히 결합<br>
-파이프라인 - 함수 입출력을 서로 연결지어 느슨하게 결합된 컴포넌트를 만든다. 단, 함수의 항수(인수 개수)와 형식이 호환되지 않으면 연결할 수 없다.</p>
-<h2><span id="함수-호환-요건">함수 호환 요건</span></h2>
-<p>함수형 프로그래밍에서는 파이프라인이 프로그램을 구축하는 유일한 수단!<br>
-정의된 문제를 해결하기 위해서는 단계별로 명확하게 정의된 계산을 차례차례 해내가는 과정이 필요하다. 이 계산 단계가 코드에서는 함수로 표현된다. 각 함수는 입력과 출력이 서로 호환돼야 한다.</p>
+<p><code>체이닝과 파이프라인의 접근방법 차이</code><br>체이닝 - 객체 메서드를 통해 함수들을 단단히 결합<br>파이프라인 - 함수 입출력을 서로 연결지어 느슨하게 결합된 컴포넌트를 만든다. 단, 함수의 항수(인수 개수)와 형식이 호환되지 않으면 연결할 수 없다.</p>
+<h2><span id="함수-호환-요건">함수 호환 요건</span></h2><p>함수형 프로그래밍에서는 파이프라인이 프로그램을 구축하는 유일한 수단!<br>정의된 문제를 해결하기 위해서는 단계별로 명확하게 정의된 계산을 차례차례 해내가는 과정이 필요하다. 이 계산 단계가 코드에서는 함수로 표현된다. 각 함수는 입력과 출력이 서로 호환돼야 한다.</p>
 <ol>
 <li>형식 : 한 함수의 반환 형식과 수신 함수의 인수 형식이 일치해야 한다.</li>
 <li>항수 : 수신 함수는 앞 단계 함수가 반환한 값을 처리하기 위해 적어도 하나 이상의 매개변수를 선언해야 한다.</li>
 </ol>
-<h3><span id="형식이-호환되는-함수">형식이 호환되는 함수</span></h3>
-<p>함수 파이프라인을 설계할 때는 <code>한 함수가 반환하는 것과 다른 함수가 받는 것</code>이 반드시 호환되어야 한다.<br>
-정적 형식statically typed 언어에서는 형식이 큰 관심사이지만 자바스크립트는 형식이 느슨한 언어라서 그렇지 않다. <code>어떤 객체가 실제로 특정 형식처럼 작동하면 그 형식은 그냥 그 객체의 형식인 것</code> 덕 타이핑(“오리처럼 걷고 말하는 동물이 있다면 그건 다름아닌 오리다”)이라고 한다.</p>
-<p>자바스크립트는 <code>동적 파견dynamic dispatch</code> 체제 덕분에 형식과 무관하게 객체에서 속성과 메서드를 가져올 수 있지만, 함수가 어떤 형식의 값을 기대하는지 알아야 프로그램을 이해하기가 더 쉬워진다.<br>
-하스켈 표기법으로 코드에 주석을 붙여 문서화하는 식으로라도 입출력을 명확하게 정의해두면 프로그램을 이해하기가 수월해진다.</p>
+<h3><span id="형식이-호환되는-함수">형식이 호환되는 함수</span></h3><p>함수 파이프라인을 설계할 때는 <code>한 함수가 반환하는 것과 다른 함수가 받는 것</code>이 반드시 호환되어야 한다.<br>정적 형식statically typed 언어에서는 형식이 큰 관심사이지만 자바스크립트는 형식이 느슨한 언어라서 그렇지 않다. <code>어떤 객체가 실제로 특정 형식처럼 작동하면 그 형식은 그냥 그 객체의 형식인 것</code> 덕 타이핑(“오리처럼 걷고 말하는 동물이 있다면 그건 다름아닌 오리다”)이라고 한다.</p>
+<p>자바스크립트는 <code>동적 파견dynamic dispatch</code> 체제 덕분에 형식과 무관하게 객체에서 속성과 메서드를 가져올 수 있지만, 함수가 어떤 형식의 값을 기대하는지 알아야 프로그램을 이해하기가 더 쉬워진다.<br>하스켈 표기법으로 코드에 주석을 붙여 문서화하는 식으로라도 입출력을 명확하게 정의해두면 프로그램을 이해하기가 수월해진다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">trim과 normalize로 함수 파이프라인을 수동으로 구성</span><br><span class="line"><span class="hljs-comment">// trim :: String -&gt; String</span></span><br><span class="line"><span class="hljs-keyword">const</span> trim = <span class="hljs-function">(<span class="hljs-params">str</span>) =&gt;</span> str.replace(<span class="hljs-regexp">/^\s*|\s*$/g</span>, <span class="hljs-string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// normalize :: String -&gt; String</span></span><br><span class="line"><span class="hljs-keyword">const</span> normalize = <span class="hljs-function">(<span class="hljs-params">str</span>) =&gt;</span> str.replace(<span class="hljs-regexp">/\-/g</span>, <span class="hljs-string">''</span>);</span><br><span class="line"></span><br><span class="line">normalize(trim(<span class="hljs-string">"  444-444-4444 "</span>)) <span class="hljs-comment">// '4444444444</span></span><br></pre></td></tr></table></figure>
+
 <p>형식은 틀림없이 중요한 이슈지만, 자바스크립트에서는 <code>함수가 취하는 인수 개수의 호환 여부</code>가 더 중요하다.</p>
-<h3><span id="함수와-항수튜플">함수와 항수:튜플</span></h3>
-<p><code>항수</code>란 함수가 받는 인수의 개수다. 함수의 길이라고도 한다. 다른 프로그래밍에서는 항수를 당연하게 생각하지만 FP에서는 함수에 선언된 인수의 개수가 많아질 수록 복잡도가 증가하는 경우가 많다. 가령 문자열 인수를 하나만 받는 함수는 서너개 받는 함수보다 훨씬 단순하다고 볼 수 있다.</p>
+<h3><span id="함수와-항수튜플">함수와 항수:튜플</span></h3><p><code>항수</code>란 함수가 받는 인수의 개수다. 함수의 길이라고도 한다. 다른 프로그래밍에서는 항수를 당연하게 생각하지만 FP에서는 함수에 선언된 인수의 개수가 많아질 수록 복잡도가 증가하는 경우가 많다. 가령 문자열 인수를 하나만 받는 함수는 서너개 받는 함수보다 훨씬 단순하다고 볼 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">// 인수가 1개인 순수함수는 한가지용도! 즉 단일 책임을 담당하므로 가장 단순한 함수</span></span><br><span class="line"><span class="hljs-comment">// isValid :: String -&gt; Boolean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValid</span>(<span class="hljs-params">str</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//makeAsyncHttp :: String, String, Array -&gt; Boolean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeAsyncHttp</span>(<span class="hljs-params">method, url, data</span>) </span>&#123; <span class="hljs-comment">// 모든 인수를 먼저 계산해야하므로 사용하기 어렵다.</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>우리의 목표는 함수의 인수를 가능한한 적게 하는 것</code>, 그래야 인수가 많은 함수보다 더 유연하고 다목적으로 활용할 수 있다. 하지만 단항 함수를 얻는 것은 쉽지않다.</p>
 <p>isValid가 오류 내용까지 메시지 형태로 반환하도록 고치면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">isValid :: <span class="hljs-built_in">String</span> -&gt; (<span class="hljs-built_in">Boolean</span>, <span class="hljs-built_in">String</span>)</span><br><span class="line">isValid(<span class="hljs-string">'  4444-44444-444 '</span>) <span class="hljs-comment">// (false, '입력값이 너무 길어요!')</span></span><br></pre></td></tr></table></figure>
-<p>그런데 이렇게 두가지 다른 값을 동시에 반환할 수 있을까???<br>
-함수형 언어는 <code>튜플</code>이라는 자료구조를 지원한다. <code>튜플은 유한 원소를 지닌 정렬된 리스트로, 보통 한 번에 두세 개 값을 묶어 (a, b, c) 와 같이 쓴다.</code> isValid가 검사 결과와 에러 메시지를 함께 묶은 튜플 형태로 결과를 내면 한 개체로 반환할 수 있고, 필요시 그 다음 함수에 건네줄 수 있다.</p>
+
+<p>그런데 이렇게 두가지 다른 값을 동시에 반환할 수 있을까???<br>함수형 언어는 <code>튜플</code>이라는 자료구조를 지원한다. <code>튜플은 유한 원소를 지닌 정렬된 리스트로, 보통 한 번에 두세 개 값을 묶어 (a, b, c) 와 같이 쓴다.</code> isValid가 검사 결과와 에러 메시지를 함께 묶은 튜플 형태로 결과를 내면 한 개체로 반환할 수 있고, 필요시 그 다음 함수에 건네줄 수 있다.</p>
 <p>튜플은 형식이 다른 원소를 한데 묶어 다른 함수에 건네주는 일이 가능한 불변성 자료구조다. 물론 객체 리터럴이나 배열같은 임의의 형식으로 반환하는 방법이 있긴하지만 튜플이 다음 측면에서 더 유리하다.</p>
 <ol>
 <li>불변성: 튜플은 한번 만들어지면 나중에 내용을 못 바꿈.</li>
@@ -246,41 +237,36 @@
 </ol>
 <p>튜플은 2장에 나왔던 값 객체와 작동방식이 유사. 자바스크립트에서는 튜플 자료형을 처음부터 지원하지 않아서 자신만의 튜플을 구현해서 쓰면 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 4-2 형식화한 튜플자료형</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> Tuple = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-regexp">/* 형식 */</span></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// Array.prototype.slice.call(arguments)는 arguments.slice(), 즉 주어진 인자들의 배열을 복사한 배열을 얻는 역할</span></span><br><span class="line">  <span class="hljs-keyword">const</span> typeInfo = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>) <span class="hljs-comment">// 튜플에 담긴 인수 형식을 읽는다.</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> _T = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-regexp">/* 값 */</span></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 내부형 _T는 튜플의 형식과 값이 맞는지 확인</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>) <span class="hljs-comment">// 튜플에 저장된 값을 꺼낸다.</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// null 값 유무를 체크. 함수형 자료형은 null 값이 스며드는 것을 허용해선 안된다.</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (values.some(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> val === <span class="hljs-literal">null</span> || val === <span class="hljs-literal">undefined</span>)) &#123;</span><br><span class="line">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">ReferenceError</span>(<span class="hljs-string">"튜플을 null값을 가질 수 없다."</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 정의된 형식 개수와 튜플 항수가 일치하는지 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (values.length !== typeInfo.length) &#123;</span><br><span class="line">      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">"튜플 항수가 프로토타입과 맞지 않다."</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 각 튜플값의 형식이 올바른지 checkType함수로 조사.</span></span><br><span class="line">    <span class="hljs-comment">// 각 튜플의 원소는 ._n(원소 인덱스 n은 1부터 시작)로 참조가능한 튜플속성으로 바꾼다.</span></span><br><span class="line">    values.forEach(<span class="hljs-function">(<span class="hljs-params">val, index</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>[<span class="hljs-string">"_"</span> + (index + <span class="hljs-number">1</span>)] = checkType(typeInfo[index])(val)</span><br><span class="line">    &#125;, <span class="hljs-keyword">this</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">Object</span>.freeze(<span class="hljs-keyword">this</span>) <span class="hljs-comment">// 튜플을 불변 인스턴스화한다.</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 튜플 값을 전부 꺼내 배열로 만든다.</span></span><br><span class="line">    <span class="hljs-comment">// ES6 해체 할당을 이용하면 튜플 값을 변수로 매핑할 수 있다.</span></span><br><span class="line">    _T.prototype.values = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.keys(<span class="hljs-keyword">this</span>).map(<span class="hljs-function"><span class="hljs-params">k</span> =&gt;</span> <span class="hljs-keyword">this</span>[k], <span class="hljs-keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> _T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>위 코드에서 튜플 객체는 크기가 고정된 불변성 자료구조로, 함수 간 통신에 사용가능한 n개의 이형 값을 담을 수 있다.</p>
 <p>ES6부터 지원하는 <code>해체할당destructuring assignment</code>과 조합하면 튜플 값을 변수로 깔끔하게 매핑할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// StringPair형식</span></span><br><span class="line"><span class="hljs-keyword">const</span> StringPair = Tuple(<span class="hljs-built_in">String</span>, <span class="hljs-built_in">String</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> name = (StringPair(<span class="hljs-string">"Barkley"</span>, <span class="hljs-string">"Rosser"</span>)[(first, last)] = name.values())</span><br><span class="line">first <span class="hljs-comment">// Barkley</span></span><br><span class="line">last <span class="hljs-comment">// Rosser</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 항수가 맞지 않아 에러가 난다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> fullName = StringPair(<span class="hljs-string">"J"</span>, <span class="hljs-string">"Barkley"</span>, <span class="hljs-string">"Rosser"</span>)</span><br></pre></td></tr></table></figure>
-<p>튜플로 함수 항수를 줄일 순 있지만, 튜플만으로 만족스럽지 못할 땐 더 나은 방안이 있다.<br>
-<code>항수를 추상하는 동시에 모듈성, 재사용성을 높이는 함수 커링</code>이라는 천연 조미료다.</p>
-<h2><span id="커리된-함수를-평가">커리된 함수를 평가</span></h2>
-<p>커링을 이해하려면 먼저 일반(비커리된) 평가와 커리된 평가의 차이점을 분명히 인지해야 한다.<br>
-자바스크립트에서는 비커리된 일반 함수를 호출할 때 인수가 모자라도 별문제없이 실행된다.<br>
-<img src="non-curried.jpg" alt="home_posts_tag-false"></p>
-<p>이와 달리 모든 매개변수가 명시된 커리된 함수에 일부 인수만 넣어 호출하면, 함수가 실행되는 게 아니라 모자란 나머지 인수가 다 채워지기를 기다리는 새로운 함수가 반환된다.<br>
-<img src="curried.jpg" alt="home_posts_tag-false"></p>
+
+<p>튜플로 함수 항수를 줄일 순 있지만, 튜플만으로 만족스럽지 못할 땐 더 나은 방안이 있다.<br><code>항수를 추상하는 동시에 모듈성, 재사용성을 높이는 함수 커링</code>이라는 천연 조미료다.</p>
+<h2><span id="커리된-함수를-평가">커리된 함수를 평가</span></h2><p>커링을 이해하려면 먼저 일반(비커리된) 평가와 커리된 평가의 차이점을 분명히 인지해야 한다.<br>자바스크립트에서는 비커리된 일반 함수를 호출할 때 인수가 모자라도 별문제없이 실행된다.<br><img src="non-curried.jpg" alt="home_posts_tag-false"></p>
+<p>이와 달리 모든 매개변수가 명시된 커리된 함수에 일부 인수만 넣어 호출하면, 함수가 실행되는 게 아니라 모자란 나머지 인수가 다 채워지기를 기다리는 새로운 함수가 반환된다.<br><img src="curried.jpg" alt="home_posts_tag-false"></p>
 <p><code>커링</code>은 다변수 함수가 인수를 전부 받을 때까지 실행을 보류, 또는 <code>지연</code>시켜 단계별로 나뉜 단항 함수의 순차열로 전환하는 기법이다. 매개변수가 3개인 curry함수를 수학적으로 쓰면 다음과 같다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">curry(f) :: ((a, b, c) -&gt; d) -&gt; a -&gt; b -&gt; c -&gt; d</span><br></pre></td></tr></table></figure>
-<p><code>curry는 (a, b, c)라는 입력을 인수가 하나뿐인 호출로 해체하는 함수 간의 매핑</code>이다.<br>
-자바스크립트로는 자동으로 함수를 커리할 수 없으므로 직접 코드 구현해야한다.</p>
+
+<p><code>curry는 (a, b, c)라는 입력을 인수가 하나뿐인 호출로 해체하는 함수 간의 매핑</code>이다.<br>자바스크립트로는 자동으로 함수를 커리할 수 없으므로 직접 코드 구현해야한다.</p>
 <p>먼저 수동으로 커리하는 간단한 예제를 보면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 두 인수를 수동으로 커리</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry2</span>(<span class="hljs-params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 처음 curry2 호출시 첫번째인수를 포착</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">firstArg</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 두번째호출시 두번째인수를 포착</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">secondArg</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-comment">// 두인수 firstArg, secondArg로 함수를 실행한 결과값을 반환</span></span><br><span class="line">      <span class="hljs-keyword">return</span> fn(firstArg, secondArg)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>반환된 함수는 나중에 사용할 인수를 포착하기 위해 함수 래퍼를 중첩한 코드에 불과하다.<br>
-커링은 클로저의 또다른 사례라고도 할 수 있다.</p>
+
+<p>반환된 함수는 나중에 사용할 인수를 포착하기 위해 함수 래퍼를 중첩한 코드에 불과하다.<br>커링은 클로저의 또다른 사례라고도 할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> name = curry2(last, first) =&gt; <span class="hljs-keyword">new</span> StringPair(last, first)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 두 인수를 모두 넣으면 함수평가가 완료</span></span><br><span class="line">[first, last] = StringPair(<span class="hljs-string">"Barkley"</span>, <span class="hljs-string">"Rosser"</span>).values()</span><br><span class="line">first <span class="hljs-comment">// Barkley</span></span><br><span class="line">last <span class="hljs-comment">// Rosser</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 하나만 넣으면 나머지 인수를 undefined로 넣고 평가하는게 아니라,</span></span><br><span class="line"><span class="hljs-comment">// 또다른 함수를 반환</span></span><br><span class="line">name(<span class="hljs-string">'Curry'</span>) <span class="hljs-comment">// -&gt; Function</span></span><br></pre></td></tr></table></figure>
-<p>4-2에서 사용했던 checkType 함수를 <code>람다JS</code>라는 함수형 라이브러리의 함수를 빌려 구현해보자.<br>
-람다JS의 모든 기능은 전역변수 R을 통해 접근가능하다.<br>
-<em>람다JS는 커링, 부분 적용, 합성 등의 기법을 구사할 때 매개변수를 간편하게 배열할 수 있기 때문</em></p>
+
+<p>4-2에서 사용했던 checkType 함수를 <code>람다JS</code>라는 함수형 라이브러리의 함수를 빌려 구현해보자.<br>람다JS의 모든 기능은 전역변수 R을 통해 접근가능하다.<br><em>람다JS는 커링, 부분 적용, 합성 등의 기법을 구사할 때 매개변수를 간편하게 배열할 수 있기 때문</em></p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// checkType :: Type -&gt; Object -&gt; Object</span></span><br><span class="line"><span class="hljs-keyword">const</span> checkType = R.curry(<span class="hljs-function">(<span class="hljs-params">typeDef, obj</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">// R.is()로 형식 정보를 체크</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (!R.is(typeDef, obj)) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> type = <span class="hljs-keyword">typeof</span> obj</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">TypeError</span>(<span class="hljs-string">`형식 불일치: [<span class="hljs-subst">$&#123;typeDef&#125;</span>]이어야 하는데, [<span class="hljs-subst">$&#123;type&#125;</span>]이다.`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> obj</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">checkType(<span class="hljs-built_in">String</span>)(<span class="hljs-string">"Curry"</span>) <span class="hljs-comment">// =&gt; 'Curry'</span></span><br><span class="line">checkType(<span class="hljs-built_in">Number</span>)(<span class="hljs-number">3</span>) <span class="hljs-comment">// =&gt; 3</span></span><br><span class="line">checkType(<span class="hljs-built_in">Number</span>)(<span class="hljs-number">3.5</span>) <span class="hljs-comment">// =&gt; 3.5</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">let</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()</span><br><span class="line">checkType(<span class="hljs-built_in">Date</span>)(now) <span class="hljs-comment">// =&gt; now</span></span><br><span class="line">checkType(<span class="hljs-built_in">Object</span>)(&#123;&#125;) <span class="hljs-comment">// =&gt; &#123;&#125;</span></span><br><span class="line">checkType(<span class="hljs-built_in">String</span>)(<span class="hljs-number">42</span>) <span class="hljs-comment">// =&gt; TypeError</span></span><br></pre></td></tr></table></figure>
-<p>단순한 작업이야 수동으로 커리할 수 있겠지만 기능이 복잡해지고 인수가 늘어나면 자동으로 처리할 방법이 필요하다. R.curry를 쓰면 인수 개수와 상관없이 순수 함수형 언어의 자동 커링장치를 모방할 수 있다.<br>
-<code>자동 커링은 선언된 인수 개수만큼 중첩된 함수 스코프를 인위적으로 생성하는 작업이라고 보면 된다.</code></p>
+
+<p>단순한 작업이야 수동으로 커리할 수 있겠지만 기능이 복잡해지고 인수가 늘어나면 자동으로 처리할 방법이 필요하다. R.curry를 쓰면 인수 개수와 상관없이 순수 함수형 언어의 자동 커링장치를 모방할 수 있다.<br><code>자동 커링은 선언된 인수 개수만큼 중첩된 함수 스코프를 인위적으로 생성하는 작업이라고 보면 된다.</code></p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// fullname을 커리한 코드</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// fullname :: (String, String) -&gt; String</span></span><br><span class="line"><span class="hljs-keyword">const</span> fullname = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">first, last</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// fullname :: String -&gt; String -&gt; String</span></span><br><span class="line"><span class="hljs-keyword">const</span> fullname =</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">first</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">last</span>) </span>&#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 <p>그렇다면, 커링은 어디에 써먹는 기법일까?</p>
 <ol>
 <li>함수 팩토리모방</li>
 <li>재사용 가능한 모듈적 함수 템플릿을 구현</li>
 </ol>
-<h3><span id="함수-팩토리를-모방">함수 팩토리를 모방</span></h3>
-<p>객체지향에서 인터페이스는 클래스가 반드시 구현해야할 규약을 정해놓은 추상적인 형식이다.<br>
-동일한 인터페이스를 두 클래스가 구현한 예제</p>
+<h3><span id="함수-팩토리를-모방">함수 팩토리를 모방</span></h3><p>객체지향에서 인터페이스는 클래스가 반드시 구현해야할 규약을 정해놓은 추상적인 형식이다.<br>동일한 인터페이스를 두 클래스가 구현한 예제</p>
 <ol>
 <li>DB에서 학생정보 얻어오는 클래스</li>
 <li>캐시에서 학생정보 얻어오는 클래스</li>
@@ -288,53 +274,56 @@
 <p>호출자 관점에서 메서드를 호출한다는 사실이 중요하지, 객체의 출처는 관심없다. 이것이 바로 <code>팩토리 메서드 패턴</code>으로 설계한 객체지향코드의 아름다운 자태다.</p>
 <p>자바스크립트로 바꿔보면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">//fetchStudentFromDb :: DB -&gt; (String -&gt; Student)</span></span><br><span class="line"><span class="hljs-keyword">const</span> fetchStudentFromDb = R.curry(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">db, ssn</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 객체 db에서 찾는다.</span></span><br><span class="line">  <span class="hljs-keyword">return</span> find(db, ssn)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//fetchStudentFromArray :: Array -&gt; ( String -&gt; Student)</span></span><br><span class="line"><span class="hljs-keyword">const</span> fetchStudentFromArray = R.curry(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr, ssn</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 배열에서 찾는다.</span></span><br><span class="line">  <span class="hljs-keyword">return</span> arr[ssn]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>이 함수는 커리해놔서 일반 팩토리 메서드 findStudent로 평가하는 부분과 함수를 정의한 부분을 떼어놓을 수 있다. 실제 구현부는 둘 중하나</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> findStudent = useDb ? fetchStudentFromDb(db) : fetchStudentFromArray(arr)</span><br><span class="line"></span><br><span class="line">findStudent(<span class="hljs-string">"4444-444-4444"</span>)</span><br></pre></td></tr></table></figure>
+
 <p>이제 다른 모듈의 호출자는 실제 구현부를 알지 못해도 얼마든지 findStudent를 가져다 쓸 수 있다.</p>
-<h3><span id="재사용-가능한-함수-템플릿-구현">재사용 가능한 함수 템플릿 구현</span></h3>
-<p>애플리케이션의 상태(에러, 경고, 디버그 등) 별로 로그를 나누어 처리하고 싶은 경우가 있다.<br>
-<code>함수 템플릿은 생성 시점에 커리된 인수 개수를 기준으로 연관된 함수들을 묶어놓은 것</code></p>
+<h3><span id="재사용-가능한-함수-템플릿-구현">재사용 가능한 함수 템플릿 구현</span></h3><p>애플리케이션의 상태(에러, 경고, 디버그 등) 별로 로그를 나누어 처리하고 싶은 경우가 있다.<br><code>함수 템플릿은 생성 시점에 커리된 인수 개수를 기준으로 연관된 함수들을 묶어놓은 것</code></p>
 <p><code>console.log</code>보다 기능이 우수한 <code>Log4js</code>를 사용해서 예제를 들어보겠다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// Log4js의 일반적인 사용법</span></span><br><span class="line"><span class="hljs-keyword">const</span> logger = <span class="hljs-keyword">new</span> Log4js.getLogger(<span class="hljs-string">"StudentEvents"</span>)</span><br><span class="line">logger.info(<span class="hljs-string">"학생이 정상적으로 추가되었다."</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 로그를 팝업창에</span></span><br><span class="line">logger.addAppender(<span class="hljs-keyword">new</span> Log4js.JSAlertAppender())</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 로그메시지를 일반텍스트 대신 JSON형식으로</span></span><br><span class="line">logger.setLayout(<span class="hljs-keyword">new</span> Log4js.JSONLayout())</span><br></pre></td></tr></table></figure>
-<p>하지만 이렇게 일일이 개별 파일에 코드를 복붙하면 엄청난 중복이 발생…!<br>
-<code>재사용이 가능함 함수 템플릿(즉, 로거모듈)</code>을 커링 기법으로 정의하는 편이 유연성, 재사용 측면에서 좋다.</p>
+
+<p>하지만 이렇게 일일이 개별 파일에 코드를 복붙하면 엄청난 중복이 발생…!<br><code>재사용이 가능함 함수 템플릿(즉, 로거모듈)</code>을 커링 기법으로 정의하는 편이 유연성, 재사용 측면에서 좋다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 로거 함수 템플리을 만듦</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> logger = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">appender, layout, name, level, message</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 원하는 appender를 정의</span></span><br><span class="line">  <span class="hljs-keyword">const</span> appneders = &#123;</span><br><span class="line">    alert: <span class="hljs-keyword">new</span> Log4js.JSAlertAppender(),</span><br><span class="line">    <span class="hljs-built_in">console</span>: <span class="hljs-keyword">new</span> Log4js.BrowserConsoleAppender()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 원하는 레이아웃 제공기를 정의</span></span><br><span class="line">  <span class="hljs-keyword">const</span> layouts = &#123;</span><br><span class="line">    basic: <span class="hljs-keyword">new</span> Log4js.BasicLayout(),</span><br><span class="line">    json: <span class="hljs-keyword">new</span> Log4js.JSONLayout(),</span><br><span class="line">    xml: <span class="hljs-keyword">new</span> Log4js.XMLLayout()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> appender = appneders[appender]</span><br><span class="line">  appneder.setLayout(layouts[layout])</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> logger = <span class="hljs-keyword">new</span> Log4js.getLogger(name)</span><br><span class="line">  logger.addAppender(appender)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 구성 매개변수를 모두 적용해서 로그를 남긴다.</span></span><br><span class="line">  logger.log(level, message, <span class="hljs-literal">null</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>로거를 커리하면 상황별로 적합한 로거를 모두 한곳에서 관리하고 재사용할 수 있다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">// 마지막 두 인수만 빼고 모두 평가</span><br><span class="line">const log = R.curry(logger)(&apos;alert&apos;, &apos;json&apos;, &apos;FJS)</span><br><span class="line"></span><br><span class="line">log(&apos;ERROR&apos;, &apos;에러가 발생했습니다.&apos;)</span><br><span class="line">// =&gt; 팝업창을 띄우고 요청한 메시지를 경고 문구로 표시한다.</span><br></pre></td></tr></table></figure>
+
 <p>여러 에러 처리 구문을 하나의 함수나 파일로 구현하고 싶으면, 유연하게 마지막 매개변수를 제외한 나머지 매개변수를 부분 세팅하면 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> logError = R.curry(logger)(<span class="hljs-string">"console"</span>, <span class="hljs-string">"basic"</span>, <span class="hljs-string">"FJS"</span>, <span class="hljs-string">"ERROR"</span>)</span><br><span class="line">logError(<span class="hljs-string">"코드 404 에러가 발생했습니다."</span>)</span><br></pre></td></tr></table></figure>
+
 <p>내부적으로는 이 함수에 curry함수를 연속 호출해서 결국 단항 함수 하나만 남을 것이다. 기존 함수에서 새 함수를 만들고 매개변수는 몇개라도 전달 가능하니 인수가 정해질때마다 단계별로 함수를 쉽게 쌓아 올릴 수 있다.</p>
 <p><code>커링의 가장 중요한 의의는 다인수 함수를 단항 함수로 바꾼다</code>는 것이다.</p>
 <p>커링의 대용품인 <code>부분 적용partial application</code>과 <code>매개변수 바인딩parameter binding</code>은 자바스크립트에서도 어느 정도 지원되는 기법으로, 함수 파이프라인에 연결해도 잘 작동할 수 있도록 항수가 더 작은 함수를 만든다.</p>
-<h2><span id="부분-적용과-매개변수-바인딩">부분 적용과 매개변수 바인딩</span></h2>
-<p><code>부분 적용</code>은 함수의 일부 매개변수값을 처음부터 고정시켜 항수가 더 작은 함수를 생성하는 기법이다.<br>
-커링처럼 부분 적용도 함수의 길이를 직접 줄이는 임무를 수행하지만 방법은 조금 다르다.</p>
+<h2><span id="부분-적용과-매개변수-바인딩">부분 적용과 매개변수 바인딩</span></h2><p><code>부분 적용</code>은 함수의 일부 매개변수값을 처음부터 고정시켜 항수가 더 작은 함수를 생성하는 기법이다.<br>커링처럼 부분 적용도 함수의 길이를 직접 줄이는 임무를 수행하지만 방법은 조금 다르다.</p>
 <ol>
 <li>커링은 부분호출할 때마다 단항 함수를 중첩생성하며, 내부적으로는 이들을 단계별로 합성하여 최종 결과를 낸다. 커링은 여러 인수를 부분 평가하는 식으로도 변용할 수 있어서 개발자가 평가 시점과 방법을 좌지우지할 수 있다.</li>
 <li>부분 적용은 함수 인수를 미리 정의된 값으로 묶은(할당한) 후, 인수가 적은 함수를 새로 만든다. 이 결과 함수는 자신의 클로저에 고정된 매개변수를 갖고 있으며, 후속 호출시 <code>이미 평가를 마친</code> 상태다.</li>
 </ol>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 4-7. partial()구현부</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">partial</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> fn = <span class="hljs-keyword">this</span>,</span><br><span class="line">    boundArgs = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 로대시JS같은 라이브러리의 partial구현부는 언더스코어객체를 자리끼우개로 쓴다.</span></span><br><span class="line">  <span class="hljs-comment">// 대충만들어 쓸 때는 undefined로 해당 매개변수를 건너뛰게 한다.</span></span><br><span class="line">  <span class="hljs-keyword">let</span> placeholder = <span class="hljs-string">"&lt;&lt;자리끼우개 객체&gt;&gt;"</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 모든 매개 변수가 부분적용된 새 함수를 생성</span></span><br><span class="line">  <span class="hljs-keyword">let</span> bound = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> position = <span class="hljs-number">0</span>,</span><br><span class="line">      length = boundArgs.length</span><br><span class="line">    <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">Array</span>(length)</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">      <span class="hljs-comment">// 자리끼우개 객체는 나중에 호출할 때 쓰려고 함수 매개변수를 정의하지 않고 건너뛰므로,</span></span><br><span class="line">      <span class="hljs-comment">// 어떤 매개변수를 바인딩하고 호출의 일부로 제공할지 개발자가 선택할 수 있다.</span></span><br><span class="line">      args[i] = boundArgs[i] === placeholder ? <span class="hljs-built_in">arguments</span>[position++] : boundArgs[i]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (position &lt; <span class="hljs-built_in">arguments</span>.length) &#123;</span><br><span class="line">      args.push(<span class="hljs-built_in">arguments</span>[position++])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 적절한 콘텍스트와 바인딩된 인수를 Function.apply()에 넣고 함수호출</span></span><br><span class="line">    <span class="hljs-keyword">return</span> fn.apply(<span class="hljs-keyword">this</span>.args)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> bound</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>방금전에 봤던 로거함수에 특정 매개변수를 부분 적용하면 더 구체적인 로직을 적용할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> consoleLog = _.partial(logger, <span class="hljs-string">"console"</span>, <span class="hljs-string">"json"</span>, <span class="hljs-string">"FJS 부분적용"</span>)</span><br></pre></td></tr></table></figure>
-<p>이 함수를 보면서 <code>커링</code>과 <code>부분 적용</code>의 차이점을 다시 한번 보자.<br>
-세 매개변수를 부분 적용해서 만든 consoleLog 함수를 호출(단계별로 나뉜 게 아니라 1회성 호출)하려면 다른 두 인수도 필요하다. 따라서 커링처럼 consoleLog함수에 인수를 하나만 준다고 새 함수가 생성되는 게 아니라, 마지막 인수처리에 undefined를 넣고 함수를 평가하게 된다.</p>
-<p><code>커링은 부분 적용을 자동화한 것이다.</code><br>
-커링과 부분 적용은 차이점을 아래와 같이 표현할 수 있다.</p>
+
+<p>이 함수를 보면서 <code>커링</code>과 <code>부분 적용</code>의 차이점을 다시 한번 보자.<br>세 매개변수를 부분 적용해서 만든 consoleLog 함수를 호출(단계별로 나뉜 게 아니라 1회성 호출)하려면 다른 두 인수도 필요하다. 따라서 커링처럼 consoleLog함수에 인수를 하나만 준다고 새 함수가 생성되는 게 아니라, 마지막 인수처리에 undefined를 넣고 함수를 평가하게 된다.</p>
+<p><code>커링은 부분 적용을 자동화한 것이다.</code><br>커링과 부분 적용은 차이점을 아래와 같이 표현할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">//커링</span></span><br><span class="line"><span class="hljs-comment">// 모든 인수가 다 들어올 때까지 함수를 리턴..</span></span><br><span class="line"><span class="hljs-keyword">var</span> curriedFn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">b</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">c</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> a + <span class="hljs-string">", "</span> + b + <span class="hljs-string">","</span> + c + <span class="hljs-string">"는 좋은 친구들입니다."</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//부분 적용</span></span><br><span class="line"><span class="hljs-comment">// 미리 셋팅된 a 매개변수외에 b, c에 대해서는 커링적용안됨. 없으면 없는대로 undefined로 처리됨</span></span><br><span class="line"><span class="hljs-keyword">var</span> partialAppliedFn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">b, c</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a + <span class="hljs-string">", "</span> + b + <span class="hljs-string">","</span> + c + <span class="hljs-string">"는 좋은 친구들입니다."</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>부분 적용과 작동 방식은 다르지만, 비슷하게 동작하는 Function.prototype.bind() 함수를 응용한 <code>함수 바인딩 기법</code>도 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> log = _.bind(logger, <span class="hljs-literal">undefined</span>, <span class="hljs-string">"console"</span>, <span class="hljs-string">"json"</span>, <span class="hljs-string">"FJS 바인딩"</span>)</span><br><span class="line">log(<span class="hljs-string">"WARN"</span>, <span class="hljs-string">"함수형 프로그래밍, 정말 멋지군!"</span>)</span><br></pre></td></tr></table></figure>
+
 <p>_.bind 함수의 두번째 인수는 왜 undefined일까? 바인딩 결과 생성된 함수는 소유 객체 콘텍스트에서 실행되므로 undefined를 넘겨서 전역콘텍스트에 바인딩하라고 런타임에 요청한 것이다.</p>
 <p>_.partial, _.bind 는 두가지 용도로 쓰인다.</p>
 <ol>
 <li>언어의 핵심을 확장</li>
 <li>지연된 함수에 바인딩</li>
 </ol>
-<h3><span id="언어의-핵심을-확장">언어의 핵심을 확장</span></h3>
-<p>부분 적용은 String, Number 같은 핵심 자료형을 확장하여 언어의 표현성을 풍부하게 할 목적으로 사용할 수 있다.</p>
+<h3><span id="언어의-핵심을-확장">언어의 핵심을 확장</span></h3><p>부분 적용은 String, Number 같은 핵심 자료형을 확장하여 언어의 표현성을 풍부하게 할 목적으로 사용할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 문자열을 배열로 변환</span></span><br><span class="line"><span class="hljs-comment">// match에 정규표현식을 부분적용해서 주어진 문자열을 특정 데이터가 포함된 배열로 변환</span></span><br><span class="line"><span class="hljs-comment">// \w : 영문자 및 _ 문자와 일치</span></span><br><span class="line"><span class="hljs-built_in">String</span>.prototype.explode = _.partial(<span class="hljs-built_in">String</span>.prototype.match, /[\w]/gi)</span><br><span class="line"></span><br><span class="line"><span class="hljs-string">"ABC"</span>.explode() <span class="hljs-comment">// ['A', 'B', 'C']</span></span><br></pre></td></tr></table></figure>
-<h3><span id="지연된-함수에-바인딩">지연된 함수에 바인딩</span></h3>
-<p>소유 객체를 전제로 메서드를 다룰 때는 함수 바인딩으로 콘텍스트 객체를 세팅하는 일이 중요하다.</p>
+
+<h3><span id="지연된-함수에-바인딩">지연된 함수에 바인딩</span></h3><p>소유 객체를 전제로 메서드를 다룰 때는 함수 바인딩으로 콘텍스트 객체를 세팅하는 일이 중요하다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Scheduler = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// undefined를 넘겨줘서 전역콘텍스트에서 실행되도록</span></span><br><span class="line">  <span class="hljs-keyword">const</span> delayedFn = _.bind(setTimeout, <span class="hljs-literal">undefined</span>, _, _)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">    delay5: _.partial(delayedFn, _, <span class="hljs-number">5000</span>),</span><br><span class="line">    delay10: _.partial(delayedFn, _, <span class="hljs-number">10000</span>),</span><br><span class="line">    delay: _.partial(delayedFn, _, _)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">Scheculer.delay5(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  consoleLog(<span class="hljs-string">"5초 후에 실행"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>이렇게 스케쥴러만 있으면 함수 본체 안에 감싼 코드를 원하는 시간 이후에 실행시킬 수 있다.</p>
 
         </div>
@@ -448,7 +437,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            45
+                            46
                         </p>
                     </a>
                 </div>
@@ -551,7 +540,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">45</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -559,7 +548,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -680,6 +669,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -754,25 +762,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -790,7 +779,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -958,6 +947,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -1032,25 +1040,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1068,7 +1057,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>

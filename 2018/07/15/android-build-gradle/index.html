@@ -10,19 +10,19 @@
 <title>build.gradle (Project)와 build.gradle (Module)의 차이점 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="build.gradle (Project)와 build.gradle (Module)의 차이점 1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다. 머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란? 모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브">
+    <meta name="description" content="build.gradle (Project)와 build.gradle (Module)의 차이점1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리">
 <meta name="keywords" content="android,build.gradle,안드로이드 그래들">
 <meta property="og:type" content="article">
 <meta property="og:title" content="build.gradle (Project)와 build.gradle (Module)의 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/07/15/android-build-gradle/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="build.gradle (Project)와 build.gradle (Module)의 차이점 1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다. 머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란? 모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브">
+<meta property="og:description" content="build.gradle (Project)와 build.gradle (Module)의 차이점1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:34:37.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="build.gradle (Project)와 build.gradle (Module)의 차이점">
-<meta name="twitter:description" content="build.gradle (Project)와 build.gradle (Module)의 차이점 1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다. 머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란? 모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브">
+<meta name="twitter:description" content="build.gradle (Project)와 build.gradle (Module)의 차이점1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,21 +179,14 @@
             
         </h1>
         <div class="content">
-            <h2><span id="buildgradle-project와-buildgradle-module의-차이점">build.gradle (Project)와 build.gradle (Module)의 차이점</span></h2>
-<p>1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.<br>
-머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.</p>
+            <h2><span id="buildgradle-project와-buildgradle-module의-차이점">build.gradle (Project)와 build.gradle (Module)의 차이점</span></h2><p>1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.<br>머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.</p>
 <blockquote>
-<p>[참고] build.gradle이란?<br>
-모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.</p>
+<p>[참고] build.gradle이란?<br>모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.</p>
 </blockquote>
 <a id="more"></a>
-<h3><span id="buildgradleproject-myapplication">Build.gradle(Project : MyApplication)</span></h3>
-<p><code>Top-level build file where you can add configuration options common to all sub-projects/modules.</code><br>
-이 파일에 정의된 설정은 Project의 모든 모듈에 적용된다. 모듈은 프로젝트를 구성하는 하나의 구성품! 보통 대부분의 안드로이드 프로젝트에는 하나의 모듈인 app모듈만 있다.</p>
-<h3><span id="buildgradlemoduleapp">Build.gradle(Module:app)</span></h3>
-<p><code>Build file of your specific module (where you add your dependencies, signing configs, build types, flavors, etc)</code><br>
-이 빌드 설정은 앱모듈에만 적용된다.<br>
-모든 모듈은 각자의 특정한 gradle파일을 가지고 있다.</p>
+
+<h3><span id="buildgradleproject-myapplication">Build.gradle(Project : MyApplication)</span></h3><p><code>Top-level build file where you can add configuration options common to all sub-projects/modules.</code><br>이 파일에 정의된 설정은 Project의 모든 모듈에 적용된다. 모듈은 프로젝트를 구성하는 하나의 구성품! 보통 대부분의 안드로이드 프로젝트에는 하나의 모듈인 app모듈만 있다.</p>
+<h3><span id="buildgradlemoduleapp">Build.gradle(Module:app)</span></h3><p><code>Build file of your specific module (where you add your dependencies, signing configs, build types, flavors, etc)</code><br>이 빌드 설정은 앱모듈에만 적용된다.<br>모든 모듈은 각자의 특정한 gradle파일을 가지고 있다.</p>
 <p>[참고] <a href="https://stackoverflow.com/questions/28295933/difference-between-build-gradleproject-and-build-gradlemodule" target="_blank" rel="noopener">https://stackoverflow.com/questions/28295933/difference-between-build-gradleproject-and-build-gradlemodule</a></p>
 
         </div>
@@ -307,7 +300,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            45
+                            46
                         </p>
                     </a>
                 </div>
@@ -410,7 +403,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">45</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -418,7 +411,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -503,6 +496,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -577,25 +589,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -613,7 +606,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -745,6 +738,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -819,25 +831,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -855,7 +848,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>

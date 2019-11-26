@@ -10,19 +10,19 @@
 <title>타입스크립트에서 interface와 class의 차이점 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="타입스크립트에서 interface와 class의 차이점 노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript 의 글을 번역했다.">
+    <meta name="description" content="타입스크립트에서 interface와 class의 차이점노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript의 글을 번역했다.">
 <meta name="keywords" content="typescript,interface,class">
 <meta property="og:type" content="article">
 <meta property="og:title" content="타입스크립트에서 interface와 class의 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/18/interface-vs-class-in-typescript/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="타입스크립트에서 interface와 class의 차이점 노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript 의 글을 번역했다.">
+<meta property="og:description" content="타입스크립트에서 interface와 class의 차이점노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript의 글을 번역했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:38:09.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="타입스크립트에서 interface와 class의 차이점">
-<meta name="twitter:description" content="타입스크립트에서 interface와 class의 차이점 노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript 의 글을 번역했다.">
+<meta name="twitter:description" content="타입스크립트에서 interface와 class의 차이점노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript의 글을 번역했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,46 +179,46 @@
             
         </h1>
         <div class="content">
-            <h2><span id="타입스크립트에서-interface와-class의-차이점">타입스크립트에서 interface와 class의 차이점</span></h2>
-<p>노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다.</p>
-<p><a href="https://toddmotto.com/classes-vs-interfaces-in-typescript" target="_blank" rel="noopener">https://toddmotto.com/classes-vs-interfaces-in-typescript</a><br>
-의 글을 번역했다.</p>
+            <h2><span id="타입스크립트에서-interface와-class의-차이점">타입스크립트에서 interface와 class의 차이점</span></h2><p>노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다.</p>
+<p><a href="https://toddmotto.com/classes-vs-interfaces-in-typescript" target="_blank" rel="noopener">https://toddmotto.com/classes-vs-interfaces-in-typescript</a><br>의 글을 번역했다.</p>
 <a id="more"></a>
-<h2><span id="classes-vs-interfaces-in-typescript">Classes vs Interfaces in TypeScript</span></h2>
-<p>클래스와 인터페이스는 객체지향 프로그래밍에서 뿐만 아니라 타입스크립트에서 타입체크를 쉽게해주는 편리한 도구다. 클래스는 동일한 구성(속성 및 메소드)을 공유하는 객체를 만들 수 있는 blueprint다. 인터페이스는 객체를 설명하는 관련 속성 및 메소드의 그룹이지만 구현이나 초기화는 제공하지 않는다.</p>
-<p>두 구조 모두 객체가 어떻게 생겼는지 정의하기 떄문에 두 개 모두 타입스크립트에서 변수의 타입을 체크하는 용으로 쓰일 수 있다. 클래스나 인터페이스 중 무엇을 사용할지는 사용케이스에 따라 다르다. 타입 체크만 하는 경우, 새로운 인스턴스를 생성하거나, 아니면 둘다 해야하거나에 따라.<br>
-클래스를 사용하면 타입을 체크하고 구현(인스턴스 생성)까지 할 수 있지만 인터페이스를 통해서는 할 수 없다. 각 구조에서 우리가 얻을 수 있는 것을 제대로 이해하면 코드를 향상시키고 개발자 경험을 향상시킬 수 있다.</p>
-<h2><span id="using-typescript-class">Using Typescript class</span></h2>
-<p>ES6부터 <code>class</code>를 사용할 수 있다. 타입스크립트는 타입체크와 정적 프로퍼티같은 추가 기능으로 자바스크립트 클래스를 향상시킨다. 우리 코드를 자바스트립트로 트랜스파일할 때마다 모든 클래스 코드를 transpiled 파일에 보관한다는 것을 의미한다. 그러므로, 클래스는 트랜스파일된 자바스크립트에서도 존재한다.</p>
+
+<h2><span id="classes-vs-interfaces-in-typescript">Classes vs Interfaces in TypeScript</span></h2><p>클래스와 인터페이스는 객체지향 프로그래밍에서 뿐만 아니라 타입스크립트에서 타입체크를 쉽게해주는 편리한 도구다. 클래스는 동일한 구성(속성 및 메소드)을 공유하는 객체를 만들 수 있는 blueprint다. 인터페이스는 객체를 설명하는 관련 속성 및 메소드의 그룹이지만 구현이나 초기화는 제공하지 않는다.</p>
+<p>두 구조 모두 객체가 어떻게 생겼는지 정의하기 떄문에 두 개 모두 타입스크립트에서 변수의 타입을 체크하는 용으로 쓰일 수 있다. 클래스나 인터페이스 중 무엇을 사용할지는 사용케이스에 따라 다르다. 타입 체크만 하는 경우, 새로운 인스턴스를 생성하거나, 아니면 둘다 해야하거나에 따라.<br>클래스를 사용하면 타입을 체크하고 구현(인스턴스 생성)까지 할 수 있지만 인터페이스를 통해서는 할 수 없다. 각 구조에서 우리가 얻을 수 있는 것을 제대로 이해하면 코드를 향상시키고 개발자 경험을 향상시킬 수 있다.</p>
+<h2><span id="using-typescript-class">Using Typescript class</span></h2><p>ES6부터 <code>class</code>를 사용할 수 있다. 타입스크립트는 타입체크와 정적 프로퍼티같은 추가 기능으로 자바스크립트 클래스를 향상시킨다. 우리 코드를 자바스트립트로 트랜스파일할 때마다 모든 클래스 코드를 transpiled 파일에 보관한다는 것을 의미한다. 그러므로, 클래스는 트랜스파일된 자바스크립트에서도 존재한다.</p>
 <p>우리는 클래스를 객체팩토리로 사용한다. 클래스는 객체가 어떻게 보여야하고 어떻게 행동하는지에 대해 정의한 다음 클래스 프로퍼티를 초기화하고 메소드를 정희함으로써 구현한다. 그러므로 클래스의 인스턴스를 생성할 때, 우리는 실행할 수 있는 메소드와 정의된 프로퍼티를 가진 객체를 얻는다. <code>PizzaMaker</code>라는 클래스를 보자.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: &#123; name: string; toppings: string[] &#125;) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>PizzaMaker</code>는 간단한 클래스다. create라는 정적 메소드가 있다. 이 클래스의 인스턴스를 생성하지 않고도 create 메소드를 사용할 수 있다. 우리는 클래스에 직접 메소드를 호출한다. Array.from같이.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">const pizza = PizzaMaker.create(&#123;</span><br><span class="line">  name: <span class="hljs-string">'Inferno'</span>,</span><br><span class="line">  toppings: [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(pizza);</span><br><span class="line">// Output: &#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [ <span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
 <p>그런 다음, PizzaMaker.create()는 클래스가 아닌 인수로 전달된 객체로부터 정의된 name, topping 프로퍼티를 가진 새로운 객체를 리턴한다.</p>
 <p>만약 정적 메소드가 아니었다면, PizzaMaker 인스턴스를 생성한 후에 create메소드를 사용할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class PizzaMaker &#123;</span><br><span class="line">  create(event: &#123; name: string; toppings: string[] &#125;) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const pizzaMaker = new PizzaMaker();</span><br><span class="line"></span><br><span class="line">const pizza = pizzaMaker.create(&#123;</span><br><span class="line">  name: <span class="hljs-string">'Inferno'</span>,</span><br><span class="line">  toppings: [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(pizza);</span><br><span class="line">// Output: &#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [ <span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
 <p>위와 같이 하면 정적 메소드를 사용했던 것과 동일한 결과를 얻을 수 있다. 클래스의 인스턴스가 있든 없든 타입스크립트 클래스를 사용할 수 있다는 점에서 매우 유연하다. 정적 프로퍼티와 메소드를 추가하면 싱글톤으로 동작하도록 할 수 있다. 반대의 경우에는 팩토리처럼 동작하게 한다.</p>
 <p>타입스크립트에서 유티크한 특징은 타입체크를 위해 클래스를 사용할 수 있다는 것이다. Pizza가 어떻게 생겼는지 정의한 클래스를 선언해보자.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Pizza &#123;</span><br><span class="line">  constructor(public name: string, public toppings: string[]) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>Pizza</code>클래스의 정의를 보면, 생성자의 인수에서 우리는 클래스 프로퍼티를 정의하는 편리한 방법을 사용할 수 있다. 타이핑을 절약할 수 있다. <code>Pizza</code>는 이름과 토핑 프로퍼티를 가진 객체를 생성할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">const pizza = new Pizza(<span class="hljs-string">'Inferno'</span>, [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>]);</span><br><span class="line"></span><br><span class="line">console.log(pizza);</span><br><span class="line">// Output: Pizza &#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [ <span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>Pizza</code> 클래스의 인스턴스라는 것을 보여주는 것 외에는 new Pizza(…)와 PizzaMaker.create(…)의 결과는 동일하다. 두가지 모두 동일한 구조를 산출한다. 그래서 우리는 <code>Pizza</code>클래스를 타입체크용으로 PizzaMaker.create(…)의 인수로 사용할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Pizza &#123;</span><br><span class="line">  constructor(public name: string, public toppings: string[]) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: Pizza) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>위와 같이 하면 <code>PizzaMaker</code>를 좀 더 선언적으로 만들었고 읽기 쉽게 만들었다. 뿐만아니라, 피자에 정의된 똑같은 객체구조를 다른 곳에서 사용할 필요가 있다면, 저렇게 함으로써 우리는 이동가능한 구조를 가진다. <code>Pizza</code> 의 정의를 export해서 앱 내의 모든 곳에서 접근할 수 있다.</p>
 <p>Pizza를 클래스로 사용하는 것은 우리가 피자를 정의하고 인스턴스를 생성하기 원한다면 좋지만, 만약 Pizza의 구조를 정의하기 원하지만 인스턴스를 생성할 필요가 없을 때는 <code>interface</code>를 사용하는 것이 편리하다.</p>
-<h2><span id="using-typesript-interface">Using Typesript interface</span></h2>
-<p>클래스와 달리 인터페이스는 Typescript 컨텍스트 내에만 존재하는 가상구조이다. typescript컴파일러는 타입체크 목적으로만 인터페이스를 사용한다. 자바스크립트로 트랜스파일 된 후에는 코드에서 인터페이스는 사라진다.</p>
+<h2><span id="using-typesript-interface">Using Typesript interface</span></h2><p>클래스와 달리 인터페이스는 Typescript 컨텍스트 내에만 존재하는 가상구조이다. typescript컴파일러는 타입체크 목적으로만 인터페이스를 사용한다. 자바스크립트로 트랜스파일 된 후에는 코드에서 인터페이스는 사라진다.</p>
 <p>클래스는 프로퍼티 초기화와 메소드구현을 제공함으로써 팩토리나 싱글톤을 정의할 수 있었던 반면, 인터페이스는 객체의 프로퍼티를 정의하는 단순히 구조계약이다. 어떻게 구현하든, 어떻게 인터페이스에 정의된 프로퍼티를 초기화하든 인터페이스와 관련이 없다. Pizza 클래스를 어떻게 Pizza 인터페이스로 변환하는지 보자.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">interface Pizza &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  toppings: string[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: Pizza) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><code>Pizza</code>가 클래스이든 인터페이스이든, <code>PizzaMaker</code> 클래스의 타입체크를 위해 사용되기 때문에, <code>Pizza</code>를 인터페이스로 리펙토링하는 것은 <code>PizzaMaker</code> 클래스의 본문에 전혀 영향을 미치지 않는다. <code>Pizza</code> 인터페이스가 name, toppings 프로퍼티를 어떻게 나열하고 <code>PizzaMaker</code>에 어떻게 타입을 제공하는지 관찰해보라. 또 바뀐부분은, <code>Pizza</code> 인스턴스를 더이상 생성할 수 없다.</p>
-<h2><span id="using-typesript-class-vs-using-typescript-interface">Using Typesript class vs using Typescript interface</span></h2>
-<p><code>Pizza</code>를 인터페이스로 선언하면 타입체크는 할 수 있지만 인스턴스를 생성할 수 없다.</p>
+<h2><span id="using-typesript-class-vs-using-typescript-interface">Using Typesript class vs using Typescript interface</span></h2><p><code>Pizza</code>를 인터페이스로 선언하면 타입체크는 할 수 있지만 인스턴스를 생성할 수 없다.</p>
 <p>이렇게 되면 코드를 명확하게 하고 가독성을 향상시킬 수 있는 기회를 놓치게 된다. PizzaMaker.create()는 피자처럼 보이는 객체를 반환하는데 이것을 <code>Pizza</code>로 반환하면 더 이해하기 쉽지 않을까?</p>
 <p>다시 <code>Pizza</code>를 클래스로 만들어서 피자 인스턴스를 반환해보자.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Pizza &#123;</span><br><span class="line">  constructor(public name: string, public toppings: string[]) &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: Pizza) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> new Pizza(event.name, event.toppings);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const pizza = PizzaMaker.create(&#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>] &#125;;</span><br></pre></td></tr></table></figure>
-<h2><span id="conclusion">Conclusion</span></h2>
-<p>커스텀 객체를 생성할 필요가 있으면서 타입체크의 이점을 얻으려면 클래스를 사용하고,<br>
-인스턴스를 생성하지 않을 경우에는 인터페이스를 사용할 수 있는데, (트랜스파일된 자바스크립트에서는) 코드를 생성하지 않으면서 &quot;가상&quot;으로 타입체크를 할 수 있다.</p>
+
+<h2><span id="conclusion">Conclusion</span></h2><p>커스텀 객체를 생성할 필요가 있으면서 타입체크의 이점을 얻으려면 클래스를 사용하고,<br>인스턴스를 생성하지 않을 경우에는 인터페이스를 사용할 수 있는데, (트랜스파일된 자바스크립트에서는) 코드를 생성하지 않으면서 “가상”으로 타입체크를 할 수 있다.</p>
 <p>인터페이스와 클래스 모두 객체의 구조를 정의하고 경우에 따라 서로 교환해서 사용할 수 있다. 다양한 클래스 간에 구조정의를 공유해야할 경우, 우리는 인터페이스에서 구조를 정의한다. 그리고 각 클래스에서 인터페이스를 구현할 수 있다. 이것이 바로 타입스크립트의 힘이고, 엄청 유연하다. 타입스크립트는 포괄적인 객체지향 설계과 다양한 타입체크 기능을 제공한다.</p>
 
         </div>
@@ -332,7 +332,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            45
+                            46
                         </p>
                     </a>
                 </div>
@@ -435,7 +435,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">45</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -443,7 +443,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -540,6 +540,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -614,25 +633,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -650,7 +650,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -794,6 +794,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time></div>
+                    <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">정렬 - H-index</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
@@ -868,25 +887,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/04/25/study-modular-code-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-04-24T15:17:34.000Z">2019-04-25</time></div>
-                    <a href="/2019/04/25/study-modular-code-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -904,7 +904,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
