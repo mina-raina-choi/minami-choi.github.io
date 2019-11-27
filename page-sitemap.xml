@@ -21,14 +21,14 @@
     </url>
     
     <url>
-        <loc>https://minami-choi.github.io/archive/</loc>
+        <loc>https://minami-choi.github.io/about/</loc>
         <lastmod>2019-11-23T10:30:24.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://minami-choi.github.io/about/</loc>
+        <loc>https://minami-choi.github.io/archive/</loc>
         <lastmod>2019-11-23T10:30:24.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
