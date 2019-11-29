@@ -10,19 +10,19 @@
 <title>Angular에서 특정 div 이외의 영역 클릭이벤트 탐지 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
+    <meta name="description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법 회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
 <meta name="keywords" content="Angular,click outside">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지">
 <meta property="og:url" content="https://minami-choi.github.io/2018/06/19/angular-detect-click-outside/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
+<meta property="og:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법 회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-11-23T13:36:21.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지">
-<meta name="twitter:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
+<meta name="twitter:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법 회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/images/og_image.png">
 
 
@@ -173,15 +173,15 @@
             
         </h1>
         <div class="content">
-            <h2><span id="angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법</span></h2><p>회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.</p>
+            <h2><span id="angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법</span></h2>
+<p>회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.</p>
 <a id="more"></a>
-
 <p><img src="/images/dropbox.png" alt></p>
 <p>해당 기능을 제공하는 <code>ng4-click-outside</code>, <code>ng-click-outside</code> 모듈이 앵귤러 5 프로젝트 내에서는 제대로 동작을 하지않아 직접 구현하는 수 밖에 없었다.</p>
-<h3><span id="swapcomponenthtml">swap.component.html</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"swap-coin-inp-wrap"</span> <span class="hljs-comment">#fromDiv&gt; ... &lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3><span id="swapcomponentts">swap.component.ts</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">constructor</span></span>( ) &#123;</span><br><span class="line">  document.addEventListener(<span class="hljs-string">'click'</span>, this.offClickHandler.bind(this)); // <span class="hljs-built_in">bind</span> on doc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">offClickHandler(event: any) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.fromDiv.nativeElement.contains(event.target)) &#123; // check click origin</span><br><span class="line">    this.fromListShow = <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.toDiv.nativeElement.contains(event.target))</span><br><span class="line">    this.toListShow = <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3><span id="swapcomponenthtml">swap.component.html</span></h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"swap-coin-inp-wrap"</span> <span class="hljs-comment">#fromDiv&gt; ... &lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<h3><span id="swapcomponentts">swap.component.ts</span></h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">constructor</span></span>( ) &#123;</span><br><span class="line">  document.addEventListener(<span class="hljs-string">'click'</span>, this.offClickHandler.bind(this)); // <span class="hljs-built_in">bind</span> on doc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">offClickHandler(event: any) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.fromDiv.nativeElement.contains(event.target)) &#123; // check click origin</span><br><span class="line">    this.fromListShow = <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.toDiv.nativeElement.contains(event.target))</span><br><span class="line">    this.toListShow = <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>이렇게 구현했더니, <code>fromDiv</code>, <code>toDiv</code> 이외의 영역을 클릭했을 때 드롭박스가 제대로 닫히는 것을 확인할 수 있었다.</p>
 
         </div>
@@ -307,7 +307,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -438,15 +438,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -499,7 +491,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -508,9 +500,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -741,7 +733,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -750,9 +742,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

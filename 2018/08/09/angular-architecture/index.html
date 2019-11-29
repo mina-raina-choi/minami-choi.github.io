@@ -182,7 +182,6 @@
             <p>이번에 앵귤러 프로젝트를 리뉴얼하면서 구조를 어떻게 짜야 다른 개발자가 봐도 이해하기 쉬우면서도 협업하기 좋고, 확장성있게 구성할 수 있을까에 대한 고민을 했다.</p>
 <p>여러 레퍼런스들을 검토하던 중 GFT팀에서 앵귤러 프로젝트의 구조를 어떤 식으로 짜는지에 대한 좋은 아티클이 있길래 번역을 하면서 내 식대로 정리를 해보았다. (번역 실력이 부족해 이해하기 힘들 수 있다…아래 첨부한 원본사이트를 참고하세요.)</p>
 <a id="more"></a>
-
 <p>GFT팀의 아키텍쳐 규칙</p>
 <blockquote>
 <ol>
@@ -191,15 +190,25 @@
 <li>State management - GUI의 상태를 어떻게 관리하고, 그것을 다른 앱에서도 활용할 수 있도록 할 것인지</li>
 </ol>
 </blockquote>
-<h2><span id="what-is-a-scalable-architecture">What is a scalable architecture ?</span></h2><p>(여기서 GUI라고 표현한 것은 client application을 의미하는 듯? GUI는 일반적으로 그래픽 유저인터페이스의 줄임말이지만..)<br>일단, GUI 애플리케이션이 확장성이 있다는 말은 어떤 의미일까?<br>GUI는 항상 모든 사용자에 대해 하나의 별도의 응용 프로그램으로 실행되므로 백엔드 응용 프로그램의 일반적인 “높은 사용자 수”문제는 없습니다.<br>대신 GUI는 아래와 같은 확장성 요소를 신경써야한다.<br>앱에 로딩되는 데이터 사이즈가 커지고, 프로젝트의 복잡성과 사이즈가 커짐으로 인해 로딩시간이 길어진다는 것….</p>
+<h2><span id="what-is-a-scalable-architecture">What is a scalable architecture ?</span></h2>
+<p>(여기서 GUI라고 표현한 것은 client application을 의미하는 듯? GUI는 일반적으로 그래픽 유저인터페이스의 줄임말이지만…)<br>
+일단, GUI 애플리케이션이 확장성이 있다는 말은 어떤 의미일까?<br>
+GUI는 항상 모든 사용자에 대해 하나의 별도의 응용 프로그램으로 실행되므로 백엔드 응용 프로그램의 일반적인 &quot;높은 사용자 수&quot;문제는 없습니다.<br>
+대신 GUI는 아래와 같은 확장성 요소를 신경써야한다.<br>
+앱에 로딩되는 데이터 사이즈가 커지고, 프로젝트의 복잡성과 사이즈가 커짐으로 인해 로딩시간이 길어진다는 것….</p>
 <p>외부에서는 잘 보이지 않지만, 프로그래머의 관점에서 앱을 어떻게 확장되는지에 대해서도 신경써야한다. 확장성이 없고 나쁜 아키텍쳐의 앱은 일정시간이 지나면 개발하기 힘들어진다. 복잡성의 증가, 기술적 debt부채, 지저분한 코드… 이런 것들은 프로젝트의 견적, 비용, 솔루션 전체의 질에 직접적으로 영향을 준다.</p>
 <p>좋은 아키텍처가 위의 문제들이 발생하는 것을 다 막아주는 것은 아니지만 개발팀에게 그들이 직면할지도 모르는 이슈들을 줄이거나 심지어 제거하는 강력한 툴을 제공한다.</p>
-<p>간단히 말해, 잘 디자인된 아키텍처는 크고 작은 프로젝트 어디에서든 잘 동작해야하고 좋은 유저인터페이스를 제공해야한다. 앱의 사이즈나 처리하는 데이터의 양에 상관없이.<br>그리고, 프로젝트의 품질을 유지하기 위해 개발자들에게 명확하고 쉬운 규칙을 제공해야한다. 마지막으로 그 아키텍쳐는 기본적으로 널리 받아들여지는 디자인패턴을 따라야한다. 앱의 학습곡선을 가능한 작게하기 위해서.</p>
+<p>간단히 말해, 잘 디자인된 아키텍처는 크고 작은 프로젝트 어디에서든 잘 동작해야하고 좋은 유저인터페이스를 제공해야한다. 앱의 사이즈나 처리하는 데이터의 양에 상관없이.<br>
+그리고, 프로젝트의 품질을 유지하기 위해 개발자들에게 명확하고 쉬운 규칙을 제공해야한다. 마지막으로 그 아키텍쳐는 기본적으로 널리 받아들여지는 디자인패턴을 따라야한다. 앱의 학습곡선을 가능한 작게하기 위해서.</p>
 <p>자, 이제 잘 디자인된 앵귤러 애플리케이션의 규칙을 알아보자.</p>
-<h3><span id="structure-of-the-application">Structure of the application</span></h3><p>보통 새로운 프로젝트를 세팅할 때 첫번째로 해야하는 것이 애플리케이션의 구조를 정하는 일이다. 많은 방법들이 있지만, 공식적으로 추천되는 방식이 있다. 바로 <code>module-oriented 구조</code>다.</p>
-<p>이런 식으로 접근하면, 앱의 모듈들을 파일트리구조에서 분리된 디렉토리로 명확하게 보인다.<br>각 모듈디렉토리에는 각 모듈과 연관된 모든 파일을 포함하고 있다.(code, styles, templates…etc). 이러한 방법에서 매우 중요한 요소는<code>&quot;모듈의 독립성&quot;</code>이다.<br>각 모듈은 독립적이고, 다른 모듈에 있는 파일들을 참조하지 않는다. 그래서, 이론적으로 하나의 모듈을 지운다고 해도 앱이 아무런 문제없이 제대로 동작할 수 있다.</p>
+<h3><span id="structure-of-the-application">Structure of the application</span></h3>
+<p>보통 새로운 프로젝트를 세팅할 때 첫번째로 해야하는 것이 애플리케이션의 구조를 정하는 일이다. 많은 방법들이 있지만, 공식적으로 추천되는 방식이 있다. 바로 <code>module-oriented 구조</code>다.</p>
+<p>이런 식으로 접근하면, 앱의 모듈들을 파일트리구조에서 분리된 디렉토리로 명확하게 보인다.<br>
+각 모듈디렉토리에는 각 모듈과 연관된 모든 파일을 포함하고 있다.(code, styles, templates…etc). 이러한 방법에서 매우 중요한 요소는<code>&quot;모듈의 독립성&quot;</code>이다.<br>
+각 모듈은 독립적이고, 다른 모듈에 있는 파일들을 참조하지 않는다. 그래서, 이론적으로 하나의 모듈을 지운다고 해도 앱이 아무런 문제없이 제대로 동작할 수 있다.</p>
 <p><img src="angular-project-structure.png" alt="home_posts_tag-false"></p>
-<p>사실, 하지만 모듈의 독립성은 실제상황에서는 엄격히 지켜지지는 않는다. 적어도 몇개의 서비스나 컴포넌트는 앱전체에서 공통적으로 사용해야한다. 그러므로 앱기능의 일부분을 <code>&quot;Core&quot;</code>와 <code>&quot;Shared&quot;</code>모듈로 분리한다.<br>앱의 구조는 아래와 같아진다.</p>
+<p>사실, 하지만 모듈의 독립성은 실제상황에서는 엄격히 지켜지지는 않는다. 적어도 몇개의 서비스나 컴포넌트는 앱전체에서 공통적으로 사용해야한다. 그러므로 앱기능의 일부분을 <code>&quot;Core&quot;</code>와 <code>&quot;Shared&quot;</code>모듈로 분리한다.<br>
+앱의 구조는 아래와 같아진다.</p>
 <p><img src="module-structure.png" alt="home_posts_tag-false"></p>
 <p>위의 그림을 보면 3가지 메인 모듈이 있다.</p>
 <blockquote>
@@ -209,28 +218,39 @@
 <li>SharedModule - 보통 다른 앱에서도 재활용할 수 있는고, 전역적으로 사용되지 않는 컴포넌트와 서비스의 세트로 구성된다. Featured Module기능모듈로 import된다.</li>
 </ol>
 </blockquote>
-<p>나머지 모듈들은 (보통 기능모듈이라고 불림) 분리되어있고 독립적이다.<br>이러한 구조는 관심사 분리해 줄 뿐만 아니라 확장성있는 앱 아키텍처에 중요한 부분인 lazy loading을 구현하기도 쉽다.</p>
-<h3><span id="lazy-loading">Lazy Loading</span></h3><p>유저가 겪을 수 있는 가장 눈에 띄는 성능 문제는 바로 앱의 로딩시간이다! 코드량이 증가함에 따라 앱의 번들사이즈도 증가한다. 번들크기가 클수록 브라우저가 코드를 로딩하고 구문을 분석하는데 시간이 많이 걸린다.</p>
+<p>나머지 모듈들은 (보통 기능모듈이라고 불림) 분리되어있고 독립적이다.<br>
+이러한 구조는 관심사 분리해 줄 뿐만 아니라 확장성있는 앱 아키텍처에 중요한 부분인 lazy loading을 구현하기도 쉽다.</p>
+<h3><span id="lazy-loading">Lazy Loading</span></h3>
+<p>유저가 겪을 수 있는 가장 눈에 띄는 성능 문제는 바로 앱의 로딩시간이다! 코드량이 증가함에 따라 앱의 번들사이즈도 증가한다. 번들크기가 클수록 브라우저가 코드를 로딩하고 구문을 분석하는데 시간이 많이 걸린다.</p>
 <p><img src="loading.png" alt="home_posts_tag-false"></p>
-<p>다행스럽게도, 로딩시간 이슈를 해결하기 위한 패턴이 있다. 바로 Lazy Loading 이다.<br>실제로 필요할 때까지 앱의 특정부분의 로딩을 늦출 수 있다. (보통 유저가 앱의 특정부분을 액세스하려고 할 때)</p>
+<p>다행스럽게도, 로딩시간 이슈를 해결하기 위한 패턴이 있다. 바로 Lazy Loading 이다.<br>
+실제로 필요할 때까지 앱의 특정부분의 로딩을 늦출 수 있다. (보통 유저가 앱의 특정부분을 액세스하려고 할 때)</p>
 <p>앵귤러는 Lazy Loading 기능이 내장되어있다. Route 정의할 때 올바르게 모듈을 정의하면 lazy loading되는 모듈파일을 가르킬 수 있다.</p>
 <p><img src="routing.png" alt="home_posts_tag-false"></p>
 <p>위에서 설명한 프로젝트 구조를 따랐다면, 앱이 초기화된 후 기능모듈들은 필요할 때 지연로드할 수 있다. 이것은 앱의 초기화시간을 크게 줄여 전반적인 UX를 개선한다. 게다가 앱이 확장될 수록 더 효과를 볼 수 있다. 앱이 커지더라도 지연로드 모듈만 추가되는 식으로 확장된다면 앱의 코어번들과 시작 시간은 계속 똑같을 거다.</p>
 <p><img src="lazy-loading.png" alt="home_posts_tag-false"></p>
 <p>만약 기본적으로 제공되는 lazy loading으로도 충분하지 않을 경우, 주어진 앱에서 모듈이 로딩되는 방식을 커스터마이징할 수 있는 Preloading 전략을 사용할 수도 있다.</p>
-<h2><span id="data-flow-and-state-management">Data flow and state management</span></h2><p>아키텍처는 구조, 파일, 모듈에 대한 것만이 아니다. 복잡한 애플리케이션에서 직면하는 가장 큰 문제는 데이터와 상태정보의 흐름을 관리하는 것이다. 그것은 앱에서 매우 빠르게 복잡해지고 자주 수정되는 부분 중 하나다. 그러므로 잘 디자인된 데이터, 상태정보 관리체계를 갖는 것은 모든 아키텍트가 해야할 중요한 체크포인트다.</p>
-<h3><span id="data-flow">Data flow</span></h3><p>앵귤러1과는 달리 앵귤러2부터는 단방향 데이터 flow를 선호한다. 이러한 접근은 양방향 데이터바인딩보다 유지보수하기가 수월하다. 단뱡향 데이터 바인딩이 해당 모듈에 있는 데이터소스가 어떤 것인지, 시스템을 통해 어떤 변화가 생겼는지 더 분명하게 알 수 있다.<br>앵귤러에서는 데이터의 흐름이 위에서 아래로 전해진다. 부모컴포넌트에서 자식컴포넌트로 전달되고, 컴포넌트에서 템플릿으로 전달된다.</p>
+<h2><span id="data-flow-and-state-management">Data flow and state management</span></h2>
+<p>아키텍처는 구조, 파일, 모듈에 대한 것만이 아니다. 복잡한 애플리케이션에서 직면하는 가장 큰 문제는 데이터와 상태정보의 흐름을 관리하는 것이다. 그것은 앱에서 매우 빠르게 복잡해지고 자주 수정되는 부분 중 하나다. 그러므로 잘 디자인된 데이터, 상태정보 관리체계를 갖는 것은 모든 아키텍트가 해야할 중요한 체크포인트다.</p>
+<h3><span id="data-flow">Data flow</span></h3>
+<p>앵귤러1과는 달리 앵귤러2부터는 단방향 데이터 flow를 선호한다. 이러한 접근은 양방향 데이터바인딩보다 유지보수하기가 수월하다. 단뱡향 데이터 바인딩이 해당 모듈에 있는 데이터소스가 어떤 것인지, 시스템을 통해 어떤 변화가 생겼는지 더 분명하게 알 수 있다.<br>
+앵귤러에서는 데이터의 흐름이 위에서 아래로 전해진다. 부모컴포넌트에서 자식컴포넌트로 전달되고, 컴포넌트에서 템플릿으로 전달된다.</p>
 <p>아직까지는 데이터흐름에 기본적인 규칙외에 추가적인 규칙을 설정하는 것이 좋다.</p>
-<p><code>smart</code>, <code>dummy</code>컴포넌트 개념을 도입했다.<br>스마트컴포넌트는 <code>Container</code>라고도 불린다. 이러한 구분은 로직을 포함하고 서비스와 소통하고 사이드이펙트를 발생시키는(서비스 실행, 상태변경 등등) 앱의 파트를 명확히 정의하기 위해서다. 모든 액션은 컨테이너에서만 일어난다. 반대로 <code>stupid</code>컴포넌트는 거의 또는 전혀 로직이 없다. 모든 데이터는 @input 파라미터를 통해 전달된다. 만약 이 컴포넌트가 다른 컴포넌트와 소통하려면 @output을 통해 이벤트를 발생시킨다.</p>
+<p><code>smart</code>, <code>dummy</code>컴포넌트 개념을 도입했다.<br>
+스마트컴포넌트는 <code>Container</code>라고도 불린다. 이러한 구분은 로직을 포함하고 서비스와 소통하고 사이드이펙트를 발생시키는(서비스 실행, 상태변경 등등) 앱의 파트를 명확히 정의하기 위해서다. 모든 액션은 컨테이너에서만 일어난다. 반대로 <code>stupid</code>컴포넌트는 거의 또는 전혀 로직이 없다. 모든 데이터는 @input 파라미터를 통해 전달된다. 만약 이 컴포넌트가 다른 컴포넌트와 소통하려면 @output을 통해 이벤트를 발생시킨다.</p>
 <p><img src="dataflow.png" alt="home_posts_tag-false"></p>
-<p>이러한 아키텍처 접근방식은 컨테이너의 수를 가능한한 작게 유지하기 위함이다. 더 많은 컴포넌트가 <code>dummy</code>일 수록 데이터흐름이 간단해지고 작업이 쉬워진다. 어떤 컴포넌트가 컨테이너의 역할을 맡을 지 선택하는 것은 간단한 작업이 아니다. 특정 경우마다 해결해야한다. 그러나, 보통 첫번 째 단계는 주화면요소가 스마트컴포넌트이다.<br>아래의 화면에서 파란색이 스마트컴포넌트이고, 회색이 더미컴포넌트다.</p>
+<p>이러한 아키텍처 접근방식은 컨테이너의 수를 가능한한 작게 유지하기 위함이다. 더 많은 컴포넌트가 <code>dummy</code>일 수록 데이터흐름이 간단해지고 작업이 쉬워진다. 어떤 컴포넌트가 컨테이너의 역할을 맡을 지 선택하는 것은 간단한 작업이 아니다. 특정 경우마다 해결해야한다. 그러나, 보통 첫번 째 단계는 주화면요소가 스마트컴포넌트이다.<br>
+아래의 화면에서 파란색이 스마트컴포넌트이고, 회색이 더미컴포넌트다.</p>
 <p><img src="dashboard.png" alt="home_posts_tag-false"></p>
 <p>그 후에, 적은 수의 컨테이너와 단일책임원칙을 잘 유지하는 것이 중요하다.</p>
-<p>대시보드 화면은 단일화면에 표시되는 여러스마트 컨테이너의 완벽한 예다.<br>각 대시보드의 구성들은 스마트컴포넌트이고, 각자의 행동, 데이터, 로직을 담당한다.</p>
+<p>대시보드 화면은 단일화면에 표시되는 여러스마트 컨테이너의 완벽한 예다.<br>
+각 대시보드의 구성들은 스마트컴포넌트이고, 각자의 행동, 데이터, 로직을 담당한다.</p>
 <p><img src="dashboard2.png" alt="home_posts_tag-false"></p>
 <p>아키텍쳐에 대한 이러한 접근은 코드의 가독성과 조직화된 데이터흐름을 위한 것만이 아니다. 더미컴포넌트는 테스트하기 쉽다. 그들의 상태는 전적으로 제공받는 입력에 의해 정해지고, 사이드이펙트가 없다. 적절한 이벤트가 발생되면 컴포넌트 동작결과가 보여진다.</p>
-<p>게다가 이러한 행동은 앵귤러의 변경감지프로세스의 성능최적화와잘 일치한다. 더미컴포넌트의 변경감지전략은 “onPush”로 설정된다. onPush는 input 프로퍼티가 수정되었을 때만 컴포넌트의 변경감지 프로세스를 트리거한다. 앵귤러 애플리케이션의 최적화는 쉽고 효율적인 방법인다.</p>
-<h3><span id="state-management">State management</span></h3><p>애플리케이션에 흐르는 특수한 타입의 데이터가 있다. 바로 State상태다<br>GUI는 모두 상태에 대한 것이다. 유저가 화면을 통해보는 모든 것은 앱의 상태를 반영한 것이다. 만약 유저가 어떤 동작을 한다면 어떤 데이터는 로딩되거나 다른 이벤트를 발생시키거나 한다. 앱의 로직은 실행된다. 그리고 GUI 상태는 변경된다. 이러한 수정은 보통 렌더링프로세스를 트리거하고 뷰는 업데이트된다. 그래서 유저는 수행된 작업의 결과물을 볼수 있게 된다.</p>
+<p>게다가 이러한 행동은 앵귤러의 변경감지프로세스의 성능최적화와잘 일치한다. 더미컴포넌트의 변경감지전략은 &quot;onPush&quot;로 설정된다. onPush는 input 프로퍼티가 수정되었을 때만 컴포넌트의 변경감지 프로세스를 트리거한다. 앵귤러 애플리케이션의 최적화는 쉽고 효율적인 방법인다.</p>
+<h3><span id="state-management">State management</span></h3>
+<p>애플리케이션에 흐르는 특수한 타입의 데이터가 있다. 바로 State상태다<br>
+GUI는 모두 상태에 대한 것이다. 유저가 화면을 통해보는 모든 것은 앱의 상태를 반영한 것이다. 만약 유저가 어떤 동작을 한다면 어떤 데이터는 로딩되거나 다른 이벤트를 발생시키거나 한다. 앱의 로직은 실행된다. 그리고 GUI 상태는 변경된다. 이러한 수정은 보통 렌더링프로세스를 트리거하고 뷰는 업데이트된다. 그래서 유저는 수행된 작업의 결과물을 볼수 있게 된다.</p>
 <p>이러한 싸이클이 앱의 실행중에 여러 번 발생한다. 기본적으로 GUI 애플리케이션의 모든 상호작용의 기본구조다.</p>
 <p>프로세스 자체는 매우 간단하지만, 복잡한 애플리케이션에서는 상태관리에 관련된 많은 어려움을 겪는다. 일반적인 상호작용이 애플리케이션의 모든 레이어를 거쳐 진행되기 때문에 발생한다. 주어진 상태는 보통 공유된다 그리고 거기에 저장된 정보는 여러 컴포넌트와 심지어 화면에 영향을 미친다. 이미 언급했듯이 상태 관리는 보통 매우 복잡하고 자주 수정되는 것들이다.</p>
 <blockquote>
@@ -238,17 +258,23 @@
 </blockquote>
 <p>이러한 이슈를 다루기 위한 방법중 하나는 애플리케이션 레벨에서 단방향데이터흐름을 활용하는 것이다.! 앵귤러커뮤니티는 Redux 아키텍쳐 패턴을 채택했다.</p>
 <p>Redux의 아이디어는 전체 애프리케이션의 상태가 앱의 현재 상태를 대표하는 객체인 단일 저장소에 저장된다는 것이다. Store는 변경할 수 없고 수정될 수 없다. 상태를 변경할 때마다 새로운 객체를 만들어야한다.</p>
-<p>전체 앱의 상태에 대한 하나의 단일 참조지점은 앱의 다른 파트간의 동기화문제를 단순화한다.<br>다른 모듈이나 컴포넌트에서 주어진 정보를 찾을 필요가 없다. 모든 것은 store에서 사용할 수 있다.</p>
+<p>전체 앱의 상태에 대한 하나의 단일 참조지점은 앱의 다른 파트간의 동기화문제를 단순화한다.<br>
+다른 모듈이나 컴포넌트에서 주어진 정보를 찾을 필요가 없다. 모든 것은 store에서 사용할 수 있다.</p>
 <p><img src="redux.png" alt="home_posts_tag-false"></p>
-<h3><span id="actions-and-reducers">Actions and Reducers</span></h3><p>Store는 직접 액세스하고 수정할 수 없다. Reducers가 수정된 데이터를 가지고 새로운 상태를 만드는 역할을 한다. Reduces는 대개 액션을 인수로 받고 제공된 데이터를 기반으로 새로운 상태를 리턴하는 간단한 function이다.</p>
+<h3><span id="actions-and-reducers">Actions and Reducers</span></h3>
+<p>Store는 직접 액세스하고 수정할 수 없다. Reducers가 수정된 데이터를 가지고 새로운 상태를 만드는 역할을 한다. Reduces는 대개 액션을 인수로 받고 제공된 데이터를 기반으로 새로운 상태를 리턴하는 간단한 function이다.</p>
 <p><img src="reducer.png" alt="home_posts_tag-false"></p>
-<h2><span id="state-propagation-상태전이">State propagation (상태전이)</span></h2><p>앵귤러에서 Redux패턴을 구현하는 방법에는 여러가지가 있다.<br>가장 유명한 것은 바로 ngrx/store다. 여기서는 ngrx/state의 구현에 대해서는 자세하게 다루지 않고 앱을 통해 state가 어떻게 수정되고 전파되는지 보겠다.</p>
+<h2><span id="state-propagation-상태전이">State propagation (상태전이)</span></h2>
+<p>앵귤러에서 Redux패턴을 구현하는 방법에는 여러가지가 있다.<br>
+가장 유명한 것은 바로 ngrx/store다. 여기서는 ngrx/state의 구현에 대해서는 자세하게 다루지 않고 앱을 통해 state가 어떻게 수정되고 전파되는지 보겠다.</p>
 <p><img src="state-propagation.png" alt="home_posts_tag-false"></p>
 <p>일단 Store에 수정이 적용되면 모든 subscriber에게 변경사항이 전달된다. State가 변경되지 않는 다는 사실 덕분에 세부검사를 진행할 필요가 없다. 만약 상태가 수정되면, subscriber는 새로운 객체를 전달받는다.</p>
 <p>이 중앙집중화된 패턴덕분에 모든 상태변화들은 앱의 각 파트에 적절히 전파된다. 반드시 따라야하는 규칙은 Store에 모든 state변경을 변영하는 것이다. 분리된 컴포넌트에 보관되지 않도록.</p>
-<h3><span id="state-service">State Service</span></h3><p>뷰 레이어와 직접적으로 관련이 없는 다른 로직들과 마찬가지로 전용 service에 Store 작업을 캡슐화하는 것이 좋다. 이러한 서비스는 모듈이나 앱에서 재사용할 수 있다. 컴포넌트는 state의 세부작업에 대해 인식하지 않아도 된다.</p>
+<h3><span id="state-service">State Service</span></h3>
+<p>뷰 레이어와 직접적으로 관련이 없는 다른 로직들과 마찬가지로 전용 service에 Store 작업을 캡슐화하는 것이 좋다. 이러한 서비스는 모듈이나 앱에서 재사용할 수 있다. 컴포넌트는 state의 세부작업에 대해 인식하지 않아도 된다.</p>
 <p><img src="state-service.png" alt="home_posts_tag-false"></p>
-<h3><span id="combining-state-management-and-data-flow">Combining state management and data flow</span></h3><p>설명된 패턴은 서로 결합될 때 정말 강력하다. Redux기반의 state 관리는 앱의 다양한 파트와 불변의 state 사이에 중요한, 믿을만한 동기화를 제공한다. 단방향 데이터 흐름과 스마트컨테이너는 애플리케이션에서 잘 정의된 책임(중요 로직)과 하위에 있는 더미컴포넌트에 전달되는 state 변경을 어떤 전파방버을 제공한다. 공유데이터의 불변성은 앵귤러 변경감지 알고리즘의 최적화 패턴에 적합하다.</p>
+<h3><span id="combining-state-management-and-data-flow">Combining state management and data flow</span></h3>
+<p>설명된 패턴은 서로 결합될 때 정말 강력하다. Redux기반의 state 관리는 앱의 다양한 파트와 불변의 state 사이에 중요한, 믿을만한 동기화를 제공한다. 단방향 데이터 흐름과 스마트컨테이너는 애플리케이션에서 잘 정의된 책임(중요 로직)과 하위에 있는 더미컴포넌트에 전달되는 state 변경을 어떤 전파방버을 제공한다. 공유데이터의 불변성은 앵귤러 변경감지 알고리즘의 최적화 패턴에 적합하다.</p>
 <p><img src="state-management.png" alt="home_posts_tag-false"></p>
 <p>이 방식으로 설계된 애플리케이션은 중앙 상태관리 시스템을 통해 상태와 데이터를 동기화하는 캡슐화된 자율 컴포넌트로 구성된다.</p>
 <blockquote>
@@ -378,7 +404,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -509,15 +535,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -598,7 +616,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -607,9 +625,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -868,7 +886,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -877,9 +895,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

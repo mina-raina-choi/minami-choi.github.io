@@ -10,19 +10,19 @@
 <title>MSBUILD - error MSB3428 에러 해결 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="“MSBUILD : error MSB3428” 에러 해결npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.">
+    <meta name="description" content="“MSBUILD : error MSB3428” 에러 해결 npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.">
 <meta name="keywords" content="MSBUILD,MSB3428,npm install error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MSBUILD - error MSB3428 에러 해결">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/14/msbuild-errorMSB3428/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="“MSBUILD : error MSB3428” 에러 해결npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.">
+<meta property="og:description" content="“MSBUILD : error MSB3428” 에러 해결 npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:38:21.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MSBUILD - error MSB3428 에러 해결">
-<meta name="twitter:description" content="“MSBUILD : error MSB3428” 에러 해결npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.">
+<meta name="twitter:description" content="“MSBUILD : error MSB3428” 에러 해결 npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,16 +175,18 @@
             
         </h1>
         <div class="content">
-            <h1><span id="msbuild-error-msb3428-에러-해결">“MSBUILD : error MSB3428” 에러 해결</span></h1><p>npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.</p>
+            <h1><span id="msbuild-error-msb3428-에러-해결">“MSBUILD : error MSB3428” 에러 해결</span></h1>
+<p>npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.</p>
 <a id="more"></a>
-
-<h3><span id="에러">에러</span></h3><blockquote>
-<p>MSBUILD : error MSB3428: Visual C++ 구성 요소 “VCBuild.exe”을(를) 로드할 수 없습니다. 이 문제를 해결하려면 1) .NET Framework 2.0 SDK를 설치하거나, 2) Microsoft Visual Studio 2005를 설치하거나, 3) 해당 구성 요소 가 다른 위치에 설치되어 있는 경우에는 그 위치를 시스템 경로에 추가하십시오. [c:\Users\JooYoung\workspace\js\server_side_javascript\node_modules\orientjs-native\build\binding.sln]</p>
+<h3><span id="에러">에러</span></h3>
+<blockquote>
+<p>MSBUILD : error MSB3428: Visual C++ 구성 요소 &quot;VCBuild.exe&quot;을(를) 로드할 수 없습니다. 이 문제를 해결하려면 1) .NET Framework 2.0 SDK를 설치하거나, 2) Microsoft Visual Studio 2005를 설치하거나, 3) 해당 구성 요소 가 다른 위치에 설치되어 있는 경우에는 그 위치를 시스템 경로에 추가하십시오. [c:\Users\JooYoung\workspace\js\server_side_javascript\node_modules\orientjs-native\build\binding.sln]</p>
 </blockquote>
-<h3><span id="해결방법">해결방법</span></h3><ol>
-<li>npm install –global –production windows-build-tools (관리자 모드로 실행한 커맨드 창에서 실행해야 한다. 시간이 좀 걸림)</li>
+<h3><span id="해결방법">해결방법</span></h3>
+<ol>
+<li>npm install --global --production windows-build-tools (관리자 모드로 실행한 커맨드 창에서 실행해야 한다. 시간이 좀 걸림)</li>
 <li>node-gyp이 python 2.x를 사용하여 python 2.7을 설치한다음에, node-gyp이 그 2.7을 사용도록 설정.</li>
-<li>위에서 ‘npm install –global –production windows-build-tools’을 실행하면, 사용자 홈디렉토리 밑에 .windows-build-tools\python27이 이미 설치되어 있다.</li>
+<li>위에서 'npm install --global --production windows-build-tools’을 실행하면, 사용자 홈디렉토리 밑에 .windows-build-tools\python27이 이미 설치되어 있다.</li>
 <li>npm config set python &lt;파이썬설치디렉토리&gt;를 설정.</li>
 </ol>
 <p><img src="/images/msbuild-error.png" alt></p>
@@ -213,7 +215,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/05/15/arrow-function/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/05/15/Programming/JavaScript/arrow-function/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item">화살표 함수(arrow-function)와 function 차이점</span>
             </a>
@@ -312,7 +314,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -443,15 +445,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -480,7 +474,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -489,9 +483,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -698,7 +692,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -707,9 +701,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

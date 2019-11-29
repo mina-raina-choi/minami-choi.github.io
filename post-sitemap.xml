@@ -7,8 +7,40 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2019/11/30/Programming/Javascript/array-method/</loc>
-        <lastmod>2019-11-29T15:24:17.013Z</lastmod>
+        <loc>https://minami-choi.github.io/2018/05/15/Programming/JavaScript/arrow-function/</loc>
+        <lastmod>2019-11-29T15:29:11.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
+        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/04/01/Programming/JavaScript/study-modular-code/</loc>
+        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/</loc>
+        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/11/30/Programming/JavaScript/array-method/</loc>
+        <lastmod>2019-11-29T15:27:15.302Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -247,14 +279,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/15/arrow-function/</loc>
-        <lastmod>2019-11-23T13:37:05.883Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2018/04/23/angular-ObjectUnsubscribedError/</loc>
         <lastmod>2019-11-23T13:37:00.395Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -361,30 +385,6 @@
     <url>
         <loc>https://minami-choi.github.io/2018/07/15/android-build-gradle/</loc>
         <lastmod>2019-11-23T13:34:37.521Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2019/03/07/study-high-order-javascript/</loc>
-        <lastmod>2019-11-23T13:33:39.253Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2019/04/01/study-modular-code/</loc>
-        <lastmod>2019-11-23T13:33:34.192Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2019/04/25/study-modular-code-2/</loc>
-        <lastmod>2019-11-23T13:32:50.417Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

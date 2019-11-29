@@ -134,7 +134,7 @@
 <div class="card">
     
     <div class="card-image">
-        <a href="/2019/03/07/study-high-order-javascript/" class="image is-7by1">
+        <a href="/2019/03/07/Programming/JavaScript/study-high-order-javascript/" class="image is-7by1">
             <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 고계 자바스크립트">
         </a>
     </div>
@@ -162,7 +162,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/03/07/study-high-order-javascript/">스터디 - 고계 자바스크립트</a>
+                <a class="has-link-black-ter" href="/2019/03/07/Programming/JavaScript/study-high-order-javascript/">스터디 - 고계 자바스크립트</a>
             
         </h1>
         <div class="content">
@@ -178,15 +178,17 @@
 <li>클로저의 활용</li>
 </ol>
 </blockquote>
-<h2 id="왜-자바스크립트인가"><a href="#왜-자바스크립트인가" class="headerlink" title="왜 자바스크립트인가?"></a>왜 자바스크립트인가?</h2><ol>
-<li><p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
+<h2>왜 자바스크립트인가?</h2>
+<ol>
+<li>
+<p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/07/study-high-order-javascript/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/03/07/Programming/JavaScript/study-high-order-javascript/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -238,7 +240,8 @@
             
         </h1>
         <div class="content">
-            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">private</span> <span class="hljs-string">ArrayList</span> <span class="hljs-string">findUnAskedPermissions(ArrayList</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">    <span class="hljs-string">ArrayList</span> <span class="hljs-string">result</span> <span class="hljs-string">=</span> <span class="hljs-string">new</span> <span class="hljs-string">ArrayList();</span></span><br><span class="line">    <span class="hljs-string">for</span> <span class="hljs-string">(String</span> <span class="hljs-attr">perm :</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">        <span class="hljs-string">if(!hasPermissions(perm))</span> <span class="hljs-string">&#123;</span></span><br><span class="line">            <span class="hljs-string">result.add(perm);</span></span><br><span class="line">        <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">return</span> <span class="hljs-string">result;</span></span><br><span class="line"><span class="hljs-string">&#125;</span></span><br></pre></td></tr></table></figure>
+            <h3>문제 상황</h3>
+<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">private</span> <span class="hljs-string">ArrayList</span> <span class="hljs-string">findUnAskedPermissions(ArrayList</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">    <span class="hljs-string">ArrayList</span> <span class="hljs-string">result</span> <span class="hljs-string">=</span> <span class="hljs-string">new</span> <span class="hljs-string">ArrayList();</span></span><br><span class="line">    <span class="hljs-string">for</span> <span class="hljs-string">(String</span> <span class="hljs-attr">perm :</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">        <span class="hljs-string">if(!hasPermissions(perm))</span> <span class="hljs-string">&#123;</span></span><br><span class="line">            <span class="hljs-string">result.add(perm);</span></span><br><span class="line">        <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">return</span> <span class="hljs-string">result;</span></span><br><span class="line"><span class="hljs-string">&#125;</span></span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -297,7 +300,8 @@
             
         </h1>
         <div class="content">
-            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
+            <h3>문제 상황</h3>
+<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -416,7 +420,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-formGroup-하위에-ngModel-사용"><a href="#Angular에서-formGroup-하위에-ngModel-사용" class="headerlink" title="Angular에서 formGroup 하위에 [(ngModel)] 사용"></a>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2>
+<h3>문제 상황</h3>
+<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
         </div>
         
         
@@ -475,8 +481,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-ngrx도입-시-주의해야할-점"><a href="#Angular에서-ngrx도입-시-주의해야할-점" class="headerlink" title="Angular에서 ngrx도입 시 주의해야할 점"></a>Angular에서 ngrx도입 시 주의해야할 점</h2><p>앵귤러 버전5 프로젝트에서 ngrx 버전6을 의존했더니 아래와 같은 에러를 냈다.</p>
-<p><code>angular ngrx store error Cannot read property &#39;schedule&#39; of undefined</code></p>
+            <h2>Angular에서 ngrx도입 시 주의해야할 점</h2>
+<p>앵귤러 버전5 프로젝트에서 ngrx 버전6을 의존했더니 아래와 같은 에러를 냈다.</p>
+<p><code>angular ngrx store error Cannot read property 'schedule' of undefined</code></p>
         </div>
         
         
@@ -535,9 +542,12 @@
             
         </h1>
         <div class="content">
-            <h2 id="안드로이드-스튜디오-에뮬레이터-error"><a href="#안드로이드-스튜디오-에뮬레이터-error" class="headerlink" title="안드로이드 스튜디오 에뮬레이터 error"></a>안드로이드 스튜디오 에뮬레이터 error</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p><code>emulator: ERROR: x86 emulation currently requires hardware acceleration!</code></p>
+            <h2>안드로이드 스튜디오 에뮬레이터 error</h2>
+<h3>문제 상황</h3>
+<p><code>emulator: ERROR: x86 emulation currently requires hardware acceleration!</code></p>
 <p>위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다.</p>
-<h3 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h3><ol>
+<h3>해결 방법</h3>
+<ol>
 <li><code>Tools - SDK manager - SDK tools</code>에서 <code>Intel x86 emulator accelerator (HAXM installer)</code>가 설치되어 있는지 체크, 설치가 안되었다면 설치.</li>
 </ol>
         </div>
@@ -598,7 +608,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="android-view-InflateException"><a href="#android-view-InflateException" class="headerlink" title="android.view.InflateException"></a>android.view.InflateException</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
+            <h2>android.view.InflateException</h2>
+<h3>문제 상황</h3>
+<p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
         </div>
         
         
@@ -657,7 +669,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="안드로이드-스튜디오-렌더링-문제"><a href="#안드로이드-스튜디오-렌더링-문제" class="headerlink" title="안드로이드 스튜디오 렌더링 문제"></a>안드로이드 스튜디오 렌더링 문제</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
+            <h2>안드로이드 스튜디오 렌더링 문제</h2>
+<h3>문제 상황</h3>
+<p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>
+에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
         </div>
         
         
@@ -716,9 +731,12 @@
             
         </h1>
         <div class="content">
-            <h1 id="Angular5-Custom-Directive"><a href="#Angular5-Custom-Directive" class="headerlink" title="Angular5 / Custom Directive"></a>Angular5 / Custom Directive</h1><p>빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자.</p>
+            <h1>Angular5 / Custom Directive</h1>
+<p>빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자.</p>
 <p><a href="https://codecraft.tv/courses/angular/custom-directives/overview/" target="_blank" rel="noopener">https://codecraft.tv/courses/angular/custom-directives/overview/</a> 참고.</p>
-<p>우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!<br>컴포넌트는 디렉티브의 모든 특징을 가지고 있다. 거기에 view를 가지고 있는 것이 컴포넌트다.<br>that is to say they have a template and some HTML that is injected into the DOM when we use it.</p>
+<p>우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!<br>
+컴포넌트는 디렉티브의 모든 특징을 가지고 있다. 거기에 view를 가지고 있는 것이 컴포넌트다.<br>
+that is to say they have a template and some HTML that is injected into the DOM when we use it.</p>
         </div>
         
         
@@ -823,7 +841,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -954,15 +972,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -991,7 +1001,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -1000,9 +1010,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -1209,7 +1219,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -1218,9 +1228,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

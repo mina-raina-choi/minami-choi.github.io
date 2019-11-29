@@ -10,19 +10,19 @@
 <title>안드로이드 에러 - x86 emulation currently requires hardware acceleration - Mina&#39;s World</title>
 
 
-    <meta name="description" content="안드로이드 스튜디오 에뮬레이터 error문제 상황emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법 Tools - SDK manager - SDK tools에서 Intel x86 emulator accelerato">
+    <meta name="description" content="안드로이드 스튜디오 에뮬레이터 error 문제 상황 emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법  Tools - SDK manager - SDK tools에서 Intel x86 emulator acceler">
 <meta name="keywords" content="android,안드로이드,hardware acceleration">
 <meta property="og:type" content="article">
 <meta property="og:title" content="안드로이드 에러 - x86 emulation currently requires hardware acceleration">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/01/android-hardware-acceleration/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="안드로이드 스튜디오 에뮬레이터 error문제 상황emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법 Tools - SDK manager - SDK tools에서 Intel x86 emulator accelerato">
+<meta property="og:description" content="안드로이드 스튜디오 에뮬레이터 error 문제 상황 emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법  Tools - SDK manager - SDK tools에서 Intel x86 emulator acceler">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:34:43.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="안드로이드 에러 - x86 emulation currently requires hardware acceleration">
-<meta name="twitter:description" content="안드로이드 스튜디오 에뮬레이터 error문제 상황emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법 Tools - SDK manager - SDK tools에서 Intel x86 emulator accelerato">
+<meta name="twitter:description" content="안드로이드 스튜디오 에뮬레이터 error 문제 상황 emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법  Tools - SDK manager - SDK tools에서 Intel x86 emulator acceler">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,18 +179,23 @@
             
         </h1>
         <div class="content">
-            <h2><span id="안드로이드-스튜디오-에뮬레이터-error">안드로이드 스튜디오 에뮬레이터 error</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p><code>emulator: ERROR: x86 emulation currently requires hardware acceleration!</code></p>
+            <h2><span id="안드로이드-스튜디오-에뮬레이터-error">안드로이드 스튜디오 에뮬레이터 error</span></h2>
+<h3><span id="문제-상황">문제 상황</span></h3>
+<p><code>emulator: ERROR: x86 emulation currently requires hardware acceleration!</code></p>
 <p>위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다.</p>
-<h3><span id="해결-방법">해결 방법</span></h3><ol>
+<h3><span id="해결-방법">해결 방법</span></h3>
+<ol>
 <li><code>Tools - SDK manager - SDK tools</code>에서 <code>Intel x86 emulator accelerator (HAXM installer)</code>가 설치되어 있는지 체크, 설치가 안되었다면 설치.</li>
 </ol>
 <a id="more"></a>
-
 <ol start="2">
-<li><p>만약 설치해도 똑같은 에러가 발생한다면, <code>emulator accelerator</code>를 다운로드 완료했음에도 안드로이드 SDK Manager가 자동으로 <code>emulator accelator</code>를 설치하지 못한다는 의미다. 수동으로 설치해줘야한다.</p>
+<li>
+<p>만약 설치해도 똑같은 에러가 발생한다면, <code>emulator accelerator</code>를 다운로드 완료했음에도 안드로이드 SDK Manager가 자동으로 <code>emulator accelator</code>를 설치하지 못한다는 의미다. 수동으로 설치해줘야한다.</p>
 <p><code>Hardware_Accelerated_Execution_Manager</code>가 설치된 위치를 찾아가서 실행파일을 실행시키면 된다.</p>
 <p>내경우에는 아래의 경로에 있었다.</p>
-<pre><code>C:\Users\cmina\AppData\Local\Android\Sdk\extras\intel\Hardware_Accelerated_Execution_Manager</code></pre><p>설치를 완료하고 나면 아래와 같은 화면이 뜬다.</p>
+<pre><code>C:\Users\cmina\AppData\Local\Android\Sdk\extras\intel\Hardware_Accelerated_Execution_Manager
+</code></pre>
+<p>설치를 완료하고 나면 아래와 같은 화면이 뜬다.</p>
 <p><img src="/images/emulator_install.png" alt></p>
 <p>위의 과정을 모두 마친 뒤, 다시 앱을 실행시켜보면 에뮬레이터에서 잘 동작하는 것을 확인할 수 있다.</p>
 </li>
@@ -319,7 +324,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -450,15 +455,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -511,7 +508,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -520,9 +517,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -753,7 +750,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -762,9 +759,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

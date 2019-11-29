@@ -10,19 +10,19 @@
 <title>앵귤러에서 이미지 경로 세팅 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="앵귤러에서 이미지 경로 세팅앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
+    <meta name="description" content="앵귤러에서 이미지 경로 세팅 앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
 <meta name="keywords" content="Angular,image-path">
 <meta property="og:type" content="article">
 <meta property="og:title" content="앵귤러에서 이미지 경로 세팅">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/11/img-path/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="앵귤러에서 이미지 경로 세팅앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
+<meta property="og:description" content="앵귤러에서 이미지 경로 세팅 앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:56.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="앵귤러에서 이미지 경로 세팅">
-<meta name="twitter:description" content="앵귤러에서 이미지 경로 세팅앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
+<meta name="twitter:description" content="앵귤러에서 이미지 경로 세팅 앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,21 +175,26 @@
             
         </h1>
         <div class="content">
-            <h1><span id="앵귤러에서-이미지-경로-세팅">앵귤러에서 이미지 경로 세팅</span></h1><p>앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.</p>
+            <h1><span id="앵귤러에서-이미지-경로-세팅">앵귤러에서 이미지 경로 세팅</span></h1>
+<p>앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.</p>
 <a id="more"></a>
-
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">.intro &#123; background: url(<span class="hljs-string">"./images/overlay.png"</span>), url(<span class="hljs-string">"./images/intro.jpg"</span>) &#125;</span><br></pre></td></tr></table></figure>
-
-<p>이미지의 경로를 이렇게 넣었더니 이미지 파일을 찾지 못하고 <code>GET http://localhost:4200/images/overlay.png 404 (Not Found)</code> 에러가 발생했다.<br>(실제로 저 위치에 이미지는 존재했는데도 불구하고 이미지를 찾지못함.)</p>
+<p>이미지의 경로를 이렇게 넣었더니 이미지 파일을 찾지 못하고 <code>GET http://localhost:4200/images/overlay.png 404 (Not Found)</code> 에러가 발생했다.<br>
+(실제로 저 위치에 이미지는 존재했는데도 불구하고 이미지를 찾지못함.)</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">.intro &#123; background: url(<span class="hljs-string">"assets/css/images/overlay.png"</span>), url(<span class="hljs-string">"assets/css/images/intro.jpg"</span>) &#125;</span><br><span class="line"></span><br><span class="line">.intro &#123; background: url(<span class="hljs-string">"../../assets/css/images/overlay.png"</span>), url(<span class="hljs-string">"../../assets/css/images/intro.jpg"</span>) &#125;</span><br></pre></td></tr></table></figure>
-
 <p>위와 같이 경로를 넣어주니까 아래와 같이 이미지를 제대로 불러오는 것을 알 수가 있다.</p>
 <p><img src="/images/image-path.png" alt></p>
 <p>그리고 html에서도 아래와 같이 경로지정을 해줬더니 이미지를 잘 불러온다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="hljs-string">"assets/css/images/fulls/01.jpg"</span> class=<span class="hljs-string">"image fit"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="hljs-string">"assets/css/images/thumbs/01.jpg"</span> title=<span class="hljs-string">"The Anonymous Red"</span> alt=<span class="hljs-string">""</span> /&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<h4><span id="참고절대경로와-상대경로">[참고]절대경로와 상대경로</span></h4><p><strong>절대경로</strong><br>작업 디렉토리와 관계없이 절대적인 위치를 가리키는 경로<br><strong>상대경로</strong><br>작업 디렉토리를 기준으로 상대적인 위치를 가리키는 경로<br>/ : 최상위 경로를 의미<br>./: 현재 디렉토리를 의미<br>../: 상위 디렉토리를 의미</p>
+<h4><span id="참고절대경로와-상대경로">[참고]절대경로와 상대경로</span></h4>
+<p><strong>절대경로</strong><br>
+작업 디렉토리와 관계없이 절대적인 위치를 가리키는 경로<br>
+<strong>상대경로</strong><br>
+작업 디렉토리를 기준으로 상대적인 위치를 가리키는 경로<br>
+/ : 최상위 경로를 의미<br>
+./: 현재 디렉토리를 의미<br>
+…/: 상위 디렉토리를 의미</p>
 </blockquote>
 
         </div>
@@ -315,7 +320,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -446,15 +451,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -483,7 +480,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -492,9 +489,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -701,7 +698,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -710,9 +707,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

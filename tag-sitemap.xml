@@ -30,27 +30,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%AA%A8%EB%93%88%EC%A0%81%EC%9D%B8-%EC%BD%94%EB%93%9C%EB%A1%9C/</loc>
-        <lastmod>2019-11-23T13:33:34.192Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%ED%95%A8%EC%88%98%ED%98%95-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
-        <lastmod>2019-11-23T13:33:39.253Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%EA%B3%A0%EA%B3%84-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
-        <lastmod>2019-11-23T13:33:39.253Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/build-gradle/</loc>
         <lastmod>2019-11-23T13:34:37.521Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -165,34 +144,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/ObjectUnsubscribedError/</loc>
         <lastmod>2019-11-23T13:37:00.395Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98/</loc>
-        <lastmod>2019-11-23T13:37:05.883Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/arrow-function/</loc>
-        <lastmod>2019-11-23T13:37:05.883Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/function/</loc>
-        <lastmod>2019-11-23T13:37:05.883Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/this/</loc>
-        <lastmod>2019-11-23T13:37:05.883Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -556,7 +507,56 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/Javascript/</loc>
-        <lastmod>2019-11-29T15:24:17.013Z</lastmod>
+        <lastmod>2019-11-29T15:27:15.302Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%ED%95%A8%EC%88%98%ED%98%95-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
+        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%EA%B3%A0%EA%B3%84-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
+        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%AA%A8%EB%93%88%EC%A0%81%EC%9D%B8-%EC%BD%94%EB%93%9C%EB%A1%9C/</loc>
+        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%ED%99%94%EC%82%B4%ED%91%9C-%ED%95%A8%EC%88%98/</loc>
+        <lastmod>2019-11-29T15:29:11.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/arrow-function/</loc>
+        <lastmod>2019-11-29T15:29:11.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/function/</loc>
+        <lastmod>2019-11-29T15:29:11.811Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/this/</loc>
+        <lastmod>2019-11-29T15:29:11.811Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

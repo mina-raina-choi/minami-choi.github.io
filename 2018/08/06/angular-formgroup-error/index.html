@@ -10,19 +10,19 @@
 <title>formGroup 하위에 [(ngModel)] 사용시 발생하는 error - Mina&#39;s World</title>
 
 
-    <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+    <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="keywords" content="Angular,formgroup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/06/angular-formgroup-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:36:28.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
-<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,17 +179,21 @@
             
         </h1>
         <div class="content">
-            <h2><span id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2><span id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</span></h2>
+<h3><span id="문제-상황">문제 상황</span></h3>
+<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
 <a id="more"></a>
-
 <p><img src="/images/formgrouperror.png" alt></p>
-<h3><span id="해결-방법">해결 방법</span></h3><ol>
-<li><p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
+<h3><span id="해결-방법">해결 방법</span></h3>
+<ol>
+<li>
+<p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
 </li>
-<li><p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
+<li>
+<p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># 1번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> formControlName=<span class="hljs-string">"selectedToken"</span></span><br><span class="line">(change)=<span class="hljs-string">"selectSendToken()"</span>  [(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span>&gt;</span><br><span class="line">    &lt;option *ngFor=<span class="hljs-string">"let token of global.sendTokenOptions"</span> [ngValue]=<span class="hljs-string">"token"</span>&gt;</span><br><span class="line">        &#123;&#123;token.symbol&#125;&#125;(&#123;&#123;token.name&#125;&#125;)</span><br><span class="line">    &lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> (change)=<span class="hljs-string">"selectSendToken()"</span></span><br><span class="line">[(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span> [ngModelOptions]=<span class="hljs-string">"&#123;standalone: true&#125;"</span>&gt;</span><br><span class="line">....</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<pre><code></code></pre></li>
+<pre><code></code></pre>
+</li>
 </ol>
 
         </div>
@@ -315,7 +319,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -446,15 +450,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -507,7 +503,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -516,9 +512,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -749,7 +745,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -758,9 +754,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>

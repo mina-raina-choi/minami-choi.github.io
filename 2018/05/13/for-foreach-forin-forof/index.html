@@ -10,19 +10,19 @@
 <title>for문, foreach문, for~in문, for~of문 차이점 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
+    <meta name="description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
 <meta name="keywords" content="for문,foreach문,for~in문,for~of문">
 <meta property="og:type" content="article">
 <meta property="og:title" content="for문, foreach문, for~in문, for~of문 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/13/for-foreach-forin-forof/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
+<meta property="og:description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:43.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="for문, foreach문, for~in문, for~of문 차이점">
-<meta name="twitter:description" content="for문, foreach문, forin문, forof문 차이점for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach You can’t break out of this loop using a break statement or move to the next iteration with continue.(b">
+<meta name="twitter:description" content="for문, foreach문, for~in문, for~of문 차이점 for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다. foreach  You can’t break out of this loop using a break statement or move to the next iteration with continu">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,18 +175,28 @@
             
         </h1>
         <div class="content">
-            <h1><span id="for문-foreach문-forin문-forof문-차이점">for문, foreach문, for<del>in문, for</del>of문 차이점</span></h1><p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
-<h3><span id="foreach">foreach</span></h3><ol>
-<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
-<li>You can’t return from the enclosing function using a return statement.<br>(return을 사용해 해당 function을 마무리하지 못함)<a id="more"></a>
-
+            <h1><span id="for문-foreach문-for~in문-for~of문-차이점">for문, foreach문, for~in문, for~of문 차이점</span></h1>
+<p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
+<h3><span id="foreach">foreach</span></h3>
+<ol>
+<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>
+(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
+<li>You can’t return from the enclosing function using a return statement.<br>
+(return을 사용해 해당 function을 마무리하지 못함)<a id="more"></a>
 </li>
 </ol>
-<h3><span id="for~in">for~in</span></h3><p>Object 프로퍼티를 반복하기 위해 만들어졌다.<br>물론 array를 반복시킬 수도 있다.<br>index값이 string형이므로 주의가 필요하다.</p>
+<h3><span id="for~in">for~in</span></h3>
+<p>Object 프로퍼티를 반복하기 위해 만들어졌다.<br>
+물론 array를 반복시킬 수도 있다.<br>
+index값이 string형이므로 주의가 필요하다.</p>
 <blockquote>
-<p>Important<br>If you are expecting a number but in fact have a string this can cause problems, for example “1” + “2” is the string “12” and not the number 3.</p>
+<p>Important<br>
+If you are expecting a number but in fact have a string this can cause problems, for example “1” + “2” is the string “12” and not the number 3.</p>
 </blockquote>
-<h3><span id="for~of">for~of</span></h3><p>ES6부터 for<del>of구문 사용가능하다.<br>for</del>of구문에서는 break, continue, return을 모두 사용할 수 있다.<br>현재 사용가능한 가장 간결한 방법이다!</p>
+<h3><span id="for~of">for~of</span></h3>
+<p>ES6부터 for~of구문 사용가능하다.<br>
+for~of구문에서는 break, continue, return을 모두 사용할 수 있다.<br>
+현재 사용가능한 가장 간결한 방법이다!</p>
 
         </div>
         
@@ -311,7 +321,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            10
+                            9
                         </p>
                     </a>
                 </div>
@@ -442,15 +452,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Javascript/">
-            <span class="level-start">
-                <span class="level-item">Javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -479,7 +481,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -488,9 +490,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -697,7 +699,7 @@
         
         <article class="media">
             
-            <a href="/2019/11/30/Programming/Javascript/array-method/" class="media-left">
+            <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
                 </p>
@@ -706,9 +708,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T15:18:02.450Z">2019-11-30</time></div>
-                    <a href="/2019/11/30/Programming/Javascript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
+                    <a href="/2019/11/30/Programming/JavaScript/array-method/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Array - pop, push, shift, unshift</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Javascript/">Javascript</a>
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
