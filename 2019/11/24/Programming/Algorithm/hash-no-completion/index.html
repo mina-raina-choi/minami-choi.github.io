@@ -10,19 +10,19 @@
 <title>해시 - 완주하지 못한 선수 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자. 알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+    <meta name="description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="해시 - 완주하지 못한 선수">
 <meta property="og:url" content="https://minami-choi.github.io/2019/11/24/Programming/Algorithm/hash-no-completion/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자. 알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+<meta property="og:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">
 <meta property="og:updated_time" content="2019-11-25T15:58:36.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="해시 - 완주하지 못한 선수">
-<meta name="twitter:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자. 알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+<meta name="twitter:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta name="twitter:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">
 
 
@@ -179,29 +179,24 @@
             
         </h1>
         <div class="content">
-            <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>
-알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" target="_blank" rel="noopener">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
+            <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" target="_blank" rel="noopener">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
 <a id="more"></a>
-<h1><span id="1-문제">1. 문제</span></h1>
-<p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
+
+<h1><span id="1-문제">1. 문제</span></h1><p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
 <pre><code>제한사항
 
 1. 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
 2. completion의 길이는 participant의 길이보다 1 작습니다.
 3. 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
-4. 참가자 중에는 동명이인이 있을 수 있습니다.
-</code></pre>
-<h1><span id="2-풀이과정">2. 풀이과정</span></h1>
-<p>participant 배열과 completion 배열을 각각 오름차순으로 정렬한 후 차례대로 이름을 비교해 다른 이름이 발견되면 그 이름의 선수가 마라톤을 완주하지 못한 선수다. 처음에는 participant의 배열을 돌리는데 <code>forEach</code>를 사용하려고 했다.</p>
+4. 참가자 중에는 동명이인이 있을 수 있습니다.</code></pre><h1><span id="2-풀이과정">2. 풀이과정</span></h1><p>participant 배열과 completion 배열을 각각 오름차순으로 정렬한 후 차례대로 이름을 비교해 다른 이름이 발견되면 그 이름의 선수가 마라톤을 완주하지 못한 선수다. 처음에는 participant의 배열을 돌리는데 <code>forEach</code>를 사용하려고 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  participant.forEach(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (item !== completion[i]) &#123;</span><br><span class="line">      answer = item</span><br><span class="line">      <span class="hljs-comment">// 이름이 다른 경우를 발견하고 forEach문을 빠져나오기</span></span><br><span class="line">      <span class="hljs-keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>위와 같이 코드를 작성하니</p>
 <blockquote>
-<p>participant = [mislav, stanko, mislav, ana]<br>
-completion = [stanko, ana, mislav]</p>
+<p>participant = [mislav, stanko, mislav, ana]<br>completion = [stanko, ana, mislav]</p>
 </blockquote>
 <p>일 경우에 예외가 발생했다. 그 이유는 <code>forEach</code>문은 중간에 멈출 수가 없다. 그래서 첫번째로 일치하지 않는 <code>mislav</code> 이름을 찾고도 그다음 forloop이 진행되어 answer에 <code>stanko</code>가 담겨 테스트를 통과하지 못했다.</p>
-<p>[참고]<br>
-<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></p>
+<p>[참고]<br><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></p>
 <blockquote>
 <p>예외를 던지지 않고는 forEach()를 중간에 멈출 수 없습니다. 중간에 멈춰야 한다면 forEach()가 적절한 방법이 아닐지도 모릅니다.</p>
 </blockquote>
@@ -209,8 +204,8 @@ completion = [stanko, ana, mislav]</p>
 <blockquote>
 <p>find() 메서드는 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환합니다.</p>
 </blockquote>
-<h1><span id="3-내가-작성한-코드">3. 내가 작성한 코드</span></h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  answer = participant.find(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item !== completion[i]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><span id="3-내가-작성한-코드">3. 내가 작성한 코드</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  answer = participant.find(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item !== completion[i]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>엇, 그런데 해시문제인데 해시를 사용하지 않았다…</p>
 
         </div>
@@ -324,7 +319,7 @@ completion = [stanko, ana, mislav]</p>
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            49
+                            50
                         </p>
                     </a>
                 </div>
@@ -427,7 +422,7 @@ completion = [stanko, ana, mislav]</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">48</span>
+                <span class="level-item tag">49</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -435,7 +430,7 @@ completion = [stanko, ana, mislav]</p>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -520,6 +515,25 @@ completion = [stanko, ana, mislav]</p>
         
         <article class="media">
             
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
@@ -594,25 +608,6 @@ completion = [stanko, ana, mislav]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -623,6 +618,17 @@ completion = [stanko, ana, mislav]</p>
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -762,6 +768,25 @@ completion = [stanko, ana, mislav]</p>
         
         <article class="media">
             
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
@@ -836,25 +861,6 @@ completion = [stanko, ana, mislav]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -865,6 +871,17 @@ completion = [stanko, ana, mislav]</p>
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">

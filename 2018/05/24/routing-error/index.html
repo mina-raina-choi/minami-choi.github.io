@@ -10,19 +10,19 @@
 <title>앵귤러에서 뒤로가기 에러 해결 (routing) - Mina&#39;s World</title>
 
 
-    <meta name="description" content="앵귤러에서 routing 설정 회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.">
+    <meta name="description" content="앵귤러에서 routing 설정회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.">
 <meta name="keywords" content="Angular,Routing,Router">
 <meta property="og:type" content="article">
 <meta property="og:title" content="앵귤러에서 뒤로가기 에러 해결 (routing)">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/24/routing-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="앵귤러에서 routing 설정 회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.">
+<meta property="og:description" content="앵귤러에서 routing 설정회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:38:34.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="앵귤러에서 뒤로가기 에러 해결 (routing)">
-<meta name="twitter:description" content="앵귤러에서 routing 설정 회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.">
+<meta name="twitter:description" content="앵귤러에서 routing 설정회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,24 +175,20 @@
             
         </h1>
         <div class="content">
-            <h2><span id="앵귤러에서-routing-설정">앵귤러에서 routing 설정</span></h2>
-<p>회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.</p>
+            <h2><span id="앵귤러에서-routing-설정">앵귤러에서 routing 설정</span></h2><p>회사 프로젝트를 진행하던 중, 브라우저에서 뒤로가기 버튼을 클릭했을 때 뒤로 가기가 제대로 동작하지 않는 문제가 있었다.</p>
 <a id="more"></a>
-<h2><span id="문제상황">문제상황</span></h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'home'</span>,</span><br><span class="line">  component: HomeComponent,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'home/:platform'</span>,</span><br><span class="line">    component: HomeComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'home/:platform/:lang'</span>,</span><br><span class="line">    component: HomeComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'new-account'</span>,</span><br><span class="line">    component: NewAccountComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'new-account/:lang'</span>,</span><br><span class="line">    component: NewAccountComponent</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>라우팅을 위와 같이 Optional하게 파라미터를 설정하는 방식으로 구성했더니.<br>
-<code>home페이지</code>로 들어오면 url이 <code>/home</code> -&gt; <code>/home/platform</code> -&gt; <code>/home/platform/lang</code> 이렇게 이중, 삼중으로 변경되었다.</p>
+
+<h2><span id="문제상황">문제상황</span></h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'home'</span>,</span><br><span class="line">  component: HomeComponent,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'home/:platform'</span>,</span><br><span class="line">    component: HomeComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'home/:platform/:lang'</span>,</span><br><span class="line">    component: HomeComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'new-account'</span>,</span><br><span class="line">    component: NewAccountComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="hljs-string">'new-account/:lang'</span>,</span><br><span class="line">    component: NewAccountComponent</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>라우팅을 위와 같이 Optional하게 파라미터를 설정하는 방식으로 구성했더니.<br><code>home페이지</code>로 들어오면 url이 <code>/home</code> -&gt; <code>/home/platform</code> -&gt; <code>/home/platform/lang</code> 이렇게 이중, 삼중으로 변경되었다.</p>
 <p><code>new-account페이지</code>에서 <code>home페이지</code>로 온 뒤, 브라우저의 뒤로가기 버튼을 클릭하면 <code>new-account</code>페이지가 아니라, <code>/home/platform</code> -&gt; <code>/home/platform/lang</code>으로 redirect되어 뒤로가기가 제대로 동작하지 않는 문제가 발생했다.</p>
-<h2><span id="해결방법">해결방법</span></h2>
-<p>우리 사이트의 경우 url에 플랫폼과 언어정보가 붙는 것은 필수적이므로 아래와 같이 라우팅을 변경했다.</p>
+<h2><span id="해결방법">해결방법</span></h2><p>우리 사이트의 경우 url에 플랫폼과 언어정보가 붙는 것은 필수적이므로 아래와 같이 라우팅을 변경했다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">path: <span class="hljs-string">'home/:platform/:lang'</span>,</span><br><span class="line">component: HomeComponent</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">path: <span class="hljs-string">'new-account/:lang'</span>,</span><br><span class="line">component: NewAccountComponent</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
 <p>위와 같이 변경했더니 원하는대로 뒤로가기를 할 수 있었다.</p>
-<p>앵귤러의 라우팅에 대해 좀 더 상세히 정리할 필요가 있겠다.<br>
-결국 Optional하게 파라미터를 추가하는 방식을 잘못 사용했기 때문에 위와 같은 문제가 발생한 것이다!</p>
+<p>앵귤러의 라우팅에 대해 좀 더 상세히 정리할 필요가 있겠다.<br>결국 Optional하게 파라미터를 추가하는 방식을 잘못 사용했기 때문에 위와 같은 문제가 발생한 것이다!</p>
 <p>제대로 알고 사용하자!</p>
-<p>&lt;참고블로그&gt;<br>
-<a href="https://codecraft.tv/courses/angular/routing/parameterised-routes/" target="_blank" rel="noopener">https://codecraft.tv/courses/angular/routing/parameterised-routes/</a><br>
-<a href="https://www.sitepoint.com/component-routing-angular-router/" target="_blank" rel="noopener">https://www.sitepoint.com/component-routing-angular-router/</a></p>
+<p>&lt;참고블로그&gt;<br><a href="https://codecraft.tv/courses/angular/routing/parameterised-routes/" target="_blank" rel="noopener">https://codecraft.tv/courses/angular/routing/parameterised-routes/</a><br><a href="https://www.sitepoint.com/component-routing-angular-router/" target="_blank" rel="noopener">https://www.sitepoint.com/component-routing-angular-router/</a></p>
 
         </div>
         
@@ -305,7 +301,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            49
+                            50
                         </p>
                     </a>
                 </div>
@@ -408,7 +404,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">48</span>
+                <span class="level-item tag">49</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -416,7 +412,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -474,6 +470,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -551,25 +566,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -580,6 +576,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -695,6 +702,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
@@ -769,25 +795,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -798,6 +805,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">

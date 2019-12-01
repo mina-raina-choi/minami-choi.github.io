@@ -179,8 +179,7 @@
             
         </h1>
         <div class="content">
-            <p>자바스크립트 array method를 정리해보자<br>
-자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.</p>
+            <p>자바스크립트 array method를 정리해보자<br>자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.</p>
         </div>
         
         
@@ -240,12 +239,9 @@
         </h1>
         <div class="content">
             <p>지난 글에 이어서</p>
-<h2>함수 파이프라인을 합성</h2>
-<p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
+<h2 id="함수-파이프라인을-합성"><a href="#함수-파이프라인을-합성" class="headerlink" title="함수 파이프라인을 합성"></a>함수 파이프라인을 합성</h2><p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
 <p>함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것</p>
-<h3>함수 합성: 서술과 평가를 구분</h3>
-<p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>
-람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
+<h3 id="함수-합성-서술과-평가를-구분"><a href="#함수-합성-서술과-평가를-구분" class="headerlink" title="함수 합성: 서술과 평가를 구분"></a>함수 합성: 서술과 평가를 구분</h3><p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
         </div>
         
         
@@ -386,10 +382,8 @@
 <li>클로저의 활용</li>
 </ol>
 </blockquote>
-<h2>왜 자바스크립트인가?</h2>
-<ol>
-<li>
-<p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
+<h2 id="왜-자바스크립트인가"><a href="#왜-자바스크립트인가" class="headerlink" title="왜 자바스크립트인가?"></a>왜 자바스크립트인가?</h2><ol>
+<li><p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
         </div>
         
         
@@ -448,8 +442,7 @@
             
         </h1>
         <div class="content">
-            <h3>문제 상황</h3>
-<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
+            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">&lt;input</span> <span class="hljs-string">type="text"</span> <span class="hljs-string">[value]="address.addr"</span> <span class="hljs-string">id="&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;"&gt;</span></span><br><span class="line"><span class="hljs-string">&lt;button</span> <span class="hljs-string">type="button"</span> <span class="hljs-string">(click)="copyAddr(address.addr)"</span></span><br><span class="line"><span class="hljs-string">id="copyWalletAddr"</span> <span class="hljs-string">attr.data-clipboard-target='#&#123;&#123;</span> <span class="hljs-string">address.addr</span> <span class="hljs-string">+</span> <span class="hljs-number">1</span> <span class="hljs-string">&#125;&#125;'</span> <span class="hljs-string">data-clipboard-action="copy"&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -508,8 +501,7 @@
             
         </h1>
         <div class="content">
-            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>
-(원래 나타내던 this를 그대로 쓴다)</p>
+            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>(원래 나타내던 this를 그대로 쓴다)</p>
 <p>앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.</p>
         </div>
         
@@ -578,7 +570,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            49
+                            50
                         </p>
                     </a>
                 </div>
@@ -681,7 +673,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">48</span>
+                <span class="level-item tag">49</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -689,7 +681,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -747,6 +739,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -824,25 +835,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -853,6 +845,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -968,6 +971,25 @@
         
         <article class="media">
             
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
@@ -1042,25 +1064,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1071,6 +1074,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">

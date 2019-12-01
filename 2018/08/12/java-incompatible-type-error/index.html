@@ -10,19 +10,19 @@
 <title>자바에서 Incompatible types error - Mina&#39;s World</title>
 
 
-    <meta name="description" content="문제 상황 private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(perm)) &amp;#123;            r">
+    <meta name="description" content="문제 상황private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(perm)) &amp;#123;            re">
 <meta name="keywords" content="android,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="자바에서 Incompatible types error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/12/java-incompatible-type-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 상황 private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(perm)) &amp;#123;            r">
+<meta property="og:description" content="문제 상황private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(perm)) &amp;#123;            re">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:38:15.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="자바에서 Incompatible types error">
-<meta name="twitter:description" content="문제 상황 private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(perm)) &amp;#123;            r">
+<meta name="twitter:description" content="문제 상황private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(perm)) &amp;#123;            re">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,17 +179,16 @@
             
         </h1>
         <div class="content">
-            <h3><span id="문제-상황">문제 상황</span></h3>
-<figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">private</span> <span class="hljs-string">ArrayList</span> <span class="hljs-string">findUnAskedPermissions(ArrayList</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">    <span class="hljs-string">ArrayList</span> <span class="hljs-string">result</span> <span class="hljs-string">=</span> <span class="hljs-string">new</span> <span class="hljs-string">ArrayList();</span></span><br><span class="line">    <span class="hljs-string">for</span> <span class="hljs-string">(String</span> <span class="hljs-attr">perm :</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">        <span class="hljs-string">if(!hasPermissions(perm))</span> <span class="hljs-string">&#123;</span></span><br><span class="line">            <span class="hljs-string">result.add(perm);</span></span><br><span class="line">        <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">return</span> <span class="hljs-string">result;</span></span><br><span class="line"><span class="hljs-string">&#125;</span></span><br></pre></td></tr></table></figure>
+            <h3><span id="문제-상황">문제 상황</span></h3><figure class="highlight yml hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-string">private</span> <span class="hljs-string">ArrayList</span> <span class="hljs-string">findUnAskedPermissions(ArrayList</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">    <span class="hljs-string">ArrayList</span> <span class="hljs-string">result</span> <span class="hljs-string">=</span> <span class="hljs-string">new</span> <span class="hljs-string">ArrayList();</span></span><br><span class="line">    <span class="hljs-string">for</span> <span class="hljs-string">(String</span> <span class="hljs-attr">perm :</span> <span class="hljs-string">wanted)</span> <span class="hljs-string">&#123;</span></span><br><span class="line">        <span class="hljs-string">if(!hasPermissions(perm))</span> <span class="hljs-string">&#123;</span></span><br><span class="line">            <span class="hljs-string">result.add(perm);</span></span><br><span class="line">        <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">&#125;</span></span><br><span class="line">    <span class="hljs-string">return</span> <span class="hljs-string">result;</span></span><br><span class="line"><span class="hljs-string">&#125;</span></span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <p><code>for (String perm : wanted)</code> 이 부분에서</p>
 <blockquote>
 <p>Incompatible types required java.lang.string found java.lang.object</p>
 </blockquote>
 <p>이러한 에러가 발생했다.</p>
-<h3><span id="해결-방법">해결 방법</span></h3>
-<p><code>findUnAskedPermissions</code> 의 파라미터 타입을 <code>ArrayList wanted</code> 에서 <code>ArrayList&lt;String&gt; wanted</code>으로 변경하니 에러가 사라졌다.<br>
-ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 잊지말자!</p>
+<h3><span id="해결-방법">해결 방법</span></h3><p><code>findUnAskedPermissions</code> 의 파라미터 타입을 <code>ArrayList wanted</code> 에서 <code>ArrayList&lt;String&gt; wanted</code>으로 변경하니 에러가 사라졌다.<br>ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 잊지말자!</p>
 
         </div>
         
@@ -302,7 +301,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            49
+                            50
                         </p>
                     </a>
                 </div>
@@ -405,7 +404,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">48</span>
+                <span class="level-item tag">49</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -413,7 +412,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">16</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -494,6 +493,25 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
         
         <article class="media">
             
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
@@ -568,25 +586,6 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -597,6 +596,17 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -732,6 +742,25 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
         
         <article class="media">
             
+            <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time></div>
+                    <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="title has-link-black-ter is-size-6 has-text-weight-normal">스택/큐 - 다리를 지나는 트럭</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/11/30/Programming/JavaScript/array-method/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png" alt="Array - pop, push, shift, unshift">
@@ -806,25 +835,6 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time></div>
-                    <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시 - 베스트앨범</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -835,6 +845,17 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
