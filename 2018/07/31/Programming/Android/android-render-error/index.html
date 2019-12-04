@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>build.gradle (Project)와 build.gradle (Module)의 차이점 - Mina&#39;s World</title>
+<title>Android Render Problem 해결 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="build.gradle (Project)와 build.gradle (Module)의 차이점1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리">
-<meta name="keywords" content="android,build.gradle,안드로이드 그래들">
+    <meta name="description" content="문제 상황constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.에러 메시지를 확인해보니 Render problem!!!">
+<meta name="keywords" content="android,안드로이드">
 <meta property="og:type" content="article">
-<meta property="og:title" content="build.gradle (Project)와 build.gradle (Module)의 차이점">
-<meta property="og:url" content="https://minami-choi.github.io/2018/07/15/android-build-gradle/index.html">
+<meta property="og:title" content="Android Render Problem 해결">
+<meta property="og:url" content="https://minami-choi.github.io/2018/07/31/Programming/Android/android-render-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="build.gradle (Project)와 build.gradle (Module)의 차이점1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리">
+<meta property="og:description" content="문제 상황constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.에러 메시지를 확인해보니 Render problem!!!">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
-<meta property="og:updated_time" content="2019-11-23T13:34:37.521Z">
+<meta property="og:image" content="https://images.pexels.com/photos/273238/pexels-photo-273238.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+<meta property="og:updated_time" content="2019-12-04T12:26:03.770Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="build.gradle (Project)와 build.gradle (Module)의 차이점">
-<meta name="twitter:description" content="build.gradle (Project)와 build.gradle (Module)의 차이점1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리">
-<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+<meta name="twitter:title" content="Android Render Problem 해결">
+<meta name="twitter:description" content="문제 상황constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.에러 메시지를 확인해보니 Render problem!!!">
+<meta name="twitter:image" content="https://images.pexels.com/photos/273238/pexels-photo-273238.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 
 
 
@@ -121,7 +121,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -143,7 +143,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="build.gradle (Project)와 build.gradle (Module)의 차이점">
+            <img class="thumbnail" src="https://images.pexels.com/photos/273238/pexels-photo-273238.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="Android Render Problem 해결">
         </span>
     </div>
     
@@ -151,7 +151,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-15T09:46:01.000Z">2018-07-15</time>
+                <time class="level-item has-text-grey" datetime="2018-07-31T14:21:11.000Z">2018-07-31</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 283 words)
+                    a minute read (About 153 words)
                 </span>
                 
                 
@@ -175,19 +175,20 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                build.gradle (Project)와 build.gradle (Module)의 차이점
+                Android Render Problem 해결
             
         </h1>
         <div class="content">
-            <h2><span id="buildgradle-project와-buildgradle-module의-차이점">build.gradle (Project)와 build.gradle (Module)의 차이점</span></h2><p>1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.<br>머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.</p>
-<blockquote>
-<p>[참고] build.gradle이란?<br>모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.</p>
-</blockquote>
+            <h3><span id="문제-상황">문제 상황</span></h3><p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
 <a id="more"></a>
 
-<h3><span id="buildgradleproject-myapplication">Build.gradle(Project : MyApplication)</span></h3><p><code>Top-level build file where you can add configuration options common to all sub-projects/modules.</code><br>이 파일에 정의된 설정은 Project의 모든 모듈에 적용된다. 모듈은 프로젝트를 구성하는 하나의 구성품! 보통 대부분의 안드로이드 프로젝트에는 하나의 모듈인 app모듈만 있다.</p>
-<h3><span id="buildgradlemoduleapp">Build.gradle(Module:app)</span></h3><p><code>Build file of your specific module (where you add your dependencies, signing configs, build types, flavors, etc)</code><br>이 빌드 설정은 앱모듈에만 적용된다.<br>모든 모듈은 각자의 특정한 gradle파일을 가지고 있다.</p>
-<p>[참고] <a href="https://stackoverflow.com/questions/28295933/difference-between-build-gradleproject-and-build-gradlemodule" target="_blank" rel="noopener">https://stackoverflow.com/questions/28295933/difference-between-build-gradleproject-and-build-gradlemodule</a></p>
+<h3><span id="해결-방법">해결 방법</span></h3><p><code>app - build.gradle</code> 에서</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 수정전</span></span><br><span class="line">compileSdkVersion28</span><br><span class="line">targetSdkVersion28</span><br><span class="line"></span><br><span class="line">dependencies&#123;</span><br><span class="line">...</span><br><span class="line">implementation<span class="hljs-string">'com.android.support:appcompat-v7:28.0.0-alpha3'</span></span><br><span class="line">…</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 수정후</span></span><br><span class="line">compileSdkVersion27</span><br><span class="line">targetSdkVersion27</span><br><span class="line"></span><br><span class="line">dependencies&#123;</span><br><span class="line">...</span><br><span class="line">Implementation <span class="hljs-string">'com.android.support:appcompat-v7:27.0.2'</span></span><br><span class="line">…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Sdk버전을 낮춰주면 된다.</p>
+<p>수정 후, <code>File -&gt; Invalidate Caches/Restart -&gt; Invalidate and Restart</code> 하면 정상적으로 동작하는 것을 확인할 수 있다.</p>
+<p>아직 <code>com.android.support:appcompat-v7:28.0.0-alpha3</code>이 안정화가 안돼서 생기는 문제인 듯하다.</p>
+<br>
 
         </div>
         
@@ -195,7 +196,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/android/">android</a>, <a class="has-link-grey -link" href="/tags/build-gradle/">build.gradle</a>, <a class="has-link-grey -link" href="/tags/안드로이드-그래들/">안드로이드 그래들</a>
+                    <a class="has-link-grey -link" href="/tags/android/">android</a>, <a class="has-link-grey -link" href="/tags/안드로이드/">안드로이드</a>
                 </div>
             </div>
         </div>
@@ -213,16 +214,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/07/23/angular-custom-directive/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/08/01/Programming/Android/android-inflateException/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">앵귤러에서 커스텀 디렉티브 만들기</span>
+                <span class="level-item">android.view.InflateException 해결</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/06/28/angular-forms/">
-                <span class="level-item">Angular의 Forms 제대로 사용하기</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/07/23/angular-custom-directive/">
+                <span class="level-item">앵귤러에서 커스텀 디렉티브 만들기</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -234,12 +235,12 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://minami-choi.github.io/2018/07/15/android-build-gradle/';
-        this.page.identifier = '2018/07/15/android-build-gradle/';
+        this.page.url = 'https://minami-choi.github.io/2018/07/31/Programming/Android/android-render-error/';
+        this.page.identifier = '2018/07/31/Programming/Android/android-render-error/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -296,7 +297,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -308,7 +309,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -320,11 +321,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            80
                         </p>
                     </a>
                 </div>
@@ -333,7 +334,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -378,7 +379,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -484,21 +485,17 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
         <span class="has-mr-6">1</span>
-        <span>build.gradle (Project)와 build.gradle (Module)의 차이점</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.1</span>
-        <span>Build.gradle(Project : MyApplication)</span>
+        <span>문제 상황</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.2</span>
-        <span>Build.gradle(Module:app)</span>
-        </a></li></ul></li></ul>
+        <span class="has-mr-6">2</span>
+        <span>해결 방법</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -507,7 +504,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -612,7 +609,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -737,21 +734,17 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
         <span class="has-mr-6">1</span>
-        <span>build.gradle (Project)와 build.gradle (Module)의 차이점</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.1</span>
-        <span>Build.gradle(Project : MyApplication)</span>
+        <span>문제 상황</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.2</span>
-        <span>Build.gradle(Module:app)</span>
-        </a></li></ul></li></ul>
+        <span class="has-mr-6">2</span>
+        <span>해결 방법</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -760,7 +753,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -865,7 +858,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1140,10 +1133,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

@@ -7,6 +7,46 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2018/07/31/Programming/Android/android-render-error/</loc>
+        <lastmod>2019-12-04T12:26:03.770Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/08/01/Programming/Android/android-inflateException/</loc>
+        <lastmod>2019-12-04T12:24:48.740Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/07/15/Programming/Android/android-build-gradle/</loc>
+        <lastmod>2019-12-04T12:22:26.798Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/08/01/Programming/Android/android-hardware-acceleration/</loc>
+        <lastmod>2019-12-04T12:21:56.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/08/12/Programming/Android/java-incompatible-type-error/</loc>
+        <lastmod>2019-12-04T12:17:55.880Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2019/12/04/Programming/React/react-router-component-vs-render/</loc>
         <lastmod>2019-12-04T12:13:07.315Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -103,7 +143,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/</loc>
+        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -111,7 +151,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
+        <loc>https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -279,14 +319,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/12/java-incompatible-type-error/</loc>
-        <lastmod>2019-11-23T13:38:15.609Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2018/05/18/interface-vs-class-in-typescript/</loc>
         <lastmod>2019-11-23T13:38:09.431Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -409,38 +441,6 @@
     <url>
         <loc>https://minami-choi.github.io/2018/04/27/angular-component-overview/</loc>
         <lastmod>2019-11-23T13:35:18.442Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2018/07/31/android-render-error/</loc>
-        <lastmod>2019-11-23T13:35:04.677Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2018/08/01/android-inflateException/</loc>
-        <lastmod>2019-11-23T13:34:48.184Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2018/08/01/android-hardware-acceleration/</loc>
-        <lastmod>2019-11-23T13:34:43.960Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2018/07/15/android-build-gradle/</loc>
-        <lastmod>2019-11-23T13:34:37.521Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

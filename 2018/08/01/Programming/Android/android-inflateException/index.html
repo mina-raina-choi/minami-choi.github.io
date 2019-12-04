@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>안드로이드 에러 - x86 emulation currently requires hardware acceleration - Mina&#39;s World</title>
+<title>android.view.InflateException 해결 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="안드로이드 스튜디오 에뮬레이터 error문제 상황emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법 Tools - SDK manager - SDK tools에서 Intel x86 emulator accelerato">
-<meta name="keywords" content="안드로이드,android,hardware acceleration">
+    <meta name="description" content="문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="keywords" content="android,안드로이드,InflateException">
 <meta property="og:type" content="article">
-<meta property="og:title" content="안드로이드 에러 - x86 emulation currently requires hardware acceleration">
-<meta property="og:url" content="https://minami-choi.github.io/2018/08/01/android-hardware-acceleration/index.html">
+<meta property="og:title" content="android.view.InflateException 해결">
+<meta property="og:url" content="https://minami-choi.github.io/2018/08/01/Programming/Android/android-inflateException/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="안드로이드 스튜디오 에뮬레이터 error문제 상황emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법 Tools - SDK manager - SDK tools에서 Intel x86 emulator accelerato">
+<meta property="og:description" content="문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
-<meta property="og:updated_time" content="2019-11-23T13:34:43.960Z">
+<meta property="og:image" content="https://images.pexels.com/photos/574282/pexels-photo-574282.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
+<meta property="og:updated_time" content="2019-12-04T12:24:48.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="안드로이드 에러 - x86 emulation currently requires hardware acceleration">
-<meta name="twitter:description" content="안드로이드 스튜디오 에뮬레이터 error문제 상황emulator: ERROR: x86 emulation currently requires hardware acceleration! 위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다. 해결 방법 Tools - SDK manager - SDK tools에서 Intel x86 emulator accelerato">
-<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+<meta name="twitter:title" content="android.view.InflateException 해결">
+<meta name="twitter:description" content="문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="twitter:image" content="https://images.pexels.com/photos/574282/pexels-photo-574282.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 
 
 
@@ -121,7 +121,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -143,7 +143,7 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="안드로이드 에러 - x86 emulation currently requires hardware acceleration">
+            <img class="thumbnail" src="https://images.pexels.com/photos/574282/pexels-photo-574282.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="android.view.InflateException 해결">
         </span>
     </div>
     
@@ -151,7 +151,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-08-01T13:30:47.000Z">2018-08-01</time>
+                <time class="level-item has-text-grey" datetime="2018-07-31T15:30:24.000Z">2018-08-01</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 272 words)
+                    2 minutes read (About 242 words)
                 </span>
                 
                 
@@ -175,26 +175,27 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                안드로이드 에러 - x86 emulation currently requires hardware acceleration
+                android.view.InflateException 해결
             
         </h1>
         <div class="content">
-            <h2><span id="안드로이드-스튜디오-에뮬레이터-error">안드로이드 스튜디오 에뮬레이터 error</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p><code>emulator: ERROR: x86 emulation currently requires hardware acceleration!</code></p>
-<p>위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다.</p>
-<h3><span id="해결-방법">해결 방법</span></h3><ol>
-<li><code>Tools - SDK manager - SDK tools</code>에서 <code>Intel x86 emulator accelerator (HAXM installer)</code>가 설치되어 있는지 체크, 설치가 안되었다면 설치.</li>
-</ol>
+            <h1><span id="문제-상황">문제 상황</span></h1><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
 <a id="more"></a>
 
-<ol start="2">
-<li><p>만약 설치해도 똑같은 에러가 발생한다면, <code>emulator accelerator</code>를 다운로드 완료했음에도 안드로이드 SDK Manager가 자동으로 <code>emulator accelator</code>를 설치하지 못한다는 의미다. 수동으로 설치해줘야한다.</p>
-<p><code>Hardware_Accelerated_Execution_Manager</code>가 설치된 위치를 찾아가서 실행파일을 실행시키면 된다.</p>
-<p>내경우에는 아래의 경로에 있었다.</p>
-<pre><code>C:\Users\cmina\AppData\Local\Android\Sdk\extras\intel\Hardware_Accelerated_Execution_Manager</code></pre><p>설치를 완료하고 나면 아래와 같은 화면이 뜬다.</p>
-<p><img src="/images/emulator_install.png" alt></p>
-<p>위의 과정을 모두 마친 뒤, 다시 앱을 실행시켜보면 에뮬레이터에서 잘 동작하는 것을 확인할 수 있다.</p>
-</li>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Binary XML file line #25: Error inflating class fragment</span></span><br><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Error inflating class fragment</span></span><br><span class="line">Caused by: java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
+
+<p>검색을 통해 알아보니 <code>android.view.InflateException</code> 에러는 아래와 같은 경우 발생한다고 한다.</p>
+<ol>
+<li>xml에 값을 잘못 넣었을 경우</li>
+<li>CustomView의 생성자 함수를 제대로 만들어주지 않았을 경우</li>
 </ol>
+<p>[참고]<br>CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CustomView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(context, attrs);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1><span id="해결-방법">해결 방법</span></h1><p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;fragment</span><br><span class="line">android:id=<span class="hljs-string">"@+id/mapFragment"</span></span><br><span class="line">android:layout_width=<span class="hljs-string">"match_parent"</span></span><br><span class="line">android:layout_height=<span class="hljs-string">"wrap_content"</span></span><br><span class="line">app:layout_constraintLeft_toLeftOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintRight_toRightOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintTop_toBottomOf=<span class="hljs-string">"@+id/guideline"</span></span><br><span class="line">app:layout_constraintBottom_toBottomOf=<span class="hljs-string">"parent"</span></span><br><span class="line">class=<span class="hljs-string">"com.example.minachoi.findjuyou.fragment.MapFragment"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 class값을 넣어주니 제대로 build되었다.</p>
 
         </div>
         
@@ -202,7 +203,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/android/">android</a>, <a class="has-link-grey -link" href="/tags/hardware-acceleration/">hardware acceleration</a>, <a class="has-link-grey -link" href="/tags/안드로이드/">안드로이드</a>
+                    <a class="has-link-grey -link" href="/tags/InflateException/">InflateException</a>, <a class="has-link-grey -link" href="/tags/android/">android</a>, <a class="has-link-grey -link" href="/tags/안드로이드/">안드로이드</a>
                 </div>
             </div>
         </div>
@@ -220,16 +221,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/08/04/angular-ngrx-error/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/08/01/Programming/Android/android-hardware-acceleration/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">앵귤러와 ngrx 버전 미스 매치</span>
+                <span class="level-item">안드로이드 에러 - x86 emulation currently requires hardware acceleration</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/01/android-inflateException/">
-                <span class="level-item">android.view.InflateException 해결</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/07/31/Programming/Android/android-render-error/">
+                <span class="level-item">Android Render Problem 해결</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -241,12 +242,12 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
-        this.page.url = 'https://minami-choi.github.io/2018/08/01/android-hardware-acceleration/';
-        this.page.identifier = '2018/08/01/android-hardware-acceleration/';
+        this.page.url = 'https://minami-choi.github.io/2018/08/01/Programming/Android/android-inflateException/';
+        this.page.identifier = '2018/08/01/Programming/Android/android-inflateException/';
     };
     (function() {
         var d = document, s = d.createElement('script');  
@@ -303,7 +304,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -315,7 +316,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -327,11 +328,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            80
                         </p>
                     </a>
                 </div>
@@ -340,7 +341,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -385,7 +386,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -491,21 +492,17 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
         <span class="has-mr-6">1</span>
-        <span>안드로이드 스튜디오 에뮬레이터 error</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.1</span>
         <span>문제 상황</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2</span>
         <span>해결 방법</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -514,7 +511,7 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -619,7 +616,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -744,21 +741,17 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
         <span class="has-mr-6">1</span>
-        <span>안드로이드 스튜디오 에뮬레이터 error</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.1</span>
         <span>문제 상황</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2</span>
         <span>해결 방법</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -767,7 +760,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
         
         <article class="media">
@@ -872,7 +865,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -1147,10 +1140,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

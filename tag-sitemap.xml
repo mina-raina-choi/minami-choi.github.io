@@ -30,48 +30,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/build-gradle/</loc>
-        <lastmod>2019-11-23T13:34:37.521Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B7%B8%EB%9E%98%EB%93%A4/</loc>
-        <lastmod>2019-11-23T13:34:37.521Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/hardware-acceleration/</loc>
-        <lastmod>2019-11-23T13:34:43.960Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/InflateException/</loc>
-        <lastmod>2019-11-23T13:34:48.184Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/</loc>
-        <lastmod>2019-11-23T13:35:04.677Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/render/</loc>
-        <lastmod>2019-11-23T13:35:04.677Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/architecture/</loc>
         <lastmod>2019-11-23T13:35:29.103Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -235,20 +193,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/class/</loc>
         <lastmod>2019-11-23T13:38:09.431Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/android/</loc>
-        <lastmod>2019-11-23T13:38:15.609Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/java/</loc>
-        <lastmod>2019-11-23T13:38:15.609Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -450,14 +394,14 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%AA%A8%EB%93%88%EC%A0%81%EC%9D%B8-%EC%BD%94%EB%93%9C%EB%A1%9C/</loc>
+        <loc>https://minami-choi.github.io/tags/%EA%B3%A0%EA%B3%84-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/%EA%B3%A0%EA%B3%84-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
+        <loc>https://minami-choi.github.io/tags/%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%AA%A8%EB%93%88%EC%A0%81%EC%9D%B8-%EC%BD%94%EB%93%9C%EB%A1%9C/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -571,6 +515,48 @@
     <url>
         <loc>https://minami-choi.github.io/tags/react-router/</loc>
         <lastmod>2019-12-04T12:13:07.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/java/</loc>
+        <lastmod>2019-12-04T12:17:55.880Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/build-gradle/</loc>
+        <lastmod>2019-12-04T12:22:26.798Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EA%B7%B8%EB%9E%98%EB%93%A4/</loc>
+        <lastmod>2019-12-04T12:22:26.798Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/InflateException/</loc>
+        <lastmod>2019-12-04T12:24:48.740Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/android/</loc>
+        <lastmod>2019-12-04T12:26:03.770Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/</loc>
+        <lastmod>2019-12-04T12:26:03.770Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
