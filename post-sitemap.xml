@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2019/12/04/Programming/React/react-router-component-vs-render/</loc>
+        <lastmod>2019-12-04T12:13:07.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2019/12/04/Programming/React/material-ui-optimization/</loc>
-        <lastmod>2019-12-04T11:57:41.440Z</lastmod>
+        <lastmod>2019-12-04T12:12:35.488Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -95,7 +103,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
+        <loc>https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -103,7 +111,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/</loc>
+        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
