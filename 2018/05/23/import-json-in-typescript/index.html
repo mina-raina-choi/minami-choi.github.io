@@ -10,19 +10,19 @@
 <title>타입스크립트에서 json파일 import하기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+    <meta name="description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta name="keywords" content="typescript,json import">
 <meta property="og:type" content="article">
 <meta property="og:title" content="타입스크립트에서 json파일 import하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/23/import-json-in-typescript/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<meta property="og:description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:38:02.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="타입스크립트에서 json파일 import하기">
-<meta name="twitter:description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<meta name="twitter:description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,23 +175,20 @@
             
         </h1>
         <div class="content">
-            <h2><span id="타입스크립트에서-json파일-import하기">타입스크립트에서 json파일 import하기</span></h2><p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
+            <h2><span id="타입스크립트에서-json파일-import하기">타입스크립트에서 json파일 import하기</span></h2>
+<p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
 <p>만약 <code>example.json</code>이 있다면</p>
 <a id="more"></a>
-
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"testing"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>ES6/ES2015에서 아래와 같은 방식으로 import할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">// ES6/ES2015</span><br><span class="line">// app.js</span><br><span class="line">import * as data from <span class="hljs-string">'./example.json'</span>;</span><br><span class="line">const word = data.name;</span><br><span class="line">console.log(word); // output <span class="hljs-string">'testing'</span></span><br></pre></td></tr></table></figure>
-
 <p>하지만 typescript에서는 똑같이 적용하면 에러가 발생한다.</p>
-<p><code>Cannot find module &#39;example.json&#39;</code></p>
-<h2><span id="해결방법">해결방법</span></h2><p>TS Definition 파일에 (예를 들면, typings.d.ts파일) 아래를 추가하면 된다.</p>
+<p><code>Cannot find module 'example.json'</code></p>
+<h2><span id="해결방법">해결방법</span></h2>
+<p>TS Definition 파일에 (예를 들면, typings.d.ts파일) 아래를 추가하면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">declare</span> module <span class="hljs-string">"*.json"</span> &#123;</span><br><span class="line">    const value: any;</span><br><span class="line">    <span class="hljs-built_in">export</span> default value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>그럼 아래와 같이 동작할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">// Typescript</span><br><span class="line">// app.ts</span><br><span class="line">import * as data from <span class="hljs-string">'./example.json'</span>;</span><br><span class="line">const word = (&lt;any&gt;data).name;</span><br><span class="line">console.log(word); // output <span class="hljs-string">'testing'</span></span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -238,7 +235,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
         
 <script>
     var disqus_config = function () {
@@ -300,11 +297,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            58
+                            59
                         </p>
                     </a>
                 </div>
@@ -312,7 +309,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -328,7 +325,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            83
                         </p>
                     </a>
                 </div>
@@ -337,7 +334,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -382,7 +379,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -407,7 +404,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">57</span>
+                <span class="level-item tag">58</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -415,7 +412,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -487,8 +484,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -566,25 +582,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -602,7 +599,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -716,8 +713,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -795,25 +811,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -831,7 +828,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1096,9 +1093,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

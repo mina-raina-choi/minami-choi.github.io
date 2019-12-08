@@ -10,19 +10,19 @@
 <title>엑셀에서 json파일 추출하기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+    <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="keywords" content="엑셀,csv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="엑셀에서 json파일 추출하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/28/excel-to-json/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta property="og:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-12-03T14:30:56.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="엑셀에서 json파일 추출하기">
-<meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,16 +175,27 @@
             
         </h1>
         <div class="content">
-            <p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
+            <p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>
+앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
 <a id="more"></a>
-
 <p>약간의 검토를 해보니 excel파일에서 json을 추출하는 방법이 있다는 것을 알게되어 정리를 해두게 되었다.</p>
-<h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3><h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3><h4><span id="2-1-option1-변환할-csv-파일-선택">2-1. Option1 : 변환할 csv 파일 선택</span></h4><p><img src="/images/choose-csv.png" alt></p>
-<h4><span id="2-2-options2-first-row-is-column-names-옵션-체크">2-2. Options2 : First row is column names 옵션 체크</span></h4><h4><span id="2-3-options4-출력할-형태-만들기">2-3. Options4 : 출력할 형태 만들기</span></h4><blockquote>
-<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>{lb} : left bracket {<br>{br} : Line break<br>{rb} : right bracket }<br>{f1} : 첫번째 필드값<br>{h1} : 첫번째 헤드값</p>
+<h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3>
+<h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3>
+<h4><span id="2-1-option1-변환할-csv-파일-선택">2-1. Option1 : 변환할 csv 파일 선택</span></h4>
+<p><img src="/images/choose-csv.png" alt></p>
+<h4><span id="2-2-options2-first-row-is-column-names-옵션-체크">2-2. Options2 : First row is column names 옵션 체크</span></h4>
+<h4><span id="2-3-options4-출력할-형태-만들기">2-3. Options4 : 출력할 형태 만들기</span></h4>
+<blockquote>
+<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>
+{lb} : left bracket {<br>
+{br} : Line break<br>
+{rb} : right bracket }<br>
+{f1} : 첫번째 필드값<br>
+{h1} : 첫번째 헤드값</p>
 </blockquote>
 <p><img src="/images/option4.png" alt></p>
 <h3><span id="3-convert-csv-to-json-via-template-버튼-클릭하면-결과물이-나온다">3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다.</span></h3>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -230,7 +241,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
         
 <script>
     var disqus_config = function () {
@@ -292,11 +303,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            58
+                            59
                         </p>
                     </a>
                 </div>
@@ -304,7 +315,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -320,7 +331,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            83
                         </p>
                     </a>
                 </div>
@@ -329,7 +340,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -374,7 +385,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -399,7 +410,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">57</span>
+                <span class="level-item tag">58</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -407,7 +418,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -479,8 +490,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -558,25 +588,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -594,7 +605,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -708,8 +719,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -787,25 +817,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -823,7 +834,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1088,9 +1099,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

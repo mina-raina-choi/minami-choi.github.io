@@ -10,19 +10,19 @@
 <title>스택/큐 - 쇠막대기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="문제여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.">
+    <meta name="description" content="문제 여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="스택&#x2F;큐 - 쇠막대기">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/02/Programming/Algorithm/iron-rod/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.">
+<meta property="og:description" content="문제 여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://techdifferences.net/wp-content/uploads/2019/06/Difference-Between-Stack-and-Queue.png">
 <meta property="og:updated_time" content="2019-12-02T14:51:52.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="스택&#x2F;큐 - 쇠막대기">
-<meta name="twitter:description" content="문제여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.">
+<meta name="twitter:description" content="문제 여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.">
 <meta name="twitter:image" content="https://techdifferences.net/wp-content/uploads/2019/06/Difference-Between-Stack-and-Queue.png">
 
 
@@ -179,26 +179,37 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.</p>
+            <h1><span id="문제">문제</span></h1>
+<p>여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.</p>
 <a id="more"></a>
-
-<pre><code>- 쇠막대기는 자신보다 긴 쇠막대기 위에만 놓일 수 있습니다.
-- 쇠막대기를 다른 쇠막대기 위에 놓는 경우 완전히 포함되도록 놓되, 끝점은 겹치지 않도록 놓습니다.
-- 각 쇠막대기를 자르는 레이저는 적어도 하나 존재합니다.
-- 레이저는 어떤 쇠막대기의 양 끝점과도 겹치지 않습니다.</code></pre><p>아래 그림은 위 조건을 만족하는 예를 보여줍니다. 수평으로 그려진 굵은 실선은 쇠막대기이고, 점은 레이저의 위치, 수직으로 그려진 점선 화살표는 레이저의 발사 방향입니다.</p>
+<pre><code>    - 쇠막대기는 자신보다 긴 쇠막대기 위에만 놓일 수 있습니다.
+    - 쇠막대기를 다른 쇠막대기 위에 놓는 경우 완전히 포함되도록 놓되, 끝점은 겹치지 않도록 놓습니다.
+    - 각 쇠막대기를 자르는 레이저는 적어도 하나 존재합니다.
+    - 레이저는 어떤 쇠막대기의 양 끝점과도 겹치지 않습니다.
+</code></pre>
+<p>아래 그림은 위 조건을 만족하는 예를 보여줍니다. 수평으로 그려진 굵은 실선은 쇠막대기이고, 점은 레이저의 위치, 수직으로 그려진 점선 화살표는 레이저의 발사 방향입니다.</p>
 <p><img src="iron-rod.png" alt="home_posts_tag-false"></p>
 <p>이러한 레이저와 쇠막대기의 배치는 다음과 같이 괄호를 이용하여 왼쪽부터 순서대로 표현할 수 있습니다.</p>
-<pre><code>(a) 레이저는 여는 괄호와 닫는 괄호의 인접한 쌍 &apos;()&apos;으로 표현합니다. 또한 모든 &apos;()&apos;는 반드시 레이저를 표현합니다.
-(b) 쇠막대기의 왼쪽 끝은 여는 괄호 &apos;(&apos;로, 오른쪽 끝은 닫힌 괄호 &apos;)&apos;로 표현됩니다.</code></pre><p>위 예의 괄호 표현은 그림 위에 주어져 있습니다.<br>쇠막대기는 레이저에 의해 몇 개의 조각으로 잘리는데, 위 예에서 가장 위에 있는 두 개의 쇠막대기는 각각 3개와 2개의 조각으로 잘리고, 이와 같은 방식으로 주어진 쇠막대기들은 총 17개의 조각으로 잘립니다.</p>
+<pre><code>    (a) 레이저는 여는 괄호와 닫는 괄호의 인접한 쌍 '()'으로 표현합니다. 또한 모든 '()'는 반드시 레이저를 표현합니다.
+    (b) 쇠막대기의 왼쪽 끝은 여는 괄호 '('로, 오른쪽 끝은 닫힌 괄호 ')'로 표현됩니다.
+</code></pre>
+<p>위 예의 괄호 표현은 그림 위에 주어져 있습니다.<br>
+쇠막대기는 레이저에 의해 몇 개의 조각으로 잘리는데, 위 예에서 가장 위에 있는 두 개의 쇠막대기는 각각 3개와 2개의 조각으로 잘리고, 이와 같은 방식으로 주어진 쇠막대기들은 총 17개의 조각으로 잘립니다.</p>
 <p>쇠막대기와 레이저의 배치를 표현한 문자열 arrangement가 매개변수로 주어질 때, 잘린 쇠막대기 조각의 총 개수를 return 하도록 solution 함수를 작성해주세요.</p>
-<pre><code>제한사항
-arrangement의 길이는 최대 100,000입니다.
-arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</code></pre><h1><span id="풀이-과정">풀이 과정</span></h1><p>어떻게 풀어야할지 감이 안잡혀 시간을 꽤나 쓴 문제다.</p>
+<pre><code>    제한사항
+    arrangement의 길이는 최대 100,000입니다.
+    arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.
+</code></pre>
+<h1><span id="풀이-과정">풀이 과정</span></h1>
+<p>어떻게 풀어야할지 감이 안잡혀 시간을 꽤나 쓴 문제다.</p>
 <p><code>열린괄호</code>와 <code>닫힌괄호</code> 사이에 있는 <code>숫자의 합에 +1</code>을 한 것이 절단한 쇠막대기의 갯수다.</p>
-<p>일단 레이저를 뜻하는 <code>()</code>을 <code>1</code>로 치환하고 forEach문을 돌리기 위해 split(“”)을 통해 배열로 만든다.<br>forloop을 돌면서 <code>)</code> 을 만나면 역순으로 forloop을 안에서 한번 더 돌린다.<br><code>1</code>을 만나면 num에 더해준다. 작은 forloop을 돌 때마다 num+1한 값을 answer에 더한다.<br><code>(</code> 을 만나면 forloop을 빠져나온다. 이미 카운트한 <code>(</code> 을 <code>str[j] = &quot;|&quot;</code>와 같이 다른 문자로 치환해서 재카운트되지 않도록 한다.</p>
+<p>일단 레이저를 뜻하는 <code>()</code>을 <code>1</code>로 치환하고 forEach문을 돌리기 위해 split(&quot;&quot;)을 통해 배열로 만든다.<br>
+forloop을 돌면서 <code>)</code> 을 만나면 역순으로 forloop을 안에서 한번 더 돌린다.<br>
+<code>1</code>을 만나면 num에 더해준다. 작은 forloop을 돌 때마다 num+1한 값을 answer에 더한다.<br>
+<code>(</code> 을 만나면 forloop을 빠져나온다. 이미 카운트한 <code>(</code> 을 <code>str[j] = &quot;|&quot;</code>와 같이 다른 문자로 치환해서 재카운트되지 않도록 한다.</p>
 <p>이 문제가 왜 스택/큐 파트로 분류되어 있는지는 잘 모르겠다.</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">arrangement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">const</span> str = arrangement.replace(<span class="hljs-regexp">/\(\)/g</span>, <span class="hljs-number">1</span>).split(<span class="hljs-string">""</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(str)</span><br><span class="line">  <span class="hljs-keyword">const</span> data = []</span><br><span class="line">  str.forEach(<span class="hljs-function">(<span class="hljs-params">s, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (s === <span class="hljs-string">")"</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 가장 가까운 ( 을 찾아서 없애기</span></span><br><span class="line">      <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span></span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">-1</span>; j--) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"1"</span>) &#123;</span><br><span class="line">          num += <span class="hljs-built_in">Number</span>(str[j])</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"("</span>) &#123;</span><br><span class="line">          str[j] = <span class="hljs-string">"|"</span></span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      answer += num + <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1><span id="나의-풀이">나의 풀이</span></h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">arrangement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">const</span> str = arrangement.replace(<span class="hljs-regexp">/\(\)/g</span>, <span class="hljs-number">1</span>).split(<span class="hljs-string">""</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(str)</span><br><span class="line">  <span class="hljs-keyword">const</span> data = []</span><br><span class="line">  str.forEach(<span class="hljs-function">(<span class="hljs-params">s, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (s === <span class="hljs-string">")"</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 가장 가까운 ( 을 찾아서 없애기</span></span><br><span class="line">      <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span></span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">-1</span>; j--) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"1"</span>) &#123;</span><br><span class="line">          num += <span class="hljs-built_in">Number</span>(str[j])</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"("</span>) &#123;</span><br><span class="line">          str[j] = <span class="hljs-string">"|"</span></span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      answer += num + <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -245,7 +256,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
         
 <script>
     var disqus_config = function () {
@@ -307,11 +318,11 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            58
+                            59
                         </p>
                     </a>
                 </div>
@@ -319,7 +330,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -335,7 +346,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            83
                         </p>
                     </a>
                 </div>
@@ -344,7 +355,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -389,7 +400,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -414,7 +425,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">57</span>
+                <span class="level-item tag">58</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -422,7 +433,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -518,8 +529,27 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -597,25 +627,6 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -633,7 +644,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -771,8 +782,27 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -850,25 +880,6 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -886,7 +897,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1151,9 +1162,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

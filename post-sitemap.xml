@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2019/12/08/Programming/Algorithm/middle-of-linkedlist/</loc>
+        <lastmod>2019-12-08T02:24:00.160Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
+        <lastmod>2019-12-08T01:28:25.408Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2019/12/07/Programming/Algorithm/linked-list/</loc>
-        <lastmod>2019-12-07T14:45:57.324Z</lastmod>
+        <lastmod>2019-12-08T01:25:48.830Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -160,14 +176,6 @@
 
     <url>
         <loc>https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/</loc>
-        <lastmod>2019-11-29T15:28:18.478Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2019/03/07/Programming/JavaScript/study-high-order-javascript/</loc>
         <lastmod>2019-11-29T15:28:18.478Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

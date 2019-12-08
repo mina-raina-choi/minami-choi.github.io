@@ -10,19 +10,19 @@
 <title>formGroup 하위에 [(ngModel)] 사용시 발생하는 error - Mina&#39;s World</title>
 
 
-    <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+    <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="keywords" content="Angular,formgroup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/06/angular-formgroup-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:36:28.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
-<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,17 +179,21 @@
             
         </h1>
         <div class="content">
-            <h2><span id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</span></h2><h3><span id="문제-상황">문제 상황</span></h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2><span id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</span></h2>
+<h3><span id="문제-상황">문제 상황</span></h3>
+<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
 <a id="more"></a>
-
 <p><img src="/images/formgrouperror.png" alt></p>
-<h3><span id="해결-방법">해결 방법</span></h3><ol>
-<li><p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
+<h3><span id="해결-방법">해결 방법</span></h3>
+<ol>
+<li>
+<p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
 </li>
-<li><p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
+<li>
+<p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># 1번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> formControlName=<span class="hljs-string">"selectedToken"</span></span><br><span class="line">(change)=<span class="hljs-string">"selectSendToken()"</span>  [(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span>&gt;</span><br><span class="line">    &lt;option *ngFor=<span class="hljs-string">"let token of global.sendTokenOptions"</span> [ngValue]=<span class="hljs-string">"token"</span>&gt;</span><br><span class="line">        &#123;&#123;token.symbol&#125;&#125;(&#123;&#123;token.name&#125;&#125;)</span><br><span class="line">    &lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> (change)=<span class="hljs-string">"selectSendToken()"</span></span><br><span class="line">[(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span> [ngModelOptions]=<span class="hljs-string">"&#123;standalone: true&#125;"</span>&gt;</span><br><span class="line">....</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<pre><code></code></pre></li>
+<pre><code></code></pre>
+</li>
 </ol>
 
         </div>
@@ -237,7 +241,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
         
 <script>
     var disqus_config = function () {
@@ -299,11 +303,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            58
+                            59
                         </p>
                     </a>
                 </div>
@@ -311,7 +315,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -327,7 +331,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            83
                         </p>
                     </a>
                 </div>
@@ -336,7 +340,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -381,7 +385,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -406,7 +410,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">57</span>
+                <span class="level-item tag">58</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -414,7 +418,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -510,8 +514,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -589,25 +612,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -625,7 +629,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -763,8 +767,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -842,25 +865,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -878,7 +882,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1143,9 +1147,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

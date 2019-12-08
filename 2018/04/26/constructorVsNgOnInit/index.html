@@ -10,19 +10,19 @@
 <title>constructor와 ngOnInit 차이점 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="constructor와 ngOnInit 차이점앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+    <meta name="description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
 <meta name="keywords" content="Angular,contructor,ngOninit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="constructor와 ngOnInit 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/26/constructorVsNgOnInit/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="constructor와 ngOnInit 차이점앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta property="og:description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:26.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="constructor와 ngOnInit 차이점">
-<meta name="twitter:description" content="constructor와 ngOnInit 차이점앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta name="twitter:description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,29 +175,34 @@
             
         </h1>
         <div class="content">
-            <h1><span id="constructor와-ngoninit-차이점">constructor와 ngOnInit 차이점</span></h1><p>앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.<br>constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?</p>
+            <h1><span id="constructor와-ngoninit-차이점">constructor와 ngOnInit 차이점</span></h1>
+<p>앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.<br>
+constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?</p>
 <a id="more"></a>
-
 <p><a href="https://toddmotto.com/angular-constructor-ngoninit-lifecycle-hook" target="_blank" rel="noopener">https://toddmotto.com/angular-constructor-ngoninit-lifecycle-hook</a> 의 글을 참고했다.</p>
-<h2><span id="constructor와-ngoninit은-뭐가-다른걸까">constructor와 ngOnInit은 뭐가 다른걸까?</span></h2><p>ES6 클래스(앵귤러에서는 TypeScript)에서 constructor 메소드는 클래스 자체의 기능이다. 반면 ngOnInit()은 앵귤러의 기능.<br>constructor가 호출될 때는 앵귤러의 컨트롤을 벗어난다.<br>이 의미는, 앵귤러가 컴포넌트 초기화를 마쳤는지 알기에는 적당한 위치가 아니다.</p>
+<h2><span id="constructor와-ngoninit은-뭐가-다른걸까">constructor와 ngOnInit은 뭐가 다른걸까?</span></h2>
+<p>ES6 클래스(앵귤러에서는 TypeScript)에서 constructor 메소드는 클래스 자체의 기능이다. 반면 ngOnInit()은 앵귤러의 기능.<br>
+constructor가 호출될 때는 앵귤러의 컨트롤을 벗어난다.<br>
+이 의미는, 앵귤러가 컴포넌트 초기화를 마쳤는지 알기에는 적당한 위치가 아니다.</p>
 <p>컴포넌트를 살펴보면</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent &#123;</span><br><span class="line">  // this is called by the JavaScript engine</span><br><span class="line">  // rather than Angular</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">constructor</span></span>() &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'Constructor initialised'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// internally calls the constructor</span><br><span class="line">new ExampleComponent();</span><br></pre></td></tr></table></figure>
-
-<p>여기서 가장 중요한 점은! 앵귤러가 아니라 JavaScript 엔진이 constructor를 호출한다는 것! 이 때문에 ngOnInit이라는 lifecycle이 생겼다.<br>이 lifehook을 추가하면서, 컴포넌트의 초기화가 끝난 후 앵귤러는 그 메소드를 실행시킨다. ngOnInit()이라는 네이밍에서 알 수 있듯이 이 메소드는 컴포넌트의 lifecycle 중 하나다.</p>
+<p>여기서 가장 중요한 점은! 앵귤러가 아니라 JavaScript 엔진이 constructor를 호출한다는 것! 이 때문에 ngOnInit이라는 lifecycle이 생겼다.<br>
+이 lifehook을 추가하면서, 컴포넌트의 초기화가 끝난 후 앵귤러는 그 메소드를 실행시킨다. ngOnInit()이라는 네이밍에서 알 수 있듯이 이 메소드는 컴포넌트의 lifecycle 중 하나다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, OnInit &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent implements OnInit &#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">constructor</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  // called on demand by Angular</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'ngOnInit fired'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const instance = new ExampleComponent();</span><br><span class="line"></span><br><span class="line">// Angular calls this when necessary</span><br><span class="line">instance.ngOnInit();</span><br></pre></td></tr></table></figure>
-
-<h2><span id="constructor의-용도">Constructor의 용도</span></h2><p>constructor는 컴포넌트에 의존성 주입을 하기에 알맞은 위치다.<br>constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존성을 어떤 프로퍼티에 매핑할지 앵귤러에 알려준다.</p>
+<h2><span id="constructor의-용도">Constructor의 용도</span></h2>
+<p>constructor는 컴포넌트에 의존성 주입을 하기에 알맞은 위치다.<br>
+constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존성을 어떤 프로퍼티에 매핑할지 앵귤러에 알려준다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, ElementRef &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">import &#123; Router &#125; from <span class="hljs-string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent &#123;</span><br><span class="line">  constructor(</span><br><span class="line">    private router: Router,</span><br><span class="line">    private el: ElementRef</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>위의 코드에서 Router는 this.router에 바인드되고, 컴포넌트 클래스 안에서 this.router로 접근가능하다.</p>
-<h2><span id="ngoninit">ngOnInit</span></h2><p>ngOnInit은 앵귤러가 컴포넌트를 초기화를 완료했다는 것을 우리에게 알려주기 위해서 만들어졌다.</p>
+<h2><span id="ngoninit">ngOnInit</span></h2>
+<p>ngOnInit은 앵귤러가 컴포넌트를 초기화를 완료했다는 것을 우리에게 알려주기 위해서 만들어졌다.</p>
 <p>이 단계는 컴포넌트에서 바인드한 프로퍼티에 첫 변경 감지가 되는 범위까지 포함되어 있다. @Input() 데코레이터를 사용하는 경우를 예로 들 수 있다</p>
 <p>이 때문에 @Input()프로퍼티는 ngOnInit에서 읽어들일 수 있고, constructor에서는 undefined가 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, ElementRef, Input, OnInit &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">import &#123; Router &#125; from <span class="hljs-string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent implements OnInit &#123;</span><br><span class="line">  @Input()</span><br><span class="line">  person: Person;</span><br><span class="line"></span><br><span class="line">  constructor(</span><br><span class="line">    private router: Router,</span><br><span class="line">    private el: ElementRef</span><br><span class="line">  ) &#123;</span><br><span class="line">    // undefined</span><br><span class="line">    console.log(this.person);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.el.nativeElement.style.display = <span class="hljs-string">'none'</span>;</span><br><span class="line">    // &#123; name: <span class="hljs-string">'Todd Motto'</span>, location: <span class="hljs-string">'England, UK'</span> &#125;</span><br><span class="line">    console.log(this.person);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>ngOnInit()는 바인딩한 값을 읽어들이는 것을 보장하는 lifecycle hook이다.</p>
-<h3><span id="contructor에서는-의존성-주입에-대한-작업을-하고-변수-초기화-작업은-ngoninit에서-하도록하쟈~">contructor에서는 의존성 주입에 대한 작업을 하고, 변수 초기화 작업은 ngOnInit()에서 하도록하쟈~!</span></h3><blockquote>
-<p><strong>[참고] 변경감지(Change Detection)가 일어나는 순서</strong> 1. update bound properties for all child components/directives 2. call ngOnInit, OnChanges and ngDoCheck lifecycle hooks on all child components/directives 3. update DOM for the current component 4. run change detection for a child component call ngAfterViewInit lifecycle hook for all child components/directives</p>
+<h3><span id="contructor에서는-의존성-주입에-대한-작업을-하고-변수-초기화-작업은-ngoninit에서-하도록하쟈~">contructor에서는 의존성 주입에 대한 작업을 하고, 변수 초기화 작업은 ngOnInit()에서 하도록하쟈~!</span></h3>
+<blockquote>
+<p><strong>[참고] 변경감지(Change Detection)가 일어나는 순서</strong> 1. update bound properties for all child components/directives 2. call ngOnInit, OnChanges and ngDoCheck lifecycle hooks on all child components/directives 3. update DOM for the current component 4. run change detection for a child component call ngAfterViewInit lifecycle hook for all child components/directives</p>
 </blockquote>
 
         </div>
@@ -245,7 +250,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
         
 <script>
     var disqus_config = function () {
@@ -307,11 +312,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            58
+                            59
                         </p>
                     </a>
                 </div>
@@ -319,7 +324,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -335,7 +340,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            83
                         </p>
                     </a>
                 </div>
@@ -344,7 +349,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -389,7 +394,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -414,7 +419,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">57</span>
+                <span class="level-item tag">58</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -422,7 +427,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -494,8 +499,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -573,25 +597,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -609,7 +614,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -723,8 +728,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time></div>
+                    <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Middle of the Linked List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -802,25 +826,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time></div>
-                    <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="title has-link-black-ter is-size-6 has-text-weight-normal">동적계획법 - 타일 장식물</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -838,7 +843,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -1103,9 +1108,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
