@@ -10,19 +10,19 @@
 <title>엑셀에서 json파일 추출하기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+    <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="keywords" content="엑셀,csv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="엑셀에서 json파일 추출하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/28/excel-to-json/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta property="og:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-12-03T14:30:56.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="엑셀에서 json파일 추출하기">
-<meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,16 +175,27 @@
             
         </h1>
         <div class="content">
-            <p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
+            <p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>
+앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
 <a id="more"></a>
-
 <p>약간의 검토를 해보니 excel파일에서 json을 추출하는 방법이 있다는 것을 알게되어 정리를 해두게 되었다.</p>
-<h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3><h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3><h4><span id="2-1-option1-변환할-csv-파일-선택">2-1. Option1 : 변환할 csv 파일 선택</span></h4><p><img src="/images/choose-csv.png" alt></p>
-<h4><span id="2-2-options2-first-row-is-column-names-옵션-체크">2-2. Options2 : First row is column names 옵션 체크</span></h4><h4><span id="2-3-options4-출력할-형태-만들기">2-3. Options4 : 출력할 형태 만들기</span></h4><blockquote>
-<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>{lb} : left bracket {<br>{br} : Line break<br>{rb} : right bracket }<br>{f1} : 첫번째 필드값<br>{h1} : 첫번째 헤드값</p>
+<h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3>
+<h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3>
+<h4><span id="2-1-option1-변환할-csv-파일-선택">2-1. Option1 : 변환할 csv 파일 선택</span></h4>
+<p><img src="/images/choose-csv.png" alt></p>
+<h4><span id="2-2-options2-first-row-is-column-names-옵션-체크">2-2. Options2 : First row is column names 옵션 체크</span></h4>
+<h4><span id="2-3-options4-출력할-형태-만들기">2-3. Options4 : 출력할 형태 만들기</span></h4>
+<blockquote>
+<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>
+{lb} : left bracket {<br>
+{br} : Line break<br>
+{rb} : right bracket }<br>
+{f1} : 첫번째 필드값<br>
+{h1} : 첫번째 헤드값</p>
 </blockquote>
 <p><img src="/images/option4.png" alt></p>
 <h3><span id="3-convert-csv-to-json-via-template-버튼-클릭하면-결과물이-나온다">3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다.</span></h3>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -320,7 +331,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            82
                         </p>
                     </a>
                 </div>

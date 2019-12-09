@@ -181,14 +181,13 @@
         <div class="content">
             <p>NodeJS는 아직 CommonJS 기반 모듈 시스템을 사용하기 때문에 ES6의 <code>import</code>나 <code>export</code>와 같은 키워드는 디폴트로 지원하지 않는다.</p>
 <a id="more"></a>
-
 <p>CommonJS가 제공하는 <code>require</code>방식이 아니라 <code>import</code>키워드를 사용하고 싶다면 아래와 같은 작업이 필요한데, 바벨을 통해 ES6문법으로 작성된 js파일을 ES5 문법으로 변환해주는 작업을 해줘야한다.</p>
-<h1><span id="1-필요한-모듈-설치">1. 필요한 모듈 설치</span></h1><figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// babel/cli는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 모듈</span></span><br><span class="line">yarn add babel-cli --dev</span><br><span class="line"><span class="hljs-comment">// 프리셋은 버전별로 필요 플러그인들을 모아놓은 세트</span></span><br><span class="line"><span class="hljs-comment">//babel-preset-env 은 그런 프리셋과 플러그인들을 모아 관리하고 있는 모듈</span></span><br><span class="line">yarn add babel-preset-env --dev</span><br><span class="line">yarn add babel-preset-stage-3 --dev</span><br></pre></td></tr></table></figure>
-
-<h1><span id="2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성">2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성</span></h1><figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 곧 표준으로 받아들여질 stage-3에 있는 문법을 기준으로 트랜스파일 하겠다고 바벨에서 알려준다.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"env"</span>, <span class="hljs-string">"stage-3"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1><span id="3-packagejson-에-scripts-추가">3. package.json 에 scripts 추가</span></h1><figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"babel-node index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel-cli"</span>: <span class="hljs-string">"^6.26.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-env"</span>: <span class="hljs-string">"^1.7.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.24.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1><span id="1-필요한-모듈-설치">1. 필요한 모듈 설치</span></h1>
+<figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// babel/cli는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 모듈</span></span><br><span class="line">yarn add babel-cli --dev</span><br><span class="line"><span class="hljs-comment">// 프리셋은 버전별로 필요 플러그인들을 모아놓은 세트</span></span><br><span class="line"><span class="hljs-comment">//babel-preset-env 은 그런 프리셋과 플러그인들을 모아 관리하고 있는 모듈</span></span><br><span class="line">yarn add babel-preset-env --dev</span><br><span class="line">yarn add babel-preset-stage-3 --dev</span><br></pre></td></tr></table></figure>
+<h1><span id="2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성">2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성</span></h1>
+<figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 곧 표준으로 받아들여질 stage-3에 있는 문법을 기준으로 트랜스파일 하겠다고 바벨에서 알려준다.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"env"</span>, <span class="hljs-string">"stage-3"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><span id="3-packagejson-에-scripts-추가">3. package.json 에 scripts 추가</span></h1>
+<figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"babel-node index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel-cli"</span>: <span class="hljs-string">"^6.26.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-env"</span>: <span class="hljs-string">"^1.7.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.24.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>위와 같이 작성 후 <code>yarn start</code>를 하면 index.js 파일이 표준 자바스크립트 문법으로 컴파일되어 실행된다.</p>
 
         </div>
@@ -326,7 +325,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            82
                         </p>
                     </a>
                 </div>

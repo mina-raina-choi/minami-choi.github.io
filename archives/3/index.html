@@ -248,8 +248,10 @@
 <li>클로저의 활용</li>
 </ol>
 </blockquote>
-<h2 id="왜-자바스크립트인가"><a href="#왜-자바스크립트인가" class="headerlink" title="왜 자바스크립트인가?"></a>왜 자바스크립트인가?</h2><ol>
-<li><p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
+<h2>왜 자바스크립트인가?</h2>
+<ol>
+<li>
+<p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
         </div>
         
         
@@ -308,7 +310,9 @@
             
         </h1>
         <div class="content">
-            <h1 id="ArrayList의-타입을-제네릭을-통해-명시하기"><a href="#ArrayList의-타입을-제네릭을-통해-명시하기" class="headerlink" title="ArrayList의 타입을 제네릭을 통해 명시하기"></a>ArrayList의 타입을 제네릭을 통해 명시하기</h1><h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1>ArrayList의 타입을 제네릭을 통해 명시하기</h1>
+<h2>문제 상황</h2>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -367,7 +371,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><p>clipboard.js 라이브러리를 사용해서 문자열을 복사하는데 특정 경우에 아래와 같은 에러가 떴다.</p>
+            <h2>문제 상황</h2>
+<p>clipboard.js 라이브러리를 사용해서 문자열을 복사하는데 특정 경우에 아래와 같은 에러가 떴다.</p>
 <blockquote>
 <p>ERROR DOMException: Failed to execute ‘querySelector’ on ‘Document’: ‘#1Aivvfv3etgiaVvSqSFNrGoFAyyxLbHyWL1’ is not a valid selector.</p>
 </blockquote>
@@ -489,7 +494,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-formGroup-하위에-ngModel-사용"><a href="#Angular에서-formGroup-하위에-ngModel-사용" class="headerlink" title="Angular에서 formGroup 하위에 [(ngModel)] 사용"></a>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2>
+<h3>문제 상황</h3>
+<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
         </div>
         
         
@@ -548,8 +555,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-ngrx도입-시-주의해야할-점"><a href="#Angular에서-ngrx도입-시-주의해야할-점" class="headerlink" title="Angular에서 ngrx도입 시 주의해야할 점"></a>Angular에서 ngrx도입 시 주의해야할 점</h2><p>앵귤러 버전5 프로젝트에서 ngrx 버전6을 의존했더니 아래와 같은 에러를 냈다.</p>
-<p><code>angular ngrx store error Cannot read property &#39;schedule&#39; of undefined</code></p>
+            <h2>Angular에서 ngrx도입 시 주의해야할 점</h2>
+<p>앵귤러 버전5 프로젝트에서 ngrx 버전6을 의존했더니 아래와 같은 에러를 냈다.</p>
+<p><code>angular ngrx store error Cannot read property 'schedule' of undefined</code></p>
         </div>
         
         
@@ -608,7 +616,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><blockquote>
+            <h1>문제 상황</h1>
+<blockquote>
 <p>emulator: ERROR: x86 emulation currently requires hardware acceleration!</p>
 </blockquote>
 <p>위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다.</p>
@@ -670,7 +679,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
+            <h1>문제 상황</h1>
+<p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
         </div>
         
         
@@ -729,7 +739,9 @@
             
         </h1>
         <div class="content">
-            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
+            <h3>문제 상황</h3>
+<p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>
+에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
         </div>
         
         
@@ -848,7 +860,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            82
                         </p>
                     </a>
                 </div>

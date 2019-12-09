@@ -180,21 +180,25 @@
 </blockquote>
 <p>만약 1 ~ 100 사이의 숫자 가운데 87을 찾는다고 한다면</p>
 <a id="more"></a>
-
-<p>1부터 순서대로 추측하면 87번 추측을 해야 우리가 찾고자하는 숫자 87에 도달할 수 있다.<br>(만약 찾고자하는 수가 99라면 99번이나 추측을 해야하겠지요…)<br>이런 방법을 단순 검색(Simple Search)… 띠리한 방법…</p>
+<p>1부터 순서대로 추측하면 87번 추측을 해야 우리가 찾고자하는 숫자 87에 도달할 수 있다.<br>
+(만약 찾고자하는 수가 99라면 99번이나 추측을 해야하겠지요…)<br>
+이런 방법을 단순 검색(Simple Search)… 띠리한 방법…</p>
 <p>좀 더 나은 방법을 찾아보면!</p>
-<p>중간부터 시작하는 것!<br>1 ~ 100 가운데 87을 찾기위해 중간 숫자 50부터 추측을 해보면,<br>“50이 너무 작다”는 결과를 통해 1~50을 날려버릴 수가 있다.</p>
-<p>남은 51 ~ 100의 숫자 중 중간 숫자 75로 추측해보면<br>“75가 너무 작다”</p>
+<p>중간부터 시작하는 것!<br>
+1 ~ 100 가운데 87을 찾기위해 중간 숫자 50부터 추측을 해보면,<br>
+&quot;50이 너무 작다&quot;는 결과를 통해 1~50을 날려버릴 수가 있다.</p>
+<p>남은 51 ~ 100의 숫자 중 중간 숫자 75로 추측해보면<br>
+&quot;75가 너무 작다&quot;</p>
 <p>76 ~ 100의 가운데 숫자 87을 추측해보면</p>
-<p>불과 3번만에 우리가 찾는 숫자 “87”을 찾아낼 수 있다!!!!</p>
+<p>불과 3번만에 우리가 찾는 숫자 &quot;87&quot;을 찾아낼 수 있다!!!</p>
 <p>이런 식의 방법을 <code>이진 탐색(Binary Search)</code>이라고 한다.</p>
 <blockquote>
 <p>만약 n개의 원소를 가진 리스트에서 이진탐색을 사용하면 최대 log2의 n번 만에 답을 찾을 수 있다.</p>
 </blockquote>
-<h3><span id="기존의-파이썬으로-된-예제를-자바스크립트로-바꿔봤다">기존의 파이썬으로 된 예제를 자바스크립트로 바꿔봤다.</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">binary_search = (list, item) =&gt; &#123;</span><br><span class="line">  <span class="hljs-built_in">let</span> low = 0;</span><br><span class="line">  <span class="hljs-built_in">let</span> high = list.length - 1;</span><br><span class="line">    <span class="hljs-built_in">let</span> count = 1;s</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    <span class="hljs-built_in">let</span> mid = Math.floor((low + high) / 2);</span><br><span class="line">    <span class="hljs-built_in">let</span> guess = list[mid];</span><br><span class="line">    <span class="hljs-keyword">if</span> (guess == item) &#123;</span><br><span class="line">        console.log(`<span class="hljs-variable">$&#123;item&#125;</span>을 <span class="hljs-variable">$&#123;count&#125;</span>번만에 찾았다!! my_list[<span class="hljs-variable">$&#123;mid&#125;</span>]에 위치해있다.`);</span><br><span class="line">        <span class="hljs-built_in">return</span> mid;</span><br><span class="line">    &#125;  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (guess &gt; item) &#123;</span><br><span class="line">      high = mid - 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      low = mid + 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(`<span class="hljs-variable">$&#123;item&#125;</span>은 my_list에 존재하지 않는다!!`);</span><br><span class="line">  <span class="hljs-built_in">return</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">my_list = [];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> i = 0; i&lt; 100; i++) &#123;</span><br><span class="line">    my_list.push(2*i-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">binary_search(my_list, 117);</span><br><span class="line">binary_search(my_list, -3);</span><br></pre></td></tr></table></figure>
-
-<h3><span id="결과값">결과값</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">117을 6번만에 찾았다!! my_list[59]에 위치해있다.</span><br><span class="line">-3은 my_list에 존재하지 않는다!!</span><br></pre></td></tr></table></figure>
-
+<h3><span id="기존의-파이썬으로-된-예제를-자바스크립트로-바꿔봤다">기존의 파이썬으로 된 예제를 자바스크립트로 바꿔봤다.</span></h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">binary_search = (list, item) =&gt; &#123;</span><br><span class="line">  <span class="hljs-built_in">let</span> low = 0;</span><br><span class="line">  <span class="hljs-built_in">let</span> high = list.length - 1;</span><br><span class="line">    <span class="hljs-built_in">let</span> count = 1;s</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    <span class="hljs-built_in">let</span> mid = Math.floor((low + high) / 2);</span><br><span class="line">    <span class="hljs-built_in">let</span> guess = list[mid];</span><br><span class="line">    <span class="hljs-keyword">if</span> (guess == item) &#123;</span><br><span class="line">        console.log(`<span class="hljs-variable">$&#123;item&#125;</span>을 <span class="hljs-variable">$&#123;count&#125;</span>번만에 찾았다!! my_list[<span class="hljs-variable">$&#123;mid&#125;</span>]에 위치해있다.`);</span><br><span class="line">        <span class="hljs-built_in">return</span> mid;</span><br><span class="line">    &#125;  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (guess &gt; item) &#123;</span><br><span class="line">      high = mid - 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      low = mid + 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(`<span class="hljs-variable">$&#123;item&#125;</span>은 my_list에 존재하지 않는다!!`);</span><br><span class="line">  <span class="hljs-built_in">return</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">my_list = [];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> i = 0; i&lt; 100; i++) &#123;</span><br><span class="line">    my_list.push(2*i-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">binary_search(my_list, 117);</span><br><span class="line">binary_search(my_list, -3);</span><br></pre></td></tr></table></figure>
+<h3><span id="결과값">결과값</span></h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">117을 6번만에 찾았다!! my_list[59]에 위치해있다.</span><br><span class="line">-3은 my_list에 존재하지 않는다!!</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -324,7 +328,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            82
                         </p>
                     </a>
                 </div>

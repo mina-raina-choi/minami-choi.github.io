@@ -10,19 +10,19 @@
 <title>해시 테이블(hash table) - Mina&#39;s World</title>
 
 
-    <meta name="description" content="가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자.이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다.해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.">
+    <meta name="description" content="가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자. 이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다. 해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.">
 <meta name="keywords" content="알고리즘,해시테이블,hashtable">
 <meta property="og:type" content="article">
 <meta property="og:title" content="해시 테이블(hash table)">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/29/hashtable/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자.이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다.해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.">
+<meta property="og:description" content="가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자. 이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다. 해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-26T15:30:30.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="해시 테이블(hash table)">
-<meta name="twitter:description" content="가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자.이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다.해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.">
+<meta name="twitter:description" content="가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자. 이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다. 해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,50 +175,69 @@
             
         </h1>
         <div class="content">
-            <p>가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자.<br>이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다.<br>해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.</p>
+            <p>가장 유용한 기본 자료구조의 하나인 해시 테이블(hash table)에 대해 공부해보자.<br>
+이번 장에서는 해시 테이블의 구현방법, 충돌, 해시 함수 등에 대해 배운다.<br>
+해시 테이블의 내부 구조에 대해 알고 있으면 해시 테이블의 성능을 분석하는 데 도움이 된다.</p>
 <a id="more"></a>
-
-<h2><span id="해시-함수의-소개">해시 함수의 소개</span></h2><p>식료품 가게에서 장부를 통해 상품의 가격을 알 수 있다고 치면,<br>장부가 정렬되지 않은 채로 적혀있다면 일일이 단순 탐색으로 찾아야 하므로 O(n)시간이 걸리고, 정렬이 되어 있다면 이진 탐색으로 O(log n)시간이 걸릴 것이다.</p>
+<h2><span id="해시-함수의-소개">해시 함수의 소개</span></h2>
+<p>식료품 가게에서 장부를 통해 상품의 가격을 알 수 있다고 치면,<br>
+장부가 정렬되지 않은 채로 적혀있다면 일일이 단순 탐색으로 찾아야 하므로 O(n)시간이 걸리고, 정렬이 되어 있다면 이진 탐색으로 O(log n)시간이 걸릴 것이다.</p>
 <p>만약, 물건의 값을 다 외우고 있는 사람이 있다면? 물건 이름만 대면 즉시 상품의 가격을 알 수 있을거다. (빅오표기법으로 실행시간을 나타내면 O(1))</p>
-<p>식료품 가게에서 모든 상품의 가격을 알고 있는 점원!!<br>이 사람이 바로 <strong>“해시 함수”</strong>라고 할 수 있다!!</p>
-<h2><span id="해시-함수">해시 함수</span></h2><blockquote>
-<p>책에 나온 설명에 의하면 해시 함수는 문자열을 받아서 숫자를 반환하는 함수.<br>위키백과에 따르면 해시 함수는 임의의 길이의 데이터를 고정된 길이의 데이터로 매핑하는 함수이다. 1.해시 함수에는 일관성이 있어햐 한다. 만약 “apple”을 넣었을 때 “4”를 반환한다면 “apple”을 넣을 때마다 반환되는 값은 항상 “4”이어야 한다. 그렇지 않으면 해시 함수로서의 역할을 할 수 없다. 2.다른 단어가 들어가면 다른 숫자가 나와야 한다. 어떤 단어를 넣어도 “1”만 나온다면 좋은 해시 함수가 아니다. 가장 좋은 경우는 서로 다른 단어에 대해 모두 서로 다른 숫자가 나와야 한다.</p>
+<p>식료품 가게에서 모든 상품의 가격을 알고 있는 점원!!<br>
+이 사람이 바로 **“해시 함수”**라고 할 수 있다!!</p>
+<h2><span id="해시-함수">해시 함수</span></h2>
+<blockquote>
+<p>책에 나온 설명에 의하면 해시 함수는 문자열을 받아서 숫자를 반환하는 함수.<br>
+위키백과에 따르면 해시 함수는 임의의 길이의 데이터를 고정된 길이의 데이터로 매핑하는 함수이다. 1.해시 함수에는 일관성이 있어햐 한다. 만약 &quot;apple&quot;을 넣었을 때 &quot;4&quot;를 반환한다면 &quot;apple&quot;을 넣을 때마다 반환되는 값은 항상 &quot;4&quot;이어야 한다. 그렇지 않으면 해시 함수로서의 역할을 할 수 없다. 2.다른 단어가 들어가면 다른 숫자가 나와야 한다. 어떤 단어를 넣어도 &quot;1&quot;만 나온다면 좋은 해시 함수가 아니다. 가장 좋은 경우는 서로 다른 단어에 대해 모두 서로 다른 숫자가 나와야 한다.</p>
 </blockquote>
-<p>해시 함수를 통해 각 제품의 가격이 담길 인덱스를 반환받아서 그 위치에 제품 가격을 넣어보자.<br>제품 가격을 담고 있는 해시 테이블을 만들어보면 아래와 같다.</p>
+<p>해시 함수를 통해 각 제품의 가격이 담길 인덱스를 반환받아서 그 위치에 제품 가격을 넣어보자.<br>
+제품 가격을 담고 있는 해시 테이블을 만들어보면 아래와 같다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">const book = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">book[<span class="hljs-string">"apple"</span>] = 0.67</span><br><span class="line">book[<span class="hljs-string">"milk"</span>] = 1.49</span><br><span class="line">book[<span class="hljs-string">"avocado"</span>] = 1.49</span><br><span class="line"></span><br><span class="line">console.log(book);</span><br><span class="line">//&#123; apple: 0.67, milk: 1.49, avocado: 1.49 &#125;</span><br><span class="line">console.log(book[<span class="hljs-string">"avocado"</span>]);</span><br><span class="line">//1.49</span><br></pre></td></tr></table></figure>
-
-<p>해시 함수와 배열을 합치면 해시 테이블이라는 자료 구조를 얻을 수 있다.<br>배열과 리스트는 직접 메모리를 할당하지만, 해시 테이블은 해시 함수를 사용해서 더 총명하게 어디에 원소를 저장할지 결정한다.</p>
+<p>해시 함수와 배열을 합치면 해시 테이블이라는 자료 구조를 얻을 수 있다.<br>
+배열과 리스트는 직접 메모리를 할당하지만, 해시 테이블은 해시 함수를 사용해서 더 총명하게 어디에 원소를 저장할지 결정한다.</p>
 <p>해시 테이블은 해시 맵(hash maps), 맵(maps), 딕셔너리(dictionary), 연관 배열(associative arrays)라고도 불린다.</p>
-<p>해시 테이블은 속도가 빠르다!<br>해시 테이블은 키(key)와 값(value)를 가진다.<br>위의 예에서 보면 book[“avocado”]을 통해 바로 아보카도의 가격을 알 수가 있다. 탐색이 필요없다!</p>
-<h2><span id="해시-테이블을-사용하는-예">해시 테이블을 사용하는 예</span></h2><ol>
-<li><p>해시 테이블로 조회하기</p>
-<p>휴대폰의 전화번호부를 생각해보면,<br>사람의 이름과 그 사람에 관련된 전화번호를 추가한다.<br>사람 이름을 입력하면 그 이름과 관련된 전화번호를 알려준다.</p>
+<p>해시 테이블은 속도가 빠르다!<br>
+해시 테이블은 키(key)와 값(value)를 가진다.<br>
+위의 예에서 보면 book[“avocado”]을 통해 바로 아보카도의 가격을 알 수가 있다. 탐색이 필요없다!</p>
+<h2><span id="해시-테이블을-사용하는-예">해시 테이블을 사용하는 예</span></h2>
+<ol>
+<li>
+<p>해시 테이블로 조회하기</p>
+<p>휴대폰의 전화번호부를 생각해보면,<br>
+사람의 이름과 그 사람에 관련된 전화번호를 추가한다.<br>
+사람 이름을 입력하면 그 이름과 관련된 전화번호를 알려준다.</p>
 <ul>
-<li>해시 테이블이 유용할 때<ul>
+<li>해시 테이블이 유용할 때
+<ul>
 <li>어떤 것을 다른 것과 연관시키고자 할 때</li>
 <li>무언가를 찾아보고자 할 때</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>중복된 항목을 방지하기</p>
+<li>
+<p>중복된 항목을 방지하기</p>
 <p>투표소에서 어떤 사람이 투표를 했는가 안 했는가를 판단하기 위해서 배열이나 리스트를 사용하면 긴 목록을 뒤져봐야하지만, 이름을 해시 테이블에 저장하면 해시 테이블에 이름이 있는지, 없는지 즉시 알려준다.</p>
 </li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">voted = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">check_voter = (name) =&gt; &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(voted[name])</span><br><span class="line">    console.log(<span class="hljs-string">"이미 투표함"</span>);</span><br><span class="line">  <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    voted[name] = <span class="hljs-literal">true</span>;</span><br><span class="line">    console.log(<span class="hljs-string">"아직 투표전"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">check_voter(<span class="hljs-string">"tom"</span>) //아직 투표전</span><br><span class="line">check_voter(<span class="hljs-string">"mike"</span>) //아직 투표전</span><br><span class="line">check_voter(<span class="hljs-string">"mike"</span>)  //이미 투표함</span><br></pre></td></tr></table></figure>
-
 <ol start="3">
-<li>해시 테이블을 캐시로 사용하기<br>캐싱은 작업 속도를 올리는 일반적인 방법이다. 모든 대형 웹사이트는 캐싱을 사용한다.<br>그리고 그 자료는 바로 해시 테이블에 저장된다.<br>캐싱된 자료가 있으면 그 자료를 전송하고 없으면 서버에 요청하는 식으로 사용.</li>
+<li>해시 테이블을 캐시로 사용하기<br>
+캐싱은 작업 속도를 올리는 일반적인 방법이다. 모든 대형 웹사이트는 캐싱을 사용한다.<br>
+그리고 그 자료는 바로 해시 테이블에 저장된다.<br>
+캐싱된 자료가 있으면 그 자료를 전송하고 없으면 서버에 요청하는 식으로 사용.</li>
 </ol>
 <ul>
-<li>해시 테이블의 장점<ul>
+<li>해시 테이블의 장점
+<ul>
 <li>어떤 것과 다른 것 사이의 관계를 모형화할 수 있다.</li>
 <li>중복을 막을 수 있다.</li>
 <li>서버에 작업을 시키지 않고 자료를 캐싱할 수 있다.</li>
 </ul>
 </li>
 </ul>
-<h2><span id="충돌">충돌</span></h2><p>해시 테이블의 성능을 이해하려면 우선 충돌에 대해 이해해야 한다.</p>
+<h2><span id="충돌">충돌</span></h2>
+<p>해시 테이블의 성능을 이해하려면 우선 충돌에 대해 이해해야 한다.</p>
 <p><img src="/images/hashtable.png" alt></p>
 <p>만약 인덱스 0 위치에 apple의 가격이 할당되어 있었는데 avocado의 가격을 또 넣게 되면… apple의 가격을 덮어쓰게 된다. 이러한 충돌을 해결하기 위해서는 여러가지 방법이 있는데 가장 간단한 방법은 같은 공간에 여러 개의 키를 연결하는 연결 리스트로 만들어 넣는 것!</p>
 <p><img src="/images/hashtable2.png" alt></p>
@@ -227,14 +246,19 @@
 <li>해시 함수는 정말 중요하다. 이상적으로는 해시 함수는 키를 해시 테이블 전체에 고르게 할당해야 한다.</li>
 <li>만약 연결 리스트가 길어지면 해시 테이블의 속도도 느려진다. 하지만 좋은 해시 함수가 있다면 그런 일은 발생하지 않는다.</li>
 </ul>
-<h2><span id="성능">성능</span></h2><p>해시 테이블의 성능을 높히기 위해서는 충돌을 피해야 한다. 그렇기 위해서는 아래와 같은 조건이 필요.</p>
+<h2><span id="성능">성능</span></h2>
+<p>해시 테이블의 성능을 높히기 위해서는 충돌을 피해야 한다. 그렇기 위해서는 아래와 같은 조건이 필요.</p>
 <ul>
 <li>낮은 사용률</li>
 <li>좋은 해시 함수</li>
 </ul>
 <p><img src="/images/hashtable3.png" alt></p>
 <pre><code>- 해시 테이블의 사용률(load factor) = (해시 테이블에 있는 항목의 수)/(해시 테이블에 있는 공간의 수)
-- 좋은 해시 함수란? 배열에 값을 고루 분포시키는 함수!!</code></pre><h2><span id="5장에서-배운-내용">5장에서 배운 내용</span></h2><p>사실 직접 해시 테이블을 구현할 일은 거의 없을거다. 우리가 사용하는 프로그래밍 언어들이 구현되어 있는 해시 테이블을 제공하기 때문이다.<br>평균적인 경우에 해시 테이블의 성능은 상수 시간이다.</p>
+- 좋은 해시 함수란? 배열에 값을 고루 분포시키는 함수!!
+</code></pre>
+<h2><span id="5장에서-배운-내용">5장에서 배운 내용</span></h2>
+<p>사실 직접 해시 테이블을 구현할 일은 거의 없을거다. 우리가 사용하는 프로그래밍 언어들이 구현되어 있는 해시 테이블을 제공하기 때문이다.<br>
+평균적인 경우에 해시 테이블의 성능은 상수 시간이다.</p>
 <p>해시 테이블은 속도가 빠르고 자료를 여러 가지로 모형화할 수 있기 때문에 아주 강력한 자료 구조이다!</p>
 <pre><code>1. 해시 테이블은 해시 함수와 배열을 결합해서 만든다.
 2. 충돌은 나쁘다. 충돌을 줄이는 해시 함수가 있어야 한다.
@@ -242,7 +266,9 @@
 4. 해시 테이블은 어떤 항목과 다른 항목의 관계를 모형화하는 데 좋다.
 5. 사용률이 0.7보다 커지면 해시 테이블을 리사이징할 때이다.
 6. 해시 테이블은 (웹 서버등에서) 데이터를 캐싱하는 데도 사용된다.
-7. 해시 테이블은 중복을 잡아내는 데도 뛰어나다.</code></pre>
+7. 해시 테이블은 중복을 잡아내는 데도 뛰어나다.
+</code></pre>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -378,7 +404,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            82
                         </p>
                     </a>
                 </div>

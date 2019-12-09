@@ -10,19 +10,19 @@
 <title>타입스크립트에서 json파일 import하기 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+    <meta name="description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta name="keywords" content="typescript,json import">
 <meta property="og:type" content="article">
 <meta property="og:title" content="타입스크립트에서 json파일 import하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/23/import-json-in-typescript/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<meta property="og:description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:38:02.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="타입스크립트에서 json파일 import하기">
-<meta name="twitter:description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<meta name="twitter:description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -175,23 +175,20 @@
             
         </h1>
         <div class="content">
-            <h2><span id="타입스크립트에서-json파일-import하기">타입스크립트에서 json파일 import하기</span></h2><p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
+            <h2><span id="타입스크립트에서-json파일-import하기">타입스크립트에서 json파일 import하기</span></h2>
+<p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
 <p>만약 <code>example.json</code>이 있다면</p>
 <a id="more"></a>
-
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"testing"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>ES6/ES2015에서 아래와 같은 방식으로 import할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">// ES6/ES2015</span><br><span class="line">// app.js</span><br><span class="line">import * as data from <span class="hljs-string">'./example.json'</span>;</span><br><span class="line">const word = data.name;</span><br><span class="line">console.log(word); // output <span class="hljs-string">'testing'</span></span><br></pre></td></tr></table></figure>
-
 <p>하지만 typescript에서는 똑같이 적용하면 에러가 발생한다.</p>
-<p><code>Cannot find module &#39;example.json&#39;</code></p>
-<h2><span id="해결방법">해결방법</span></h2><p>TS Definition 파일에 (예를 들면, typings.d.ts파일) 아래를 추가하면 된다.</p>
+<p><code>Cannot find module 'example.json'</code></p>
+<h2><span id="해결방법">해결방법</span></h2>
+<p>TS Definition 파일에 (예를 들면, typings.d.ts파일) 아래를 추가하면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">declare</span> module <span class="hljs-string">"*.json"</span> &#123;</span><br><span class="line">    const value: any;</span><br><span class="line">    <span class="hljs-built_in">export</span> default value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>그럼 아래와 같이 동작할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">// Typescript</span><br><span class="line">// app.ts</span><br><span class="line">import * as data from <span class="hljs-string">'./example.json'</span>;</span><br><span class="line">const word = (&lt;any&gt;data).name;</span><br><span class="line">console.log(word); // output <span class="hljs-string">'testing'</span></span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -328,7 +325,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            82
                         </p>
                     </a>
                 </div>
