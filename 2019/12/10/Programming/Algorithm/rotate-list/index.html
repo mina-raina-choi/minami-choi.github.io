@@ -7,18 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: Algorithm - Mina&#39;s World</title>
+<title>Rotate List - Mina&#39;s World</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Mina&#39;s World">
-<meta property="og:url" content="https://minami-choi.github.io/categories/Programming/Algorithm/index.html">
+    <meta name="description" content="문제링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
+<meta name="keywords" content="1일1알고리즘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rotate List">
+<meta property="og:url" content="https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="문제링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://minami-choi.github.io/images/og_image.png">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg">
+<meta property="og:updated_time" content="2019-12-09T23:05:59.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mina&#39;s World">
-<meta name="twitter:image" content="https://minami-choi.github.io/images/og_image.png">
+<meta name="twitter:title" content="Rotate List">
+<meta name="twitter:description" content="문제링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg">
 
 
 
@@ -116,6 +121,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -129,68 +138,89 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li><a href="/categories/Programming/">Programming</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">Algorithm</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/" class="image is-7by1">
-            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Middle of the Linked List">
-        </a>
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg" alt="Rotate List">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-08T02:04:15.000Z">2019-12-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-12-09T22:40:15.000Z">2019-12-10</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 342 words)
+                    5 minutes read (About 747 words)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/">Middle of the Linked List</a>
+                Rotate List
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요.</p>
-<p>출처 - <a href="https://leetcode.com/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">https://leetcode.com/problems/middle-of-the-linked-list/</a></p>
+            <h1><span id="문제">문제</span></h1><p>링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.</p>
+<a id="more"></a>
+
+<pre><code>Example 1:
+
+Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
+Output: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
+Explanation:
+rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL
+rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL
+
+Example 2:
+
+Input: 0-&gt;1-&gt;2-&gt;NULL, k = 4
+Output: 2-&gt;0-&gt;1-&gt;NULL
+Explanation:
+rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
+rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL
+rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL
+rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a href="https://leetcode.com/problems/rotate-list/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-list/</a></p>
+<h1><span id="풀이-과정">풀이 과정</span></h1><p>처음 생각했던 방법은 링크드리스트의 마지막요소의 전 요소를 찾은 후, 그 요소의 next를 null로 만들고 마지막 요소를 새로운 head로 만드는 방식이었다.</p>
+<p>하지만 이렇게 할 경우, [1,2,3] k=2000000 이런 인풋에서는 시간초과오류가 났다.<br>실행시간이 <code>N(n * k), n=length of list</code>이다.<br>이 방법이 아니라 새로운 방법으로 풀어야 했다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> last = head</span><br><span class="line">  <span class="hljs-keyword">let</span> newFirst = <span class="hljs-literal">null</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트일경우, 리스트 크기가 1일 경우는 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (head &amp;&amp; head.next) &#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (k) &#123;</span><br><span class="line">      last = findBeforeLastItem(head)</span><br><span class="line"></span><br><span class="line">      newFirst = last.next</span><br><span class="line">      newFirst.next = head</span><br><span class="line"></span><br><span class="line">      last.next = <span class="hljs-literal">null</span></span><br><span class="line">      head = newFirst</span><br><span class="line">      k--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 마지막 전 원소 찾기</span></span><br><span class="line"><span class="hljs-keyword">const</span> findBeforeLastItem = <span class="hljs-function"><span class="hljs-params">last</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">while</span> (last.next &amp;&amp; last.next.next) &#123;</span><br><span class="line">    last = last.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> last</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>릿코드 디스커스에서 <code>circular linked list</code>를 이용하면 쉽게 풀 수 있다는 글을 보고 원형연결리스트를 만들어보았다. 이 때, <code>tail</code>값을 미리 저장해둔다.<br>원형연결리스트를 만들면서 리스트의 길이(len)도 체크한다.</p>
+<p><code>k</code>만큼 <code>rotate</code>을 했을 때의 tail의 next는 새로운 <code>head</code>가 되고, <code>tail.next = null</code>로 할당해주면 다시 선형 linked list가 된다.</p>
+<p>k가 len보다 커지면 똑같은 연산이 반복되므로 나머지 연산을 이용해 반복을 줄인다.<code>k % len</code></p>
+<p>우리가 현재 찾는 값은 rotate했을 때의 tail값이다.<br><code>let n = len - (k % len)</code> 이 계산식을 통해 구해진 <code>n</code>번 만큼 tail을 이동하면 구할 수 있다.</p>
+<p>결과값으로 구해진 tail의 next값이 리턴할 링크드 리스트의 head이고, tail.next는 다시 null로 세팅한다.</p>
+<p>이렇게 계산하면 실행시간은 N(n)이 되겠다.</p>
+<hr>
+<p>원형연결리스트를 이용하면 문제가 풀린다는 힌트를 얻고도 문제를 해결하는 데 꽤 많이 시간을 쏟았다.<br><code>let n = len - (k % len)</code><br>이 계산식을 도출해내기까지 생각이 많이 필요했다.<br>리스트 길이 이상으로 rotate을 하면 반복이 되므로 나머지연산<code>(k % len)</code>으로 반복횟수를 줄이고, tail을 찾는 것이기 때문에 <code>(k % len)</code>번이 아니라 <code>len - (k % len)</code>번 while문을 돌려야 한다.</p>
+<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> tail = head</span><br><span class="line">  <span class="hljs-keyword">let</span> len = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    len++</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">      len++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// circlular linked list 만들기</span></span><br><span class="line">    tail = node</span><br><span class="line">    tail.next = head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = len - (k % len)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (n) &#123;</span><br><span class="line">      tail = tail.next</span><br><span class="line">      n--</span><br><span class="line">    &#125;</span><br><span class="line">    head = tail.next</span><br><span class="line">    tail.next = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">return</span> head</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/1일1알고리즘/">1일1알고리즘</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -200,561 +230,44 @@
 
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/07/Programming/Algorithm/linked-list/" class="image is-7by1">
-            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/05/11/10/snowman-4674856__480.jpg" alt="링크드 리스트">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-07T14:43:05.000Z">2019-12-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 544 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/07/Programming/Algorithm/linked-list/">링크드 리스트</a>
-            
-        </h1>
-        <div class="content">
-            <p>자료구조를 공부하는 중에 링크드 리스트의 개념이 잘 와닿지 않아 자바스크립트로 링크드 리스트를 구현해봤다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/07/Programming/Algorithm/linked-list/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/03/Programming/Algorithm/tile-ornaments/" class="image is-7by1">
-            <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="동적계획법 - 타일 장식물">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-03T14:07:15.000Z">2019-12-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 686 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/03/Programming/Algorithm/tile-ornaments/">동적계획법 - 타일 장식물</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>대구 달성공원에 놀러 온 지수는 최근에 새로 만든 타일 장식물을 보게 되었다. 타일 장식물은 정사각형 타일을 붙여 만든 형태였는데, 한 변이 1인 정사각형 타일부터 시작하여 마치 앵무조개의 나선 모양처럼 점점 큰 타일을 붙인 형태였다. 타일 장식물의 일부를 그리면 다음과 같다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/03/Programming/Algorithm/tile-ornaments/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/02/Programming/Algorithm/iron-rod/" class="image is-7by1">
-            <img class="thumbnail" src="https://techdifferences.net/wp-content/uploads/2019/06/Difference-Between-Stack-and-Queue.png" alt="스택/큐 - 쇠막대기">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-02T13:13:05.000Z">2019-12-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 865 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/02/Programming/Algorithm/iron-rod/">스택/큐 - 쇠막대기</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/02/Programming/Algorithm/iron-rod/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/02/Programming/Algorithm/feature-develop/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 기능개발">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-02T00:13:05.000Z">2019-12-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 447 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/02/Programming/Algorithm/feature-develop/">스택/큐 - 기능개발</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.</p>
-<p>또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/02/Programming/Algorithm/feature-develop/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/01/Programming/Algorithm/passed-trucks/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 다리를 지나는 트럭">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-30T16:13:05.000Z">2019-12-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 774 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/01/Programming/Algorithm/passed-trucks/">스택/큐 - 다리를 지나는 트럭</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>트럭 여러 대가 강을 가로지르는 일 차선 다리를 정해진 순으로 건너려 합니다. 모든 트럭이 다리를 건너려면 최소 몇 초가 걸리는지 알아내야 합니다. 트럭은 1초에 1만큼 움직이며, 다리 길이는 bridge_length이고 다리는 무게 weight까지 견딥니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/01/Programming/Algorithm/passed-trucks/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/11/29/Programming/Algorithm/printer/" class="image is-7by1">
-            <img class="thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjOVg_aH_gV1EVcsH_np7aZxFx41_sOWrCRMV-WAqygCHuFOh4DA&amp;s" alt="스택/큐 - 프린터">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-28T16:13:05.000Z">2019-11-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 minutes read (About 935 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/29/Programming/Algorithm/printer/">스택/큐 - 프린터</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>일반적인 프린터는 인쇄 요청이 들어온 순서대로 인쇄합니다. 그렇기 때문에 중요한 문서가 나중에 인쇄될 수 있습니다. 이런 문제를 보완하기 위해 중요도가 높은 문서를 먼저 인쇄하는 프린터를 개발했습니다. 이 새롭게 개발한 프린터는 아래와 같은 방식으로 인쇄 작업을 수행합니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/29/Programming/Algorithm/printer/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/11/28/Programming/Algorithm/tower/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png" alt="스택/큐 - 탑">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-27T16:13:05.000Z">2019-11-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 531 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/28/Programming/Algorithm/tower/">스택/큐 - 탑</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/28/Programming/Algorithm/tower/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/11/27/Programming/Algorithm/sort-h-index/" class="image is-7by1">
-            <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="정렬 - H-index">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-26T16:13:05.000Z">2019-11-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 568 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/27/Programming/Algorithm/sort-h-index/">정렬 - H-index</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/27/Programming/Algorithm/sort-h-index/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/11/26/Programming/Algorithm/hash-bestalbum/" class="image is-7by1">
-            <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 베스트앨범">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-25T16:13:05.000Z">2019-11-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 minutes read (About 748 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/26/Programming/Algorithm/hash-bestalbum/">해시 - 베스트앨범</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/26/Programming/Algorithm/hash-bestalbum/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Programming/Algorithm/archives/0/">Previous</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/08/Programming/Algorithm/middle-of-linkedlist/">
+                <span class="level-item">Middle of the Linked List</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/Programming/Algorithm/archives/2/">Next</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/categories/Programming/Algorithm/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/Programming/Algorithm/archives/2/">2</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/Programming/Algorithm/archives/3/">3</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/';
+        this.page.identifier = '2019/12/10/Programming/Algorithm/rotate-list/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
 </div>
 </div>
                 
@@ -980,6 +493,30 @@
         <div class="column-right-shadow is-hidden-widescreen ">
         
             
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1</span>
+        <span>문제</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">2</span>
+        <span>풀이 과정</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3</span>
+        <span>나의 풀이</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
         
             <div class="card widget">
     <div class="card-content">
@@ -1209,6 +746,30 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">1</span>
+        <span>문제</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">2</span>
+        <span>풀이 과정</span>
+        </a></li><li>
+        <a class="is-flex" href="#undefined">
+        <span class="has-mr-6">3</span>
+        <span>나의 풀이</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">

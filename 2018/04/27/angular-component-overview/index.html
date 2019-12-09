@@ -10,19 +10,19 @@
 <title>Angular의 Component에 대한 정리 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="Angular5 / Components https://codecraft.tv/courses/angular/components/overview/ 의 글을 번역했다. 컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다. 우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다. 앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다. 각 컴포넌트가 렌더링될 때, 해당 컴포">
+    <meta name="description" content="Angular5 / Componentshttps://codecraft.tv/courses/angular/components/overview/ 의 글을 번역했다. 컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다.우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다. 앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다.각 컴포넌트가 렌더링될 때, 해당 컴포넌트의">
 <meta name="keywords" content="Angular,Component">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular의 Component에 대한 정리">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/27/angular-component-overview/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular5 / Components https://codecraft.tv/courses/angular/components/overview/ 의 글을 번역했다. 컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다. 우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다. 앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다. 각 컴포넌트가 렌더링될 때, 해당 컴포">
+<meta property="og:description" content="Angular5 / Componentshttps://codecraft.tv/courses/angular/components/overview/ 의 글을 번역했다. 컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다.우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다. 앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다.각 컴포넌트가 렌더링될 때, 해당 컴포넌트의">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:35:18.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular의 Component에 대한 정리">
-<meta name="twitter:description" content="Angular5 / Components https://codecraft.tv/courses/angular/components/overview/ 의 글을 번역했다. 컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다. 우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다. 앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다. 각 컴포넌트가 렌더링될 때, 해당 컴포">
+<meta name="twitter:description" content="Angular5 / Componentshttps://codecraft.tv/courses/angular/components/overview/ 의 글을 번역했다. 컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다.우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다. 앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다.각 컴포넌트가 렌더링될 때, 해당 컴포넌트의">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 
 
@@ -179,13 +179,11 @@
             
         </h1>
         <div class="content">
-            <h1><span id="angular5-components">Angular5 / Components</span></h1>
-<p><a href="https://codecraft.tv/courses/angular/components/overview/" target="_blank" rel="noopener">https://codecraft.tv/courses/angular/components/overview/</a> 의 글을 번역했다.</p>
-<p>컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다.<br>
-우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다.</p>
-<p>앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다.<br>
-각 컴포넌트가 렌더링될 때, 해당 컴포넌트의 하위 컴포넌트까지 렌더링한다.</p>
+            <h1><span id="angular5-components">Angular5 / Components</span></h1><p><a href="https://codecraft.tv/courses/angular/components/overview/" target="_blank" rel="noopener">https://codecraft.tv/courses/angular/components/overview/</a> 의 글을 번역했다.</p>
+<p>컴포넌트는 앵귤러 앱의 기본적인 빌딩블록이다.<br>우리는 작은 컴포넌트를 사용해 큰 컴포넌트를 만들 수 있다.</p>
+<p>앵귤러는 이러한 컴포넌트의 트리라고 할 수 있다.<br>각 컴포넌트가 렌더링될 때, 해당 컴포넌트의 하위 컴포넌트까지 렌더링한다.</p>
 <a id="more"></a>
+
 <p>루트 컴포넌트는 이 컴포넌트 트리의 최상단에 있는 컴포넌트다.</p>
 <p>우리가 앵귤러 앱을 실행할 때, 우리는 브라우저에게 루트 컴포넌트를 렌더링하라고 알려준다. 그리고 루트 컴포넌트는 그 안에 포함된 하위 컴포넌트를 렌더링한다.</p>
 <p>이 포스트를 통해 아래의 사항들을 정리해보자!</p>
@@ -196,65 +194,44 @@
 <li>컴포넌트 lifecycle hooks</li>
 <li>View Childres vs Content Children</li>
 </ol>
-<h2><span id="component-설계">Component 설계</span></h2>
-<p>앵귤러 앱을 설계하는 법을 알아보자.</p>
+<h2><span id="component-설계">Component 설계</span></h2><p>앵귤러 앱을 설계하는 법을 알아보자.</p>
 <p>앵귤러 앱을 만들 때, 우리는 다음과 같은 과정을 거친다.</p>
 <ol>
 <li>몇 개의 컴포넌트로 앱을 나눈다.</li>
 <li>각 컴포넌트의 역할(기능)을 정리한다.</li>
 <li>그 다음, 각 컴포넌트의 input, output을 정리한다.</li>
 </ol>
-<p>아래의 예시를 보면<br>
-<img src="/images/component-ex.png" alt></p>
+<p>아래의 예시를 보면<br><img src="/images/component-ex.png" alt></p>
 <p>Header, Sidebar, Content구역을 가진 기본적인 앱이다. 각 컴포넌트는 자체 구성 요소로 구현한다. 그리고나서 각 컴포넌트의 responsibilities, inputs, outputs 등등을 리스트업한다.</p>
-<h3><span id="headercomponent">HeaderComponent</span></h3>
-<p><strong>Responsibilities</strong><br>
-유저 로그인, 회원가입, 로그아웃과 관련된 모든 인증 기능들</p>
-<p><strong>Inputs</strong><br>
-입력받는 것은 없음.</p>
-<p><strong>Outputs</strong><br>
--LoginChanged : 유저 로그인 상태가 변경되었을 때 발생되는 이벤트</p>
-<h3><span id="sidebarcomponent">SidebarComponent</span></h3>
-<p><strong>Responsibilities</strong><br>
-검색관련 기능</p>
-<p><strong>Inputs</strong><br>
-입력받는 것은 없음.</p>
-<p><strong>Outputs</strong><br>
--SearchTermChanged : 유저가 검색을 할 때 발생되는 이벤트, $event는 검색어를 담고있다.</p>
-<h3><span id="contentcomponent">ContentComponent</span></h3>
-<p><strong>Responsibilities</strong><br>
-검색 결과를 보여주는 역할</p>
-<p><strong>Inputs</strong><br>
--SearchTerm : 필터링할 검색어를 입력받음.</p>
-<p><strong>Outputs</strong><br>
-아웃풋 없음</p>
-<p>이렇게 inputs, outputs, 각 컴포넌트가 담당하는 기능들을 리스트업하는 것은 컴포넌트의 정확한 설계를 도와준다.<br>
-이렇게 하는 목적은 각각의 컴포넌트가 잘 정의된 기준을 가지도록 하는 것!!!</p>
-<h2><span id="데이터-흐름">데이터 흐름</span></h2>
-<p>위의 컴포넌트를 루트컴포넌트와 연결하고 나면 데이터의 흐름이 아래 그림과 같을거다.</p>
+<h3><span id="headercomponent">HeaderComponent</span></h3><p><strong>Responsibilities</strong><br>유저 로그인, 회원가입, 로그아웃과 관련된 모든 인증 기능들</p>
+<p><strong>Inputs</strong><br>입력받는 것은 없음.</p>
+<p><strong>Outputs</strong><br>-LoginChanged : 유저 로그인 상태가 변경되었을 때 발생되는 이벤트</p>
+<h3><span id="sidebarcomponent">SidebarComponent</span></h3><p><strong>Responsibilities</strong><br>검색관련 기능</p>
+<p><strong>Inputs</strong><br>입력받는 것은 없음.</p>
+<p><strong>Outputs</strong><br>-SearchTermChanged : 유저가 검색을 할 때 발생되는 이벤트, $event는 검색어를 담고있다.</p>
+<h3><span id="contentcomponent">ContentComponent</span></h3><p><strong>Responsibilities</strong><br>검색 결과를 보여주는 역할</p>
+<p><strong>Inputs</strong><br>-SearchTerm : 필터링할 검색어를 입력받음.</p>
+<p><strong>Outputs</strong><br>아웃풋 없음</p>
+<p>이렇게 inputs, outputs, 각 컴포넌트가 담당하는 기능들을 리스트업하는 것은 컴포넌트의 정확한 설계를 도와준다.<br>이렇게 하는 목적은 각각의 컴포넌트가 잘 정의된 기준을 가지도록 하는 것!!!</p>
+<h2><span id="데이터-흐름">데이터 흐름</span></h2><p>위의 컴포넌트를 루트컴포넌트와 연결하고 나면 데이터의 흐름이 아래 그림과 같을거다.</p>
 <p><img src="/images/component-dataflow.png" alt></p>
 <p>inputs, outputs의 바인딩은 실제적으로 HTML(컴포넌트의 템플릿)에서 일어난다. 루트 컴포넌트의 템플릿은 아래와 같을거다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;header (loginChanged)=<span class="hljs-string">"loggedIn = <span class="hljs-variable">$event</span>"</span>&gt;&lt;/header&gt;</span><br><span class="line">&lt;sidebar (searchTermChanged)=<span class="hljs-string">"searchTerm = <span class="hljs-variable">$event</span>"</span>&gt;&lt;/sidebar&gt;</span><br><span class="line">&lt;content [searchTerm]=<span class="hljs-string">"searchTerm"</span>&gt;&lt;/content&gt;</span><br></pre></td></tr></table></figure>
+
 <p>데이터 흐름은 inputs, outputs를 통해 컴포넌트를 어떻게 연결하는지 보여준다.</p>
-<p>위의 데이터흐름 다이어그램을 들여다보면 단방향 데이터 바인딩에 대해 흥미로운 점을 발견할 수 있다.<br>
-inputs는 아래방향으로 전달되고, outputs은 위방향으로 전달된다. 단방향 데이터 바인딩을 통해 앱이 훨씬 심플해지고, 앱의 이벤트 흐름을 쉽게 추적할 수 있다.</p>
-<h2><span id="정리해보면">정리해보면,</span></h2>
-<p>앵귤러 앱을 설계한다는 것은 컴포넌트 트리라는 것을 이해한다는 거다. 각각의 컴포넌트는 몇 개의 inputs, outputs를 가지고 있다. 분명한 기능도 가지고 있다.</p>
+<p>위의 데이터흐름 다이어그램을 들여다보면 단방향 데이터 바인딩에 대해 흥미로운 점을 발견할 수 있다.<br>inputs는 아래방향으로 전달되고, outputs은 위방향으로 전달된다. 단방향 데이터 바인딩을 통해 앱이 훨씬 심플해지고, 앱의 이벤트 흐름을 쉽게 추적할 수 있다.</p>
+<h2><span id="정리해보면">정리해보면,</span></h2><p>앵귤러 앱을 설계한다는 것은 컴포넌트 트리라는 것을 이해한다는 거다. 각각의 컴포넌트는 몇 개의 inputs, outputs를 가지고 있다. 분명한 기능도 가지고 있다.</p>
 <p>컴포넌트는 구성될 수 있다. HeaderComponent에 LoginButtonComponent를 추가할 수 있다. LoginButtonComponent를 재사용하고 싶을 경우에만 이렇게 구성한다.</p>
 <p>이번에는 @Component 데코레이터에 대해 알아보자</p>
-<h2><span id="templateurl">templateURL</span></h2>
-<p>앵귤러에서는 HTML코드를 ts파일 안에 inline으로 작성할 필요가 없다. 대신에 HTML파일을 따로 저장하고 templateURL 프로퍼티를 사용해서 컴포넌트에서 그 HTML을 읽어들일 수 있다.</p>
+<h2><span id="templateurl">templateURL</span></h2><p>앵귤러에서는 HTML코드를 ts파일 안에 inline으로 작성할 필요가 없다. 대신에 HTML파일을 따로 저장하고 templateURL 프로퍼티를 사용해서 컴포넌트에서 그 HTML을 읽어들일 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'joke-form'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'joke-form-component.html'</span></span><br><span class="line">&#125;)</span><br><span class="line">class JokeFormComponent &#123;</span><br><span class="line">  @Output() jokeCreated = new EventEmitter&lt;Joke&gt;();</span><br><span class="line"></span><br><span class="line">  createJoke(setup: string, punchline: string) &#123;</span><br><span class="line">    this.jokeCreated.emit(new Joke(setup, punchline));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>이런 식으로, templateUrl 프로퍼티를 사용해서 외부의 템플릿 파일을 해당 컴포넌트에 지정한다.</p>
-<h2><span id="styles">styles</span></h2>
-<p>커스텀 css파일도 styles 프로퍼티를 통해 지정할 수 있다.<br>
-styles는 스트링 배열을 가질 수 있는데, 백틱을 사용해서 여러줄로도 표현가능하다.</p>
+<h2><span id="styles">styles</span></h2><p>커스텀 css파일도 styles 프로퍼티를 통해 지정할 수 있다.<br>styles는 스트링 배열을 가질 수 있는데, 백틱을 사용해서 여러줄로도 표현가능하다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'joke-form'</span>,</span><br><span class="line">  template: <span class="hljs-string">'joke-form-component.html'</span>,</span><br><span class="line">  styles: [</span><br><span class="line">    `</span><br><span class="line">    .card &#123;</span><br><span class="line">      background-color: gray;</span><br><span class="line">    &#125;</span><br><span class="line">    `</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br><span class="line">class JokeFormComponent &#123;</span><br><span class="line">  @Output() jokeCreated = new EventEmitter&lt;Joke&gt;();</span><br><span class="line"></span><br><span class="line">  createJoke(setup: string, punchline: string) &#123;</span><br><span class="line">    this.jokeCreated.emit(new Joke(setup, punchline));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="뷰-캡슐화view-encapsulation">뷰 캡슐화(View Encapsulation)</span></h2>
-<p><img src="/images/encapsulated-emulated-screen.png" alt></p>
-<p>위의 예에서 보면 .card를 통해 배경색을 회색으로 바꿨다. 하지만 첫 번째 컴포넌트에만 적용된 것을 볼 수 있는데,<br>
-보통의 경우 css class의 적용범위는 앱 전체이지만, 이 경우 해당 컴포넌트에서만 적용된다.<br>
-이를 View Encapsulation 이라고 한다.</p>
+
+<h2><span id="뷰-캡슐화view-encapsulation">뷰 캡슐화(View Encapsulation)</span></h2><p><img src="/images/encapsulated-emulated-screen.png" alt></p>
+<p>위의 예에서 보면 .card를 통해 배경색을 회색으로 바꿨다. 하지만 첫 번째 컴포넌트에만 적용된 것을 볼 수 있는데,<br>보통의 경우 css class의 적용범위는 앱 전체이지만, 이 경우 해당 컴포넌트에서만 적용된다.<br>이를 View Encapsulation 이라고 한다.</p>
 <p>앵귤러는 쉐도우 돔이 주 기능인 웹 컴포넌트에서 영감을 얻었는데, 쉐도우 돔을 사용하면 컴포넌트 외부에는 스타일이 적용되지 않고 해당 웹 컴포넌트에서만 스타일이 적용되도록 할 수 있다.</p>
 <p>앵귤러는 이러한 기능들을 encapsulation의 프로퍼티로 제공한다.</p>
 <ul>
@@ -263,42 +240,32 @@ styles는 스트링 배열을 가질 수 있는데, 백틱을 사용해서 여�
 <li>ViewEncapsulation.None</li>
 </ul>
 <p>기본 값은 ViewEncapsulation.Emulated 이고, 위와 같이 동작한다.</p>
-<h2><span id="viewencapsulationemulated">ViewEncapsulation.Emulated</span></h2>
-<p>브라우저 개발자도구를 사용해서 폼 엘리먼트에 어떤 변화가 있는지 살펴보면,<br>
-JokeFormComponent에 자동적으로 어트리뷰트가 생성된 것을 볼 수 있다.</p>
+<h2><span id="viewencapsulationemulated">ViewEncapsulation.Emulated</span></h2><p>브라우저 개발자도구를 사용해서 폼 엘리먼트에 어떤 변화가 있는지 살펴보면,<br>JokeFormComponent에 자동적으로 어트리뷰트가 생성된 것을 볼 수 있다.</p>
 <p><img src="/images/encapsulation-emulated-html.png" alt></p>
 <p>“_ngcontent-qwe-3” 이라는 어트리뷰트를 추가했다.</p>
-<p>다른 컴포넌트에는 해당 어트리뷰트가 추가되지 않았고, JokeFormComponent에만 추가된 것을 알 수 있다.<br>
-style 탭을 보면,</p>
+<p>다른 컴포넌트에는 해당 어트리뷰트가 추가되지 않았고, JokeFormComponent에만 추가된 것을 알 수 있다.<br>style 탭을 보면,</p>
 <p><img src="/images/encapsulation-emulated-css.png" alt></p>
 <p>“_ngcontent-qwe-3” 에 스타일이 입혀진 것을 볼 수 있다.</p>
-<p>_css 셀렉터 .card[<em>ngcontent-qwe-3]는 JokeFormComponent만 타켓팅했다. 왜냐면 _ngcontent-qwe-3 어트리뷰트는 JokeFormComponent에만 있다.</em></p>
-<p>ViewEncapsulation.Emulated 모드에서 앵귤러는<br>
-자동으로 생성되는 어트리뷰트를 이용함으로써 일반적인 (전역) css 클래스 셀렉터가 특정 컴포넌트에만 적용되도록 변경한다.</p>
+<p><em>css 셀렉터 .card[_ngcontent-qwe-3]는 JokeFormComponent만 타켓팅했다. 왜냐면 _ngcontent-qwe-3 어트리뷰트는 JokeFormComponent에만 있다.</em></p>
+<p>ViewEncapsulation.Emulated 모드에서 앵귤러는<br>자동으로 생성되는 어트리뷰트를 이용함으로써 일반적인 (전역) css 클래스 셀렉터가 특정 컴포넌트에만 적용되도록 변경한다.</p>
 <p>이 때문에, 다른 모든 JockComponent가 같은 card 클래스를 사용했음에도 불구하고 JokeFormComponent의 배경색만 회색으로 바뀐다.</p>
-<p>컴포넌트에 정의한 모든 스타일은 나머지 앱 부분에 적용되지 않지만 컴포넌트는 여전히 트위터 부트스트랩의 전역스타일을 상속한다.<br>
-JokeFormComponent는 트위터 부트스트랩의 전역 스타일을 적용시키면서, 컴포넌트 자체의 캡슐화된 스타일도 적용시킨다.</p>
-<h2><span id="viewencapsulationnative">ViewEncapsulation.Native</span></h2>
-<p>앵귤러에서 쉐도우 돔을 사용하기를 원한다면 ViewEncapsulation.Native을 사용하도록 캡슐화 매개변수를 설정할 수 있다.</p>
+<p>컴포넌트에 정의한 모든 스타일은 나머지 앱 부분에 적용되지 않지만 컴포넌트는 여전히 트위터 부트스트랩의 전역스타일을 상속한다.<br>JokeFormComponent는 트위터 부트스트랩의 전역 스타일을 적용시키면서, 컴포넌트 자체의 캡슐화된 스타일도 적용시킨다.</p>
+<h2><span id="viewencapsulationnative">ViewEncapsulation.Native</span></h2><p>앵귤러에서 쉐도우 돔을 사용하기를 원한다면 ViewEncapsulation.Native을 사용하도록 캡슐화 매개변수를 설정할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'joke-form'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'joke-form-component.html'</span>,</span><br><span class="line">  styles: [</span><br><span class="line">    `</span><br><span class="line">    .card &#123;</span><br><span class="line">      background-color: gray;</span><br><span class="line">    &#125;</span><br><span class="line">    `</span><br><span class="line">  ],</span><br><span class="line">  encapsulation: ViewEncapsulation.Native <span class="hljs-comment"># &lt;!&gt;</span></span><br><span class="line">&#125;)</span><br><span class="line">class JokeFormComponent &#123;</span><br><span class="line">  @Output() jokeCreated = new EventEmitter&lt;Joke&gt;();</span><br><span class="line"></span><br><span class="line">  createJoke(setup: string, punchline: string) &#123;</span><br><span class="line">    this.jokeCreated.emit(new Joke(setup, punchline));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>하지만!! 여전히 배경색은 회색이지만, 전역적인 트위터 부트스트랩 스타일이 적용 안된 것을 볼 수 있다!!</p>
 <p><img src="/images/encapsulated-native-screen.png" alt></p>
-<p>ViewEncapsulation.Native을 사용하면 우리가 컴포넌트에 설정한 스타일이 다른 부분에 적용되지 않도록 할 수 있다.<br>
-독립적인 제 3의 스타일을 정의할 때 사용하는 것이 좋다. 우리가 설정한 스타일이 누출되어 앱의 나머지에 영향을 끼칠 수 있다는 걱정을 안해도 된다.</p>
+<p>ViewEncapsulation.Native을 사용하면 우리가 컴포넌트에 설정한 스타일이 다른 부분에 적용되지 않도록 할 수 있다.<br>독립적인 제 3의 스타일을 정의할 때 사용하는 것이 좋다. 우리가 설정한 스타일이 누출되어 앱의 나머지에 영향을 끼칠 수 있다는 걱정을 안해도 된다.</p>
 <p>그러나, ViewEncapsulation.Native을 사용하면 우리가 앱에 설정한 전역 스타일과 분리되기 때문에, 트위터 부트스트랩 스타일을 상속받지 않는다. 그래서 컴포넌트 데코레이터에 필요한 스타일을 전부다 정의해줘야한다.</p>
 <p>ViewEncapsulation.Native 은 모든 브라우저에서 지원하지 않는, 쉐도우 돔이라고 불리는 기능이 필요하다.</p>
-<h2><span id="viewencapsulationnone">ViewEncapsulation.None</span></h2>
-<p>만약 스타일을 캡슐화하고 싶지 않다면 ViewEncapsulation.None을 사용하면 된다.<br>
-card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 변경될 거다.</p>
+<h2><span id="viewencapsulationnone">ViewEncapsulation.None</span></h2><p>만약 스타일을 캡슐화하고 싶지 않다면 ViewEncapsulation.None을 사용하면 된다.<br>card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 변경될 거다.</p>
 <p>브라우저 개발자도구로 살펴보면, 앵귤러가 HTML의 head 영역에 .card 클래스를 전역스타일로 추가한 것을 볼 수 있다.</p>
 <p>아무것도 캡슐화하지 않고, 우리가 컴포넌트에서 정의한 스타일이 흘러나와 앱 전체에 적용될 거다.</p>
-<h2><span id="styleurls">styleURLs</span></h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'joke-form'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'joke-form-component.html'</span>,</span><br><span class="line">  styleUrls: [</span><br><span class="line">  	<span class="hljs-string">'joke-form-component.css'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">class JokeFormComponent &#123;</span><br><span class="line">  @Output() jokeCreated = new EventEmitter&lt;Joke&gt;();</span><br><span class="line"></span><br><span class="line">  createJoke(setup: string, punchline: string) &#123;</span><br><span class="line">    this.jokeCreated.emit(new Joke(setup, punchline));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="styleurls">styleURLs</span></h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@Component(&#123;</span><br><span class="line">  selector: <span class="hljs-string">'joke-form'</span>,</span><br><span class="line">  templateUrl: <span class="hljs-string">'joke-form-component.html'</span>,</span><br><span class="line">  styleUrls: [</span><br><span class="line">  	<span class="hljs-string">'joke-form-component.css'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">class JokeFormComponent &#123;</span><br><span class="line">  @Output() jokeCreated = new EventEmitter&lt;Joke&gt;();</span><br><span class="line"></span><br><span class="line">  createJoke(setup: string, punchline: string) &#123;</span><br><span class="line">    this.jokeCreated.emit(new Joke(setup, punchline));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>templateUrl프로퍼티처럼 외부 스타일파일을 사용하고 싶다면 styleUrls 프로퍼티를 사용하면 된다. 배열을 값으로 받는다.</p>
-<h2><span id="depreciated-properties">Depreciated Properties</span></h2>
-<p>@Component의 프로퍼티로 directives, pipes, inputs, outputs를 포함하는 글도 볼 수 있는데 이는 베타버전에 앵귤러에 추가됐다가 2.0 최종 릴리즈 버전에서는 빠진 기능이다.</p>
-<h3><span id="shadow-dom-이란">shadow DOM 이란?</span></h3>
-<p><a href="http://d2.naver.com/helloworld/188655" target="_blank" rel="noopener">http://d2.naver.com/helloworld/188655</a></p>
+<h2><span id="depreciated-properties">Depreciated Properties</span></h2><p>@Component의 프로퍼티로 directives, pipes, inputs, outputs를 포함하는 글도 볼 수 있는데 이는 베타버전에 앵귤러에 추가됐다가 2.0 최종 릴리즈 버전에서는 빠진 기능이다.</p>
+<h3><span id="shadow-dom-이란">shadow DOM 이란?</span></h3><p><a href="http://d2.naver.com/helloworld/188655" target="_blank" rel="noopener">http://d2.naver.com/helloworld/188655</a></p>
 
         </div>
         
@@ -345,7 +312,7 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -407,11 +374,11 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            59
+                            60
                         </p>
                     </a>
                 </div>
@@ -419,7 +386,7 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -444,7 +411,7 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -489,7 +456,7 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -670,8 +637,27 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/10/Programming/Algorithm/rotate-list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg" alt="Rotate List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T22:40:15.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/Programming/Algorithm/rotate-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rotate List</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -749,25 +735,6 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/04/Programming/React/material-ui-optimization/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&amp;dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&amp;fm=jpg" alt="material-ui 빌드 최적화 하는 방법">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T11:48:09.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/Programming/React/material-ui-optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">material-ui 빌드 최적화 하는 방법</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -785,7 +752,7 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -975,8 +942,27 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/10/Programming/Algorithm/rotate-list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg" alt="Rotate List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-09T22:40:15.000Z">2019-12-10</time></div>
+                    <a href="/2019/12/10/Programming/Algorithm/rotate-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Rotate List</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1054,25 +1040,6 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/04/Programming/React/material-ui-optimization/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&amp;dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&amp;fm=jpg" alt="material-ui 빌드 최적화 하는 방법">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T11:48:09.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/Programming/React/material-ui-optimization/" class="title has-link-black-ter is-size-6 has-text-weight-normal">material-ui 빌드 최적화 하는 방법</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1090,7 +1057,7 @@ card클래스를 사용하는 모든 컴포넌트에 배경색이 회색으로 �
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -1355,9 +1322,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
