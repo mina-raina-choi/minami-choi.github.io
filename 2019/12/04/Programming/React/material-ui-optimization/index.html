@@ -10,19 +10,19 @@
 <title>material-ui 빌드 최적화 하는 방법 - Mina&#39;s World</title>
 
 
-    <meta name="description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+    <meta name="description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta name="keywords" content="React,material-ui">
 <meta property="og:type" content="article">
 <meta property="og:title" content="material-ui 빌드 최적화 하는 방법">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/04/Programming/React/material-ui-optimization/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<meta property="og:description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&fm=jpg">
 <meta property="og:updated_time" content="2019-12-04T12:12:35.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="material-ui 빌드 최적화 하는 방법">
-<meta name="twitter:description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<meta name="twitter:description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&fm=jpg">
 
 
@@ -121,7 +121,7 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
                     <i class="fas fa-list-ul"></i>
                 </a>
                 
@@ -179,18 +179,19 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제상황">문제상황</span></h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Button, TextField &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@material-ui/core"</span></span><br></pre></td></tr></table></figure>
+            <h1><span id="문제상황">문제상황</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Button, TextField &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@material-ui/core"</span></span><br></pre></td></tr></table></figure>
+
 <p>이렇게 import를 하면 <code>Button</code>, <code>TextField</code>만 임포트되는 게 아니라 <code>@material/core</code>에 있는 모든 모듈들이 빌드파일이 포함된다.</p>
 <a id="more"></a>
+
 <p>딱 사용하려는 모듈만 import를 하려면 추가적으로 처리가 필요하다.</p>
-<h1><span id></span></h1>
-<h2><span id="1-바벨-플러그인-임포트-모듈-설치">1. 바벨 플러그인 임포트 모듈 설치</span></h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add -D babel-plugin-import</span><br></pre></td></tr></table></figure>
-<h2><span id="2-1-웹팩을-사용한다면-webpackconfigjs-파일-수정">2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span></h2>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,</span><br><span class="line">      include: paths.appSrc,</span><br><span class="line"></span><br><span class="line">      loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-loader"</span>),</span><br><span class="line">      options: &#123;</span><br><span class="line">        customize: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-preset-react-app/webpack-overrides"</span>),</span><br><span class="line"></span><br><span class="line">        plugins: [</span><br><span class="line">          [</span><br><span class="line">            <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">              libraryName: <span class="hljs-string">"@material-ui/core"</span>,</span><br><span class="line">              <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">              libraryDirectory: <span class="hljs-string">""</span>,</span><br><span class="line">              camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="hljs-string">"core"</span></span><br><span class="line">          ],</span><br><span class="line">        ...</span><br><span class="line">        ],</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<h2><span id="2-2-아니면-프로젝트-루트-위치에">2-2. 아니면, 프로젝트 루트 위치에</span></h2>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// .babelrc.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> plugins = [</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/core"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"core"</span></span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/icons"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"icons"</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123; plugins &#125;</span><br></pre></td></tr></table></figure>
+<p>#</p>
+<h2><span id="1-바벨-플러그인-임포트-모듈-설치">1. 바벨 플러그인 임포트 모듈 설치</span></h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add -D babel-plugin-import</span><br></pre></td></tr></table></figure>
+
+<h2><span id="2-1-웹팩을-사용한다면-webpackconfigjs-파일-수정">2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span></h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,</span><br><span class="line">      include: paths.appSrc,</span><br><span class="line"></span><br><span class="line">      loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-loader"</span>),</span><br><span class="line">      options: &#123;</span><br><span class="line">        customize: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-preset-react-app/webpack-overrides"</span>),</span><br><span class="line"></span><br><span class="line">        plugins: [</span><br><span class="line">          [</span><br><span class="line">            <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">              libraryName: <span class="hljs-string">"@material-ui/core"</span>,</span><br><span class="line">              <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">              libraryDirectory: <span class="hljs-string">""</span>,</span><br><span class="line">              camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="hljs-string">"core"</span></span><br><span class="line">          ],</span><br><span class="line">        ...</span><br><span class="line">        ],</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2><span id="2-2-아니면-프로젝트-루트-위치에">2-2. 아니면, 프로젝트 루트 위치에</span></h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// .babelrc.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> plugins = [</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/core"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"core"</span></span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/icons"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"icons"</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123; plugins &#125;</span><br></pre></td></tr></table></figure>
+
 <p>[참고] <a href="https://material-ui.com/guides/minimizing-bundle-size/#ecmascript" target="_blank" rel="noopener">https://material-ui.com/guides/minimizing-bundle-size/#ecmascript</a></p>
 
         </div>
@@ -238,7 +239,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -300,11 +301,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            60
+                            61
                         </p>
                     </a>
                 </div>
@@ -312,7 +313,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -324,7 +325,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -337,7 +338,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -382,7 +383,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -407,7 +408,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">58</span>
+                <span class="level-item tag">59</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -415,7 +416,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">21</span>
+                <span class="level-item tag">22</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -488,27 +489,23 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
         <span class="has-mr-6">1</span>
         <span>문제상황</span>
-        </a></li><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2</span>
-        <span></span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">1.1</span>
         <span>1. 바벨 플러그인 임포트 모듈 설치</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">1.2</span>
         <span>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">1.3</span>
         <span>2-2. 아니면, 프로젝트 루트 위치에</span>
         </a></li></ul></li></ul>
             </div>
@@ -519,8 +516,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/05/31/10/58/golden-791072__480.jpg" alt="LinkedList - Add two numbers">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T02:55:01.000Z">2019-12-11</time></div>
+                    <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LinkedList - Add two numbers</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -598,25 +614,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/04/Programming/React/react-router-component-vs-render/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?cs=srgb&amp;dl=blur-blurry-coffee-273222.jpg&amp;fm=jpg" alt="리액트 라우터 component vs render 차이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T12:01:09.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/Programming/React/react-router-component-vs-render/" class="title has-link-black-ter is-size-6 has-text-weight-normal">리액트 라우터 component vs render 차이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -624,7 +621,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -634,7 +631,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -749,27 +746,23 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
         <span class="has-mr-6">1</span>
         <span>문제상황</span>
-        </a></li><li>
-        <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2</span>
-        <span></span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">1.1</span>
         <span>1. 바벨 플러그인 임포트 모듈 설치</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">1.2</span>
         <span>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span>
         </a></li><li>
         <a class="is-flex" href="#undefined">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">1.3</span>
         <span>2-2. 아니면, 프로젝트 루트 위치에</span>
         </a></li></ul></li></ul>
             </div>
@@ -780,8 +773,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/05/31/10/58/golden-791072__480.jpg" alt="LinkedList - Add two numbers">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T02:55:01.000Z">2019-12-11</time></div>
+                    <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LinkedList - Add two numbers</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -859,25 +871,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/04/Programming/React/react-router-component-vs-render/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?cs=srgb&amp;dl=blur-blurry-coffee-273222.jpg&amp;fm=jpg" alt="리액트 라우터 component vs render 차이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-04T12:01:09.000Z">2019-12-04</time></div>
-                    <a href="/2019/12/04/Programming/React/react-router-component-vs-render/" class="title has-link-black-ter is-size-6 has-text-weight-normal">리액트 라우터 component vs render 차이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/React/">React</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -885,7 +878,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -895,7 +888,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">12</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -1160,10 +1153,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
