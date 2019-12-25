@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>이진탐색트리 구현 - Mina&#39;s World</title>
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/26/programming/algorithm/binary-search-tree-implement/">  <meta name="description" content="이진탐색트리를 구현해보자. 그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란? 트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
+<meta name="keywords" content="BinarySearchTree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="이진탐색트리 구현">
+<meta property="og:url" content="https://minami-choi.github.io/2019/12/26/Programming/Algorithm/binary-search-tree-implement/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="이진탐색트리를 구현해보자. 그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란? 트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg">
+<meta property="og:updated_time" content="2019-12-25T16:15:53.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="이진탐색트리 구현">
+<meta name="twitter:description" content="이진탐색트리를 구현해보자. 그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란? 트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
+<meta name="twitter:image" content="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg">    
+<link rel="icon" href="/images/favicon.svg">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+         밍코더 
+      </a>
+    </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg" alt="이진탐색트리 구현">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-25T16:41:19.000Z">2019-12-26</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 minutes read (About 1359 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                이진탐색트리 구현
+            
+        </h1>
+        <div class="content">
+            <p>이진탐색트리를 구현해보자.<br>
+그전에 자료구조 트리의 개념을 먼저 살펴보면,</p>
+<h3 id="트리-tree-란">트리 (Tree) 란?</h3>
+<p><code>트리</code>: <code>Node와 Branch</code>를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조</p>
+<a id="more"></a>
+<p><code>이진 트리</code> : Node가 가질 수 있는 Branch가 최대 2개인 트리<br>
+<code>이진 탐색 트리</code> : 이진트리 중에서 Branch를 만들 때, 자기 노드보다 작은 것은 왼쪽, 큰 것은 오른쪽에 위치하도록 하는 트리.</p>
+<p>[참고]알아둘 용어</p>
+<blockquote>
+<p>Node: 트리에서 데이터를 저장하는 기본 요소 (데이터와 다른 연결된 노드에 대한 Branch 정보 포함)<br>
+Root Node: 트리 맨 위에 있는 노드<br>
+Level: 최상위 노드를 Level 0으로 하였을 때, 하위 Branch로 연결된 노드의 깊이를 나타냄<br>
+Parent Node: 어떤 노드의 다음 레벨에 연결된 노드<br>
+Child Node: 어떤 노드의 상위 레벨에 연결된 노드<br>
+Leaf Node (Terminal Node): Child Node가 하나도 없는 노드<br>
+Sibling (Brother Node): 동일한 Parent Node를 가진 노드<br>
+Depth: 트리에서 Node가 가질 수 있는 최대 Level</p>
+<p><img src="https://www.fun-coding.org/00_Images/tree.png" alt="이진트리구조"></p>
+</blockquote>
+<h3 id="실제로-어디에-많이-사용되나">실제로 어디에 많이 사용되나?</h3>
+<p>트리 중 이진 트리 (Binary Tree) 형태의 구조로, 탐색(검색) 알고리즘 구현을 위해 많이 사용된다.</p>
+<blockquote>
+<p><img src="https://www.mathwarehouse.com/programming/images/binary-search-tree/binary-search-tree-sorted-array-animation.gif" alt="이진탐색트리와 정렬된 배열 검색비교"></p>
+</blockquote>
+<h3 id="탐색시-시간복잡도">탐색시 시간복잡도</h3>
+<blockquote>
+<p>depth (트리의 높이) 를 h라고 표기한다면, O(h)<br>
+n개의 노드를 가진다면, ℎ=𝑙𝑜𝑔2𝑛 에 가까우므로, 시간 복잡도는 𝑂(𝑙𝑜𝑔𝑛)<br>
+참고: 빅오 표기법에서 𝑙𝑜𝑔𝑛 에서의 log의 밑은 10이 아니라, 2이다.<br>
+한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미한다.</p>
+</blockquote>
+<p>하지만 위와 같은 시간복잡도는 이진트리가 균형잡혀 있을 때의 평균 시간복잡도이다.<br>
+최악의 경우 링크드 리스트와 동일한 성능을 보여주기도 한다.</p>
+<h3 id="이진탐색트리-구현">이진탐색트리 구현</h3>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.data = data</span><br><span class="line">    <span class="hljs-keyword">this</span>.right = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.left = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearchTree</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>._head = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  insert(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._head) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> currNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (data &lt; currNode.data) &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (currNode.left) &#123;</span><br><span class="line">            <span class="hljs-comment">// 비교할 대상 바꾸기</span></span><br><span class="line">            currNode = currNode.left</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            currNode.left = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (currNode.right) &#123;</span><br><span class="line">            <span class="hljs-comment">// 비교할 대상 바꾸기</span></span><br><span class="line">            currNode = currNode.right</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            currNode.right = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  search(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">while</span> (curr) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (curr.data === data) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data &lt; curr.data) &#123;</span><br><span class="line">        curr = curr.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        curr = curr.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 복잡하므로 경우를 나눠서 생각하는게 좋다.</span></span><br><span class="line"><span class="hljs-comment">    1. 삭제할 노드가 leaf node일 경우</span></span><br><span class="line"><span class="hljs-comment">    2. child node가 하나인 노드 삭제</span></span><br><span class="line"><span class="hljs-comment">    3. child node가 두개인 노드 삭제</span></span><br><span class="line"><span class="hljs-comment">    (둘중에 하나의 전략으로)</span></span><br><span class="line"><span class="hljs-comment">    전략 1. 삭제할 노드의 오른쪽 자식중, 가장 작은 값을 삭제할 노드의 parent노드가 가리키도록 한다.</span></span><br><span class="line"><span class="hljs-comment">    전략 2. 삭제할 노드의 왼쪽 자식중, 가장 큰 값을 삭제할 노드의 parent 노드가 가리키도록 한다.</span></span><br><span class="line"><span class="hljs-comment">    아래의 코드에서는 전략1을 사용</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">  <span class="hljs-keyword">delete</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> searched = <span class="hljs-literal">false</span></span><br><span class="line">    <span class="hljs-keyword">let</span> currNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">let</span> parentNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 1. 삭제할 노드 있는 체크</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (currNode) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (currNode.data === data) &#123;</span><br><span class="line">        searched = <span class="hljs-literal">true</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data &lt; currNode.data) &#123;</span><br><span class="line">        parentNode = currNode</span><br><span class="line">        currNode = currNode.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode = currNode</span><br><span class="line">        currNode = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (!searched) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// case 1 : leaf node 인지 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left === <span class="hljs-literal">null</span> &amp;&amp; currNode.right === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 삭제할 노드가 왼쪽노드인지 오른쪽노드인지 체크</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = <span class="hljs-literal">null</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = <span class="hljs-literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">//   delete currNode</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// case 2 : child 노드를 하나만 가지고 있을 때</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left !== <span class="hljs-literal">null</span> &amp;&amp; currNode.right === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = currNode.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = currNode.left</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currNode.left === <span class="hljs-literal">null</span> &amp;&amp; currNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = currNode.right</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*  case 3 전략 1 삭제할 노드의 오른쪽 자식중, </span></span><br><span class="line"><span class="hljs-comment">    가장 작은 값을 삭제할 노드의 parent노드가 가리키도록 한다. */</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left !== <span class="hljs-literal">null</span> &amp;&amp; currNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// case 3-1 : 삭제할 Node가 Parent Node 왼쪽에 있을 때</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNode = currNode.right</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNodeParent = currNode.right</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (changeNode.left !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent = changeNode</span><br><span class="line">          changeNode = changeNode.left</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 오른쪽 노드들중 가장 작은 값의 노드가 right child가 있는지 체크</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (changeNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent.left = changeNode.right</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          changeNodeParent.left = <span class="hljs-literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        parentNode.left = changeNode</span><br><span class="line">        changeNode.right = currNode.right</span><br><span class="line">        changeNode.left = currNode.left</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">// case 3-2 : 삭제할 Node가 Parent Node 오른쪽에 있을 때</span></span><br><span class="line">      <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNode = currNode.left</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNodeParent = currNode.left</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (changeNode.left !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent = changeNode</span><br><span class="line">          changeNode = changeNode.left</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 오른쪽 노드들중 가장 작은 값의 노드가 right child가 있는지 체크</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (changeNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent.left = changeNode.right</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          changeNodeParent.left = <span class="hljs-literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        parentNode.right = changeNode</span><br><span class="line">        changeNode.left = currNode.left</span><br><span class="line">        changeNode.right = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="이진검색트리-테스트">이진검색트리 테스트</h3>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 임의의 숫자 100개 준비</span></span><br><span class="line"><span class="hljs-keyword">const</span> numset = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()</span><br><span class="line"><span class="hljs-keyword">while</span> (numset.size != <span class="hljs-number">100</span>) &#123;</span><br><span class="line">  numset.add(<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">1000</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 헤드값을 500을 가지는 이진검색트리 생성</span></span><br><span class="line"><span class="hljs-keyword">const</span> bst = <span class="hljs-keyword">new</span> BinarySearchTree()</span><br><span class="line">bst.insert(<span class="hljs-number">500</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 선택된 100개의 숫자를 이진 탐색 트리에 입력</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> numset) &#123;</span><br><span class="line">  bst.insert(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 입력한 100개의 숫자 검색 (검색 기능 확인)</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> numset) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (bst.search(item) === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"search failed"</span>, item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 10개 임의로 삭제해보기</span></span><br><span class="line"><span class="hljs-keyword">const</span> deleteNums = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()</span><br><span class="line"><span class="hljs-keyword">const</span> numArray = [...numset]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span> (deleteNums.size != <span class="hljs-number">10</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> index = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>)</span><br><span class="line">  deleteNums.add(numArray[index])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> deleteNums) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (bst.delete(item) === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"delete failed"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/BinarySearchTree/">BinarySearchTree</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/25/Programming/Algorithm/hash-table-implement/">
+                <span class="level-item">해시테이블 구현</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2019/12/26/Programming/Algorithm/binary-search-tree-implement/';
+        this.page.identifier = '2019/12/26/Programming/Algorithm/binary-search-tree-implement/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Articles
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            67
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Catégories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            11
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            84
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
+                SUIVRE</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://minami-choi.github.io">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/coder_minachoi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
+            <span class="level-start">
+                <span class="level-item">이직일기</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">65</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">28</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#트리-tree-란">
+        <span class="has-mr-6">1</span>
+        <span>트리 (Tree) 란?</span>
+        </a></li><li>
+        <a class="is-flex" href="#실제로-어디에-많이-사용되나">
+        <span class="has-mr-6">2</span>
+        <span>실제로 어디에 많이 사용되나?</span>
+        </a></li><li>
+        <a class="is-flex" href="#탐색시-시간복잡도">
+        <span class="has-mr-6">3</span>
+        <span>탐색시 시간복잡도</span>
+        </a></li><li>
+        <a class="is-flex" href="#이진탐색트리-구현">
+        <span class="has-mr-6">4</span>
+        <span>이진탐색트리 구현</span>
+        </a></li><li>
+        <a class="is-flex" href="#이진검색트리-테스트">
+        <span class="has-mr-6">5</span>
+        <span>이진검색트리 테스트</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Récents
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg" alt="이진탐색트리 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T16:41:19.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이진탐색트리 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2018/01/11/21/27/desk-3076954__480.jpg" alt="해시테이블 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T02:18:38.000Z">2019-12-25</time></div>
+                    <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시테이블 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/24/Programming/Algorithm/top-k-frequent-elements/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2017/10/13/15/29/black-coffee-2847957__480.jpg" alt="top-k-frequent-elements">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T00:12:15.000Z">2019-12-24</time></div>
+                    <a href="/2019/12/24/Programming/Algorithm/top-k-frequent-elements/" class="title has-link-black-ter is-size-6 has-text-weight-normal">top-k-frequent-elements</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/16/Programming/Algorithm/maximum-number-of-balloons/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.pexels.com/photos/1437618/pexels-photo-1437618.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="Maximum Number of Balloons">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T03:44:10.000Z">2019-12-16</time></div>
+                    <a href="/2019/12/16/Programming/Algorithm/maximum-number-of-balloons/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Maximum Number of Balloons</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#트리-tree-란">
+        <span class="has-mr-6">1</span>
+        <span>트리 (Tree) 란?</span>
+        </a></li><li>
+        <a class="is-flex" href="#실제로-어디에-많이-사용되나">
+        <span class="has-mr-6">2</span>
+        <span>실제로 어디에 많이 사용되나?</span>
+        </a></li><li>
+        <a class="is-flex" href="#탐색시-시간복잡도">
+        <span class="has-mr-6">3</span>
+        <span>탐색시 시간복잡도</span>
+        </a></li><li>
+        <a class="is-flex" href="#이진탐색트리-구현">
+        <span class="has-mr-6">4</span>
+        <span>이진탐색트리 구현</span>
+        </a></li><li>
+        <a class="is-flex" href="#이진검색트리-테스트">
+        <span class="has-mr-6">5</span>
+        <span>이진검색트리 테스트</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Récents
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg" alt="이진탐색트리 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T16:41:19.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이진탐색트리 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2018/01/11/21/27/desk-3076954__480.jpg" alt="해시테이블 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T02:18:38.000Z">2019-12-25</time></div>
+                    <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시테이블 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/24/Programming/Algorithm/top-k-frequent-elements/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2017/10/13/15/29/black-coffee-2847957__480.jpg" alt="top-k-frequent-elements">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-24T00:12:15.000Z">2019-12-24</time></div>
+                    <a href="/2019/12/24/Programming/Algorithm/top-k-frequent-elements/" class="title has-link-black-ter is-size-6 has-text-weight-normal">top-k-frequent-elements</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/16/Programming/Algorithm/maximum-number-of-balloons/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.pexels.com/photos/1437618/pexels-photo-1437618.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="Maximum Number of Balloons">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T03:44:10.000Z">2019-12-16</time></div>
+                    <a href="/2019/12/16/Programming/Algorithm/maximum-number-of-balloons/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Maximum Number of Balloons</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    밍코더
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

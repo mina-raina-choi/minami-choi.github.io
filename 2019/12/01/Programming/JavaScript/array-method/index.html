@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Array - pop, push, shift, unshift - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/01/programming/javascript/array-method/">  <meta name="description" content="자바스크립트 array method를 정리해보자자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/01/programming/javascript/array-method/">  <meta name="description" content="자바스크립트 array method를 정리해보자 자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Array - pop, push, shift, unshift">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/01/Programming/JavaScript/array-method/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="자바스크립트 array method를 정리해보자자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.">
+<meta property="og:description" content="자바스크립트 array method를 정리해보자 자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png">
 <meta property="og:updated_time" content="2019-12-01T12:49:18.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Array - pop, push, shift, unshift">
-<meta name="twitter:description" content="자바스크립트 array method를 정리해보자자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.">
+<meta name="twitter:description" content="자바스크립트 array method를 정리해보자 자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.">
 <meta name="twitter:image" content="http://1.bp.blogspot.com/-Q2542DTmmTQ/US-Wmoo14kI/AAAAAAAAA18/BwHyMEplXtM/s1600/deque.png">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -129,21 +129,26 @@
             
         </h1>
         <div class="content">
-            <p>자바스크립트 array method를 정리해보자<br>자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.</p>
+            <p>자바스크립트 array method를 정리해보자<br>
+자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.</p>
 <a id="more"></a>
-
-<h1 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h1><p>배열에서 마지막 요소를 제거하고 그 요소를 반환한다.<br>만약 빈 배열에 <code>pop()</code>을 호출하면, <code>undeifined</code>를 반환한다.<br>원본배열 자체가 변한다.</p>
+<h1 id="pop">pop()</h1>
+<p>배열에서 마지막 요소를 제거하고 그 요소를 반환한다.<br>
+만약 빈 배열에 <code>pop()</code>을 호출하면, <code>undeifined</code>를 반환한다.<br>
+원본배열 자체가 변한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"grape"</span>, <span class="hljs-string">"pineapple"</span>]</span><br><span class="line"><span class="hljs-keyword">const</span> popped = fruits.pop()</span><br><span class="line"><span class="hljs-built_in">console</span>.log(popped) <span class="hljs-comment">// pineapple</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(fruits) <span class="hljs-comment">// ["banana", "apple", "grape"]</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="push"><a href="#push" class="headerlink" title="push()"></a>push()</h1><p>배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환한다.<br>pop()과 마찬가지로 원본배열이 바뀐다.</p>
+<h1 id="push">push()</h1>
+<p>배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환한다.<br>
+pop()과 마찬가지로 원본배열이 바뀐다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">"pigs"</span>, <span class="hljs-string">"goats"</span>, <span class="hljs-string">"sheep"</span>]</span><br><span class="line"><span class="hljs-keyword">const</span> count = animals.push(<span class="hljs-string">"cows"</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(count) <span class="hljs-comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(animals) <span class="hljs-comment">// (4) ["pigs", "goats", "sheep", "cows"]</span></span><br><span class="line"></span><br><span class="line">animals.push(<span class="hljs-string">"chickens"</span>, <span class="hljs-string">"cats"</span>, <span class="hljs-string">"dogs"</span>) <span class="hljs-comment">// 7</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="shift"><a href="#shift" class="headerlink" title="shift()"></a>shift()</h1><p>배열에서 첫번째 요소를 제거하고, 제거된 요소를 반환한다. 원본배열 자체가 변한다.<br>0 번째 위치의 요소를 제거하고 연이은 나머지 값들의 위치를 한칸씩 앞으로 당긴다.<br>만약 빈 배열에 <code>shift()</code>를 호출하면 <code>undefined</code> 리턴.</p>
+<h1 id="shift">shift()</h1>
+<p>배열에서 첫번째 요소를 제거하고, 제거된 요소를 반환한다. 원본배열 자체가 변한다.<br>
+0 번째 위치의 요소를 제거하고 연이은 나머지 값들의 위치를 한칸씩 앞으로 당긴다.<br>
+만약 빈 배열에 <code>shift()</code>를 호출하면 <code>undefined</code> 리턴.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"grape"</span>, <span class="hljs-string">"pineapple"</span>]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> firstItem = fruits.shift()</span><br><span class="line"><span class="hljs-built_in">console</span>.log(firstItem) <span class="hljs-comment">// banana</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(fruits) <span class="hljs-comment">// (3) ["apple", "grape", "pineapple"]</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="unshift"><a href="#unshift" class="headerlink" title="unshift()"></a>unshift()</h1><p>새로운 요소를 배열의 맨 앞쪽에 추가하고 새로운 길이를 반환한다. 원본배열이 바뀐다.</p>
+<h1 id="unshift">unshift()</h1>
+<p>새로운 요소를 배열의 맨 앞쪽에 추가하고 새로운 길이를 반환한다. 원본배열이 바뀐다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"grape"</span>, <span class="hljs-string">"pineapple"</span>]</span><br><span class="line"></span><br><span class="line">fruits.unshift(<span class="hljs-string">"mango"</span>, <span class="hljs-string">"tangerine"</span>)</span><br><span class="line"><span class="hljs-comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(fruits)</span><br><span class="line"><span class="hljs-comment">// (6) ["mango", "tangerine", "banana", "apple", "grape", "pineapple"]</span></span><br></pre></td></tr></table></figure>
-
 <p>[참고] <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop</a></p>
 
         </div>
@@ -191,7 +196,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
         
 <script>
     var disqus_config = function () {
@@ -253,11 +258,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Articles
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            66
+                            67
                         </p>
                     </a>
                 </div>
@@ -265,7 +270,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -281,7 +286,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            83
+                            84
                         </p>
                     </a>
                 </div>
@@ -290,7 +295,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                Follow</a>
+                SUIVRE</a>
         </div>
         
         
@@ -331,7 +336,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             <li>
@@ -356,7 +361,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">64</span>
+                <span class="level-item tag">65</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -364,7 +369,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">27</span>
+                <span class="level-item tag">28</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -436,8 +441,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg" alt="이진탐색트리 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T16:41:19.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이진탐색트리 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -515,25 +539,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/14/Programming/Algorithm/unique-number-of-occurrences/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-13T16:04:15.000Z">2019-12-14</time></div>
-                    <a href="/2019/12/14/Programming/Algorithm/unique-number-of-occurrences/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -551,7 +556,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">19</span>
                 </span>
             </a>
         </li>
@@ -665,8 +670,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg" alt="이진탐색트리 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T16:41:19.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/binary-search-tree-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">이진탐색트리 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -744,25 +768,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/14/Programming/Algorithm/unique-number-of-occurrences/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-13T16:04:15.000Z">2019-12-14</time></div>
-                    <a href="/2019/12/14/Programming/Algorithm/unique-number-of-occurrences/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -780,7 +785,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">18</span>
+                    <span class="level-item tag">19</span>
                 </span>
             </a>
         </li>
@@ -1012,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1044,9 +1049,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
