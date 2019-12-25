@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>material-ui 빌드 최적화 하는 방법 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/04/programming/react/material-ui-optimization/">  <meta name="description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/04/programming/react/material-ui-optimization/">  <meta name="description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta name="keywords" content="React,material-ui">
 <meta property="og:type" content="article">
 <meta property="og:title" content="material-ui 빌드 최적화 하는 방법">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/04/Programming/React/material-ui-optimization/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<meta property="og:description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&fm=jpg">
 <meta property="og:updated_time" content="2019-12-04T12:12:35.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="material-ui 빌드 최적화 하는 방법">
-<meta name="twitter:description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<meta name="twitter:description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&fm=jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
@@ -45,54 +45,49 @@
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                밍코더
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item" href="/">Home</a>
-                
-                <a class="navbar-item" href="/archives">Archives</a>
-                
-                <a class="navbar-item" href="/categories">Categories</a>
-                
-                <a class="navbar-item" href="/tags">Tags</a>
-                
-                <a class="navbar-item" href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+         밍코더 
+      </a>
     </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
 </nav>
+
     
     <section class="section">
         <div class="container">
@@ -138,18 +133,19 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제상황">문제상황</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Button, TextField &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@material-ui/core"</span></span><br></pre></td></tr></table></figure>
+            <h1 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Button, TextField &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@material-ui/core"</span></span><br></pre></td></tr></table></figure>
+
 <p>이렇게 import를 하면 <code>Button</code>, <code>TextField</code>만 임포트되는 게 아니라 <code>@material/core</code>에 있는 모든 모듈들이 빌드파일이 포함된다.</p>
 <a id="more"></a>
+
 <p>딱 사용하려는 모듈만 import를 하려면 추가적으로 처리가 필요하다.</p>
-<h1 id="none"></h1>
-<h2 id="1-바벨-플러그인-임포트-모듈-설치">1. 바벨 플러그인 임포트 모듈 설치</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add -D babel-plugin-import</span><br></pre></td></tr></table></figure>
-<h2 id="2-1-웹팩을-사용한다면-webpack-config-js-파일-수정">2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</h2>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,</span><br><span class="line">      include: paths.appSrc,</span><br><span class="line"></span><br><span class="line">      loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-loader"</span>),</span><br><span class="line">      options: &#123;</span><br><span class="line">        customize: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-preset-react-app/webpack-overrides"</span>),</span><br><span class="line"></span><br><span class="line">        plugins: [</span><br><span class="line">          [</span><br><span class="line">            <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">              libraryName: <span class="hljs-string">"@material-ui/core"</span>,</span><br><span class="line">              <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">              libraryDirectory: <span class="hljs-string">""</span>,</span><br><span class="line">              camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="hljs-string">"core"</span></span><br><span class="line">          ],</span><br><span class="line">        ...</span><br><span class="line">        ],</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-아니면-프로젝트-루트-위치에">2-2. 아니면, 프로젝트 루트 위치에</h2>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// .babelrc.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> plugins = [</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/core"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"core"</span></span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/icons"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"icons"</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123; plugins &#125;</span><br></pre></td></tr></table></figure>
+<p>#</p>
+<h2 id="1-바벨-플러그인-임포트-모듈-설치"><a href="#1-바벨-플러그인-임포트-모듈-설치" class="headerlink" title="1. 바벨 플러그인 임포트 모듈 설치"></a>1. 바벨 플러그인 임포트 모듈 설치</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add -D babel-plugin-import</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-1-웹팩을-사용한다면-webpack-config-js-파일-수정"><a href="#2-1-웹팩을-사용한다면-webpack-config-js-파일-수정" class="headerlink" title="2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정"></a>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,</span><br><span class="line">      include: paths.appSrc,</span><br><span class="line"></span><br><span class="line">      loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-loader"</span>),</span><br><span class="line">      options: &#123;</span><br><span class="line">        customize: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-preset-react-app/webpack-overrides"</span>),</span><br><span class="line"></span><br><span class="line">        plugins: [</span><br><span class="line">          [</span><br><span class="line">            <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">              libraryName: <span class="hljs-string">"@material-ui/core"</span>,</span><br><span class="line">              <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">              libraryDirectory: <span class="hljs-string">""</span>,</span><br><span class="line">              camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="hljs-string">"core"</span></span><br><span class="line">          ],</span><br><span class="line">        ...</span><br><span class="line">        ],</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-아니면-프로젝트-루트-위치에"><a href="#2-2-아니면-프로젝트-루트-위치에" class="headerlink" title="2-2. 아니면, 프로젝트 루트 위치에"></a>2-2. 아니면, 프로젝트 루트 위치에</h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// .babelrc.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> plugins = [</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/core"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"core"</span></span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/icons"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"icons"</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123; plugins &#125;</span><br></pre></td></tr></table></figure>
+
 <p>[참고] <a href="https://material-ui.com/guides/minimizing-bundle-size/#ecmascript" rel="external nofollow noopener noreferrer" target="_blank">https://material-ui.com/guides/minimizing-bundle-size/#ecmascript</a></p>
 
         </div>
@@ -449,21 +445,17 @@
         <a class="is-flex" href="#문제상황">
         <span class="has-mr-6">1</span>
         <span>문제상황</span>
-        </a></li><li>
-        <a class="is-flex" href="#none">
-        <span class="has-mr-6">2</span>
-        <span></span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#1-바벨-플러그인-임포트-모듈-설치">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">1.1</span>
         <span>1. 바벨 플러그인 임포트 모듈 설치</span>
         </a></li><li>
         <a class="is-flex" href="#2-1-웹팩을-사용한다면-webpack-config-js-파일-수정">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">1.2</span>
         <span>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span>
         </a></li><li>
         <a class="is-flex" href="#2-2-아니면-프로젝트-루트-위치에">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">1.3</span>
         <span>2-2. 아니면, 프로젝트 루트 위치에</span>
         </a></li></ul></li></ul>
             </div>
@@ -710,21 +702,17 @@
         <a class="is-flex" href="#문제상황">
         <span class="has-mr-6">1</span>
         <span>문제상황</span>
-        </a></li><li>
-        <a class="is-flex" href="#none">
-        <span class="has-mr-6">2</span>
-        <span></span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#1-바벨-플러그인-임포트-모듈-설치">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">1.1</span>
         <span>1. 바벨 플러그인 임포트 모듈 설치</span>
         </a></li><li>
         <a class="is-flex" href="#2-1-웹팩을-사용한다면-webpack-config-js-파일-수정">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">1.2</span>
         <span>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span>
         </a></li><li>
         <a class="is-flex" href="#2-2-아니면-프로젝트-루트-위치에">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">1.3</span>
         <span>2-2. 아니면, 프로젝트 루트 위치에</span>
         </a></li></ul></li></ul>
             </div>

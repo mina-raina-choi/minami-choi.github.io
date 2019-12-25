@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Unique Number of Occurrences - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/15/programming/algorithm/find-common-characters/">  <meta name="description" content="문제 소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/15/programming/algorithm/find-common-characters/">  <meta name="description" content="문제소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unique Number of Occurrences">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/15/Programming/Algorithm/find-common-characters/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
+<meta property="og:description" content="문제소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg">
 <meta property="og:updated_time" content="2019-12-14T17:12:52.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unique Number of Occurrences">
-<meta name="twitter:description" content="문제 소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
+<meta name="twitter:description" content="문제소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
@@ -45,54 +45,49 @@
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                밍코더
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item" href="/">Home</a>
-                
-                <a class="navbar-item" href="/archives">Archives</a>
-                
-                <a class="navbar-item" href="/categories">Categories</a>
-                
-                <a class="navbar-item" href="/tags">Tags</a>
-                
-                <a class="navbar-item" href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+         밍코더 
+      </a>
     </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
 </nav>
+
     
     <section class="section">
         <div class="container">
@@ -138,44 +133,33 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제">문제</h1>
-<p>소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.</p>
 <a id="more"></a>
+
 <blockquote>
-<p>Example 1:<br>
-Input: [“bella”,“label”,“roller”]<br>
-Output: [“e”,“l”,“l”]</p>
+<p>Example 1:<br>Input: [“bella”,”label”,”roller”]<br>Output: [“e”,”l”,”l”]</p>
 </blockquote>
 <blockquote>
-<p>Example 2:<br>
-Input: [“cool”,“lock”,“cook”]<br>
-Output: [“c”,“o”]</p>
+<p>Example 2:<br>Input: [“cool”,”lock”,”cook”]<br>Output: [“c”,”o”]</p>
 </blockquote>
 <pre><code>Note:
 1 &lt;= A.length &lt;= 100
 1 &lt;= A[i].length &lt;= 100
-A[i][j] is a lowercase letter
-</code></pre>
-<p>출처 - <a href="https://leetcode.com/problems/find-common-characters/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/find-common-characters/</a></p>
-<h1 id="풀이과정">풀이과정</h1>
-<p>먼저 가장 짧은 길이의 문자열을</p>
+A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.com/problems/find-common-characters/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/find-common-characters/</a></p>
+<h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>먼저 가장 짧은 길이의 문자열을</p>
 <pre><code>{
 &quot;b0&quot;: 1,
 &quot;e1&quot;: 1,
 &quot;l2&quot;: 1,
 &quot;l3&quot;: 1,
 &quot;a4&quot;: 1
-}
-</code></pre>
-<p>이런 식의 <code>object</code>로 만들었다. <code>key</code>는 중복된 문자도 유니크하게 만들기 위해 <code>문자+index</code>로 구성했고, 이 때의 값은 등장횟수다.<br>
-이제 가장 짧은 문자열을 <code>forloop</code>으로 돌면서 그 안에서 주어진 문자열 배열을 <code>forloop</code>으로 돈다. 기준이 되는 가장 짧은 문자는 제외하기 때문에 <code>j=1</code>부터 시작한다.</p>
+}</code></pre><p>이런 식의 <code>object</code>로 만들었다. <code>key</code>는 중복된 문자도 유니크하게 만들기 위해 <code>문자+index</code>로 구성했고, 이 때의 값은 등장횟수다.<br>이제 가장 짧은 문자열을 <code>forloop</code>으로 돌면서 그 안에서 주어진 문자열 배열을 <code>forloop</code>으로 돈다. 기준이 되는 가장 짧은 문자는 제외하기 때문에 <code>j=1</code>부터 시작한다.</p>
 <p>만약 찾는 문자가 존재한다면 <code>shortestObj[shortest[i] + i] += 1</code>을 통해 등장횟수를 1만큼 더해주고 그 문자가 다시 카운트되지 않도록 <code>array.splice(idx, 1)</code> 문자열에서 삭제한다.</p>
 <p>마지막으로, <code>shortestObj</code>의 값이 <code>sorted.length</code>와 같다면 모든 문자열에 등장한 것이므로 그 때의 문자 <code>shortest[i]</code>를 정답 배열에 추가한다.</p>
 <p>이 방법은 이중 forloop를 돌아서 효율이 좋진 않다… discuss를 보며 새로운 방법을 찾아봐야할 것 같다.</p>
-<h1 id="나의-풀이">나의 풀이</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string[]&#125; A</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;string[]&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> commonChars = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sorted = A.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.length - b.length)</span><br><span class="line">  <span class="hljs-comment">// 가장 짧은 스트링 찾기</span></span><br><span class="line">  <span class="hljs-keyword">const</span> shortest = sorted[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> shortestObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    shortestObj[shortest[i] + i] = <span class="hljs-number">1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = shortest[i]</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; sorted.length; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> array = sorted[j].split(<span class="hljs-string">""</span>)</span><br><span class="line">      <span class="hljs-keyword">const</span> idx = array.indexOf(value)</span><br><span class="line">      <span class="hljs-keyword">if</span> (idx &gt; <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">        shortestObj[shortest[i] + i] += <span class="hljs-number">1</span></span><br><span class="line">        array.splice(idx, <span class="hljs-number">1</span>)</span><br><span class="line">        sorted[j] = array.join(<span class="hljs-string">""</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (shortestObj[shortest[i] + i] === sorted.length) &#123;</span><br><span class="line">      answer.push(shortest[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="더-공부할-내용-splice의-정확한-사용법">더 공부할 내용 : splice의 정확한 사용법</h3>
-<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string[]&#125; A</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;string[]&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> commonChars = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sorted = A.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.length - b.length)</span><br><span class="line">  <span class="hljs-comment">// 가장 짧은 스트링 찾기</span></span><br><span class="line">  <span class="hljs-keyword">const</span> shortest = sorted[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> shortestObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    shortestObj[shortest[i] + i] = <span class="hljs-number">1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = shortest[i]</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; sorted.length; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> array = sorted[j].split(<span class="hljs-string">""</span>)</span><br><span class="line">      <span class="hljs-keyword">const</span> idx = array.indexOf(value)</span><br><span class="line">      <span class="hljs-keyword">if</span> (idx &gt; <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">        shortestObj[shortest[i] + i] += <span class="hljs-number">1</span></span><br><span class="line">        array.splice(idx, <span class="hljs-number">1</span>)</span><br><span class="line">        sorted[j] = array.join(<span class="hljs-string">""</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (shortestObj[shortest[i] + i] === sorted.length) &#123;</span><br><span class="line">      answer.push(shortest[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="더-공부할-내용-splice의-정확한-사용법"><a href="#더-공부할-내용-splice의-정확한-사용법" class="headerlink" title="더 공부할 내용 : splice의 정확한 사용법"></a>더 공부할 내용 : splice의 정확한 사용법</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
 
         </div>
         

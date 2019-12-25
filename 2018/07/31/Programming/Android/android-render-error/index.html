@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Android Render Problem 해결 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/07/31/programming/android/android-render-error/">  <meta name="description" content="문제 상황 constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다. 에러 메시지를 확인해보니 Render problem!!!">
+<link rel="canonical" href="https://minami-choi.github.io/2018/07/31/programming/android/android-render-error/">  <meta name="description" content="문제 상황constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.에러 메시지를 확인해보니 Render problem!!!">
 <meta name="keywords" content="android,안드로이드">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Render Problem 해결">
 <meta property="og:url" content="https://minami-choi.github.io/2018/07/31/Programming/Android/android-render-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 상황 constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다. 에러 메시지를 확인해보니 Render problem!!!">
+<meta property="og:description" content="문제 상황constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.에러 메시지를 확인해보니 Render problem!!!">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/273238/pexels-photo-273238.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 <meta property="og:updated_time" content="2019-12-04T12:26:03.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Render Problem 해결">
-<meta name="twitter:description" content="문제 상황 constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다. 에러 메시지를 확인해보니 Render problem!!!">
+<meta name="twitter:description" content="문제 상황constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.에러 메시지를 확인해보니 Render problem!!!">
 <meta name="twitter:image" content="https://images.pexels.com/photos/273238/pexels-photo-273238.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
@@ -45,54 +45,49 @@
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                밍코더
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item" href="/">Home</a>
-                
-                <a class="navbar-item" href="/archives">Archives</a>
-                
-                <a class="navbar-item" href="/categories">Categories</a>
-                
-                <a class="navbar-item" href="/tags">Tags</a>
-                
-                <a class="navbar-item" href="/about">About</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+         밍코더 
+      </a>
     </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
 </nav>
+
     
     <section class="section">
         <div class="container">
@@ -138,13 +133,12 @@
             
         </h1>
         <div class="content">
-            <h3 id="문제-상황">문제 상황</h3>
-<p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>
-에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
+            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
 <a id="more"></a>
-<h3 id="해결-방법">해결 방법</h3>
-<p><code>app - build.gradle</code> 에서</p>
+
+<h3 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h3><p><code>app - build.gradle</code> 에서</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 수정전</span></span><br><span class="line">compileSdkVersion28</span><br><span class="line">targetSdkVersion28</span><br><span class="line"></span><br><span class="line">dependencies&#123;</span><br><span class="line">...</span><br><span class="line">implementation<span class="hljs-string">'com.android.support:appcompat-v7:28.0.0-alpha3'</span></span><br><span class="line">…</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 수정후</span></span><br><span class="line">compileSdkVersion27</span><br><span class="line">targetSdkVersion27</span><br><span class="line"></span><br><span class="line">dependencies&#123;</span><br><span class="line">...</span><br><span class="line">Implementation <span class="hljs-string">'com.android.support:appcompat-v7:27.0.2'</span></span><br><span class="line">…</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Sdk버전을 낮춰주면 된다.</p>
 <p>수정 후, <code>File -&gt; Invalidate Caches/Restart -&gt; Invalidate and Restart</code> 하면 정상적으로 동작하는 것을 확인할 수 있다.</p>
 <p>아직 <code>com.android.support:appcompat-v7:28.0.0-alpha3</code>이 안정화가 안돼서 생기는 문제인 듯하다.</p>
