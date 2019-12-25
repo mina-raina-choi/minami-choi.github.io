@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+
     <sitemap>
         <loc>https://minami-choi.github.io/post-sitemap.xml</loc>
         <lastmod>2019-12-24T00:14:07.074Z</lastmod>
@@ -13,12 +14,12 @@
 
     <sitemap>
         <loc>https://minami-choi.github.io/category-sitemap.xml</loc>
-        <lastmod>2019-11-23T13:38:44.087Z</lastmod>
+        <lastmod>2019-12-24T00:14:07.074Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://minami-choi.github.io/tag-sitemap.xml</loc>
-        <lastmod>2019-11-23T13:20:38.476Z</lastmod>
+        <lastmod>2019-12-24T00:14:07.074Z</lastmod>
     </sitemap>
 
 </sitemapindex>

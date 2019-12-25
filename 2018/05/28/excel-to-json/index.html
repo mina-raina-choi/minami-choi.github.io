@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
 
-<meta name="generator" content="Hexo 3.9.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>엑셀에서 json파일 추출하기 - Mina&#39;s World</title>
-
-
-    <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/28/excel-to-json/">  <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="keywords" content="엑셀,csv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="엑셀에서 json파일 추출하기">
@@ -23,44 +20,18 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="엑셀에서 json파일 추출하기">
 <meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
-<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
-
-
-
-
-
-
-
+<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
-
-
-    
-    
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
 <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
-    
-    
+  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
+  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
     
 <link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -68,16 +39,9 @@
 
     gtag('config', 'UA-123533454-1');
 </script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
 
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -93,27 +57,22 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item"
-                href="/">Home</a>
+                <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item"
-                href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
-                <a class="navbar-item"
-                href="/categories">Categories</a>
+                <a class="navbar-item" href="/categories">Categories</a>
                 
-                <a class="navbar-item"
-                href="/tags">Tags</a>
+                <a class="navbar-item" href="/tags">Tags</a>
                 
-                <a class="navbar-item"
-                href="/about">About</a>
+                <a class="navbar-item" href="/about">About</a>
                 
             </div>
             
             <div class="navbar-end">
                 
                     
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-github"></i>
                         
@@ -138,7 +97,7 @@
 <div class="card">
     
     <div class="card-image">
-        <span  class="image is-7by1">
+        <span class="image is-7by1">
             <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="엑셀에서 json파일 추출하기">
         </span>
     </div>
@@ -181,7 +140,7 @@
 <p>약간의 검토를 해보니 excel파일에서 json을 추출하는 방법이 있다는 것을 알게되어 정리를 해두게 되었다.</p>
 <h3><span id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</span></h3><h3><span id="2-httpwwwconvertcsvcomcsv-to-jsonhtm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</span></h3><h4><span id="2-1-option1-변환할-csv-파일-선택">2-1. Option1 : 변환할 csv 파일 선택</span></h4><p><img src="/images/choose-csv.png" alt></p>
 <h4><span id="2-2-options2-first-row-is-column-names-옵션-체크">2-2. Options2 : First row is column names 옵션 체크</span></h4><h4><span id="2-3-options4-출력할-형태-만들기">2-3. Options4 : 출력할 형태 만들기</span></h4><blockquote>
-<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" target="_blank" rel="noopener">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>{lb} : left bracket {<br>{br} : Line break<br>{rb} : right bracket }<br>{f1} : 첫번째 필드값<br>{h1} : 첫번째 헤드값</p>
+<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" rel="external nofollow noopener noreferrer" target="_blank">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>{lb} : left bracket {<br>{br} : Line break<br>{rb} : right bracket }<br>{f1} : 첫번째 필드값<br>{h1} : 첫번째 헤드값</p>
 </blockquote>
 <p><img src="/images/option4.png" alt></p>
 <h3><span id="3-convert-csv-to-json-via-template-버튼-클릭하면-결과물이-나온다">3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다.</span></h3>
@@ -336,29 +295,25 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="https://minami-choi.github.io">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://minami-choi.github.io">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://www.facebook.com/minaminachoi">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
                 
                 <i class="fab fa-facebook"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com/coder_minachoi">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/coder_minachoi" rel="external nofollow noopener noreferrer">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
                 
                 <i class="fab fa-linkedin"></i>
                 
@@ -380,10 +335,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay</span>
+                <span class="level-item">Essay이직일기</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">11</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -394,12 +349,20 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/">
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
             <span class="level-start">
-                <span class="level-item">Programming</span>
+                <span class="level-item">이직일기</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">63</span>
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">632651741721</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -465,7 +428,71 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">26</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -938,8 +965,7 @@
                 </a>
                 <p class="is-size-7">
                 &copy; 2019 Mina Choi&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
@@ -953,7 +979,7 @@
                 <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-creative-commons"></i>
                         
@@ -961,7 +987,7 @@
                 </p>
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-creative-commons-by"></i>
                         
@@ -969,7 +995,7 @@
                 </p>
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-github"></i>
                         
@@ -1016,7 +1042,7 @@ var IcarusThemeSettings = {
     
 <div id="outdated">
     <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
             my browser now </a></p>
     <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
@@ -1076,7 +1102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">

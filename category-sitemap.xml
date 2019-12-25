@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <url>
         <loc>https://minami-choi.github.io</loc>
         <changefreq>daily</changefreq>
@@ -7,64 +8,8 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/categories/Programming/Angular/</loc>
-        <lastmod>2019-11-23T13:38:44.087Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Essay/</loc>
-        <lastmod>2019-11-24T14:04:20.837Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Essay/%EC%9D%B4%EC%A7%81%EC%9D%BC%EA%B8%B0/</loc>
-        <lastmod>2019-11-24T14:04:20.837Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/ElasticSearch/</loc>
-        <lastmod>2019-12-02T14:51:57.130Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/Basic/</loc>
-        <lastmod>2019-12-03T14:29:11.471Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/etc/</loc>
-        <lastmod>2019-12-03T14:30:56.805Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/React/</loc>
-        <lastmod>2019-12-04T12:13:07.315Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/Android/</loc>
-        <lastmod>2019-12-04T12:26:03.770Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/JavaScript/</loc>
-        <lastmod>2019-12-08T01:28:25.408Z</lastmod>
+        <loc>https://minami-choi.github.io/categories/Programming/Algorithm/</loc>
+        <lastmod>2019-12-24T00:14:07.074Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -77,8 +22,64 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/categories/Programming/Algorithm/</loc>
-        <lastmod>2019-12-24T00:14:07.074Z</lastmod>
+        <loc>https://minami-choi.github.io/categories/Programming/JavaScript/</loc>
+        <lastmod>2019-12-08T01:28:25.408Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/Android/</loc>
+        <lastmod>2019-12-04T12:26:03.770Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/React/</loc>
+        <lastmod>2019-12-04T12:13:07.315Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/etc/</loc>
+        <lastmod>2019-12-03T14:30:56.805Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/Basic/</loc>
+        <lastmod>2019-12-03T14:29:11.471Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/ElasticSearch/</loc>
+        <lastmod>2019-12-02T14:51:57.130Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Essay/%EC%9D%B4%EC%A7%81%EC%9D%BC%EA%B8%B0/</loc>
+        <lastmod>2019-11-24T14:04:20.837Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Essay/</loc>
+        <lastmod>2019-11-24T14:04:20.837Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/Angular/</loc>
+        <lastmod>2019-11-23T13:38:44.087Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

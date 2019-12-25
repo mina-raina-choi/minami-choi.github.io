@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
 
-<meta name="generator" content="Hexo 3.9.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>해시 - 완주하지 못한 선수 - Mina&#39;s World</title>
-
-
-    <meta name="description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+<link rel="canonical" href="https://minami-choi.github.io/2019/11/24/programming/algorithm/hash-no-completion/">  <meta name="description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="해시 - 완주하지 못한 선수">
@@ -23,44 +20,18 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="해시 - 완주하지 못한 선수">
 <meta name="twitter:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
-<meta name="twitter:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">
-
-
-
-
-
-
-
+<meta name="twitter:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">    
 <link rel="icon" href="/images/favicon.svg">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
-
-
-    
-    
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
 <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
-    
-    
+  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
+  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
     
 <link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -68,16 +39,9 @@
 
     gtag('config', 'UA-123533454-1');
 </script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
 
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="is-3-column">
     <nav class="navbar navbar-main">
@@ -93,27 +57,22 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item"
-                href="/">Home</a>
+                <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item"
-                href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
-                <a class="navbar-item"
-                href="/categories">Categories</a>
+                <a class="navbar-item" href="/categories">Categories</a>
                 
-                <a class="navbar-item"
-                href="/tags">Tags</a>
+                <a class="navbar-item" href="/tags">Tags</a>
                 
-                <a class="navbar-item"
-                href="/about">About</a>
+                <a class="navbar-item" href="/about">About</a>
                 
             </div>
             
             <div class="navbar-end">
                 
                     
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-github"></i>
                         
@@ -142,7 +101,7 @@
 <div class="card">
     
     <div class="card-image">
-        <span  class="image is-7by1">
+        <span class="image is-7by1">
             <img class="thumbnail" src="https://cdn.inflearn.com/wp-content/uploads/algorith.png" alt="해시 - 완주하지 못한 선수">
         </span>
     </div>
@@ -179,7 +138,7 @@
             
         </h1>
         <div class="content">
-            <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" target="_blank" rel="noopener">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
+            <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" rel="external nofollow noopener noreferrer" target="_blank">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
 <a id="more"></a>
 
 <h1><span id="1-문제">1. 문제</span></h1><p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
@@ -196,7 +155,7 @@
 <p>participant = [mislav, stanko, mislav, ana]<br>completion = [stanko, ana, mislav]</p>
 </blockquote>
 <p>일 경우에 예외가 발생했다. 그 이유는 <code>forEach</code>문은 중간에 멈출 수가 없다. 그래서 첫번째로 일치하지 않는 <code>mislav</code> 이름을 찾고도 그다음 forloop이 진행되어 answer에 <code>stanko</code>가 담겨 테스트를 통과하지 못했다.</p>
-<p>[참고]<br><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></p>
+<p>[참고]<br><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></p>
 <blockquote>
 <p>예외를 던지지 않고는 forEach()를 중간에 멈출 수 없습니다. 중간에 멈춰야 한다면 forEach()가 적절한 방법이 아닐지도 모릅니다.</p>
 </blockquote>
@@ -359,29 +318,25 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="https://minami-choi.github.io">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://minami-choi.github.io">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Facebook" href="https://www.facebook.com/minaminachoi">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
                 
                 <i class="fab fa-facebook"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Twitter" href="https://twitter.com/coder_minachoi">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Twitter" href="https://twitter.com/coder_minachoi" rel="external nofollow noopener noreferrer">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
                 
                 <i class="fab fa-linkedin"></i>
                 
@@ -403,10 +358,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay</span>
+                <span class="level-item">Essay이직일기</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">11</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -417,12 +372,20 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/">
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
             <span class="level-start">
-                <span class="level-item">Programming</span>
+                <span class="level-item">이직일기</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">63</span>
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">632651741721</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -488,7 +451,71 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">26</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -1009,8 +1036,7 @@
                 </a>
                 <p class="is-size-7">
                 &copy; 2019 Mina Choi&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
                 
                 <br>
                 <span id="busuanzi_container_site_uv">
@@ -1024,7 +1050,7 @@
                 <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-creative-commons"></i>
                         
@@ -1032,7 +1058,7 @@
                 </p>
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-creative-commons-by"></i>
                         
@@ -1040,7 +1066,7 @@
                 </p>
                 
                 <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
                         
                         <i class="fab fa-github"></i>
                         
@@ -1087,7 +1113,7 @@ var IcarusThemeSettings = {
     
 <div id="outdated">
     <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
             my browser now </a></p>
     <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
@@ -1147,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
