@@ -136,7 +136,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="타입스크립트에서-json파일-import하기"><a href="#타입스크립트에서-json파일-import하기" class="headerlink" title="타입스크립트에서 json파일 import하기"></a>타입스크립트에서 json파일 import하기</h2><p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
+            <h2 id="타입스크립트에서-json파일-import하기">타입스크립트에서 json파일 import하기</h2>
+<p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
 <p>만약 <code>example.json</code>이 있다면</p>
         </div>
         
@@ -196,8 +197,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="타입스크립트에서-interface와-class의-차이점"><a href="#타입스크립트에서-interface와-class의-차이점" class="headerlink" title="타입스크립트에서 interface와 class의 차이점"></a>타입스크립트에서 interface와 class의 차이점</h2><p>노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다.</p>
-<p><a href="https://toddmotto.com/classes-vs-interfaces-in-typescript" rel="external nofollow noopener noreferrer" target="_blank">https://toddmotto.com/classes-vs-interfaces-in-typescript</a><br>의 글을 번역했다.</p>
+            <h2 id="타입스크립트에서-interface와-class의-차이점">타입스크립트에서 interface와 class의 차이점</h2>
+<p>노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다.</p>
+<p><a href="https://toddmotto.com/classes-vs-interfaces-in-typescript" rel="external nofollow noopener noreferrer" target="_blank">https://toddmotto.com/classes-vs-interfaces-in-typescript</a><br>
+의 글을 번역했다.</p>
         </div>
         
         
@@ -256,8 +259,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="매개변수-parameter-와-인수-argument-의-차이"><a href="#매개변수-parameter-와-인수-argument-의-차이" class="headerlink" title="매개변수(parameter)와 인수(argument)의 차이"></a>매개변수(parameter)와 인수(argument)의 차이</h2><blockquote>
-<p>매개변수(parameter)는 함수 서명 괄호부에 정의하여 함수 내에서 사용하는 변수를,<br>인수(argument)는 호출자(caller)가 함수를 호출할 때 매개변수에 전달하는 값을 가리킨다!</p>
+            <h2 id="매개변수-parameter-와-인수-argument-의-차이">매개변수(parameter)와 인수(argument)의 차이</h2>
+<blockquote>
+<p>매개변수(parameter)는 함수 서명 괄호부에 정의하여 함수 내에서 사용하는 변수를,<br>
+인수(argument)는 호출자(caller)가 함수를 호출할 때 매개변수에 전달하는 값을 가리킨다!</p>
 </blockquote>
 
         </div>
@@ -310,7 +315,8 @@
             
         </h1>
         <div class="content">
-            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>(원래 나타내던 this를 그대로 쓴다)</p>
+            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>
+(원래 나타내던 this를 그대로 쓴다)</p>
 <p>앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.</p>
         </div>
         
@@ -370,7 +376,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="“MSBUILD-error-MSB3428”-에러-해결"><a href="#“MSBUILD-error-MSB3428”-에러-해결" class="headerlink" title="“MSBUILD : error MSB3428” 에러 해결"></a>“MSBUILD : error MSB3428” 에러 해결</h1><p>npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.</p>
+            <h1 id="msbuild-error-msb3428-에러-해결">“MSBUILD : error MSB3428” 에러 해결</h1>
+<p>npm을 통해 모듈들을 다운받다보면 가끔 “MSBUILD : error MSB3428” 에러가 발생하면서 npm install이 제대로 동작하지 않을 때가 있다.</p>
         </div>
         
         
@@ -429,10 +436,14 @@
             
         </h1>
         <div class="content">
-            <h1 id="for문-foreach문-forin문-forof문-차이점"><a href="#for문-foreach문-forin문-forof문-차이점" class="headerlink" title="for문, foreach문, forin문, forof문 차이점"></a>for문, foreach문, for<del>in문, for</del>of문 차이점</h1><p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
-<h3 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h3><ol>
-<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
-<li>You can’t return from the enclosing function using a return statement.<br>(return을 사용해 해당 function을 마무리하지 못함)</li></ol>
+            <h1 id="for문-foreach문-for-in문-for-of문-차이점">for문, foreach문, for~in문, for~of문 차이점</h1>
+<p>for문의 가독성을 좀 더 좋게 하기 위해서 foreach가 나왔지만 아래와 같은 문제가 있었다.</p>
+<h3 id="foreach">foreach</h3>
+<ol>
+<li>You can’t break out of this loop using a break statement or move to the next iteration with continue.<br>
+(break로 loop를 빠져나오지 못하고, continue로 그다음 반복으로 이동하지 못함)</li>
+<li>You can’t return from the enclosing function using a return statement.<br>
+(return을 사용해 해당 function을 마무리하지 못함)</li></ol>
         </div>
         
         
@@ -553,7 +564,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="앵귤러에서-이미지-경로-세팅"><a href="#앵귤러에서-이미지-경로-세팅" class="headerlink" title="앵귤러에서 이미지 경로 세팅"></a>앵귤러에서 이미지 경로 세팅</h1><p>앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.</p>
+            <h1 id="앵귤러에서-이미지-경로-세팅">앵귤러에서 이미지 경로 세팅</h1>
+<p>앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.</p>
         </div>
         
         
@@ -612,10 +624,13 @@
             
         </h1>
         <div class="content">
-            <h1 id="SPA에-GA-달기"><a href="#SPA에-GA-달기" class="headerlink" title="SPA에 GA 달기"></a>SPA에 GA 달기</h1><h2 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h2><pre><code>1. 추적 코드 누락 error 메시지.
-   &quot; 유효한 추적 코드를 찾을 수 없습니다.&quot;
-2. 활성 사용자 집계는 안 되고 있음.
-3. 사용자 이벤트발생 추적은 정상적</code></pre>
+            <h1 id="spa에-ga-달기">SPA에 GA 달기</h1>
+<h2 id="문제상황">문제상황</h2>
+<pre><code> 1. 추적 코드 누락 error 메시지.
+    &quot; 유효한 추적 코드를 찾을 수 없습니다.&quot;
+ 2. 활성 사용자 집계는 안 되고 있음.
+ 3. 사용자 이벤트발생 추적은 정상적
+</code></pre>
         </div>
         
         
@@ -674,8 +689,10 @@
             
         </h1>
         <div class="content">
-            <h1 id="else-if문과-switch문의-차이점"><a href="#else-if문과-switch문의-차이점" class="headerlink" title="else if문과 switch문의 차이점"></a>else if문과 switch문의 차이점</h1><p>if문은 branch statement, switch문은 jump statement에 기반을 두고 있다.</p>
-<p>즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (<em>실행을 할 것이냐 말것이냐?</em>)<br>switch문은 입력된 값을 보고 특정 위치로 점프 (<em>어떤 코드를 실행할 것이냐?</em>)</p>
+            <h1 id="else-if문과-switch문의-차이점">else if문과 switch문의 차이점</h1>
+<p>if문은 branch statement, switch문은 jump statement에 기반을 두고 있다.</p>
+<p>즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (<em>실행을 할 것이냐 말것이냐?</em>)<br>
+switch문은 입력된 값을 보고 특정 위치로 점프 (<em>어떤 코드를 실행할 것이냐?</em>)</p>
         </div>
         
         

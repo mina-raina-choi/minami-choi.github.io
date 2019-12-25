@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>퀵 정렬(quicksort) - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/04/24/quicksort/">  <meta name="description" content="분할 정복(divide-and-comquer)문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자! 문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/04/24/quicksort/">  <meta name="description" content="분할 정복(divide-and-comquer) 문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자! 문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.">
 <meta name="keywords" content="알고리즘,퀵정렬,quicksort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="퀵 정렬(quicksort)">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/24/quicksort/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="분할 정복(divide-and-comquer)문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자! 문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.">
+<meta property="og:description" content="분할 정복(divide-and-comquer) 문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자! 문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-26T15:30:41.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="퀵 정렬(quicksort)">
-<meta name="twitter:description" content="분할 정복(divide-and-comquer)문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자! 문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.">
+<meta name="twitter:description" content="분할 정복(divide-and-comquer) 문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자! 문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
@@ -134,10 +134,10 @@
             
         </h1>
         <div class="content">
-            <h2 id="분할-정복-divide-and-comquer"><a href="#분할-정복-divide-and-comquer" class="headerlink" title="분할 정복(divide-and-comquer)"></a>분할 정복(divide-and-comquer)</h2><p>문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자!</p>
+            <h2 id="분할-정복-divide-and-comquer">분할 정복(divide-and-comquer)</h2>
+<p>문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자!</p>
 <p>문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.</p>
 <a id="more"></a>
-
 <ol>
 <li>기본 단계를 해결한다. 이 부분은 가능한 한 간단한 문제이어야만 한다.</li>
 <li>문제가 기본 단계가 될 때까지 나누거나 작게 만든다.</li>
@@ -148,14 +148,20 @@
 <p>한 변의 길이가 다른 변의 길이의 2배이면</p>
 <p><img src="/images/divided.png" alt></p>
 <p>두 개의 정사각형으로 나눌 수 있겠다!!</p>
-<p>640m길이의 정사각형으로 2개를 만들고 남은 640 * 400 크기의 토지.<br>남은 토지를 400m의 정사각형으로 나누고 남은 400 * 240 크기의 토지…</p>
-<p>이런 식으로 반복하다보면,<br>160 * 80 크기의 토지를 나눠야 하는 경우에 도달하고,<br>이 경우는 우리가 처음에 찾았던 가장 간단한 기본 단계이다.<br>160 * 80 토지는 2개의 80m의 정사각형 토지로 나눌 수 있다.</p>
+<p>640m길이의 정사각형으로 2개를 만들고 남은 640 * 400 크기의 토지.<br>
+남은 토지를 400m의 정사각형으로 나누고 남은 400 * 240 크기의 토지…</p>
+<p>이런 식으로 반복하다보면,<br>
+160 * 80 크기의 토지를 나눠야 하는 경우에 도달하고,<br>
+이 경우는 우리가 처음에 찾았던 가장 간단한 기본 단계이다.<br>
+160 * 80 토지는 2개의 80m의 정사각형 토지로 나눌 수 있다.</p>
 <p>그러므로 1680 * 640 크기의 토지를 똑같은 크기의 정사각형으로 나눌 때 가장 큰 정사각형의 크기는 80 * 80이다.</p>
 <p>이런 식으로 풀이해나가는 과정을 <strong>분할정복</strong>이라고 한다.</p>
-<h3 id="책에-나온-배열의-숫자를-모두-합하는-예제를-보자"><a href="#책에-나온-배열의-숫자를-모두-합하는-예제를-보자" class="headerlink" title="책에 나온 배열의 숫자를 모두 합하는 예제를 보자."></a>책에 나온 배열의 숫자를 모두 합하는 예제를 보자.</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">forLoopSum = (arr) =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">let</span> total = 0;</span><br><span class="line">    <span class="hljs-keyword">for</span> ( <span class="hljs-built_in">let</span> x of arr)</span><br><span class="line">        total += x;</span><br><span class="line">    <span class="hljs-built_in">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">recursiveSum = (arr) =&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (arr.length == 0)</span><br><span class="line">        <span class="hljs-built_in">return</span> 0;</span><br><span class="line">    <span class="hljs-built_in">return</span> arr[0] + recursiveSum(arr.slice(1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(<span class="hljs-string">"forLoopSum"</span>, forLoopSum([1, 2, 3, 4, 5]));</span><br><span class="line">console.log(<span class="hljs-string">"recursiveSum"</span>, recursiveSum([1, 2, 3, 4, 5]));</span><br></pre></td></tr></table></figure>
-
-<p>단순히 for문을 돌려도 되지만, 두번째 방법처럼 재귀적인 방법을 사용할 수도 있다.<br>재귀를 잘 이해하고 있으면 함수형 프로그래밍을 좀 더 쉽게 익힐 수 있다고 한다.</p>
-<h2 id="퀵-정렬"><a href="#퀵-정렬" class="headerlink" title="퀵 정렬"></a>퀵 정렬</h2><p>퀵 정렬은 정렬 알고리즘이다. 선택 정렬보다 훨씬 빠르고 실제로도 자주 사용된다.</p>
+<h3 id="책에-나온-배열의-숫자를-모두-합하는-예제를-보자">책에 나온 배열의 숫자를 모두 합하는 예제를 보자.</h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">forLoopSum = (arr) =&gt; &#123;</span><br><span class="line">    <span class="hljs-built_in">let</span> total = 0;</span><br><span class="line">    <span class="hljs-keyword">for</span> ( <span class="hljs-built_in">let</span> x of arr)</span><br><span class="line">        total += x;</span><br><span class="line">    <span class="hljs-built_in">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">recursiveSum = (arr) =&gt; &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (arr.length == 0)</span><br><span class="line">        <span class="hljs-built_in">return</span> 0;</span><br><span class="line">    <span class="hljs-built_in">return</span> arr[0] + recursiveSum(arr.slice(1));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(<span class="hljs-string">"forLoopSum"</span>, forLoopSum([1, 2, 3, 4, 5]));</span><br><span class="line">console.log(<span class="hljs-string">"recursiveSum"</span>, recursiveSum([1, 2, 3, 4, 5]));</span><br></pre></td></tr></table></figure>
+<p>단순히 for문을 돌려도 되지만, 두번째 방법처럼 재귀적인 방법을 사용할 수도 있다.<br>
+재귀를 잘 이해하고 있으면 함수형 프로그래밍을 좀 더 쉽게 익힐 수 있다고 한다.</p>
+<h2 id="퀵-정렬">퀵 정렬</h2>
+<p>퀵 정렬은 정렬 알고리즘이다. 선택 정렬보다 훨씬 빠르고 실제로도 자주 사용된다.</p>
 <ol>
 <li>기준 원소(pivot)을 선정</li>
 <li>기준 원소보다 작거나 같은 원소는 모두 왼쪽 배열로,</li>
@@ -163,15 +169,21 @@
 <li>각각 따로 정렬한 후, 다시 합병하며 정렬</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">quickSort = array =&gt; &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (array.length &lt; 2)</span><br><span class="line">    // 정렬할 필요가 없는 기본단계</span><br><span class="line">    <span class="hljs-built_in">return</span> array;</span><br><span class="line">  <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    // 재귀단계</span><br><span class="line">    const pivot = array[0]; //기준점(여기에서는 첫번째 원소를 기준점으로 잡음)</span><br><span class="line">    const less = [];</span><br><span class="line">    const greater = [];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">let</span> ele of array.slice(1)) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (ele &lt;= pivot) less.push(ele); // 기준원소보다 작거나 같은 원소배열</span><br><span class="line">      <span class="hljs-keyword">else</span> greater.push(ele); //기준원소보다 큰 원소배열</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">return</span> quickSort(less) + [pivot] + quickSort(greater);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(<span class="hljs-string">"quickSort"</span>, quickSort([10, 3, 7, 2]))</span><br></pre></td></tr></table></figure>
-
-<h2 id="빅오표기법으로-퀵정렬의-시간복잡도를-나타내면"><a href="#빅오표기법으로-퀵정렬의-시간복잡도를-나타내면" class="headerlink" title="빅오표기법으로 퀵정렬의 시간복잡도를 나타내면?"></a>빅오표기법으로 퀵정렬의 시간복잡도를 나타내면?</h2><p>퀵 정렬은 선택한 기준 원소에 따라 처리 속도가 달라진다는 특징이 있다.<br>퀵 정렬은 빠른 정렬로 평균적으로 O(n log n)의 시간복잡도를 가지게 된다. 하지만 최악의 경우 O(n^2)의 시간 복잡도를 가지게 된다.<br>또한, 퀵 정렬은 추가 메모리 공간을 필요로 하지 않으며 <strong>정렬된 리스트에 대해서는 오히려 수행시간이 더 많이 걸리는 단점도 있다.</strong></p>
+<h2 id="빅오표기법으로-퀵정렬의-시간복잡도를-나타내면">빅오표기법으로 퀵정렬의 시간복잡도를 나타내면?</h2>
+<p>퀵 정렬은 선택한 기준 원소에 따라 처리 속도가 달라진다는 특징이 있다.<br>
+퀵 정렬은 빠른 정렬로 평균적으로 O(n log n)의 시간복잡도를 가지게 된다. 하지만 최악의 경우 O(n^2)의 시간 복잡도를 가지게 된다.<br>
+또한, 퀵 정렬은 추가 메모리 공간을 필요로 하지 않으며 <strong>정렬된 리스트에 대해서는 오히려 수행시간이 더 많이 걸리는 단점도 있다.</strong></p>
 <blockquote>
-<p>이러한 불균형 분할을 방지하기 위해 피벗을 선택할 때 단순히 리스트의 왼쪽 데이터를 사용하는 대신 리스트 내의 중간 값을 피벗으로 선택하기도 한다.<br>(왼쪽, 오른쪽, 중간의 세 값중 중간 값을 택해서 선택하는 방법을 많이 사용합니다.)</p>
+<p>이러한 불균형 분할을 방지하기 위해 피벗을 선택할 때 단순히 리스트의 왼쪽 데이터를 사용하는 대신 리스트 내의 중간 값을 피벗으로 선택하기도 한다.<br>
+(왼쪽, 오른쪽, 중간의 세 값중 중간 값을 택해서 선택하는 방법을 많이 사용합니다.)</p>
 </blockquote>
-<h2 id="4장에서-배운-내용"><a href="#4장에서-배운-내용" class="headerlink" title="4장에서 배운 내용"></a>4장에서 배운 내용</h2><pre><code>1. 분할 정복은 문제를 더 작은 조각으로 나누어 푼다. 만약 리스트에 분할 정복을 적용한다면 기본 단계는 원소가 없는 빈 배열이거나 하나의 원소만 가진 배열이 된다.
+<h2 id="4장에서-배운-내용">4장에서 배운 내용</h2>
+<pre><code>1. 분할 정복은 문제를 더 작은 조각으로 나누어 푼다. 만약 리스트에 분할 정복을 적용한다면 기본 단계는 원소가 없는 빈 배열이거나 하나의 원소만 가진 배열이 된다.
 2. 퀵 정렬을 구현하려면 기준 원소를 무작위로 선택, 퀵 정렬의 평균적인 실행시간은 O(n log n)
 3. 빅오표기법에서 가끔씩 상수가 중요해질 때도 있다. 퀵 정렬이 병합정렬보다 빠른 이유도 상수 때문.
-4. 단순 탐색과 이진 탐색을 비교할 때는 상수항이 전혀 문제가 되지 않았다. 왜냐면, 리스트가 길어지면 O(log n)이 O(n)보다 훨씬 빨라지니까!</code></pre>
+4. 단순 탐색과 이진 탐색을 비교할 때는 상수항이 전혀 문제가 되지 않았다. 왜냐면, 리스트가 길어지면 O(log n)이 O(n)보다 훨씬 빨라지니까!
+</code></pre>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
