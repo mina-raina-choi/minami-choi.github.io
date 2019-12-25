@@ -6,23 +6,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title>링크드 리스트 - Mina&#39;s World</title>
+<title>링크드 리스트 구현 - Mina&#39;s World</title>
 <link rel="canonical" href="https://minami-choi.github.io/2019/12/07/programming/algorithm/linked-list/">  <meta name="description" content="자료구조를 공부하는 중에 링크드 리스트의 개념이 잘 와닿지 않아 자바스크립트로 링크드 리스트를 구현해봤다.">
 <meta name="keywords" content="LinkedList">
 <meta property="og:type" content="article">
-<meta property="og:title" content="링크드 리스트">
+<meta property="og:title" content="링크드 리스트 구현">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/07/Programming/Algorithm/linked-list/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
 <meta property="og:description" content="자료구조를 공부하는 중에 링크드 리스트의 개념이 잘 와닿지 않아 자바스크립트로 링크드 리스트를 구현해봤다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2019/12/05/11/10/snowman-4674856__480.jpg">
-<meta property="og:updated_time" content="2019-12-08T01:25:48.830Z">
+<meta property="og:updated_time" content="2019-12-25T02:04:13.338Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="링크드 리스트">
+<meta name="twitter:title" content="링크드 리스트 구현">
 <meta name="twitter:description" content="자료구조를 공부하는 중에 링크드 리스트의 개념이 잘 와닿지 않아 자바스크립트로 링크드 리스트를 구현해봤다.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2019/12/05/11/10/snowman-4674856__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">   
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
 <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
@@ -97,7 +97,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/05/11/10/snowman-4674856__480.jpg" alt="링크드 리스트">
+            <img class="thumbnail" src="https://cdn.pixabay.com/photo/2019/12/05/11/10/snowman-4674856__480.jpg" alt="링크드 리스트 구현">
         </span>
     </div>
     
@@ -115,7 +115,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 544 words)
+                    4 minutes read (About 626 words)
                 </span>
                 
                 
@@ -129,7 +129,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                링크드 리스트
+                링크드 리스트 구현
             
         </h1>
         <div class="content">
@@ -139,6 +139,9 @@
 <p>겨우겨우 구현을 해봤는데 여전히 많이 헷갈린다.</p>
 <p>(도식화 이미지 정리 필요)</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.data = data</span><br><span class="line">    <span class="hljs-keyword">this</span>.next = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>._length = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">this</span>._head = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// append(데이터): 리스트의 맨 끝에 데이터를 추가한다.</span></span><br><span class="line">  append(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> item = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">    <span class="hljs-keyword">let</span> node = <span class="hljs-keyword">this</span>._head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">      <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">        node = node.next</span><br><span class="line">      &#125;</span><br><span class="line">      node.next = item</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = item</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>._length++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// removeAt(위치): 해당 위치에 있는 데이터를 삭제한다.</span></span><br><span class="line">  removeAt(index) &#123;</span><br><span class="line">    <span class="hljs-comment">// index가 유효한 값인지 일단 먼저 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (index &gt; <span class="hljs-number">-1</span> &amp;&amp; index &lt; <span class="hljs-keyword">this</span>._length) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> node = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">let</span> prev = <span class="hljs-literal">null</span></span><br><span class="line">      <span class="hljs-comment">// 헤드를 삭제하는 경우라면, 그 다음 값을 헤드로 셋팅</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (index == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>._head = node.next</span><br><span class="line">        <span class="hljs-keyword">this</span>._length--</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 삭제하려는 index-1 값을 찾아서 next를 그 다음 next 값으로</span></span><br><span class="line">        <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt; index) &#123;</span><br><span class="line">          prev = node</span><br><span class="line">          node = node.next</span><br><span class="line">          i++</span><br><span class="line">        &#125;</span><br><span class="line">        prev.next = node.next</span><br><span class="line">        <span class="hljs-keyword">this</span>._length--</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">return</span> node.data</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// indexOf(데이터): 해당 데이터의 인덱스를 반환한다. 존재하지 않을 경우 결과 값은 -1이다.</span></span><br><span class="line">  indexOf(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (curr.next) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (curr.data === data) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> index</span><br><span class="line">      &#125;</span><br><span class="line">      curr = curr.next</span><br><span class="line">      index++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// remove(데이터): 데이터를 삭제한다.</span></span><br><span class="line">  remove(item) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>._head) <span class="hljs-keyword">return</span> <span class="hljs-string">"빈 리스트입니다"</span></span><br><span class="line">    <span class="hljs-comment">// head일경우</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (curr.data === item) &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = curr.next</span><br><span class="line">      <span class="hljs-keyword">this</span>._length--</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">while</span> (curr.next) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (curr.next.data === item) &#123;</span><br><span class="line">          curr.next = curr.next.next</span><br><span class="line">          <span class="hljs-keyword">this</span>._length--</span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        curr = curr.next</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// insert(위치, 데이터): 해당 위치에 데이터를 삽입한다.</span></span><br><span class="line">  insert(index, item) &#123;</span><br><span class="line">    <span class="hljs-comment">// index가 유효한 값인지 일단 먼저 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (index &gt; <span class="hljs-number">-1</span> &amp;&amp; index &lt;= <span class="hljs-keyword">this</span>._length) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">const</span> newNode = <span class="hljs-keyword">new</span> Node(item)</span><br><span class="line">      <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span></span><br><span class="line">      <span class="hljs-comment">// 헤드로</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>._head = newNode</span><br><span class="line">        <span class="hljs-keyword">this</span>._head.next = curr</span><br><span class="line">        <span class="hljs-keyword">this</span>._length++</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 추가하려는 index-1 값을 찾아서</span></span><br><span class="line">        <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">let</span> prev = <span class="hljs-literal">null</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt; index) &#123;</span><br><span class="line">          prev = curr</span><br><span class="line">          curr = curr.next</span><br><span class="line">          i++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">let</span> nextTemp = prev.next</span><br><span class="line">        prev.next = newNode</span><br><span class="line">        newNode.next = nextTemp</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">this</span>._length++</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// isEmpty(): 데이터가 하나도 없다면 true를, 그 외엔 false를 반환한다.</span></span><br><span class="line">  isEmpty() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._length === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//size(): 데이터 개수를 반환한다. 배열의 length 프로퍼티와 비슷하다.</span></span><br><span class="line">  size() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>실행시켜보면</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> linked = <span class="hljs-keyword">new</span> LinkedList()</span><br><span class="line"></span><br><span class="line">linked.append(<span class="hljs-number">1</span>)</span><br><span class="line">linked.append(<span class="hljs-number">2</span>)</span><br><span class="line">linked.append(<span class="hljs-number">3</span>)</span><br><span class="line">linked.append(<span class="hljs-number">4</span>)</span><br><span class="line">linked.append(<span class="hljs-number">5</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(linked)</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">LinkedList &#123;</span></span><br><span class="line"><span class="hljs-comment">  _length: 5,</span></span><br><span class="line"><span class="hljs-comment">  _head: Node &#123; data: 1, next: Node &#123; data: 2, next: [Node] &#125; &#125;</span></span><br><span class="line"><span class="hljs-comment">&#125; </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line">linked.insert(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(linked))</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">&#123;"_length":6,"_head":&#123;"data":1,"next":&#123;"data":2,"next":&#123;"data":3,"next":&#123;"data":7,"next":&#123;"data":4,"next":&#123;"data":5,"next":null&#125;&#125;&#125;&#125;&#125;&#125;&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(linked.remove(<span class="hljs-number">4</span>))</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(linked))</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">&#123;"_length":5,"_head":&#123;"data":1,"next":&#123;"data":2,"next":&#123;"data":3,"next":&#123;"data":7,"next":&#123;"data":5,"next":null&#125;&#125;&#125;&#125;&#125;&#125; </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(linked.indexOf(<span class="hljs-number">4</span>))</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">-1</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -252,7 +255,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            65
+                            66
                         </p>
                     </a>
                 </div>
@@ -276,7 +279,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            82
+                            83
                         </p>
                     </a>
                 </div>
@@ -351,7 +354,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">63</span>
+                <span class="level-item tag">64</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -359,7 +362,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">26</span>
+                <span class="level-item tag">27</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -437,9 +440,28 @@
         
         <article class="media">
             
+            <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2018/01/11/21/27/desk-3076954__480.jpg" alt="해시테이블 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T02:18:38.000Z">2019-12-25</time></div>
+                    <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시테이블 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/24/Programming/Algorithm/top-k-frequent-elements/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="top-k-frequent-elements">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2017/10/13/15/29/black-coffee-2847957__480.jpg" alt="top-k-frequent-elements">
                 </p>
             </a>
             
@@ -511,25 +533,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/05/31/10/58/golden-791072__480.jpg" alt="LinkedList - Add two numbers">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T02:55:01.000Z">2019-12-11</time></div>
-                    <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LinkedList - Add two numbers</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -547,7 +550,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>
@@ -667,9 +670,28 @@
         
         <article class="media">
             
+            <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2018/01/11/21/27/desk-3076954__480.jpg" alt="해시테이블 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-25T02:18:38.000Z">2019-12-25</time></div>
+                    <a href="/2019/12/25/Programming/Algorithm/hash-table-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">해시테이블 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/12/24/Programming/Algorithm/top-k-frequent-elements/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg" alt="top-k-frequent-elements">
+                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2017/10/13/15/29/black-coffee-2847957__480.jpg" alt="top-k-frequent-elements">
                 </p>
             </a>
             
@@ -741,25 +763,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2015/05/31/10/58/golden-791072__480.jpg" alt="LinkedList - Add two numbers">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T02:55:01.000Z">2019-12-11</time></div>
-                    <a href="/2019/12/11/Programming/Algorithm/add-two-numbers/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LinkedList - Add two numbers</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -777,7 +780,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">17</span>
+                    <span class="level-item tag">18</span>
                 </span>
             </a>
         </li>

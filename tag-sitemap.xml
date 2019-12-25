@@ -3,8 +3,43 @@
 
 
     <url>
+        <loc>https://minami-choi.github.io/tags/HashTable/</loc>
+        <lastmod>2019-12-25T13:52:12.930Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
-        <lastmod>2019-12-25T01:51:33.479Z</lastmod>
+        <lastmod>2019-12-25T12:48:44.853Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/SOP/</loc>
+        <lastmod>2019-12-25T02:16:05.750Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/CORS/</loc>
+        <lastmod>2019-12-25T02:16:05.750Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%ED%81%AC%EB%A1%9C%EC%8A%A4-%EB%8F%84%EB%A9%94%EC%9D%B8/</loc>
+        <lastmod>2019-12-25T02:16:05.750Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/LinkedList/</loc>
+        <lastmod>2019-12-25T02:04:13.338Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -19,13 +54,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/%ED%95%A8%EC%88%98%ED%98%95-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/</loc>
         <lastmod>2019-12-08T01:28:25.408Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/LinkedList/</loc>
-        <lastmod>2019-12-08T01:25:48.830Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -124,27 +152,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/%EC%97%91%EC%85%80/</loc>
         <lastmod>2019-12-03T14:30:56.805Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/SOP/</loc>
-        <lastmod>2019-12-03T14:29:11.471Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/CORS/</loc>
-        <lastmod>2019-12-03T14:29:11.471Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%ED%81%AC%EB%A1%9C%EC%8A%A4-%EB%8F%84%EB%A9%94%EC%9D%B8/</loc>
-        <lastmod>2019-12-03T14:29:11.471Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
