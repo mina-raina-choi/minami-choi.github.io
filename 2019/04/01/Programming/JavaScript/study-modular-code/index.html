@@ -153,7 +153,7 @@
 <a id="more"></a>
 
 <p>3장에서는 하나의 래퍼 객체를 중심으로 단단히 결합된 메서드 체인으로 문제를 해결했다. 4장에서는 <code>함수 합성</code>을 통해 느슨하게 결합된 <code>파이프라인</code>을 만들고, 보다 유연한 독립적인 컴포넌트를 만들어보자. 이렇게 하려면 먼저 코드를 적정 수준으로 추상해야한다. 이 때 <code>람다JS</code>라는 함수형 프레임워크의 도움을 받아 부분 평가 및 합성 같은 주요 함수형 기법을 어떻게 구사하는지 살펴보자.</p>
-<h2><span id="메서드-체인-대-함수-파이프라인">메서드 체인 대 함수 파이프라인</span></h2><p>3장에서는 메서드 체인으로 함수를 연결했다. <code>파이프라이닝</code>은 함수를 연결하는 또다른 기법이다.<br><code>함수</code>란 입력 형식과 출력 형식 간의 수학적인 매핑을 뜻한다.</p>
+<h2 id="메서드-체인-대-함수-파이프라인"><a href="#메서드-체인-대-함수-파이프라인" class="headerlink" title="메서드 체인 대 함수 파이프라인"></a>메서드 체인 대 함수 파이프라인</h2><p>3장에서는 메서드 체인으로 함수를 연결했다. <code>파이프라이닝</code>은 함수를 연결하는 또다른 기법이다.<br><code>함수</code>란 입력 형식과 출력 형식 간의 수학적인 매핑을 뜻한다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[참고]함수형 커뮤니티에서는 하스켈 언어 표기법을 많이 쓴다.</span><br><span class="line">&lt;function-name&gt; :: &lt;inputs&gt; -&gt; &lt;outputs&gt;</span><br></pre></td></tr></table></figure>
 
 <p>함수 체이닝과 파이프라이닝을 이해하려면 함수를 형식 간의 매핑으로 바라봐야한다.</p>
@@ -161,26 +161,26 @@
 <li>메서드를 체이닝 (단단한 결합, 제한된 표현성)</li>
 <li>함수 파이프라인을 배열 (느슨한 결합, 유연성)</li>
 </ul>
-<h3><span id="메소드를-여럿-체이닝">메소드를 여럿 체이닝</span></h3><p>map, filter 함수는 배열을 넘겨받아 새 배열을 돌려준다고 했다.</p>
+<h3 id="메소드를-여럿-체이닝"><a href="#메소드를-여럿-체이닝" class="headerlink" title="메소드를 여럿 체이닝"></a>메소드를 여럿 체이닝</h3><p>map, filter 함수는 배열을 넘겨받아 새 배열을 돌려준다고 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">_.chain(names) <span class="hljs-comment">// 뒤에 점(.)을 붙여 로대시JS의 다른 메서드를 호출</span></span><br><span class="line">  .filter(isValid)</span><br><span class="line">  .map(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.replace(<span class="hljs-regexp">/_/</span>, <span class="hljs-string">" "</span>))</span><br><span class="line">  .uniq()</span><br><span class="line">  .map(_.startCase)</span><br><span class="line">  .sort()</span><br><span class="line">  .value()</span><br></pre></td></tr></table></figure>
 
 <p>명령형에 비해 구조적으로도 향상됐고, 가독성도 좋아졌다. 하지만 <code>로대시JS가 제공하는 연산만 쓸 수 있기 때문에 다른 (또는 직접 만든) 라이브러리 함수를 쉽게 연결할 수 없다.</code></p>
 <p>고수준에서 보면 배열 메서드의 순차열은 아래와 같다. 여기서 체인을 끊어버리고 독립적인 함수열을 자유롭게 배열할 수 있으면 좋겠다.(우리가 만든 메서드나 다른 라이브러리의 메서드를 자유롭게 연산 과정에 추가할 수 있으면 좋겠다.) 그래서 <code>함수 파이프라인</code>이 필요한 것이다.<br><img src="method-chain.jpg" alt="home_posts_tag-false"></p>
-<h3><span id="함수를-파이프라인에-나열">함수를 파이프라인에 나열</span></h3><p>함수형 프로그래밍에서는 메서드 체이닝의 한계에서 벗어나, 출신에 관계없이 어떤 함수라도 유연하게 결합할 수 있다. <code>파이프라인pipeline</code>이란 한 함수의 출력이 다음 함수의 입력이 되게끔 느슨하게 배열한, 방향성directional 함수 순차열이다.</p>
+<h3 id="함수를-파이프라인에-나열"><a href="#함수를-파이프라인에-나열" class="headerlink" title="함수를 파이프라인에 나열"></a>함수를 파이프라인에 나열</h3><p>함수형 프로그래밍에서는 메서드 체이닝의 한계에서 벗어나, 출신에 관계없이 어떤 함수라도 유연하게 결합할 수 있다. <code>파이프라인pipeline</code>이란 한 함수의 출력이 다음 함수의 입력이 되게끔 느슨하게 배열한, 방향성directional 함수 순차열이다.</p>
 <p>아래는 서로다른 객체형을 다루는 함수를 연결한 파이프라인의 개념도다.<br><img src="pipeline.jpg" alt="home_posts_tag-false"></p>
 <p>이 장에서는 함수 호출을 위의 그림과 같이 고수준의 간명한 함수 파이프라인으로 배열하는 기법을 연구한다.</p>
 <p><code>체이닝과 파이프라인의 접근방법 차이</code><br>체이닝 - 객체 메서드를 통해 함수들을 단단히 결합<br>파이프라인 - 함수 입출력을 서로 연결지어 느슨하게 결합된 컴포넌트를 만든다. 단, 함수의 항수(인수 개수)와 형식이 호환되지 않으면 연결할 수 없다.</p>
-<h2><span id="함수-호환-요건">함수 호환 요건</span></h2><p>함수형 프로그래밍에서는 파이프라인이 프로그램을 구축하는 유일한 수단!<br>정의된 문제를 해결하기 위해서는 단계별로 명확하게 정의된 계산을 차례차례 해내가는 과정이 필요하다. 이 계산 단계가 코드에서는 함수로 표현된다. 각 함수는 입력과 출력이 서로 호환돼야 한다.</p>
+<h2 id="함수-호환-요건"><a href="#함수-호환-요건" class="headerlink" title="함수 호환 요건"></a>함수 호환 요건</h2><p>함수형 프로그래밍에서는 파이프라인이 프로그램을 구축하는 유일한 수단!<br>정의된 문제를 해결하기 위해서는 단계별로 명확하게 정의된 계산을 차례차례 해내가는 과정이 필요하다. 이 계산 단계가 코드에서는 함수로 표현된다. 각 함수는 입력과 출력이 서로 호환돼야 한다.</p>
 <ol>
 <li>형식 : 한 함수의 반환 형식과 수신 함수의 인수 형식이 일치해야 한다.</li>
 <li>항수 : 수신 함수는 앞 단계 함수가 반환한 값을 처리하기 위해 적어도 하나 이상의 매개변수를 선언해야 한다.</li>
 </ol>
-<h3><span id="형식이-호환되는-함수">형식이 호환되는 함수</span></h3><p>함수 파이프라인을 설계할 때는 <code>한 함수가 반환하는 것과 다른 함수가 받는 것</code>이 반드시 호환되어야 한다.<br>정적 형식statically typed 언어에서는 형식이 큰 관심사이지만 자바스크립트는 형식이 느슨한 언어라서 그렇지 않다. <code>어떤 객체가 실제로 특정 형식처럼 작동하면 그 형식은 그냥 그 객체의 형식인 것</code> 덕 타이핑(“오리처럼 걷고 말하는 동물이 있다면 그건 다름아닌 오리다”)이라고 한다.</p>
+<h3 id="형식이-호환되는-함수"><a href="#형식이-호환되는-함수" class="headerlink" title="형식이 호환되는 함수"></a>형식이 호환되는 함수</h3><p>함수 파이프라인을 설계할 때는 <code>한 함수가 반환하는 것과 다른 함수가 받는 것</code>이 반드시 호환되어야 한다.<br>정적 형식statically typed 언어에서는 형식이 큰 관심사이지만 자바스크립트는 형식이 느슨한 언어라서 그렇지 않다. <code>어떤 객체가 실제로 특정 형식처럼 작동하면 그 형식은 그냥 그 객체의 형식인 것</code> 덕 타이핑(“오리처럼 걷고 말하는 동물이 있다면 그건 다름아닌 오리다”)이라고 한다.</p>
 <p>자바스크립트는 <code>동적 파견dynamic dispatch</code> 체제 덕분에 형식과 무관하게 객체에서 속성과 메서드를 가져올 수 있지만, 함수가 어떤 형식의 값을 기대하는지 알아야 프로그램을 이해하기가 더 쉬워진다.<br>하스켈 표기법으로 코드에 주석을 붙여 문서화하는 식으로라도 입출력을 명확하게 정의해두면 프로그램을 이해하기가 수월해진다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">trim과 normalize로 함수 파이프라인을 수동으로 구성</span><br><span class="line"><span class="hljs-comment">// trim :: String -&gt; String</span></span><br><span class="line"><span class="hljs-keyword">const</span> trim = <span class="hljs-function">(<span class="hljs-params">str</span>) =&gt;</span> str.replace(<span class="hljs-regexp">/^\s*|\s*$/g</span>, <span class="hljs-string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// normalize :: String -&gt; String</span></span><br><span class="line"><span class="hljs-keyword">const</span> normalize = <span class="hljs-function">(<span class="hljs-params">str</span>) =&gt;</span> str.replace(<span class="hljs-regexp">/\-/g</span>, <span class="hljs-string">''</span>);</span><br><span class="line"></span><br><span class="line">normalize(trim(<span class="hljs-string">"  444-444-4444 "</span>)) <span class="hljs-comment">// '4444444444</span></span><br></pre></td></tr></table></figure>
 
 <p>형식은 틀림없이 중요한 이슈지만, 자바스크립트에서는 <code>함수가 취하는 인수 개수의 호환 여부</code>가 더 중요하다.</p>
-<h3><span id="함수와-항수튜플">함수와 항수:튜플</span></h3><p><code>항수</code>란 함수가 받는 인수의 개수다. 함수의 길이라고도 한다. 다른 프로그래밍에서는 항수를 당연하게 생각하지만 FP에서는 함수에 선언된 인수의 개수가 많아질 수록 복잡도가 증가하는 경우가 많다. 가령 문자열 인수를 하나만 받는 함수는 서너개 받는 함수보다 훨씬 단순하다고 볼 수 있다.</p>
+<h3 id="함수와-항수-튜플"><a href="#함수와-항수-튜플" class="headerlink" title="함수와 항수:튜플"></a>함수와 항수:튜플</h3><p><code>항수</code>란 함수가 받는 인수의 개수다. 함수의 길이라고도 한다. 다른 프로그래밍에서는 항수를 당연하게 생각하지만 FP에서는 함수에 선언된 인수의 개수가 많아질 수록 복잡도가 증가하는 경우가 많다. 가령 문자열 인수를 하나만 받는 함수는 서너개 받는 함수보다 훨씬 단순하다고 볼 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">// 인수가 1개인 순수함수는 한가지용도! 즉 단일 책임을 담당하므로 가장 단순한 함수</span></span><br><span class="line"><span class="hljs-comment">// isValid :: String -&gt; Boolean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValid</span>(<span class="hljs-params">str</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//makeAsyncHttp :: String, String, Array -&gt; Boolean</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeAsyncHttp</span>(<span class="hljs-params">method, url, data</span>) </span>&#123; <span class="hljs-comment">// 모든 인수를 먼저 계산해야하므로 사용하기 어렵다.</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>우리의 목표는 함수의 인수를 가능한한 적게 하는 것</code>, 그래야 인수가 많은 함수보다 더 유연하고 다목적으로 활용할 수 있다. 하지만 단항 함수를 얻는 것은 쉽지않다.</p>
@@ -202,7 +202,7 @@
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// StringPair형식</span></span><br><span class="line"><span class="hljs-keyword">const</span> StringPair = Tuple(<span class="hljs-built_in">String</span>, <span class="hljs-built_in">String</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> name = (StringPair(<span class="hljs-string">"Barkley"</span>, <span class="hljs-string">"Rosser"</span>)[(first, last)] = name.values())</span><br><span class="line">first <span class="hljs-comment">// Barkley</span></span><br><span class="line">last <span class="hljs-comment">// Rosser</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 항수가 맞지 않아 에러가 난다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> fullName = StringPair(<span class="hljs-string">"J"</span>, <span class="hljs-string">"Barkley"</span>, <span class="hljs-string">"Rosser"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>튜플로 함수 항수를 줄일 순 있지만, 튜플만으로 만족스럽지 못할 땐 더 나은 방안이 있다.<br><code>항수를 추상하는 동시에 모듈성, 재사용성을 높이는 함수 커링</code>이라는 천연 조미료다.</p>
-<h2><span id="커리된-함수를-평가">커리된 함수를 평가</span></h2><p>커링을 이해하려면 먼저 일반(비커리된) 평가와 커리된 평가의 차이점을 분명히 인지해야 한다.<br>자바스크립트에서는 비커리된 일반 함수를 호출할 때 인수가 모자라도 별문제없이 실행된다.<br><img src="non-curried.jpg" alt="home_posts_tag-false"></p>
+<h2 id="커리된-함수를-평가"><a href="#커리된-함수를-평가" class="headerlink" title="커리된 함수를 평가"></a>커리된 함수를 평가</h2><p>커링을 이해하려면 먼저 일반(비커리된) 평가와 커리된 평가의 차이점을 분명히 인지해야 한다.<br>자바스크립트에서는 비커리된 일반 함수를 호출할 때 인수가 모자라도 별문제없이 실행된다.<br><img src="non-curried.jpg" alt="home_posts_tag-false"></p>
 <p>이와 달리 모든 매개변수가 명시된 커리된 함수에 일부 인수만 넣어 호출하면, 함수가 실행되는 게 아니라 모자란 나머지 인수가 다 채워지기를 기다리는 새로운 함수가 반환된다.<br><img src="curried.jpg" alt="home_posts_tag-false"></p>
 <p><code>커링</code>은 다변수 함수가 인수를 전부 받을 때까지 실행을 보류, 또는 <code>지연</code>시켜 단계별로 나뉜 단항 함수의 순차열로 전환하는 기법이다. 매개변수가 3개인 curry함수를 수학적으로 쓰면 다음과 같다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">curry(f) :: ((a, b, c) -&gt; d) -&gt; a -&gt; b -&gt; c -&gt; d</span><br></pre></td></tr></table></figure>
@@ -225,7 +225,7 @@
 <li>함수 팩토리모방</li>
 <li>재사용 가능한 모듈적 함수 템플릿을 구현</li>
 </ol>
-<h3><span id="함수-팩토리를-모방">함수 팩토리를 모방</span></h3><p>객체지향에서 인터페이스는 클래스가 반드시 구현해야할 규약을 정해놓은 추상적인 형식이다.<br>동일한 인터페이스를 두 클래스가 구현한 예제</p>
+<h3 id="함수-팩토리를-모방"><a href="#함수-팩토리를-모방" class="headerlink" title="함수 팩토리를 모방"></a>함수 팩토리를 모방</h3><p>객체지향에서 인터페이스는 클래스가 반드시 구현해야할 규약을 정해놓은 추상적인 형식이다.<br>동일한 인터페이스를 두 클래스가 구현한 예제</p>
 <ol>
 <li>DB에서 학생정보 얻어오는 클래스</li>
 <li>캐시에서 학생정보 얻어오는 클래스</li>
@@ -238,7 +238,7 @@
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> findStudent = useDb ? fetchStudentFromDb(db) : fetchStudentFromArray(arr)</span><br><span class="line"></span><br><span class="line">findStudent(<span class="hljs-string">"4444-444-4444"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>이제 다른 모듈의 호출자는 실제 구현부를 알지 못해도 얼마든지 findStudent를 가져다 쓸 수 있다.</p>
-<h3><span id="재사용-가능한-함수-템플릿-구현">재사용 가능한 함수 템플릿 구현</span></h3><p>애플리케이션의 상태(에러, 경고, 디버그 등) 별로 로그를 나누어 처리하고 싶은 경우가 있다.<br><code>함수 템플릿은 생성 시점에 커리된 인수 개수를 기준으로 연관된 함수들을 묶어놓은 것</code></p>
+<h3 id="재사용-가능한-함수-템플릿-구현"><a href="#재사용-가능한-함수-템플릿-구현" class="headerlink" title="재사용 가능한 함수 템플릿 구현"></a>재사용 가능한 함수 템플릿 구현</h3><p>애플리케이션의 상태(에러, 경고, 디버그 등) 별로 로그를 나누어 처리하고 싶은 경우가 있다.<br><code>함수 템플릿은 생성 시점에 커리된 인수 개수를 기준으로 연관된 함수들을 묶어놓은 것</code></p>
 <p><code>console.log</code>보다 기능이 우수한 <code>Log4js</code>를 사용해서 예제를 들어보겠다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// Log4js의 일반적인 사용법</span></span><br><span class="line"><span class="hljs-keyword">const</span> logger = <span class="hljs-keyword">new</span> Log4js.getLogger(<span class="hljs-string">"StudentEvents"</span>)</span><br><span class="line">logger.info(<span class="hljs-string">"학생이 정상적으로 추가되었다."</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 로그를 팝업창에</span></span><br><span class="line">logger.addAppender(<span class="hljs-keyword">new</span> Log4js.JSAlertAppender())</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 로그메시지를 일반텍스트 대신 JSON형식으로</span></span><br><span class="line">logger.setLayout(<span class="hljs-keyword">new</span> Log4js.JSONLayout())</span><br></pre></td></tr></table></figure>
 
@@ -254,7 +254,7 @@
 <p>내부적으로는 이 함수에 curry함수를 연속 호출해서 결국 단항 함수 하나만 남을 것이다. 기존 함수에서 새 함수를 만들고 매개변수는 몇개라도 전달 가능하니 인수가 정해질때마다 단계별로 함수를 쉽게 쌓아 올릴 수 있다.</p>
 <p><code>커링의 가장 중요한 의의는 다인수 함수를 단항 함수로 바꾼다</code>는 것이다.</p>
 <p>커링의 대용품인 <code>부분 적용partial application</code>과 <code>매개변수 바인딩parameter binding</code>은 자바스크립트에서도 어느 정도 지원되는 기법으로, 함수 파이프라인에 연결해도 잘 작동할 수 있도록 항수가 더 작은 함수를 만든다.</p>
-<h2><span id="부분-적용과-매개변수-바인딩">부분 적용과 매개변수 바인딩</span></h2><p><code>부분 적용</code>은 함수의 일부 매개변수값을 처음부터 고정시켜 항수가 더 작은 함수를 생성하는 기법이다.<br>커링처럼 부분 적용도 함수의 길이를 직접 줄이는 임무를 수행하지만 방법은 조금 다르다.</p>
+<h2 id="부분-적용과-매개변수-바인딩"><a href="#부분-적용과-매개변수-바인딩" class="headerlink" title="부분 적용과 매개변수 바인딩"></a>부분 적용과 매개변수 바인딩</h2><p><code>부분 적용</code>은 함수의 일부 매개변수값을 처음부터 고정시켜 항수가 더 작은 함수를 생성하는 기법이다.<br>커링처럼 부분 적용도 함수의 길이를 직접 줄이는 임무를 수행하지만 방법은 조금 다르다.</p>
 <ol>
 <li>커링은 부분호출할 때마다 단항 함수를 중첩생성하며, 내부적으로는 이들을 단계별로 합성하여 최종 결과를 낸다. 커링은 여러 인수를 부분 평가하는 식으로도 변용할 수 있어서 개발자가 평가 시점과 방법을 좌지우지할 수 있다.</li>
 <li>부분 적용은 함수 인수를 미리 정의된 값으로 묶은(할당한) 후, 인수가 적은 함수를 새로 만든다. 이 결과 함수는 자신의 클로저에 고정된 매개변수를 갖고 있으며, 후속 호출시 <code>이미 평가를 마친</code> 상태다.</li>
@@ -277,10 +277,10 @@
 <li>언어의 핵심을 확장</li>
 <li>지연된 함수에 바인딩</li>
 </ol>
-<h3><span id="언어의-핵심을-확장">언어의 핵심을 확장</span></h3><p>부분 적용은 String, Number 같은 핵심 자료형을 확장하여 언어의 표현성을 풍부하게 할 목적으로 사용할 수 있다.</p>
+<h3 id="언어의-핵심을-확장"><a href="#언어의-핵심을-확장" class="headerlink" title="언어의 핵심을 확장"></a>언어의 핵심을 확장</h3><p>부분 적용은 String, Number 같은 핵심 자료형을 확장하여 언어의 표현성을 풍부하게 할 목적으로 사용할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 문자열을 배열로 변환</span></span><br><span class="line"><span class="hljs-comment">// match에 정규표현식을 부분적용해서 주어진 문자열을 특정 데이터가 포함된 배열로 변환</span></span><br><span class="line"><span class="hljs-comment">// \w : 영문자 및 _ 문자와 일치</span></span><br><span class="line"><span class="hljs-built_in">String</span>.prototype.explode = _.partial(<span class="hljs-built_in">String</span>.prototype.match, /[\w]/gi)</span><br><span class="line"></span><br><span class="line"><span class="hljs-string">"ABC"</span>.explode() <span class="hljs-comment">// ['A', 'B', 'C']</span></span><br></pre></td></tr></table></figure>
 
-<h3><span id="지연된-함수에-바인딩">지연된 함수에 바인딩</span></h3><p>소유 객체를 전제로 메서드를 다룰 때는 함수 바인딩으로 콘텍스트 객체를 세팅하는 일이 중요하다.</p>
+<h3 id="지연된-함수에-바인딩"><a href="#지연된-함수에-바인딩" class="headerlink" title="지연된 함수에 바인딩"></a>지연된 함수에 바인딩</h3><p>소유 객체를 전제로 메서드를 다룰 때는 함수 바인딩으로 콘텍스트 객체를 세팅하는 일이 중요하다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Scheduler = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// undefined를 넘겨줘서 전역콘텍스트에서 실행되도록</span></span><br><span class="line">  <span class="hljs-keyword">const</span> delayedFn = _.bind(setTimeout, <span class="hljs-literal">undefined</span>, _, _)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> &#123;</span><br><span class="line">    delay5: _.partial(delayedFn, _, <span class="hljs-number">5000</span>),</span><br><span class="line">    delay10: _.partial(delayedFn, _, <span class="hljs-number">10000</span>),</span><br><span class="line">    delay: _.partial(delayedFn, _, _)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">Scheculer.delay5(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  consoleLog(<span class="hljs-string">"5초 후에 실행"</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>이렇게 스케쥴러만 있으면 함수 본체 안에 감싼 코드를 원하는 시간 이후에 실행시킬 수 있다.</p>
@@ -476,10 +476,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -490,20 +490,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -569,71 +561,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -651,51 +579,51 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#메서드-체인-대-함수-파이프라인">
         <span class="has-mr-6">1</span>
         <span>메서드 체인 대 함수 파이프라인</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#메소드를-여럿-체이닝">
         <span class="has-mr-6">1.1</span>
         <span>메소드를 여럿 체이닝</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수를-파이프라인에-나열">
         <span class="has-mr-6">1.2</span>
         <span>함수를 파이프라인에 나열</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수-호환-요건">
         <span class="has-mr-6">2</span>
         <span>함수 호환 요건</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#형식이-호환되는-함수">
         <span class="has-mr-6">2.1</span>
         <span>형식이 호환되는 함수</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수와-항수-튜플">
         <span class="has-mr-6">2.2</span>
         <span>함수와 항수:튜플</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#커리된-함수를-평가">
         <span class="has-mr-6">3</span>
         <span>커리된 함수를 평가</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수-팩토리를-모방">
         <span class="has-mr-6">3.1</span>
         <span>함수 팩토리를 모방</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#재사용-가능한-함수-템플릿-구현">
         <span class="has-mr-6">3.2</span>
         <span>재사용 가능한 함수 템플릿 구현</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#부분-적용과-매개변수-바인딩">
         <span class="has-mr-6">4</span>
         <span>부분 적용과 매개변수 바인딩</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#언어의-핵심을-확장">
         <span class="has-mr-6">4.1</span>
         <span>언어의 핵심을 확장</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#지연된-함수에-바인딩">
         <span class="has-mr-6">4.2</span>
         <span>지연된 함수에 바인딩</span>
         </a></li></ul></li></ul>
@@ -940,51 +868,51 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#메서드-체인-대-함수-파이프라인">
         <span class="has-mr-6">1</span>
         <span>메서드 체인 대 함수 파이프라인</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#메소드를-여럿-체이닝">
         <span class="has-mr-6">1.1</span>
         <span>메소드를 여럿 체이닝</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수를-파이프라인에-나열">
         <span class="has-mr-6">1.2</span>
         <span>함수를 파이프라인에 나열</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수-호환-요건">
         <span class="has-mr-6">2</span>
         <span>함수 호환 요건</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#형식이-호환되는-함수">
         <span class="has-mr-6">2.1</span>
         <span>형식이 호환되는 함수</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수와-항수-튜플">
         <span class="has-mr-6">2.2</span>
         <span>함수와 항수:튜플</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#커리된-함수를-평가">
         <span class="has-mr-6">3</span>
         <span>커리된 함수를 평가</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#함수-팩토리를-모방">
         <span class="has-mr-6">3.1</span>
         <span>함수 팩토리를 모방</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#재사용-가능한-함수-템플릿-구현">
         <span class="has-mr-6">3.2</span>
         <span>재사용 가능한 함수 템플릿 구현</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#부분-적용과-매개변수-바인딩">
         <span class="has-mr-6">4</span>
         <span>부분 적용과 매개변수 바인딩</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#언어의-핵심을-확장">
         <span class="has-mr-6">4.1</span>
         <span>언어의 핵심을 확장</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#지연된-함수에-바인딩">
         <span class="has-mr-6">4.2</span>
         <span>지연된 함수에 바인딩</span>
         </a></li></ul></li></ul>

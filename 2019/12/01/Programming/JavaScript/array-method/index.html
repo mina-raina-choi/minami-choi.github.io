@@ -137,16 +137,16 @@
             <p>자바스크립트 array method를 정리해보자<br>자바스크립트에는 배열에 아이템을 추가/삭제할 수 있는 4가지 메소드를 제공한다.</p>
 <a id="more"></a>
 
-<h1><span id="pop">pop()</span></h1><p>배열에서 마지막 요소를 제거하고 그 요소를 반환한다.<br>만약 빈 배열에 <code>pop()</code>을 호출하면, <code>undeifined</code>를 반환한다.<br>원본배열 자체가 변한다.</p>
+<h1 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h1><p>배열에서 마지막 요소를 제거하고 그 요소를 반환한다.<br>만약 빈 배열에 <code>pop()</code>을 호출하면, <code>undeifined</code>를 반환한다.<br>원본배열 자체가 변한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"grape"</span>, <span class="hljs-string">"pineapple"</span>]</span><br><span class="line"><span class="hljs-keyword">const</span> popped = fruits.pop()</span><br><span class="line"><span class="hljs-built_in">console</span>.log(popped) <span class="hljs-comment">// pineapple</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(fruits) <span class="hljs-comment">// ["banana", "apple", "grape"]</span></span><br></pre></td></tr></table></figure>
 
-<h1><span id="push">push()</span></h1><p>배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환한다.<br>pop()과 마찬가지로 원본배열이 바뀐다.</p>
+<h1 id="push"><a href="#push" class="headerlink" title="push()"></a>push()</h1><p>배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환한다.<br>pop()과 마찬가지로 원본배열이 바뀐다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> animals = [<span class="hljs-string">"pigs"</span>, <span class="hljs-string">"goats"</span>, <span class="hljs-string">"sheep"</span>]</span><br><span class="line"><span class="hljs-keyword">const</span> count = animals.push(<span class="hljs-string">"cows"</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(count) <span class="hljs-comment">// 4</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(animals) <span class="hljs-comment">// (4) ["pigs", "goats", "sheep", "cows"]</span></span><br><span class="line"></span><br><span class="line">animals.push(<span class="hljs-string">"chickens"</span>, <span class="hljs-string">"cats"</span>, <span class="hljs-string">"dogs"</span>) <span class="hljs-comment">// 7</span></span><br></pre></td></tr></table></figure>
 
-<h1><span id="shift">shift()</span></h1><p>배열에서 첫번째 요소를 제거하고, 제거된 요소를 반환한다. 원본배열 자체가 변한다.<br>0 번째 위치의 요소를 제거하고 연이은 나머지 값들의 위치를 한칸씩 앞으로 당긴다.<br>만약 빈 배열에 <code>shift()</code>를 호출하면 <code>undefined</code> 리턴.</p>
+<h1 id="shift"><a href="#shift" class="headerlink" title="shift()"></a>shift()</h1><p>배열에서 첫번째 요소를 제거하고, 제거된 요소를 반환한다. 원본배열 자체가 변한다.<br>0 번째 위치의 요소를 제거하고 연이은 나머지 값들의 위치를 한칸씩 앞으로 당긴다.<br>만약 빈 배열에 <code>shift()</code>를 호출하면 <code>undefined</code> 리턴.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"grape"</span>, <span class="hljs-string">"pineapple"</span>]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> firstItem = fruits.shift()</span><br><span class="line"><span class="hljs-built_in">console</span>.log(firstItem) <span class="hljs-comment">// banana</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(fruits) <span class="hljs-comment">// (3) ["apple", "grape", "pineapple"]</span></span><br></pre></td></tr></table></figure>
 
-<h1><span id="unshift">unshift()</span></h1><p>새로운 요소를 배열의 맨 앞쪽에 추가하고 새로운 길이를 반환한다. 원본배열이 바뀐다.</p>
+<h1 id="unshift"><a href="#unshift" class="headerlink" title="unshift()"></a>unshift()</h1><p>새로운 요소를 배열의 맨 앞쪽에 추가하고 새로운 길이를 반환한다. 원본배열이 바뀐다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> fruits = [<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"grape"</span>, <span class="hljs-string">"pineapple"</span>]</span><br><span class="line"></span><br><span class="line">fruits.unshift(<span class="hljs-string">"mango"</span>, <span class="hljs-string">"tangerine"</span>)</span><br><span class="line"><span class="hljs-comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(fruits)</span><br><span class="line"><span class="hljs-comment">// (6) ["mango", "tangerine", "banana", "apple", "grape", "pineapple"]</span></span><br></pre></td></tr></table></figure>
 
 <p>[참고] <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop</a></p>
@@ -342,10 +342,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -356,20 +356,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -435,71 +427,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>

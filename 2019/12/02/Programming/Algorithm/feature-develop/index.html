@@ -134,7 +134,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.</p>
 <p>또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.</p>
 <a id="more"></a>
 
@@ -143,8 +143,8 @@
 1. 작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.
 2. 작업 진도는 100 미만의 자연수입니다.
 3. 작업 속도는 100 이하의 자연수입니다.
-4. 배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.</code></pre><h1><span id="풀이-과정">풀이 과정</span></h1><p>먼저 각 기능별로 완료까지 걸리는 일수를 구한다.<br><code>done</code>배열을 forloop을 돌리면서 첫 번째 값부터 <code>larger</code>값과 비교해서 larger보다 같거나 작으면 <code>answer[answer.length - 1]++</code> 이렇게 원래있던 값에 <code>+1</code>을 해주고 아니면 <code>answer[answer.length] = 1</code> 새로운 값을 넣어준다.</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">progresses, speeds</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">const</span> done = []</span><br><span class="line">  progresses.forEach(<span class="hljs-function">(<span class="hljs-params">progress, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> days = <span class="hljs-built_in">Math</span>.ceil((<span class="hljs-number">100</span> - progress) / speeds[index])</span><br><span class="line">    done.push(days)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> larger</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; done.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (larger &gt;= done[i]) &#123;</span><br><span class="line">      answer[answer.length - <span class="hljs-number">1</span>]++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      larger = done[i]</span><br><span class="line">      answer[answer.length] = <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+4. 배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.</code></pre><h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>먼저 각 기능별로 완료까지 걸리는 일수를 구한다.<br><code>done</code>배열을 forloop을 돌리면서 첫 번째 값부터 <code>larger</code>값과 비교해서 larger보다 같거나 작으면 <code>answer[answer.length - 1]++</code> 이렇게 원래있던 값에 <code>+1</code>을 해주고 아니면 <code>answer[answer.length] = 1</code> 새로운 값을 넣어준다.</p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">progresses, speeds</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">const</span> done = []</span><br><span class="line">  progresses.forEach(<span class="hljs-function">(<span class="hljs-params">progress, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> days = <span class="hljs-built_in">Math</span>.ceil((<span class="hljs-number">100</span> - progress) / speeds[index])</span><br><span class="line">    done.push(days)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> larger</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; done.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (larger &gt;= done[i]) &#123;</span><br><span class="line">      answer[answer.length - <span class="hljs-number">1</span>]++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      larger = done[i]</span><br><span class="line">      answer[answer.length] = <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -338,10 +338,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -352,20 +352,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -431,71 +423,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>

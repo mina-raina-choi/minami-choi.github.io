@@ -138,7 +138,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 “balloon”을 만들 수 있는 만큼 만들려고 한다.<br>각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 “balloon”을 만들 수 있는 만큼 만들려고 한다.<br>각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.</p>
 <a id="more"></a>
 
 <blockquote>
@@ -153,10 +153,10 @@
 <pre><code>Constraints:
 1 &lt;= text.length &lt;= 10^4
 text consists of lower case English letters only.</code></pre><p>출처 - <a href="https://leetcode.com/problems/maximum-number-of-balloons" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/maximum-number-of-balloons</a></p>
-<h1><span id="풀이과정">풀이과정</span></h1><p><code>balloon</code>의 각 문자열을 <code>key</code>로 하고 <code>value=0</code>으로 셋팅한 <code>balloonObj</code>를 만든다.<br><code>text</code>의 길이만큼 forloop을 돌면서 <code>balloonObj</code>의 key와 동일한 문자열이 있으면 <code>value를 +1</code> 해준다.</p>
+<h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p><code>balloon</code>의 각 문자열을 <code>key</code>로 하고 <code>value=0</code>으로 셋팅한 <code>balloonObj</code>를 만든다.<br><code>text</code>의 길이만큼 forloop을 돌면서 <code>balloonObj</code>의 key와 동일한 문자열이 있으면 <code>value를 +1</code> 해준다.</p>
 <p><code>balloonObj</code>의 key를 배열로 뽑아내서 <code>key가 l, o</code> 이면 <code>value를 1/2</code>해준다.<br>balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
 <p>이제 <code>balloonObj</code>의 value값 중 가장 작은 값을 골라 리턴을 하면 우리가 찾는 주어진 text를 이용해 단어 <code>balloon</code>을 만들 수 있는 최대값이다.</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string&#125; text</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> maxNumberOfBalloons = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> balloonString = <span class="hljs-string">"balloon"</span></span><br><span class="line">  <span class="hljs-keyword">const</span> balloonObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; balloonString.length; i++) &#123;</span><br><span class="line">    balloonObj[balloonString[i]] = <span class="hljs-number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; text.length; j++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (balloonObj[text[j]] === <span class="hljs-number">0</span> || balloonObj[text[j]]) &#123;</span><br><span class="line">      balloonObj[text[j]] += <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(balloonObj)</span><br><span class="line">  keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (key === <span class="hljs-string">"l"</span> || key === <span class="hljs-string">"o"</span>) &#123;</span><br><span class="line">      balloonObj[key] = <span class="hljs-built_in">Math</span>.floor(balloonObj[key] / <span class="hljs-number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Object</span>.values(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.min(...values)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string&#125; text</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> maxNumberOfBalloons = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> balloonString = <span class="hljs-string">"balloon"</span></span><br><span class="line">  <span class="hljs-keyword">const</span> balloonObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; balloonString.length; i++) &#123;</span><br><span class="line">    balloonObj[balloonString[i]] = <span class="hljs-number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; text.length; j++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (balloonObj[text[j]] === <span class="hljs-number">0</span> || balloonObj[text[j]]) &#123;</span><br><span class="line">      balloonObj[text[j]] += <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(balloonObj)</span><br><span class="line">  keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (key === <span class="hljs-string">"l"</span> || key === <span class="hljs-string">"o"</span>) &#123;</span><br><span class="line">      balloonObj[key] = <span class="hljs-built_in">Math</span>.floor(balloonObj[key] / <span class="hljs-number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Object</span>.values(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.min(...values)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -350,10 +350,10 @@ text consists of lower case English letters only.</code></pre><p>출처 - <a hre
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -364,20 +364,12 @@ text consists of lower case English letters only.</code></pre><p>출처 - <a hre
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -443,71 +435,7 @@ text consists of lower case English letters only.</code></pre><p>출처 - <a hre
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -525,15 +453,15 @@ text consists of lower case English letters only.</code></pre><p>출처 - <a hre
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이과정">
         <span class="has-mr-6">2</span>
         <span>풀이과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>
@@ -778,15 +706,15 @@ text consists of lower case English letters only.</code></pre><p>출처 - <a hre
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이과정">
         <span class="has-mr-6">2</span>
         <span>풀이과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>

@@ -8,7 +8,7 @@
 
 <title>이진탐색(binary-search) - Mina&#39;s World</title>
 <link rel="canonical" href="https://minami-choi.github.io/2018/04/07/binary-search/">  <meta name="description" content="순차적으로 나열된 배열에서 특정 원소를 빨리 찾는 법!!  만약 1 ~ 100 사이의 숫자 가운데 87을 찾는다고 한다면">
-<meta name="keywords" content="이진탐색,binary-search,알고리즘">
+<meta name="keywords" content="알고리즘,이진탐색,binary-search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="이진탐색(binary-search)">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/07/binary-search/index.html">
@@ -150,9 +150,9 @@
 <blockquote>
 <p>만약 n개의 원소를 가진 리스트에서 이진탐색을 사용하면 최대 log2의 n번 만에 답을 찾을 수 있다.</p>
 </blockquote>
-<h3><span id="기존의-파이썬으로-된-예제를-자바스크립트로-바꿔봤다">기존의 파이썬으로 된 예제를 자바스크립트로 바꿔봤다.</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">binary_search = (list, item) =&gt; &#123;</span><br><span class="line">  <span class="hljs-built_in">let</span> low = 0;</span><br><span class="line">  <span class="hljs-built_in">let</span> high = list.length - 1;</span><br><span class="line">    <span class="hljs-built_in">let</span> count = 1;s</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    <span class="hljs-built_in">let</span> mid = Math.floor((low + high) / 2);</span><br><span class="line">    <span class="hljs-built_in">let</span> guess = list[mid];</span><br><span class="line">    <span class="hljs-keyword">if</span> (guess == item) &#123;</span><br><span class="line">        console.log(`<span class="hljs-variable">$&#123;item&#125;</span>을 <span class="hljs-variable">$&#123;count&#125;</span>번만에 찾았다!! my_list[<span class="hljs-variable">$&#123;mid&#125;</span>]에 위치해있다.`);</span><br><span class="line">        <span class="hljs-built_in">return</span> mid;</span><br><span class="line">    &#125;  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (guess &gt; item) &#123;</span><br><span class="line">      high = mid - 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      low = mid + 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(`<span class="hljs-variable">$&#123;item&#125;</span>은 my_list에 존재하지 않는다!!`);</span><br><span class="line">  <span class="hljs-built_in">return</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">my_list = [];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> i = 0; i&lt; 100; i++) &#123;</span><br><span class="line">    my_list.push(2*i-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">binary_search(my_list, 117);</span><br><span class="line">binary_search(my_list, -3);</span><br></pre></td></tr></table></figure>
+<h3 id="기존의-파이썬으로-된-예제를-자바스크립트로-바꿔봤다"><a href="#기존의-파이썬으로-된-예제를-자바스크립트로-바꿔봤다" class="headerlink" title="기존의 파이썬으로 된 예제를 자바스크립트로 바꿔봤다."></a>기존의 파이썬으로 된 예제를 자바스크립트로 바꿔봤다.</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">binary_search = (list, item) =&gt; &#123;</span><br><span class="line">  <span class="hljs-built_in">let</span> low = 0;</span><br><span class="line">  <span class="hljs-built_in">let</span> high = list.length - 1;</span><br><span class="line">    <span class="hljs-built_in">let</span> count = 1;s</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">    <span class="hljs-built_in">let</span> mid = Math.floor((low + high) / 2);</span><br><span class="line">    <span class="hljs-built_in">let</span> guess = list[mid];</span><br><span class="line">    <span class="hljs-keyword">if</span> (guess == item) &#123;</span><br><span class="line">        console.log(`<span class="hljs-variable">$&#123;item&#125;</span>을 <span class="hljs-variable">$&#123;count&#125;</span>번만에 찾았다!! my_list[<span class="hljs-variable">$&#123;mid&#125;</span>]에 위치해있다.`);</span><br><span class="line">        <span class="hljs-built_in">return</span> mid;</span><br><span class="line">    &#125;  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (guess &gt; item) &#123;</span><br><span class="line">      high = mid - 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      low = mid + 1;</span><br><span class="line">      count++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(`<span class="hljs-variable">$&#123;item&#125;</span>은 my_list에 존재하지 않는다!!`);</span><br><span class="line">  <span class="hljs-built_in">return</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">my_list = [];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> i = 0; i&lt; 100; i++) &#123;</span><br><span class="line">    my_list.push(2*i-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">binary_search(my_list, 117);</span><br><span class="line">binary_search(my_list, -3);</span><br></pre></td></tr></table></figure>
 
-<h3><span id="결과값">결과값</span></h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">117을 6번만에 찾았다!! my_list[59]에 위치해있다.</span><br><span class="line">-3은 my_list에 존재하지 않는다!!</span><br></pre></td></tr></table></figure>
+<h3 id="결과값"><a href="#결과값" class="headerlink" title="결과값"></a>결과값</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">117을 6번만에 찾았다!! my_list[59]에 위치해있다.</span><br><span class="line">-3은 my_list에 존재하지 않는다!!</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -339,10 +339,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -353,20 +353,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -432,71 +424,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>

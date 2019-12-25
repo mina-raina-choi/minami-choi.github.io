@@ -138,7 +138,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>대구 달성공원에 놀러 온 지수는 최근에 새로 만든 타일 장식물을 보게 되었다. 타일 장식물은 정사각형 타일을 붙여 만든 형태였는데, 한 변이 1인 정사각형 타일부터 시작하여 마치 앵무조개의 나선 모양처럼 점점 큰 타일을 붙인 형태였다. 타일 장식물의 일부를 그리면 다음과 같다.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>대구 달성공원에 놀러 온 지수는 최근에 새로 만든 타일 장식물을 보게 되었다. 타일 장식물은 정사각형 타일을 붙여 만든 형태였는데, 한 변이 1인 정사각형 타일부터 시작하여 마치 앵무조개의 나선 모양처럼 점점 큰 타일을 붙인 형태였다. 타일 장식물의 일부를 그리면 다음과 같다.</p>
 <a id="more"></a>
 
 <p><img src="https://grepp-programmers.s3.amazonaws.com/files/production/3e31bedd54/fcc48066-e72f-45c8-af03-e4360b58b589.png" alt="home_posts_tag-false"></p>
@@ -146,7 +146,7 @@
 <pre><code>[1, 1, 2, 3, 5, 8, .]</code></pre><p>지수는 문득 이러한 타일들로 구성되는 큰 직사각형의 둘레가 궁금해졌다. 예를 들어, 처음 다섯 개의 타일이 구성하는 직사각형(위에서 빨간색으로 표시한 직사각형)의 둘레는 26이다.</p>
 <p>타일의 개수 N이 주어질 때, N개의 타일로 구성된 직사각형의 둘레를 return 하도록 solution 함수를 작성하시오.</p>
 <pre><code>제한 사항
-N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과정">풀이 과정</span></h1><p>N개의 타일로 구성된 직사각형의 둘레는 N변과 N-1변을 각각 2배 해주면 구할 수 있다.<br><code>[1, 1, 2, 3, 5, 8, .]</code> 정사각형 타일 한 변의 길이를 나열한 배열의 모습을 보면 피보나치 수열의 모습과 동일하다.<br>그래서 처음에는 피보나치 함수를 아래와 같이 만들었더니 효율성 검사를 통과하지 못했다.</p>
+N은 1 이상 80 이하인 자연수이다.</code></pre><h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>N개의 타일로 구성된 직사각형의 둘레는 N변과 N-1변을 각각 2배 해주면 구할 수 있다.<br><code>[1, 1, 2, 3, 5, 8, .]</code> 정사각형 타일 한 변의 길이를 나열한 배열의 모습을 보면 피보나치 수열의 모습과 동일하다.<br>그래서 처음에는 피보나치 함수를 아래와 같이 만들었더니 효율성 검사를 통과하지 못했다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">function fibonacci(n) &#123;</span><br><span class="line">  if (n &lt; 2) &#123;</span><br><span class="line">    return 1</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return fibonacci(n - 1) + fibonacci(n - 2)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>n=5의 경우를 보면,</p>
@@ -154,7 +154,7 @@ N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과
 -&gt; fibonacci(2) + fibonacci(3) + fibonacci(2) + fibonacci(1)
 -&gt; fibonacci(1) + fibonacci(1) + fibonacci(2) + fibonacci(1) + fibonacci(1) + fibonacci(1) + fibonacci(1)</code></pre><p>이렇게 동일한 계산이 반복된다는 것을 알 수 있다.<br>이미 계산된 값에 대해서는 다시 재계산이 일어나지 않도록 메모이제이션*을 했다.<br>이전에 계산된 값이 있으면 그 값을 가져다 쓰도록 코드를 수정했다.</p>
 <p>(*메모이제이션은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는 기술이다. 동적 계획법의 핵심이 되는 기술)</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> memo = []</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">N</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (fibonacci(N) + fibonacci(N - <span class="hljs-number">1</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fibonacci</span>(<span class="hljs-params">n</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (memo[n]) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> memo[n]</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (memo[n] = fibonacci(n - <span class="hljs-number">1</span>) + fibonacci(n - <span class="hljs-number">2</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> memo = []</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">N</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (fibonacci(N) + fibonacci(N - <span class="hljs-number">1</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fibonacci</span>(<span class="hljs-params">n</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span></span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (memo[n]) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> memo[n]</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (memo[n] = fibonacci(n - <span class="hljs-number">1</span>) + fibonacci(n - <span class="hljs-number">2</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -348,10 +348,10 @@ N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -362,20 +362,12 @@ N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -441,71 +433,7 @@ N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -523,15 +451,15 @@ N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이-과정">
         <span class="has-mr-6">2</span>
         <span>풀이 과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>
@@ -776,15 +704,15 @@ N은 1 이상 80 이하인 자연수이다.</code></pre><h1><span id="풀이-과
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이-과정">
         <span class="has-mr-6">2</span>
         <span>풀이 과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>

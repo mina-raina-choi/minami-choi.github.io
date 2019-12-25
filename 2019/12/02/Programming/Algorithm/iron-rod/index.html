@@ -138,7 +138,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>여러 개의 쇠막대기를 레이저로 절단하려고 합니다. 효율적인 작업을 위해서 쇠막대기를 아래에서 위로 겹쳐 놓고, 레이저를 위에서 수직으로 발사하여 쇠막대기들을 자릅니다. 쇠막대기와 레이저의 배치는 다음 조건을 만족합니다.</p>
 <a id="more"></a>
 
 <pre><code>- 쇠막대기는 자신보다 긴 쇠막대기 위에만 놓일 수 있습니다.
@@ -152,11 +152,11 @@
 <p>쇠막대기와 레이저의 배치를 표현한 문자열 arrangement가 매개변수로 주어질 때, 잘린 쇠막대기 조각의 총 개수를 return 하도록 solution 함수를 작성해주세요.</p>
 <pre><code>제한사항
 arrangement의 길이는 최대 100,000입니다.
-arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</code></pre><h1><span id="풀이-과정">풀이 과정</span></h1><p>어떻게 풀어야할지 감이 안잡혀 시간을 꽤나 쓴 문제다.</p>
+arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</code></pre><h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>어떻게 풀어야할지 감이 안잡혀 시간을 꽤나 쓴 문제다.</p>
 <p><code>열린괄호</code>와 <code>닫힌괄호</code> 사이에 있는 <code>숫자의 합에 +1</code>을 한 것이 절단한 쇠막대기의 갯수다.</p>
 <p>일단 레이저를 뜻하는 <code>()</code>을 <code>1</code>로 치환하고 forEach문을 돌리기 위해 split(“”)을 통해 배열로 만든다.<br>forloop을 돌면서 <code>)</code> 을 만나면 역순으로 forloop을 안에서 한번 더 돌린다.<br><code>1</code>을 만나면 num에 더해준다. 작은 forloop을 돌 때마다 num+1한 값을 answer에 더한다.<br><code>(</code> 을 만나면 forloop을 빠져나온다. 이미 카운트한 <code>(</code> 을 <code>str[j] = &quot;|&quot;</code>와 같이 다른 문자로 치환해서 재카운트되지 않도록 한다.</p>
 <p>이 문제가 왜 스택/큐 파트로 분류되어 있는지는 잘 모르겠다.</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">arrangement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">const</span> str = arrangement.replace(<span class="hljs-regexp">/\(\)/g</span>, <span class="hljs-number">1</span>).split(<span class="hljs-string">""</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(str)</span><br><span class="line">  <span class="hljs-keyword">const</span> data = []</span><br><span class="line">  str.forEach(<span class="hljs-function">(<span class="hljs-params">s, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (s === <span class="hljs-string">")"</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 가장 가까운 ( 을 찾아서 없애기</span></span><br><span class="line">      <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span></span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">-1</span>; j--) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"1"</span>) &#123;</span><br><span class="line">          num += <span class="hljs-built_in">Number</span>(str[j])</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"("</span>) &#123;</span><br><span class="line">          str[j] = <span class="hljs-string">"|"</span></span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      answer += num + <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">arrangement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">const</span> str = arrangement.replace(<span class="hljs-regexp">/\(\)/g</span>, <span class="hljs-number">1</span>).split(<span class="hljs-string">""</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(str)</span><br><span class="line">  <span class="hljs-keyword">const</span> data = []</span><br><span class="line">  str.forEach(<span class="hljs-function">(<span class="hljs-params">s, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (s === <span class="hljs-string">")"</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 가장 가까운 ( 을 찾아서 없애기</span></span><br><span class="line">      <span class="hljs-keyword">let</span> num = <span class="hljs-number">0</span></span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j &gt; <span class="hljs-number">-1</span>; j--) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"1"</span>) &#123;</span><br><span class="line">          num += <span class="hljs-built_in">Number</span>(str[j])</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[j] === <span class="hljs-string">"("</span>) &#123;</span><br><span class="line">          str[j] = <span class="hljs-string">"|"</span></span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      answer += num + <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -350,10 +350,10 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -364,20 +364,12 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -443,71 +435,7 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -525,15 +453,15 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이-과정">
         <span class="has-mr-6">2</span>
         <span>풀이 과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>
@@ -778,15 +706,15 @@ arrangement의 여는 괄호와 닫는 괄호는 항상 쌍을 이룹니다.</co
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이-과정">
         <span class="has-mr-6">2</span>
         <span>풀이 과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>

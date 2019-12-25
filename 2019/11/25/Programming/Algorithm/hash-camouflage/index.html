@@ -138,7 +138,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.<br>예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.<br>예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.</p>
 <a id="more"></a>
 
 <p>종류 이름<br>얼굴 동그란 안경, 검정 선글라스<br>상의 파란색 티셔츠<br>하의 청바지<br>겉옷 긴 코트</p>
@@ -150,8 +150,8 @@
 3. 같은 이름을 가진 의상은 존재하지 않습니다.
 4. clothes의 모든 원소는 문자열로 이루어져 있습니다.
 5. 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 &apos;\_&apos; 로만 이루어져 있습니다.
-6. 스파이는 하루에 최소 한 개의 의상은 입습니다.</code></pre><h1><span id="풀이과정">풀이과정</span></h1><p>2차원 배열 clothes을 받아서 Object의 프로퍼티를 이용해서 key, value값을 세팅헸다.<br><code>의상종류를 key</code>로 하고 <code>의상 이름을 배열에 추가하여 value</code>로 했다.<br>의상종류별로 선택할 수 있는 경우의 수가 <code>의상갯수 + 1 (입지않을 경우의 수 추가)</code>가 된다. 그러므로 의상종류 별로 경우의 수를 구해 곱한 다음 의상을 하나도 걸치지 않았을 경우 1를 빼주면 된다.</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">clothes</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  clothes.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (obj[element[<span class="hljs-number">1</span>]]) &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]].push(element[<span class="hljs-number">0</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]] = [element[<span class="hljs-number">0</span>]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> objKeyArr = <span class="hljs-built_in">Object</span>.keys(obj)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; objKeyArr.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = obj[objKeyArr[i]].length</span><br><span class="line">    answer = (value + <span class="hljs-number">1</span>) * answer</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer - <span class="hljs-number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+6. 스파이는 하루에 최소 한 개의 의상은 입습니다.</code></pre><h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>2차원 배열 clothes을 받아서 Object의 프로퍼티를 이용해서 key, value값을 세팅헸다.<br><code>의상종류를 key</code>로 하고 <code>의상 이름을 배열에 추가하여 value</code>로 했다.<br>의상종류별로 선택할 수 있는 경우의 수가 <code>의상갯수 + 1 (입지않을 경우의 수 추가)</code>가 된다. 그러므로 의상종류 별로 경우의 수를 구해 곱한 다음 의상을 하나도 걸치지 않았을 경우 1를 빼주면 된다.</p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">clothes</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  clothes.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (obj[element[<span class="hljs-number">1</span>]]) &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]].push(element[<span class="hljs-number">0</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]] = [element[<span class="hljs-number">0</span>]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> objKeyArr = <span class="hljs-built_in">Object</span>.keys(obj)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; objKeyArr.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = obj[objKeyArr[i]].length</span><br><span class="line">    answer = (value + <span class="hljs-number">1</span>) * answer</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer - <span class="hljs-number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -345,10 +345,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -359,20 +359,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -438,71 +430,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -520,15 +448,15 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이과정">
         <span class="has-mr-6">2</span>
         <span>풀이과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>
@@ -773,15 +701,15 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이과정">
         <span class="has-mr-6">2</span>
         <span>풀이과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>

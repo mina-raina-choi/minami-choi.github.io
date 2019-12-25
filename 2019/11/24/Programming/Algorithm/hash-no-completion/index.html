@@ -141,13 +141,13 @@
             <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" rel="external nofollow noopener noreferrer" target="_blank">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
 <a id="more"></a>
 
-<h1><span id="1-문제">1. 문제</span></h1><p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
+<h1 id="1-문제"><a href="#1-문제" class="headerlink" title="1. 문제"></a>1. 문제</h1><p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
 <pre><code>제한사항
 
 1. 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
 2. completion의 길이는 participant의 길이보다 1 작습니다.
 3. 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
-4. 참가자 중에는 동명이인이 있을 수 있습니다.</code></pre><h1><span id="2-풀이과정">2. 풀이과정</span></h1><p>participant 배열과 completion 배열을 각각 오름차순으로 정렬한 후 차례대로 이름을 비교해 다른 이름이 발견되면 그 이름의 선수가 마라톤을 완주하지 못한 선수다. 처음에는 participant의 배열을 돌리는데 <code>forEach</code>를 사용하려고 했다.</p>
+4. 참가자 중에는 동명이인이 있을 수 있습니다.</code></pre><h1 id="2-풀이과정"><a href="#2-풀이과정" class="headerlink" title="2. 풀이과정"></a>2. 풀이과정</h1><p>participant 배열과 completion 배열을 각각 오름차순으로 정렬한 후 차례대로 이름을 비교해 다른 이름이 발견되면 그 이름의 선수가 마라톤을 완주하지 못한 선수다. 처음에는 participant의 배열을 돌리는데 <code>forEach</code>를 사용하려고 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  participant.forEach(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (item !== completion[i]) &#123;</span><br><span class="line">      answer = item</span><br><span class="line">      <span class="hljs-comment">// 이름이 다른 경우를 발견하고 forEach문을 빠져나오기</span></span><br><span class="line">      <span class="hljs-keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>위와 같이 코드를 작성하니</p>
@@ -163,7 +163,7 @@
 <blockquote>
 <p>find() 메서드는 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환합니다.</p>
 </blockquote>
-<h1><span id="3-내가-작성한-코드">3. 내가 작성한 코드</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  answer = participant.find(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item !== completion[i]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-내가-작성한-코드"><a href="#3-내가-작성한-코드" class="headerlink" title="3. 내가 작성한 코드"></a>3. 내가 작성한 코드</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  answer = participant.find(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item !== completion[i]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>엇, 그런데 해시문제인데 해시를 사용하지 않았다…</p>
 
@@ -358,10 +358,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -372,20 +372,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -451,71 +443,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -533,15 +461,15 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#1-문제">
         <span class="has-mr-6">1</span>
         <span>1. 문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#2-풀이과정">
         <span class="has-mr-6">2</span>
         <span>2. 풀이과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#3-내가-작성한-코드">
         <span class="has-mr-6">3</span>
         <span>3. 내가 작성한 코드</span>
         </a></li></ul>
@@ -786,15 +714,15 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#1-문제">
         <span class="has-mr-6">1</span>
         <span>1. 문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#2-풀이과정">
         <span class="has-mr-6">2</span>
         <span>2. 풀이과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#3-내가-작성한-코드">
         <span class="has-mr-6">3</span>
         <span>3. 내가 작성한 코드</span>
         </a></li></ul>

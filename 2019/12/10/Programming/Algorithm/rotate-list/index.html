@@ -134,7 +134,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="문제">문제</span></h1><p>링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.</p>
 <a id="more"></a>
 
 <pre><code>Example 1:
@@ -154,7 +154,7 @@ rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
 rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL
 rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL
 rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a href="https://leetcode.com/problems/rotate-list/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/rotate-list/</a></p>
-<h1><span id="풀이-과정">풀이 과정</span></h1><p>처음 생각했던 방법은 링크드리스트의 마지막요소의 전 요소를 찾은 후, 그 요소의 next를 null로 만들고 마지막 요소를 새로운 head로 만드는 방식이었다.</p>
+<h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>처음 생각했던 방법은 링크드리스트의 마지막요소의 전 요소를 찾은 후, 그 요소의 next를 null로 만들고 마지막 요소를 새로운 head로 만드는 방식이었다.</p>
 <p>하지만 이렇게 할 경우, [1,2,3] k=2000000 이런 인풋에서는 시간초과오류가 났다.<br>실행시간이 <code>N(n * k), n=length of list</code>이다.<br>이 방법이 아니라 새로운 방법으로 풀어야 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> last = head</span><br><span class="line">  <span class="hljs-keyword">let</span> newFirst = <span class="hljs-literal">null</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트일경우, 리스트 크기가 1일 경우는 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (head &amp;&amp; head.next) &#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (k) &#123;</span><br><span class="line">      last = findBeforeLastItem(head)</span><br><span class="line"></span><br><span class="line">      newFirst = last.next</span><br><span class="line">      newFirst.next = head</span><br><span class="line"></span><br><span class="line">      last.next = <span class="hljs-literal">null</span></span><br><span class="line">      head = newFirst</span><br><span class="line">      k--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 마지막 전 원소 찾기</span></span><br><span class="line"><span class="hljs-keyword">const</span> findBeforeLastItem = <span class="hljs-function"><span class="hljs-params">last</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">while</span> (last.next &amp;&amp; last.next.next) &#123;</span><br><span class="line">    last = last.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> last</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -166,7 +166,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
 <p>이렇게 계산하면 실행시간은 N(n)이 되겠다.</p>
 <hr>
 <p>원형연결리스트를 이용하면 문제가 풀린다는 힌트를 얻고도 문제를 해결하는 데 꽤 많이 시간을 쏟았다.<br><code>let n = len - (k % len)</code><br>이 계산식을 도출해내기까지 생각이 많이 필요했다.<br>리스트 길이 이상으로 rotate을 하면 반복이 되므로 나머지연산<code>(k % len)</code>으로 반복횟수를 줄이고, tail을 찾는 것이기 때문에 <code>(k % len)</code>번이 아니라 <code>len - (k % len)</code>번 while문을 돌려야 한다.</p>
-<h1><span id="나의-풀이">나의 풀이</span></h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> tail = head</span><br><span class="line">  <span class="hljs-keyword">let</span> len = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    len++</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">      len++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// circlular linked list 만들기</span></span><br><span class="line">    tail = node</span><br><span class="line">    tail.next = head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = len - (k % len)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (n) &#123;</span><br><span class="line">      tail = tail.next</span><br><span class="line">      n--</span><br><span class="line">    &#125;</span><br><span class="line">    head = tail.next</span><br><span class="line">    tail.next = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">return</span> head</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> tail = head</span><br><span class="line">  <span class="hljs-keyword">let</span> len = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    len++</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">      len++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// circlular linked list 만들기</span></span><br><span class="line">    tail = node</span><br><span class="line">    tail.next = head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = len - (k % len)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (n) &#123;</span><br><span class="line">      tail = tail.next</span><br><span class="line">      n--</span><br><span class="line">    &#125;</span><br><span class="line">    head = tail.next</span><br><span class="line">    tail.next = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">return</span> head</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -360,10 +360,10 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -374,20 +374,12 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -453,71 +445,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -535,15 +463,15 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이-과정">
         <span class="has-mr-6">2</span>
         <span>풀이 과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>
@@ -788,15 +716,15 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제">
         <span class="has-mr-6">1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#풀이-과정">
         <span class="has-mr-6">2</span>
         <span>풀이 과정</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#나의-풀이">
         <span class="has-mr-6">3</span>
         <span>나의 풀이</span>
         </a></li></ul>

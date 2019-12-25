@@ -141,8 +141,8 @@
 
 </li>
 </ul>
-<h2><span id="너비-우선-탐색-vs-다익스트라-알고리즘">너비 우선 탐색 vs 다익스트라 알고리즘</span></h2><p>너비 우선 탐색으로 최단 경로(가장 적은 수의 구간을 지나는)를 찾을 수 있었다.<br>다익스트라 알고리즘으로는 최단 시간 경로를 구할 수 있다!<br>다익스트라 알고리즘은 각 구간에 대해 숫자 혹은 가중치를 줄 수 있다. 전체 가중치의 합이 가장 작은 구간을 찾는다.</p>
-<h3><span id="다익스트라-알고리즘-4단계">다익스트라 알고리즘 4단계</span></h3><ol>
+<h2 id="너비-우선-탐색-vs-다익스트라-알고리즘"><a href="#너비-우선-탐색-vs-다익스트라-알고리즘" class="headerlink" title="너비 우선 탐색 vs 다익스트라 알고리즘"></a>너비 우선 탐색 vs 다익스트라 알고리즘</h2><p>너비 우선 탐색으로 최단 경로(가장 적은 수의 구간을 지나는)를 찾을 수 있었다.<br>다익스트라 알고리즘으로는 최단 시간 경로를 구할 수 있다!<br>다익스트라 알고리즘은 각 구간에 대해 숫자 혹은 가중치를 줄 수 있다. 전체 가중치의 합이 가장 작은 구간을 찾는다.</p>
+<h3 id="다익스트라-알고리즘-4단계"><a href="#다익스트라-알고리즘-4단계" class="headerlink" title="다익스트라 알고리즘 4단계"></a>다익스트라 알고리즘 4단계</h3><ol>
 <li>가장 가격이 싼 정점, 즉 도달하는 데 시간이 가장 적게 걸리는 정점을 찾는다.</li>
 <li>이 정점의 이웃 정점에 대해 현재의 가격보다 더 싼 경로가 존재하는 지 확인, 만약 존재한다면 가격을 수정.</li>
 <li>그래프 상의 모든 정점에 대해 이러한 일을 반복</li>
@@ -231,7 +231,7 @@
 </tbody></table>
 <p>위이 표를 보면 라마가 가장 싸게 피아노를 구매할 수 있는 가격은 35달러!!<br>경로를 찾아보면,</p>
 <p><code>악보 -&gt; (5) -&gt; LP -&gt; (20) -&gt; 드럼 -&gt; (10) -&gt; 피아노</code></p>
-<h2><span id="간선의-가중치가-음수인-경우">간선의 가중치가 음수인 경우</span></h2><p>만약 아래의 그래프에서 드럼을 살 수 있는 최소 가격을 다익스트라 알고리즘으로 구해보면?</p>
+<h2 id="간선의-가중치가-음수인-경우"><a href="#간선의-가중치가-음수인-경우" class="headerlink" title="간선의 가중치가 음수인 경우"></a>간선의 가중치가 음수인 경우</h2><p>만약 아래의 그래프에서 드럼을 살 수 있는 최소 가격을 다익스트라 알고리즘으로 구해보면?</p>
 <p><img src="/images/dijkstra-algorithm-2.png" alt></p>
 <table>
 <thead>
@@ -263,11 +263,11 @@
 </tr>
 </tbody></table>
 <p>포스터에 도달하는 0달러보다 더 싼 경로는 없다고 가정하지만, 실제로 -2달러인 경로가 존재한다.<br>다익스트라 알고리즘에서는 포스터 정점을 이미 처리했기 때문에 더 싼 경로는 없다고 가정한다.<br>그래서 드럼에 이르는 더 싼 경로를(33달러) 다익스트라 알고리즘에서는 찾지 못한다.</p>
-<h2><span id="코드로-구현">코드로 구현</span></h2><p><img src="/images/dijkstra-algorithm-3.png" alt></p>
+<h2 id="코드로-구현"><a href="#코드로-구현" class="headerlink" title="코드로 구현"></a>코드로 구현</h2><p><img src="/images/dijkstra-algorithm-3.png" alt></p>
 <p>위의 그래프를 코드로 구현해보자.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">//그래프에 대한 해시테이블</span><br><span class="line">graph = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"start"</span>] = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"start"</span>][<span class="hljs-string">"a"</span>] = 6;</span><br><span class="line">graph[<span class="hljs-string">"start"</span>][<span class="hljs-string">"b"</span>] = 2;</span><br><span class="line"></span><br><span class="line">graph[<span class="hljs-string">"a"</span>] = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"a"</span>][<span class="hljs-string">"fin"</span>] = 1;</span><br><span class="line"></span><br><span class="line">graph[<span class="hljs-string">"b"</span>] = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"b"</span>][<span class="hljs-string">"a"</span>] = 3;</span><br><span class="line">graph[<span class="hljs-string">"b"</span>][<span class="hljs-string">"fin"</span>] = 5;</span><br><span class="line"></span><br><span class="line">graph[<span class="hljs-string">"fin"</span>] = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//가격에 대한 해시테이블</span><br><span class="line">costs = &#123;&#125;;</span><br><span class="line">costs[<span class="hljs-string">"a"</span>] = 6;</span><br><span class="line">costs[<span class="hljs-string">"b"</span>] = 2;</span><br><span class="line">costs[<span class="hljs-string">"fin"</span>] = Infinity;</span><br><span class="line"></span><br><span class="line">//부모를 위한 해시테이블</span><br><span class="line">parents = &#123;&#125;;</span><br><span class="line">parents[<span class="hljs-string">"a"</span>] = <span class="hljs-string">"start"</span>;</span><br><span class="line">parents[<span class="hljs-string">"b"</span>] = <span class="hljs-string">"start"</span>;</span><br><span class="line">parents[<span class="hljs-string">"fin"</span>] = <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line">// 이미 처리한 정점 배열</span><br><span class="line">processed = [];</span><br><span class="line"></span><br><span class="line">// 아직 처리하지 않은 가장 싼 정점을 찾는다</span><br><span class="line">find_lowest_cost_node = (costs) =&gt; &#123;</span><br><span class="line">  lowest_cost = Infinity;</span><br><span class="line">  lowest_cost_node = <span class="hljs-string">""</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span>( <span class="hljs-built_in">let</span> node <span class="hljs-keyword">in</span> costs) &#123;</span><br><span class="line">    const cost = costs[node];</span><br><span class="line">    <span class="hljs-keyword">if</span>(cost &lt; lowest_cost &amp;&amp; processed.indexOf(node) &lt; 0) &#123;</span><br><span class="line">      lowest_cost = cost;</span><br><span class="line">      lowest_cost_node = node;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">return</span> lowest_cost_node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">let</span> node = find_lowest_cost_node(costs);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span>(node) &#123;</span><br><span class="line">  const cost = costs[node];</span><br><span class="line">  const neighbors = graph[node]</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> i =0; i&lt; Object.keys(neighbors).length; i++) &#123;</span><br><span class="line">    const new_cost = cost + neighbors[Object.keys(neighbors)[i]]</span><br><span class="line">    <span class="hljs-keyword">if</span>( costs[Object.keys(neighbors)[i]] &gt; new_cost ) &#123;</span><br><span class="line">      costs[Object.keys(neighbors)[i]] = new_cost;</span><br><span class="line">      parents[Object.keys(neighbors)[i]] = node</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  processed.push(node)</span><br><span class="line">  node = find_lowest_cost_node(costs)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//&#123; a: 5, b: 2, fin: 6 &#125;</span><br></pre></td></tr></table></figure>
 
-<h2><span id="7장에서-배운-내용">7장에서 배운 내용</span></h2><pre><code>1. 너비 우선 탐색은 가중치가 없는 균일 그래프에서 최단 경로를 계산하는 데 사용.
+<h2 id="7장에서-배운-내용"><a href="#7장에서-배운-내용" class="headerlink" title="7장에서 배운 내용"></a>7장에서 배운 내용</h2><pre><code>1. 너비 우선 탐색은 가중치가 없는 균일 그래프에서 최단 경로를 계산하는 데 사용.
 2. 다익스트라 알고리즘은 가중 그래프에서 최단 거리를 계산하는 데 사용.
 3. 다익스트라 알고리즘은 모든 가중치가 양수일 때 정상적으로 동작.
 4. 만약 가중치가 음수이면 벨만-포드 알고리즘을 사용.</code></pre>
@@ -462,10 +462,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -476,20 +476,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -555,71 +547,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>

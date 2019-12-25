@@ -138,7 +138,7 @@
             
         </h1>
         <div class="content">
-            <h1><span id="arraylist의-타입을-제네릭을-통해-명시하기">ArrayList의 타입을 제네릭을 통해 명시하기</span></h1><h2><span id="문제-상황">문제 상황</span></h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="ArrayList의-타입을-제네릭을-통해-명시하기"><a href="#ArrayList의-타입을-제네릭을-통해-명시하기" class="headerlink" title="ArrayList의 타입을 제네릭을 통해 명시하기"></a>ArrayList의 타입을 제네릭을 통해 명시하기</h1><h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
@@ -147,7 +147,7 @@
 <p>Incompatible types required java.lang.string found java.lang.object</p>
 </blockquote>
 <p>이러한 에러가 발생했다.</p>
-<h2><span id="해결-방법">해결 방법</span></h2><p><code>findUnAskedPermissions</code> 의 파라미터 타입을 <code>ArrayList wanted</code> 에서 <code>ArrayList&lt;String&gt; wanted</code>으로 변경하니 에러가 사라졌다.<br>ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 잊지말자!</p>
+<h2 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h2><p><code>findUnAskedPermissions</code> 의 파라미터 타입을 <code>ArrayList wanted</code> 에서 <code>ArrayList&lt;String&gt; wanted</code>으로 변경하니 에러가 사라졌다.<br>ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 잊지말자!</p>
 
         </div>
         
@@ -340,10 +340,10 @@
             <li>
         <a class="level is-marginless" href="/categories/Essay/">
             <span class="level-start">
-                <span class="level-item">Essay이직일기</span>
+                <span class="level-item">Essay</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">11</span>
+                <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Essay/이직일기/">
@@ -354,20 +354,12 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Essay/이직일기/">
-            <span class="level-start">
-                <span class="level-item">이직일기</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/">
             <span class="level-start">
-                <span class="level-item">ProgrammingAlgorithmAndroidAngularBasicElasticSearchJavaScriptReactetc</span>
+                <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">632651741721</span>
+                <span class="level-item tag">63</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -433,71 +425,7 @@
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
-            <span class="level-start">
-                <span class="level-item">Algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">26</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Angular/">
-            <span class="level-start">
-                <span class="level-item">Angular</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">17</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/Basic/">
-            <span class="level-start">
-                <span class="level-item">Basic</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
-            <span class="level-start">
-                <span class="level-item">ElasticSearch</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">7</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Programming/etc/">
-            <span class="level-start">
-                <span class="level-item">etc</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -515,15 +443,15 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#ArrayList의-타입을-제네릭을-통해-명시하기">
         <span class="has-mr-6">1</span>
         <span>ArrayList의 타입을 제네릭을 통해 명시하기</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제-상황">
         <span class="has-mr-6">1.1</span>
         <span>문제 상황</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#해결-방법">
         <span class="has-mr-6">1.2</span>
         <span>해결 방법</span>
         </a></li></ul></li></ul>
@@ -768,15 +696,15 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#ArrayList의-타입을-제네릭을-통해-명시하기">
         <span class="has-mr-6">1</span>
         <span>ArrayList의 타입을 제네릭을 통해 명시하기</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#문제-상황">
         <span class="has-mr-6">1.1</span>
         <span>문제 상황</span>
         </a></li><li>
-        <a class="is-flex" href="#undefined">
+        <a class="is-flex" href="#해결-방법">
         <span class="has-mr-6">1.2</span>
         <span>해결 방법</span>
         </a></li></ul></li></ul>
