@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>스택/큐 - 탑 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/11/28/programming/algorithm/tower/">  <meta name="description" content="문제 수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/11/28/programming/algorithm/tower/">  <meta name="description" content="문제수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="스택&#x2F;큐 - 탑">
 <meta property="og:url" content="https://minami-choi.github.io/2019/11/28/Programming/Algorithm/tower/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.">
+<meta property="og:description" content="문제수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png">
 <meta property="og:updated_time" content="2019-11-27T14:32:54.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="스택&#x2F;큐 - 탑">
-<meta name="twitter:description" content="문제 수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.">
+<meta name="twitter:description" content="문제수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.">
 <meta name="twitter:image" content="https://images.velog.io/post-images/filoscoder/f36cf230-0db0-11ea-81e2-9390052735e1/1O-C-ZYvH9jsf8Tot0If5Rg.png">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -133,26 +133,17 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제">문제</h1>
-<p>수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다. 발사한 신호는 신호를 보낸 탑보다 높은 탑에서만 수신합니다. 또한, 한 번 수신된 신호는 다른 탑으로 송신되지 않습니다.</p>
 <a id="more"></a>
+
 <p>예를 들어 높이가 6, 9, 5, 7, 4인 다섯 탑이 왼쪽으로 동시에 레이저 신호를 발사합니다. 그러면, 탑은 다음과 같이 신호를 주고받습니다. 높이가 4인 다섯 번째 탑에서 발사한 신호는 높이가 7인 네 번째 탑이 수신하고, 높이가 7인 네 번째 탑의 신호는 높이가 9인 두 번째 탑이, 높이가 5인 세 번째 탑의 신호도 높이가 9인 두 번째 탑이 수신합니다. 높이가 9인 두 번째 탑과 높이가 6인 첫 번째 탑이 보낸 레이저 신호는 어떤 탑에서도 수신할 수 없습니다.</p>
-<p>송신 탑(높이) 수신 탑(높이)<br>
-5(4) 4(7)<br>
-4(7) 2(9)<br>
-3(5) 2(9)<br>
-2(9) -<br>
-1(6) -<br>
-맨 왼쪽부터 순서대로 탑의 높이를 담은 배열 heights가 매개변수로 주어질 때 각 탑이 쏜 신호를 어느 탑에서 받았는지 기록한 배열을 return 하도록 solution 함수를 작성해주세요.</p>
+<p>송신 탑(높이) 수신 탑(높이)<br>5(4) 4(7)<br>4(7) 2(9)<br>3(5) 2(9)<br>2(9) -<br>1(6) -<br>맨 왼쪽부터 순서대로 탑의 높이를 담은 배열 heights가 매개변수로 주어질 때 각 탑이 쏜 신호를 어느 탑에서 받았는지 기록한 배열을 return 하도록 solution 함수를 작성해주세요.</p>
 <pre><code>제한 사항
 heights는 길이 2 이상 100 이하인 정수 배열입니다.
 모든 탑의 높이는 1 이상 100 이하입니다.
-신호를 수신하는 탑이 없으면 0으로 표시합니다.
-</code></pre>
-<h1 id="풀이과정">풀이과정</h1>
-<p>위 문제에서 어떻게 스택과 큐의 자료구조를 사용해야할 지 몰라 일단 생각나는대로 풀어봤다. <code>heights</code>를 forloop안에 <code>i</code>번보다 앞에 있는 요소들과 비교하는 forloop을 한번 더 돌렸다. <code>heights[j] &gt; heights[i]</code>인 케이스가 있으면 그 때의 <code>j+1</code>값을 푸시했고, 해당 사항이 없으면 <code>0</code>을 푸시했다.</p>
-<h1 id="나의-풀이">나의 풀이</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">heights</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; heights.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j &gt;= <span class="hljs-number">0</span>; j--) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (heights[j] &gt; heights[i]) &#123;</span><br><span class="line">        answer.push(j + <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (answer.length !== i + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      answer.push(<span class="hljs-number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+신호를 수신하는 탑이 없으면 0으로 표시합니다.</code></pre><h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>위 문제에서 어떻게 스택과 큐의 자료구조를 사용해야할 지 몰라 일단 생각나는대로 풀어봤다. <code>heights</code>를 forloop안에 <code>i</code>번보다 앞에 있는 요소들과 비교하는 forloop을 한번 더 돌렸다. <code>heights[j] &gt; heights[i]</code>인 케이스가 있으면 그 때의 <code>j+1</code>값을 푸시했고, 해당 사항이 없으면 <code>0</code>을 푸시했다.</p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">heights</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; heights.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i - <span class="hljs-number">1</span>; j &gt;= <span class="hljs-number">0</span>; j--) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (heights[j] &gt; heights[i]) &#123;</span><br><span class="line">        answer.push(j + <span class="hljs-number">1</span>)</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (answer.length !== i + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      answer.push(<span class="hljs-number">0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -199,7 +190,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -261,11 +252,11 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -273,7 +264,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -289,7 +280,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -298,7 +289,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -339,7 +330,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -364,7 +355,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -372,7 +363,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -468,8 +459,27 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -547,25 +557,6 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -583,7 +574,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -721,8 +712,27 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -800,25 +810,6 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -836,7 +827,7 @@ heights는 길이 2 이상 100 이하인 정수 배열입니다.
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1068,7 +1059,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1100,9 +1091,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

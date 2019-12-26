@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>화살표 함수(arrow-function)와 function 차이점 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/15/programming/javascript/arrow-function/">  <meta name="description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다. (원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/15/programming/javascript/arrow-function/">  <meta name="description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.(원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
 <meta name="keywords" content="화살표 함수,arrow-function,function,this">
 <meta property="og:type" content="article">
 <meta property="og:title" content="화살표 함수(arrow-function)와 function 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/15/Programming/JavaScript/arrow-function/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다. (원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
+<meta property="og:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.(원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-29T15:29:11.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="화살표 함수(arrow-function)와 function 차이점">
-<meta name="twitter:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다. (원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
+<meta name="twitter:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.(원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -133,12 +133,13 @@
             
         </h1>
         <div class="content">
-            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>
-(원래 나타내던 this를 그대로 쓴다)</p>
+            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>(원래 나타내던 this를 그대로 쓴다)</p>
 <p>앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.</p>
 <a id="more"></a>
+
 <p>앵귤러에서 가끔 function을 이용해야할 경우, 컴포넌트 인스턴스의 변수들을 참조하려면 <code>let _this = this</code>를 이용하면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">dismissModal</span></span>() &#123;</span><br><span class="line">	<span class="hljs-built_in">let</span> _this = this;</span><br><span class="line">	$(<span class="hljs-function"><span class="hljs-title">function</span></span>() &#123;</span><br><span class="line">		$(<span class="hljs-string">"#myModal"</span>).on(<span class="hljs-string">"hidden.bs.modal"</span>, <span class="hljs-function"><span class="hljs-title">function</span></span>() &#123;</span><br><span class="line">			_this.userPwd = <span class="hljs-string">""</span>;</span><br><span class="line">			_this.userEmail = <span class="hljs-string">""</span>;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>function안에서 this를 그냥 쓰면, this는 function 자체를 나타내기 때문에 <code>userPwd</code>과 <code>userEmail</code>이 <code>undefined</code>되었다는 에러가 뜬다.</p>
 <p>그래서 <code>let _this = this</code>를 이용해 컴포넌트 인스턴스를 <code>_this</code>에 담아서 function 내부에서 컴포넌트 인스턴스를 참조할 수 있도록 하면 된다.</p>
 
@@ -187,7 +188,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -249,11 +250,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -261,7 +262,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -277,7 +278,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -286,7 +287,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -327,7 +328,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -352,7 +353,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -360,7 +361,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -433,8 +434,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -512,25 +532,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -548,7 +549,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -663,8 +664,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -742,25 +762,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -778,7 +779,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1010,7 +1011,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1042,9 +1043,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Angular의 Forms 제대로 사용하기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/06/28/angular-forms/">  <meta name="description" content="Angular5 / Forms 그동안 서버 통신할 때 content-type을 json형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 [(ngModel)] 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 validation도 직접 구현했는데, Forms을 사용하면 Forms가 제공하는 validation을 이용함으로써">
+<link rel="canonical" href="https://minami-choi.github.io/2018/06/28/angular-forms/">  <meta name="description" content="Angular5 / Forms그동안 서버 통신할 때 content-type을 json형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 [(ngModel)] 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 validation도 직접 구현했는데, Forms을 사용하면 Forms가 제공하는 validation을 이용함으로써">
 <meta name="keywords" content="Angular,Forms">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular의 Forms 제대로 사용하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/06/28/angular-forms/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular5 / Forms 그동안 서버 통신할 때 content-type을 json형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 [(ngModel)] 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 validation도 직접 구현했는데, Forms을 사용하면 Forms가 제공하는 validation을 이용함으로써">
+<meta property="og:description" content="Angular5 / Forms그동안 서버 통신할 때 content-type을 json형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 [(ngModel)] 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 validation도 직접 구현했는데, Forms을 사용하면 Forms가 제공하는 validation을 이용함으로써">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:36:35.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular의 Forms 제대로 사용하기">
-<meta name="twitter:description" content="Angular5 / Forms 그동안 서버 통신할 때 content-type을 json형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 [(ngModel)] 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 validation도 직접 구현했는데, Forms을 사용하면 Forms가 제공하는 validation을 이용함으로써">
+<meta name="twitter:description" content="Angular5 / Forms그동안 서버 통신할 때 content-type을 json형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 [(ngModel)] 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 validation도 직접 구현했는데, Forms을 사용하면 Forms가 제공하는 validation을 이용함으로써">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -133,124 +133,87 @@
             
         </h1>
         <div class="content">
-            <h1 id="angular5-forms">Angular5 / Forms</h1>
-<p>그동안 서버 통신할 때 <code>content-type</code>을 <code>json</code>형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 <code>[(ngModel)]</code> 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 <code>validation</code>도 직접 구현했는데, <code>Forms</code>을 사용하면 <code>Forms</code>가 제공하는 <code>validation</code>을 이용함으로써 편리하겠다싶어 <code>Forms</code>을 검토해봤다.</p>
+            <h1 id="Angular5-Forms"><a href="#Angular5-Forms" class="headerlink" title="Angular5 / Forms"></a>Angular5 / Forms</h1><p>그동안 서버 통신할 때 <code>content-type</code>을 <code>json</code>형태로 주로 통신하다보니 앵귤러 forms을 제대로 사용하지 않고 <code>[(ngModel)]</code> 양방향 데이터바인딩을 통해 값을 취득하는 방식을 취했다. 그래서 값의 <code>validation</code>도 직접 구현했는데, <code>Forms</code>을 사용하면 <code>Forms</code>가 제공하는 <code>validation</code>을 이용함으로써 편리하겠다싶어 <code>Forms</code>을 검토해봤다.</p>
 <a id="more"></a>
+
 <p>앵귤러 마스터북의 Forms예제와 <a href="https://codecraft.tv/courses/angular/forms/overview/" rel="external nofollow noopener noreferrer" target="_blank">https://codecraft.tv/courses/angular/forms/overview/</a> 을 참고했다.</p>
 <hr>
-<p>성, 이름, 이메일, 비밀번호, 언어선택 박스가 있는 회원가입 폼을 만들어보자.<br>
-유저가 필드별 입력값을 제대로 입력했는지 알려주기 위한 visual feedback도 추가할거다.</p>
-<p><code>템플릿 기반 폼</code>이 더 단순하지만, 실제적으로 자동으로 생성된 <code>모델 기반 폼</code>으로 동작한다.<br>
-그래서 먼저 <code>모델 기반 폼</code>을 먼저 설명하고 <code>템플릿 기반 폼</code>을 설명하겠다.<br>
-마지막으로 RxJS를 이용해<code>reactive model 기반 폼</code>을 구현하는 메소드를 보여주겠다.</p>
-<h2 id="model-driven-forms">Model Driven Forms</h2>
-<p>모델기반으로 폼을 구현하는 것은 컴포넌트 파일에 <code>FormGroup</code>, <code>FormControl</code>의 인스턴스 객체를 변수로 선언해 <code>html</code>에서 해당 변수를 참조함으로써 <code>form</code>을 구현하는 방식을 의미한다.</p>
+
+<p>성, 이름, 이메일, 비밀번호, 언어선택 박스가 있는 회원가입 폼을 만들어보자.<br>유저가 필드별 입력값을 제대로 입력했는지 알려주기 위한 visual feedback도 추가할거다.</p>
+<p><code>템플릿 기반 폼</code>이 더 단순하지만, 실제적으로 자동으로 생성된 <code>모델 기반 폼</code>으로 동작한다.<br>그래서 먼저 <code>모델 기반 폼</code>을 먼저 설명하고 <code>템플릿 기반 폼</code>을 설명하겠다.<br>마지막으로 RxJS를 이용해<code>reactive model 기반 폼</code>을 구현하는 메소드를 보여주겠다.</p>
+<h2 id="Model-Driven-Forms"><a href="#Model-Driven-Forms" class="headerlink" title="Model Driven Forms"></a>Model Driven Forms</h2><p>모델기반으로 폼을 구현하는 것은 컴포넌트 파일에 <code>FormGroup</code>, <code>FormControl</code>의 인스턴스 객체를 변수로 선언해 <code>html</code>에서 해당 변수를 참조함으로써 <code>form</code>을 구현하는 방식을 의미한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;!-- signup.component.ts --&gt;</span><br><span class="line"></span><br><span class="line">  myForm: FormGroup;</span><br><span class="line">  firstName: FormControl;</span><br><span class="line">  lastName: FormControl;</span><br><span class="line">  email: FormControl;</span><br><span class="line">  password: FormControl;</span><br><span class="line">  language: FormControl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.myform = new FormGroup(&#123;</span><br><span class="line">      name: new FormGroup(&#123;</span><br><span class="line">        firstName: new FormControl(<span class="hljs-string">''</span>, Validators.required),</span><br><span class="line">        lastName: new FormControl(<span class="hljs-string">''</span>, Validators.required),</span><br><span class="line">      &#125;),</span><br><span class="line">      email: new FormControl(<span class="hljs-string">''</span>, [</span><br><span class="line">        Validators.required,</span><br><span class="line">        Validators.pattern(<span class="hljs-string">"[^ @]*@[^ @]*"</span>)</span><br><span class="line">      ]),</span><br><span class="line">      password: new FormControl(<span class="hljs-string">''</span>, [</span><br><span class="line">        Validators.required,</span><br><span class="line">        Validators.minLength(8)</span><br><span class="line">      ]),</span><br><span class="line">      language: new FormControl()</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- signup.component.html --&gt;</span><br><span class="line">  &lt;form [formGroup]=<span class="hljs-string">"myForm"</span> class=<span class="hljs-string">"ui form error"</span> (ngSubmit)=<span class="hljs-string">"onSubmit(myForm.value)"</span>&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;input <span class="hljs-built_in">type</span>=<span class="hljs-string">"password"</span> id=<span class="hljs-string">"password"</span> [formControl]=<span class="hljs-string">"myForm.controls.password"</span>&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="model-driven-form-validation">Model Driven Form Validation</h2>
-<pre><code>1. Form model을 통해 유효성 체크를 어떻게 추가할까
+
+<h2 id="Model-Driven-Form-Validation"><a href="#Model-Driven-Form-Validation" class="headerlink" title="Model Driven Form Validation"></a>Model Driven Form Validation</h2><pre><code>1. Form model을 통해 유효성 체크를 어떻게 추가할까
 2. 유효성체크 결과를 유저에게 visual feedback을 어떻게줄까
-3. 유효성 에러메시지 어떻게 추가할까
-</code></pre>
-<p><code>validators</code> 를 적용하려면 템플릿에 어트리뷰트를 추가하거나 모델에 <code>FormControl</code>를 정의하면 된다. 우리는 여기서 2번째 방법으로 적용시켜보겠다.</p>
+3. 유효성 에러메시지 어떻게 추가할까</code></pre><p><code>validators</code> 를 적용하려면 템플릿에 어트리뷰트를 추가하거나 모델에 <code>FormControl</code>를 정의하면 된다. 우리는 여기서 2번째 방법으로 적용시켜보겠다.</p>
 <p>앵귤러는 이미 built-in된 validators가 있다( 예를 들면 required, minLength, maxlength, pattern)</p>
-<p><code>FormControl</code> 생성자의 첫번째 파라미터는 컨트롤의 초기값이고 그 값은 빈 값으로 둘 수 있다.<br>
-두번째 파라미터는 <code>single validator</code>이거나 <code>multi validators</code>를 적용시키고 싶으면 validators의 리스트일 수도 있다.</p>
+<p><code>FormControl</code> 생성자의 첫번째 파라미터는 컨트롤의 초기값이고 그 값은 빈 값으로 둘 수 있다.<br>두번째 파라미터는 <code>single validator</code>이거나 <code>multi validators</code>를 적용시키고 싶으면 validators의 리스트일 수도 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">  this.myform = new FormGroup(&#123;</span><br><span class="line">    name: new FormGroup(&#123;</span><br><span class="line">      firstName: new FormControl(<span class="hljs-string">''</span>, Validators.required), //싱글 validators</span><br><span class="line">      lastName: new FormControl(<span class="hljs-string">''</span>, Validators.required),</span><br><span class="line">    &#125;),</span><br><span class="line">    email: new FormControl(<span class="hljs-string">''</span>, [  // validators 여러개</span><br><span class="line">      Validators.required,</span><br><span class="line">      Validators.pattern(<span class="hljs-string">"[^ @]*@[^ @]*"</span>)</span><br><span class="line">    ]),</span><br><span class="line">    password: new FormControl(<span class="hljs-string">''</span>, [</span><br><span class="line">      Validators.required,</span><br><span class="line">      Validators.minLength(8)</span><br><span class="line">    ]),</span><br><span class="line">    language: new FormControl()</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-form-control-state">1.Form control state</h3>
-<p>폼 컨트롤 객체는 컨트롤자체의 상태를 캡슐화했다. (현재 유효한지, 터치된 적이 있는지에 대한)</p>
+
+<h3 id="1-Form-control-state"><a href="#1-Form-control-state" class="headerlink" title="1.Form control state"></a>1.Form control state</h3><p>폼 컨트롤 객체는 컨트롤자체의 상태를 캡슐화했다. (현재 유효한지, 터치된 적이 있는지에 대한)</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;pre&gt;Dirty? &#123;&#123; myform.controls.email.dirty &#125;&#125;&lt;/pre&gt;</span><br><span class="line">&lt;pre&gt;Pristine? &#123;&#123; myform.controls.email.pristine &#125;&#125;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
-<p>Dirty가 true이면 유저가 컨트롤의 값을 변경한 적이 있다는 의미.<br>
-Pristine이 true이면 유저가 값을 변경한 적이 없다는 의미.</p>
+
+<p>Dirty가 true이면 유저가 컨트롤의 값을 변경한 적이 있다는 의미.<br>Pristine이 true이면 유저가 값을 변경한 적이 없다는 의미.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;pre&gt;Touched? &#123;&#123; myform.controls.email.touched &#125;&#125;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
-<p>Touched는 유저가 폼을 터치한 적이 있을 때…<br>
-Touched, dirty의 차이점은 touched는 실제로 값을 변경안해도 touched가 true</p>
+
+<p>Touched는 유저가 폼을 터치한 적이 있을 때…<br>Touched, dirty의 차이점은 touched는 실제로 값을 변경안해도 touched가 true</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;pre&gt;Valid? &#123;&#123; myform.controls.email.valid &#125;&#125;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
+
 <p>모든 validator를 통과하면 valid는 true</p>
-<h3 id="2-validation-styling">2.Validation Styling</h3>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[ngClass]=<span class="hljs-string">"&#123;</span></span><br><span class="line"><span class="hljs-string">'error' : myForm.controls.email.invalid &amp;&amp; myForm.controls.email.dirty,</span></span><br><span class="line"><span class="hljs-string">'success' : myForm.controls.email.valid &amp;&amp; myForm.controls.email.dirty</span></span><br><span class="line"><span class="hljs-string">&#125;"</span></span><br></pre></td></tr></table></figure>
-<p>Dirty가 true인지 체크하는 이유는<br>
-아무런 입력을 받지 않았을 때, 최초로딩에서 validation style이 적용되는 것을 막기 위해.</p>
-<h3 id="3-writing-shorter-validation-expressions">3.Writing shorter validation expressions</h3>
-<p>위의 방법은 FormGroup이 중첩되었을 경우, 사용하기 복잡할 수 도 있다.</p>
+<h3 id="2-Validation-Styling"><a href="#2-Validation-Styling" class="headerlink" title="2.Validation Styling"></a>2.Validation Styling</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[ngClass]=<span class="hljs-string">"&#123;</span></span><br><span class="line"><span class="hljs-string">'error' : myForm.controls.email.invalid &amp;&amp; myForm.controls.email.dirty,</span></span><br><span class="line"><span class="hljs-string">'success' : myForm.controls.email.valid &amp;&amp; myForm.controls.email.dirty</span></span><br><span class="line"><span class="hljs-string">&#125;"</span></span><br></pre></td></tr></table></figure>
+
+<p>Dirty가 true인지 체크하는 이유는<br>아무런 입력을 받지 않았을 때, 최초로딩에서 validation style이 적용되는 것을 막기 위해.</p>
+<h3 id="3-Writing-shorter-validation-expressions"><a href="#3-Writing-shorter-validation-expressions" class="headerlink" title="3.Writing shorter validation expressions"></a>3.Writing shorter validation expressions</h3><p>위의 방법은 FormGroup이 중첩되었을 경우, 사용하기 복잡할 수 도 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"form-group"</span></span><br><span class="line">[ngClass]=<span class="hljs-string">"&#123;</span></span><br><span class="line"><span class="hljs-string">'has-danger': myform.controls.name.controls.firstName.invalid &amp;&amp; myform.controls.name.controls.firstName.dirty,</span></span><br><span class="line"><span class="hljs-string">'has-success': myform.controls.name.controls.firstName.valid &amp;&amp; myform.controls.name.controls.firstName.dirty</span></span><br><span class="line"><span class="hljs-string">&#125;"</span>&gt;</span><br></pre></td></tr></table></figure>
+
 <p>아래와 같이 표현을 짧게 하기 위해서 Ts파일에 로컬프로퍼티를 생성해서 참조할 수도 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">createFormControls</span></span>() &#123;</span><br><span class="line">   this.firstName = new FormControl(<span class="hljs-string">''</span>, Validators.required);</span><br><span class="line">   this.lastName = new FormControl(<span class="hljs-string">''</span>, Validators.required);</span><br><span class="line">   this.email = new FormControl(<span class="hljs-string">''</span>, [</span><br><span class="line">       Validators.required,</span><br><span class="line">       Validators.pattern(<span class="hljs-string">"[^ @]*@[^ @]*"</span>)</span><br><span class="line">   ]);</span><br><span class="line">   this.password = new FormControl(<span class="hljs-string">''</span>, [</span><br><span class="line">       Validators.required,</span><br><span class="line">       Validators.minLength(8)</span><br><span class="line">   ]);</span><br><span class="line">   this.language = new FormControl(<span class="hljs-string">''</span>, Validators.required);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">createForm</span></span>() &#123;</span><br><span class="line">   this.myform = new FormGroup(&#123;</span><br><span class="line">       name: new FormGroup(&#123;</span><br><span class="line">           firstName: this.firstName,</span><br><span class="line">           lastName: this.lastName,</span><br><span class="line">       &#125;),</span><br><span class="line">       email: this.email,</span><br><span class="line">       password: this.password,</span><br><span class="line">       language: this.language</span><br><span class="line">   &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;div class=<span class="hljs-string">"form-group"</span></span><br><span class="line">   [ngClass]=<span class="hljs-string">"&#123;</span></span><br><span class="line"><span class="hljs-string">   'has-danger': firstName.invalid &amp;&amp; firstName.dirty,</span></span><br><span class="line"><span class="hljs-string">   'has-success': firstName.valid &amp;&amp; firstName.dirty</span></span><br><span class="line"><span class="hljs-string">   &#125;"</span>&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="4-validation-messages">4.Validation messages</h3>
-<p>폼을 스타일링하는 것과 마찬가지로 유저가 유효하지 않은 값을 넣었을 때 hint를 주면 어떻게 유효한 값을 입력할 지 알 수 있게 된다.</p>
-<p>Validator가 여러개일 때, 각각에 맞는 에러메시지를 보여주려면 어떻게 해야할까?<br>
-<code>formControl</code>의 <code>errors</code> 프로퍼티를 체크해서 처리할 수 있다.<br>
-만약 <code>errors</code> 객체의 <code>required</code> 키가 있는 경우, 이것은 유저가 필수입력값을 입력하지 않았다는 의미이다.</p>
+
+<h3 id="4-Validation-messages"><a href="#4-Validation-messages" class="headerlink" title="4.Validation messages"></a>4.Validation messages</h3><p>폼을 스타일링하는 것과 마찬가지로 유저가 유효하지 않은 값을 넣었을 때 hint를 주면 어떻게 유효한 값을 입력할 지 알 수 있게 된다.</p>
+<p>Validator가 여러개일 때, 각각에 맞는 에러메시지를 보여주려면 어떻게 해야할까?<br><code>formControl</code>의 <code>errors</code> 프로퍼티를 체크해서 처리할 수 있다.<br>만약 <code>errors</code> 객체의 <code>required</code> 키가 있는 경우, 이것은 유저가 필수입력값을 입력하지 않았다는 의미이다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"form-control-feedback"</span> *ngIf=<span class="hljs-string">"password.errors &amp;&amp; (password.dirty || password.touched)"</span>&gt;</span><br><span class="line">  &lt;p *ngIf=<span class="hljs-string">"password.errors.required"</span>&gt;Password is required&lt;/p&gt;</span><br><span class="line">  &lt;p *ngIf=<span class="hljs-string">"password.errors.minlength"</span>&gt;Password must be 8 characters long&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="submitting-resetting">Submitting &amp; Resetting</h2>
-<p>Submit을 클릭했을 때 컴포넌트에 있는 함수를 어떻게 콜할 것인가?<br>
-그리고, 어떻게 원래상태로 되돌릴 것인가?</p>
-<h3 id="1-submitting">1. Submitting</h3>
-<p><code>Form태그</code> 안에 <code>Type=submit인 button</code> 이 필요하다.<br>
-일반적인 HTML5는 submit을 클릭하면 바로 해당 폼을 POST형식으로 현재 url에 전달한다. 그러나 POST형식으로 전달하는 거 말고 함수를 호출할 수도 있다. <code>Form태그에</code> 추가된 <code>ngSubmit 디렉티브</code>를 통해 할 수 있다.<br>
-<code>(ngSubmit)=&quot;onSubmit(myForm.value)&quot;</code><br>
-현재 폼의 값을 함수로 전달할 수 있다.</p>
-<h3 id="2-resetting">2. Resetting</h3>
-<p>모델기반 폼에서 폼을 리셋하기위해서 <code>myForm.reset()</code>메소드만 호출하면 된다.<br>
-인풋 값이 초기값으로 리셋되고, <code>valid, touched or dirty</code> 프로퍼티도 초기화된다.</p>
-<h2 id="reactive-model-form">Reactive Model Form</h2>
-<pre><code>1. formControl 디렉티브를 어떻게 사용하는가?
+
+<h2 id="Submitting-amp-Resetting"><a href="#Submitting-amp-Resetting" class="headerlink" title="Submitting &amp; Resetting"></a>Submitting &amp; Resetting</h2><p>Submit을 클릭했을 때 컴포넌트에 있는 함수를 어떻게 콜할 것인가?<br>그리고, 어떻게 원래상태로 되돌릴 것인가?</p>
+<h3 id="1-Submitting"><a href="#1-Submitting" class="headerlink" title="1. Submitting"></a>1. Submitting</h3><p><code>Form태그</code> 안에 <code>Type=submit인 button</code> 이 필요하다.<br>일반적인 HTML5는 submit을 클릭하면 바로 해당 폼을 POST형식으로 현재 url에 전달한다. 그러나 POST형식으로 전달하는 거 말고 함수를 호출할 수도 있다. <code>Form태그에</code> 추가된 <code>ngSubmit 디렉티브</code>를 통해 할 수 있다.<br><code>(ngSubmit)=&quot;onSubmit(myForm.value)&quot;</code><br>현재 폼의 값을 함수로 전달할 수 있다.</p>
+<h3 id="2-Resetting"><a href="#2-Resetting" class="headerlink" title="2. Resetting"></a>2. Resetting</h3><p>모델기반 폼에서 폼을 리셋하기위해서 <code>myForm.reset()</code>메소드만 호출하면 된다.<br>인풋 값이 초기값으로 리셋되고, <code>valid, touched or dirty</code> 프로퍼티도 초기화된다.</p>
+<h2 id="Reactive-Model-Form"><a href="#Reactive-Model-Form" class="headerlink" title="Reactive Model Form"></a>Reactive Model Form</h2><pre><code>1. formControl 디렉티브를 어떻게 사용하는가?
 2. FormGroup / FormControl observable을 어떻게 구독할까?
-3. RxJS의 debounceTime, distinctUntilChanged를 어떻게 사용하는가?
-</code></pre>
-<p>FormControls와 FormGroups는 valuesChanged 라는 observable을 노출한다.<br>
-valuesChanged를 구독함으로써 실시간으로 폼의 값이 바뀌는 걸 캐치할 수 있다.</p>
+3. RxJS의 debounceTime, distinctUntilChanged를 어떻게 사용하는가?</code></pre><p>FormControls와 FormGroups는 valuesChanged 라는 observable을 노출한다.<br>valuesChanged를 구독함으로써 실시간으로 폼의 값이 바뀌는 걸 캐치할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">  this.searchField = new FormControl();</span><br><span class="line">  this.searchField.valueChanges</span><br><span class="line">      .subscribe(term =&gt; &#123;</span><br><span class="line">        this.searches.push(term);</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">  this.searchField = new FormControl();</span><br><span class="line">  this.searchField.valueChanges</span><br><span class="line">      .debounceTime(400) // 400밀리초의 디바운스 타임을 준다.</span><br><span class="line">      .distinctUntilChanged() //값이 이전값과 달라졌을 때만 구독한다.</span><br><span class="line">      .subscribe(term =&gt; &#123;</span><br><span class="line">        this.searches.push(term);</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="summary">Summary</h3>
-<p>폼을 제출했을 때 함수를 호출한 다음 폼액션을 처리하는 방식으로 모델기반폼을 처리할 수 있다.<br>
-그러나 앵귤러를 이용하면 observable을 구독함으로써 폼을 처리할 수도 있다.</p>
+
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>폼을 제출했을 때 함수를 호출한 다음 폼액션을 처리하는 방식으로 모델기반폼을 처리할 수 있다.<br>그러나 앵귤러를 이용하면 observable을 구독함으로써 폼을 처리할 수도 있다.</p>
 <p>리액티브폼과 몇가지 RxJS 오퍼레이터를 사용하면 단 몇줄의 코드로 강력한 기능을 구현할 수 있다.</p>
-<p>실시간으로 유저가 입력하는 폼을 처리해야할 때 Reactive Form이 더 유용하다.<br>
-유저가 버튼을 클릭했을 때만 폼을 처리해야하면 Model driven Form이 더 유용하다.</p>
+<p>실시간으로 유저가 입력하는 폼을 처리해야할 때 Reactive Form이 더 유용하다.<br>유저가 버튼을 클릭했을 때만 폼을 처리해야하면 Model driven Form이 더 유용하다.</p>
 <p>두가지 방법이 상호배타적인 것이 아니므로 적절히 잘 섞어서 사용하면 되겠다.</p>
-<h2 id="template-driven-forms">Template Driven Forms</h2>
-<pre><code>1. Template driven form과 model driven form의 차이점을 알자.
+<h2 id="Template-Driven-Forms"><a href="#Template-Driven-Forms" class="headerlink" title="Template Driven Forms"></a>Template Driven Forms</h2><pre><code>1. Template driven form과 model driven form의 차이점을 알자.
 2. 템플릿 input 컨트롤을 컴포넌트의 프로퍼티로 연결하기 위해 ngModel 디렉티브를 어떻게 사용할 것인가.
 3. Template driven form에서 폼 유효성체크를 어떻게 구현할 것인가.
-4. Template driven form에서 submit, reset을 어떻게 할 것인가.
-</code></pre>
-<p>템플릿 기반이나 모델기반이나 모델을 사용한다는 걸 이해하자.<br>
-템플릿기반 폼은 템플릿에 디렉티브를 이용해 <code>FormGroups</code>, <code>FormControls</code>로 모델을 생성한다.</p>
-<h3 id="1-directives">1.Directives</h3>
-<p>템플릿 기반 폼을 만들 때 필요한 디렉티브는 FormsModule에 있다. ReactiveFormsModule이 아니라.</p>
-<p>FormsModule에서 가져온 디렉티브 중 하나는 ngForm이다.<br>
-This instance of ngForm is hidden but we can expose it with a local template reference variable attached to the form element, like so:<br>
-<code>&lt;form #f=&quot;ngForm&quot;&gt; ... &lt;/form&gt;</code></p>
+4. Template driven form에서 submit, reset을 어떻게 할 것인가.</code></pre><p>템플릿 기반이나 모델기반이나 모델을 사용한다는 걸 이해하자.<br>템플릿기반 폼은 템플릿에 디렉티브를 이용해 <code>FormGroups</code>, <code>FormControls</code>로 모델을 생성한다.</p>
+<h3 id="1-Directives"><a href="#1-Directives" class="headerlink" title="1.Directives"></a>1.Directives</h3><p>템플릿 기반 폼을 만들 때 필요한 디렉티브는 FormsModule에 있다. ReactiveFormsModule이 아니라.</p>
+<p>FormsModule에서 가져온 디렉티브 중 하나는 ngForm이다.<br>This instance of ngForm is hidden but we can expose it with a local template reference variable attached to the form element, like so:<br><code>&lt;form #f=&quot;ngForm&quot;&gt; ... &lt;/form&gt;</code></p>
 <p>변수 f는 템플릿에서 지역변수로 쓸 수 있는데 f는 <code>ngForm 디렉티브</code>의 객체를 가르킨다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;pre&gt;&#123;&#123;f.value | json&#125;&#125;&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
-<p>을 찍어보면 {} 빈 객체가 찍히는데 <code>ngForm 디렉티브</code>는 자동으로 <code>form태그</code>안에 있는 모든 컨트롤을 감지하지 않기 때문이다.<br>
-그래서 최상위 <code>FormGroup</code>이 만들어졌지만 비어있다.</p>
-<p>그래서 명시적으로 ngForm디렉티브를 이용해 컨트롤을 등록을 해줘야하는데,<br>
-ngForm디렉티브는 FormControl 객체를 만들어내고 FormGroup에 매칭시킨다.</p>
-<p>To do that we need to do two things to each template form control: 1. Add the NgModel directive 2. Add the name attribute.<br>
-<code>&lt;input name=&quot;foo&quot; ngModel&gt;</code></p>
+
+<p>을 찍어보면 {} 빈 객체가 찍히는데 <code>ngForm 디렉티브</code>는 자동으로 <code>form태그</code>안에 있는 모든 컨트롤을 감지하지 않기 때문이다.<br>그래서 최상위 <code>FormGroup</code>이 만들어졌지만 비어있다.</p>
+<p>그래서 명시적으로 ngForm디렉티브를 이용해 컨트롤을 등록을 해줘야하는데,<br>ngForm디렉티브는 FormControl 객체를 만들어내고 FormGroup에 매칭시킨다.</p>
+<p>To do that we need to do two things to each template form control: 1. Add the NgModel directive 2. Add the name attribute.<br><code>&lt;input name=&quot;foo&quot; ngModel&gt;</code></p>
 <p>모델기반 폼에서는 아래와 같이 해줬다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">let</span> model = new FormGroup(&#123;</span><br><span class="line">  <span class="hljs-string">"foo"</span>: new FormControl()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="2-two-way-data-binding">2.Two way data binding</h3>
-<p>The [( )] syntax is a combination of the syntax for input property binding [] and output event binding ()<br>
-The long form of writing the above would be:<br>
-<code>&lt;input ... [ngModel]=&quot;email&quot; (ngModelChange)=&quot;email = $event&quot; &gt;</code><br>
-But the [()] syntax is shorter and clearly shows we are implementing two way data binding on this input control.</p>
-<h3 id="3-domain-model">3.Domain model</h3>
-<p>앵귤러에서 일반적으로 간단한 스트링이나 객체에 데이터바인딩을 하지 않지만 클래스를 통해 정의한 도메인 모델을 통해서는 데이터바인딩을 한다.</p>
+
+<h3 id="2-Two-way-data-binding"><a href="#2-Two-way-data-binding" class="headerlink" title="2.Two way data binding"></a>2.Two way data binding</h3><p>The [( )] syntax is a combination of the syntax for input property binding [] and output event binding ()<br>The long form of writing the above would be:<br><code>&lt;input ... [ngModel]=&quot;email&quot; (ngModelChange)=&quot;email = $event&quot; &gt;</code><br>But the [()] syntax is shorter and clearly shows we are implementing two way data binding on this input control.</p>
+<h3 id="3-Domain-model"><a href="#3-Domain-model" class="headerlink" title="3.Domain model"></a>3.Domain model</h3><p>앵귤러에서 일반적으로 간단한 스트링이나 객체에 데이터바인딩을 하지 않지만 클래스를 통해 정의한 도메인 모델을 통해서는 데이터바인딩을 한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Signup &#123;</span><br><span class="line">  constructor(public firstName: string = <span class="hljs-string">''</span>,</span><br><span class="line">    public lastName: string = <span class="hljs-string">''</span>,</span><br><span class="line">    public email: string = <span class="hljs-string">''</span>,</span><br><span class="line">    public password: string = <span class="hljs-string">''</span>,</span><br><span class="line">    public language: string = <span class="hljs-string">''</span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">model: Signup = new Signup();</span><br></pre></td></tr></table></figure>
-<h3 id="4-validation">4.Validation</h3>
-<p>모델기반폼에서는 validator를 ts파일에다 정의했다.<br>
-템플릿 기반폼에서는 디렉티브를 통해 validate를 한다.<br>
-HTML5에 빌트인되어 있는 디렉티브이다.</p>
+
+<h3 id="4-Validation"><a href="#4-Validation" class="headerlink" title="4.Validation"></a>4.Validation</h3><p>모델기반폼에서는 validator를 ts파일에다 정의했다.<br>템플릿 기반폼에서는 디렉티브를 통해 validate를 한다.<br>HTML5에 빌트인되어 있는 디렉티브이다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"field"</span>&gt;</span><br><span class="line">    &lt;label&gt;Password&lt;/label&gt;</span><br><span class="line">    &lt;input <span class="hljs-built_in">type</span>=<span class="hljs-string">"password"</span> name=<span class="hljs-string">"password"</span> <span class="hljs-comment">#password="ngModel" [(ngModel)]="model.password" required minlength="8"&gt;</span></span><br><span class="line">    &lt;div class=<span class="hljs-string">"form-control-feedback"</span></span><br><span class="line">		*ngIf=<span class="hljs-string">"password.errors &amp;&amp; (password.dirty || password.touched)"</span>&gt;</span><br><span class="line">	&lt;p *ngIf=<span class="hljs-string">"password.errors.required"</span>&gt;Password is required&lt;/p&gt;</span><br><span class="line">	&lt;p *ngIf=<span class="hljs-string">"password.errors.minlength"</span>&gt;Password must be at least 8 characters long&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="5-resetting-the-form">5.Resetting the form</h3>
-<p>모델기반폼에서는 reset()을 사용할 수 있지만,<br>
-템플릿기반폼에서는 f.form을 컴포넌트에서 참조할 수 없다</p>
-<p>BUT!!!<br>
-ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를 이용해 참조할 수 있다!!<br>
-<code>ViewChild</code> 데코레이터는 템플릿에 있는 변수를 컴포넌트에서 참조할 수 있도록 도와준다.</p>
+
+<h3 id="5-Resetting-the-form"><a href="#5-Resetting-the-form" class="headerlink" title="5.Resetting the form"></a>5.Resetting the form</h3><p>모델기반폼에서는 reset()을 사용할 수 있지만,<br>템플릿기반폼에서는 f.form을 컴포넌트에서 참조할 수 없다</p>
+<p>BUT!!!<br>ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를 이용해 참조할 수 있다!!<br><code>ViewChild</code> 데코레이터는 템플릿에 있는 변수를 컴포넌트에서 참조할 수 있도록 도와준다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">@ViewChild(<span class="hljs-string">'f'</span>) form: any;</span><br><span class="line"></span><br><span class="line">this.form.reset()</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -297,7 +260,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -359,11 +322,11 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -371,7 +334,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -387,7 +350,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -396,7 +359,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -437,7 +400,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -462,7 +425,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -470,7 +433,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -546,75 +509,75 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#angular5-forms">
+        <a class="is-flex" href="#Angular5-Forms">
         <span class="has-mr-6">1</span>
         <span>Angular5 / Forms</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#model-driven-forms">
+        <a class="is-flex" href="#Model-Driven-Forms">
         <span class="has-mr-6">1.1</span>
         <span>Model Driven Forms</span>
         </a></li><li>
-        <a class="is-flex" href="#model-driven-form-validation">
+        <a class="is-flex" href="#Model-Driven-Form-Validation">
         <span class="has-mr-6">1.2</span>
         <span>Model Driven Form Validation</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-form-control-state">
+        <a class="is-flex" href="#1-Form-control-state">
         <span class="has-mr-6">1.2.1</span>
         <span>1.Form control state</span>
         </a></li><li>
-        <a class="is-flex" href="#2-validation-styling">
+        <a class="is-flex" href="#2-Validation-Styling">
         <span class="has-mr-6">1.2.2</span>
         <span>2.Validation Styling</span>
         </a></li><li>
-        <a class="is-flex" href="#3-writing-shorter-validation-expressions">
+        <a class="is-flex" href="#3-Writing-shorter-validation-expressions">
         <span class="has-mr-6">1.2.3</span>
         <span>3.Writing shorter validation expressions</span>
         </a></li><li>
-        <a class="is-flex" href="#4-validation-messages">
+        <a class="is-flex" href="#4-Validation-messages">
         <span class="has-mr-6">1.2.4</span>
         <span>4.Validation messages</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#submitting-resetting">
+        <a class="is-flex" href="#Submitting-amp-Resetting">
         <span class="has-mr-6">1.3</span>
         <span>Submitting &amp; Resetting</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-submitting">
+        <a class="is-flex" href="#1-Submitting">
         <span class="has-mr-6">1.3.1</span>
         <span>1. Submitting</span>
         </a></li><li>
-        <a class="is-flex" href="#2-resetting">
+        <a class="is-flex" href="#2-Resetting">
         <span class="has-mr-6">1.3.2</span>
         <span>2. Resetting</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#reactive-model-form">
+        <a class="is-flex" href="#Reactive-Model-Form">
         <span class="has-mr-6">1.4</span>
         <span>Reactive Model Form</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#summary">
+        <a class="is-flex" href="#Summary">
         <span class="has-mr-6">1.4.1</span>
         <span>Summary</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#template-driven-forms">
+        <a class="is-flex" href="#Template-Driven-Forms">
         <span class="has-mr-6">1.5</span>
         <span>Template Driven Forms</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-directives">
+        <a class="is-flex" href="#1-Directives">
         <span class="has-mr-6">1.5.1</span>
         <span>1.Directives</span>
         </a></li><li>
-        <a class="is-flex" href="#2-two-way-data-binding">
+        <a class="is-flex" href="#2-Two-way-data-binding">
         <span class="has-mr-6">1.5.2</span>
         <span>2.Two way data binding</span>
         </a></li><li>
-        <a class="is-flex" href="#3-domain-model">
+        <a class="is-flex" href="#3-Domain-model">
         <span class="has-mr-6">1.5.3</span>
         <span>3.Domain model</span>
         </a></li><li>
-        <a class="is-flex" href="#4-validation">
+        <a class="is-flex" href="#4-Validation">
         <span class="has-mr-6">1.5.4</span>
         <span>4.Validation</span>
         </a></li><li>
-        <a class="is-flex" href="#5-resetting-the-form">
+        <a class="is-flex" href="#5-Resetting-the-form">
         <span class="has-mr-6">1.5.5</span>
         <span>5.Resetting the form</span>
         </a></li></ul></li></ul></li></ul>
@@ -626,8 +589,27 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -705,25 +687,6 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -741,7 +704,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -859,75 +822,75 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#angular5-forms">
+        <a class="is-flex" href="#Angular5-Forms">
         <span class="has-mr-6">1</span>
         <span>Angular5 / Forms</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#model-driven-forms">
+        <a class="is-flex" href="#Model-Driven-Forms">
         <span class="has-mr-6">1.1</span>
         <span>Model Driven Forms</span>
         </a></li><li>
-        <a class="is-flex" href="#model-driven-form-validation">
+        <a class="is-flex" href="#Model-Driven-Form-Validation">
         <span class="has-mr-6">1.2</span>
         <span>Model Driven Form Validation</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-form-control-state">
+        <a class="is-flex" href="#1-Form-control-state">
         <span class="has-mr-6">1.2.1</span>
         <span>1.Form control state</span>
         </a></li><li>
-        <a class="is-flex" href="#2-validation-styling">
+        <a class="is-flex" href="#2-Validation-Styling">
         <span class="has-mr-6">1.2.2</span>
         <span>2.Validation Styling</span>
         </a></li><li>
-        <a class="is-flex" href="#3-writing-shorter-validation-expressions">
+        <a class="is-flex" href="#3-Writing-shorter-validation-expressions">
         <span class="has-mr-6">1.2.3</span>
         <span>3.Writing shorter validation expressions</span>
         </a></li><li>
-        <a class="is-flex" href="#4-validation-messages">
+        <a class="is-flex" href="#4-Validation-messages">
         <span class="has-mr-6">1.2.4</span>
         <span>4.Validation messages</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#submitting-resetting">
+        <a class="is-flex" href="#Submitting-amp-Resetting">
         <span class="has-mr-6">1.3</span>
         <span>Submitting &amp; Resetting</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-submitting">
+        <a class="is-flex" href="#1-Submitting">
         <span class="has-mr-6">1.3.1</span>
         <span>1. Submitting</span>
         </a></li><li>
-        <a class="is-flex" href="#2-resetting">
+        <a class="is-flex" href="#2-Resetting">
         <span class="has-mr-6">1.3.2</span>
         <span>2. Resetting</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#reactive-model-form">
+        <a class="is-flex" href="#Reactive-Model-Form">
         <span class="has-mr-6">1.4</span>
         <span>Reactive Model Form</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#summary">
+        <a class="is-flex" href="#Summary">
         <span class="has-mr-6">1.4.1</span>
         <span>Summary</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#template-driven-forms">
+        <a class="is-flex" href="#Template-Driven-Forms">
         <span class="has-mr-6">1.5</span>
         <span>Template Driven Forms</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#1-directives">
+        <a class="is-flex" href="#1-Directives">
         <span class="has-mr-6">1.5.1</span>
         <span>1.Directives</span>
         </a></li><li>
-        <a class="is-flex" href="#2-two-way-data-binding">
+        <a class="is-flex" href="#2-Two-way-data-binding">
         <span class="has-mr-6">1.5.2</span>
         <span>2.Two way data binding</span>
         </a></li><li>
-        <a class="is-flex" href="#3-domain-model">
+        <a class="is-flex" href="#3-Domain-model">
         <span class="has-mr-6">1.5.3</span>
         <span>3.Domain model</span>
         </a></li><li>
-        <a class="is-flex" href="#4-validation">
+        <a class="is-flex" href="#4-Validation">
         <span class="has-mr-6">1.5.4</span>
         <span>4.Validation</span>
         </a></li><li>
-        <a class="is-flex" href="#5-resetting-the-form">
+        <a class="is-flex" href="#5-Resetting-the-form">
         <span class="has-mr-6">1.5.5</span>
         <span>5.Resetting the form</span>
         </a></li></ul></li></ul></li></ul>
@@ -939,8 +902,27 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1018,25 +1000,6 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1054,7 +1017,7 @@ ngForm의 객체를 컴포넌트에서 <code>ViewChild</code> 데코레이터를
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1286,7 +1249,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1318,9 +1281,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

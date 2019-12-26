@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Unique Number of Occurrences - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/14/programming/algorithm/unique-number-of-occurrences/">  <meta name="description" content="문제 정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/14/programming/algorithm/unique-number-of-occurrences/">  <meta name="description" content="문제정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unique Number of Occurrences">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/14/Programming/Algorithm/unique-number-of-occurrences/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.">
+<meta property="og:description" content="문제정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg">
 <meta property="og:updated_time" content="2019-12-14T16:08:50.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unique Number of Occurrences">
-<meta name="twitter:description" content="문제 정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.">
+<meta name="twitter:description" content="문제정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -133,35 +133,24 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제">문제</h1>
-<p>정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>정수 배열이 주어질 때, 배열의 각 값의 출현 횟수가 유니크한 경우에만 true를 리턴하는 함수를 작성하세요.</p>
 <a id="more"></a>
+
 <blockquote>
-<p>Example 1:<br>
-Input: arr = [1,2,2,1,1,3]<br>
-Output: true<br>
-Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.</p>
+<p>Example 1:<br>Input: arr = [1,2,2,1,1,3]<br>Output: true<br>Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.</p>
 </blockquote>
 <blockquote>
-<p>Example 2:<br>
-Input: arr = [1,2]<br>
-Output: false</p>
+<p>Example 2:<br>Input: arr = [1,2]<br>Output: false</p>
 </blockquote>
 <blockquote>
-<p>Example 3:<br>
-Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]<br>
-Output: true</p>
+<p>Example 3:<br>Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]<br>Output: true</p>
 </blockquote>
 <pre><code>Constraints:
 1 &lt;= arr.length &lt;= 1000
--1000 &lt;= arr[i] &lt;= 1000
-</code></pre>
-<p>출처 - <a href="https://leetcode.com/problems/unique-number-of-occurrences/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/unique-number-of-occurrences/</a></p>
-<h1 id="풀이과정">풀이과정</h1>
-<p>일단 각 숫자별로 출현횟수를 obj에 담고, obj의 값만 배열로 만든다.<br>
-출현횟수 배열을 돌면서 출현횟수 값이 똑같은 경우가 있는지를 filter 함수를 통해 dup에 담고 <code>dup.length &gt; 1</code> 하다면 동일한 출현횟수가 있는 경우이므로 false를 리턴, 아니면 true를 리턴한다.</p>
-<h1 id="나의-풀이">나의 풀이</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number[]&#125; arr</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;boolean&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> uniqueOccurrences = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> obj = &#123;&#125;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = arr[i]</span><br><span class="line">    <span class="hljs-keyword">if</span> (obj[value]) &#123;</span><br><span class="line">      obj[value] += <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      obj[value] = <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> list = <span class="hljs-built_in">Object</span>.values(obj)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> ret = <span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> dup = list.filter(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item === list[i])</span><br><span class="line">    <span class="hljs-keyword">if</span> (dup.length &gt; <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      ret = <span class="hljs-literal">false</span></span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> ret</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+-1000 &lt;= arr[i] &lt;= 1000</code></pre><p>출처 - <a href="https://leetcode.com/problems/unique-number-of-occurrences/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/unique-number-of-occurrences/</a></p>
+<h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>일단 각 숫자별로 출현횟수를 obj에 담고, obj의 값만 배열로 만든다.<br>출현횟수 배열을 돌면서 출현횟수 값이 똑같은 경우가 있는지를 filter 함수를 통해 dup에 담고 <code>dup.length &gt; 1</code> 하다면 동일한 출현횟수가 있는 경우이므로 false를 리턴, 아니면 true를 리턴한다.</p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number[]&#125; arr</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;boolean&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> uniqueOccurrences = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> obj = &#123;&#125;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = arr[i]</span><br><span class="line">    <span class="hljs-keyword">if</span> (obj[value]) &#123;</span><br><span class="line">      obj[value] += <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      obj[value] = <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> list = <span class="hljs-built_in">Object</span>.values(obj)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> ret = <span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> dup = list.filter(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item === list[i])</span><br><span class="line">    <span class="hljs-keyword">if</span> (dup.length &gt; <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      ret = <span class="hljs-literal">false</span></span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> ret</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -208,7 +197,7 @@ Output: true</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -270,11 +259,11 @@ Output: true</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -282,7 +271,7 @@ Output: true</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -298,7 +287,7 @@ Output: true</p>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -307,7 +296,7 @@ Output: true</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -348,7 +337,7 @@ Output: true</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -373,7 +362,7 @@ Output: true</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -381,7 +370,7 @@ Output: true</p>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -477,8 +466,27 @@ Output: true</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -556,25 +564,6 @@ Output: true</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -592,7 +581,7 @@ Output: true</p>
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -730,8 +719,27 @@ Output: true</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -809,25 +817,6 @@ Output: true</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -845,7 +834,7 @@ Output: true</p>
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1077,7 +1066,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1109,9 +1098,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

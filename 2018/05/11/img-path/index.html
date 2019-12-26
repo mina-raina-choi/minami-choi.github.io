@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>앵귤러에서 이미지 경로 세팅 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/11/img-path/">  <meta name="description" content="앵귤러에서 이미지 경로 세팅 앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/11/img-path/">  <meta name="description" content="앵귤러에서 이미지 경로 세팅앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
 <meta name="keywords" content="Angular,image-path">
 <meta property="og:type" content="article">
 <meta property="og:title" content="앵귤러에서 이미지 경로 세팅">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/11/img-path/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="앵귤러에서 이미지 경로 세팅 앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
+<meta property="og:description" content="앵귤러에서 이미지 경로 세팅앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:56.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="앵귤러에서 이미지 경로 세팅">
-<meta name="twitter:description" content="앵귤러에서 이미지 경로 세팅 앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
+<meta name="twitter:description" content="앵귤러에서 이미지 경로 세팅앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -129,26 +129,21 @@
             
         </h1>
         <div class="content">
-            <h1 id="앵귤러에서-이미지-경로-세팅">앵귤러에서 이미지 경로 세팅</h1>
-<p>앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.</p>
+            <h1 id="앵귤러에서-이미지-경로-세팅"><a href="#앵귤러에서-이미지-경로-세팅" class="headerlink" title="앵귤러에서 이미지 경로 세팅"></a>앵귤러에서 이미지 경로 세팅</h1><p>앵귤러 프로젝트에서 css파일에 백그라운드 이미지 경로를 넣었더니 assets폴더에 있는 이미지를 제대로 불러들이지 못하는 에러가 발생했다.</p>
 <a id="more"></a>
+
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">.intro &#123; background: url(<span class="hljs-string">"./images/overlay.png"</span>), url(<span class="hljs-string">"./images/intro.jpg"</span>) &#125;</span><br></pre></td></tr></table></figure>
-<p>이미지의 경로를 이렇게 넣었더니 이미지 파일을 찾지 못하고 <code>GET http://localhost:4200/images/overlay.png 404 (Not Found)</code> 에러가 발생했다.<br>
-(실제로 저 위치에 이미지는 존재했는데도 불구하고 이미지를 찾지못함.)</p>
+
+<p>이미지의 경로를 이렇게 넣었더니 이미지 파일을 찾지 못하고 <code>GET http://localhost:4200/images/overlay.png 404 (Not Found)</code> 에러가 발생했다.<br>(실제로 저 위치에 이미지는 존재했는데도 불구하고 이미지를 찾지못함.)</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">.intro &#123; background: url(<span class="hljs-string">"assets/css/images/overlay.png"</span>), url(<span class="hljs-string">"assets/css/images/intro.jpg"</span>) &#125;</span><br><span class="line"></span><br><span class="line">.intro &#123; background: url(<span class="hljs-string">"../../assets/css/images/overlay.png"</span>), url(<span class="hljs-string">"../../assets/css/images/intro.jpg"</span>) &#125;</span><br></pre></td></tr></table></figure>
+
 <p>위와 같이 경로를 넣어주니까 아래와 같이 이미지를 제대로 불러오는 것을 알 수가 있다.</p>
 <p><img src="/images/image-path.png" alt></p>
 <p>그리고 html에서도 아래와 같이 경로지정을 해줬더니 이미지를 잘 불러온다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="hljs-string">"assets/css/images/fulls/01.jpg"</span> class=<span class="hljs-string">"image fit"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="hljs-string">"assets/css/images/thumbs/01.jpg"</span> title=<span class="hljs-string">"The Anonymous Red"</span> alt=<span class="hljs-string">""</span> /&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<h4 id="참고-절대경로와-상대경로">[참고]절대경로와 상대경로</h4>
-<p><strong>절대경로</strong><br>
-작업 디렉토리와 관계없이 절대적인 위치를 가리키는 경로<br>
-<strong>상대경로</strong><br>
-작업 디렉토리를 기준으로 상대적인 위치를 가리키는 경로<br>
-/ : 최상위 경로를 의미<br>
-./: 현재 디렉토리를 의미<br>
-…/: 상위 디렉토리를 의미</p>
+<h4 id="참고-절대경로와-상대경로"><a href="#참고-절대경로와-상대경로" class="headerlink" title="[참고]절대경로와 상대경로"></a>[참고]절대경로와 상대경로</h4><p><strong>절대경로</strong><br>작업 디렉토리와 관계없이 절대적인 위치를 가리키는 경로<br><strong>상대경로</strong><br>작업 디렉토리를 기준으로 상대적인 위치를 가리키는 경로<br>/ : 최상위 경로를 의미<br>./: 현재 디렉토리를 의미<br>../: 상위 디렉토리를 의미</p>
 </blockquote>
 
         </div>
@@ -196,7 +191,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -258,11 +253,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -270,7 +265,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -286,7 +281,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -295,7 +290,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -336,7 +331,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -361,7 +356,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -369,7 +364,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -441,8 +436,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -520,25 +534,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -556,7 +551,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -670,8 +665,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -749,25 +763,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -785,7 +780,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1017,7 +1012,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1049,9 +1044,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

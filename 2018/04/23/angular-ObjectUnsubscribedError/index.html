@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Angular에서 ObjectUnsubscribedError 해결방법 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/04/23/angular-objectunsubscribederror/">  <meta name="description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/04/23/angular-objectunsubscribederror/">  <meta name="description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta name="keywords" content="Angular,ObjectUnsubscribedError">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular에서 ObjectUnsubscribedError 해결방법">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/23/angular-ObjectUnsubscribedError/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<meta property="og:description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:00.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular에서 ObjectUnsubscribedError 해결방법">
-<meta name="twitter:description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<meta name="twitter:description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -133,18 +133,15 @@
             
         </h1>
         <div class="content">
-            <h1 id="objectunsubscribederror-해결방법">ObjectUnsubscribedError 해결방법</h1>
-<p>어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!<br>
-그렇지 않으면 메모리릭이 발생할 수 있다.</p>
+            <h1 id="ObjectUnsubscribedError-해결방법"><a href="#ObjectUnsubscribedError-해결방법" class="headerlink" title="ObjectUnsubscribedError 해결방법"></a>ObjectUnsubscribedError 해결방법</h1><p>어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!<br>그렇지 않으면 메모리릭이 발생할 수 있다.</p>
 <a id="more"></a>
-<p>보통 ngOnInit()에서 subscribe하고 ngOnDestroy()에서 unsubscribe를 하는데<br>
-다른 페이지에서 해당페이지로 돌아오기 위해 백버튼을 누르면 ObjectUnsubscribedError 에러 발생했다.</p>
-<h3 id="해결방법">해결방법</h3>
-<ol>
-<li>eventEmitter를 바로 ngOnInit()에서 subscribe하는 게 아니라,<br>
-eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아서 사용하고, 그걸 unsubscribe해야한다.</li>
+
+<p>보통 ngOnInit()에서 subscribe하고 ngOnDestroy()에서 unsubscribe를 하는데<br>다른 페이지에서 해당페이지로 돌아오기 위해 백버튼을 누르면 ObjectUnsubscribedError 에러 발생했다.</p>
+<h3 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h3><ol>
+<li>eventEmitter를 바로 ngOnInit()에서 subscribe하는 게 아니라,<br>eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아서 사용하고, 그걸 unsubscribe해야한다.</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">changedMyWalletList: EventEmitter&lt;any&gt; = new EventEmitter&lt;any&gt;();</span><br></pre></td></tr></table></figure>
+
 <pre><code>changedMyWalletList을 구독한다고치면,
 
 나는 그동안
@@ -155,14 +152,11 @@ eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아�
 
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">subscriberForMyWalletList: any;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.subscriberForMyWalletList = this.changedMyWalletList.subscribe(()=&gt; &#123;</span><br><span class="line">        ~~~~</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnDestroy</span></span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!this.subscriberForMyWalletList.closed)</span><br><span class="line">        this.subscriberForMyWalletList.unsubscribe();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-이렇게 사용해야 한다.
-</code></pre>
-<ol start="2">
-<li>rxjs의 takeWhile을 사용<br>
-import ‘rxjs/add/operator/takeWhile’ 를 하고<br>
-this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
+이렇게 사용해야 한다.</code></pre><ol start="2">
+<li>rxjs의 takeWhile을 사용<br>import ‘rxjs/add/operator/takeWhile’ 를 하고<br>this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">isSubscribing: boolean  = <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.moveToSendCard</span><br><span class="line">        .takeWhile(()=&gt;this.isSubscribing)</span><br><span class="line">        .subscribe(() =&gt; &#123;</span><br><span class="line">            ~~~~</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnDestroy</span></span>() &#123;</span><br><span class="line">    this.isSubscribing = <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>첫번째 방법은 구독해야할 것들마다 일일이 subscriber변수를 할당해줘야 해서 번거로우므로 takeWhile을 사용하는 게 더 간편하겠다!</strong></p>
 
         </div>
@@ -210,7 +204,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -272,11 +266,11 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -284,7 +278,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -300,7 +294,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -309,7 +303,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -350,7 +344,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -375,7 +369,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -383,7 +377,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -459,7 +453,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#objectunsubscribederror-해결방법">
+        <a class="is-flex" href="#ObjectUnsubscribedError-해결방법">
         <span class="has-mr-6">1</span>
         <span>ObjectUnsubscribedError 해결방법</span>
         </a><ul class="menu-list"><li>
@@ -475,8 +469,27 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -554,25 +567,6 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -590,7 +584,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -708,7 +702,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#objectunsubscribederror-해결방법">
+        <a class="is-flex" href="#ObjectUnsubscribedError-해결방법">
         <span class="has-mr-6">1</span>
         <span>ObjectUnsubscribedError 해결방법</span>
         </a><ul class="menu-list"><li>
@@ -724,8 +718,27 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -803,25 +816,6 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -839,7 +833,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1071,7 +1065,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1103,9 +1097,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

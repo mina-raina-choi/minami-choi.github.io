@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>else if문과 switch문의 차이점 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/09/elseif-vs-switch/">  <meta name="description" content="else if문과 switch문의 차이점 if문은 branch statement, switch문은 jump statement에 기반을 두고 있다. 즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (실행을 할 것이냐 말것이냐?) switch문은 입력된 값을 보고 특정 위치로 점프 (어떤 코드를 실행할 것이냐?)">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/09/elseif-vs-switch/">  <meta name="description" content="else if문과 switch문의 차이점if문은 branch statement, switch문은 jump statement에 기반을 두고 있다. 즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (실행을 할 것이냐 말것이냐?)switch문은 입력된 값을 보고 특정 위치로 점프 (어떤 코드를 실행할 것이냐?)">
 <meta name="keywords" content="else if,switch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="else if문과 switch문의 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/09/elseif-vs-switch/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="else if문과 switch문의 차이점 if문은 branch statement, switch문은 jump statement에 기반을 두고 있다. 즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (실행을 할 것이냐 말것이냐?) switch문은 입력된 값을 보고 특정 위치로 점프 (어떤 코드를 실행할 것이냐?)">
+<meta property="og:description" content="else if문과 switch문의 차이점if문은 branch statement, switch문은 jump statement에 기반을 두고 있다. 즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (실행을 할 것이냐 말것이냐?)switch문은 입력된 값을 보고 특정 위치로 점프 (어떤 코드를 실행할 것이냐?)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-23T13:37:34.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="else if문과 switch문의 차이점">
-<meta name="twitter:description" content="else if문과 switch문의 차이점 if문은 branch statement, switch문은 jump statement에 기반을 두고 있다. 즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (실행을 할 것이냐 말것이냐?) switch문은 입력된 값을 보고 특정 위치로 점프 (어떤 코드를 실행할 것이냐?)">
+<meta name="twitter:description" content="else if문과 switch문의 차이점if문은 branch statement, switch문은 jump statement에 기반을 두고 있다. 즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (실행을 할 것이냐 말것이냐?)switch문은 입력된 값을 보고 특정 위치로 점프 (어떤 코드를 실행할 것이냐?)">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -129,17 +129,16 @@
             
         </h1>
         <div class="content">
-            <h1 id="else-if문과-switch문의-차이점">else if문과 switch문의 차이점</h1>
-<p>if문은 branch statement, switch문은 jump statement에 기반을 두고 있다.</p>
-<p>즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (<em>실행을 할 것이냐 말것이냐?</em>)<br>
-switch문은 입력된 값을 보고 특정 위치로 점프 (<em>어떤 코드를 실행할 것이냐?</em>)</p>
+            <h1 id="else-if문과-switch문의-차이점"><a href="#else-if문과-switch문의-차이점" class="headerlink" title="else if문과 switch문의 차이점"></a>else if문과 switch문의 차이점</h1><p>if문은 branch statement, switch문은 jump statement에 기반을 두고 있다.</p>
+<p>즉, if문은 조건이 만족하면 실행/만족하지 않으면 무시 (<em>실행을 할 것이냐 말것이냐?</em>)<br>switch문은 입력된 값을 보고 특정 위치로 점프 (<em>어떤 코드를 실행할 것이냐?</em>)</p>
 <a id="more"></a>
+
 <blockquote>
-<p>branch statement : 레지스터 2개를 비교해서(혹은 레지스터와 상수를 비교해서) 특정 메모리 번지로 이동할 것이냐 말것이냐?를 결정<br>
-jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
+<p>branch statement : 레지스터 2개를 비교해서(혹은 레지스터와 상수를 비교해서) 특정 메모리 번지로 이동할 것이냐 말것이냐?를 결정<br>jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
 </blockquote>
 <p><strong>else if 문과 switch 문의 차이점은, 순차적으로 모든 if 문을 도느냐. 아니면 해당하는 case 로 바로 가서 불필요한 연산을 줄이느냐의 차이이다.</strong></p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">var regimnet = 3;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> (regiment == 1) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (regiment == 2) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (regiment == 3) &#123; // 앞 1,2 를 거쳐 3으로 온다.</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">switch (regiment) &#123;</span><br><span class="line">  <span class="hljs-keyword">case</span> 1:</span><br><span class="line">    ...</span><br><span class="line">  <span class="hljs-keyword">case</span> 2:</span><br><span class="line">    ...</span><br><span class="line">  <span class="hljs-keyword">case</span> 3: // 3으로 바로 온다.</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -186,7 +185,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -248,11 +247,11 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            67
+                            68
                         </p>
                     </a>
                 </div>
@@ -260,7 +259,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -276,7 +275,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            84
+                            85
                         </p>
                     </a>
                 </div>
@@ -285,7 +284,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://minami-choi.github.io" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -326,7 +325,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -351,7 +350,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">65</span>
+                <span class="level-item tag">66</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -359,7 +358,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">28</span>
+                <span class="level-item tag">29</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -431,8 +430,27 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -510,25 +528,6 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -546,7 +545,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -660,8 +659,27 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time></div>
+                    <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">힙(Heap) 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -739,25 +757,6 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg" alt="Unique Number of Occurrences">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T16:36:10.000Z">2019-12-15</time></div>
-                    <a href="/2019/12/15/Programming/Algorithm/find-common-characters/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Unique Number of Occurrences</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -775,7 +774,7 @@ jump statement : 즉시 특정 메모리 번지로 이동하는 기능</p>
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -1007,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1039,9 +1038,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
