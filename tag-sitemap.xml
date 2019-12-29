@@ -3,22 +3,36 @@
 
 
     <url>
+        <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
+        <lastmod>2019-12-29T17:54:29.833Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+        <lastmod>2019-12-29T17:52:04.805Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/insertion-sort/</loc>
-        <lastmod>2019-12-29T09:04:40.235Z</lastmod>
+        <lastmod>2019-12-29T17:41:01.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://minami-choi.github.io/tags/selection-sort/</loc>
-        <lastmod>2019-12-29T09:04:40.235Z</lastmod>
+        <lastmod>2019-12-29T17:41:01.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://minami-choi.github.io/tags/bubble-sort/</loc>
-        <lastmod>2019-12-29T09:04:40.235Z</lastmod>
+        <lastmod>2019-12-29T17:41:01.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -40,13 +54,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/HashTable/</loc>
         <lastmod>2019-12-25T13:52:12.930Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
-        <lastmod>2019-12-25T12:48:44.853Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
