@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/01/03/Programming/etc/xcrun-error/</loc>
+        <lastmod>2020-01-02T15:13:32.887Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/01/02/Programming/Algorithm/sort-colors/</loc>
+        <lastmod>2020-01-02T14:59:43.140Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/</loc>
+        <lastmod>2020-01-02T14:49:27.473Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2019/12/14/Programming/Algorithm/unique-number-of-occurrences/</loc>
         <lastmod>2019-12-29T17:54:29.833Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +42,6 @@
     <url>
         <loc>https://minami-choi.github.io/2019/12/24/Programming/Algorithm/top-k-frequent-elements/</loc>
         <lastmod>2019-12-29T17:54:19.673Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/</loc>
-        <lastmod>2019-12-29T17:53:40.907Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
