@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/01/04/Programming/Algorithm/wiggle-sort-2/</loc>
+        <lastmod>2020-01-04T05:21:38.739Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/01/04/Programming/Algorithm/largest-number/</loc>
+        <lastmod>2020-01-04T04:59:58.365Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/</loc>
+        <lastmod>2020-01-02T15:15:18.446Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/01/03/Programming/etc/xcrun-error/</loc>
         <lastmod>2020-01-02T15:13:32.887Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +42,6 @@
     <url>
         <loc>https://minami-choi.github.io/2020/01/02/Programming/Algorithm/sort-colors/</loc>
         <lastmod>2020-01-02T14:59:43.140Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/</loc>
-        <lastmod>2020-01-02T14:49:27.473Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
