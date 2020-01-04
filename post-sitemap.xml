@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/</loc>
+        <lastmod>2020-01-04T07:56:38.634Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/01/04/Programming/Algorithm/wiggle-sort-2/</loc>
         <lastmod>2020-01-04T05:21:38.739Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -346,14 +354,6 @@
     <url>
         <loc>https://minami-choi.github.io/2018/04/23/recursion/</loc>
         <lastmod>2019-11-26T15:30:45.429Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2018/04/24/quicksort/</loc>
-        <lastmod>2019-11-26T15:30:41.825Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -6,16 +6,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title>Tag: 퀵정렬 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/tags/퀵정렬/">  <meta property="og:type" content="website">
-<meta property="og:title" content="Mina&#39;s World">
-<meta property="og:url" content="https://minami-choi.github.io/tags/퀵정렬/index.html">
+<title>퀵 정렬 &amp; 병합정렬 구현 - Mina&#39;s World</title>
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/04/programming/algorithm/quicksort-mergesort-implement/">  <meta name="description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)자, 퀵정렬과 병합정렬을 구현해보자.">
+<meta name="keywords" content="MergeSort,QuickSort">
+<meta property="og:type" content="article">
+<meta property="og:title" content="퀵 정렬 &amp; 병합정렬 구현">
+<meta property="og:url" content="https://minami-choi.github.io/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)자, 퀵정렬과 병합정렬을 구현해보자.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://minami-choi.github.io/images/og_image.png">
+<meta property="og:image" content="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
+<meta property="og:updated_time" content="2020-01-04T07:56:38.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mina&#39;s World">
-<meta name="twitter:image" content="https://minami-choi.github.io/images/og_image.png">    
+<meta name="twitter:title" content="퀵 정렬 &amp; 병합정렬 구현">
+<meta name="twitter:description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)자, 퀵정렬과 병합정렬을 구현해보자.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
 <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
@@ -43,7 +48,9 @@
   <div class="container">
     <div class="navbar-brand is-flex-center">
       <a class="navbar-item navbar-logo" href="/">
-         밍코더 
+        
+        <img src="/images/logo2.png" alt="퀵 정렬 &amp; 병합정렬 구현" height="28">
+        
       </a>
     </div>
     <div class="navbar-menu">
@@ -69,7 +76,11 @@
           <i class="fab fa-github"></i>
           
         </a>
-           
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
         <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
@@ -83,31 +94,20 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">퀵정렬</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-image">
-        <a href="/2018/04/24/quicksort/" class="image is-7by1">
-            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="퀵 정렬(quicksort)">
-        </a>
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
+        </span>
     </div>
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-04-24T14:11:27.000Z">2018-04-24</time>
+                <time class="level-item has-text-grey" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
@@ -117,31 +117,58 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes read (About 1191 words)
+                    4 minutes read (About 534 words)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/04/24/quicksort/">퀵 정렬(quicksort)</a>
+                퀵 정렬 &amp; 병합정렬 구현
             
         </h1>
         <div class="content">
-            <h2 id="분할-정복-divide-and-comquer"><a href="#분할-정복-divide-and-comquer" class="headerlink" title="분할 정복(divide-and-comquer)"></a>분할 정복(divide-and-comquer)</h2><p>문제 해결 방법 중에서 가장 유명한 재귀적 기술인 분할 정복 전략에 대해서 알아보자!</p>
-<p>문제를 분할 정복 전략으로 풀기 위해서는 아래의 두 가지 단계를 거친다.</p>
+            <p>퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.<br>분할정복 알고리즘은 <code>재귀용법</code>을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)<br>자, 퀵정렬과 병합정렬을 구현해보자.</p>
+<a id="more"></a>
+
+<h1 id="퀵정렬"><a href="#퀵정렬" class="headerlink" title="퀵정렬"></a>퀵정렬</h1><p><code>정렬 알고리즘의 꽃</code>이라고 불리는 퀵정렬~!!!</p>
+<ol>
+<li>기준점(pivot)을 정한다.</li>
+<li>기준점보다 작은 데이터는 왼쪽(left), 큰 데이터는 오른쪽(right)로 분할한다.</li>
+<li>각각의 왼쪽, 오른쪽 배열을 <code>재귀용법</code>을 사용해서 다시 동일 함수를 호출하여 위 작업을 반복한다.<br>이때 함수는 왼쪽(left) + 기준점(pivot) + 오른쪽(right) 을 리턴한다.</li>
+</ol>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> quicksort = <span class="hljs-function"><span class="hljs-params">list</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (list.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> list</span><br><span class="line">  <span class="hljs-comment">// 기준점</span></span><br><span class="line">  <span class="hljs-keyword">const</span> pivot = list[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> left = []</span><br><span class="line">  <span class="hljs-keyword">const</span> right = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pivot &gt; list[i]) &#123;</span><br><span class="line">      left.push(list[i])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      right.push(list[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> [...quicksort(left), pivot, ...quicksort(right)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> result = quicksort([<span class="hljs-number">10</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"result"</span>, result)</span><br></pre></td></tr></table></figure>
+
+<h1 id="병합정렬"><a href="#병합정렬" class="headerlink" title="병합정렬"></a>병합정렬</h1><ol>
+<li>길이가 1인 배열로 나눠질 때까지 분할한다.</li>
+<li>값을 비교해가며 병합한다.<br><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="병합정렬"></li>
+</ol>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> mergesplit = <span class="hljs-function"><span class="hljs-params">list</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (list.length == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> list</span><br><span class="line">  <span class="hljs-keyword">const</span> mid = <span class="hljs-built_in">parseInt</span>(list.length / <span class="hljs-number">2</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> left = mergesplit(list.slice(<span class="hljs-number">0</span>, mid))</span><br><span class="line">  <span class="hljs-keyword">const</span> right = mergesplit(list.slice(mid))</span><br><span class="line">  <span class="hljs-keyword">return</span> merge(left, right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> merge = <span class="hljs-function">(<span class="hljs-params">left, right</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> merged = []</span><br><span class="line">  <span class="hljs-keyword">let</span> leftIndex = <span class="hljs-number">0</span>,</span><br><span class="line">    rightIndex = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// case 1 : left, right 남아있을 때,</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (left.length &gt; leftIndex &amp;&amp; right.length &gt; rightIndex) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (left[leftIndex] &gt; right[rightIndex]) &#123;</span><br><span class="line">      merged.push(right[rightIndex])</span><br><span class="line">      rightIndex++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      merged.push(left[leftIndex])</span><br><span class="line">      leftIndex++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// case 2 : left 만 남이있을 때</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (left.length &gt; leftIndex) &#123;</span><br><span class="line">    merged.push(left[leftIndex])</span><br><span class="line">    leftIndex++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// case 3 : right 만 남아있을 때</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (right.length &gt; rightIndex) &#123;</span><br><span class="line">    merged.push(right[rightIndex])</span><br><span class="line">    rightIndex++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"merged"</span>, merged)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> merged</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mergesplit([<span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">89</span>, <span class="hljs-number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<h1 id="시간복잡도"><a href="#시간복잡도" class="headerlink" title="시간복잡도"></a>시간복잡도</h1><p>단계는 보통 <code>log n</code> 번만큼 만들어진다. (원배열이 반으로 나눠지므로)<br>각 단계별로 합병할 때 비교가 <code>n</code>번 일어난다.<br>따라서, 시간 복잡도 O(n) * O(log n) = <code>O(n log n)</code></p>
+<ul>
+<li>퀵정렬의 경우, 최악일 때는 <code>O(n^2)</code> : 계속해서 <code>pivot</code>이 최대값이나 최소값으로 선택되는 경우, 단계가 n 번 생긴다.</li>
+</ul>
+<p><img src="https://www.fun-coding.org/00_Images/mergesortcomplexity.png" alt="시간복잡도"></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/04/24/quicksort/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/MergeSort/">MergeSort</a>, <a class="has-link-grey -link" href="/tags/QuickSort/">QuickSort</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -151,9 +178,45 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/04/Programming/Algorithm/largest-number/">
+                <span class="level-item">[LeetCode] largest-number</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/';
+        this.page.identifier = '2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
 </div>
                 
 
@@ -368,12 +431,55 @@
         <div class="column-right-shadow is-hidden-widescreen ">
         
             
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#퀵정렬">
+        <span class="has-mr-6">1</span>
+        <span>퀵정렬</span>
+        </a></li><li>
+        <a class="is-flex" href="#병합정렬">
+        <span class="has-mr-6">2</span>
+        <span>병합정렬</span>
+        </a></li><li>
+        <a class="is-flex" href="#시간복잡도">
+        <span class="has-mr-6">3</span>
+        <span>시간복잡도</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
         
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -451,25 +557,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/30/Programming/Algorithm/insertion-sort-list/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] insertion-sort-list">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-29T17:41:39.000Z">2019-12-30</time></div>
-                    <a href="/2019/12/30/Programming/Algorithm/insertion-sort-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] insertion-sort-list</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -487,7 +574,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -586,7 +673,7 @@
                     <span class="level-item">April 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -608,12 +695,55 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#퀵정렬">
+        <span class="has-mr-6">1</span>
+        <span>퀵정렬</span>
+        </a></li><li>
+        <a class="is-flex" href="#병합정렬">
+        <span class="has-mr-6">2</span>
+        <span>병합정렬</span>
+        </a></li><li>
+        <a class="is-flex" href="#시간복잡도">
+        <span class="has-mr-6">3</span>
+        <span>시간복잡도</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -691,25 +821,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/12/30/Programming/Algorithm/insertion-sort-list/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1511649475669-e288648b2339?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] insertion-sort-list">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-29T17:41:39.000Z">2019-12-30</time></div>
-                    <a href="/2019/12/30/Programming/Algorithm/insertion-sort-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] insertion-sort-list</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -727,7 +838,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -826,7 +937,7 @@
                     <span class="level-item">April 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -848,7 +959,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    밍코더
+                    <img src="/images/logo2.png" alt="퀵 정렬 &amp; 병합정렬 구현" height="28">
                 
                 </a>
                 <p class="is-size-7">
