@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>타입스크립트에서 interface와 class의 차이점 - Mina&#39;s World</title>
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/18/programming/javascript/interface-vs-class-in-typescript/">  <meta name="description" content="타입스크립트에서 interface와 class의 차이점노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript의 글을 번역했다.">
+<meta name="keywords" content="typescript,interface,class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="타입스크립트에서 interface와 class의 차이점">
+<meta property="og:url" content="https://minami-choi.github.io/2018/05/18/Programming/JavaScript/interface-vs-class-in-typescript/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="타입스크립트에서 interface와 class의 차이점노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript의 글을 번역했다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
+<meta property="og:updated_time" content="2020-01-13T08:23:16.299Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="타입스크립트에서 interface와 class의 차이점">
+<meta name="twitter:description" content="타입스크립트에서 interface와 class의 차이점노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다. https://toddmotto.com/classes-vs-interfaces-in-typescript의 글을 번역했다.">
+<meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
+<link rel="icon" href="/images/favicon.svg">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+        
+        <img src="/images/logo2.png" alt="타입스크립트에서 interface와 class의 차이점" height="28">
+        
+      </a>
+    </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="타입스크립트에서 interface와 class의 차이점">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-05-18T14:07:17.000Z">2018-05-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 minutes read (About 2256 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                타입스크립트에서 interface와 class의 차이점
+            
+        </h1>
+        <div class="content">
+            <h2 id="타입스크립트에서-interface와-class의-차이점"><a href="#타입스크립트에서-interface와-class의-차이점" class="headerlink" title="타입스크립트에서 interface와 class의 차이점"></a>타입스크립트에서 interface와 class의 차이점</h2><p>노마드 코더의 typechain 강의를 듣던 중 타입스크립트에서 인터페이스와 클래스의 차이점에 대해 설명하는 부분의 해석이 되지 않아(리스닝 부족…) 블로그로 정리하게 되었다.</p>
+<p><a href="https://toddmotto.com/classes-vs-interfaces-in-typescript" rel="external nofollow noopener noreferrer" target="_blank">https://toddmotto.com/classes-vs-interfaces-in-typescript</a><br>의 글을 번역했다.</p>
+<a id="more"></a>
+
+<h2 id="Classes-vs-Interfaces-in-TypeScript"><a href="#Classes-vs-Interfaces-in-TypeScript" class="headerlink" title="Classes vs Interfaces in TypeScript"></a>Classes vs Interfaces in TypeScript</h2><p>클래스와 인터페이스는 객체지향 프로그래밍에서 뿐만 아니라 타입스크립트에서 타입체크를 쉽게해주는 편리한 도구다. 클래스는 동일한 구성(속성 및 메소드)을 공유하는 객체를 만들 수 있는 blueprint다. 인터페이스는 객체를 설명하는 관련 속성 및 메소드의 그룹이지만 구현이나 초기화는 제공하지 않는다.</p>
+<p>두 구조 모두 객체가 어떻게 생겼는지 정의하기 떄문에 두 개 모두 타입스크립트에서 변수의 타입을 체크하는 용으로 쓰일 수 있다. 클래스나 인터페이스 중 무엇을 사용할지는 사용케이스에 따라 다르다. 타입 체크만 하는 경우, 새로운 인스턴스를 생성하거나, 아니면 둘다 해야하거나에 따라.<br>클래스를 사용하면 타입을 체크하고 구현(인스턴스 생성)까지 할 수 있지만 인터페이스를 통해서는 할 수 없다. 각 구조에서 우리가 얻을 수 있는 것을 제대로 이해하면 코드를 향상시키고 개발자 경험을 향상시킬 수 있다.</p>
+<h2 id="Using-Typescript-class"><a href="#Using-Typescript-class" class="headerlink" title="Using Typescript class"></a>Using Typescript class</h2><p>ES6부터 <code>class</code>를 사용할 수 있다. 타입스크립트는 타입체크와 정적 프로퍼티같은 추가 기능으로 자바스크립트 클래스를 향상시킨다. 우리 코드를 자바스트립트로 트랜스파일할 때마다 모든 클래스 코드를 transpiled 파일에 보관한다는 것을 의미한다. 그러므로, 클래스는 트랜스파일된 자바스크립트에서도 존재한다.</p>
+<p>우리는 클래스를 객체팩토리로 사용한다. 클래스는 객체가 어떻게 보여야하고 어떻게 행동하는지에 대해 정의한 다음 클래스 프로퍼티를 초기화하고 메소드를 정희함으로써 구현한다. 그러므로 클래스의 인스턴스를 생성할 때, 우리는 실행할 수 있는 메소드와 정의된 프로퍼티를 가진 객체를 얻는다. <code>PizzaMaker</code>라는 클래스를 보자.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: &#123; name: string; toppings: string[] &#125;) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>PizzaMaker</code>는 간단한 클래스다. create라는 정적 메소드가 있다. 이 클래스의 인스턴스를 생성하지 않고도 create 메소드를 사용할 수 있다. 우리는 클래스에 직접 메소드를 호출한다. Array.from같이.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">const pizza = PizzaMaker.create(&#123;</span><br><span class="line">  name: <span class="hljs-string">'Inferno'</span>,</span><br><span class="line">  toppings: [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(pizza);</span><br><span class="line">// Output: &#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [ <span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p>그런 다음, PizzaMaker.create()는 클래스가 아닌 인수로 전달된 객체로부터 정의된 name, topping 프로퍼티를 가진 새로운 객체를 리턴한다.</p>
+<p>만약 정적 메소드가 아니었다면, PizzaMaker 인스턴스를 생성한 후에 create메소드를 사용할 수 있다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class PizzaMaker &#123;</span><br><span class="line">  create(event: &#123; name: string; toppings: string[] &#125;) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const pizzaMaker = new PizzaMaker();</span><br><span class="line"></span><br><span class="line">const pizza = pizzaMaker.create(&#123;</span><br><span class="line">  name: <span class="hljs-string">'Inferno'</span>,</span><br><span class="line">  toppings: [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(pizza);</span><br><span class="line">// Output: &#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [ <span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 하면 정적 메소드를 사용했던 것과 동일한 결과를 얻을 수 있다. 클래스의 인스턴스가 있든 없든 타입스크립트 클래스를 사용할 수 있다는 점에서 매우 유연하다. 정적 프로퍼티와 메소드를 추가하면 싱글톤으로 동작하도록 할 수 있다. 반대의 경우에는 팩토리처럼 동작하게 한다.</p>
+<p>타입스크립트에서 유티크한 특징은 타입체크를 위해 클래스를 사용할 수 있다는 것이다. Pizza가 어떻게 생겼는지 정의한 클래스를 선언해보자.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Pizza &#123;</span><br><span class="line">  constructor(public name: string, public toppings: string[]) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Pizza</code>클래스의 정의를 보면, 생성자의 인수에서 우리는 클래스 프로퍼티를 정의하는 편리한 방법을 사용할 수 있다. 타이핑을 절약할 수 있다. <code>Pizza</code>는 이름과 토핑 프로퍼티를 가진 객체를 생성할 수 있다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">const pizza = new Pizza(<span class="hljs-string">'Inferno'</span>, [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>]);</span><br><span class="line"></span><br><span class="line">console.log(pizza);</span><br><span class="line">// Output: Pizza &#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [ <span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Pizza</code> 클래스의 인스턴스라는 것을 보여주는 것 외에는 new Pizza(…)와 PizzaMaker.create(…)의 결과는 동일하다. 두가지 모두 동일한 구조를 산출한다. 그래서 우리는 <code>Pizza</code>클래스를 타입체크용으로 PizzaMaker.create(…)의 인수로 사용할 수 있다.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Pizza &#123;</span><br><span class="line">  constructor(public name: string, public toppings: string[]) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: Pizza) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 하면 <code>PizzaMaker</code>를 좀 더 선언적으로 만들었고 읽기 쉽게 만들었다. 뿐만아니라, 피자에 정의된 똑같은 객체구조를 다른 곳에서 사용할 필요가 있다면, 저렇게 함으로써 우리는 이동가능한 구조를 가진다. <code>Pizza</code> 의 정의를 export해서 앱 내의 모든 곳에서 접근할 수 있다.</p>
+<p>Pizza를 클래스로 사용하는 것은 우리가 피자를 정의하고 인스턴스를 생성하기 원한다면 좋지만, 만약 Pizza의 구조를 정의하기 원하지만 인스턴스를 생성할 필요가 없을 때는 <code>interface</code>를 사용하는 것이 편리하다.</p>
+<h2 id="Using-Typesript-interface"><a href="#Using-Typesript-interface" class="headerlink" title="Using Typesript interface"></a>Using Typesript interface</h2><p>클래스와 달리 인터페이스는 Typescript 컨텍스트 내에만 존재하는 가상구조이다. typescript컴파일러는 타입체크 목적으로만 인터페이스를 사용한다. 자바스크립트로 트랜스파일 된 후에는 코드에서 인터페이스는 사라진다.</p>
+<p>클래스는 프로퍼티 초기화와 메소드구현을 제공함으로써 팩토리나 싱글톤을 정의할 수 있었던 반면, 인터페이스는 객체의 프로퍼티를 정의하는 단순히 구조계약이다. 어떻게 구현하든, 어떻게 인터페이스에 정의된 프로퍼티를 초기화하든 인터페이스와 관련이 없다. Pizza 클래스를 어떻게 Pizza 인터페이스로 변환하는지 보자.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">interface Pizza &#123;</span><br><span class="line">  name: string;</span><br><span class="line">  toppings: string[];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: Pizza) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> &#123; name: event.name, toppings: event.toppings &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Pizza</code>가 클래스이든 인터페이스이든, <code>PizzaMaker</code> 클래스의 타입체크를 위해 사용되기 때문에, <code>Pizza</code>를 인터페이스로 리펙토링하는 것은 <code>PizzaMaker</code> 클래스의 본문에 전혀 영향을 미치지 않는다. <code>Pizza</code> 인터페이스가 name, toppings 프로퍼티를 어떻게 나열하고 <code>PizzaMaker</code>에 어떻게 타입을 제공하는지 관찰해보라. 또 바뀐부분은, <code>Pizza</code> 인스턴스를 더이상 생성할 수 없다.</p>
+<h2 id="Using-Typesript-class-vs-using-Typescript-interface"><a href="#Using-Typesript-class-vs-using-Typescript-interface" class="headerlink" title="Using Typesript class vs using Typescript interface"></a>Using Typesript class vs using Typescript interface</h2><p><code>Pizza</code>를 인터페이스로 선언하면 타입체크는 할 수 있지만 인스턴스를 생성할 수 없다.</p>
+<p>이렇게 되면 코드를 명확하게 하고 가독성을 향상시킬 수 있는 기회를 놓치게 된다. PizzaMaker.create()는 피자처럼 보이는 객체를 반환하는데 이것을 <code>Pizza</code>로 반환하면 더 이해하기 쉽지 않을까?</p>
+<p>다시 <code>Pizza</code>를 클래스로 만들어서 피자 인스턴스를 반환해보자.</p>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">class Pizza &#123;</span><br><span class="line">  constructor(public name: string, public toppings: string[]) &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PizzaMaker &#123;</span><br><span class="line">  static create(event: Pizza) &#123;</span><br><span class="line">    <span class="hljs-built_in">return</span> new Pizza(event.name, event.toppings);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const pizza = PizzaMaker.create(&#123; name: <span class="hljs-string">'Inferno'</span>, toppings: [<span class="hljs-string">'cheese'</span>, <span class="hljs-string">'peppers'</span>] &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>커스텀 객체를 생성할 필요가 있으면서 타입체크의 이점을 얻으려면 클래스를 사용하고,<br>인스턴스를 생성하지 않을 경우에는 인터페이스를 사용할 수 있는데, (트랜스파일된 자바스크립트에서는) 코드를 생성하지 않으면서 “가상”으로 타입체크를 할 수 있다.</p>
+<p>인터페이스와 클래스 모두 객체의 구조를 정의하고 경우에 따라 서로 교환해서 사용할 수 있다. 다양한 클래스 간에 구조정의를 공유해야할 경우, 우리는 인터페이스에서 구조를 정의한다. 그리고 각 클래스에서 인터페이스를 구현할 수 있다. 이것이 바로 타입스크립트의 힘이고, 엄청 유연하다. 타입스크립트는 포괄적인 객체지향 설계과 다양한 타입체크 기능을 제공한다.</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/class/">class</a>, <a class="has-link-grey -link" href="/tags/interface/">interface</a>, <a class="has-link-grey -link" href="/tags/typescript/">typescript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/05/23/Programming/Angular/import-json-in-typescript/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">타입스크립트에서 json파일 import하기</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/05/16/Programming/Basic/parameter-argument/">
+                <span class="level-item">매개변수(parameter)와 인수(argument)의 차이</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2018/05/18/Programming/JavaScript/interface-vs-class-in-typescript/';
+        this.page.identifier = '2018/05/18/Programming/JavaScript/interface-vs-class-in-typescript/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            76
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            91
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
+            <span class="level-start">
+                <span class="level-item">이직일기</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">75</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">36</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">16</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Server/">
+            <span class="level-start">
+                <span class="level-item">Server</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#타입스크립트에서-interface와-class의-차이점">
+        <span class="has-mr-6">1</span>
+        <span>타입스크립트에서 interface와 class의 차이점</span>
+        </a></li><li>
+        <a class="is-flex" href="#Classes-vs-Interfaces-in-TypeScript">
+        <span class="has-mr-6">2</span>
+        <span>Classes vs Interfaces in TypeScript</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Typescript-class">
+        <span class="has-mr-6">3</span>
+        <span>Using Typescript class</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Typesript-interface">
+        <span class="has-mr-6">4</span>
+        <span>Using Typesript interface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Typesript-class-vs-using-Typescript-interface">
+        <span class="has-mr-6">5</span>
+        <span>Using Typesript class vs using Typescript interface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Conclusion">
+        <span class="has-mr-6">6</span>
+        <span>Conclusion</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[ERROR] no space left on device">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T08:26:08.000Z">2020-01-13</time></div>
+                    <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[ERROR] no space left on device</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/largest-number/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1576018397465-3fa155cd5bf9?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] largest-number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T04:47:34.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/largest-number/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] largest-number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/wiggle-sort-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1553325975-7d48090fc14c?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] Wiggle Sort 2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T04:46:15.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/wiggle-sort-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] Wiggle Sort 2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#타입스크립트에서-interface와-class의-차이점">
+        <span class="has-mr-6">1</span>
+        <span>타입스크립트에서 interface와 class의 차이점</span>
+        </a></li><li>
+        <a class="is-flex" href="#Classes-vs-Interfaces-in-TypeScript">
+        <span class="has-mr-6">2</span>
+        <span>Classes vs Interfaces in TypeScript</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Typescript-class">
+        <span class="has-mr-6">3</span>
+        <span>Using Typescript class</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Typesript-interface">
+        <span class="has-mr-6">4</span>
+        <span>Using Typesript interface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Using-Typesript-class-vs-using-Typescript-interface">
+        <span class="has-mr-6">5</span>
+        <span>Using Typesript class vs using Typescript interface</span>
+        </a></li><li>
+        <a class="is-flex" href="#Conclusion">
+        <span class="has-mr-6">6</span>
+        <span>Conclusion</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[ERROR] no space left on device">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T08:26:08.000Z">2020-01-13</time></div>
+                    <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[ERROR] no space left on device</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
+                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/largest-number/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1576018397465-3fa155cd5bf9?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] largest-number">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T04:47:34.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/largest-number/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] largest-number</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/01/04/Programming/Algorithm/wiggle-sort-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1553325975-7d48090fc14c?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] Wiggle Sort 2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T04:46:15.000Z">2020-01-04</time></div>
+                    <a href="/2020/01/04/Programming/Algorithm/wiggle-sort-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] Wiggle Sort 2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo2.png" alt="타입스크립트에서 interface와 class의 차이점" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
