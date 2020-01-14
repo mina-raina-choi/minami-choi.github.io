@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/</loc>
+        <lastmod>2020-01-14T15:14:27.772Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/01/13/Programming/Server/no-space-left-on-device/</loc>
         <lastmod>2020-01-13T09:02:37.709Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -168,7 +176,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/04/07/Programming/Algorithm/binary-search/</loc>
+        <loc>https://minami-choi.github.io/2018/05/02/Programming/Algorithm/breadth-first-search/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -176,7 +184,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/02/Programming/Algorithm/breadth-first-search/</loc>
+        <loc>https://minami-choi.github.io/2018/04/07/Programming/Algorithm/binary-search/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -186,6 +194,14 @@
     <url>
         <loc>https://minami-choi.github.io/2018/05/09/Programming/Angular/spa-ga/</loc>
         <lastmod>2020-01-13T08:21:36.464Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/04/23/Programming/Angular/angular-ObjectUnsubscribedError/</loc>
+        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -208,7 +224,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
+        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -224,15 +240,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
-        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2018/04/23/Programming/Angular/angular-ObjectUnsubscribedError/</loc>
+        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -256,7 +264,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
+        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
+        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
