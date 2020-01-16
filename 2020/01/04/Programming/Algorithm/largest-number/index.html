@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] largest-number - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/04/programming/algorithm/largest-number/">  <meta name="description" content="문제 양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/04/programming/algorithm/largest-number/">  <meta name="description" content="문제양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] largest-number">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/04/Programming/Algorithm/largest-number/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.">
+<meta property="og:description" content="문제양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1576018397465-3fa155cd5bf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-01-04T04:59:58.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] largest-number">
-<meta name="twitter:description" content="문제 양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.">
+<meta name="twitter:description" content="문제양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1576018397465-3fa155cd5bf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -135,27 +135,22 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제">문제</h1>
-<p>양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.</p>
 <a id="more"></a>
-<pre><code>    Example 1:
-    Input: [10,2]
-    Output: &quot;210&quot;
 
-    Example 2:
-    Input: [3,30,34,5,9]
-    Output: &quot;9534330&quot;
-</code></pre>
-<p>Note: The result may be very large, so you need to return a string instead of an integer.</p>
+<pre><code>Example 1:
+Input: [10,2]
+Output: &quot;210&quot;
+
+Example 2:
+Input: [3,30,34,5,9]
+Output: &quot;9534330&quot;</code></pre><p>Note: The result may be very large, so you need to return a string instead of an integer.</p>
 <p>출처 - <a href="https://leetcode.com/problems/largest-number/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/largest-number/</a></p>
-<h1 id="풀이-과정">풀이 과정</h1>
-<p><code>sort</code>함수의 <code>custom comparer</code>를 작성하는 문제이다.</p>
-<p>처음에 이 문제에 접근했을 때는 일일이 정수의 첫째자리 비교, 둘째자리 비교를 해서 큰 순서대로 나열하려고 했으나<br>
-그런 식으로는 답을 도출하기가 어려웠다.</p>
-<p><code>sort</code>함수로 크기 비교를 할 때, 앞 뒤 숫자 조합(조합할 때는 문자열로 조합하고, 숫자형으로 변형 후 비교해야한다.) 중 큰 것이 앞으로 오도록 정렬한다.<br>
-&quot;00&quot;의 경우를 예외처리하고 정렬된 배열을 <code>join(&quot;&quot;)</code> 함수를 통해 하나의 문자열로 합친 후 리턴하면 된다.</p>
-<h1 id="나의-풀이">나의 풀이</h1>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">var largestNumber = function(nums) &#123;</span><br><span class="line">    nums.sort((a, b) =&gt; Number(&quot;&quot;+b+a) - Number(&quot;&quot;+a+b)  )</span><br><span class="line">    return Number(nums.join(&quot;&quot;)) === 0 ? &quot;0&quot; : nums.join(&quot;&quot;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p><code>sort</code>함수의 <code>custom comparer</code>를 작성하는 문제이다.</p>
+<p>처음에 이 문제에 접근했을 때는 일일이 정수의 첫째자리 비교, 둘째자리 비교를 해서 큰 순서대로 나열하려고 했으나<br>그런 식으로는 답을 도출하기가 어려웠다.</p>
+<p><code>sort</code>함수로 크기 비교를 할 때, 앞 뒤 숫자 조합(조합할 때는 문자열로 조합하고, 숫자형으로 변형 후 비교해야한다.) 중 큰 것이 앞으로 오도록 정렬한다.<br>“00”의 경우를 예외처리하고 정렬된 배열을 <code>join(&quot;&quot;)</code> 함수를 통해 하나의 문자열로 합친 후 리턴하면 된다.</p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;number[]&#125; nums</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">var largestNumber = function(nums) &#123;</span><br><span class="line">    nums.sort((a, b) =&gt; Number(&quot;&quot;+b+a) - Number(&quot;&quot;+a+b)  )</span><br><span class="line">    return Number(nums.join(&quot;&quot;)) === 0 ? &quot;0&quot; : nums.join(&quot;&quot;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -268,7 +263,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            79
+                            80
                         </p>
                     </a>
                 </div>
@@ -361,7 +356,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">77</span>
+                <span class="level-item tag">78</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -369,7 +364,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">37</span>
+                <span class="level-item tag">38</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -478,6 +473,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
@@ -552,25 +566,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -588,7 +583,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -742,6 +737,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
@@ -816,25 +830,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -852,7 +847,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>

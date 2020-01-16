@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] BFS / DFS 기본 문제풀이 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/14/programming/algorithm/graph_basic/">  <meta name="description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다. 아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/14/programming/algorithm/graph_basic/">  <meta name="description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다.아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] BFS &#x2F; DFS 기본 문제풀이">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다. 아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
+<meta property="og:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다.아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542216172-f356fdd22653?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-<meta property="og:updated_time" content="2020-01-14T15:14:27.772Z">
+<meta property="og:updated_time" content="2020-01-16T13:21:23.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] BFS &#x2F; DFS 기본 문제풀이">
-<meta name="twitter:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다. 아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
+<meta name="twitter:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다.아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542216172-f356fdd22653?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 368 words)
+                    3 minutes read (About 378 words)
                 </span>
                 
                 
@@ -135,13 +135,15 @@
             
         </h1>
         <div class="content">
-            <p>자료구조 그래프를 이용한 <code>BFS / DFS</code> 알고리즘 문제의 대표적인 유형을 풀어보았다.<br>
-아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.</p>
+            <p>자료구조 그래프를 이용한 <code>BFS / DFS</code> 알고리즘 문제의 대표적인 유형을 풀어보았다.<br>아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.</p>
 <a id="more"></a>
-<h1 id="1260문제">1260문제</h1>
+
+<h1 id="1260문제"><a href="#1260문제" class="headerlink" title="1260문제"></a>1260문제</h1><p><a href="https://www.acmicpc.net/problem/1260" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1260</a></p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> conditions = input[<span class="hljs-number">0</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> numberOfNodes = conditions[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> numberOfEdges = conditions[<span class="hljs-number">1</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> startNode = conditions[<span class="hljs-number">2</span>]</span><br><span class="line">  <span class="hljs-comment">// 4 5 1</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(input.slice(<span class="hljs-number">1</span>))</span><br><span class="line">  <span class="hljs-keyword">let</span> graph = getSortedGraph(input.slice(<span class="hljs-number">1</span>))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(numberOfNodes + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">false</span>)</span><br><span class="line">  dfs(startNode, numberOfNodes, graph, visited)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">""</span>)</span><br><span class="line">  bfs(startNode, numberOfNodes, graph)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bfs</span>(<span class="hljs-params">startNode, numberOfNodes, graph</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(numberOfNodes + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">false</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// FIFO</span></span><br><span class="line">  <span class="hljs-keyword">var</span> q = []</span><br><span class="line"></span><br><span class="line">  visited[startNode] = <span class="hljs-literal">true</span></span><br><span class="line">  q.push(startNode)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (q.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> getQueueElement = q.shift()</span><br><span class="line"></span><br><span class="line">    process.stdout.write(getQueueElement + <span class="hljs-string">" "</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">var</span> get_List = graph.get(getQueueElement)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> get_List) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> neigh = get_List[i]</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (!visited[neigh]) &#123;</span><br><span class="line">        visited[neigh] = <span class="hljs-literal">true</span></span><br><span class="line">        q.push(neigh)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">startNode, numberOfNodes, graph, visited</span>) </span>&#123;</span><br><span class="line">  visited[startNode] = <span class="hljs-literal">true</span></span><br><span class="line">  process.stdout.write(startNode + <span class="hljs-string">" "</span>)</span><br><span class="line">  <span class="hljs-keyword">var</span> get_neighbours = graph.get(startNode)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> get_neighbours) &#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> get_elem = get_neighbours[i]</span><br><span class="line">    <span class="hljs-keyword">if</span> (!visited[get_elem]) dfs(get_elem, numberOfNodes, graph, visited)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSortedGraph</span>(<span class="hljs-params">inputPairs</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> pairs = inputPairs.map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-built_in">Number</span>(a)))</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(pairs)</span><br><span class="line">  <span class="hljs-keyword">let</span> adjList = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()</span><br><span class="line"></span><br><span class="line">  pairs.forEach(<span class="hljs-function"><span class="hljs-params">pair</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (adjList.get(pair[<span class="hljs-number">0</span>])) &#123;</span><br><span class="line">      adjList.get(pair[<span class="hljs-number">0</span>]).push(pair[<span class="hljs-number">1</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      adjList.set(pair[<span class="hljs-number">0</span>], [pair[<span class="hljs-number">1</span>]])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (adjList.get(pair[<span class="hljs-number">1</span>])) &#123;</span><br><span class="line">      adjList.get(pair[<span class="hljs-number">1</span>]).push(pair[<span class="hljs-number">0</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      adjList.set(pair[<span class="hljs-number">1</span>], [pair[<span class="hljs-number">0</span>]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  adjList.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;</span><br><span class="line">    value.sort()</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> adjList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`4 5 2</span></span><br><span class="line"><span class="hljs-string">1 2</span></span><br><span class="line"><span class="hljs-string">1 3</span></span><br><span class="line"><span class="hljs-string">1 4</span></span><br><span class="line"><span class="hljs-string">2 4</span></span><br><span class="line"><span class="hljs-string">3 4`</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="1697문제">1697문제</h1>
+
+<h1 id="1697문제"><a href="#1697문제" class="headerlink" title="1697문제"></a>1697문제</h1><p><a href="https://www.acmicpc.net/problem/1697" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1697</a></p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> startNode = input[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> sister = input[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> MAX = <span class="hljs-number">100001</span></span><br><span class="line">  <span class="hljs-keyword">let</span> positionArray = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(MAX).fill(<span class="hljs-number">0</span>)</span><br><span class="line">  <span class="hljs-keyword">let</span> q = []</span><br><span class="line"></span><br><span class="line">  q.push(startNode)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (q.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> now_pos = q.shift()</span><br><span class="line">    <span class="hljs-keyword">if</span> (now_pos === sister) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(positionArray[now_pos])</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> next_pos_list = [now_pos - <span class="hljs-number">1</span>, now_pos + <span class="hljs-number">1</span>, now_pos * <span class="hljs-number">2</span>]</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> next_pos <span class="hljs-keyword">in</span> next_pos_list) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> neigh = next_pos_list[next_pos]</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> &lt;= neigh &lt; MAX &amp;&amp; positionArray[neigh] === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        positionArray[neigh] = positionArray[now_pos] + <span class="hljs-number">1</span></span><br><span class="line">        q.push(neigh)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`5 17`</span>)</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -254,7 +256,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            79
+                            80
                         </p>
                     </a>
                 </div>
@@ -347,7 +349,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">77</span>
+                <span class="level-item tag">78</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -355,7 +357,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">37</span>
+                <span class="level-item tag">38</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -460,6 +462,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
@@ -534,25 +555,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -570,7 +572,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -720,6 +722,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
@@ -794,25 +815,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -830,7 +832,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>

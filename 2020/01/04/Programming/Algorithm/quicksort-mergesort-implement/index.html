@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>퀵 정렬 &amp; 병합정렬 구현 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/04/programming/algorithm/quicksort-mergesort-implement/">  <meta name="description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다. 분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용) 자, 퀵정렬과 병합정렬을 구현해보자.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/04/programming/algorithm/quicksort-mergesort-implement/">  <meta name="description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)자, 퀵정렬과 병합정렬을 구현해보자.">
 <meta name="keywords" content="MergeSort,QuickSort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="퀵 정렬 &amp; 병합정렬 구현">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다. 분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용) 자, 퀵정렬과 병합정렬을 구현해보자.">
+<meta property="og:description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)자, 퀵정렬과 병합정렬을 구현해보자.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-01-04T07:56:38.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="퀵 정렬 &amp; 병합정렬 구현">
-<meta name="twitter:description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다. 분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용) 자, 퀵정렬과 병합정렬을 구현해보자.">
+<meta name="twitter:description" content="퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.분할정복 알고리즘은 재귀용법을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)자, 퀵정렬과 병합정렬을 구현해보자.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -135,30 +135,24 @@
             
         </h1>
         <div class="content">
-            <p>퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.<br>
-분할정복 알고리즘은 <code>재귀용법</code>을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)<br>
-자, 퀵정렬과 병합정렬을 구현해보자.</p>
+            <p>퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.<br>분할정복 알고리즘은 <code>재귀용법</code>을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)<br>자, 퀵정렬과 병합정렬을 구현해보자.</p>
 <a id="more"></a>
-<h1 id="퀵정렬">퀵정렬</h1>
-<p><code>정렬 알고리즘의 꽃</code>이라고 불리는 퀵정렬~!!!</p>
+
+<h1 id="퀵정렬"><a href="#퀵정렬" class="headerlink" title="퀵정렬"></a>퀵정렬</h1><p><code>정렬 알고리즘의 꽃</code>이라고 불리는 퀵정렬~!!!</p>
 <ol>
 <li>기준점(pivot)을 정한다.</li>
 <li>기준점보다 작은 데이터는 왼쪽(left), 큰 데이터는 오른쪽(right)로 분할한다.</li>
-<li>각각의 왼쪽, 오른쪽 배열을 <code>재귀용법</code>을 사용해서 다시 동일 함수를 호출하여 위 작업을 반복한다.<br>
-이때 함수는 왼쪽(left) + 기준점(pivot) + 오른쪽(right) 을 리턴한다.</li>
+<li>각각의 왼쪽, 오른쪽 배열을 <code>재귀용법</code>을 사용해서 다시 동일 함수를 호출하여 위 작업을 반복한다.<br>이때 함수는 왼쪽(left) + 기준점(pivot) + 오른쪽(right) 을 리턴한다.</li>
 </ol>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> quicksort = <span class="hljs-function"><span class="hljs-params">list</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (list.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> list</span><br><span class="line">  <span class="hljs-comment">// 기준점</span></span><br><span class="line">  <span class="hljs-keyword">const</span> pivot = list[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> left = []</span><br><span class="line">  <span class="hljs-keyword">const</span> right = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; list.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pivot &gt; list[i]) &#123;</span><br><span class="line">      left.push(list[i])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      right.push(list[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> [...quicksort(left), pivot, ...quicksort(right)]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> result = quicksort([<span class="hljs-number">10</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"result"</span>, result)</span><br></pre></td></tr></table></figure>
-<h1 id="병합정렬">병합정렬</h1>
-<ol>
+
+<h1 id="병합정렬"><a href="#병합정렬" class="headerlink" title="병합정렬"></a>병합정렬</h1><ol>
 <li>길이가 1인 배열로 나눠질 때까지 분할한다.</li>
-<li>값을 비교해가며 병합한다.<br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="병합정렬"></li>
+<li>값을 비교해가며 병합한다.<br><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="병합정렬"></li>
 </ol>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> mergesplit = <span class="hljs-function"><span class="hljs-params">list</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (list.length == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> list</span><br><span class="line">  <span class="hljs-keyword">const</span> mid = <span class="hljs-built_in">parseInt</span>(list.length / <span class="hljs-number">2</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> left = mergesplit(list.slice(<span class="hljs-number">0</span>, mid))</span><br><span class="line">  <span class="hljs-keyword">const</span> right = mergesplit(list.slice(mid))</span><br><span class="line">  <span class="hljs-keyword">return</span> merge(left, right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> merge = <span class="hljs-function">(<span class="hljs-params">left, right</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> merged = []</span><br><span class="line">  <span class="hljs-keyword">let</span> leftIndex = <span class="hljs-number">0</span>,</span><br><span class="line">    rightIndex = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// case 1 : left, right 남아있을 때,</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (left.length &gt; leftIndex &amp;&amp; right.length &gt; rightIndex) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (left[leftIndex] &gt; right[rightIndex]) &#123;</span><br><span class="line">      merged.push(right[rightIndex])</span><br><span class="line">      rightIndex++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      merged.push(left[leftIndex])</span><br><span class="line">      leftIndex++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// case 2 : left 만 남이있을 때</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (left.length &gt; leftIndex) &#123;</span><br><span class="line">    merged.push(left[leftIndex])</span><br><span class="line">    leftIndex++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// case 3 : right 만 남아있을 때</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (right.length &gt; rightIndex) &#123;</span><br><span class="line">    merged.push(right[rightIndex])</span><br><span class="line">    rightIndex++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"merged"</span>, merged)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> merged</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mergesplit([<span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">8</span>, <span class="hljs-number">89</span>, <span class="hljs-number">2</span>])</span><br></pre></td></tr></table></figure>
-<h1 id="시간복잡도">시간복잡도</h1>
-<p>단계는 보통 <code>log n</code> 번만큼 만들어진다. (원배열이 반으로 나눠지므로)<br>
-각 단계별로 합병할 때 비교가 <code>n</code>번 일어난다.<br>
-따라서, 시간 복잡도 O(n) * O(log n) = <code>O(n log n)</code></p>
+
+<h1 id="시간복잡도"><a href="#시간복잡도" class="headerlink" title="시간복잡도"></a>시간복잡도</h1><p>단계는 보통 <code>log n</code> 번만큼 만들어진다. (원배열이 반으로 나눠지므로)<br>각 단계별로 합병할 때 비교가 <code>n</code>번 일어난다.<br>따라서, 시간 복잡도 O(n) * O(log n) = <code>O(n log n)</code></p>
 <ul>
 <li>퀵정렬의 경우, 최악일 때는 <code>O(n^2)</code> : 계속해서 <code>pivot</code>이 최대값이나 최소값으로 선택되는 경우, 단계가 n 번 생긴다.</li>
 </ul>
@@ -275,7 +269,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            79
+                            80
                         </p>
                     </a>
                 </div>
@@ -368,7 +362,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">77</span>
+                <span class="level-item tag">78</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -376,7 +370,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">37</span>
+                <span class="level-item tag">38</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -485,6 +479,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
@@ -559,25 +572,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -595,7 +589,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -749,6 +743,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
@@ -823,25 +836,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1485856407642-7f9ba0268b51?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 기본 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-07T12:49:09.000Z">2020-01-07</time></div>
-                    <a href="/2020/01/07/Programming/Algorithm/dp_basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 기본 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -859,7 +853,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>

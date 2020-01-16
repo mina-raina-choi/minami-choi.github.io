@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/01/16/Programming/Algorithm/graph-core/</loc>
+        <lastmod>2020-01-16T14:40:33.561Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/</loc>
+        <lastmod>2020-01-16T13:21:23.421Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/01/16/Programming/JavaScript/vscode-es2020/</loc>
         <lastmod>2020-01-16T09:58:07.421Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +34,6 @@
     <url>
         <loc>https://minami-choi.github.io/2020/01/15/Programming/etc/acmicpc-nodejs-input/</loc>
         <lastmod>2020-01-14T15:28:02.900Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/</loc>
-        <lastmod>2020-01-14T15:14:27.772Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -224,14 +232,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/06/Programming/Angular/angular-formgroup-error/</loc>
-        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2018/06/19/Programming/Angular/angular-detect-click-outside/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -240,7 +240,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
+        <loc>https://minami-choi.github.io/2018/08/06/Programming/Angular/angular-formgroup-error/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -256,7 +256,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
+        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,8 +264,8 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
-        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
+        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
+        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -281,6 +281,14 @@
 
     <url>
         <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
+        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
