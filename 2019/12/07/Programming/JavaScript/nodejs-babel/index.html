@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -137,14 +137,13 @@
         <div class="content">
             <p>NodeJS는 아직 CommonJS 기반 모듈 시스템을 사용하기 때문에 ES6의 <code>import</code>나 <code>export</code>와 같은 키워드는 디폴트로 지원하지 않는다.</p>
 <a id="more"></a>
-
 <p>CommonJS가 제공하는 <code>require</code>방식이 아니라 <code>import</code>키워드를 사용하고 싶다면 아래와 같은 작업이 필요한데, 바벨을 통해 ES6문법으로 작성된 js파일을 ES5 문법으로 변환해주는 작업을 해줘야한다.</p>
-<h1 id="1-필요한-모듈-설치"><a href="#1-필요한-모듈-설치" class="headerlink" title="1. 필요한 모듈 설치"></a>1. 필요한 모듈 설치</h1><figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// babel/cli는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 모듈</span></span><br><span class="line">yarn add babel-cli --dev</span><br><span class="line"><span class="hljs-comment">// 프리셋은 버전별로 필요 플러그인들을 모아놓은 세트</span></span><br><span class="line"><span class="hljs-comment">//babel-preset-env 은 그런 프리셋과 플러그인들을 모아 관리하고 있는 모듈</span></span><br><span class="line">yarn add babel-preset-env --dev</span><br><span class="line">yarn add babel-preset-stage-3 --dev</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성"><a href="#2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성" class="headerlink" title="2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성"></a>2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성</h1><figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 곧 표준으로 받아들여질 stage-3에 있는 문법을 기준으로 트랜스파일 하겠다고 바벨에서 알려준다.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"env"</span>, <span class="hljs-string">"stage-3"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-package-json-에-scripts-추가"><a href="#3-package-json-에-scripts-추가" class="headerlink" title="3. package.json 에 scripts 추가"></a>3. package.json 에 scripts 추가</h1><figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"babel-node index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel-cli"</span>: <span class="hljs-string">"^6.26.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-env"</span>: <span class="hljs-string">"^1.7.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.24.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="1-필요한-모듈-설치">1. 필요한 모듈 설치</h1>
+<figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// babel/cli는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 모듈</span></span><br><span class="line">yarn add babel-cli --dev</span><br><span class="line"><span class="hljs-comment">// 프리셋은 버전별로 필요 플러그인들을 모아놓은 세트</span></span><br><span class="line"><span class="hljs-comment">//babel-preset-env 은 그런 프리셋과 플러그인들을 모아 관리하고 있는 모듈</span></span><br><span class="line">yarn add babel-preset-env --dev</span><br><span class="line">yarn add babel-preset-stage-3 --dev</span><br></pre></td></tr></table></figure>
+<h1 id="2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성">2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성</h1>
+<figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 곧 표준으로 받아들여질 stage-3에 있는 문법을 기준으로 트랜스파일 하겠다고 바벨에서 알려준다.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"env"</span>, <span class="hljs-string">"stage-3"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-package-json-에-scripts-추가">3. package.json 에 scripts 추가</h1>
+<figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"babel-node index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel-cli"</span>: <span class="hljs-string">"^6.26.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-env"</span>: <span class="hljs-string">"^1.7.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.24.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>위와 같이 작성 후 <code>yarn start</code>를 하면 index.js 파일이 표준 자바스크립트 문법으로 컴파일되어 실행된다.</p>
 
         </div>
@@ -192,7 +191,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -254,11 +253,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -266,7 +265,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -278,11 +277,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -291,7 +290,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -326,7 +325,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -351,7 +350,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -423,7 +422,7 @@
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -440,7 +439,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-필요한-모듈-설치">
@@ -463,8 +462,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -542,25 +560,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -568,7 +567,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -578,7 +577,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -704,7 +703,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-필요한-모듈-설치">
@@ -727,8 +726,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -806,25 +824,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -832,7 +831,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -842,7 +841,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1117,10 +1116,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

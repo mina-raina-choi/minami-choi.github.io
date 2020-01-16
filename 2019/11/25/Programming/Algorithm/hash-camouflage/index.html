@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>해시 - 위장 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/11/25/programming/algorithm/hash-camouflage/">  <meta name="description" content="문제스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/11/25/programming/algorithm/hash-camouflage/">  <meta name="description" content="문제 스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다. 예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="해시 - 위장">
 <meta property="og:url" content="https://minami-choi.github.io/2019/11/25/Programming/Algorithm/hash-camouflage/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.">
+<meta property="og:description" content="문제 스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다. 예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">
 <meta property="og:updated_time" content="2019-11-25T15:58:39.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="해시 - 위장">
-<meta name="twitter:description" content="문제스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.">
+<meta name="twitter:description" content="문제 스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다. 예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.">
 <meta name="twitter:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,10 +135,15 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.<br>예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.</p>
+            <h1 id="문제">문제</h1>
+<p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.<br>
+예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.</p>
 <a id="more"></a>
-
-<p>종류 이름<br>얼굴 동그란 안경, 검정 선글라스<br>상의 파란색 티셔츠<br>하의 청바지<br>겉옷 긴 코트</p>
+<p>종류 이름<br>
+얼굴 동그란 안경, 검정 선글라스<br>
+상의 파란색 티셔츠<br>
+하의 청바지<br>
+겉옷 긴 코트</p>
 <p>스파이가 가진 의상들이 담긴 2차원 배열 clothes가 주어질 때 서로 다른 옷의 조합의 수를 return 하도록 solution 함수를 작성해주세요.</p>
 <pre><code>제한사항
 
@@ -146,10 +151,15 @@
 2. 스파이가 가진 의상의 수는 1개 이상 30개 이하입니다.
 3. 같은 이름을 가진 의상은 존재하지 않습니다.
 4. clothes의 모든 원소는 문자열로 이루어져 있습니다.
-5. 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 &apos;\_&apos; 로만 이루어져 있습니다.
-6. 스파이는 하루에 최소 한 개의 의상은 입습니다.</code></pre><h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>2차원 배열 clothes을 받아서 Object의 프로퍼티를 이용해서 key, value값을 세팅헸다.<br><code>의상종류를 key</code>로 하고 <code>의상 이름을 배열에 추가하여 value</code>로 했다.<br>의상종류별로 선택할 수 있는 경우의 수가 <code>의상갯수 + 1 (입지않을 경우의 수 추가)</code>가 된다. 그러므로 의상종류 별로 경우의 수를 구해 곱한 다음 의상을 하나도 걸치지 않았을 경우 1를 빼주면 된다.</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">clothes</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  clothes.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (obj[element[<span class="hljs-number">1</span>]]) &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]].push(element[<span class="hljs-number">0</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]] = [element[<span class="hljs-number">0</span>]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> objKeyArr = <span class="hljs-built_in">Object</span>.keys(obj)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; objKeyArr.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = obj[objKeyArr[i]].length</span><br><span class="line">    answer = (value + <span class="hljs-number">1</span>) * answer</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer - <span class="hljs-number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+5. 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '\_' 로만 이루어져 있습니다.
+6. 스파이는 하루에 최소 한 개의 의상은 입습니다.
+</code></pre>
+<h1 id="풀이과정">풀이과정</h1>
+<p>2차원 배열 clothes을 받아서 Object의 프로퍼티를 이용해서 key, value값을 세팅헸다.<br>
+<code>의상종류를 key</code>로 하고 <code>의상 이름을 배열에 추가하여 value</code>로 했다.<br>
+의상종류별로 선택할 수 있는 경우의 수가 <code>의상갯수 + 1 (입지않을 경우의 수 추가)</code>가 된다. 그러므로 의상종류 별로 경우의 수를 구해 곱한 다음 의상을 하나도 걸치지 않았을 경우 1를 빼주면 된다.</p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">clothes</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  clothes.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (obj[element[<span class="hljs-number">1</span>]]) &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]].push(element[<span class="hljs-number">0</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      obj[element[<span class="hljs-number">1</span>]] = [element[<span class="hljs-number">0</span>]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> objKeyArr = <span class="hljs-built_in">Object</span>.keys(obj)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; objKeyArr.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = obj[objKeyArr[i]].length</span><br><span class="line">    answer = (value + <span class="hljs-number">1</span>) * answer</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer - <span class="hljs-number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -196,7 +206,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -258,11 +268,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -270,7 +280,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -282,11 +292,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -295,7 +305,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -330,7 +340,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -355,7 +365,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -427,7 +437,7 @@
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -444,7 +454,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -467,8 +477,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -546,25 +575,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -572,7 +582,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -582,7 +592,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -708,7 +718,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -731,8 +741,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -810,25 +839,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -836,7 +846,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -846,7 +856,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1121,10 +1131,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

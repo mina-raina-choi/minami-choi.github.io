@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>해시 - 베스트앨범 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/11/26/programming/algorithm/hash-bestalbum/">  <meta name="description" content="문제스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/11/26/programming/algorithm/hash-bestalbum/">  <meta name="description" content="문제 스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="해시 - 베스트앨범">
 <meta property="og:url" content="https://minami-choi.github.io/2019/11/26/Programming/Algorithm/hash-bestalbum/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.">
+<meta property="og:description" content="문제 스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">
 <meta property="og:updated_time" content="2019-11-25T15:58:41.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="해시 - 베스트앨범">
-<meta name="twitter:description" content="문제스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.">
+<meta name="twitter:description" content="문제 스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.">
 <meta name="twitter:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,26 +135,35 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.</p>
+            <h1 id="문제">문제</h1>
+<p>스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.</p>
 <a id="more"></a>
-
-<p>속한 노래가 많이 재생된 장르를 먼저 수록합니다.<br>장르 내에서 많이 재생된 노래를 먼저 수록합니다.<br>장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.<br>노래의 장르를 나타내는 문자열 배열 genres와 노래별 재생 횟수를 나타내는 정수 배열 plays가 주어질 때, 베스트 앨범에 들어갈 노래의 고유 번호를 순서대로 return 하도록 solution 함수를 완성하세요.</p>
-<pre><code>제한사항
-genres[i]는 고유번호가 i인 노래의 장르입니다.
-plays[i]는 고유번호가 i인 노래가 재생된 횟수입니다.
-genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
-장르 종류는 100개 미만입니다.
-장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.
-모든 장르는 재생된 횟수가 다릅니다.</code></pre><h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>장르를 <code>key</code>로 하고 고유번호 <code>id</code>와 재생된 횟수 <code>playCount</code>를 프로퍼티로 가지는 객체를 <code>value</code>로 셋팅한다.<br>각 장르별로 재생횟수의 합을 <code>reduce</code>메소드를 사용해서 구하고 재생횟수의 합이 큰순으로 정렬한다.<br>각 장르별로 2곡씩, 만약 장르에 속한 곡이 하나라면 하나의 곡만 배열 <code>answer</code>에 담아준다.</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">genres, plays</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">const</span> items = &#123;&#125;</span><br><span class="line">  genres.forEach(<span class="hljs-function">(<span class="hljs-params">genre, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (items[genre]) &#123;</span><br><span class="line">      items[genre].push(&#123; <span class="hljs-attr">id</span>: i, <span class="hljs-attr">playCount</span>: plays[i] &#125;)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      items[genre] = [&#123; <span class="hljs-attr">id</span>: i, <span class="hljs-attr">playCount</span>: plays[i] &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Object</span>.values(items)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// order by sum</span></span><br><span class="line">  values.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> sumOfB = b.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b.playCount, <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">const</span> sumOfA = a.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b.playCount, <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">return</span> sumOfB - sumOfA</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  values.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;</span><br><span class="line">    value.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b.playCount - a.playCount)</span><br><span class="line">    answer.push(value[<span class="hljs-number">0</span>].id)</span><br><span class="line">    <span class="hljs-keyword">if</span> (value.length &gt; <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      answer.push(value[<span class="hljs-number">1</span>].id)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="이번에-정리해야할-것"><a href="#이번에-정리해야할-것" class="headerlink" title="이번에 정리해야할 것"></a>이번에 정리해야할 것</h1><h2 id="reduce메소드의-정확한-용법"><a href="#reduce메소드의-정확한-용법" class="headerlink" title="reduce메소드의 정확한 용법"></a>reduce메소드의 정확한 용법</h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> sumOfB = b.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.playCount + b.playCount, <span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
-
+<p>속한 노래가 많이 재생된 장르를 먼저 수록합니다.<br>
+장르 내에서 많이 재생된 노래를 먼저 수록합니다.<br>
+장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.<br>
+노래의 장르를 나타내는 문자열 배열 genres와 노래별 재생 횟수를 나타내는 정수 배열 plays가 주어질 때, 베스트 앨범에 들어갈 노래의 고유 번호를 순서대로 return 하도록 solution 함수를 완성하세요.</p>
+<pre><code>    제한사항
+    genres[i]는 고유번호가 i인 노래의 장르입니다.
+    plays[i]는 고유번호가 i인 노래가 재생된 횟수입니다.
+    genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
+    장르 종류는 100개 미만입니다.
+    장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.
+    모든 장르는 재생된 횟수가 다릅니다.
+</code></pre>
+<h1 id="풀이과정">풀이과정</h1>
+<p>장르를 <code>key</code>로 하고 고유번호 <code>id</code>와 재생된 횟수 <code>playCount</code>를 프로퍼티로 가지는 객체를 <code>value</code>로 셋팅한다.<br>
+각 장르별로 재생횟수의 합을 <code>reduce</code>메소드를 사용해서 구하고 재생횟수의 합이 큰순으로 정렬한다.<br>
+각 장르별로 2곡씩, 만약 장르에 속한 곡이 하나라면 하나의 곡만 배열 <code>answer</code>에 담아준다.</p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">genres, plays</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">const</span> items = &#123;&#125;</span><br><span class="line">  genres.forEach(<span class="hljs-function">(<span class="hljs-params">genre, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (items[genre]) &#123;</span><br><span class="line">      items[genre].push(&#123; <span class="hljs-attr">id</span>: i, <span class="hljs-attr">playCount</span>: plays[i] &#125;)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      items[genre] = [&#123; <span class="hljs-attr">id</span>: i, <span class="hljs-attr">playCount</span>: plays[i] &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Object</span>.values(items)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// order by sum</span></span><br><span class="line">  values.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> sumOfB = b.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b.playCount, <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">const</span> sumOfA = a.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b.playCount, <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">return</span> sumOfB - sumOfA</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  values.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;</span><br><span class="line">    value.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b.playCount - a.playCount)</span><br><span class="line">    answer.push(value[<span class="hljs-number">0</span>].id)</span><br><span class="line">    <span class="hljs-keyword">if</span> (value.length &gt; <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      answer.push(value[<span class="hljs-number">1</span>].id)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="이번에-정리해야할-것">이번에 정리해야할 것</h1>
+<h2 id="reduce메소드의-정확한-용법">reduce메소드의 정확한 용법</h2>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> sumOfB = b.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.playCount + b.playCount, <span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
 <p>처음에 위와 같이 짰다가 에러가 발생했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> reducer = <span class="hljs-function">(<span class="hljs-params">accumulator, currentValue</span>) =&gt;</span> accumulator + currentValue</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// reducer함수의 첫번째 매개변수는 accumlator(지금까지의 합)이다.</span></span><br><span class="line"><span class="hljs-comment">// 위에서 playCount의 합을 구하는 것은 아래와 같이 되어야 한다.</span></span><br><span class="line"><span class="hljs-keyword">const</span> sumOfB = b.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b.playCount, <span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 그러면 a에 초기값 0이 셋팅된 후, 그 다음 playCount를 더한 값이 a가 되고...배열b를 전부 다 돌 때까지 반복</span></span><br></pre></td></tr></table></figure>
-
 <p>[참고] <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce</a></p>
-<h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>push() 메서드는 배열의 끝에 하나 이상의 요소를 추가하고, <code>배열의 새로운 길이를 반환</code>합니다.</p>
+<h2 id="push">push</h2>
+<p>push() 메서드는 배열의 끝에 하나 이상의 요소를 추가하고, <code>배열의 새로운 길이를 반환</code>합니다.</p>
 <p>[참고] <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/push" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/push</a></p>
 
         </div>
@@ -202,7 +211,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -264,11 +273,11 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -276,7 +285,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -288,11 +297,11 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -301,7 +310,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -336,7 +345,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -361,7 +370,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -433,7 +442,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -450,7 +459,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -485,8 +494,27 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -564,25 +592,6 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -590,7 +599,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -600,7 +609,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -726,7 +735,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -761,8 +770,27 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -840,25 +868,6 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -866,7 +875,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -876,7 +885,7 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1151,10 +1160,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

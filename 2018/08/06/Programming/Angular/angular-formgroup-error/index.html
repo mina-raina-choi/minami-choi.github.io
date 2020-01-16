@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>formGroup 하위에 [(ngModel)] 사용시 발생하는 error - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/08/06/programming/angular/angular-formgroup-error/">  <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/08/06/programming/angular/angular-formgroup-error/">  <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="keywords" content="Angular,formgroup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/06/Programming/Angular/angular-formgroup-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:18:52.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
-<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,17 +135,21 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-formGroup-하위에-ngModel-사용"><a href="#Angular에서-formGroup-하위에-ngModel-사용" class="headerlink" title="Angular에서 formGroup 하위에 [(ngModel)] 사용"></a>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2 id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</h2>
+<h3 id="문제-상황">문제 상황</h3>
+<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
 <a id="more"></a>
-
 <p><img src="/images/formgrouperror.png" alt></p>
-<h3 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h3><ol>
-<li><p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
+<h3 id="해결-방법">해결 방법</h3>
+<ol>
+<li>
+<p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
 </li>
-<li><p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
+<li>
+<p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># 1번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> formControlName=<span class="hljs-string">"selectedToken"</span></span><br><span class="line">(change)=<span class="hljs-string">"selectSendToken()"</span>  [(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span>&gt;</span><br><span class="line">    &lt;option *ngFor=<span class="hljs-string">"let token of global.sendTokenOptions"</span> [ngValue]=<span class="hljs-string">"token"</span>&gt;</span><br><span class="line">        &#123;&#123;token.symbol&#125;&#125;(&#123;&#123;token.name&#125;&#125;)</span><br><span class="line">    &lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> (change)=<span class="hljs-string">"selectSendToken()"</span></span><br><span class="line">[(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span> [ngModelOptions]=<span class="hljs-string">"&#123;standalone: true&#125;"</span>&gt;</span><br><span class="line">....</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<pre><code></code></pre></li>
+<pre><code></code></pre>
+</li>
 </ol>
 
         </div>
@@ -193,7 +197,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -255,11 +259,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -267,7 +271,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -279,11 +283,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -292,7 +296,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -327,7 +331,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -352,7 +356,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -424,7 +428,7 @@
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -441,10 +445,10 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular에서-formGroup-하위에-ngModel-사용">
+        <a class="is-flex" href="#angular에서-formgroup-하위에-ngmodel-사용">
         <span class="has-mr-6">1</span>
         <span>Angular에서 formGroup 하위에 [(ngModel)] 사용</span>
         </a><ul class="menu-list"><li>
@@ -464,8 +468,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -543,25 +566,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -569,7 +573,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -579,7 +583,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -705,10 +709,10 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular에서-formGroup-하위에-ngModel-사용">
+        <a class="is-flex" href="#angular에서-formgroup-하위에-ngmodel-사용">
         <span class="has-mr-6">1</span>
         <span>Angular에서 formGroup 하위에 [(ngModel)] 사용</span>
         </a><ul class="menu-list"><li>
@@ -728,8 +732,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -807,25 +830,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -833,7 +837,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -843,7 +847,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1118,10 +1122,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

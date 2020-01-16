@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>material-ui 빌드 최적화 하는 방법 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/04/programming/react/material-ui-optimization/">  <meta name="description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/04/programming/react/material-ui-optimization/">  <meta name="description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta name="keywords" content="React,material-ui">
 <meta property="og:type" content="article">
 <meta property="og:title" content="material-ui 빌드 최적화 하는 방법">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/04/Programming/React/material-ui-optimization/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<meta property="og:description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&fm=jpg">
 <meta property="og:updated_time" content="2019-12-04T12:12:35.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="material-ui 빌드 최적화 하는 방법">
-<meta name="twitter:description" content="문제상황import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot;  이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
+<meta name="twitter:description" content="문제상황 import &amp;#123; Button, TextField &amp;#125; from &quot;@material-ui/core&quot; 이렇게 import를 하면 Button, TextField만 임포트되는 게 아니라 @material/core에 있는 모든 모듈들이 빌드파일이 포함된다.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?cs=srgb&dl=abstract-expressionism-abstract-painting-acrylic-paint-1646953.jpg&fm=jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,19 +135,18 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Button, TextField &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@material-ui/core"</span></span><br></pre></td></tr></table></figure>
-
+            <h1 id="문제상황">문제상황</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; Button, TextField &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"@material-ui/core"</span></span><br></pre></td></tr></table></figure>
 <p>이렇게 import를 하면 <code>Button</code>, <code>TextField</code>만 임포트되는 게 아니라 <code>@material/core</code>에 있는 모든 모듈들이 빌드파일이 포함된다.</p>
 <a id="more"></a>
-
 <p>딱 사용하려는 모듈만 import를 하려면 추가적으로 처리가 필요하다.</p>
-<p>#</p>
-<h2 id="1-바벨-플러그인-임포트-모듈-설치"><a href="#1-바벨-플러그인-임포트-모듈-설치" class="headerlink" title="1. 바벨 플러그인 임포트 모듈 설치"></a>1. 바벨 플러그인 임포트 모듈 설치</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add -D babel-plugin-import</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-1-웹팩을-사용한다면-webpack-config-js-파일-수정"><a href="#2-1-웹팩을-사용한다면-webpack-config-js-파일-수정" class="headerlink" title="2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정"></a>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,</span><br><span class="line">      include: paths.appSrc,</span><br><span class="line"></span><br><span class="line">      loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-loader"</span>),</span><br><span class="line">      options: &#123;</span><br><span class="line">        customize: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-preset-react-app/webpack-overrides"</span>),</span><br><span class="line"></span><br><span class="line">        plugins: [</span><br><span class="line">          [</span><br><span class="line">            <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">              libraryName: <span class="hljs-string">"@material-ui/core"</span>,</span><br><span class="line">              <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">              libraryDirectory: <span class="hljs-string">""</span>,</span><br><span class="line">              camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="hljs-string">"core"</span></span><br><span class="line">          ],</span><br><span class="line">        ...</span><br><span class="line">        ],</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-아니면-프로젝트-루트-위치에"><a href="#2-2-아니면-프로젝트-루트-위치에" class="headerlink" title="2-2. 아니면, 프로젝트 루트 위치에"></a>2-2. 아니면, 프로젝트 루트 위치에</h2><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// .babelrc.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> plugins = [</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/core"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"core"</span></span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/icons"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"icons"</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123; plugins &#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="none"></h1>
+<h2 id="1-바벨-플러그인-임포트-모듈-설치">1. 바벨 플러그인 임포트 모듈 설치</h2>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">yarn add -D babel-plugin-import</span><br></pre></td></tr></table></figure>
+<h2 id="2-1-웹팩을-사용한다면-webpack-config-js-파일-수정">2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</h2>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      test: <span class="hljs-regexp">/\.(js|mjs|jsx|ts|tsx)$/</span>,</span><br><span class="line">      include: paths.appSrc,</span><br><span class="line"></span><br><span class="line">      loader: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-loader"</span>),</span><br><span class="line">      options: &#123;</span><br><span class="line">        customize: <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">"babel-preset-react-app/webpack-overrides"</span>),</span><br><span class="line"></span><br><span class="line">        plugins: [</span><br><span class="line">          [</span><br><span class="line">            <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">              libraryName: <span class="hljs-string">"@material-ui/core"</span>,</span><br><span class="line">              <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">              libraryDirectory: <span class="hljs-string">""</span>,</span><br><span class="line">              camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="hljs-string">"core"</span></span><br><span class="line">          ],</span><br><span class="line">        ...</span><br><span class="line">        ],</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-아니면-프로젝트-루트-위치에">2-2. 아니면, 프로젝트 루트 위치에</h2>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// .babelrc.js</span></span><br><span class="line"><span class="hljs-keyword">const</span> plugins = [</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/core"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"core"</span></span><br><span class="line">  ],</span><br><span class="line">  [</span><br><span class="line">    <span class="hljs-string">"babel-plugin-import"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">      libraryName: <span class="hljs-string">"@material-ui/icons"</span>, <span class="hljs-comment">// Use "'libraryDirectory': ''," if your bundler does not support ES modules</span></span><br><span class="line">      libraryDirectory: <span class="hljs-string">"esm"</span>,</span><br><span class="line">      camel2DashComponentName: <span class="hljs-literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="hljs-string">"icons"</span></span><br><span class="line">  ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">module</span>.exports = &#123; plugins &#125;</span><br></pre></td></tr></table></figure>
 <p>[참고] <a href="https://material-ui.com/guides/minimizing-bundle-size/#ecmascript" rel="external nofollow noopener noreferrer" target="_blank">https://material-ui.com/guides/minimizing-bundle-size/#ecmascript</a></p>
 
         </div>
@@ -195,7 +194,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -257,11 +256,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -269,7 +268,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -281,11 +280,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -294,7 +293,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -329,7 +328,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -354,7 +353,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -426,7 +425,7 @@
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -443,23 +442,27 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제상황">
         <span class="has-mr-6">1</span>
         <span>문제상황</span>
+        </a></li><li>
+        <a class="is-flex" href="#none">
+        <span class="has-mr-6">2</span>
+        <span></span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#1-바벨-플러그인-임포트-모듈-설치">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">2.1</span>
         <span>1. 바벨 플러그인 임포트 모듈 설치</span>
         </a></li><li>
         <a class="is-flex" href="#2-1-웹팩을-사용한다면-webpack-config-js-파일-수정">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2.2</span>
         <span>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span>
         </a></li><li>
         <a class="is-flex" href="#2-2-아니면-프로젝트-루트-위치에">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">2.3</span>
         <span>2-2. 아니면, 프로젝트 루트 위치에</span>
         </a></li></ul></li></ul>
             </div>
@@ -470,8 +473,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -549,25 +571,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -575,7 +578,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -585,7 +588,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -711,23 +714,27 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제상황">
         <span class="has-mr-6">1</span>
         <span>문제상황</span>
+        </a></li><li>
+        <a class="is-flex" href="#none">
+        <span class="has-mr-6">2</span>
+        <span></span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#1-바벨-플러그인-임포트-모듈-설치">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">2.1</span>
         <span>1. 바벨 플러그인 임포트 모듈 설치</span>
         </a></li><li>
         <a class="is-flex" href="#2-1-웹팩을-사용한다면-webpack-config-js-파일-수정">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2.2</span>
         <span>2-1. 웹팩을 사용한다면 webpack.config.js 파일 수정</span>
         </a></li><li>
         <a class="is-flex" href="#2-2-아니면-프로젝트-루트-위치에">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">2.3</span>
         <span>2-2. 아니면, 프로젝트 루트 위치에</span>
         </a></li></ul></li></ul>
             </div>
@@ -738,8 +745,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -817,25 +843,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -843,7 +850,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -853,7 +860,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1128,10 +1135,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

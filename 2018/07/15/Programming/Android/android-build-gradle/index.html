@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>build.gradle (Project)와 build.gradle (Module)의 차이점 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/07/15/programming/android/android-build-gradle/">  <meta name="description" content="1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/07/15/programming/android/android-build-gradle/">  <meta name="description" content="1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다. 머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란? 모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.">
 <meta name="keywords" content="android,build.gradle,안드로이드 그래들">
 <meta property="og:type" content="article">
 <meta property="og:title" content="build.gradle (Project)와 build.gradle (Module)의 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/07/15/Programming/Android/android-build-gradle/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.">
+<meta property="og:description" content="1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다. 머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란? 모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/1131458/pexels-photo-1131458.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 <meta property="og:updated_time" content="2019-12-04T12:22:26.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="build.gradle (Project)와 build.gradle (Module)의 차이점">
-<meta name="twitter:description" content="1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란?모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.">
+<meta name="twitter:description" content="1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다. 머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.  [참고] build.gradle이란? 모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/1131458/pexels-photo-1131458.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,14 +135,20 @@
             
         </h1>
         <div class="content">
-            <p>1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.<br>머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.</p>
+            <p>1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.<br>
+머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.</p>
 <blockquote>
-<p>[참고] build.gradle이란?<br>모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.</p>
+<p>[참고] build.gradle이란?<br>
+모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.</p>
 </blockquote>
 <a id="more"></a>
-
-<h3 id="Build-gradle-Project-MyApplication"><a href="#Build-gradle-Project-MyApplication" class="headerlink" title="Build.gradle(Project : MyApplication)"></a>Build.gradle(Project : MyApplication)</h3><p><code>Top-level build file where you can add configuration options common to all sub-projects/modules.</code><br>이 파일에 정의된 설정은 Project의 모든 모듈에 적용된다. 모듈은 프로젝트를 구성하는 하나의 구성품! 보통 대부분의 안드로이드 프로젝트에는 하나의 모듈인 app모듈만 있다.</p>
-<h3 id="Build-gradle-Module-app"><a href="#Build-gradle-Module-app" class="headerlink" title="Build.gradle(Module:app)"></a>Build.gradle(Module:app)</h3><p><code>Build file of your specific module (where you add your dependencies, signing configs, build types, flavors, etc)</code><br>이 빌드 설정은 앱모듈에만 적용된다.<br>모든 모듈은 각자의 특정한 gradle파일을 가지고 있다.</p>
+<h3 id="build-gradle-project-myapplication">Build.gradle(Project : MyApplication)</h3>
+<p><code>Top-level build file where you can add configuration options common to all sub-projects/modules.</code><br>
+이 파일에 정의된 설정은 Project의 모든 모듈에 적용된다. 모듈은 프로젝트를 구성하는 하나의 구성품! 보통 대부분의 안드로이드 프로젝트에는 하나의 모듈인 app모듈만 있다.</p>
+<h3 id="build-gradle-module-app">Build.gradle(Module:app)</h3>
+<p><code>Build file of your specific module (where you add your dependencies, signing configs, build types, flavors, etc)</code><br>
+이 빌드 설정은 앱모듈에만 적용된다.<br>
+모든 모듈은 각자의 특정한 gradle파일을 가지고 있다.</p>
 <p>[참고] <a href="https://stackoverflow.com/questions/28295933/difference-between-build-gradleproject-and-build-gradlemodule" rel="external nofollow noopener noreferrer" target="_blank">https://stackoverflow.com/questions/28295933/difference-between-build-gradleproject-and-build-gradlemodule</a></p>
 
         </div>
@@ -190,7 +196,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -252,11 +258,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -264,7 +270,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -276,11 +282,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -289,7 +295,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -324,7 +330,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -349,7 +355,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -421,7 +427,7 @@
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -438,14 +444,14 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Build-gradle-Project-MyApplication">
+        <a class="is-flex" href="#build-gradle-project-myapplication">
         <span class="has-mr-6">1</span>
         <span>Build.gradle(Project : MyApplication)</span>
         </a></li><li>
-        <a class="is-flex" href="#Build-gradle-Module-app">
+        <a class="is-flex" href="#build-gradle-module-app">
         <span class="has-mr-6">2</span>
         <span>Build.gradle(Module:app)</span>
         </a></li></ul>
@@ -457,8 +463,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -536,25 +561,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -562,7 +568,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -572,7 +578,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -698,14 +704,14 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Build-gradle-Project-MyApplication">
+        <a class="is-flex" href="#build-gradle-project-myapplication">
         <span class="has-mr-6">1</span>
         <span>Build.gradle(Project : MyApplication)</span>
         </a></li><li>
-        <a class="is-flex" href="#Build-gradle-Module-app">
+        <a class="is-flex" href="#build-gradle-module-app">
         <span class="has-mr-6">2</span>
         <span>Build.gradle(Module:app)</span>
         </a></li></ul>
@@ -717,8 +723,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -796,25 +821,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -822,7 +828,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -832,7 +838,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1107,10 +1113,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

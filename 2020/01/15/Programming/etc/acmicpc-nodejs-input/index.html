@@ -7,18 +7,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>백준 알고리즘 Node.js 입출력 정리 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/15/programming/etc/acmicpc-nodejs-input/">  <meta name="description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/15/programming/etc/acmicpc-nodejs-input/">  <meta name="description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가 처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다. 백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="백준 알고리즘 Node.js 입출력 정리">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/15/Programming/etc/acmicpc-nodejs-input/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
+<meta property="og:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가 처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다. 백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1574937792179-db16755c6628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-01-14T15:28:02.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="백준 알고리즘 Node.js 입출력 정리">
-<meta name="twitter:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
+<meta name="twitter:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가 처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다. 백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1574937792179-db16755c6628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -76,7 +76,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -130,12 +130,14 @@
             
         </h1>
         <div class="content">
-            <p>프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가<br>처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.<br>백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.</p>
+            <p>프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가<br>
+처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.<br>
+백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.</p>
 <a id="more"></a>
-
-<h1 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 문자 하나</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs.readFileSync(<span class="hljs-string">"/dev/stdin"</span>).toString()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 한 칸 띄어쓰기로 구분</span></span><br><span class="line"><span class="hljs-comment">// input[0], input[1] 배열에서 꺼내쓰면 된다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 줄바꿈으로 구분</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 만약 인풋값이 숫자라면</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line">  .map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> +a</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h1><p>백준 알고리즘에서는 <code>console.log</code>로 결과값의 로그를 찍어주면 된다.</p>
+<h1 id="입력">입력</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 문자 하나</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs.readFileSync(<span class="hljs-string">"/dev/stdin"</span>).toString()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 한 칸 띄어쓰기로 구분</span></span><br><span class="line"><span class="hljs-comment">// input[0], input[1] 배열에서 꺼내쓰면 된다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 줄바꿈으로 구분</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 만약 인풋값이 숫자라면</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line">  .map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> +a</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="출력">출력</h1>
+<p>백준 알고리즘에서는 <code>console.log</code>로 결과값의 로그를 찍어주면 된다.</p>
 
         </div>
         
@@ -150,6 +152,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/16/Programming/JavaScript/vscode-es2020/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">VSCODE에서 ES2020 이용하기</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -166,7 +175,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -228,11 +237,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            78
+                            79
                         </p>
                     </a>
                 </div>
@@ -240,7 +249,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -252,11 +261,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            91
+                            92
                         </p>
                     </a>
                 </div>
@@ -265,7 +274,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -300,7 +309,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -325,7 +334,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">76</span>
+                <span class="level-item tag">77</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -397,7 +406,7 @@
                 <span class="level-item">etc</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -414,7 +423,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#입력">
@@ -433,8 +442,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -512,25 +540,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -538,7 +547,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -548,7 +557,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -674,7 +683,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catálogo
+                    Catalogue
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#입력">
@@ -693,8 +702,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recientes
+            Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VSCODE에서 ES2020 이용하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T09:53:18.000Z">2020-01-16</time></div>
+                    <a href="/2020/01/16/Programming/JavaScript/vscode-es2020/" class="title has-link-black-ter is-size-6 has-text-weight-normal">VSCODE에서 ES2020 이용하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/etc/">etc</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -772,25 +800,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1577466480773-285fe98c4209?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="퀵 정렬 &amp; 병합정렬 구현">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-04T07:09:06.000Z">2020-01-04</time></div>
-                    <a href="/2020/01/04/Programming/Algorithm/quicksort-mergesort-implement/" class="title has-link-black-ter is-size-6 has-text-weight-normal">퀵 정렬 &amp; 병합정렬 구현</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -798,7 +807,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
         
@@ -808,7 +817,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -1083,10 +1092,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
