@@ -16,7 +16,7 @@
 <meta property="og:description" content="2606 문제https://www.acmicpc.net/problem/2606시작 정점에서 도달할 수 있는 모든 정점들의 갯수를 구하는 문제이다.dfs든 bfs든 정점의 갯수를 구하면 된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-<meta property="og:updated_time" content="2020-01-16T14:40:33.561Z">
+<meta property="og:updated_time" content="2020-01-16T23:43:55.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] BFS &#x2F; DFS 핵심유형 문제풀이">
 <meta name="twitter:description" content="2606 문제https://www.acmicpc.net/problem/2606시작 정점에서 도달할 수 있는 모든 정점들의 갯수를 구하는 문제이다.dfs든 bfs든 정점의 갯수를 구하면 된다.">
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 729 words)
+                    5 minutes read (About 752 words)
                 </span>
                 
                 
@@ -141,7 +141,8 @@
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSortedGraph</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> pairs = inputString.split(<span class="hljs-string">"\n"</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-built_in">Number</span>(a)))</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(pairs)</span><br><span class="line">  <span class="hljs-keyword">let</span> adjList = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()</span><br><span class="line"></span><br><span class="line">  pairs.forEach(<span class="hljs-function"><span class="hljs-params">pair</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (adjList.get(pair[<span class="hljs-number">0</span>])) &#123;</span><br><span class="line">      adjList.get(pair[<span class="hljs-number">0</span>]).push(pair[<span class="hljs-number">1</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      adjList.set(pair[<span class="hljs-number">0</span>], [pair[<span class="hljs-number">1</span>]])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (adjList.get(pair[<span class="hljs-number">1</span>])) &#123;</span><br><span class="line">      adjList.get(pair[<span class="hljs-number">1</span>]).push(pair[<span class="hljs-number">0</span>])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      adjList.set(pair[<span class="hljs-number">1</span>], [pair[<span class="hljs-number">0</span>]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  adjList.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;</span><br><span class="line">    value.sort()</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(adjList)</span><br><span class="line">  <span class="hljs-keyword">return</span> adjList</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">startNode, graph, visited</span>) </span>&#123;</span><br><span class="line">  visited[startNode] = <span class="hljs-literal">true</span></span><br><span class="line">  <span class="hljs-keyword">var</span> get_neighbours = graph.get(startNode)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> get_neighbours) &#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> element = get_neighbours[i]</span><br><span class="line">    <span class="hljs-keyword">if</span> (!visited[element]) dfs(element, graph, visited)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> graph = getSortedGraph(<span class="hljs-string">`1 2</span></span><br><span class="line"><span class="hljs-string">2 3</span></span><br><span class="line"><span class="hljs-string">1 5</span></span><br><span class="line"><span class="hljs-string">5 2</span></span><br><span class="line"><span class="hljs-string">5 6</span></span><br><span class="line"><span class="hljs-string">4 7`</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> visited = []</span><br><span class="line">dfs(<span class="hljs-number">1</span>, graph, visited)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(visited.filter(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a).length - <span class="hljs-number">1</span>)</span><br></pre></td></tr></table></figure>
 
 <h1 id="1012-문제"><a href="#1012-문제" class="headerlink" title="1012 문제"></a>1012 문제</h1><p><a href="https://www.acmicpc.net/problem/1012" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1012</a></p>
-<p>그래프 자료구조가 몇 개나 나오나? 인접한 노드 묶음이 몇 개인지를 구하면 된다.<br>좌표를 <code>(0, 0)</code> 하나의 노드로 보고 그래프를 구성하려고 한다.<br>이 노드로부터 나올 수 있는 자식 노드는 아래와 같다.</p>
+<p>그래프 자료구조가 몇 개나 나오나? 인접한 노드 묶음이 몇 개인지를 구하면 된다.<br>=&gt; 연결요소를 구하는 문제<br>==&gt; 응용된 문제가 많이 나오는 유형!!!!</p>
+<p>좌표를 <code>(0, 0)</code> 하나의 노드로 보고 그래프를 구성하려고 한다.<br>이 노드로부터 나올 수 있는 자식 노드는 아래와 같다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> next_pos_list = [</span><br><span class="line">  [now_pos[<span class="hljs-number">0</span>] - <span class="hljs-number">1</span>, now_pos[<span class="hljs-number">1</span>]],</span><br><span class="line">  [now_pos[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>, now_pos[<span class="hljs-number">1</span>]],</span><br><span class="line">  [now_pos[<span class="hljs-number">0</span>], now_pos[<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>],</span><br><span class="line">  [now_pos[<span class="hljs-number">0</span>], now_pos[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <p>그 중에서 좌표를 벗어나지 않는 노드들 중 <code>isIncluded(input, element) &amp;&amp; !isIncluded(visited, element) &amp;&amp; !isIncluded(q, element)</code> 이 조건을 만족하는 노드들만 탐색할 리스트 q에 넣어줬다. BFS의 방식으로 몇 개의 그래프를 만들 수 있는지 count를 셌다. 하지만,,,</p>
@@ -176,6 +177,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/20/Programming/Algorithm/graph-core-2/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[백준] 다익스트라 핵심 유형 문제풀이</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -258,7 +266,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            80
+                            81
                         </p>
                     </a>
                 </div>
@@ -351,7 +359,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">78</span>
+                <span class="level-item tag">79</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -359,7 +367,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">38</span>
+                <span class="level-item tag">39</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -468,6 +476,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
@@ -542,25 +569,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[ERROR] no space left on device">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T08:26:08.000Z">2020-01-13</time></div>
-                    <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[ERROR] no space left on device</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -578,7 +586,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
@@ -732,6 +740,25 @@
         
         <article class="media">
             
+            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
+                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
@@ -806,25 +833,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[ERROR] no space left on device">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-13T08:26:08.000Z">2020-01-13</time></div>
-                    <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[ERROR] no space left on device</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -842,7 +850,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">12</span>
                 </span>
             </a>
         </li>
