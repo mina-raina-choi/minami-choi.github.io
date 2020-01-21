@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/01/21/Programming/Algorithm/greedy-basic/</loc>
+        <lastmod>2020-01-21T14:29:03.303Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/01/20/Programming/Algorithm/graph-core-2/</loc>
         <lastmod>2020-01-20T13:42:31.201Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -256,7 +264,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/04/Programming/Angular/angular-injector-tree/</loc>
+        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -264,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
+        <loc>https://minami-choi.github.io/2018/05/04/Programming/Angular/angular-injector-tree/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -280,14 +288,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
-        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2018/08/09/Programming/Angular/angular-architecture/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -296,7 +296,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
+        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -305,6 +305,14 @@
 
     <url>
         <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
+        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
