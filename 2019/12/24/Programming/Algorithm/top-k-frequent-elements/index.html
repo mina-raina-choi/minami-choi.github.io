@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] top-k-frequent-elements - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/24/programming/algorithm/top-k-frequent-elements/">  <meta name="description" content="문제빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/24/programming/algorithm/top-k-frequent-elements/">  <meta name="description" content="문제 빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] top-k-frequent-elements">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/24/Programming/Algorithm/top-k-frequent-elements/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.">
+<meta property="og:description" content="문제 빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/10/13/15/29/black-coffee-2847957__480.jpg">
 <meta property="og:updated_time" content="2019-12-29T17:54:19.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] top-k-frequent-elements">
-<meta name="twitter:description" content="문제빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.">
+<meta name="twitter:description" content="문제 빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2017/10/13/15/29/black-coffee-2847957__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -135,25 +135,34 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.</p>
+            <h1 id="문제">문제</h1>
+<p>빈 배열이 아닌 정수 배열이 주어졌을 때, 가장 많이 등장한 요소 k개를 가지는 배열로 리턴하세요.</p>
 <a id="more"></a>
-
 <blockquote>
-<p>Example 1:<br>Input: nums = [1,1,1,2,2,3], k = 2<br>Output: [1,2]</p>
+<p>Example 1:<br>
+Input: nums = [1,1,1,2,2,3], k = 2<br>
+Output: [1,2]</p>
 </blockquote>
 <blockquote>
-<p>Example 2:<br>Input: nums = [1], k = 1<br>Output: [1]<br>Note:</p>
+<p>Example 2:<br>
+Input: nums = [1], k = 1<br>
+Output: [1]<br>
+Note:</p>
 </blockquote>
-<p>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.<br>Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</p>
+<p>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.<br>
+Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</p>
 <p>출처 - <a href="https://leetcode.com/problems/top-k-frequent-elements/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/top-k-frequent-elements/</a></p>
-<h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>일단 주어진 배열을 forloop으로 돌면서 <code>numsObj</code>에 요소별로 <code>frequency</code> 값을 셋팅한다.</p>
+<h1 id="풀이과정">풀이과정</h1>
+<p>일단 주어진 배열을 forloop으로 돌면서 <code>numsObj</code>에 요소별로 <code>frequency</code> 값을 셋팅한다.</p>
 <figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  1: 3,</span><br><span class="line">  2: 2,</span><br><span class="line">  3: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>빈 배열 <code>buckets</code>을 선언한다.<br><code>frequency</code>를 <code>index</code>로 하고 값으로 <code>numsObj의 key</code>를 배열 형태로 넣어준다.</p>
-<p>마지막으로 <code>buckets</code>배열을 뒤에서부터 돌면서 가장 <code>frequency</code>가 높은 값을 <code>answer</code>배열에 넣어준다.<br><code>answer</code>배열의 크기가 <code>k</code>가 되면 결과값을 리턴한다.</p>
-<p>시간 복잡도는 O(n)이므로 조건에 맞는다.<br>(frequency가 겹치는 경우가 거의 없다고 가정하면. 혹은 frequency가 겹치는 경우가 있어도 n값보다는 훨씬 작은 수이기 때문에 무시한다.)</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> topKFrequent = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">let</span> numsObj = &#123;&#125;</span><br><span class="line">  nums.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (numsObj[item]) &#123;</span><br><span class="line">      numsObj[item]++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      numsObj[item] = <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(numsObj)</span><br><span class="line"></span><br><span class="line">  buckets = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> freq = numsObj[keys[i]]</span><br><span class="line">    <span class="hljs-keyword">if</span> (buckets[freq]) &#123;</span><br><span class="line">      buckets[freq].push(keys[i])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      buckets[freq] = [keys[i]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = buckets.length - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">-1</span>; i--) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (buckets[i]) &#123;</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; buckets[i].length; j++) &#123;</span><br><span class="line">        answer.push(<span class="hljs-built_in">Number</span>(buckets[i][j]))</span><br><span class="line">        <span class="hljs-keyword">if</span> (answer.length === k) &#123;</span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (answer.length === k) &#123;</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>빈 배열 <code>buckets</code>을 선언한다.<br>
+<code>frequency</code>를 <code>index</code>로 하고 값으로 <code>numsObj의 key</code>를 배열 형태로 넣어준다.</p>
+<p>마지막으로 <code>buckets</code>배열을 뒤에서부터 돌면서 가장 <code>frequency</code>가 높은 값을 <code>answer</code>배열에 넣어준다.<br>
+<code>answer</code>배열의 크기가 <code>k</code>가 되면 결과값을 리턴한다.</p>
+<p>시간 복잡도는 O(n)이므로 조건에 맞는다.<br>
+(frequency가 겹치는 경우가 거의 없다고 가정하면. 혹은 frequency가 겹치는 경우가 있어도 n값보다는 훨씬 작은 수이기 때문에 무시한다.)</p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number&#125; k</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> topKFrequent = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">let</span> numsObj = &#123;&#125;</span><br><span class="line">  nums.forEach(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (numsObj[item]) &#123;</span><br><span class="line">      numsObj[item]++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      numsObj[item] = <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(numsObj)</span><br><span class="line"></span><br><span class="line">  buckets = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> freq = numsObj[keys[i]]</span><br><span class="line">    <span class="hljs-keyword">if</span> (buckets[freq]) &#123;</span><br><span class="line">      buckets[freq].push(keys[i])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      buckets[freq] = [keys[i]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = buckets.length - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">-1</span>; i--) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (buckets[i]) &#123;</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; buckets[i].length; j++) &#123;</span><br><span class="line">        answer.push(<span class="hljs-built_in">Number</span>(buckets[i][j]))</span><br><span class="line">        <span class="hljs-keyword">if</span> (answer.length === k) &#123;</span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (answer.length === k) &#123;</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -266,7 +275,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -359,7 +368,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -367,7 +376,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -476,6 +485,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -531,44 +578,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -586,7 +595,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -751,6 +760,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -806,44 +853,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -861,7 +870,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

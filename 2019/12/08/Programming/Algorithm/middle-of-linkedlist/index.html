@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] Middle of the Linked List - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/08/programming/algorithm/middle-of-linkedlist/">  <meta name="description" content="문제값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요. 출처 - https://leetcode.com/problems/middle-of-the-linked-list/">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/08/programming/algorithm/middle-of-linkedlist/">  <meta name="description" content="문제 값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요. 출처 - https://leetcode.com/problems/middle-of-the-linked-list/">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] Middle of the Linked List">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/08/Programming/Algorithm/middle-of-linkedlist/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요. 출처 - https://leetcode.com/problems/middle-of-the-linked-list/">
+<meta property="og:description" content="문제 값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요. 출처 - https://leetcode.com/problems/middle-of-the-linked-list/">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg">
 <meta property="og:updated_time" content="2019-12-29T17:53:21.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] Middle of the Linked List">
-<meta name="twitter:description" content="문제값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요. 출처 - https://leetcode.com/problems/middle-of-the-linked-list/">
+<meta name="twitter:description" content="문제 값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요. 출처 - https://leetcode.com/problems/middle-of-the-linked-list/">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -135,16 +135,20 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요.</p>
+            <h1 id="문제">문제</h1>
+<p>값이 존재하는 단방향 링크드리스트의 head값이 주어졌을 때, 링크드리스트의 중간 노드를 리턴하시오. 만약 2개의 중간노드가 있다면 두번째 값을 리턴하세요.</p>
 <p>출처 - <a href="https://leetcode.com/problems/middle-of-the-linked-list/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/middle-of-the-linked-list/</a></p>
 <a id="more"></a>
-
-<h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>링크드리스트는 길이는 리스트를 전부 순회해야지만 알 수 있다.<br>리스트 순회를 통해 리스트의 길이를 알아내고 그 길이의 중간값을 구한다.<br>다시 리스트를 순회해서 그 중간노드를 리턴하면 된다.</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     this.val = val;</span></span><br><span class="line"><span class="hljs-comment"> *     this.next = null;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;ListNode&#125; head</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;ListNode&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> middleNode = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> length = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">    node = node.next</span><br><span class="line">    length++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> n = <span class="hljs-built_in">Math</span>.floor(length / <span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line">  node = head</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    node = node.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="추천-방식"><a href="#추천-방식" class="headerlink" title="추천 방식"></a>추천 방식</h2><p>내가 전혀 떠올리지 못한 방법 중에 릿코드에서 추천한 <code>2개의 포인터를 이용</code>한 방법이 있다.<br>링크드리스트를 순회를 <code>slow pointer</code>와 그것보다 2배빠른 <code>fast pointer</code> 두 개의 포인터로 하면 <code>fast pointer</code>가 리스트의 마지막에 닿는 순간에 <code>slow pointer</code>는 리스트의 중간에 위치하게 된다.</p>
+<h1 id="풀이-과정">풀이 과정</h1>
+<p>링크드리스트는 길이는 리스트를 전부 순회해야지만 알 수 있다.<br>
+리스트 순회를 통해 리스트의 길이를 알아내고 그 길이의 중간값을 구한다.<br>
+다시 리스트를 순회해서 그 중간노드를 리턴하면 된다.</p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     this.val = val;</span></span><br><span class="line"><span class="hljs-comment"> *     this.next = null;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;ListNode&#125; head</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;ListNode&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> middleNode = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> length = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">    node = node.next</span><br><span class="line">    length++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> n = <span class="hljs-built_in">Math</span>.floor(length / <span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line">  node = head</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    node = node.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="추천-방식">추천 방식</h2>
+<p>내가 전혀 떠올리지 못한 방법 중에 릿코드에서 추천한 <code>2개의 포인터를 이용</code>한 방법이 있다.<br>
+링크드리스트를 순회를 <code>slow pointer</code>와 그것보다 2배빠른 <code>fast pointer</code> 두 개의 포인터로 하면 <code>fast pointer</code>가 리스트의 마지막에 닿는 순간에 <code>slow pointer</code>는 리스트의 중간에 위치하게 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> middleNode = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> slow,</span><br><span class="line">    fast = head</span><br><span class="line">  <span class="hljs-keyword">while</span> (fast &amp;&amp; fast.next) &#123;</span><br><span class="line">    slow = slow.next</span><br><span class="line">    fast = fast.next.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> slow</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -257,7 +261,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -350,7 +354,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -358,7 +362,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -471,6 +475,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -526,44 +568,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -581,7 +585,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -750,6 +754,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -805,44 +847,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -860,7 +864,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

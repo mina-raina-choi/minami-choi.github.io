@@ -135,50 +135,79 @@
 <li>불가능한 문제, 즉 빠른 알고리즘 해법이 존재하지 않는 NP-완전 문제를 다루는 법을 배우자</li>
 <li>문제 해결이 불가능한지 아닌지 파악하는 법을 배우고, NP-완전 문제에 대한 간략한 해법을 빨리 구할 수 있는 근사 알고리즘도 배우자</li>
 <li>아주 간단한 문제 해결 기법의 하나인 탐욕 알고리즘을 공부하자!<a id="more"></a>
-
 </li>
 </ul>
-<h3 id="수업-시간표-짜기-문제"><a href="#수업-시간표-짜기-문제" class="headerlink" title="수업 시간표 짜기 문제"></a>수업 시간표 짜기 문제</h3><p>학교에서 되도록 많은 수업을 듣고 싶어한다고 가정하고, 가장 많은 수업을 듣도록 시간표를 짜는 방법은?<br>(수업마다 시간이 일부 겹치기 때문에 모든 수업을 다 들을 수는 없다.)</p>
+<h3 id="수업-시간표-짜기-문제">수업 시간표 짜기 문제</h3>
+<p>학교에서 되도록 많은 수업을 듣고 싶어한다고 가정하고, 가장 많은 수업을 듣도록 시간표를 짜는 방법은?<br>
+(수업마다 시간이 일부 겹치기 때문에 모든 수업을 다 들을 수는 없다.)</p>
 <pre><code>1. 가장 빨리 끝나는 과목을 고른다. 이 과목이 첫 번째로 신청해야할 과목!
-2. 첫 번째 과목이 끝난 후 시작하는 과목 중 가장 빨리 끝나는 수업을 선택!</code></pre><p>이런 식으로 반복하면 가장 많은 수업을 들을 수 있다.</p>
-<p>이것이 바로 <strong>탐욕 알고리즘</strong>greedy-algorithm!!<br>간단하다!!<br>각각의 단계에서 최적의 수를 찾으면 된다!</p>
+2. 첫 번째 과목이 끝난 후 시작하는 과목 중 가장 빨리 끝나는 수업을 선택!
+</code></pre>
+<p>이런 식으로 반복하면 가장 많은 수업을 들을 수 있다.</p>
+<p>이것이 바로 <strong>탐욕 알고리즘</strong>greedy-algorithm!!<br>
+간단하다!!<br>
+각각의 단계에서 최적의 수를 찾으면 된다!</p>
 <p><code>국소 최적해locally optimal solution를 찾음으로써 최종적으로는 전역 최적해globally optimal solution를 구하게 된다!!</code></p>
-<h3 id="배낭-채우기-문제"><a href="#배낭-채우기-문제" class="headerlink" title="배낭 채우기 문제"></a>배낭 채우기 문제</h3><p>물론 탐욕 알고리즘이 항상 올바른 답을 찾는 것은 아니다.</p>
+<h3 id="배낭-채우기-문제">배낭 채우기 문제</h3>
+<p>물론 탐욕 알고리즘이 항상 올바른 답을 찾는 것은 아니다.</p>
 <ul>
 <li>스테레오 $3000 30 lbs</li>
 <li>노트북 $2000 20 lbs</li>
 <li>기타 $1500 15 lbs</li>
 </ul>
 <p>35파운드까지 담을 수 있는 배낭에 넣을 물건의 합을 최대한 크게 하려면?</p>
-<p>탐욕 알고리즘을 사용하면,<br>들어갈 수 있는 물건중에서 가장 비싼것을 고르는 것을 반복하면 되는데<br>이 경우에는 30파운드의 스테레오를 넣을 수 있다.<br>총 가치는 3000달러!</p>
+<p>탐욕 알고리즘을 사용하면,<br>
+들어갈 수 있는 물건중에서 가장 비싼것을 고르는 것을 반복하면 되는데<br>
+이 경우에는 30파운드의 스테레오를 넣을 수 있다.<br>
+총 가치는 3000달러!</p>
 <p>하지만, 노트북과 기타를 넣으면 총 35파운드의 배낭에 3500달러의 가치를 담을 수 있다.</p>
-<p><code>1. 탐욕 알고리즘은 올바른 답을 내놓지 못할 수도 있지만, 정답에 상당히 가까운 답을 내놓을 수는 있다.</code><br><code>2. 탐욕 알고리즘은 구현이 간단하면서도 보통은 정답에 상당히 가까운 답을 준다!</code></p>
-<h3 id="집합-커버링-문제"><a href="#집합-커버링-문제" class="headerlink" title="집합 커버링 문제"></a>집합 커버링 문제</h3><p>라디오 쇼를 시작했다고 가정해보자.<br>최대한 적은 수의 방송국 방문하면서 모든 주의 사람들에게 방송을 들려주려면 어떻게 해야할까? (각 방송국마다 커버할 수 있는 지역이 서로 다르고 겹치는 지역도 있다.)</p>
+<p><code>1. 탐욕 알고리즘은 올바른 답을 내놓지 못할 수도 있지만, 정답에 상당히 가까운 답을 내놓을 수는 있다.</code><br>
+<code>2. 탐욕 알고리즘은 구현이 간단하면서도 보통은 정답에 상당히 가까운 답을 준다!</code></p>
+<h3 id="집합-커버링-문제">집합 커버링 문제</h3>
+<p>라디오 쇼를 시작했다고 가정해보자.<br>
+최대한 적은 수의 방송국 방문하면서 모든 주의 사람들에게 방송을 들려주려면 어떻게 해야할까? (각 방송국마다 커버할 수 있는 지역이 서로 다르고 겹치는 지역도 있다.)</p>
 <pre><code>1. 가능한 모든 방송국의 부분 집합을 나열하자. 이것을 멱집합이라고 함.(가능한 부분 집합의 수는 2^n개)
     * 멱집합 : 어떤 집합의 멱집합(冪集合, 영어: power set)은 그 집합의 모든 부분 집합을 모은 집합
 
-2. 이 부분집합 중에서 50개 주 전체를 커버할 수 있으면서 가장 원소의 수가 적은 부분 집합을 고른다!</code></pre><p>여기서 문제는 가능한 부분 집합을 계산하는 데 시간이 많이 걸린다.</p>
+2. 이 부분집합 중에서 50개 주 전체를 커버할 수 있으면서 가장 원소의 수가 적은 부분 집합을 고른다!
+</code></pre>
+<p>여기서 문제는 가능한 부분 집합을 계산하는 데 시간이 많이 걸린다.</p>
 <p>부분 집합의 수가 <code>2^n</code>이기 때문에 <code>O(2^n)</code> 시간이 걸린다.</p>
 <p>이 문제에 대해 충분히 빠른 속도를 가진 알고리즘은 존재하지 않는다. 그렇다면 어떻게 해결할까?</p>
-<h3 id="근사-알고리즘"><a href="#근사-알고리즘" class="headerlink" title="근사 알고리즘"></a>근사 알고리즘</h3><p>이럴 때는 탐욕 알고리즘을 사용하면 된다! 거의 정답과 비슷한 답을 유추한다.</p>
+<h3 id="근사-알고리즘">근사 알고리즘</h3>
+<p>이럴 때는 탐욕 알고리즘을 사용하면 된다! 거의 정답과 비슷한 답을 유추한다.</p>
 <pre><code>1. 아직 방송하지 않은 지역 중 가장 많은 지역을 방송할 수 있는 방송국을 선택.(이미 방송되고 있는 지역이 일부 포함되어 있어도 상관없음.)
-2. 모든 주에 방송이 될 때까지 반복.</code></pre><p>근사 알고리즘의 성능은 1. 얼마나 빠른가 2. 얼마나 최적해에 가까운가<br>로 판단하는 데 탐욕 알고리즘은 단순해서 실행 속도가 빨라 좋은 선택이라고 할 수 있다.</p>
+2. 모든 주에 방송이 될 때까지 반복.
+</code></pre>
+<p>근사 알고리즘의 성능은 1. 얼마나 빠른가 2. 얼마나 최적해에 가까운가<br>
+로 판단하는 데 탐욕 알고리즘은 단순해서 실행 속도가 빨라 좋은 선택이라고 할 수 있다.</p>
 <p>탐욕 알고리즘의 실행속도는 <code>O(n^2)</code>시간.</p>
-<h3 id="코드로-구현해보자"><a href="#코드로-구현해보자" class="headerlink" title="코드로 구현해보자."></a>코드로 구현해보자.</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">states_needed = new Set([<span class="hljs-string">"mt"</span>, <span class="hljs-string">"wa"</span>, <span class="hljs-string">"or"</span>, <span class="hljs-string">"id"</span>, <span class="hljs-string">"nv"</span>, <span class="hljs-string">"ut"</span>, <span class="hljs-string">"ca"</span>, <span class="hljs-string">"az"</span>])</span><br><span class="line">//<span class="hljs-built_in">set</span>은 리스트와 비슷한데 중복을 허용하지 않는다.</span><br><span class="line"></span><br><span class="line">// 방송국마다 전파되는 주가 다른다. 해시테이블을 사용.</span><br><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="hljs-string">"kone"</span>] = new Set([<span class="hljs-string">"id"</span>, <span class="hljs-string">"nv"</span>, <span class="hljs-string">"ut"</span>])</span><br><span class="line">stations[<span class="hljs-string">"ktwo"</span>] = new Set([<span class="hljs-string">"wa"</span>, <span class="hljs-string">"id"</span>, <span class="hljs-string">"mt"</span>])</span><br><span class="line">stations[<span class="hljs-string">"kthree"</span>] = new Set([<span class="hljs-string">"or"</span>, <span class="hljs-string">"nv"</span>, <span class="hljs-string">"ca"</span>])</span><br><span class="line">stations[<span class="hljs-string">"kfour"</span>] = new Set([<span class="hljs-string">"nv"</span>, <span class="hljs-string">"ut"</span>])</span><br><span class="line">stations[<span class="hljs-string">"kfive"</span>] = new Set([<span class="hljs-string">"ca"</span>, <span class="hljs-string">"az"</span>])</span><br><span class="line"></span><br><span class="line">// 방문한 방송국 목록</span><br><span class="line">final_stations = new Set();</span><br><span class="line"><span class="hljs-keyword">while</span> (states_needed.size &gt; 0) &#123; //states_needed이 빌 때까지</span><br><span class="line">  best_station =  null; //아직 방송되지 않은 주 중에서 가장 많은 주를 커버하고 있는 방송국</span><br><span class="line">  states_covered = new Set(); // 이미 방송된 주</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> ele <span class="hljs-keyword">in</span> stations) &#123; // stations중에서</span><br><span class="line">      covered = (union(states_needed, stations[ele]))</span><br><span class="line">      <span class="hljs-keyword">if</span>(covered.size &gt;  states_covered.size) &#123; //많은 주에 방송이 되는 방송국을 찾는다</span><br><span class="line">        best_station = ele;</span><br><span class="line">        states_covered = (covered);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  states_needed = (array_diff(states_needed, states_covered));</span><br><span class="line">  //아직 방송이 되지 않은 주에서 해당 방송국이 방송되는 주를 뺀다.</span><br><span class="line">  final_stations.add(best_station) //방송국리스트에 추가.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(final_stations)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">function</span> union(a, b) &#123;</span><br><span class="line">a = [...a], b=[...b];</span><br><span class="line">var tmp=&#123;&#125;, res=[];</span><br><span class="line"><span class="hljs-keyword">for</span>(var i=0;i&lt;a.length;i++) tmp[a[i]]=1;</span><br><span class="line"><span class="hljs-keyword">for</span>(var i=0;i&lt;b.length;i++) tmp[b[i]] +=1;</span><br><span class="line"><span class="hljs-keyword">for</span>(var k <span class="hljs-keyword">in</span> tmp) <span class="hljs-keyword">if</span>(tmp[k] ==2 ) res.push(k);</span><br><span class="line"><span class="hljs-built_in">return</span> new Set(res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">function</span> array_diff(a, b) &#123;</span><br><span class="line">  a = [...a], b=[...b];</span><br><span class="line">  var tmp=&#123;&#125;, res=[];</span><br><span class="line">  <span class="hljs-keyword">for</span>(var i=0;i&lt;a.length;i++) tmp[a[i]]=1;</span><br><span class="line">  <span class="hljs-keyword">for</span>(var i=0;i&lt;b.length;i++) &#123; <span class="hljs-keyword">if</span>(tmp[b[i]]) delete tmp[b[i]]; &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(var k <span class="hljs-keyword">in</span> tmp) res.push(k);</span><br><span class="line">  <span class="hljs-built_in">return</span> new Set(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="NP-완전-문제"><a href="#NP-완전-문제" class="headerlink" title="NP-완전 문제"></a>NP-완전 문제</h3><p>집단 커버링 문제를 해결하려면 가능한 모든 집합을 계산해야한다.<br>이전에 나왔던 외판원 문제도 마찬가지였다.<br>가능한 모든 경로 가운데 최단 경로를 찾기 위해서는 <code>가능한 모든 경로</code>를 계산해야한다(n!).</p>
-<p>집단 커버링 문제와 외판원 문제의 공통점!<br>모든 가능한 경우를 다 따져서 최단/최소를 구해야 한다는 것!<br>이런 문제를 <code>NP-완전 문제 NP-complete-problem</code>이라고 한다.</p>
-<h3 id="어떤-문제가-NP-완전-문제인지-알-수-있는-방법은"><a href="#어떤-문제가-NP-완전-문제인지-알-수-있는-방법은" class="headerlink" title="어떤 문제가 NP-완전 문제인지 알 수 있는 방법은?"></a>어떤 문제가 NP-완전 문제인지 알 수 있는 방법은?</h3><p>NP-완전 문제인지 파악할 수 있는 쉬운 방법은 없다!!!</p>
+<h3 id="코드로-구현해보자">코드로 구현해보자.</h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">states_needed = new Set([<span class="hljs-string">"mt"</span>, <span class="hljs-string">"wa"</span>, <span class="hljs-string">"or"</span>, <span class="hljs-string">"id"</span>, <span class="hljs-string">"nv"</span>, <span class="hljs-string">"ut"</span>, <span class="hljs-string">"ca"</span>, <span class="hljs-string">"az"</span>])</span><br><span class="line">//<span class="hljs-built_in">set</span>은 리스트와 비슷한데 중복을 허용하지 않는다.</span><br><span class="line"></span><br><span class="line">// 방송국마다 전파되는 주가 다른다. 해시테이블을 사용.</span><br><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="hljs-string">"kone"</span>] = new Set([<span class="hljs-string">"id"</span>, <span class="hljs-string">"nv"</span>, <span class="hljs-string">"ut"</span>])</span><br><span class="line">stations[<span class="hljs-string">"ktwo"</span>] = new Set([<span class="hljs-string">"wa"</span>, <span class="hljs-string">"id"</span>, <span class="hljs-string">"mt"</span>])</span><br><span class="line">stations[<span class="hljs-string">"kthree"</span>] = new Set([<span class="hljs-string">"or"</span>, <span class="hljs-string">"nv"</span>, <span class="hljs-string">"ca"</span>])</span><br><span class="line">stations[<span class="hljs-string">"kfour"</span>] = new Set([<span class="hljs-string">"nv"</span>, <span class="hljs-string">"ut"</span>])</span><br><span class="line">stations[<span class="hljs-string">"kfive"</span>] = new Set([<span class="hljs-string">"ca"</span>, <span class="hljs-string">"az"</span>])</span><br><span class="line"></span><br><span class="line">// 방문한 방송국 목록</span><br><span class="line">final_stations = new Set();</span><br><span class="line"><span class="hljs-keyword">while</span> (states_needed.size &gt; 0) &#123; //states_needed이 빌 때까지</span><br><span class="line">  best_station =  null; //아직 방송되지 않은 주 중에서 가장 많은 주를 커버하고 있는 방송국</span><br><span class="line">  states_covered = new Set(); // 이미 방송된 주</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> ele <span class="hljs-keyword">in</span> stations) &#123; // stations중에서</span><br><span class="line">      covered = (union(states_needed, stations[ele]))</span><br><span class="line">      <span class="hljs-keyword">if</span>(covered.size &gt;  states_covered.size) &#123; //많은 주에 방송이 되는 방송국을 찾는다</span><br><span class="line">        best_station = ele;</span><br><span class="line">        states_covered = (covered);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  states_needed = (array_diff(states_needed, states_covered));</span><br><span class="line">  //아직 방송이 되지 않은 주에서 해당 방송국이 방송되는 주를 뺀다.</span><br><span class="line">  final_stations.add(best_station) //방송국리스트에 추가.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(final_stations)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">function</span> union(a, b) &#123;</span><br><span class="line">a = [...a], b=[...b];</span><br><span class="line">var tmp=&#123;&#125;, res=[];</span><br><span class="line"><span class="hljs-keyword">for</span>(var i=0;i&lt;a.length;i++) tmp[a[i]]=1;</span><br><span class="line"><span class="hljs-keyword">for</span>(var i=0;i&lt;b.length;i++) tmp[b[i]] +=1;</span><br><span class="line"><span class="hljs-keyword">for</span>(var k <span class="hljs-keyword">in</span> tmp) <span class="hljs-keyword">if</span>(tmp[k] ==2 ) res.push(k);</span><br><span class="line"><span class="hljs-built_in">return</span> new Set(res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">function</span> array_diff(a, b) &#123;</span><br><span class="line">  a = [...a], b=[...b];</span><br><span class="line">  var tmp=&#123;&#125;, res=[];</span><br><span class="line">  <span class="hljs-keyword">for</span>(var i=0;i&lt;a.length;i++) tmp[a[i]]=1;</span><br><span class="line">  <span class="hljs-keyword">for</span>(var i=0;i&lt;b.length;i++) &#123; <span class="hljs-keyword">if</span>(tmp[b[i]]) delete tmp[b[i]]; &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(var k <span class="hljs-keyword">in</span> tmp) res.push(k);</span><br><span class="line">  <span class="hljs-built_in">return</span> new Set(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="np-완전-문제">NP-완전 문제</h3>
+<p>집단 커버링 문제를 해결하려면 가능한 모든 집합을 계산해야한다.<br>
+이전에 나왔던 외판원 문제도 마찬가지였다.<br>
+가능한 모든 경로 가운데 최단 경로를 찾기 위해서는 <code>가능한 모든 경로</code>를 계산해야한다(n!).</p>
+<p>집단 커버링 문제와 외판원 문제의 공통점!<br>
+모든 가능한 경우를 다 따져서 최단/최소를 구해야 한다는 것!<br>
+이런 문제를 <code>NP-완전 문제 NP-complete-problem</code>이라고 한다.</p>
+<h3 id="어떤-문제가-np-완전-문제인지-알-수-있는-방법은">어떤 문제가 NP-완전 문제인지 알 수 있는 방법은?</h3>
+<p>NP-완전 문제인지 파악할 수 있는 쉬운 방법은 없다!!!</p>
 <p>다만 몇가지 참고사항이 있다.</p>
 <pre><code>1. 항목이 적을 때는 빠르다가 항목이 늘어나면 갑자기 느려진다.
 2. &quot;X의 모든 조합&quot;이라고 하면 보통 NP-완전 문제
 3. 더 작은 하위 문제로 변환할 수 없어서 X의 가능한 모든 버전을 계산해야한다면 아마도 NP-완전 문제
 4. 문제가 수열을 포함하고 풀기 어려우면 NP-완전 문제
 5. 만약 문제에 집합이 있고 풀기 어려우면 NP-완전 문제
-6. 문제를 집합커버링 문제나 외판원 문제로 재정의할 수 있다면 명백하게 NP-완전 문제</code></pre><h3 id="8장에서-배운내용"><a href="#8장에서-배운내용" class="headerlink" title="8장에서 배운내용"></a>8장에서 배운내용</h3><pre><code>1. 탐욕 알고리즘은 전역 최적화를 목표로 하지만, 실제로는 국소 최적화를 한다.
+6. 문제를 집합커버링 문제나 외판원 문제로 재정의할 수 있다면 명백하게 NP-완전 문제
+</code></pre>
+<h3 id="8장에서-배운내용">8장에서 배운내용</h3>
+<pre><code>1. 탐욕 알고리즘은 전역 최적화를 목표로 하지만, 실제로는 국소 최적화를 한다.
 2. NP-완전 문제는 빠른 해답이 알려져 있지 않다.
 3. 만약 NP-완전 문제가 주어지면 근사 알고리즘을 쓰는 것이 최선.
-4. 탐욕 알고리즘은 작성하기도 쉽고, 빠르기 때문에 좋은 근사 알고리즘.</code></pre>
+4. 탐욕 알고리즘은 작성하기도 쉽고, 빠르기 때문에 좋은 근사 알고리즘.
+</code></pre>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -290,7 +319,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -383,7 +412,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -391,7 +420,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -476,6 +505,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -531,44 +598,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -586,7 +615,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -727,6 +756,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -782,44 +849,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -837,7 +866,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

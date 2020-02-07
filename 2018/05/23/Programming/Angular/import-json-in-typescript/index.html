@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>타입스크립트에서 json파일 import하기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/23/programming/angular/import-json-in-typescript/">  <meta name="description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/23/programming/angular/import-json-in-typescript/">  <meta name="description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta name="keywords" content="typescript,json import">
 <meta property="og:type" content="article">
 <meta property="og:title" content="타입스크립트에서 json파일 import하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/23/Programming/Angular/import-json-in-typescript/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<meta property="og:description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:23:32.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="타입스크립트에서 json파일 import하기">
-<meta name="twitter:description" content="타입스크립트에서 json파일 import하기ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
+<meta name="twitter:description" content="타입스크립트에서 json파일 import하기 ES6/ES2015에서 json파일을 코드에 import할 수 있다. 만약 example.json이 있다면">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -131,23 +131,20 @@
             
         </h1>
         <div class="content">
-            <h2 id="타입스크립트에서-json파일-import하기"><a href="#타입스크립트에서-json파일-import하기" class="headerlink" title="타입스크립트에서 json파일 import하기"></a>타입스크립트에서 json파일 import하기</h2><p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
+            <h2 id="타입스크립트에서-json파일-import하기">타입스크립트에서 json파일 import하기</h2>
+<p>ES6/ES2015에서 json파일을 코드에 import할 수 있다.</p>
 <p>만약 <code>example.json</code>이 있다면</p>
 <a id="more"></a>
-
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-string">"name"</span>: <span class="hljs-string">"testing"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>ES6/ES2015에서 아래와 같은 방식으로 import할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">// ES6/ES2015</span><br><span class="line">// app.js</span><br><span class="line">import * as data from <span class="hljs-string">'./example.json'</span>;</span><br><span class="line">const word = data.name;</span><br><span class="line">console.log(word); // output <span class="hljs-string">'testing'</span></span><br></pre></td></tr></table></figure>
-
 <p>하지만 typescript에서는 똑같이 적용하면 에러가 발생한다.</p>
-<p><code>Cannot find module &#39;example.json&#39;</code></p>
-<h2 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h2><p>TS Definition 파일에 (예를 들면, typings.d.ts파일) 아래를 추가하면 된다.</p>
+<p><code>Cannot find module 'example.json'</code></p>
+<h2 id="해결방법">해결방법</h2>
+<p>TS Definition 파일에 (예를 들면, typings.d.ts파일) 아래를 추가하면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">declare</span> module <span class="hljs-string">"*.json"</span> &#123;</span><br><span class="line">    const value: any;</span><br><span class="line">    <span class="hljs-built_in">export</span> default value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>그럼 아래와 같이 동작할 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">// Typescript</span><br><span class="line">// app.ts</span><br><span class="line">import * as data from <span class="hljs-string">'./example.json'</span>;</span><br><span class="line">const word = (&lt;any&gt;data).name;</span><br><span class="line">console.log(word); // output <span class="hljs-string">'testing'</span></span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -260,7 +257,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -353,7 +350,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -361,7 +358,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -446,6 +443,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -501,44 +536,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -556,7 +553,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -697,6 +694,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -752,44 +787,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -807,7 +804,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

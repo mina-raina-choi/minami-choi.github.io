@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] Rotate List - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/10/programming/algorithm/rotate-list/">  <meta name="description" content="문제링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/10/programming/algorithm/rotate-list/">  <meta name="description" content="문제 링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] Rotate List">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/10/Programming/Algorithm/rotate-list/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
+<meta property="og:description" content="문제 링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg">
 <meta property="og:updated_time" content="2020-01-02T15:15:18.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] Rotate List">
-<meta name="twitter:description" content="문제링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
+<meta name="twitter:description" content="문제 링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2015/04/20/13/44/ferris-wheel-731511__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -135,9 +135,9 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.</p>
+            <h1 id="문제">문제</h1>
+<p>링크드리스트가 주어졌을 때, k만큼 오른쪽으로 이동해라. 이 때 k는 음이 아닌 수.</p>
 <a id="more"></a>
-
 <pre><code>Example 1:
 
 Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2
@@ -154,21 +154,30 @@ Explanation:
 rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
 rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL
 rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL
-rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a href="https://leetcode.com/problems/rotate-list/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/rotate-list/</a></p>
-<h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>처음 생각했던 방법은 링크드리스트의 마지막요소의 전 요소를 찾은 후, 그 요소의 next를 null로 만들고 마지막 요소를 새로운 head로 만드는 방식이었다.</p>
-<p>하지만 이렇게 할 경우, [1,2,3] k=2000000 이런 인풋에서는 시간초과오류가 났다.<br>실행시간이 <code>N(n * k), n=length of list</code>이다.<br>이 방법이 아니라 새로운 방법으로 풀어야 했다.</p>
+rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL
+</code></pre>
+<p>출처 - <a href="https://leetcode.com/problems/rotate-list/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/rotate-list/</a></p>
+<h1 id="풀이-과정">풀이 과정</h1>
+<p>처음 생각했던 방법은 링크드리스트의 마지막요소의 전 요소를 찾은 후, 그 요소의 next를 null로 만들고 마지막 요소를 새로운 head로 만드는 방식이었다.</p>
+<p>하지만 이렇게 할 경우, [1,2,3] k=2000000 이런 인풋에서는 시간초과오류가 났다.<br>
+실행시간이 <code>N(n * k), n=length of list</code>이다.<br>
+이 방법이 아니라 새로운 방법으로 풀어야 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> last = head</span><br><span class="line">  <span class="hljs-keyword">let</span> newFirst = <span class="hljs-literal">null</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트일경우, 리스트 크기가 1일 경우는 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (head &amp;&amp; head.next) &#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (k) &#123;</span><br><span class="line">      last = findBeforeLastItem(head)</span><br><span class="line"></span><br><span class="line">      newFirst = last.next</span><br><span class="line">      newFirst.next = head</span><br><span class="line"></span><br><span class="line">      last.next = <span class="hljs-literal">null</span></span><br><span class="line">      head = newFirst</span><br><span class="line">      k--</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 마지막 전 원소 찾기</span></span><br><span class="line"><span class="hljs-keyword">const</span> findBeforeLastItem = <span class="hljs-function"><span class="hljs-params">last</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">while</span> (last.next &amp;&amp; last.next.next) &#123;</span><br><span class="line">    last = last.next</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> last</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>릿코드 디스커스에서 <code>circular linked list</code>를 이용하면 쉽게 풀 수 있다는 글을 보고 원형연결리스트를 만들어보았다. 이 때, <code>tail</code>값을 미리 저장해둔다.<br>원형연결리스트를 만들면서 리스트의 길이(len)도 체크한다.</p>
+<p>릿코드 디스커스에서 <code>circular linked list</code>를 이용하면 쉽게 풀 수 있다는 글을 보고 원형연결리스트를 만들어보았다. 이 때, <code>tail</code>값을 미리 저장해둔다.<br>
+원형연결리스트를 만들면서 리스트의 길이(len)도 체크한다.</p>
 <p><code>k</code>만큼 <code>rotate</code>을 했을 때의 tail의 next는 새로운 <code>head</code>가 되고, <code>tail.next = null</code>로 할당해주면 다시 선형 linked list가 된다.</p>
 <p>k가 len보다 커지면 똑같은 연산이 반복되므로 나머지 연산을 이용해 반복을 줄인다.<code>k % len</code></p>
-<p>우리가 현재 찾는 값은 rotate했을 때의 tail값이다.<br><code>let n = len - (k % len)</code> 이 계산식을 통해 구해진 <code>n</code>번 만큼 tail을 이동하면 구할 수 있다.</p>
+<p>우리가 현재 찾는 값은 rotate했을 때의 tail값이다.<br>
+<code>let n = len - (k % len)</code> 이 계산식을 통해 구해진 <code>n</code>번 만큼 tail을 이동하면 구할 수 있다.</p>
 <p>결과값으로 구해진 tail의 next값이 리턴할 링크드 리스트의 head이고, tail.next는 다시 null로 세팅한다.</p>
 <p>이렇게 계산하면 실행시간은 N(n)이 되겠다.</p>
 <hr>
-<p>원형연결리스트를 이용하면 문제가 풀린다는 힌트를 얻고도 문제를 해결하는 데 꽤 많이 시간을 쏟았다.<br><code>let n = len - (k % len)</code><br>이 계산식을 도출해내기까지 생각이 많이 필요했다.<br>리스트 길이 이상으로 rotate을 하면 반복이 되므로 나머지연산<code>(k % len)</code>으로 반복횟수를 줄이고, tail을 찾는 것이기 때문에 <code>(k % len)</code>번이 아니라 <code>len - (k % len)</code>번 while문을 돌려야 한다.</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> tail = head</span><br><span class="line">  <span class="hljs-keyword">let</span> len = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    len++</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">      len++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// circlular linked list 만들기</span></span><br><span class="line">    tail = node</span><br><span class="line">    tail.next = head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = len - (k % len)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (n) &#123;</span><br><span class="line">      tail = tail.next</span><br><span class="line">      n--</span><br><span class="line">    &#125;</span><br><span class="line">    head = tail.next</span><br><span class="line">    tail.next = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">return</span> head</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>원형연결리스트를 이용하면 문제가 풀린다는 힌트를 얻고도 문제를 해결하는 데 꽤 많이 시간을 쏟았다.<br>
+<code>let n = len - (k % len)</code><br>
+이 계산식을 도출해내기까지 생각이 많이 필요했다.<br>
+리스트 길이 이상으로 rotate을 하면 반복이 되므로 나머지연산<code>(k % len)</code>으로 반복횟수를 줄이고, tail을 찾는 것이기 때문에 <code>(k % len)</code>번이 아니라 <code>len - (k % len)</code>번 while문을 돌려야 한다.</p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> rotateRight = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">head, k</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node = head</span><br><span class="line">  <span class="hljs-keyword">let</span> tail = head</span><br><span class="line">  <span class="hljs-keyword">let</span> len = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// 빈 리스트 제외</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    len++</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">      len++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// circlular linked list 만들기</span></span><br><span class="line">    tail = node</span><br><span class="line">    tail.next = head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> n = len - (k % len)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (n) &#123;</span><br><span class="line">      tail = tail.next</span><br><span class="line">      n--</span><br><span class="line">    &#125;</span><br><span class="line">    head = tail.next</span><br><span class="line">    tail.next = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">return</span> head</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> node</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -281,7 +290,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -374,7 +383,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -382,7 +391,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -491,6 +500,44 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -546,44 +593,6 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -601,7 +610,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -766,6 +775,44 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -821,44 +868,6 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -876,7 +885,7 @@ rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</code></pre><p>출처 - <a h
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

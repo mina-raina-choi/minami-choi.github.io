@@ -135,139 +135,156 @@
 <li>그래프의 간선에 가중치를 준 가중 그래프weighted graph을 배우자.</li>
 <li>가중 그래프에서 X까지의 최단 경로를 구하는 다익스트라 알고리즘을 배우자.</li>
 <li>그래프에 사이클 cycle이 있을 경우 다익스트라 알고리즘을 사용할 수 없다.<a id="more"></a>
-
 </li>
 </ul>
-<h2 id="너비-우선-탐색-vs-다익스트라-알고리즘"><a href="#너비-우선-탐색-vs-다익스트라-알고리즘" class="headerlink" title="너비 우선 탐색 vs 다익스트라 알고리즘"></a>너비 우선 탐색 vs 다익스트라 알고리즘</h2><p>너비 우선 탐색으로 최단 경로(가장 적은 수의 구간을 지나는)를 찾을 수 있었다.<br>다익스트라 알고리즘으로는 최단 시간 경로를 구할 수 있다!<br>다익스트라 알고리즘은 각 구간에 대해 숫자 혹은 가중치를 줄 수 있다. 전체 가중치의 합이 가장 작은 구간을 찾는다.</p>
-<h3 id="다익스트라-알고리즘-4단계"><a href="#다익스트라-알고리즘-4단계" class="headerlink" title="다익스트라 알고리즘 4단계"></a>다익스트라 알고리즘 4단계</h3><ol>
+<h2 id="너비-우선-탐색-vs-다익스트라-알고리즘">너비 우선 탐색 vs 다익스트라 알고리즘</h2>
+<p>너비 우선 탐색으로 최단 경로(가장 적은 수의 구간을 지나는)를 찾을 수 있었다.<br>
+다익스트라 알고리즘으로는 최단 시간 경로를 구할 수 있다!<br>
+다익스트라 알고리즘은 각 구간에 대해 숫자 혹은 가중치를 줄 수 있다. 전체 가중치의 합이 가장 작은 구간을 찾는다.</p>
+<h3 id="다익스트라-알고리즘-4단계">다익스트라 알고리즘 4단계</h3>
+<ol>
 <li>가장 가격이 싼 정점, 즉 도달하는 데 시간이 가장 적게 걸리는 정점을 찾는다.</li>
 <li>이 정점의 이웃 정점에 대해 현재의 가격보다 더 싼 경로가 존재하는 지 확인, 만약 존재한다면 가격을 수정.</li>
 <li>그래프 상의 모든 정점에 대해 이러한 일을 반복</li>
 <li>최종 경로를 계산</li>
 </ol>
 <p><img src="/images/dijkstra-algorithm.png" alt></p>
-<p>위의 그래프는 라마가 바꿀 수 있는 물건들을 정점으로 나타냈다. 간선의 가중치는 물건을 바꾸는 데 드는 돈이다.<br>라마가 돈을 가장 적게 쓰면서 악보를 피아노와 바꾸려면 어떤 경로를 택해야할까?</p>
+<p>위의 그래프는 라마가 바꿀 수 있는 물건들을 정점으로 나타냈다. 간선의 가중치는 물건을 바꾸는 데 드는 돈이다.<br>
+라마가 돈을 가장 적게 쓰면서 악보를 피아노와 바꾸려면 어떤 경로를 택해야할까?</p>
 <p>일단 각 정점에 대한 가격표를 만든다. 정점의 가격이란 그 정점에 도달하기까지 드는 돈을 의미한다.</p>
 <table>
 <thead>
 <tr>
-<th align="center">정점</th>
-<th align="center">가격</th>
+<th style="text-align:center">정점</th>
+<th style="text-align:center">가격</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">LP</td>
-<td align="center">5</td>
+<tbody>
+<tr>
+<td style="text-align:center">LP</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center">포스터</td>
-<td align="center">0</td>
+<td style="text-align:center">포스터</td>
+<td style="text-align:center">0</td>
 </tr>
 <tr>
-<td align="center">기타</td>
-<td align="center">*</td>
+<td style="text-align:center">기타</td>
+<td style="text-align:center">*</td>
 </tr>
 <tr>
-<td align="center">드럼</td>
-<td align="center">*</td>
+<td style="text-align:center">드럼</td>
+<td style="text-align:center">*</td>
 </tr>
 <tr>
-<td align="center">피아노</td>
-<td align="center">*</td>
+<td style="text-align:center">피아노</td>
+<td style="text-align:center">*</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>알고리즘을 진행하면서 표를 수정하는데, 최종 경로를 계산하려면 부모열이 필요하다.</p>
 <table>
 <thead>
 <tr>
-<th align="center">부모</th>
-<th align="center">정점</th>
-<th align="center">가격</th>
+<th style="text-align:center">부모</th>
+<th style="text-align:center">정점</th>
+<th style="text-align:center">가격</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">악보</td>
-<td align="center">LP</td>
-<td align="center">5</td>
+<tbody>
+<tr>
+<td style="text-align:center">악보</td>
+<td style="text-align:center">LP</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center">악보</td>
-<td align="center">포스터</td>
-<td align="center">0</td>
+<td style="text-align:center">악보</td>
+<td style="text-align:center">포스터</td>
+<td style="text-align:center">0</td>
 </tr>
 <tr>
-<td align="center">포스터</td>
-<td align="center"><del>기타</del></td>
-<td align="center"><del>30</del></td>
+<td style="text-align:center">포스터</td>
+<td style="text-align:center"><s>기타</s></td>
+<td style="text-align:center"><s>30</s></td>
 </tr>
 <tr>
-<td align="center">포스터</td>
-<td align="center"><del>드럼</del></td>
-<td align="center"><del>35</del></td>
+<td style="text-align:center">포스터</td>
+<td style="text-align:center"><s>드럼</s></td>
+<td style="text-align:center"><s>35</s></td>
 </tr>
 <tr>
-<td align="center">LP</td>
-<td align="center">기타</td>
-<td align="center">20</td>
+<td style="text-align:center">LP</td>
+<td style="text-align:center">기타</td>
+<td style="text-align:center">20</td>
 </tr>
 <tr>
-<td align="center">LP</td>
-<td align="center">드럼</td>
-<td align="center">25</td>
+<td style="text-align:center">LP</td>
+<td style="text-align:center">드럼</td>
+<td style="text-align:center">25</td>
 </tr>
 <tr>
-<td align="center">기타</td>
-<td align="center"><del>피아노</del></td>
-<td align="center"><del>40</del></td>
+<td style="text-align:center">기타</td>
+<td style="text-align:center"><s>피아노</s></td>
+<td style="text-align:center"><s>40</s></td>
 </tr>
 <tr>
-<td align="center">드럼</td>
-<td align="center">피아노</td>
-<td align="center">35</td>
+<td style="text-align:center">드럼</td>
+<td style="text-align:center">피아노</td>
+<td style="text-align:center">35</td>
 </tr>
-</tbody></table>
-<p>위이 표를 보면 라마가 가장 싸게 피아노를 구매할 수 있는 가격은 35달러!!<br>경로를 찾아보면,</p>
+</tbody>
+</table>
+<p>위이 표를 보면 라마가 가장 싸게 피아노를 구매할 수 있는 가격은 35달러!!<br>
+경로를 찾아보면,</p>
 <p><code>악보 -&gt; (5) -&gt; LP -&gt; (20) -&gt; 드럼 -&gt; (10) -&gt; 피아노</code></p>
-<h2 id="간선의-가중치가-음수인-경우"><a href="#간선의-가중치가-음수인-경우" class="headerlink" title="간선의 가중치가 음수인 경우"></a>간선의 가중치가 음수인 경우</h2><p>만약 아래의 그래프에서 드럼을 살 수 있는 최소 가격을 다익스트라 알고리즘으로 구해보면?</p>
+<h2 id="간선의-가중치가-음수인-경우">간선의 가중치가 음수인 경우</h2>
+<p>만약 아래의 그래프에서 드럼을 살 수 있는 최소 가격을 다익스트라 알고리즘으로 구해보면?</p>
 <p><img src="/images/dijkstra-algorithm-2.png" alt></p>
 <table>
 <thead>
 <tr>
-<th align="center">부모</th>
-<th align="center">정점</th>
-<th align="center">가격</th>
+<th style="text-align:center">부모</th>
+<th style="text-align:center">정점</th>
+<th style="text-align:center">가격</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">악보</td>
-<td align="center">LP</td>
-<td align="center">5</td>
+<tbody>
+<tr>
+<td style="text-align:center">악보</td>
+<td style="text-align:center">LP</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td align="center"><del>LP</del></td>
-<td align="center"><del>포스터</del></td>
-<td align="center"><del>-2</del></td>
+<td style="text-align:center"><s>LP</s></td>
+<td style="text-align:center"><s>포스터</s></td>
+<td style="text-align:center"><s>-2</s></td>
 </tr>
 <tr>
-<td align="center">악보</td>
-<td align="center">포스터</td>
-<td align="center">0</td>
+<td style="text-align:center">악보</td>
+<td style="text-align:center">포스터</td>
+<td style="text-align:center">0</td>
 </tr>
 <tr>
-<td align="center">포스터</td>
-<td align="center">드럼</td>
-<td align="center">35</td>
+<td style="text-align:center">포스터</td>
+<td style="text-align:center">드럼</td>
+<td style="text-align:center">35</td>
 </tr>
-</tbody></table>
-<p>포스터에 도달하는 0달러보다 더 싼 경로는 없다고 가정하지만, 실제로 -2달러인 경로가 존재한다.<br>다익스트라 알고리즘에서는 포스터 정점을 이미 처리했기 때문에 더 싼 경로는 없다고 가정한다.<br>그래서 드럼에 이르는 더 싼 경로를(33달러) 다익스트라 알고리즘에서는 찾지 못한다.</p>
-<h2 id="코드로-구현"><a href="#코드로-구현" class="headerlink" title="코드로 구현"></a>코드로 구현</h2><p><img src="/images/dijkstra-algorithm-3.png" alt></p>
+</tbody>
+</table>
+<p>포스터에 도달하는 0달러보다 더 싼 경로는 없다고 가정하지만, 실제로 -2달러인 경로가 존재한다.<br>
+다익스트라 알고리즘에서는 포스터 정점을 이미 처리했기 때문에 더 싼 경로는 없다고 가정한다.<br>
+그래서 드럼에 이르는 더 싼 경로를(33달러) 다익스트라 알고리즘에서는 찾지 못한다.</p>
+<h2 id="코드로-구현">코드로 구현</h2>
+<p><img src="/images/dijkstra-algorithm-3.png" alt></p>
 <p>위의 그래프를 코드로 구현해보자.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">//그래프에 대한 해시테이블</span><br><span class="line">graph = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"start"</span>] = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"start"</span>][<span class="hljs-string">"a"</span>] = 6;</span><br><span class="line">graph[<span class="hljs-string">"start"</span>][<span class="hljs-string">"b"</span>] = 2;</span><br><span class="line"></span><br><span class="line">graph[<span class="hljs-string">"a"</span>] = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"a"</span>][<span class="hljs-string">"fin"</span>] = 1;</span><br><span class="line"></span><br><span class="line">graph[<span class="hljs-string">"b"</span>] = &#123;&#125;;</span><br><span class="line">graph[<span class="hljs-string">"b"</span>][<span class="hljs-string">"a"</span>] = 3;</span><br><span class="line">graph[<span class="hljs-string">"b"</span>][<span class="hljs-string">"fin"</span>] = 5;</span><br><span class="line"></span><br><span class="line">graph[<span class="hljs-string">"fin"</span>] = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//가격에 대한 해시테이블</span><br><span class="line">costs = &#123;&#125;;</span><br><span class="line">costs[<span class="hljs-string">"a"</span>] = 6;</span><br><span class="line">costs[<span class="hljs-string">"b"</span>] = 2;</span><br><span class="line">costs[<span class="hljs-string">"fin"</span>] = Infinity;</span><br><span class="line"></span><br><span class="line">//부모를 위한 해시테이블</span><br><span class="line">parents = &#123;&#125;;</span><br><span class="line">parents[<span class="hljs-string">"a"</span>] = <span class="hljs-string">"start"</span>;</span><br><span class="line">parents[<span class="hljs-string">"b"</span>] = <span class="hljs-string">"start"</span>;</span><br><span class="line">parents[<span class="hljs-string">"fin"</span>] = <span class="hljs-string">""</span>;</span><br><span class="line"></span><br><span class="line">// 이미 처리한 정점 배열</span><br><span class="line">processed = [];</span><br><span class="line"></span><br><span class="line">// 아직 처리하지 않은 가장 싼 정점을 찾는다</span><br><span class="line">find_lowest_cost_node = (costs) =&gt; &#123;</span><br><span class="line">  lowest_cost = Infinity;</span><br><span class="line">  lowest_cost_node = <span class="hljs-string">""</span>;</span><br><span class="line">  <span class="hljs-keyword">for</span>( <span class="hljs-built_in">let</span> node <span class="hljs-keyword">in</span> costs) &#123;</span><br><span class="line">    const cost = costs[node];</span><br><span class="line">    <span class="hljs-keyword">if</span>(cost &lt; lowest_cost &amp;&amp; processed.indexOf(node) &lt; 0) &#123;</span><br><span class="line">      lowest_cost = cost;</span><br><span class="line">      lowest_cost_node = node;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">return</span> lowest_cost_node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">let</span> node = find_lowest_cost_node(costs);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span>(node) &#123;</span><br><span class="line">  const cost = costs[node];</span><br><span class="line">  const neighbors = graph[node]</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">let</span> i =0; i&lt; Object.keys(neighbors).length; i++) &#123;</span><br><span class="line">    const new_cost = cost + neighbors[Object.keys(neighbors)[i]]</span><br><span class="line">    <span class="hljs-keyword">if</span>( costs[Object.keys(neighbors)[i]] &gt; new_cost ) &#123;</span><br><span class="line">      costs[Object.keys(neighbors)[i]] = new_cost;</span><br><span class="line">      parents[Object.keys(neighbors)[i]] = node</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  processed.push(node)</span><br><span class="line">  node = find_lowest_cost_node(costs)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//&#123; a: 5, b: 2, fin: 6 &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="7장에서-배운-내용"><a href="#7장에서-배운-내용" class="headerlink" title="7장에서 배운 내용"></a>7장에서 배운 내용</h2><pre><code>1. 너비 우선 탐색은 가중치가 없는 균일 그래프에서 최단 경로를 계산하는 데 사용.
+<h2 id="7장에서-배운-내용">7장에서 배운 내용</h2>
+<pre><code>1. 너비 우선 탐색은 가중치가 없는 균일 그래프에서 최단 경로를 계산하는 데 사용.
 2. 다익스트라 알고리즘은 가중 그래프에서 최단 거리를 계산하는 데 사용.
 3. 다익스트라 알고리즘은 모든 가중치가 양수일 때 정상적으로 동작.
-4. 만약 가중치가 음수이면 벨만-포드 알고리즘을 사용.</code></pre>
+4. 만약 가중치가 음수이면 벨만-포드 알고리즘을 사용.
+</code></pre>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -379,7 +396,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -472,7 +489,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -480,7 +497,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -565,6 +582,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -620,44 +675,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -675,7 +692,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -816,6 +833,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -871,44 +926,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -926,7 +943,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

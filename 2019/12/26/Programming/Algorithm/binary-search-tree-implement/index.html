@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>이진탐색트리 구현 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/26/programming/algorithm/binary-search-tree-implement/">  <meta name="description" content="이진탐색트리를 구현해보자.그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란?트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/26/programming/algorithm/binary-search-tree-implement/">  <meta name="description" content="이진탐색트리를 구현해보자. 그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란? 트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
 <meta name="keywords" content="BinarySearchTree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="이진탐색트리 구현">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/26/Programming/Algorithm/binary-search-tree-implement/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="이진탐색트리를 구현해보자.그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란?트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
+<meta property="og:description" content="이진탐색트리를 구현해보자. 그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란? 트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg">
 <meta property="og:updated_time" content="2019-12-25T16:15:53.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="이진탐색트리 구현">
-<meta name="twitter:description" content="이진탐색트리를 구현해보자.그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란?트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
+<meta name="twitter:description" content="이진탐색트리를 구현해보자. 그전에 자료구조 트리의 개념을 먼저 살펴보면, 트리 (Tree) 란? 트리: Node와 Branch를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2019/12/09/17/49/merry-4684006__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -135,28 +135,43 @@
             
         </h1>
         <div class="content">
-            <p>이진탐색트리를 구현해보자.<br>그전에 자료구조 트리의 개념을 먼저 살펴보면,</p>
-<h3 id="트리-Tree-란"><a href="#트리-Tree-란" class="headerlink" title="트리 (Tree) 란?"></a>트리 (Tree) 란?</h3><p><code>트리</code>: <code>Node와 Branch</code>를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조</p>
+            <p>이진탐색트리를 구현해보자.<br>
+그전에 자료구조 트리의 개념을 먼저 살펴보면,</p>
+<h3 id="트리-tree-란">트리 (Tree) 란?</h3>
+<p><code>트리</code>: <code>Node와 Branch</code>를 이용해서, 사이클을 이루지 않도록 구성한 데이터 구조</p>
 <a id="more"></a>
-
-<p><code>이진 트리</code> : Node가 가질 수 있는 Branch가 최대 2개인 트리<br><code>이진 탐색 트리</code> : 이진트리 중에서 Branch를 만들 때, 자기 노드보다 작은 것은 왼쪽, 큰 것은 오른쪽에 위치하도록 하는 트리.</p>
+<p><code>이진 트리</code> : Node가 가질 수 있는 Branch가 최대 2개인 트리<br>
+<code>이진 탐색 트리</code> : 이진트리 중에서 Branch를 만들 때, 자기 노드보다 작은 것은 왼쪽, 큰 것은 오른쪽에 위치하도록 하는 트리.</p>
 <p>[참고]알아둘 용어</p>
 <blockquote>
-<p>Node: 트리에서 데이터를 저장하는 기본 요소 (데이터와 다른 연결된 노드에 대한 Branch 정보 포함)<br>Root Node: 트리 맨 위에 있는 노드<br>Level: 최상위 노드를 Level 0으로 하였을 때, 하위 Branch로 연결된 노드의 깊이를 나타냄<br>Parent Node: 어떤 노드의 다음 레벨에 연결된 노드<br>Child Node: 어떤 노드의 상위 레벨에 연결된 노드<br>Leaf Node (Terminal Node): Child Node가 하나도 없는 노드<br>Sibling (Brother Node): 동일한 Parent Node를 가진 노드<br>Depth: 트리에서 Node가 가질 수 있는 최대 Level</p>
+<p>Node: 트리에서 데이터를 저장하는 기본 요소 (데이터와 다른 연결된 노드에 대한 Branch 정보 포함)<br>
+Root Node: 트리 맨 위에 있는 노드<br>
+Level: 최상위 노드를 Level 0으로 하였을 때, 하위 Branch로 연결된 노드의 깊이를 나타냄<br>
+Parent Node: 어떤 노드의 다음 레벨에 연결된 노드<br>
+Child Node: 어떤 노드의 상위 레벨에 연결된 노드<br>
+Leaf Node (Terminal Node): Child Node가 하나도 없는 노드<br>
+Sibling (Brother Node): 동일한 Parent Node를 가진 노드<br>
+Depth: 트리에서 Node가 가질 수 있는 최대 Level</p>
 <p><img src="https://www.fun-coding.org/00_Images/tree.png" alt="이진트리구조"></p>
 </blockquote>
-<h3 id="실제로-어디에-많이-사용되나"><a href="#실제로-어디에-많이-사용되나" class="headerlink" title="실제로 어디에 많이 사용되나?"></a>실제로 어디에 많이 사용되나?</h3><p>트리 중 이진 트리 (Binary Tree) 형태의 구조로, 탐색(검색) 알고리즘 구현을 위해 많이 사용된다.</p>
+<h3 id="실제로-어디에-많이-사용되나">실제로 어디에 많이 사용되나?</h3>
+<p>트리 중 이진 트리 (Binary Tree) 형태의 구조로, 탐색(검색) 알고리즘 구현을 위해 많이 사용된다.</p>
 <blockquote>
 <p><img src="https://www.mathwarehouse.com/programming/images/binary-search-tree/binary-search-tree-sorted-array-animation.gif" alt="이진탐색트리와 정렬된 배열 검색비교"></p>
 </blockquote>
-<h3 id="탐색시-시간복잡도"><a href="#탐색시-시간복잡도" class="headerlink" title="탐색시 시간복잡도"></a>탐색시 시간복잡도</h3><blockquote>
-<p>depth (트리의 높이) 를 h라고 표기한다면, O(h)<br>n개의 노드를 가진다면, ℎ=𝑙𝑜𝑔2𝑛 에 가까우므로, 시간 복잡도는 𝑂(𝑙𝑜𝑔𝑛)<br>참고: 빅오 표기법에서 𝑙𝑜𝑔𝑛 에서의 log의 밑은 10이 아니라, 2이다.<br>한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미한다.</p>
+<h3 id="탐색시-시간복잡도">탐색시 시간복잡도</h3>
+<blockquote>
+<p>depth (트리의 높이) 를 h라고 표기한다면, O(h)<br>
+n개의 노드를 가진다면, ℎ=𝑙𝑜𝑔2𝑛 에 가까우므로, 시간 복잡도는 𝑂(𝑙𝑜𝑔𝑛)<br>
+참고: 빅오 표기법에서 𝑙𝑜𝑔𝑛 에서의 log의 밑은 10이 아니라, 2이다.<br>
+한번 실행시마다, 50%의 실행할 수도 있는 명령을 제거한다는 의미. 즉 50%의 실행시간을 단축시킬 수 있다는 것을 의미한다.</p>
 </blockquote>
-<p>하지만 위와 같은 시간복잡도는 이진트리가 균형잡혀 있을 때의 평균 시간복잡도이다.<br>최악의 경우 링크드 리스트와 동일한 성능을 보여주기도 한다.</p>
-<h3 id="이진탐색트리-구현"><a href="#이진탐색트리-구현" class="headerlink" title="이진탐색트리 구현"></a>이진탐색트리 구현</h3><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.data = data</span><br><span class="line">    <span class="hljs-keyword">this</span>.right = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.left = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearchTree</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>._head = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  insert(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._head) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> currNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (data &lt; currNode.data) &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (currNode.left) &#123;</span><br><span class="line">            <span class="hljs-comment">// 비교할 대상 바꾸기</span></span><br><span class="line">            currNode = currNode.left</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            currNode.left = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (currNode.right) &#123;</span><br><span class="line">            <span class="hljs-comment">// 비교할 대상 바꾸기</span></span><br><span class="line">            currNode = currNode.right</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            currNode.right = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  search(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">while</span> (curr) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (curr.data === data) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data &lt; curr.data) &#123;</span><br><span class="line">        curr = curr.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        curr = curr.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 복잡하므로 경우를 나눠서 생각하는게 좋다.</span></span><br><span class="line"><span class="hljs-comment">    1. 삭제할 노드가 leaf node일 경우</span></span><br><span class="line"><span class="hljs-comment">    2. child node가 하나인 노드 삭제</span></span><br><span class="line"><span class="hljs-comment">    3. child node가 두개인 노드 삭제</span></span><br><span class="line"><span class="hljs-comment">    (둘중에 하나의 전략으로)</span></span><br><span class="line"><span class="hljs-comment">    전략 1. 삭제할 노드의 오른쪽 자식중, 가장 작은 값을 삭제할 노드의 parent노드가 가리키도록 한다.</span></span><br><span class="line"><span class="hljs-comment">    전략 2. 삭제할 노드의 왼쪽 자식중, 가장 큰 값을 삭제할 노드의 parent 노드가 가리키도록 한다.</span></span><br><span class="line"><span class="hljs-comment">    아래의 코드에서는 전략1을 사용</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">  <span class="hljs-keyword">delete</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> searched = <span class="hljs-literal">false</span></span><br><span class="line">    <span class="hljs-keyword">let</span> currNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">let</span> parentNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 1. 삭제할 노드 있는 체크</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (currNode) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (currNode.data === data) &#123;</span><br><span class="line">        searched = <span class="hljs-literal">true</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data &lt; currNode.data) &#123;</span><br><span class="line">        parentNode = currNode</span><br><span class="line">        currNode = currNode.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode = currNode</span><br><span class="line">        currNode = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (!searched) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// case 1 : leaf node 인지 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left === <span class="hljs-literal">null</span> &amp;&amp; currNode.right === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 삭제할 노드가 왼쪽노드인지 오른쪽노드인지 체크</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = <span class="hljs-literal">null</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = <span class="hljs-literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">//   delete currNode</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// case 2 : child 노드를 하나만 가지고 있을 때</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left !== <span class="hljs-literal">null</span> &amp;&amp; currNode.right === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = currNode.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = currNode.left</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currNode.left === <span class="hljs-literal">null</span> &amp;&amp; currNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = currNode.right</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*  case 3 전략 1 삭제할 노드의 오른쪽 자식중, </span></span><br><span class="line"><span class="hljs-comment">    가장 작은 값을 삭제할 노드의 parent노드가 가리키도록 한다. */</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left !== <span class="hljs-literal">null</span> &amp;&amp; currNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// case 3-1 : 삭제할 Node가 Parent Node 왼쪽에 있을 때</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNode = currNode.right</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNodeParent = currNode.right</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (changeNode.left !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent = changeNode</span><br><span class="line">          changeNode = changeNode.left</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 오른쪽 노드들중 가장 작은 값의 노드가 right child가 있는지 체크</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (changeNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent.left = changeNode.right</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          changeNodeParent.left = <span class="hljs-literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        parentNode.left = changeNode</span><br><span class="line">        changeNode.right = currNode.right</span><br><span class="line">        changeNode.left = currNode.left</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">// case 3-2 : 삭제할 Node가 Parent Node 오른쪽에 있을 때</span></span><br><span class="line">      <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNode = currNode.left</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNodeParent = currNode.left</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (changeNode.left !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent = changeNode</span><br><span class="line">          changeNode = changeNode.left</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 오른쪽 노드들중 가장 작은 값의 노드가 right child가 있는지 체크</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (changeNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent.left = changeNode.right</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          changeNodeParent.left = <span class="hljs-literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        parentNode.right = changeNode</span><br><span class="line">        changeNode.left = currNode.left</span><br><span class="line">        changeNode.right = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="이진검색트리-테스트"><a href="#이진검색트리-테스트" class="headerlink" title="이진검색트리 테스트"></a>이진검색트리 테스트</h3><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 임의의 숫자 100개 준비</span></span><br><span class="line"><span class="hljs-keyword">const</span> numset = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()</span><br><span class="line"><span class="hljs-keyword">while</span> (numset.size != <span class="hljs-number">100</span>) &#123;</span><br><span class="line">  numset.add(<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">1000</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 헤드값을 500을 가지는 이진검색트리 생성</span></span><br><span class="line"><span class="hljs-keyword">const</span> bst = <span class="hljs-keyword">new</span> BinarySearchTree()</span><br><span class="line">bst.insert(<span class="hljs-number">500</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 선택된 100개의 숫자를 이진 탐색 트리에 입력</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> numset) &#123;</span><br><span class="line">  bst.insert(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 입력한 100개의 숫자 검색 (검색 기능 확인)</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> numset) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (bst.search(item) === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"search failed"</span>, item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 10개 임의로 삭제해보기</span></span><br><span class="line"><span class="hljs-keyword">const</span> deleteNums = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()</span><br><span class="line"><span class="hljs-keyword">const</span> numArray = [...numset]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span> (deleteNums.size != <span class="hljs-number">10</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> index = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>)</span><br><span class="line">  deleteNums.add(numArray[index])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> deleteNums) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (bst.delete(item) === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"delete failed"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>하지만 위와 같은 시간복잡도는 이진트리가 균형잡혀 있을 때의 평균 시간복잡도이다.<br>
+최악의 경우 링크드 리스트와 동일한 성능을 보여주기도 한다.</p>
+<h3 id="이진탐색트리-구현">이진탐색트리 구현</h3>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.data = data</span><br><span class="line">    <span class="hljs-keyword">this</span>.right = <span class="hljs-literal">null</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.left = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearchTree</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>._head = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  insert(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._head) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> currNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (data &lt; currNode.data) &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (currNode.left) &#123;</span><br><span class="line">            <span class="hljs-comment">// 비교할 대상 바꾸기</span></span><br><span class="line">            currNode = currNode.left</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            currNode.left = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (currNode.right) &#123;</span><br><span class="line">            <span class="hljs-comment">// 비교할 대상 바꾸기</span></span><br><span class="line">            currNode = currNode.right</span><br><span class="line">          &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            currNode.right = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  search(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">while</span> (curr) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (curr.data === data) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data &lt; curr.data) &#123;</span><br><span class="line">        curr = curr.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        curr = curr.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 복잡하므로 경우를 나눠서 생각하는게 좋다.</span></span><br><span class="line"><span class="hljs-comment">    1. 삭제할 노드가 leaf node일 경우</span></span><br><span class="line"><span class="hljs-comment">    2. child node가 하나인 노드 삭제</span></span><br><span class="line"><span class="hljs-comment">    3. child node가 두개인 노드 삭제</span></span><br><span class="line"><span class="hljs-comment">    (둘중에 하나의 전략으로)</span></span><br><span class="line"><span class="hljs-comment">    전략 1. 삭제할 노드의 오른쪽 자식중, 가장 작은 값을 삭제할 노드의 parent노드가 가리키도록 한다.</span></span><br><span class="line"><span class="hljs-comment">    전략 2. 삭제할 노드의 왼쪽 자식중, 가장 큰 값을 삭제할 노드의 parent 노드가 가리키도록 한다.</span></span><br><span class="line"><span class="hljs-comment">    아래의 코드에서는 전략1을 사용</span></span><br><span class="line"><span class="hljs-comment">    */</span></span><br><span class="line">  <span class="hljs-keyword">delete</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> searched = <span class="hljs-literal">false</span></span><br><span class="line">    <span class="hljs-keyword">let</span> currNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">let</span> parentNode = <span class="hljs-keyword">this</span>._head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 1. 삭제할 노드 있는 체크</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (currNode) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (currNode.data === data) &#123;</span><br><span class="line">        searched = <span class="hljs-literal">true</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (data &lt; currNode.data) &#123;</span><br><span class="line">        parentNode = currNode</span><br><span class="line">        currNode = currNode.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode = currNode</span><br><span class="line">        currNode = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (!searched) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// case 1 : leaf node 인지 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left === <span class="hljs-literal">null</span> &amp;&amp; currNode.right === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 삭제할 노드가 왼쪽노드인지 오른쪽노드인지 체크</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = <span class="hljs-literal">null</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = <span class="hljs-literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">//   delete currNode</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// case 2 : child 노드를 하나만 가지고 있을 때</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left !== <span class="hljs-literal">null</span> &amp;&amp; currNode.right === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = currNode.left</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = currNode.left</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (currNode.left === <span class="hljs-literal">null</span> &amp;&amp; currNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        parentNode.left = currNode.right</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        parentNode.right = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/*  case 3 전략 1 삭제할 노드의 오른쪽 자식중, </span></span><br><span class="line"><span class="hljs-comment">    가장 작은 값을 삭제할 노드의 parent노드가 가리키도록 한다. */</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (currNode.left !== <span class="hljs-literal">null</span> &amp;&amp; currNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// case 3-1 : 삭제할 Node가 Parent Node 왼쪽에 있을 때</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (data &lt; parentNode.data) &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNode = currNode.right</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNodeParent = currNode.right</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (changeNode.left !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent = changeNode</span><br><span class="line">          changeNode = changeNode.left</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 오른쪽 노드들중 가장 작은 값의 노드가 right child가 있는지 체크</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (changeNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent.left = changeNode.right</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          changeNodeParent.left = <span class="hljs-literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">        parentNode.left = changeNode</span><br><span class="line">        changeNode.right = currNode.right</span><br><span class="line">        changeNode.left = currNode.left</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">// case 3-2 : 삭제할 Node가 Parent Node 오른쪽에 있을 때</span></span><br><span class="line">      <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNode = currNode.left</span><br><span class="line">        <span class="hljs-keyword">let</span> changeNodeParent = currNode.left</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (changeNode.left !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent = changeNode</span><br><span class="line">          changeNode = changeNode.left</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 오른쪽 노드들중 가장 작은 값의 노드가 right child가 있는지 체크</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (changeNode.right !== <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">          changeNodeParent.left = changeNode.right</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          changeNodeParent.left = <span class="hljs-literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        parentNode.right = changeNode</span><br><span class="line">        changeNode.left = currNode.left</span><br><span class="line">        changeNode.right = currNode.right</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="이진검색트리-테스트">이진검색트리 테스트</h3>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 임의의 숫자 100개 준비</span></span><br><span class="line"><span class="hljs-keyword">const</span> numset = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()</span><br><span class="line"><span class="hljs-keyword">while</span> (numset.size != <span class="hljs-number">100</span>) &#123;</span><br><span class="line">  numset.add(<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">1000</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 헤드값을 500을 가지는 이진검색트리 생성</span></span><br><span class="line"><span class="hljs-keyword">const</span> bst = <span class="hljs-keyword">new</span> BinarySearchTree()</span><br><span class="line">bst.insert(<span class="hljs-number">500</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 선택된 100개의 숫자를 이진 탐색 트리에 입력</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> numset) &#123;</span><br><span class="line">  bst.insert(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 입력한 100개의 숫자 검색 (검색 기능 확인)</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> numset) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (bst.search(item) === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"search failed"</span>, item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 10개 임의로 삭제해보기</span></span><br><span class="line"><span class="hljs-keyword">const</span> deleteNums = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>()</span><br><span class="line"><span class="hljs-keyword">const</span> numArray = [...numset]</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span> (deleteNums.size != <span class="hljs-number">10</span>) &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> index = <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>)</span><br><span class="line">  deleteNums.add(numArray[index])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> item <span class="hljs-keyword">of</span> deleteNums) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (bst.delete(item) === <span class="hljs-literal">false</span>) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"delete failed"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -269,7 +284,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -362,7 +377,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -370,7 +385,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -454,7 +469,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#트리-Tree-란">
+        <a class="is-flex" href="#트리-tree-란">
         <span class="has-mr-6">1</span>
         <span>트리 (Tree) 란?</span>
         </a></li><li>
@@ -484,6 +499,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -542,44 +595,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -597,7 +612,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -737,7 +752,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#트리-Tree-란">
+        <a class="is-flex" href="#트리-tree-란">
         <span class="has-mr-6">1</span>
         <span>트리 (Tree) 란?</span>
         </a></li><li>
@@ -767,6 +782,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -825,44 +878,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -880,7 +895,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>

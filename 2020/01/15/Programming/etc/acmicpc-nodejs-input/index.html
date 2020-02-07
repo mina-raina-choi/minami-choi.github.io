@@ -7,18 +7,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>백준 알고리즘 Node.js 입출력 정리 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/15/programming/etc/acmicpc-nodejs-input/">  <meta name="description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/15/programming/etc/acmicpc-nodejs-input/">  <meta name="description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가 처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다. 백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="백준 알고리즘 Node.js 입출력 정리">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/15/Programming/etc/acmicpc-nodejs-input/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
+<meta property="og:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가 처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다. 백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1574937792179-db16755c6628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-01-14T15:28:02.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="백준 알고리즘 Node.js 입출력 정리">
-<meta name="twitter:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
+<meta name="twitter:description" content="프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가 처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다. 백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1574937792179-db16755c6628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -130,12 +130,14 @@
             
         </h1>
         <div class="content">
-            <p>프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가<br>처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.<br>백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.</p>
+            <p>프로그래머스나 릿코드처럼 입출력을 알고리즘 문제사이트에서 알아서 처리해주고 함수만 구현하면 되는 환경에서 연습하다가<br>
+처음 백준 알고리즘 사이트에서 문제풀이를 할 때 어떻게 입출력을 구현해야하는지 몰라 많이 당황했었다.<br>
+백준 알고리즘에서의 입출력방법을 까먹지 않도록 정리했다.</p>
 <a id="more"></a>
-
-<h1 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 문자 하나</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs.readFileSync(<span class="hljs-string">"/dev/stdin"</span>).toString()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 한 칸 띄어쓰기로 구분</span></span><br><span class="line"><span class="hljs-comment">// input[0], input[1] 배열에서 꺼내쓰면 된다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 줄바꿈으로 구분</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 만약 인풋값이 숫자라면</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line">  .map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> +a</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h1><p>백준 알고리즘에서는 <code>console.log</code>로 결과값의 로그를 찍어주면 된다.</p>
+<h1 id="입력">입력</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 문자 하나</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs.readFileSync(<span class="hljs-string">"/dev/stdin"</span>).toString()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 한 칸 띄어쓰기로 구분</span></span><br><span class="line"><span class="hljs-comment">// input[0], input[1] 배열에서 꺼내쓰면 된다.</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 줄바꿈으로 구분</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 만약 인풋값이 숫자라면</span></span><br><span class="line"><span class="hljs-keyword">var</span> input = fs</span><br><span class="line">  .readFileSync(<span class="hljs-string">"/dev/stdin"</span>)</span><br><span class="line">  .toString()</span><br><span class="line">  .split(<span class="hljs-string">" "</span>)</span><br><span class="line">  .map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> +a</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="출력">출력</h1>
+<p>백준 알고리즘에서는 <code>console.log</code>로 결과값의 로그를 찍어주면 된다.</p>
 
         </div>
         
@@ -239,7 +241,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            84
+                            86
                         </p>
                     </a>
                 </div>
@@ -332,7 +334,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">82</span>
+                <span class="level-item tag">84</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -340,7 +342,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">42</span>
+                <span class="level-item tag">44</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -445,6 +447,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -500,44 +540,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -555,7 +557,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -716,6 +718,44 @@
         
         <article class="media">
             
+            <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 동적프로그래밍 핵심 문제풀이">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T07:33:45.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/dp-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 동적프로그래밍 핵심 문제풀이</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[LeetCode] DP 문제 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T06:44:11.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/Programming/Algorithm/leetcode-dp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[LeetCode] DP 문제 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
@@ -771,44 +811,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 다익스트라 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-20T13:30:08.000Z">2020-01-20</time></div>
-                    <a href="/2020/01/20/Programming/Algorithm/graph-core-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 다익스트라 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555863448-e162ecfe4d98?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 핵심유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-16T11:49:36.000Z">2020-01-16</time></div>
-                    <a href="/2020/01/16/Programming/Algorithm/graph-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] BFS / DFS 핵심유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -826,7 +828,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
