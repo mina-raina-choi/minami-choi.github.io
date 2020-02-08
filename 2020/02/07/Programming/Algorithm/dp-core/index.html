@@ -16,7 +16,7 @@
 <meta property="og:description" content="9251 문제 문제 LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-<meta property="og:updated_time" content="2020-02-07T16:21:47.701Z">
+<meta property="og:updated_time" content="2020-02-08T07:10:00.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 동적프로그래밍 핵심 문제풀이">
 <meta name="twitter:description" content="9251 문제 문제 LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Search" href="javascript:;">
+        <a class="navbar-item search" title="Pencarian" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 minutes read (About 1863 words)
+                    12 minutes membaca (Sekitar 1866 kata)
                 </span>
                 
                 
@@ -201,7 +201,7 @@ dp[1] = [0, 10]</p>
 <p>첫째 줄에는 입력될 벽돌의 수가 주어진다. 입력으로 주어지는 벽돌의 수는 최대 100개이다. 둘째 줄부터는 각 줄에 한 개의 벽돌에 관한 정보인 벽돌 밑면의 넓이, 벽돌의 높이 그리고 무게가 차례대로 양의 정수로 주어진다. 각 벽돌은 입력되는 순서대로 1부터 연속적인 번호를 가진다. 벽돌의 넓이, 높이 무게는 10,000보다 작거나 같은 자연수이다.</p>
 <h2 id="출력-v3">출력</h2>
 <p>탑을 쌓을 때 사용된 벽돌의 수를 빈칸없이 출력하고, 두 번째 줄부터는 탑의 가장 위 벽돌부터 가장 아래 벽돌까지 차례로 한 줄에 하나씩 벽돌 번호를 빈칸없이 출력한다.</p>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">stringInput</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = stringInput.trim().split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = <span class="hljs-built_in">parseInt</span>(input[<span class="hljs-number">0</span>])</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// ! 계산을 쉽게하기 위해서 0으로 채워주기</span></span><br><span class="line">  <span class="hljs-keyword">const</span> boxes = [[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]]</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; input.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> temp = input[i].split(<span class="hljs-string">" "</span>)</span><br><span class="line">    temp.push(i)</span><br><span class="line">    boxes.push(temp.map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//   console.log(boxes)</span></span><br><span class="line">  <span class="hljs-comment">// 넓이, 높이, 무게</span></span><br><span class="line"></span><br><span class="line">  boxes.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a[<span class="hljs-number">0</span>] - b[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> optHeight = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-number">0</span>)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; n + <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (boxes[i][<span class="hljs-number">2</span>] &gt; boxes[j][<span class="hljs-number">2</span>]) &#123;</span><br><span class="line">        optHeight[i] = <span class="hljs-built_in">Math</span>.max(optHeight[i], optHeight[j] + boxes[i][<span class="hljs-number">1</span>])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//   console.log(optHeight)</span></span><br><span class="line">  <span class="hljs-keyword">let</span> max = <span class="hljs-built_in">Math</span>.max(...optHeight)</span><br><span class="line">  <span class="hljs-keyword">let</span> index = optHeight.length</span><br><span class="line">  <span class="hljs-keyword">const</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">while</span> (index) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (max === optHeight[index]) &#123;</span><br><span class="line">      <span class="hljs-comment">//   console.log(boxes[index])</span></span><br><span class="line">      answer.push(boxes[index][<span class="hljs-number">3</span>])</span><br><span class="line">      max -= boxes[index][<span class="hljs-number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    index--</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//   console.log(answer.reverse())</span></span><br><span class="line">  answer.reverse()</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(answer.length)</span><br><span class="line">  answer.forEach(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">stringInput</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = stringInput.trim().split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = <span class="hljs-built_in">parseInt</span>(input[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> boxes = input.slice(<span class="hljs-number">1</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))</span><br><span class="line">  boxes.forEach(<span class="hljs-function">(<span class="hljs-params">a, i</span>) =&gt;</span> a.push(i + <span class="hljs-number">1</span>))</span><br><span class="line">  boxes.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a[<span class="hljs-number">0</span>] - b[<span class="hljs-number">0</span>])</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// n개 상자를 쌓았을 때의 최대높이</span></span><br><span class="line">  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 각 상자의 높이로 초기화</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    dp[i] = boxes[i][<span class="hljs-number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      <span class="hljs-comment">// 무게가 더 크면</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (boxes[j][<span class="hljs-number">2</span>] &lt; boxes[i][<span class="hljs-number">2</span>]) &#123;</span><br><span class="line">        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], boxes[i][<span class="hljs-number">1</span>] + dp[j])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> max = <span class="hljs-built_in">Math</span>.max(...dp)</span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = dp.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (max == dp[i]) &#123;</span><br><span class="line">      answer.push(boxes[i][<span class="hljs-number">3</span>])</span><br><span class="line">      max -= boxes[i][<span class="hljs-number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">// console.log("answer", answer)</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(answer.length)</span><br><span class="line">  answer.reverse()</span><br><span class="line">  answer.forEach(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(a))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -226,6 +226,13 @@ dp[1] = [0, 10]</p>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/08/Programming/Algorithm/baekjoon-1874/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">[백준] 1874 스택 수열 - 자바스크립트</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/07/Programming/Algorithm/leetcode-dp/">
@@ -241,7 +248,7 @@ dp[1] = [0, 10]</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
         
 <script>
     var disqus_config = function () {
@@ -303,11 +310,11 @@ dp[1] = [0, 10]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Artikel
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            86
+                            88
                         </p>
                     </a>
                 </div>
@@ -315,7 +322,7 @@ dp[1] = [0, 10]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Kategori
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -327,7 +334,7 @@ dp[1] = [0, 10]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Tag
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -340,7 +347,7 @@ dp[1] = [0, 10]</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                IKUTI</a>
         </div>
         
         
@@ -375,7 +382,7 @@ dp[1] = [0, 10]</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Kategori
             </h3>
             <ul class="menu-list">
             <li>
@@ -400,7 +407,7 @@ dp[1] = [0, 10]</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">84</span>
+                <span class="level-item tag">86</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -408,7 +415,7 @@ dp[1] = [0, 10]</p>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">46</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -489,7 +496,7 @@ dp[1] = [0, 10]</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Katalog
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#9251-문제">
@@ -548,8 +555,46 @@ dp[1] = [0, 10]</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1874/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1525026198548-4baa812f1183?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1874 스택 수열 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T08:21:13.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1874/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1874 스택 수열 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -608,44 +653,6 @@ dp[1] = [0, 10]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/Programming/Algorithm/greedy-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1579250003228-9df6c199db1f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 탐욕 알고리즘 핵심유형 문제 풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-28T13:20:14.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/Programming/Algorithm/greedy-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 탐욕 알고리즘 핵심유형 문제 풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/21/Programming/Algorithm/greedy-basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="[백준] 탐욕 알고리즘 기본 문제 풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T13:46:46.000Z">2020-01-21</time></div>
-                    <a href="/2020/01/21/Programming/Algorithm/greedy-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 탐욕 알고리즘 기본 문제 풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -653,7 +660,7 @@ dp[1] = [0, 10]</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -663,7 +670,7 @@ dp[1] = [0, 10]</p>
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -800,7 +807,7 @@ dp[1] = [0, 10]</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Katalog
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#9251-문제">
@@ -859,8 +866,46 @@ dp[1] = [0, 10]</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Terbaru
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1874/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1525026198548-4baa812f1183?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1874 스택 수열 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T08:21:13.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1874/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1874 스택 수열 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -919,44 +964,6 @@ dp[1] = [0, 10]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/01/28/Programming/Algorithm/greedy-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1579250003228-9df6c199db1f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 탐욕 알고리즘 핵심유형 문제 풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-28T13:20:14.000Z">2020-01-28</time></div>
-                    <a href="/2020/01/28/Programming/Algorithm/greedy-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 탐욕 알고리즘 핵심유형 문제 풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/21/Programming/Algorithm/greedy-basic/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="[백준] 탐욕 알고리즘 기본 문제 풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-21T13:46:46.000Z">2020-01-21</time></div>
-                    <a href="/2020/01/21/Programming/Algorithm/greedy-basic/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 탐욕 알고리즘 기본 문제 풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -964,7 +971,7 @@ dp[1] = [0, 10]</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Arsip
         </h3>
         <ul class="menu-list">
         
@@ -974,7 +981,7 @@ dp[1] = [0, 10]</p>
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1228,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1248,7 +1255,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1260,11 +1267,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: 'Artikel',
+                PAGES: 'Halaman',
+                CATEGORIES: 'Kategori',
+                TAGS: 'Tag',
+                UNTITLED: 'Tanpa Judul',
             },
             CONTENT_URL: '/content.json',
         };

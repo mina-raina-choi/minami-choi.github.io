@@ -4,7 +4,7 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
-        <lastmod>2020-02-07T16:21:47.701Z</lastmod>
+        <lastmod>2020-02-08T09:39:40.917Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -80,20 +80,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/switch/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/else-if/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/for-of%EB%AC%B8/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -116,6 +102,20 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/for%EB%AC%B8/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/switch/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/else-if/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -311,20 +311,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/binary-search/</loc>
-        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/</loc>
-        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/breadth-first-search/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -333,6 +319,20 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/%EB%84%88%EB%B9%84%EC%9A%B0%EC%84%A0%ED%83%90%EC%83%89/</loc>
+        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/binary-search/</loc>
+        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -367,6 +367,13 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/tags/Forms/</loc>
+        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/ngrx/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -374,7 +381,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/Forms/</loc>
+        <loc>https://minami-choi.github.io/tags/formgroup/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -395,13 +402,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/formgroup/</loc>
-        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/click-outside/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -411,6 +411,13 @@
     <url>
         <loc>https://minami-choi.github.io/tags/ObjectUnsubscribedError/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/architecture/</loc>
+        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -431,13 +438,6 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/Component/</loc>
-        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/architecture/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
