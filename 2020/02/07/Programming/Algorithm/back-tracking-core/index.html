@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] 백트래킹 핵심 유형 문제풀이 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/07/programming/algorithm/back-tracking-core/">  <meta name="description" content="1987 문제 문제 세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/07/programming/algorithm/back-tracking-core/">  <meta name="description" content="1987 문제문제세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] 백트래킹 핵심 유형 문제풀이">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/07/Programming/Algorithm/back-tracking-core/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="1987 문제 문제 세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.">
+<meta property="og:description" content="1987 문제문제세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-07T05:08:28.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 백트래킹 핵심 유형 문제풀이">
-<meta name="twitter:description" content="1987 문제 문제 세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.">
+<meta name="twitter:description" content="1987 문제문제세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Pencarian" href="javascript:;">
+        <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes membaca (Sekitar 1192 kata)
+                    8 minutes read (About 1192 words)
                 </span>
                 
                 
@@ -135,29 +135,22 @@
             
         </h1>
         <div class="content">
-            <h1 id="1987-문제">1987 문제</h1>
-<h2 id="문제">문제</h2>
-<p>세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.</p>
+            <h1 id="1987-문제"><a href="#1987-문제" class="headerlink" title="1987 문제"></a>1987 문제</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>세로 R칸, 가로 C칸으로 된 표 모양의 보드가 있다. 보드의 각 칸에는 대문자 알파벳이 하나씩 적혀 있고, 좌측 상단 칸 (1행 1열) 에는 말이 놓여 있다.</p>
 <a id="more"></a>
+
 <p>말은 상하좌우로 인접한 네 칸 중의 한 칸으로 이동할 수 있는데, 새로 이동한 칸에 적혀 있는 알파벳은 지금까지 지나온 모든 칸에 적혀 있는 알파벳과는 달라야 한다. 즉, 같은 알파벳이 적힌 칸을 두 번 지날 수 없다.</p>
 <p>좌측 상단에서 시작해서, 말이 최대한 몇 칸을 지날 수 있는지를 구하는 프로그램을 작성하시오. 말이 지나는 칸은 좌측 상단의 칸도 포함된다.</p>
-<h2 id="입력">입력</h2>
-<p>첫째 줄에 R과 C가 빈칸을 사이에 두고 주어진다. (1&lt;=R,C&lt;=20) 둘째 줄부터 R개의 줄에 걸쳐서 보드에 적혀 있는 C개의 대문자 알파벳들이 빈칸 없이 주어진다.</p>
-<h2 id="출력">출력</h2>
-<p>첫째 줄에 말이 지날 수 있는 최대의 칸 수를 출력한다.</p>
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 R과 C가 빈칸을 사이에 두고 주어진다. (1&lt;=R,C&lt;=20) 둘째 줄부터 R개의 줄에 걸쳐서 보드에 적혀 있는 C개의 대문자 알파벳들이 빈칸 없이 주어진다.</p>
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 말이 지날 수 있는 최대의 칸 수를 출력한다.</p>
 <p><a href="https://www.acmicpc.net/problem/1987" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1987</a></p>
 <p>node에서 돌려보면 정답이 나오는데 백준에 제출하면 시간초과로 실패한다 ㅠ</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> conditions = input[<span class="hljs-number">0</span>].split(<span class="hljs-string">" "</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> r = <span class="hljs-built_in">Number</span>(conditions[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> c = <span class="hljs-built_in">Number</span>(conditions[<span class="hljs-number">1</span>])</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(r).fill(<span class="hljs-literal">null</span>).map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(c).fill(<span class="hljs-literal">false</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> pairs = input.splice(<span class="hljs-number">1</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> alphaVisited = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> result = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">let</span> count = <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">  dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, count)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(result)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">x, y, count</span>) </span>&#123;</span><br><span class="line">    alphaVisited.push(pairs[x][y])</span><br><span class="line">    visited[x][y] = <span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> directions = [</span><br><span class="line">      [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>],</span><br><span class="line">      [<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>],</span><br><span class="line">      [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>],</span><br><span class="line">      [<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>]</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; directions.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">var</span> elem = directions[i]</span><br><span class="line">      <span class="hljs-keyword">var</span> nx = x + elem[<span class="hljs-number">0</span>]</span><br><span class="line">      <span class="hljs-keyword">var</span> ny = y + elem[<span class="hljs-number">1</span>] <span class="hljs-comment">//좌표범위</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (nx &lt; <span class="hljs-number">0</span> || nx &gt;= r || ny &lt; <span class="hljs-number">0</span> || ny &gt;= c) <span class="hljs-keyword">continue</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">const</span> item = pairs[nx][ny]</span><br><span class="line">      <span class="hljs-keyword">const</span> index = alphaVisited.indexOf(item)</span><br><span class="line">      <span class="hljs-comment">// alphaVisited에 없으면 push</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (!visited[nx][ny] &amp;&amp; index &lt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        dfs(nx, ny, count + <span class="hljs-number">1</span>)</span><br><span class="line">        result = <span class="hljs-built_in">Math</span>.max(count + <span class="hljs-number">1</span>, result)</span><br><span class="line">        <span class="hljs-comment">// 방문리스트에서 제거해주는게 중요</span></span><br><span class="line">        alphaVisited.splice(index, <span class="hljs-number">1</span>)</span><br><span class="line">        visited[nx][ny] = <span class="hljs-literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`20 20</span></span><br><span class="line"><span class="hljs-string">POIUYTREWQBWKALSLDLG</span></span><br><span class="line"><span class="hljs-string">LKJHGFDSAMASFBMBOSOZ</span></span><br><span class="line"><span class="hljs-string">NMBVCXZAKPAISJLBMROW</span></span><br><span class="line"><span class="hljs-string">CEVTBFNIMLASNCVKNDKX</span></span><br><span class="line"><span class="hljs-string">VPQLBKENMSAHBBLFOWPQ</span></span><br><span class="line"><span class="hljs-string">ZLSKJJBNBEASZNFDGHHN</span></span><br><span class="line"><span class="hljs-string">GPBMDLQDALAASBBXCEGA</span></span><br><span class="line"><span class="hljs-string">APQIKBMROIBANPOBLMKS</span></span><br><span class="line"><span class="hljs-string">ASKSKVJRPORHNOXZKSPN</span></span><br><span class="line"><span class="hljs-string">LSNVOEOOOKAKANLGKOAX</span></span><br><span class="line"><span class="hljs-string">AKVMBOTOWPQOJBSMSPEP</span></span><br><span class="line"><span class="hljs-string">BLLBKWPEPBKNMROSALLP</span></span><br><span class="line"><span class="hljs-string">BNQLDNBMKOVMEMELSLMA</span></span><br><span class="line"><span class="hljs-string">RLEPQQPVKJRNBITNBSAS</span></span><br><span class="line"><span class="hljs-string">ZXMCOITRPWKLPGKHNGMS</span></span><br><span class="line"><span class="hljs-string">QOBKRPPPZSLEMPNKSPPR</span></span><br><span class="line"><span class="hljs-string">OQJDNZNANDWKQKVJEOGJ</span></span><br><span class="line"><span class="hljs-string">QUYVOIUYWERLKJHASDFV</span></span><br><span class="line"><span class="hljs-string">ZCVWRETPOIUHJKLVBMAS</span></span><br><span class="line"><span class="hljs-string">QWERZCVUIAFDKHSDFHSA`</span>)</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`10 10</span></span><br><span class="line"><span class="hljs-string">ASWERHGCFH</span></span><br><span class="line"><span class="hljs-string">QWERHDLKDG</span></span><br><span class="line"><span class="hljs-string">ZKFOWOHKRK</span></span><br><span class="line"><span class="hljs-string">SALTPWOKSS</span></span><br><span class="line"><span class="hljs-string">BMDLKLKDKF</span></span><br><span class="line"><span class="hljs-string">ALSKEMFLFQ</span></span><br><span class="line"><span class="hljs-string">GMHMBPTIYU</span></span><br><span class="line"><span class="hljs-string">DMNKJZKQLF</span></span><br><span class="line"><span class="hljs-string">HKFKGLKEOL</span></span><br><span class="line"><span class="hljs-string">OTOJKNKRMW`</span>)</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`2 4</span></span><br><span class="line"><span class="hljs-string">CAAB</span></span><br><span class="line"><span class="hljs-string">ADCB`</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="1759-문제">1759 문제</h1>
-<h2 id="문제-v2">문제</h2>
-<p>바로 어제 최백준 조교가 방 열쇠를 주머니에 넣은 채 깜빡하고 서울로 가 버리는 황당한 상황에 직면한 조교들은, 702호에 새로운 보안 시스템을 설치하기로 하였다. 이 보안 시스템은 열쇠가 아닌 암호로 동작하게 되어 있는 시스템이다.</p>
+
+<h1 id="1759-문제"><a href="#1759-문제" class="headerlink" title="1759 문제"></a>1759 문제</h1><h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제"></a>문제</h2><p>바로 어제 최백준 조교가 방 열쇠를 주머니에 넣은 채 깜빡하고 서울로 가 버리는 황당한 상황에 직면한 조교들은, 702호에 새로운 보안 시스템을 설치하기로 하였다. 이 보안 시스템은 열쇠가 아닌 암호로 동작하게 되어 있는 시스템이다.</p>
 <p>암호는 서로 다른 L개의 알파벳 소문자들로 구성되며 최소 한 개의 모음과 최소 두 개의 자음으로 구성되어 있다고 알려져 있다. 또한 정렬된 문자열을 선호하는 조교들의 성향으로 미루어 보아 암호를 이루는 알파벳이 암호에서 증가하는 순서로 배열되었을 것이라고 추측된다. 즉, abc는 가능성이 있는 암호이지만 bac는 그렇지 않다.</p>
 <p>새 보안 시스템에서 조교들이 암호로 사용했을 법한 문자의 종류는 C가지가 있다고 한다. 이 알파벳을 입수한 민식, 영식 형제는 조교들의 방에 침투하기 위해 암호를 추측해 보려고 한다. C개의 문자들이 모두 주어졌을 때, 가능성 있는 암호들을 모두 구하는 프로그램을 작성하시오.</p>
-<h2 id="입력-v2">입력</h2>
-<p>첫째 줄에 두 정수 L, C가 주어진다. (3 ≤ L ≤ C ≤ 15) 다음 줄에는 C개의 문자들이 공백으로 구분되어 주어진다. 주어지는 문자들은 알파벳 소문자이며, 중복되는 것은 없다.</p>
-<h2 id="출력-v2">출력</h2>
-<p>각 줄에 하나씩, 사전식으로 가능성 있는 암호를 모두 출력한다.<br>
-<a href="https://www.acmicpc.net/problem/1759" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1759</a></p>
+<h2 id="입력-1"><a href="#입력-1" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 두 정수 L, C가 주어진다. (3 ≤ L ≤ C ≤ 15) 다음 줄에는 C개의 문자들이 공백으로 구분되어 주어진다. 주어지는 문자들은 알파벳 소문자이며, 중복되는 것은 없다.</p>
+<h2 id="출력-1"><a href="#출력-1" class="headerlink" title="출력"></a>출력</h2><p>각 줄에 하나씩, 사전식으로 가능성 있는 암호를 모두 출력한다.<br><a href="https://www.acmicpc.net/problem/1759" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1759</a></p>
 <p>핵심 아이디어는 6가지 문자 중에 4가지 문자를 선택해 사전식(알파벳순)으로 나열하는 것이다.</p>
 <ol>
 <li>모든 조합을 구해야 함 (dfs를 이용해서 모든 조합을 구하는 함수구현)</li>
@@ -165,6 +158,7 @@
 <li>모음 한 개이상, 자음 2개이상인 케이스 출력!</li>
 </ol>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> conditions = input[<span class="hljs-number">0</span>].split(<span class="hljs-string">" "</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> l = <span class="hljs-built_in">Number</span>(conditions[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> c = <span class="hljs-built_in">Number</span>(conditions[<span class="hljs-number">1</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> alpha = input[<span class="hljs-number">1</span>].split(<span class="hljs-string">" "</span>).sort()</span><br><span class="line">  <span class="hljs-keyword">const</span> vowels = [<span class="hljs-string">"a"</span>, <span class="hljs-string">"e"</span>, <span class="hljs-string">"i"</span>, <span class="hljs-string">"o"</span>, <span class="hljs-string">"u"</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//   console.log(l, c, alpha)</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> result = []</span><br><span class="line">  <span class="hljs-keyword">const</span> string = []</span><br><span class="line">  <span class="hljs-keyword">const</span> visited = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 모든 조합찾기</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combination</span>(<span class="hljs-params">alpha, l, index</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 길이가 l인 모든 조합 찾기</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (string.length == l) &#123;</span><br><span class="line">      result.push(<span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(string)))</span><br><span class="line">      <span class="hljs-keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 각 원소를 한번씩만 뽑도록</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = index; i &lt; alpha.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (visited.indexOf(i) &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span></span><br><span class="line"></span><br><span class="line">      string.push(alpha[i])</span><br><span class="line">      visited.push(i)</span><br><span class="line">      combination(alpha, l, i + <span class="hljs-number">1</span>)</span><br><span class="line">      <span class="hljs-comment">// 비워주는게 중요!!</span></span><br><span class="line">      string.pop()</span><br><span class="line">      visited.pop()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  combination(alpha, l, <span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  result.forEach(<span class="hljs-function"><span class="hljs-params">pwd</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span></span><br><span class="line">    pwd.forEach(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (vowels.indexOf(i) &gt; <span class="hljs-number">-1</span>) count++</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="hljs-keyword">if</span> (count &gt;= <span class="hljs-number">1</span> &amp;&amp; count &lt;= l - <span class="hljs-number">2</span>) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(pwd.join(<span class="hljs-string">""</span>))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`4 6</span></span><br><span class="line"><span class="hljs-string">a t c i s w`</span>)</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -211,7 +205,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -273,11 +267,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            88
+                            89
                         </p>
                     </a>
                 </div>
@@ -285,7 +279,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -297,7 +291,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -310,7 +304,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -345,7 +339,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -370,7 +364,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">86</span>
+                <span class="level-item tag">87</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -378,7 +372,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">46</span>
+                <span class="level-item tag">47</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -459,7 +453,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1987-문제">
@@ -482,15 +476,15 @@
         <span class="has-mr-6">2</span>
         <span>1759 문제</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v2">
+        <a class="is-flex" href="#문제-1">
         <span class="has-mr-6">2.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.3</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -502,21 +496,40 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -581,25 +594,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -607,7 +601,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -617,7 +611,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -754,7 +748,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1987-문제">
@@ -777,15 +771,15 @@
         <span class="has-mr-6">2</span>
         <span>1759 문제</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v2">
+        <a class="is-flex" href="#문제-1">
         <span class="has-mr-6">2.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.3</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -797,21 +791,40 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -876,25 +889,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -902,7 +896,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -912,7 +906,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1166,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1186,7 +1180,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1198,11 +1192,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

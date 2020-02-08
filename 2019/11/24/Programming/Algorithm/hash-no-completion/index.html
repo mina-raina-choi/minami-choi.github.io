@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>해시 - 완주하지 못한 선수 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/11/24/programming/algorithm/hash-no-completion/">  <meta name="description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자. 알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+<link rel="canonical" href="https://minami-choi.github.io/2019/11/24/programming/algorithm/hash-no-completion/">  <meta name="description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="해시 - 완주하지 못한 선수">
 <meta property="og:url" content="https://minami-choi.github.io/2019/11/24/Programming/Algorithm/hash-no-completion/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자. 알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+<meta property="og:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">
 <meta property="og:updated_time" content="2019-11-25T15:58:36.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="해시 - 완주하지 못한 선수">
-<meta name="twitter:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자. 알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
+<meta name="twitter:description" content="앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.알고리즘 문제는 프로그래머스에서 얻었다. (https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit)">
 <meta name="twitter:image" content="https://cdn.inflearn.com/wp-content/uploads/algorith.png">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Pencarian" href="javascript:;">
+        <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes membaca (Sekitar 621 kata)
+                    4 minutes read (About 621 words)
                 </span>
                 
                 
@@ -135,29 +135,24 @@
             
         </h1>
         <div class="content">
-            <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>
-알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" rel="external nofollow noopener noreferrer" target="_blank">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
+            <p>앞으로 2달동안 하루에 하나씩이라도 알고리즘 문제를 풀어보자.<br>알고리즘 문제는 프로그래머스에서 얻었다. (<a href="https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit" rel="external nofollow noopener noreferrer" target="_blank">https://programmers.co.kr/learn/challenges?tab=algorithm_practice_kit</a>)</p>
 <a id="more"></a>
-<h1 id="1-문제">1. 문제</h1>
-<p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
+
+<h1 id="1-문제"><a href="#1-문제" class="headerlink" title="1. 문제"></a>1. 문제</h1><p>마라톤에 참여한 선수들 중 단 한명의 선수를 제외하고 모두 마라톤을 완주했다. 마라톤 참여선수 배열 participant과 마라톤 완주선수 배열 completion이 주어졌을 때, 완주하지 못한 선수 한명을 return하는 Solution 함수를 작성하시오.</p>
 <pre><code>제한사항
 
 1. 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
 2. completion의 길이는 participant의 길이보다 1 작습니다.
 3. 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
-4. 참가자 중에는 동명이인이 있을 수 있습니다.
-</code></pre>
-<h1 id="2-풀이과정">2. 풀이과정</h1>
-<p>participant 배열과 completion 배열을 각각 오름차순으로 정렬한 후 차례대로 이름을 비교해 다른 이름이 발견되면 그 이름의 선수가 마라톤을 완주하지 못한 선수다. 처음에는 participant의 배열을 돌리는데 <code>forEach</code>를 사용하려고 했다.</p>
+4. 참가자 중에는 동명이인이 있을 수 있습니다.</code></pre><h1 id="2-풀이과정"><a href="#2-풀이과정" class="headerlink" title="2. 풀이과정"></a>2. 풀이과정</h1><p>participant 배열과 completion 배열을 각각 오름차순으로 정렬한 후 차례대로 이름을 비교해 다른 이름이 발견되면 그 이름의 선수가 마라톤을 완주하지 못한 선수다. 처음에는 participant의 배열을 돌리는데 <code>forEach</code>를 사용하려고 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  participant.forEach(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (item !== completion[i]) &#123;</span><br><span class="line">      answer = item</span><br><span class="line">      <span class="hljs-comment">// 이름이 다른 경우를 발견하고 forEach문을 빠져나오기</span></span><br><span class="line">      <span class="hljs-keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>위와 같이 코드를 작성하니</p>
 <blockquote>
-<p>participant = [mislav, stanko, mislav, ana]<br>
-completion = [stanko, ana, mislav]</p>
+<p>participant = [mislav, stanko, mislav, ana]<br>completion = [stanko, ana, mislav]</p>
 </blockquote>
 <p>일 경우에 예외가 발생했다. 그 이유는 <code>forEach</code>문은 중간에 멈출 수가 없다. 그래서 첫번째로 일치하지 않는 <code>mislav</code> 이름을 찾고도 그다음 forloop이 진행되어 answer에 <code>stanko</code>가 담겨 테스트를 통과하지 못했다.</p>
-<p>[참고]<br>
-<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></p>
+<p>[참고]<br><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach</a></p>
 <blockquote>
 <p>예외를 던지지 않고는 forEach()를 중간에 멈출 수 없습니다. 중간에 멈춰야 한다면 forEach()가 적절한 방법이 아닐지도 모릅니다.</p>
 </blockquote>
@@ -165,8 +160,8 @@ completion = [stanko, ana, mislav]</p>
 <blockquote>
 <p>find() 메서드는 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환합니다.</p>
 </blockquote>
-<h1 id="3-내가-작성한-코드">3. 내가 작성한 코드</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  answer = participant.find(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item !== completion[i]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-내가-작성한-코드"><a href="#3-내가-작성한-코드" class="headerlink" title="3. 내가 작성한 코드"></a>3. 내가 작성한 코드</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">participant, completion</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-string">""</span></span><br><span class="line">  participant.sort()</span><br><span class="line">  completion.sort()</span><br><span class="line">  answer = participant.find(<span class="hljs-function">(<span class="hljs-params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> item !== completion[i]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>엇, 그런데 해시문제인데 해시를 사용하지 않았다…</p>
 
         </div>
@@ -214,7 +209,7 @@ completion = [stanko, ana, mislav]</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -276,11 +271,11 @@ completion = [stanko, ana, mislav]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            88
+                            89
                         </p>
                     </a>
                 </div>
@@ -288,7 +283,7 @@ completion = [stanko, ana, mislav]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -300,7 +295,7 @@ completion = [stanko, ana, mislav]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -313,7 +308,7 @@ completion = [stanko, ana, mislav]</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -348,7 +343,7 @@ completion = [stanko, ana, mislav]</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -373,7 +368,7 @@ completion = [stanko, ana, mislav]</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">86</span>
+                <span class="level-item tag">87</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -381,7 +376,7 @@ completion = [stanko, ana, mislav]</p>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">46</span>
+                <span class="level-item tag">47</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -462,7 +457,7 @@ completion = [stanko, ana, mislav]</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-문제">
@@ -485,21 +480,40 @@ completion = [stanko, ana, mislav]</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -564,25 +578,6 @@ completion = [stanko, ana, mislav]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -590,7 +585,7 @@ completion = [stanko, ana, mislav]</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -600,7 +595,7 @@ completion = [stanko, ana, mislav]</p>
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -737,7 +732,7 @@ completion = [stanko, ana, mislav]</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-문제">
@@ -760,21 +755,40 @@ completion = [stanko, ana, mislav]</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -839,25 +853,6 @@ completion = [stanko, ana, mislav]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -865,7 +860,7 @@ completion = [stanko, ana, mislav]</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -875,7 +870,7 @@ completion = [stanko, ana, mislav]</p>
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1129,7 +1124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1149,7 +1144,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1161,11 +1156,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

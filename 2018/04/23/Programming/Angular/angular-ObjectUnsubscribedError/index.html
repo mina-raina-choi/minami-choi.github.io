@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Angular에서 ObjectUnsubscribedError 해결방법 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/04/23/programming/angular/angular-objectunsubscribederror/">  <meta name="description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/04/23/programming/angular/angular-objectunsubscribederror/">  <meta name="description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta name="keywords" content="Angular,ObjectUnsubscribedError">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular에서 ObjectUnsubscribedError 해결방법">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/23/Programming/Angular/angular-ObjectUnsubscribedError/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<meta property="og:description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:18:52.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular에서 ObjectUnsubscribedError 해결방법">
-<meta name="twitter:description" content="ObjectUnsubscribedError 해결방법 어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!! 그렇지 않으면 메모리릭이 발생할 수 있다.">
+<meta name="twitter:description" content="ObjectUnsubscribedError 해결방법어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!그렇지 않으면 메모리릭이 발생할 수 있다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Pencarian" href="javascript:;">
+        <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes membaca (Sekitar 311 kata)
+                    2 minutes read (About 311 words)
                 </span>
                 
                 
@@ -135,18 +135,15 @@
             
         </h1>
         <div class="content">
-            <h1 id="objectunsubscribederror-해결방법">ObjectUnsubscribedError 해결방법</h1>
-<p>어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!<br>
-그렇지 않으면 메모리릭이 발생할 수 있다.</p>
+            <h1 id="ObjectUnsubscribedError-해결방법"><a href="#ObjectUnsubscribedError-해결방법" class="headerlink" title="ObjectUnsubscribedError 해결방법"></a>ObjectUnsubscribedError 해결방법</h1><p>어떤 페이지에서 Event나 Observable을 subscribe하고 있다가 페이지를 벗어날 때는 unsubscribe를 해줘야 한다!!<br>그렇지 않으면 메모리릭이 발생할 수 있다.</p>
 <a id="more"></a>
-<p>보통 ngOnInit()에서 subscribe하고 ngOnDestroy()에서 unsubscribe를 하는데<br>
-다른 페이지에서 해당페이지로 돌아오기 위해 백버튼을 누르면 ObjectUnsubscribedError 에러 발생했다.</p>
-<h3 id="해결방법">해결방법</h3>
-<ol>
-<li>eventEmitter를 바로 ngOnInit()에서 subscribe하는 게 아니라,<br>
-eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아서 사용하고, 그걸 unsubscribe해야한다.</li>
+
+<p>보통 ngOnInit()에서 subscribe하고 ngOnDestroy()에서 unsubscribe를 하는데<br>다른 페이지에서 해당페이지로 돌아오기 위해 백버튼을 누르면 ObjectUnsubscribedError 에러 발생했다.</p>
+<h3 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h3><ol>
+<li>eventEmitter를 바로 ngOnInit()에서 subscribe하는 게 아니라,<br>eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아서 사용하고, 그걸 unsubscribe해야한다.</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">changedMyWalletList: EventEmitter&lt;any&gt; = new EventEmitter&lt;any&gt;();</span><br></pre></td></tr></table></figure>
+
 <pre><code>changedMyWalletList을 구독한다고치면,
 
 나는 그동안
@@ -157,14 +154,11 @@ eventEmitter를 subscribe한 subscriber를 해당 컴포넌트 변수에 담아�
 
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">subscriberForMyWalletList: any;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.subscriberForMyWalletList = this.changedMyWalletList.subscribe(()=&gt; &#123;</span><br><span class="line">        ~~~~</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnDestroy</span></span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(!this.subscriberForMyWalletList.closed)</span><br><span class="line">        this.subscriberForMyWalletList.unsubscribe();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-이렇게 사용해야 한다.
-</code></pre>
-<ol start="2">
-<li>rxjs의 takeWhile을 사용<br>
-import ‘rxjs/add/operator/takeWhile’ 를 하고<br>
-this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
+이렇게 사용해야 한다.</code></pre><ol start="2">
+<li>rxjs의 takeWhile을 사용<br>import ‘rxjs/add/operator/takeWhile’ 를 하고<br>this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
 </ol>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">isSubscribing: boolean  = <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.moveToSendCard</span><br><span class="line">        .takeWhile(()=&gt;this.isSubscribing)</span><br><span class="line">        .subscribe(() =&gt; &#123;</span><br><span class="line">            ~~~~</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">ngOnDestroy</span></span>() &#123;</span><br><span class="line">    this.isSubscribing = <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>첫번째 방법은 구독해야할 것들마다 일일이 subscriber변수를 할당해줘야 해서 번거로우므로 takeWhile을 사용하는 게 더 간편하겠다!</strong></p>
 
         </div>
@@ -212,7 +206,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -274,11 +268,11 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            88
+                            89
                         </p>
                     </a>
                 </div>
@@ -286,7 +280,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -298,7 +292,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -311,7 +305,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -346,7 +340,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -371,7 +365,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">86</span>
+                <span class="level-item tag">87</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -379,7 +373,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">46</span>
+                <span class="level-item tag">47</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -460,10 +454,10 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#objectunsubscribederror-해결방법">
+        <a class="is-flex" href="#ObjectUnsubscribedError-해결방법">
         <span class="has-mr-6">1</span>
         <span>ObjectUnsubscribedError 해결방법</span>
         </a><ul class="menu-list"><li>
@@ -479,21 +473,40 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -558,25 +571,6 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -584,7 +578,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -594,7 +588,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -731,10 +725,10 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#objectunsubscribederror-해결방법">
+        <a class="is-flex" href="#ObjectUnsubscribedError-해결방법">
         <span class="has-mr-6">1</span>
         <span>ObjectUnsubscribedError 해결방법</span>
         </a><ul class="menu-list"><li>
@@ -750,21 +744,40 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -829,25 +842,6 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -855,7 +849,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -865,7 +859,7 @@ this.isSubscribing이 true일 때만 구독을 하도록 하면 된다.</li>
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1119,7 +1113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1139,7 +1133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1151,11 +1145,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

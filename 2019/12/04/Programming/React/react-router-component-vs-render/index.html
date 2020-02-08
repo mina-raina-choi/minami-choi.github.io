@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>리액트 라우터 component vs render 차이 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/04/programming/react/react-router-component-vs-render/">  <meta name="description" content="리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자. 특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/04/programming/react/react-router-component-vs-render/">  <meta name="description" content="리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자.특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.">
 <meta name="keywords" content="React,react-router">
 <meta property="og:type" content="article">
 <meta property="og:title" content="리액트 라우터 component vs render 차이">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/04/Programming/React/react-router-component-vs-render/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자. 특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.">
+<meta property="og:description" content="리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자.특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?cs=srgb&dl=blur-blurry-coffee-273222.jpg&fm=jpg">
 <meta property="og:updated_time" content="2019-12-04T12:13:07.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="리액트 라우터 component vs render 차이">
-<meta name="twitter:description" content="리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자. 특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.">
+<meta name="twitter:description" content="리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자.특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?cs=srgb&dl=blur-blurry-coffee-273222.jpg&fm=jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Pencarian" href="javascript:;">
+        <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes membaca (Sekitar 515 kata)
+                    3 minutes read (About 515 words)
                 </span>
                 
                 
@@ -135,24 +135,25 @@
             
         </h1>
         <div class="content">
-            <p>리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자.<br>
-특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.</p>
+            <p>리액트 라우터를 통해 렌더된 컴포넌트에 props를 어떻게 넘길 수 있는지 알아보자.<br>특정 path와 그 때 렌더할 component를 Route에 넘겨주면 애플리케이션이 특정 path에 오면 그 component가 렌더링이 된다.</p>
 <a id="more"></a>
+
 <figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line">&lt;Route path=<span class="hljs-string">"/dashboard"</span> component=<span class="hljs-string">"&#123;Dashboard&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
-<p>만약, Dashboard에 props를 넘겨주고 싶으면?<br>
-단순히 Route에 props를 하나 추가하면 안 된다. 리액트라우터는 이 props를 컴포넌트에 전달하지 않는다.</p>
+
+<p>만약, Dashboard에 props를 넘겨주고 싶으면?<br>단순히 Route에 props를 하나 추가하면 안 된다. 리액트라우터는 이 props를 컴포넌트에 전달하지 않는다.</p>
 <figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line">&lt;Route path=<span class="hljs-string">"/dashboard"</span> component=<span class="hljs-string">"&#123;Dashboard&#125;"</span> isAuthed=<span class="hljs-string">"&#123;true&#125;"</span> /&gt; 안됨</span><br></pre></td></tr></table></figure>
+
 <p>다른 방법으로는 아래와 같이 component에 dashboard를 리턴하는 inline function을 만드는 것을 생각할 수 있다.</p>
 <figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line">&lt;Route path=<span class="hljs-string">"/dashboard"</span> component=&#123;() =&gt; <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Dashboard</span> <span class="hljs-attr">isAuthed</span>=<span class="hljs-string">"&#123;true&#125;"</span> /&gt;</span>&#125; /&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>위 방법은 동작은 하지만, 성능상 좋은 해결책이 아니다. 공식문서에 따르면,</p>
 <blockquote>
 <p>“When you use the component props, the router uses React.createElement to create a new React element from the given component. That means if you provide an inline function to the component attribute,_ you would create a new component every render._ This results in the existing component unmounting and the new component mounting instead of just updating the existing component.”</p>
 </blockquote>
 <p>이미 존재하는 컴포넌트를 재활용하는게 아니라, 해당 컴포넌트를 렌더링할 때마다 언마운트 후 새로운 컴포넌트를 마운팅하는 거라 component에 function을 넘기는 것을 추천하지 않는다.</p>
-<p>리액트라우터팀은 간단한 해결책을 제공했다.<br>
-prop으로 component를 쓰는 대신, render을 쓰는 것이다.<br>
-render는 functional component를 허용한다. 그리고 render를 사용하면 불필요하게 컴포넌트가 재마운트되지 않는다.</p>
+<p>리액트라우터팀은 간단한 해결책을 제공했다.<br>prop으로 component를 쓰는 대신, render을 쓰는 것이다.<br>render는 functional component를 허용한다. 그리고 render를 사용하면 불필요하게 컴포넌트가 재마운트되지 않는다.</p>
 <figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line">&lt;Route path=<span class="hljs-string">"/dashboard"</span> render=&#123;props =&gt; <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Dashboard</span> &#123;<span class="hljs-attr">...props</span>&#125; <span class="hljs-attr">isAuthed</span>=<span class="hljs-string">"&#123;true&#125;"</span> /&gt;</span>&#125; /&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>요약해보면, 만약 리액트라우터를 통해 렌더링되는 컴포넌트에 props를 넘기고 싶다면, Route의 component prop을 이용하는 것 대신에, render prop을 사용하면 된다. render를 사용하면 컴포넌트가 불필요하게 다시 마운트되지 않고, inline function에서 리턴하는 컴포넌트에 넘기는 props들을 제대로 전달한다.</p>
 <p>[참고] <a href="https://tylermcginnis.com/react-router-pass-props-to-components/" rel="external nofollow noopener noreferrer" target="_blank">https://tylermcginnis.com/react-router-pass-props-to-components/</a></p>
 
@@ -201,7 +202,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -263,11 +264,11 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            88
+                            89
                         </p>
                     </a>
                 </div>
@@ -275,7 +276,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -287,7 +288,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -300,7 +301,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -335,7 +336,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -360,7 +361,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">86</span>
+                <span class="level-item tag">87</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -368,7 +369,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">46</span>
+                <span class="level-item tag">47</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -449,21 +450,40 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -528,25 +548,6 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -554,7 +555,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -564,7 +565,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -701,21 +702,40 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -780,25 +800,6 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -806,7 +807,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -816,7 +817,7 @@ render는 functional component를 허용한다. 그리고 render를 사용하면
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1070,7 +1071,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1090,7 +1091,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1102,11 +1103,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

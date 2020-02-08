@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] 다익스트라 핵심 유형 문제풀이 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/20/programming/algorithm/graph-core-2/">  <meta name="description" content="10282 문제 다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 그래프에서 꼭짓점 간의 최단 경로를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다. https://www.acmicpc.net/problem/10282">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/20/programming/algorithm/graph-core-2/">  <meta name="description" content="10282 문제다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 그래프에서 꼭짓점 간의 최단 경로를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다. https://www.acmicpc.net/problem/10282">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] 다익스트라 핵심 유형 문제풀이">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/20/Programming/Algorithm/graph-core-2/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="10282 문제 다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 그래프에서 꼭짓점 간의 최단 경로를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다. https://www.acmicpc.net/problem/10282">
+<meta property="og:description" content="10282 문제다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 그래프에서 꼭짓점 간의 최단 경로를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다. https://www.acmicpc.net/problem/10282">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-01-20T13:42:31.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 다익스트라 핵심 유형 문제풀이">
-<meta name="twitter:description" content="10282 문제 다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 그래프에서 꼭짓점 간의 최단 경로를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다. https://www.acmicpc.net/problem/10282">
+<meta name="twitter:description" content="10282 문제다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 그래프에서 꼭짓점 간의 최단 경로를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다. https://www.acmicpc.net/problem/10282">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1517545084371-4a575dde2a02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Pencarian" href="javascript:;">
+        <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 minutes membaca (Sekitar 1183 kata)
+                    8 minutes read (About 1183 words)
                 </span>
                 
                 
@@ -135,23 +135,21 @@
             
         </h1>
         <div class="content">
-            <h1 id="10282-문제">10282 문제</h1>
-<p>다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 <code>그래프에서 꼭짓점 간의 최단 경로</code>를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다.</p>
+            <h1 id="10282-문제"><a href="#10282-문제" class="headerlink" title="10282 문제"></a>10282 문제</h1><p>다익스트라 알고리즘은 도로 교통망 같은 곳에서 나타날 수 있는 <code>그래프에서 꼭짓점 간의 최단 경로</code>를 찾는 알고리즘이다. 10282문제는 다익스트라 알고리즘을 구현하면 해결된다.</p>
 <p><a href="https://www.acmicpc.net/problem/10282" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/10282</a></p>
 <a id="more"></a>
+
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGraph</span>(<span class="hljs-params">pairs</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> inputs = pairs.map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> graph = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; inputs.length; index++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> element = inputs[index]</span><br><span class="line">    <span class="hljs-keyword">const</span> node = element[<span class="hljs-number">0</span>],</span><br><span class="line">      value = element[<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (graph.get(element[<span class="hljs-number">1</span>])) &#123;</span><br><span class="line">      graph.get(element[<span class="hljs-number">1</span>]).push([node, value])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      graph.set(element[<span class="hljs-number">1</span>], [[node, value]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> graph</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  input = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> caseCount = <span class="hljs-built_in">Number</span>(input[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-comment">// n = 3, m = 2, start = 2</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> dependencyCount = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">let</span> prev = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; caseCount; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> conditions = input[i + prev].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> nodeCount = conditions[<span class="hljs-number">0</span>]</span><br><span class="line">    dependencyCount = conditions[<span class="hljs-number">1</span>] <span class="hljs-comment">// 2</span></span><br><span class="line">    <span class="hljs-keyword">const</span> startNode = conditions[<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> pairs = input.splice(<span class="hljs-number">1</span> + <span class="hljs-number">1</span> + i, dependencyCount)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> distance = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(nodeCount + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">Infinity</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> graph = setGraph(pairs)</span><br><span class="line"></span><br><span class="line">    dijkstra(startNode, distance, graph)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> time = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-comment">// console.log("distance", distance)</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span>; index &lt; distance.length; index++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> element = distance[index]</span><br><span class="line">      <span class="hljs-keyword">if</span> (element !== <span class="hljs-literal">Infinity</span>) &#123;</span><br><span class="line">        count++</span><br><span class="line">        <span class="hljs-keyword">if</span> (element &gt; time) &#123;</span><br><span class="line">          time = element</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(count, time)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dijkstra</span>(<span class="hljs-params">start, distance, adjList</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 우선순위 큐 사용.</span></span><br><span class="line">  <span class="hljs-keyword">const</span> heap_data = []</span><br><span class="line">  heap_data.push([<span class="hljs-number">0</span>, start])</span><br><span class="line">  <span class="hljs-comment">// sort</span></span><br><span class="line">  heap_data.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] - b[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>])</span><br><span class="line">  distance[start] = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (heap_data.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> [dist, now] = heap_data.shift()</span><br><span class="line">    <span class="hljs-keyword">if</span> (distance[now] &lt; dist) &#123;</span><br><span class="line">      <span class="hljs-keyword">continue</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 만약 지금까지 찾은 최단경로보다 더 짧은 경우가 있다면</span></span><br><span class="line">    <span class="hljs-comment">// 현재의 정점을 꺼내, 그 정점과 연결된 모든 정점과의 거리 확인</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (adjList.get(now)) &#123;</span><br><span class="line">      adjList.get(now).forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">        cost = dist + element[<span class="hljs-number">1</span>]</span><br><span class="line">        <span class="hljs-keyword">if</span> (distance[element[<span class="hljs-number">0</span>]] &gt; cost) &#123;</span><br><span class="line">          distance[element[<span class="hljs-number">0</span>]] = cost</span><br><span class="line">          heap_data.push([cost, element[<span class="hljs-number">0</span>]])</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`2</span></span><br><span class="line"><span class="hljs-string">3 2 2</span></span><br><span class="line"><span class="hljs-string">2 1 5</span></span><br><span class="line"><span class="hljs-string">3 2 5</span></span><br><span class="line"><span class="hljs-string">3 3 1</span></span><br><span class="line"><span class="hljs-string">2 1 2</span></span><br><span class="line"><span class="hljs-string">3 1 8</span></span><br><span class="line"><span class="hljs-string">3 2 4`</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="5719-문제">5719 문제</h1>
-<p><a href="https://www.acmicpc.net/problem/5719" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/5719</a></p>
-<p>처음에 생각했던 방법<br>
-다익스트라 알고리즘에서 최단거리만 저장하던 것을 모든 거리를 배열로 저장해 그 중 2번째로 큰값을 리턴하는 방법 =&gt; 하지만 이 방법은 메모리초과</p>
-<p>인터넷을 찾아보니 <code>거의 최단거리</code>의 풀이법이 있더라.<br>
-다익스트라를 두 번 하는 방법으로<br>
-첫번째 다익스트라 돌린 결과 중 최단거리에 속하는 경로를 제외하고 다시 다익스트라를 돌리는 방법이다.</p>
-<p>==&gt; 햐…왜 런타임 오류가 뜨냐… node 에서 실행시킬 때는 문제없이 답이 나오는데 BOJ에서는 런타임 오류가 뜬다.<br>
-BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" rel="external nofollow noopener noreferrer" target="_blank">https://es6console.com/</a> 을 통해서 es6 -&gt; es5로 변환해서 코드를 제출하는데 여기서 뭔가 잘못된걸까? 정말 힘들게 하네;;;</p>
+
+<h1 id="5719-문제"><a href="#5719-문제" class="headerlink" title="5719 문제"></a>5719 문제</h1><p><a href="https://www.acmicpc.net/problem/5719" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/5719</a></p>
+<p>처음에 생각했던 방법<br>다익스트라 알고리즘에서 최단거리만 저장하던 것을 모든 거리를 배열로 저장해 그 중 2번째로 큰값을 리턴하는 방법 =&gt; 하지만 이 방법은 메모리초과</p>
+<p>인터넷을 찾아보니 <code>거의 최단거리</code>의 풀이법이 있더라.<br>다익스트라를 두 번 하는 방법으로<br>첫번째 다익스트라 돌린 결과 중 최단거리에 속하는 경로를 제외하고 다시 다익스트라를 돌리는 방법이다.</p>
+<p>==&gt; 햐….왜 런타임 오류가 뜨냐… node 에서 실행시킬 때는 문제없이 답이 나오는데 BOJ에서는 런타임 오류가 뜬다.<br>BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" rel="external nofollow noopener noreferrer" target="_blank">https://es6console.com/</a> 을 통해서 es6 -&gt; es5로 변환해서 코드를 제출하는데 여기서 뭔가 잘못된걸까? 정말 힘들게 하네;;;</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 제출한 답</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGraph</span>(<span class="hljs-params">pairs</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> inputs = pairs.map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> graph = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()</span><br><span class="line">  <span class="hljs-keyword">const</span> reverseGraph = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()</span><br><span class="line">  <span class="hljs-comment">// 0 1 1</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; inputs.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> element = inputs[i]</span><br><span class="line">    <span class="hljs-keyword">const</span> key = element[<span class="hljs-number">0</span>],</span><br><span class="line">      node = element[<span class="hljs-number">1</span>],</span><br><span class="line">      value = element[<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (graph.has(key)) &#123;</span><br><span class="line">      graph.get(key).push([node, value])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      graph.set(key, [[node, value]])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (reverseGraph.has(node)) &#123;</span><br><span class="line">      reverseGraph.get(node).push([key, value])</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      reverseGraph.set(node, [[key, value]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> [graph, reverseGraph]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dijkstra</span>(<span class="hljs-params">startNode, distance, adjList, dropped</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> heap_data = []</span><br><span class="line">  heap_data.push([<span class="hljs-number">0</span>, startNode])</span><br><span class="line">  distance[startNode] = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">while</span> (heap_data.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> [dist, now] = heap_data.shift()</span><br><span class="line">    <span class="hljs-keyword">if</span> (distance[now] &lt; dist) <span class="hljs-keyword">continue</span></span><br><span class="line">    adjList.get(now) &amp;&amp;</span><br><span class="line">      adjList.get(now).forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// console.log("element", element)</span></span><br><span class="line">        <span class="hljs-keyword">const</span> cost = dist + element[<span class="hljs-number">1</span>]</span><br><span class="line">        <span class="hljs-comment">// dropped : 최단거리 제외</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (distance[element[<span class="hljs-number">0</span>]] &gt; cost &amp;&amp; !dropped[now][element[<span class="hljs-number">0</span>]]) &#123;</span><br><span class="line">          distance[element[<span class="hljs-number">0</span>]] = cost</span><br><span class="line">          heap_data.push([cost, element[<span class="hljs-number">0</span>]])</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bfs</span>(<span class="hljs-params">endNode, startNode, reverseAdjList, distance, dropped</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> q = []</span><br><span class="line">  q.push(endNode)</span><br><span class="line">  <span class="hljs-keyword">while</span> (q.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> now = q.shift()</span><br><span class="line">    <span class="hljs-keyword">if</span> (now === startNode) <span class="hljs-keyword">continue</span></span><br><span class="line">    reverseAdjList.get(now).forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> [prev, cost] = element</span><br><span class="line">      <span class="hljs-keyword">if</span> (distance[now] === distance[prev] + cost) &#123;</span><br><span class="line">        dropped[prev][now] = <span class="hljs-literal">true</span></span><br><span class="line">        q.push(prev)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> inputs = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; inputs.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> condition = inputs.splice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))[<span class="hljs-number">0</span>]</span><br><span class="line">    <span class="hljs-keyword">const</span> condition2 = inputs.splice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))[<span class="hljs-number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> N = condition[<span class="hljs-number">0</span>] <span class="hljs-comment">// 장소수</span></span><br><span class="line">    <span class="hljs-keyword">const</span> M = condition[<span class="hljs-number">1</span>] <span class="hljs-comment">// 도로수</span></span><br><span class="line">    <span class="hljs-keyword">const</span> startNode = condition2[<span class="hljs-number">0</span>]</span><br><span class="line">    <span class="hljs-keyword">const</span> endNode = condition2[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> pairs = inputs.splice(<span class="hljs-number">0</span>, M)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> [graph, reverseGraph] = setGraph(pairs)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> distance = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(N + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">undefined</span>).map(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> <span class="hljs-literal">Infinity</span>)</span><br><span class="line">    <span class="hljs-keyword">const</span> dropped = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(N + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">undefined</span>).map(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(N + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">false</span>))</span><br><span class="line"></span><br><span class="line">    dijkstra(startNode, distance, graph, dropped)</span><br><span class="line"></span><br><span class="line">    bfs(endNode, startNode, reverseGraph, distance, dropped)</span><br><span class="line">    <span class="hljs-keyword">const</span> newdistance = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(N + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">undefined</span>).map(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> <span class="hljs-literal">Infinity</span>)</span><br><span class="line">    dijkstra(startNode, newdistance, graph, dropped)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(newdistance[endNode] != <span class="hljs-literal">Infinity</span> ? newdistance[endNode] : <span class="hljs-number">-1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`7 9</span></span><br><span class="line"><span class="hljs-string">0 6</span></span><br><span class="line"><span class="hljs-string">0 1 1</span></span><br><span class="line"><span class="hljs-string">0 2 1</span></span><br><span class="line"><span class="hljs-string">0 3 2</span></span><br><span class="line"><span class="hljs-string">0 4 3</span></span><br><span class="line"><span class="hljs-string">1 5 2</span></span><br><span class="line"><span class="hljs-string">2 6 4</span></span><br><span class="line"><span class="hljs-string">3 6 2</span></span><br><span class="line"><span class="hljs-string">4 6 4</span></span><br><span class="line"><span class="hljs-string">5 6 1</span></span><br><span class="line"><span class="hljs-string">4 6</span></span><br><span class="line"><span class="hljs-string">0 2</span></span><br><span class="line"><span class="hljs-string">0 1 1</span></span><br><span class="line"><span class="hljs-string">1 2 1</span></span><br><span class="line"><span class="hljs-string">1 3 1</span></span><br><span class="line"><span class="hljs-string">3 2 1</span></span><br><span class="line"><span class="hljs-string">2 0 3</span></span><br><span class="line"><span class="hljs-string">3 0 2</span></span><br><span class="line"><span class="hljs-string">6 8</span></span><br><span class="line"><span class="hljs-string">0 1</span></span><br><span class="line"><span class="hljs-string">0 1 1</span></span><br><span class="line"><span class="hljs-string">0 2 2</span></span><br><span class="line"><span class="hljs-string">0 3 3</span></span><br><span class="line"><span class="hljs-string">2 5 3</span></span><br><span class="line"><span class="hljs-string">3 4 2</span></span><br><span class="line"><span class="hljs-string">4 1 1</span></span><br><span class="line"><span class="hljs-string">5 1 1</span></span><br><span class="line"><span class="hljs-string">3 0 1</span></span><br><span class="line"><span class="hljs-string">0 0`</span>)</span><br></pre></td></tr></table></figure>
+
 <p>[참고] 처음 접근했던 방법</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> inputs = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; inputs.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> condition = inputs.splice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))[<span class="hljs-number">0</span>]</span><br><span class="line">    <span class="hljs-keyword">const</span> condition2 = inputs.splice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))[<span class="hljs-number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> N = condition[<span class="hljs-number">0</span>] <span class="hljs-comment">// 장소수</span></span><br><span class="line">    <span class="hljs-keyword">const</span> M = condition[<span class="hljs-number">1</span>] <span class="hljs-comment">// 도로수</span></span><br><span class="line">    <span class="hljs-keyword">const</span> startNode = condition2[<span class="hljs-number">0</span>]</span><br><span class="line">    <span class="hljs-keyword">const</span> endNode = condition2[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> pairs = inputs.splice(<span class="hljs-number">0</span>, M)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> graph = setGraph(pairs)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> distance = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(N + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">undefined</span>).map(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> [])</span><br><span class="line">    <span class="hljs-keyword">const</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(N).fill(<span class="hljs-literal">undefined</span>).map(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> <span class="hljs-literal">false</span>)</span><br><span class="line"></span><br><span class="line">    dijkstra(startNode, graph, distance, endNode, visited)</span><br><span class="line">    <span class="hljs-keyword">const</span> min = distance[endNode].sort()[<span class="hljs-number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> answer = distance[endNode].filter(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a &gt; min)</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(answer[<span class="hljs-number">0</span>] ? answer[<span class="hljs-number">0</span>] : <span class="hljs-number">-1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dijkstra</span>(<span class="hljs-params">startNode, graph, distance, endNode, visited</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 우선순위 큐 사용.</span></span><br><span class="line">  <span class="hljs-keyword">const</span> heap_data = []</span><br><span class="line">  visited[startNode] = <span class="hljs-literal">true</span></span><br><span class="line">  heap_data.push([[<span class="hljs-number">0</span>], startNode])</span><br><span class="line">  <span class="hljs-comment">// sort</span></span><br><span class="line">  heap_data.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] - b[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>])</span><br><span class="line">  <span class="hljs-comment">// distance 배열에 각 index별로 도달할 수 있는 모든 cost를 저장</span></span><br><span class="line">  distance[startNode].push(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (heap_data.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> [distArray, now] = heap_data.shift()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 충분히 다 돌고 가야해</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (now === endNode &amp;&amp; visited.slice(<span class="hljs-number">1</span>).every(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a === <span class="hljs-literal">true</span>)) &#123;</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 만약 지금까지 찾은 최단경로보다 더 짧은 경우가 있다면</span></span><br><span class="line">    <span class="hljs-comment">// 현재의 정점을 꺼내, 그 정점과 연결된 모든 정점과의 거리 확인</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (graph.get(now)) &#123;</span><br><span class="line">      distArray.forEach(<span class="hljs-function"><span class="hljs-params">dist</span> =&gt;</span> &#123;</span><br><span class="line">        graph.get(now).forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="hljs-comment">// [node , cost]</span></span><br><span class="line">          cost = dist + element[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">          distance[element[<span class="hljs-number">0</span>]].push(cost)</span><br><span class="line">          visited[element[<span class="hljs-number">0</span>]] = <span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line">          heap_data.push([distance[element[<span class="hljs-number">0</span>]], element[<span class="hljs-number">0</span>]])</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -198,7 +196,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -260,11 +258,11 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            88
+                            89
                         </p>
                     </a>
                 </div>
@@ -272,7 +270,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -284,7 +282,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -297,7 +295,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -332,7 +330,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -357,7 +355,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">86</span>
+                <span class="level-item tag">87</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -365,7 +363,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">46</span>
+                <span class="level-item tag">47</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -446,7 +444,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#10282-문제">
@@ -465,21 +463,40 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -544,25 +561,6 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -570,7 +568,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -580,7 +578,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -717,7 +715,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#10282-문제">
@@ -736,21 +734,40 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -815,25 +832,6 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -841,7 +839,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -851,7 +849,7 @@ BOJ에서 node.js 버전이 es5이다보니 <a href="https://es6console.com/" re
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1105,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1125,7 +1123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1137,11 +1135,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };

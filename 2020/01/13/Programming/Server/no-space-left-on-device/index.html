@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[ERROR] no space left on device - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/13/programming/server/no-space-left-on-device/">  <meta name="description" content="문제 상황 우분투에서 no space left on device 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다. journalctl -u [systemd unit name] -xe 를 통해 에러로그를 확인해 보니 아래와 같았다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/13/programming/server/no-space-left-on-device/">  <meta name="description" content="문제 상황우분투에서 no space left on device 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다. journalctl -u [systemd unit name] -xe  를 통해 에러로그를 확인해 보니 아래와 같았다.">
 <meta name="keywords" content="Linux,Prometheus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[ERROR] no space left on device">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/13/Programming/Server/no-space-left-on-device/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 상황 우분투에서 no space left on device 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다. journalctl -u [systemd unit name] -xe 를 통해 에러로그를 확인해 보니 아래와 같았다.">
+<meta property="og:description" content="문제 상황우분투에서 no space left on device 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다. journalctl -u [systemd unit name] -xe  를 통해 에러로그를 확인해 보니 아래와 같았다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-01-13T09:02:37.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[ERROR] no space left on device">
-<meta name="twitter:description" content="문제 상황 우분투에서 no space left on device 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다. journalctl -u [systemd unit name] -xe 를 통해 에러로그를 확인해 보니 아래와 같았다.">
+<meta name="twitter:description" content="문제 상황우분투에서 no space left on device 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다. journalctl -u [systemd unit name] -xe  를 통해 에러로그를 확인해 보니 아래와 같았다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -77,11 +77,11 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Katalog" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
-        <a class="navbar-item search" title="Pencarian" href="javascript:;">
+        <a class="navbar-item search" title="Search" href="javascript:;">
           <i class="fas fa-search"></i>
         </a>
         
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes membaca (Sekitar 593 kata)
+                    4 minutes read (About 593 words)
                 </span>
                 
                 
@@ -135,32 +135,29 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황">문제 상황</h1>
-<p>우분투에서 <code>no space left on device</code> 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다.</p>
+            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><p>우분투에서 <code>no space left on device</code> 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">journalctl -u [systemd unit name] -xe</span><br></pre></td></tr></table></figure>
+
 <p>를 통해 에러로그를 확인해 보니 아래와 같았다.</p>
 <a id="more"></a>
+
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">prometheus[10240]: level=error ts=2020-01-13T02:42:03.333Z <span class="hljs-built_in">caller</span>=db.go:609 component=tsdb msg=<span class="hljs-string">"compaction failed"</span> err=<span class="hljs-string">"persist head block: mkdir /var/lib/prometheus/01DYECF5"</span></span><br><span class="line">prometheus[10318]: level=error ts=2020-01-13T02:48:38.374Z <span class="hljs-built_in">caller</span>=db.go:609 component=tsdb msg=<span class="hljs-string">"compaction failed"</span> err=<span class="hljs-string">"persist head block: 2 errors: *write compaction: write chunks: no space left on device; *write /var/lib/prometheus/01DYECV759ENR26FQM1JH51Z90.tmp/index: no space left on device"</span></span><br><span class="line">prometheus[10318]: level=error ts=2020-01-13T02:48:39.375Z <span class="hljs-built_in">caller</span>=db.go:609 component=tsdb msg=<span class="hljs-string">"compaction failed"</span> err=<span class="hljs-string">"persist head block: mkdir /var/lib/prometheus/01DYECV86FXD7TCM5FQ47064ZT.tmp: no space left on device"</span></span><br><span class="line">....</span><br></pre></td></tr></table></figure>
-<h1 id="해결-방법">해결 방법</h1>
-<h2 id="1-남은-디스크-용량-확인">1. 남은 디스크 용량 확인</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">df -h</span><br><span class="line"></span><br><span class="line">// 결과값</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">...</span><br><span class="line">/dev/xvda1      9.7G  9.7G  814M  100% /</span><br><span class="line">tmpfs           996M     0  996M   0% /dev/shm</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="2-디스크-용량을-가장-많이-사용하는-순서대로-sort-해서-파일에-저장">2. 디스크 용량을 가장 많이 사용하는 순서대로 sort 해서 파일에 저장</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo du -ckx | sort -n &gt; /tmp/duck-root</span><br><span class="line">sudo tail /tmp/duck-root</span><br><span class="line"></span><br><span class="line">// 결과값</span><br><span class="line">912776 ./var/<span class="hljs-built_in">log</span>/journal/b01ab494c90847679cfeb694e862ddbb</span><br><span class="line">912780 ./var/<span class="hljs-built_in">log</span>/journal</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="3-우분투-서비스-로그-파일이-담기는-journal-로그-파일-비우기">3. 우분투 서비스 로그 파일이 담기는 journal 로그 파일 비우기</h2>
-<p>먼저 systemd journal log 파일이 얼마만큼의 디스크용량을 차지하고 있는지 확인한다.</p>
+
+<h1 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h1><h2 id="1-남은-디스크-용량-확인"><a href="#1-남은-디스크-용량-확인" class="headerlink" title="1. 남은 디스크 용량 확인"></a>1. 남은 디스크 용량 확인</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">df -h</span><br><span class="line"></span><br><span class="line">// 결과값</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">...</span><br><span class="line">/dev/xvda1      9.7G  9.7G  814M  100% /</span><br><span class="line">tmpfs           996M     0  996M   0% /dev/shm</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-디스크-용량을-가장-많이-사용하는-순서대로-sort-해서-파일에-저장"><a href="#2-디스크-용량을-가장-많이-사용하는-순서대로-sort-해서-파일에-저장" class="headerlink" title="2. 디스크 용량을 가장 많이 사용하는 순서대로 sort 해서 파일에 저장"></a>2. 디스크 용량을 가장 많이 사용하는 순서대로 sort 해서 파일에 저장</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo du -ckx | sort -n &gt; /tmp/duck-root</span><br><span class="line">sudo tail /tmp/duck-root</span><br><span class="line"></span><br><span class="line">// 결과값</span><br><span class="line">912776 ./var/<span class="hljs-built_in">log</span>/journal/b01ab494c90847679cfeb694e862ddbb</span><br><span class="line">912780 ./var/<span class="hljs-built_in">log</span>/journal</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-우분투-서비스-로그-파일이-담기는-journal-로그-파일-비우기"><a href="#3-우분투-서비스-로그-파일이-담기는-journal-로그-파일-비우기" class="headerlink" title="3. 우분투 서비스 로그 파일이 담기는 journal 로그 파일 비우기"></a>3. 우분투 서비스 로그 파일이 담기는 journal 로그 파일 비우기</h2><p>먼저 systemd journal log 파일이 얼마만큼의 디스크용량을 차지하고 있는지 확인한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">journalctl —disk-usage</span><br><span class="line"></span><br><span class="line">// 결과값</span><br><span class="line">// Archived and active journals take up 907.3M <span class="hljs-keyword">in</span> the file system.</span><br></pre></td></tr></table></figure>
+
 <p>아래의 명령어를 통해 journal 로그 파일 비운다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo journalctl -—rotate -—vacuum-time=2weeks</span><br></pre></td></tr></table></figure>
-<p>To remove all journal entries (including active journal files, which are marked as archived by the --rotate command)<br>
-–vacuum-time=2weeks은 2주보다 더 오래 보관된 journal log 파일은 지우겠다는 옵션<br>
-–rotate : active journal file을 archived(보관된, 아카이브된)으로 바꿔서 새로 쓰여지지 않도록 한다. 이를 사용하지 않으면 active journal log file은 지워지지 않는다.</p>
-<h2 id="4-journald-conf-파일-수정">4. journald.conf 파일 수정</h2>
-<p>특정 조건이상으로 로그 파일이 커지지 않도록 <code>journald.conf</code>파일을 수정한다.</p>
+
+<p>To remove all journal entries (including active journal files, which are marked as archived by the –rotate command)<br>–vacuum-time=2weeks은 2주보다 더 오래 보관된 journal log 파일은 지우겠다는 옵션<br>–rotate : active journal file을 archived(보관된, 아카이브된)으로 바꿔서 새로 쓰여지지 않도록 한다. 이를 사용하지 않으면 active journal log file은 지워지지 않는다.</p>
+<h2 id="4-journald-conf-파일-수정"><a href="#4-journald-conf-파일-수정" class="headerlink" title="4. journald.conf 파일 수정"></a>4. journald.conf 파일 수정</h2><p>특정 조건이상으로 로그 파일이 커지지 않도록 <code>journald.conf</code>파일을 수정한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> /etc/systemd</span><br><span class="line">sudo nano journald.conf</span><br><span class="line"></span><br><span class="line">// 주석 처리되어 있는 설정값들을 수정하고 저장</span><br><span class="line"></span><br><span class="line">SystemMaxUse= (e.g.: SystemMaxUse=100M to remove archived journal files until the disk space they use falls below 100M) and/or MaxFileSec= (.e.g. MaxFileSec=5day to make all journal files contain no data older than 5 days).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 새로운 설정값을 읽도록 재시작</span><br><span class="line">sudo systemctl restart systemd-journald</span><br></pre></td></tr></table></figure>
-<p>[참고]<br>
-<a href="https://www.linuxuprising.com/2019/10/how-to-clean-up-systemd-journal-logs.html" rel="external nofollow noopener noreferrer" target="_blank">https://www.linuxuprising.com/2019/10/how-to-clean-up-systemd-journal-logs.html</a><br>
-<a href="https://withcoding.com/104" rel="external nofollow noopener noreferrer" target="_blank">https://withcoding.com/104</a><br>
-<a href="https://twpower.github.io/171-journalctl-usage-and-examples" rel="external nofollow noopener noreferrer" target="_blank">https://twpower.github.io/171-journalctl-usage-and-examples</a></p>
+
+<p>[참고]<br><a href="https://www.linuxuprising.com/2019/10/how-to-clean-up-systemd-journal-logs.html" rel="external nofollow noopener noreferrer" target="_blank">https://www.linuxuprising.com/2019/10/how-to-clean-up-systemd-journal-logs.html</a><br><a href="https://withcoding.com/104" rel="external nofollow noopener noreferrer" target="_blank">https://withcoding.com/104</a><br><a href="https://twpower.github.io/171-journalctl-usage-and-examples" rel="external nofollow noopener noreferrer" target="_blank">https://twpower.github.io/171-journalctl-usage-and-examples</a></p>
 
         </div>
         
@@ -207,7 +204,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Komentar</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -269,11 +266,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Artikel
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            88
+                            89
                         </p>
                     </a>
                 </div>
@@ -281,7 +278,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Kategori
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -293,7 +290,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
@@ -306,7 +303,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                IKUTI</a>
+                SEGUIR</a>
         </div>
         
         
@@ -341,7 +338,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Kategori
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -366,7 +363,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">86</span>
+                <span class="level-item tag">87</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -374,7 +371,7 @@
                 <span class="level-item">Algorithm</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">46</span>
+                <span class="level-item tag">47</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/Android/">
@@ -455,7 +452,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제-상황">
@@ -490,21 +487,40 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -569,25 +585,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -595,7 +592,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -605,7 +602,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -742,7 +739,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Katalog
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제-상황">
@@ -777,21 +774,40 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Terbaru
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 1182 부분 수열의 합 - 자바스크립트">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:55:09.000Z">2020-02-08</time></div>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-1182/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 1182 부분 수열의 합 - 자바스크립트</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
             <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 - 자바스크립트">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T09:35:09.000Z">2020-02-08</time></div>
-                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 - 자바스크립트</a>
+                    <a href="/2020/02/08/Programming/Algorithm/baekjoon-3986/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
                     </p>
@@ -856,25 +872,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 백트래킹 핵심 유형 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T05:01:40.000Z">2020-02-07</time></div>
-                    <a href="/2020/02/07/Programming/Algorithm/back-tracking-core/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 백트래킹 핵심 유형 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -882,7 +879,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Arsip
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -892,7 +889,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1146,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
+<a id="back-to-top" title="Back to Top" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1166,7 +1163,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Tulis Sesuatu..">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1178,11 +1175,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Artikel',
-                PAGES: 'Halaman',
-                CATEGORIES: 'Kategori',
-                TAGS: 'Tag',
-                UNTITLED: 'Tanpa Judul',
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
         };
