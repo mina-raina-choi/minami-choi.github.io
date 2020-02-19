@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>ubuntu18.04에 NginX 설치 &amp; SSL 붙이기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/12/programming/server/ubuntu-nginx/">  <meta name="description" content="설치순서1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/12/programming/server/ubuntu-nginx/">  <meta name="description" content="1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
 <meta name="keywords" content="ubuntu,nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu18.04에 NginX 설치 &amp; SSL 붙이기">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/12/Programming/Server/ubuntu-nginx/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="설치순서1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
+<meta property="og:description" content="1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1551462577-9aaf3ff5d927?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-<meta property="og:updated_time" content="2020-02-19T07:21:17.771Z">
+<meta property="og:updated_time" content="2020-02-19T07:23:48.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu18.04에 NginX 설치 &amp; SSL 붙이기">
-<meta name="twitter:description" content="설치순서1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
+<meta name="twitter:description" content="1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1551462577-9aaf3ff5d927?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
@@ -109,11 +109,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-02-12T06:06:30.000Z">2020-02-12</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 783 words)
+                    5 minutes read (About 779 words)
                 </span>
                 
                 
@@ -131,7 +135,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="설치순서"><a href="#설치순서" class="headerlink" title="설치순서"></a>설치순서</h1><h2 id="1-apt-업데이트-및-업그레이드"><a href="#1-apt-업데이트-및-업그레이드" class="headerlink" title="1. apt 업데이트 및 업그레이드"></a>1. apt 업데이트 및 업그레이드</h2><p>(<a href="https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/" rel="external nofollow noopener noreferrer" target="_blank">https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/</a>)<br>Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구</p>
+            <h2 id="1-apt-업데이트-및-업그레이드"><a href="#1-apt-업데이트-및-업그레이드" class="headerlink" title="1. apt 업데이트 및 업그레이드"></a>1. apt 업데이트 및 업그레이드</h2><p>(<a href="https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/" rel="external nofollow noopener noreferrer" target="_blank">https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/</a>)<br>Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구</p>
 <a id="more"></a>
 
 <h2 id="2-우분투에-apt-이용해서-Nginx-설치"><a href="#2-우분투에-apt-이용해서-Nginx-설치" class="headerlink" title="2. 우분투에 apt 이용해서 Nginx 설치"></a>2. 우분투에 apt 이용해서 Nginx 설치</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo apt update <span class="hljs-comment"># 패키지 저장소에 업데이트가 존재하는지 확인하는 역할만</span></span><br><span class="line">sudo apt upgrade <span class="hljs-comment"># 실제로 최신 버전 패키지로 업데이트</span></span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
@@ -359,7 +363,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">87</span>
+                <span class="level-item tag">88</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -423,7 +427,7 @@
                 <span class="level-item">Server</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
@@ -451,38 +455,34 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#설치순서">
-        <span class="has-mr-6">1</span>
-        <span>설치순서</span>
-        </a><ul class="menu-list"><li>
         <a class="is-flex" href="#1-apt-업데이트-및-업그레이드">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">1</span>
         <span>1. apt 업데이트 및 업그레이드</span>
         </a></li><li>
         <a class="is-flex" href="#2-우분투에-apt-이용해서-Nginx-설치">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2</span>
         <span>2. 우분투에 apt 이용해서 Nginx 설치</span>
         </a></li><li>
         <a class="is-flex" href="#3-Nginx-server-설정파일-생성">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">3</span>
         <span>3. Nginx server 설정파일 생성</span>
         </a></li><li>
         <a class="is-flex" href="#4-etc-nginx-sites-enabled-로-심볼릭-링크-연결">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">4</span>
         <span>4. /etc/nginx/sites-enabled/로 심볼릭 링크 연결</span>
         </a></li><li>
         <a class="is-flex" href="#5-Enable-and-restart-Nginx-server">
-        <span class="has-mr-6">1.5</span>
+        <span class="has-mr-6">5</span>
         <span>5. Enable and restart Nginx server</span>
         </a></li><li>
         <a class="is-flex" href="#6-Certbot-설치">
-        <span class="has-mr-6">1.6</span>
+        <span class="has-mr-6">6</span>
         <span>6. Certbot 설치</span>
         </a></li><li>
         <a class="is-flex" href="#7-SSL-적용">
-        <span class="has-mr-6">1.7</span>
+        <span class="has-mr-6">7</span>
         <span>7. SSL 적용</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -507,7 +507,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-12T06:06:30.000Z">2020-02-12</time></div>
                     <a href="/2020/02/12/Programming/Server/ubuntu-nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu18.04에 NginX 설치 &amp; SSL 붙이기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
                     </p>
                 </div>
             </div>
@@ -746,38 +746,34 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#설치순서">
-        <span class="has-mr-6">1</span>
-        <span>설치순서</span>
-        </a><ul class="menu-list"><li>
         <a class="is-flex" href="#1-apt-업데이트-및-업그레이드">
-        <span class="has-mr-6">1.1</span>
+        <span class="has-mr-6">1</span>
         <span>1. apt 업데이트 및 업그레이드</span>
         </a></li><li>
         <a class="is-flex" href="#2-우분투에-apt-이용해서-Nginx-설치">
-        <span class="has-mr-6">1.2</span>
+        <span class="has-mr-6">2</span>
         <span>2. 우분투에 apt 이용해서 Nginx 설치</span>
         </a></li><li>
         <a class="is-flex" href="#3-Nginx-server-설정파일-생성">
-        <span class="has-mr-6">1.3</span>
+        <span class="has-mr-6">3</span>
         <span>3. Nginx server 설정파일 생성</span>
         </a></li><li>
         <a class="is-flex" href="#4-etc-nginx-sites-enabled-로-심볼릭-링크-연결">
-        <span class="has-mr-6">1.4</span>
+        <span class="has-mr-6">4</span>
         <span>4. /etc/nginx/sites-enabled/로 심볼릭 링크 연결</span>
         </a></li><li>
         <a class="is-flex" href="#5-Enable-and-restart-Nginx-server">
-        <span class="has-mr-6">1.5</span>
+        <span class="has-mr-6">5</span>
         <span>5. Enable and restart Nginx server</span>
         </a></li><li>
         <a class="is-flex" href="#6-Certbot-설치">
-        <span class="has-mr-6">1.6</span>
+        <span class="has-mr-6">6</span>
         <span>6. Certbot 설치</span>
         </a></li><li>
         <a class="is-flex" href="#7-SSL-적용">
-        <span class="has-mr-6">1.7</span>
+        <span class="has-mr-6">7</span>
         <span>7. SSL 적용</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
             </div>
         </div>
     </div>
@@ -802,7 +798,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-12T06:06:30.000Z">2020-02-12</time></div>
                     <a href="/2020/02/12/Programming/Server/ubuntu-nginx/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ubuntu18.04에 NginX 설치 &amp; SSL 붙이기</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
                     </p>
                 </div>
             </div>
