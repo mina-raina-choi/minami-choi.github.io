@@ -8,6 +8,46 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/02/12/Programming/Server/ubuntu-nginx/</loc>
+        <lastmod>2020-02-19T07:21:17.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/01/20/Programming/Algorithm/graph-core-2/</loc>
+        <lastmod>2020-02-14T04:09:01.977Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/01/16/Programming/Algorithm/graph-core/</loc>
+        <lastmod>2020-02-13T08:42:00.998Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/</loc>
+        <lastmod>2020-02-13T07:07:45.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2020/02/07/Programming/Algorithm/back-tracking-core/</loc>
+        <lastmod>2020-02-09T07:02:32.557Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/02/08/Programming/Algorithm/baekjoon-3986/</loc>
         <lastmod>2020-02-08T13:38:24.280Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -56,14 +96,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2020/02/07/Programming/Algorithm/back-tracking-core/</loc>
-        <lastmod>2020-02-07T05:08:28.868Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2019/12/30/Programming/Algorithm/insertion-sort-list/</loc>
         <lastmod>2020-02-04T04:22:41.388Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -88,32 +120,8 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2020/01/20/Programming/Algorithm/graph-core-2/</loc>
-        <lastmod>2020-01-20T13:42:31.201Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2018/05/29/Programming/Basic/cors/</loc>
         <lastmod>2020-01-17T09:36:17.448Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2020/01/16/Programming/Algorithm/graph-core/</loc>
-        <lastmod>2020-01-16T23:43:55.234Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/</loc>
-        <lastmod>2020-01-16T13:21:23.421Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -368,7 +376,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
+        <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -376,7 +384,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
+        <loc>https://minami-choi.github.io/2018/05/01/Programming/Angular/angular-component-overview2/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
