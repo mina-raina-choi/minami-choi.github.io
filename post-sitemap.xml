@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/02/22/Programming/Algorithm/baekjoon-array/</loc>
+        <lastmod>2020-02-21T15:56:38.473Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/02/17/Programming/Algorithm/baekjoon-2110/</loc>
         <lastmod>2020-02-19T10:43:14.543Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -376,7 +384,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/04/Programming/Angular/angular-injector-tree/</loc>
+        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -384,7 +392,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
+        <loc>https://minami-choi.github.io/2018/05/04/Programming/Angular/angular-injector-tree/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
