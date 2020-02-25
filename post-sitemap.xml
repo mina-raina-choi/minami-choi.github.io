@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/02/25/Programming/Basic/browser-process/</loc>
+        <lastmod>2020-02-25T13:06:13.273Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/02/25/Programming/JavaScript/hoisting/</loc>
         <lastmod>2020-02-25T08:01:47.584Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -208,7 +216,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/13/Programming/Basic/for-foreach-forin-forof/</loc>
+        <loc>https://minami-choi.github.io/2018/05/16/Programming/Basic/parameter-argument/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -216,7 +224,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/16/Programming/Basic/parameter-argument/</loc>
+        <loc>https://minami-choi.github.io/2018/05/13/Programming/Basic/for-foreach-forin-forof/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -344,7 +352,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/02/Programming/Algorithm/breadth-first-search/</loc>
+        <loc>https://minami-choi.github.io/2018/04/07/Programming/Algorithm/binary-search/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -352,7 +360,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/04/07/Programming/Algorithm/binary-search/</loc>
+        <loc>https://minami-choi.github.io/2018/05/02/Programming/Algorithm/breadth-first-search/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -400,14 +408,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
-        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -416,7 +416,15 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/09/Programming/Angular/angular-architecture/</loc>
+        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
+        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -424,7 +432,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
+        <loc>https://minami-choi.github.io/2018/08/09/Programming/Angular/angular-architecture/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -440,7 +448,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
+        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

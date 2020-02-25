@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>브라우저 동작 원리 - Mina&#39;s World</title>
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/25/programming/basic/browser-process/">  <meta name="description" content="대부분의 프로그래밍 언어는 운영체제 OS 위에서 실행되지만 웹 애플리케이션의 자바스크립트는 브라우저에서 HTML, CSS와 함께 실행된다. 그러므로 브라우저의 동작 원리를 이해하면 보다 효율적으로 자바스크립트 프로그래밍을 할 수 있다.">
+<meta name="keywords" content="JavaScript,Browser">
+<meta property="og:type" content="article">
+<meta property="og:title" content="브라우저 동작 원리">
+<meta property="og:url" content="https://minami-choi.github.io/2020/02/25/Programming/Basic/browser-process/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="대부분의 프로그래밍 언어는 운영체제 OS 위에서 실행되지만 웹 애플리케이션의 자바스크립트는 브라우저에서 HTML, CSS와 함께 실행된다. 그러므로 브라우저의 동작 원리를 이해하면 보다 효율적으로 자바스크립트 프로그래밍을 할 수 있다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518707598572-8cf7dabd8f66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
+<meta property="og:updated_time" content="2020-02-25T13:06:13.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="브라우저 동작 원리">
+<meta name="twitter:description" content="대부분의 프로그래밍 언어는 운영체제 OS 위에서 실행되지만 웹 애플리케이션의 자바스크립트는 브라우저에서 HTML, CSS와 함께 실행된다. 그러므로 브라우저의 동작 원리를 이해하면 보다 효율적으로 자바스크립트 프로그래밍을 할 수 있다.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1518707598572-8cf7dabd8f66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
+<link rel="icon" href="/images/favicon.svg">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+        
+        <img src="/images/logo2.png" alt="브라우저 동작 원리" height="28">
+        
+      </a>
+    </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1518707598572-8cf7dabd8f66?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="브라우저 동작 원리">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T12:56:17.000Z">2020-02-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Basic/">Basic</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 minutes read (About 1233 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                브라우저 동작 원리
+            
+        </h1>
+        <div class="content">
+            <p>대부분의 프로그래밍 언어는 운영체제 OS 위에서 실행되지만 웹 애플리케이션의 자바스크립트는 브라우저에서 HTML, CSS와 함께 실행된다. 그러므로 브라우저의 동작 원리를 이해하면 보다 효율적으로 자바스크립트 프로그래밍을 할 수 있다.</p>
+<a id="more"></a>
+
+<p>브라우저의 핵심 기능은 사용자가 원하는 웹페이지를 서버에 요청하고, 서버의 응답을 받아 브라우저에 표시하는 것이다. 이것을 <strong>중요 렌더링 경로(Critical Rendering Path)</strong> 라고 부른다.</p>
+<p>간단하게 나타내면</p>
+<p><img src="critical-render-path.png" alt="중요 렌더링 경로"></p>
+<ol>
+<li><p>서버에서 응답으로 받은 HTML 데이터를 파싱한다.</p>
+</li>
+<li><p>HTML 파싱 결과로 DOM tree를 만든다.</p>
+</li>
+<li><p>파싱하는 중에 CSS 파일 링크를 만나면 CSS 파일을 요청해서 받아온다.</p>
+</li>
+<li><p>CSS 파일을 파싱해서 CSSOM tree를 만든다.</p>
+</li>
+<li><p>DOM 과 CSSOM 를 결합해서 렌더 트리를 만든다.<br>렌더 트리에는 페이지를 렌더링하는 데 필요한 노드만 포함</p>
+<blockquote>
+<p>참고: visibility: hidden은 display: none과 다르다. 전자는 요소를 보이지 않게 만들지만, 이 요소는 여전히 레이아웃에서 공간을 차지한다.(즉, 비어 있는 상자로 렌더링됨). 반면, 후자(display: none)는 요소가 보이지 않으며 레이아웃에 포함되지도 않도록 렌더링 트리에서 요소를 완전히 제거한다.</p>
+</blockquote>
+</li>
+</ol>
+<p>그리고, head 태그도 화면에 보이지 않는 요소이므로 렌더 트리에서는 제외된다.</p>
+<ol start="6">
+<li>렌더트리를 기반으로 각각의 화면의 어디에 위치할 것인지 레이아웃을 그린다.</li>
+<li>픽셀을 화면에 페인트한다.</li>
+</ol>
+<p>위 과정은 모두 렌더링 엔진이 담당한다.</p>
+<p>반면에 자바스크립트는 렌더링 엔진이 아닌 자바스크립트 엔진이 처리한다. HTML 파서가 script 태그를 만나면, 자바스크립트 코드를 실행하기 위해 DOM 생성 프로세스를 중지하고 자바스크립트 파일을 로드하고 파싱하여 실행한다. 자바 스크립트 실행이 완료되면 다시 DOM 생성을 재개한다.</p>
+<p>왜냐하면 JavaScript는 DOM 구조 전체를 바꿀 수 있는 <strong>document.write()</strong> 메서드와 같은 것을 사용해 문서의 모양을 변경할 수 있기 때문이다.</p>
+<p>이렇듯 브라우저는 동기적으로 HTML, CSS, Javascript를 처리한다. 그래서 script 태그에 따라 블로킹이 발생하므로 script 태그를 어디에 두느냐가 중요하다.</p>
+<p><strong>보통 script 태그는 body 요소의 가장 아래에 두는 것이 좋다.</strong></p>
+<p>그래야 HTML 파싱이 블로킹되지 않는다. 그리고 DOM이 완성되지 않은 상태에서 javascript가 DOM을 조작해서 에러가 발생할 위험도 없앨 수 있다.</p>
+<p>블로킹을 막는 또다른 방법으로는 script 태그에 async 속성이나 defer 속성을 추가할 수 있다. 이 속성이 있으면 브라우저가 비동기적으로 혹은 HTML 파싱을 완료 후에 JavaScript 코드를 로딩하고 실행하도록 하면서 HTML 파싱을 막지 않는다.</p>
+<p>스타일 시트는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거나 중단할 이유가 없다.</p>
+<p>참고로</p>
+<p><strong>하위 리소스(subresource) 로딩</strong></p>
+<p>웹 사이트는 일반적으로 이미지, CSS, JavaScript와 같은 외부 리소스를 사용한다. 이러한 파일은 네트워크나 캐시에서 로딩해야 한다. DOM을 구축하기 위해 파싱하는 동안 이런 리소스를 만날 때마다 메인 스레드가 하나하나 요청할 수도 있을 것이다. 하지만 속도를 높이기 위해 <strong>프리로드(Preload) 스캐너</strong>가 동시에 실행된다. HTML 문서에 <code>&lt;img&gt;</code> 또는 <code>&lt;link&gt;</code> 와 같은 태그가 있으면 프리로드 스캐너는 HTML 파서가 생성한 토큰을 확인하고 브라우저 프로세스의 네트워크 스레드에 요청을 보낸다.</p>
+<p><img src="subresource-request.png" alt="하위 리소스 로딩"></p>
+<hr>
+<p>[참고]</p>
+<p><a href="https://d2.naver.com/helloworld/59361" rel="external nofollow noopener noreferrer" target="_blank">https://d2.naver.com/helloworld/59361</a><br><a href="https://www.youtube.com/watch?v=DuSURHrZG6I" rel="external nofollow noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=DuSURHrZG6I</a></p>
+<p>객체 모델 생성<br><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko" rel="external nofollow noopener noreferrer" target="_blank">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko</a></p>
+<p>렌더링 트리<br><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=ko" rel="external nofollow noopener noreferrer" target="_blank">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=ko</a></p>
+<p>렌더러 프로세스의 내부 동작 <a href="https://d2.naver.com/helloworld/5237120" rel="external nofollow noopener noreferrer" target="_blank">https://d2.naver.com/helloworld/5237120</a></p>
+<p><a href="https://poiemaweb.com/js-browser" rel="external nofollow noopener noreferrer" target="_blank">https://poiemaweb.com/js-browser</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Browser/">Browser</a>, <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/25/Programming/JavaScript/hoisting/">
+                <span class="level-item">호이스팅이란?</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2020/02/25/Programming/Basic/browser-process/';
+        this.page.identifier = '2020/02/25/Programming/Basic/browser-process/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Articles
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            97
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Catégories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            95
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
+                SUIVRE</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catégories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
+            <span class="level-start">
+                <span class="level-item">이직일기</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">95</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">51</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">16</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Server/">
+            <span class="level-start">
+                <span class="level-item">Server</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Récents
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/Basic/browser-process/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1518707598572-8cf7dabd8f66?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="브라우저 동작 원리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T12:56:17.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/Basic/browser-process/" class="title has-link-black-ter is-size-6 has-text-weight-normal">브라우저 동작 원리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Basic/">Basic</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1558409306-5de35f1c63c2?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="호이스팅이란?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:22:56.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">호이스팅이란?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="var, let, const를 사용하여 생성된 변수들의 차이점">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:13:45.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="title has-link-black-ter is-size-6 has-text-weight-normal">var, let, const를 사용하여 생성된 변수들의 차이점</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-21T15:41:02.000Z">2020-02-22</time></div>
+                    <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1568219191146-7f2bbfda6891?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2512 예산">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T02:30:02.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2512 예산</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Récents
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/Basic/browser-process/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1518707598572-8cf7dabd8f66?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="브라우저 동작 원리">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T12:56:17.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/Basic/browser-process/" class="title has-link-black-ter is-size-6 has-text-weight-normal">브라우저 동작 원리</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Basic/">Basic</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1558409306-5de35f1c63c2?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="호이스팅이란?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:22:56.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">호이스팅이란?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="var, let, const를 사용하여 생성된 변수들의 차이점">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:13:45.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="title has-link-black-ter is-size-6 has-text-weight-normal">var, let, const를 사용하여 생성된 변수들의 차이점</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-21T15:41:02.000Z">2020-02-22</time></div>
+                    <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1568219191146-7f2bbfda6891?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2512 예산">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T02:30:02.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2512 예산</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo2.png" alt="브라우저 동작 원리" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Articles',
+                PAGES: 'Pages',
+                CATEGORIES: 'Catégories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

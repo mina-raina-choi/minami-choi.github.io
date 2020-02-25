@@ -8,14 +8,21 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/categories/Programming/JavaScript/</loc>
-        <lastmod>2020-02-25T08:01:47.584Z</lastmod>
+        <loc>https://minami-choi.github.io/categories/Programming/Basic/</loc>
+        <lastmod>2020-02-25T13:06:13.273Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://minami-choi.github.io/categories/Programming/</loc>
+        <lastmod>2020-02-25T13:06:13.273Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/categories/Programming/JavaScript/</loc>
         <lastmod>2020-02-25T08:01:47.584Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -31,13 +38,6 @@
     <url>
         <loc>https://minami-choi.github.io/categories/Programming/Server/</loc>
         <lastmod>2020-02-19T07:23:48.650Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Programming/Basic/</loc>
-        <lastmod>2020-01-17T09:36:17.448Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
