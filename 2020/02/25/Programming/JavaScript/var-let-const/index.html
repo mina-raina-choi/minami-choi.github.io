@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>var, let, const를 사용하여 생성된 변수들의 차이점 - Mina&#39;s World</title>
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/25/programming/javascript/var-let-const/">  <meta name="description" content="실무에서 변수를 선언할 때, 값의 재할당이 필요한 경우 let을, 아닌 경우 const를 사용했다. var를 사용하는 일은 거의 없었다.var, let, const에 대해서 술술 말할 수 있도록 정리를 해보았다.">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="var, let, const를 사용하여 생성된 변수들의 차이점">
+<meta property="og:url" content="https://minami-choi.github.io/2020/02/25/Programming/JavaScript/var-let-const/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="실무에서 변수를 선언할 때, 값의 재할당이 필요한 경우 let을, 아닌 경우 const를 사용했다. var를 사용하는 일은 거의 없었다.var, let, const에 대해서 술술 말할 수 있도록 정리를 해보았다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
+<meta property="og:updated_time" content="2020-02-25T07:48:12.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="var, let, const를 사용하여 생성된 변수들의 차이점">
+<meta name="twitter:description" content="실무에서 변수를 선언할 때, 값의 재할당이 필요한 경우 let을, 아닌 경우 const를 사용했다. var를 사용하는 일은 거의 없었다.var, let, const에 대해서 술술 말할 수 있도록 정리를 해보았다.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
+<link rel="icon" href="/images/favicon.svg">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">   
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+        
+        <img src="/images/logo2.png" alt="var, let, const를 사용하여 생성된 변수들의 차이점" height="28">
+        
+      </a>
+    </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="var, let, const를 사용하여 생성된 변수들의 차이점">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-25T07:13:45.000Z">2020-02-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 746 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                var, let, const를 사용하여 생성된 변수들의 차이점
+            
+        </h1>
+        <div class="content">
+            <p>실무에서 변수를 선언할 때, 값의 재할당이 필요한 경우 let을, 아닌 경우 const를 사용했다. var를 사용하는 일은 거의 없었다.<br>var, let, const에 대해서 술술 말할 수 있도록 정리를 해보았다.</p>
+<a id="more"></a>
+
+<h3 id="1-var-은-함수-스코프-let과-const-는-블록스코프"><a href="#1-var-은-함수-스코프-let과-const-는-블록스코프" class="headerlink" title="1. var 은 함수 스코프, let과 const 는 블록스코프"></a>1. var 은 함수 스코프, let과 const 는 블록스코프</h3><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 함수 내에서는 모든 변수에 접근할 수 있다.</span></span><br><span class="line">  <span class="hljs-keyword">var</span> bar = <span class="hljs-string">"bar"</span></span><br><span class="line">  <span class="hljs-keyword">let</span> bae = <span class="hljs-string">"bae"</span></span><br><span class="line">  <span class="hljs-keyword">const</span> baw = <span class="hljs-string">"baw"</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bar)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bae)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(baw)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> bar = <span class="hljs-string">"bar"</span></span><br><span class="line">    <span class="hljs-keyword">let</span> bae = <span class="hljs-string">"bae"</span></span><br><span class="line">    <span class="hljs-keyword">const</span> baw = <span class="hljs-string">"baw"</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// var로 선언된 변수는 함수내에서 어디서나 접근 가능하다.</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bar) <span class="hljs-comment">// bar</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// let, const로 선언된 변수는 정의된 블록 외부에서 접근 할 수 없다.</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bae) <span class="hljs-comment">// ReferenceError:bae is not defined</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(baw) <span class="hljs-comment">// ReferenceError:baw is not defined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-var로-선언한-변수는-호이스팅되고-let-const는-그렇지-않다"><a href="#2-var로-선언한-변수는-호이스팅되고-let-const는-그렇지-않다" class="headerlink" title="2. var로 선언한 변수는 호이스팅되고 let, const는 그렇지 않다."></a>2. var로 선언한 변수는 호이스팅되고 let, const는 그렇지 않다.</h3><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// var로 선언한 변수는 호이스팅된다. 변수가 선언되기 전에 코드에서 참조될 수 있다.</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bar) <span class="hljs-comment">// undefined</span></span><br><span class="line">  <span class="hljs-keyword">var</span> bar = <span class="hljs-string">"bar"</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// let, const에서는 호이스팅을 허용하지 않는다.</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//ReferenceError: Cannot access 'bae' before initialization</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bae)</span><br><span class="line">  <span class="hljs-keyword">let</span> bae = <span class="hljs-string">"bae"</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//   ReferenceError: Cannot access 'baw' before initialization</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(baw)</span><br><span class="line">  <span class="hljs-keyword">const</span> baw = <span class="hljs-string">"baw"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-var-는-변수의-재선언을-허용하고-let-const는-허용하지-않는다"><a href="#3-var-는-변수의-재선언을-허용하고-let-const는-허용하지-않는다" class="headerlink" title="3. var 는 변수의 재선언을 허용하고 let,const는 허용하지 않는다."></a>3. var 는 변수의 재선언을 허용하고 let,const는 허용하지 않는다.</h3><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> foo = <span class="hljs-string">"foo"</span></span><br><span class="line">  <span class="hljs-keyword">var</span> foo = <span class="hljs-string">"foo2"</span></span><br><span class="line">  <span class="hljs-comment">// var 는 변수의 재선언을 허용한다.</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(foo)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// let, const는 변수의 재선언을 허용하지 않는다.</span></span><br><span class="line">  <span class="hljs-keyword">let</span> bar = <span class="hljs-string">"bar"</span></span><br><span class="line">  <span class="hljs-comment">// SyntaxError: Identifier 'bar' has already been declared</span></span><br><span class="line">  <span class="hljs-keyword">let</span> bar = <span class="hljs-string">"bar2"</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bar)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-let으로-선언한-변수는-값을-재할당할-수-있지만-const는-불가능하다"><a href="#4-let으로-선언한-변수는-값을-재할당할-수-있지만-const는-불가능하다" class="headerlink" title="4. let으로 선언한 변수는 값을 재할당할 수 있지만 const는 불가능하다."></a>4. let으로 선언한 변수는 값을 재할당할 수 있지만 const는 불가능하다.</h3><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// let로 선언한 변수는 값의 재할당 가능하다.</span></span><br><span class="line">  <span class="hljs-keyword">let</span> bar = <span class="hljs-string">"bar"</span></span><br><span class="line">  bar = <span class="hljs-string">"bar2"</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bar) <span class="hljs-comment">// bar2</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// const로 선언한 변수는 값의 재할당이 불가능하다.</span></span><br><span class="line">  <span class="hljs-comment">// 단, primitive형 일 경우만 (string, number, boolean...)</span></span><br><span class="line">  <span class="hljs-keyword">const</span> baz = <span class="hljs-string">"baz"</span></span><br><span class="line">  <span class="hljs-comment">// TypeError: Assignment to constant variable.</span></span><br><span class="line">  baz = <span class="hljs-string">"baz2"</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(baz)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 하지만 object 나 array의 경우 프로퍼티를 수정할 수 있다.</span></span><br><span class="line">  <span class="hljs-keyword">const</span> qwe = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span> &#125;</span><br><span class="line">  qwe.x = <span class="hljs-number">3</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(qwe) <span class="hljs-comment">// &#123; x: 3, y: 2 &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> awd = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</span><br><span class="line">  awd[<span class="hljs-number">2</span>] = <span class="hljs-number">99</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(awd) <span class="hljs-comment">// [ 1, 2, 99, 4 ]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>하지만 const로 생성한 변수가 object의 경우, object의 프로퍼티는 수정가능하다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 새로운 object 를 할당하는 것은 불가능하지만,</span></span><br><span class="line">  <span class="hljs-keyword">const</span> object = &#123; <span class="hljs-attr">key</span>: <span class="hljs-string">"value"</span> &#125;</span><br><span class="line">  <span class="hljs-comment">// TypeError: Assignment to constant variable.</span></span><br><span class="line">  object = &#123; <span class="hljs-attr">otherKey</span>: <span class="hljs-string">"otherValue"</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// object의 property는 수정가능하다.</span></span><br><span class="line">  object.key = <span class="hljs-string">"newValue"</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(object) <span class="hljs-comment">// newValue</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</span><br><span class="line">  <span class="hljs-comment">// TypeError: Assignment to constant variable.</span></span><br><span class="line">  array = [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]</span><br><span class="line"></span><br><span class="line">  array[<span class="hljs-number">4</span>] = <span class="hljs-number">5</span></span><br><span class="line">  array.push(<span class="hljs-number">6</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(array) <span class="hljs-comment">// [ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>만약 object property의 값도 상수로 만들고 싶다면, Object.freeze() 를 이용해 object를 수정불가능하게 한다.</p>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">object.key = <span class="hljs-string">"newValue"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">Object</span>.freeze(object)</span><br><span class="line">object.key = <span class="hljs-string">"NEWNEW"</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(object) <span class="hljs-comment">// newValue</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line"> <span class="hljs-comment">// let은 변수의 선언과 할당을 분리할 수 있다.</span></span><br><span class="line">  <span class="hljs-keyword">let</span> foo</span><br><span class="line">  foo = <span class="hljs-number">1</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(foo) <span class="hljs-comment">// 1</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// const는 변수의 선언과 동시에 할당을 해줘야한다.</span></span><br><span class="line">  <span class="hljs-keyword">const</span> bar</span><br><span class="line">  bar = <span class="hljs-number">2</span></span><br><span class="line">  <span class="hljs-comment">// SyntaxError: Missing initializer in const declaration</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(bar)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>[참고]<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/25/Programming/JavaScript/hoisting/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">호이스팅이란?</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/22/Programming/Algorithm/baekjoon-array/">
+                <span class="level-item">[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2020/02/25/Programming/JavaScript/var-let-const/';
+        this.page.identifier = '2020/02/25/Programming/JavaScript/var-let-const/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            96
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            94
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Essay/이직일기/">
+            <span class="level-start">
+                <span class="level-item">이직일기</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">94</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">51</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">16</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Server/">
+            <span class="level-start">
+                <span class="level-item">Server</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-var-은-함수-스코프-let과-const-는-블록스코프">
+        <span class="has-mr-6">1</span>
+        <span>1. var 은 함수 스코프, let과 const 는 블록스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-var로-선언한-변수는-호이스팅되고-let-const는-그렇지-않다">
+        <span class="has-mr-6">2</span>
+        <span>2. var로 선언한 변수는 호이스팅되고 let, const는 그렇지 않다.</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-var-는-변수의-재선언을-허용하고-let-const는-허용하지-않는다">
+        <span class="has-mr-6">3</span>
+        <span>3. var 는 변수의 재선언을 허용하고 let,const는 허용하지 않는다.</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-let으로-선언한-변수는-값을-재할당할-수-있지만-const는-불가능하다">
+        <span class="has-mr-6">4</span>
+        <span>4. let으로 선언한 변수는 값을 재할당할 수 있지만 const는 불가능하다.</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1558409306-5de35f1c63c2?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="호이스팅이란?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:22:56.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">호이스팅이란?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="var, let, const를 사용하여 생성된 변수들의 차이점">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:13:45.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="title has-link-black-ter is-size-6 has-text-weight-normal">var, let, const를 사용하여 생성된 변수들의 차이점</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-21T15:41:02.000Z">2020-02-22</time></div>
+                    <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1568219191146-7f2bbfda6891?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2512 예산">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T02:30:02.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2512 예산</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/Programming/Algorithm/baekjoon-2110/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555930593-7b9a6758818f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2110 공유기 설치">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T02:22:12.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/Programming/Algorithm/baekjoon-2110/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2110 공유기 설치</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#1-var-은-함수-스코프-let과-const-는-블록스코프">
+        <span class="has-mr-6">1</span>
+        <span>1. var 은 함수 스코프, let과 const 는 블록스코프</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-var로-선언한-변수는-호이스팅되고-let-const는-그렇지-않다">
+        <span class="has-mr-6">2</span>
+        <span>2. var로 선언한 변수는 호이스팅되고 let, const는 그렇지 않다.</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-var-는-변수의-재선언을-허용하고-let-const는-허용하지-않는다">
+        <span class="has-mr-6">3</span>
+        <span>3. var 는 변수의 재선언을 허용하고 let,const는 허용하지 않는다.</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-let으로-선언한-변수는-값을-재할당할-수-있지만-const는-불가능하다">
+        <span class="has-mr-6">4</span>
+        <span>4. let으로 선언한 변수는 값을 재할당할 수 있지만 const는 불가능하다.</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1558409306-5de35f1c63c2?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="호이스팅이란?">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:22:56.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/hoisting/" class="title has-link-black-ter is-size-6 has-text-weight-normal">호이스팅이란?</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1493920937271-e07313c7c855?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="var, let, const를 사용하여 생성된 변수들의 차이점">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-25T07:13:45.000Z">2020-02-25</time></div>
+                    <a href="/2020/02/25/Programming/JavaScript/var-let-const/" class="title has-link-black-ter is-size-6 has-text-weight-normal">var, let, const를 사용하여 생성된 변수들의 차이점</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-21T15:41:02.000Z">2020-02-22</time></div>
+                    <a href="/2020/02/22/Programming/Algorithm/baekjoon-array/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2577 숫자의 개수, 1475 방번호, 1158 요세푸스 문제</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1568219191146-7f2bbfda6891?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2512 예산">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T02:30:02.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/Programming/Algorithm/baekjoon-2512/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2512 예산</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/17/Programming/Algorithm/baekjoon-2110/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1555930593-7b9a6758818f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] 2110 공유기 설치">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-17T02:22:12.000Z">2020-02-17</time></div>
+                    <a href="/2020/02/17/Programming/Algorithm/baekjoon-2110/" class="title has-link-black-ter is-size-6 has-text-weight-normal">[백준] 2110 공유기 설치</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo2.png" alt="var, let, const를 사용하여 생성된 변수들의 차이점" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
