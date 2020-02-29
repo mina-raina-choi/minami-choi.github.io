@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/categories/Essay/</loc>
+        <lastmod>2020-02-29T07:32:14.717Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/categories/Programming/JavaScript/</loc>
         <lastmod>2020-02-28T03:05:28.242Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -79,13 +86,6 @@
 
     <url>
         <loc>https://minami-choi.github.io/categories/Essay/%EC%9D%B4%EC%A7%81%EC%9D%BC%EA%B8%B0/</loc>
-        <lastmod>2019-11-24T14:04:20.837Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/categories/Essay/</loc>
         <lastmod>2019-11-24T14:04:20.837Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
