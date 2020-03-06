@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://minami-choi.github.io/tags/Codility/</loc>
+        <lastmod>2020-03-06T09:26:06.308Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/MinMaxDivision/</loc>
+        <lastmod>2020-03-06T09:26:06.308Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
+        <lastmod>2020-03-06T09:26:06.308Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/%EA%B8%80%EB%98%904%EA%B8%B0/</loc>
         <lastmod>2020-02-29T07:32:14.717Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,13 +33,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/JavaScript/</loc>
         <lastmod>2020-02-28T03:05:28.242Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
-        <lastmod>2020-02-26T09:38:56.612Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -122,6 +136,20 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/tags/switch/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/else-if/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/for-of%EB%AC%B8/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -144,20 +172,6 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/for%EB%AC%B8/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/switch/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/else-if/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -353,20 +367,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/binary-search/</loc>
-        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/</loc>
-        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/breadth-first-search/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -389,6 +389,20 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/%EB%B9%85%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/</loc>
+        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/binary-search/</loc>
+        <lastmod>2020-01-13T08:21:48.052Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/</loc>
         <lastmod>2020-01-13T08:21:48.052Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
