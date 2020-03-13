@@ -15,12 +15,12 @@
 <meta property="og:site_name" content="Mina&#39;s World">
 <meta property="og:description" content="코딜리티에서 이분탐색문제 중 MinMaxDivision을 풀어보았다. (문제 출처 https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/) 문제를 요약해보면 정수 N개로 이루어진 배열 A를 K조각으로 나눌 때의 부분 배열의 최대합 중 최소값을 구하라는">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-<meta property="og:updated_time" content="2020-03-06T09:26:06.308Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
+<meta property="og:updated_time" content="2020-03-13T07:17:27.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="코딜리티 MinMaxDivision">
 <meta name="twitter:description" content="코딜리티에서 이분탐색문제 중 MinMaxDivision을 풀어보았다. (문제 출처 https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/) 문제를 요약해보면 정수 N개로 이루어진 배열 A를 K조각으로 나눌 때의 부분 배열의 최대합 중 최소값을 구하라는">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github.css">   
 <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
@@ -99,7 +99,7 @@
     
     <div class="card-image">
         <span class="image is-7by1">
-            <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision">
         </span>
     </div>
     
@@ -146,11 +146,11 @@
 <p>아이고, 두야… 이 문제로 2시간 가까이 보낸 것 같다. 결국 100%까지는 구현 못하고 91%까지 통과했다. 일단 여기까지 진행된 내용을 기록에 남긴다.</p>
 <p><img src="minmaxdivision.png" alt="minmaxdivision"></p>
 <hr>
-<p>이 문제를 풀 핵심 아이디어는 부분 배열의 합이 될 수 있는 <code>최소값 row = 0, 최대값 high = 배열 A의 총합</code> 을 기준으로 중간값 mid를 구하고, <code>mid를 부분 배열의 최대합으로 하는 부분 배열을 k 개</code> 만들 수 있는지 체크한다.</p>
-<p>A배열의 부분 배열을 k만큼 만들 수 있거나, k보다 적게 만들 수 있으면<br>mid를 작게해봐야함 -&gt; high를 줄여야한다.<br>반대의 경우 mid를 높여야하므로 <code>row = mid + 1</code><br>이런 식으로 <code>row &lt; high</code>이면 계속 반복한다.</p>
+<p>이 문제를 풀 핵심 아이디어는 부분 배열의 합이 될 수 있는 <code>최소값 low = 0, 최대값 high = 배열 A의 총합</code> 을 기준으로 중간값 mid를 구하고, <code>mid를 부분 배열의 최대합으로 하는 부분 배열을 k 개</code> 만들 수 있는지 체크한다.</p>
+<p>A배열의 부분 배열을 k만큼 만들 수 있거나, k보다 적게 만들 수 있으면<br>mid를 작게해봐야함 -&gt; high를 줄여야한다.<br>반대의 경우 mid를 높여야하므로 <code>low = mid + 1</code><br>이런 식으로 <code>low &lt; high</code>이면 계속 반복한다.</p>
 <p>통과하지 못한 케이스를 보면 제출한 답이 정답과 1씩 차이가 난다… 엣지케이스 처리를 잘못해 준 것 같다. 다시 살펴봐야겠다…</p>
 <p><img src="failcase.png" alt="failcase"></p>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">K, M, A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sum = A.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b, <span class="hljs-number">0</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = A.length</span><br><span class="line">  <span class="hljs-keyword">let</span> row = <span class="hljs-number">0</span>,</span><br><span class="line">    high = sum,</span><br><span class="line">    mid</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (row &lt; high) &#123;</span><br><span class="line">    mid = <span class="hljs-built_in">parseInt</span>((row + high) / <span class="hljs-number">2</span>)</span><br><span class="line">    <span class="hljs-comment">// console.log(row, high)</span></span><br><span class="line">    <span class="hljs-comment">// console.log("새로운 mid", mid)</span></span><br><span class="line">    <span class="hljs-keyword">let</span> kCnt = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> tempSum = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> arrLen = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// mid보다 작은 합으로 구성가능한 갯수 세기</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (A[i] &gt; mid) &#123;</span><br><span class="line">        <span class="hljs-comment">// 불가능한 최소합, mid 크게, row를 크게</span></span><br><span class="line">        row = mid + <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (kCnt == K) &#123;</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      tempSum += A[i]</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (tempSum == mid) &#123;</span><br><span class="line">        kCnt++</span><br><span class="line">        arrLen++</span><br><span class="line">        tempSum = <span class="hljs-number">0</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tempSum &gt; mid) &#123;</span><br><span class="line">        kCnt++</span><br><span class="line">        <span class="hljs-comment">// 이전인덱스로</span></span><br><span class="line">        i--</span><br><span class="line">        tempSum = <span class="hljs-number">0</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// tempSum &lt; mid</span></span><br><span class="line">        arrLen++</span><br><span class="line">        <span class="hljs-keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (arrLen == n) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (kCnt &lt;= K) &#123;</span><br><span class="line">        <span class="hljs-comment">// 최소값을 탐색하기 위해서 더 낮은 mid</span></span><br><span class="line">        high = mid</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        row = mid + <span class="hljs-number">1</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arrLen &lt; n) &#123;</span><br><span class="line">      <span class="hljs-comment">// mid up row up</span></span><br><span class="line">      row = mid + <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      high = mid</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//   console.log("answer", row, mid)</span></span><br><span class="line">  <span class="hljs-keyword">return</span> row</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// solution(3, 5, [2, 1, 5, 1, 2, 2, 2])</span></span><br><span class="line"><span class="hljs-comment">// solution(1, 10, [4, 3, 2, 5, 6, 6, 4, 9])</span></span><br><span class="line">solution(<span class="hljs-number">2</span>, <span class="hljs-number">10</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">4</span>])</span><br><span class="line"><span class="hljs-comment">// ! 맨 마지막 값이 0인 케이스...</span></span><br><span class="line"><span class="hljs-comment">// solution(1, 10000, [0, 10000, 0])</span></span><br><span class="line"><span class="hljs-comment">// !10000</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">K, M, A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sum = A.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b, <span class="hljs-number">0</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = A.length</span><br><span class="line">  <span class="hljs-keyword">let</span> low = <span class="hljs-number">0</span>,</span><br><span class="line">    high = sum,</span><br><span class="line">    mid</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">    mid = <span class="hljs-built_in">parseInt</span>((low + high) / <span class="hljs-number">2</span>)</span><br><span class="line">    <span class="hljs-comment">// console.log(low, high)</span></span><br><span class="line">    <span class="hljs-comment">// console.log("새로운 mid", mid)</span></span><br><span class="line">    <span class="hljs-keyword">let</span> kCnt = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> tempSum = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> arrLen = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// mid보다 작은 합으로 구성가능한 갯수 세기</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (A[i] &gt; mid) &#123;</span><br><span class="line">        <span class="hljs-comment">// 불가능한 최소합, mid 크게, low를 크게</span></span><br><span class="line">        low = mid + <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (kCnt == K) &#123;</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      tempSum += A[i]</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (tempSum == mid) &#123;</span><br><span class="line">        kCnt++</span><br><span class="line">        arrLen++</span><br><span class="line">        tempSum = <span class="hljs-number">0</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tempSum &gt; mid) &#123;</span><br><span class="line">        kCnt++</span><br><span class="line">        <span class="hljs-comment">// 이전인덱스로</span></span><br><span class="line">        i--</span><br><span class="line">        tempSum = <span class="hljs-number">0</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// tempSum &lt; mid</span></span><br><span class="line">        arrLen++</span><br><span class="line">        <span class="hljs-keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (arrLen == n) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (kCnt &lt;= K) &#123;</span><br><span class="line">        <span class="hljs-comment">// 최소값을 탐색하기 위해서 더 낮은 mid</span></span><br><span class="line">        high = mid</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        low = mid + <span class="hljs-number">1</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arrLen &lt; n) &#123;</span><br><span class="line">      <span class="hljs-comment">// mid up low up</span></span><br><span class="line">      low = mid + <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      high = mid</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//   console.log("answer", low, mid)</span></span><br><span class="line">  <span class="hljs-keyword">return</span> low</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// solution(3, 5, [2, 1, 5, 1, 2, 2, 2])</span></span><br><span class="line"><span class="hljs-comment">// solution(1, 10, [4, 3, 2, 5, 6, 6, 4, 9])</span></span><br><span class="line">solution(<span class="hljs-number">2</span>, <span class="hljs-number">10</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">4</span>])</span><br><span class="line"><span class="hljs-comment">// ! 맨 마지막 값이 0인 케이스...</span></span><br><span class="line"><span class="hljs-comment">// solution(1, 10000, [0, 10000, 0])</span></span><br><span class="line"><span class="hljs-comment">// !10000</span></span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -191,7 +191,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Commentaires</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
         
 <script>
     var disqus_config = function () {
@@ -253,7 +253,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
@@ -265,7 +265,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -290,7 +290,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -325,7 +325,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             <li>
@@ -431,14 +431,14 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
             
             <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision">
                 </p>
             </a>
             
@@ -694,14 +694,14 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
             
             <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision">
                 </p>
             </a>
             
@@ -1106,9 +1106,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
