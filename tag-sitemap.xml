@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://minami-choi.github.io/tags/JavaScript/</loc>
+        <lastmod>2020-04-11T09:06:14.232Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/Codility/</loc>
         <lastmod>2020-03-15T05:29:19.255Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,13 +33,6 @@
     <url>
         <loc>https://minami-choi.github.io/tags/1%EC%9D%BC1%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%ED%92%80%EC%9D%B4/</loc>
         <lastmod>2020-03-15T05:29:19.255Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/JavaScript/</loc>
-        <lastmod>2020-03-11T03:18:25.698Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -108,34 +108,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/for-of%EB%AC%B8/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/for-in%EB%AC%B8/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/foreach%EB%AC%B8/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/for%EB%AC%B8/</loc>
-        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/argument/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -158,6 +130,34 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/for-of%EB%AC%B8/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/for-in%EB%AC%B8/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/foreach%EB%AC%B8/</loc>
+        <lastmod>2020-01-13T08:24:26.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/for%EB%AC%B8/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -423,14 +423,14 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/Forms/</loc>
+        <loc>https://minami-choi.github.io/tags/ngrx/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/ngrx/</loc>
+        <loc>https://minami-choi.github.io/tags/Forms/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -458,13 +458,6 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/Component/</loc>
-        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://minami-choi.github.io/tags/Custom-Directive/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -473,6 +466,13 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/Directive/</loc>
+        <lastmod>2020-01-13T08:18:52.627Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/Component/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

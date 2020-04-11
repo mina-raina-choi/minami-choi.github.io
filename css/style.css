@@ -202,6 +202,7 @@ img.thumbnail {
 }
 .article .content {
   font-size: 1.1rem;
+  line-height: 1.8;
 }
 .article .content blockquote.pullquote {
   float: right;

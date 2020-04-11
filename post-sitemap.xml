@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/2020/04/11/Programming/JavaScript/async-code/</loc>
+        <lastmod>2020-04-11T09:06:14.232Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/2020/03/06/Programming/Algorithm/minmaxdivision/</loc>
         <lastmod>2020-03-15T05:29:19.255Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -264,7 +272,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/16/Programming/Basic/parameter-argument/</loc>
+        <loc>https://minami-choi.github.io/2018/05/13/Programming/Basic/for-foreach-forin-forof/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,7 +280,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/05/13/Programming/Basic/for-foreach-forin-forof/</loc>
+        <loc>https://minami-choi.github.io/2018/05/16/Programming/Basic/parameter-argument/</loc>
         <lastmod>2020-01-13T08:24:26.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -440,7 +448,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
+        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -448,7 +456,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/06/28/Programming/Angular/angular-forms/</loc>
+        <loc>https://minami-choi.github.io/2018/08/04/Programming/Angular/angular-ngrx-error/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -472,7 +480,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
+        <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -488,7 +496,7 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/2018/04/27/Programming/Angular/angular-component-overview/</loc>
+        <loc>https://minami-choi.github.io/2018/07/23/Programming/Angular/angular-custom-directive/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
