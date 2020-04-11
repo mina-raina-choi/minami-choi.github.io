@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/04/11/programming/javascript/async-code/">  <meta name="description" content="자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/ 의 내용을 번역해보았다.  내가 가장 좋아하는 사이트 중 하나는 BerkshireHathaway.com 이다 - 간단하고 효과적이">
+<link rel="canonical" href="https://minami-choi.github.io/2020/04/11/programming/javascript/async-code/">  <meta name="description" content="자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/ 의 내용을 번역해보았다.">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async&#x2F;await">
 <meta property="og:url" content="https://minami-choi.github.io/2020/04/11/Programming/JavaScript/async-code/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/ 의 내용을 번역해보았다.  내가 가장 좋아하는 사이트 중 하나는 BerkshireHathaway.com 이다 - 간단하고 효과적이">
+<meta property="og:description" content="자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/ 의 내용을 번역해보았다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-<meta property="og:updated_time" content="2020-04-11T09:06:14.232Z">
+<meta property="og:updated_time" content="2020-04-11T09:11:28.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async&#x2F;await">
-<meta name="twitter:description" content="자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/ 의 내용을 번역해보았다.  내가 가장 좋아하는 사이트 중 하나는 BerkshireHathaway.com 이다 - 간단하고 효과적이">
+<meta name="twitter:description" content="자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/ 의 내용을 번역해보았다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -117,7 +117,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    an hour read (About 7496 words)
+                    an hour read (About 7497 words)
                 </span>
                 
                 
@@ -136,6 +136,8 @@
         </h1>
         <div class="content">
             <p>자바스크립트에서 비동기 코드를 어떻게 처리하는지 아주 잘 설명한 글이 있어 <a href="https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/" rel="external nofollow noopener noreferrer" target="_blank">https://tylermcginnis.com/async-javascript-from-callbacks-to-promises-to-async-await/</a> 의 내용을 번역해보았다.</p>
+<a id="more"></a>
+
 <hr>
 <p>내가 가장 좋아하는 사이트 중 하나는 <a href="http://www.berkshirehathaway.com/" rel="external nofollow noopener noreferrer" target="_blank">BerkshireHathaway.com</a> 이다 - 간단하고 효과적이고 1997년에 런칭된 이후 제 역할을 잘 해오고 있다. 더 주목할 점은 지난 20년이 넘는 시간 동안 단 하나의 버그도 없었다. <strong><em>WHY??</em></strong> 왜냐하면 모든 것이 정적이기 때문이다. 20년 전 런칭했을 때와 완전히 똑같다. 만약 모든 데이터를 미리 다 가지고 있다면 사이트를 구축하는 것은 매우 간단할 것이다. 그러나 불행하게도 요즈음 대부분의 사이트들은 그렇지 못하다. 이 부분을 보완하기 위해 <strong>우리는 외부에서 앱으로 데이터를 가져오는 것을 처리하기 위한 패턴을 개발</strong>했다. 대부분의 경우와 같이, 이런 패턴도 시간이 지남에 따라 변경된 절충점(tradeoffs)이 있다. 이 포스트에서 3가지 대표적인 패턴인 <code>Callbacks</code> , <code>Promises</code>, <code>Async/Await</code> 의 장단점에 대해서 자세히 알아보고 역사적인 맥락에서 그 중요성과 진행상황에 대해서 얘기해 보자.</p>
 <p>먼저 콜백에 대해서 알아보자</p>
