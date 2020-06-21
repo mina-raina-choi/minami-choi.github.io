@@ -7,18 +7,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Mac 업데이트 후 Git 에러 해결 방법 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/03/programming/etc/xcrun-error/">  <meta name="description" content="문제상황이번에 Mojave에서 Catalina로 Mac os를 업데이트하고 나서 CLI로 git명령어를 사용하려니 아래와 같은 에러가 발생했다. xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/03/programming/etc/xcrun-error/">  <meta name="description" content="문제상황 이번에 Mojave에서 Catalina로 Mac os를 업데이트하고 나서 CLI로 git명령어를 사용하려니 아래와 같은 에러가 발생했다. xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Develope">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac 업데이트 후 Git 에러 해결 방법">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/03/Programming/etc/xcrun-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제상황이번에 Mojave에서 Catalina로 Mac os를 업데이트하고 나서 CLI로 git명령어를 사용하려니 아래와 같은 에러가 발생했다. xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer">
+<meta property="og:description" content="문제상황 이번에 Mojave에서 Catalina로 Mac os를 업데이트하고 나서 CLI로 git명령어를 사용하려니 아래와 같은 에러가 발생했다. xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Develope">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/3326103/pexels-photo-3326103.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 <meta property="og:updated_time" content="2020-01-13T08:23:58.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac 업데이트 후 Git 에러 해결 방법">
-<meta name="twitter:description" content="문제상황이번에 Mojave에서 Catalina로 Mac os를 업데이트하고 나서 CLI로 git명령어를 사용하려니 아래와 같은 에러가 발생했다. xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer">
+<meta name="twitter:description" content="문제상황 이번에 Mojave에서 Catalina로 Mac os를 업데이트하고 나서 CLI로 git명령어를 사용하려니 아래와 같은 에러가 발생했다. xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Develope">
 <meta name="twitter:image" content="https://images.pexels.com/photos/3326103/pexels-photo-3326103.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -134,14 +134,13 @@
             
         </h1>
         <div class="content">
-            <h2 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h2><p>이번에 <code>Mojave</code>에서 <code>Catalina</code>로 Mac os를 업데이트하고 나서 <code>CLI</code>로 <code>git</code>명령어를 사용하려니 아래와 같은 에러가 발생했다.</p>
+            <h2 id="문제상황">문제상황</h2>
+<p>이번에 <code>Mojave</code>에서 <code>Catalina</code>로 Mac os를 업데이트하고 나서 <code>CLI</code>로 <code>git</code>명령어를 사용하려니 아래와 같은 에러가 발생했다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
-<h2 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h2><p>reinstall the command line tools</p>
+<h2 id="해결방법">해결방법</h2>
+<p>reinstall the command line tools</p>
 <figure class="highlight zsh hljs"><table><tr><td class="code"><pre><span class="line">xcode-select --install</span><br><span class="line"></span><br><span class="line">// xcode-select: note: install requested <span class="hljs-keyword">for</span> <span class="hljs-built_in">command</span> line developer tools</span><br><span class="line"></span><br><span class="line">// 팝업창으로 소프트웨어 안내창이 뜨면 <span class="hljs-string">"설치"</span>를 클릭하면 된다.</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -245,7 +244,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -257,7 +256,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -269,7 +268,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -330,7 +329,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -397,6 +396,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -443,6 +450,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -473,7 +499,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -517,25 +543,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -553,7 +560,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -758,6 +765,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -788,7 +814,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -832,25 +858,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -868,7 +875,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

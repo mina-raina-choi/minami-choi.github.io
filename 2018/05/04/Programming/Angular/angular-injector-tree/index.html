@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Angular의 injector tree 구조 파악하기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/04/programming/angular/angular-injector-tree/">  <meta name="description" content="Angular5 / Injector Tree앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/04/programming/angular/angular-injector-tree/">  <meta name="description" content="Angular5 / Injector Tree 앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.">
 <meta name="keywords" content="Angular,injector,injector-tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular의 injector tree 구조 파악하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/04/Programming/Angular/angular-injector-tree/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular5 / Injector Tree앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.">
+<meta property="og:description" content="Angular5 / Injector Tree 앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:18:52.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular의 injector tree 구조 파악하기">
-<meta name="twitter:description" content="Angular5 / Injector Tree앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.">
+<meta name="twitter:description" content="Angular5 / Injector Tree 앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,17 +135,24 @@
             
         </h1>
         <div class="content">
-            <h1 id="Angular5-Injector-Tree"><a href="#Angular5-Injector-Tree" class="headerlink" title="Angular5 / Injector Tree"></a>Angular5 / Injector Tree</h1><p>앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.</p>
+            <h1 id="angular5-injector-tree">Angular5 / Injector Tree</h1>
+<p>앵귤러에서 인젝터 트리의 구조가 어떻게 구성되었는지 살펴보았다.</p>
 <a id="more"></a>
-
 <p><img src="/images/injector-tree.png" alt></p>
 <p>(위의 그림을 보면서 아래의 설명을 이해해보자!!)</p>
-<p>앵귤러는 컴포넌트 트리의 구조와 동일한 인젝터 트리를 가진다.<br>위의 그림에서 @NgModule의 provider 배열을 해 설정된 <code>Root Injector</code>가 하나 있다. 루트 인젝터에는 <code>LoginService</code>가 등록되어 있다.</p>
-<p>루트 인젝터 아래에는 <code>root Component</code>가 있다.<br>이 컴포넌트에는 provider배열이 없고 루트 인젝터를 사용한다.</p>
+<p>앵귤러는 컴포넌트 트리의 구조와 동일한 인젝터 트리를 가진다.<br>
+위의 그림에서 @NgModule의 provider 배열을 해 설정된 <code>Root Injector</code>가 하나 있다. 루트 인젝터에는 <code>LoginService</code>가 등록되어 있다.</p>
+<p>루트 인젝터 아래에는 <code>root Component</code>가 있다.<br>
+이 컴포넌트에는 provider배열이 없고 루트 인젝터를 사용한다.</p>
 <p>하위 인젝터가 2개 있는데, 각각의 <code>ChatWindow Component</code>를 위한 인젝터다. 각 컴포넌트는 해당 컴포넌트에서 생성한 <code>CharService</code>를 가지고 있다.</p>
 <p>세번째 하위 컴포넌트로 <code>Logout/Login Component</code>가 있고, 여기에는 인젝터가 없다.</p>
-<p>그리고, 인젝터가 없는 몇몇 개의 하위 컴포넌트가 있다.<br>각각의 <code>ChatWindow Component</code>에는 하위 컴포넌트로 <code>ChatFeed, ChatInput Component</code>가 있고,<br><code>Logout/Login Component</code>의 하위 컴포넌트로는 <code>Login Widget Component</code>, <code>Logout Widget Component</code>이 있다.</p>
-<p>인젝터 트리는 모든 컴포넌트에 대해서 새로운 인젝터를 생성하지는 않는다.<br>@Component의 메타데이터로 Providers 배열이 있는 컴포넌트에만 새로운 인젝터를 생성한다.<br>Providers배열이 없으면 그 상위컴포넌트의 인젝터에서 찾는다.<br>만약 상위 컴포넌트에도 없으면 <code>Root Injector</code>에 도달할 때까지 계속 상위 인젝터를 찾는다.</p>
+<p>그리고, 인젝터가 없는 몇몇 개의 하위 컴포넌트가 있다.<br>
+각각의 <code>ChatWindow Component</code>에는 하위 컴포넌트로 <code>ChatFeed, ChatInput Component</code>가 있고,<br>
+<code>Logout/Login Component</code>의 하위 컴포넌트로는 <code>Login Widget Component</code>, <code>Logout Widget Component</code>이 있다.</p>
+<p>인젝터 트리는 모든 컴포넌트에 대해서 새로운 인젝터를 생성하지는 않는다.<br>
+@Component의 메타데이터로 Providers 배열이 있는 컴포넌트에만 새로운 인젝터를 생성한다.<br>
+Providers배열이 없으면 그 상위컴포넌트의 인젝터에서 찾는다.<br>
+만약 상위 컴포넌트에도 없으면 <code>Root Injector</code>에 도달할 때까지 계속 상위 인젝터를 찾는다.</p>
 <p>위 그림에서 실선은 <code>Component Tree</code>를 나타내고, 점선은 <code>Injector Tree</code>를 나타내는 데, 두 개의 트리구조가 동일함을 알 수 있다.</p>
 <p><strong>경고: provider 배열에 주의하자. 하위 Component가 상위 Component에서도 요청된 의존성을 포함하는 provider 배열로 메타데이터로 가질 경우, 하위 Component가 가지는 의존성은 상위 Component의 의존성을 가린다. 만약 Chat Window Component에서 provider 배열로 LoginService를 새롭게 선언했다면, 이 LoginService는 root injector에 등록된 LoginService와는 다른 인스턴스다.</strong></p>
 
@@ -260,7 +267,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -272,7 +279,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -284,7 +291,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -345,7 +352,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -412,6 +419,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -437,7 +452,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular5-Injector-Tree">
+        <a class="is-flex" href="#angular5-injector-tree">
         <span class="has-mr-6">1</span>
         <span>Angular5 / Injector Tree</span>
         </a></li></ul>
@@ -451,6 +466,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -484,7 +518,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -528,25 +562,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -564,7 +579,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -748,7 +763,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular5-Injector-Tree">
+        <a class="is-flex" href="#angular5-injector-tree">
         <span class="has-mr-6">1</span>
         <span>Angular5 / Injector Tree</span>
         </a></li></ul>
@@ -762,6 +777,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -795,7 +829,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -839,25 +873,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -875,7 +890,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

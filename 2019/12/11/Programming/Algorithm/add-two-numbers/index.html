@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] LinkedList - Add two numbers - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/11/programming/algorithm/add-two-numbers/">  <meta name="description" content="문제2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 [0, 0, 0] 이런 식의 숫자는 없는 것으로 가정한다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/11/programming/algorithm/add-two-numbers/">  <meta name="description" content="문제 2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 [0, 0, 0] 이런 식의 숫자는 없는 것으로 가정한다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] LinkedList - Add two numbers">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/11/Programming/Algorithm/add-two-numbers/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 [0, 0, 0] 이런 식의 숫자는 없는 것으로 가정한다.">
+<meta property="og:description" content="문제 2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 [0, 0, 0] 이런 식의 숫자는 없는 것으로 가정한다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2015/05/31/10/58/golden-791072__480.jpg">
 <meta property="og:updated_time" content="2019-12-29T17:51:54.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] LinkedList - Add two numbers">
-<meta name="twitter:description" content="문제2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 [0, 0, 0] 이런 식의 숫자는 없는 것으로 가정한다.">
+<meta name="twitter:description" content="문제 2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 [0, 0, 0] 이런 식의 숫자는 없는 것으로 가정한다.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2015/05/31/10/58/golden-791072__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,20 +135,25 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 <code>[0, 0, 0]</code> 이런 식의 숫자는 없는 것으로 가정한다.</p>
+            <h1 id="문제">문제</h1>
+<p>2개의 양의 정수를 나타내는 링크드리스트가 주어진다. 각각 일의 자리부터 역순으로 숫자 하나씩 저장되어 있다. 두 숫자를 더한 후 링크드리스트로 리턴하시오. 0을 제외하고는 <code>[0, 0, 0]</code> 이런 식의 숫자는 없는 것으로 가정한다.</p>
 <a id="more"></a>
-
 <pre><code>Example:
 
 Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
 Output: 7 -&gt; 0 -&gt; 8
-Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.com/problems/add-two-numbers/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/add-two-numbers/</a></p>
-<h1 id="풀이-과정"><a href="#풀이-과정" class="headerlink" title="풀이 과정"></a>풀이 과정</h1><p>숫자를 더할 때 1의 자리부터 더해서 10이 넘어가는 값은 다음 자릿수 더할 때 올려주는 식으로 계산을 하니까 문제에서 주어진 리버스 링크드리스트 그대로 사용하면 된다.</p>
+Explanation: 342 + 465 = 807.
+</code></pre>
+<p>출처 - <a href="https://leetcode.com/problems/add-two-numbers/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/add-two-numbers/</a></p>
+<h1 id="풀이-과정">풀이 과정</h1>
+<p>숫자를 더할 때 1의 자리부터 더해서 10이 넘어가는 값은 다음 자릿수 더할 때 올려주는 식으로 계산을 하니까 문제에서 주어진 리버스 링크드리스트 그대로 사용하면 된다.</p>
 <p>l1, l2 둘 중에 하나라도 값이 있다면 계속 while 문을 돈다.</p>
-<p>일의 자리부터 더하는데, 9를 넘어가는 값은 올림값으로 <code>prevNum</code>에 담아두고, 일의 자리값만 <code>answerNode</code>에 추가한다.<br>링크드 리스트를 더할 때, 이전 계산값에서 올려보낸 값이 있을 수도 있으니 항상 <code>prevNum</code>을 같이 더한다.</p>
-<p>그리고 while 문을 다 돌고도 <code>prevNum</code> 값이 존재할 수도 있다.<br>값이 존재하면 링크드리스트에 값을 추가한다.</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     this.val = val;</span></span><br><span class="line"><span class="hljs-comment"> *     this.next = null;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;ListNode&#125; l1</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;ListNode&#125; l2</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;ListNode&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> addTwoNumbers = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node1 = l1</span><br><span class="line">  <span class="hljs-keyword">let</span> node2 = l2</span><br><span class="line">  <span class="hljs-keyword">let</span> answerNode = <span class="hljs-literal">null</span></span><br><span class="line">  <span class="hljs-comment">// 올림한 값</span></span><br><span class="line">  <span class="hljs-keyword">let</span> prevNum = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (node1 || node2) &#123;</span><br><span class="line">    <span class="hljs-comment">// 링크드 리스트의 크기가 같지 않을 수도 있다. val가 없다면 0으로 셋팅</span></span><br><span class="line">    <span class="hljs-keyword">const</span> sum = (node1 ? node1.val : <span class="hljs-number">0</span>) + (node2 ? node2.val : <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">const</span> temp = sum + prevNum</span><br><span class="line">    prevNum = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-comment">// 일의 자리만</span></span><br><span class="line">    <span class="hljs-keyword">const</span> num = temp % <span class="hljs-number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (answerNode) &#123;</span><br><span class="line">      addNode(answerNode, <span class="hljs-keyword">new</span> ListNode(num))</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      answerNode = <span class="hljs-keyword">new</span> ListNode(num)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//num + prevNum도 10넘는지 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (temp &gt; <span class="hljs-number">9</span>) &#123;</span><br><span class="line">      prevNum = <span class="hljs-built_in">Math</span>.floor(temp / <span class="hljs-number">10</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node1 = node1 ? node1.next : <span class="hljs-literal">null</span></span><br><span class="line">    node2 = node2 ? node2.next : <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (prevNum) &#123;</span><br><span class="line">    addNode(answerNode, <span class="hljs-keyword">new</span> ListNode(prevNum))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answerNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> addNode = <span class="hljs-function">(<span class="hljs-params">node, data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">    &#125;</span><br><span class="line">    node.next = data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>일의 자리부터 더하는데, 9를 넘어가는 값은 올림값으로 <code>prevNum</code>에 담아두고, 일의 자리값만 <code>answerNode</code>에 추가한다.<br>
+링크드 리스트를 더할 때, 이전 계산값에서 올려보낸 값이 있을 수도 있으니 항상 <code>prevNum</code>을 같이 더한다.</p>
+<p>그리고 while 문을 다 돌고도 <code>prevNum</code> 값이 존재할 수도 있다.<br>
+값이 존재하면 링크드리스트에 값을 추가한다.</p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="hljs-comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="hljs-comment"> *     this.val = val;</span></span><br><span class="line"><span class="hljs-comment"> *     this.next = null;</span></span><br><span class="line"><span class="hljs-comment"> * &#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;ListNode&#125; l1</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;ListNode&#125; l2</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;ListNode&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> addTwoNumbers = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> node1 = l1</span><br><span class="line">  <span class="hljs-keyword">let</span> node2 = l2</span><br><span class="line">  <span class="hljs-keyword">let</span> answerNode = <span class="hljs-literal">null</span></span><br><span class="line">  <span class="hljs-comment">// 올림한 값</span></span><br><span class="line">  <span class="hljs-keyword">let</span> prevNum = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (node1 || node2) &#123;</span><br><span class="line">    <span class="hljs-comment">// 링크드 리스트의 크기가 같지 않을 수도 있다. val가 없다면 0으로 셋팅</span></span><br><span class="line">    <span class="hljs-keyword">const</span> sum = (node1 ? node1.val : <span class="hljs-number">0</span>) + (node2 ? node2.val : <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">const</span> temp = sum + prevNum</span><br><span class="line">    prevNum = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-comment">// 일의 자리만</span></span><br><span class="line">    <span class="hljs-keyword">const</span> num = temp % <span class="hljs-number">10</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (answerNode) &#123;</span><br><span class="line">      addNode(answerNode, <span class="hljs-keyword">new</span> ListNode(num))</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      answerNode = <span class="hljs-keyword">new</span> ListNode(num)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">//num + prevNum도 10넘는지 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (temp &gt; <span class="hljs-number">9</span>) &#123;</span><br><span class="line">      prevNum = <span class="hljs-built_in">Math</span>.floor(temp / <span class="hljs-number">10</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node1 = node1 ? node1.next : <span class="hljs-literal">null</span></span><br><span class="line">    node2 = node2 ? node2.next : <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (prevNum) &#123;</span><br><span class="line">    addNode(answerNode, <span class="hljs-keyword">new</span> ListNode(prevNum))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answerNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> addNode = <span class="hljs-function">(<span class="hljs-params">node, data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">      node = node.next</span><br><span class="line">    &#125;</span><br><span class="line">    node.next = data</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -261,7 +266,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -273,7 +278,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -285,7 +290,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -346,7 +351,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -413,6 +418,14 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -463,6 +476,25 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -493,7 +525,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -537,25 +569,6 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -573,7 +586,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -782,6 +795,25 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -812,7 +844,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -856,25 +888,6 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -892,7 +905,7 @@ Explanation: 342 + 465 = 807.</code></pre><p>출처 - <a href="https://leetcode.
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

@@ -90,6 +90,66 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2020/01/14/Programming/Algorithm/graph_basic/" class="image is-7by1">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1542216172-f356fdd22653?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[백준] BFS / DFS 기본 문제풀이">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-14T03:44:33.000Z">2020-01-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 930 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/01/14/Programming/Algorithm/graph_basic/">[백준] BFS / DFS 기본 문제풀이</a>
+            
+        </h1>
+        <div class="content">
+            <p>자료구조 그래프를 이용한 <code>BFS / DFS</code> 알고리즘 문제의 대표적인 유형을 풀어보았다.<br>
+아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/01/14/Programming/Algorithm/graph_basic/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2020/01/13/Programming/Server/no-space-left-on-device/" class="image is-7by1">
             <img class="thumbnail" src="https://images.unsplash.com/photo-1578355437008-e1057fa764cc?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="[ERROR] no space left on device">
         </a>
@@ -122,9 +182,9 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><p>우분투에서 <code>no space left on device</code> 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다.</p>
+            <h1 id="문제-상황">문제 상황</h1>
+<p>우분투에서 <code>no space left on device</code> 에러 때문에 데몬으로 돌고 있던 서비스가 중단되는 상황이 발생했다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">journalctl -u [systemd unit name] -xe</span><br></pre></td></tr></table></figure>
-
 <p>를 통해 에러로그를 확인해 보니 아래와 같았다.</p>
         </div>
         
@@ -187,7 +247,9 @@
             <p>대표적인 동적 프로그래밍 알고리즘의 문제를 풀어보면서 어떻게 동적 프로그래밍 알고리즘 문제에 접근해야하는지 파악해보았다.</p>
 <p>동적 프로그래밍 알고리즘 문제는 <code>한 번 계산한 값은 다시 구하지 않는다는 것</code>, 즉 <code>메모이제이션</code>을 활용한다는 것이 특징이다.</p>
 <blockquote>
-<p>n이 작을 때의 값을 구해서 배열에 담아둔다.<br>그리고 인접한 항들 사이의 관계를 파악한다.<br>이 관계에 따라 앞서 미리 구해둔 값들을 이용해 n이 클 때의 값을 구한다.</p>
+<p>n이 작을 때의 값을 구해서 배열에 담아둔다.<br>
+그리고 인접한 항들 사이의 관계를 파악한다.<br>
+이 관계에 따라 앞서 미리 구해둔 값들을 이용해 n이 클 때의 값을 구한다.</p>
 </blockquote>
 <p>보통 위와 같은 과정을 통해 동적 프로그래밍 문제를 푼다.</p>
 <p>풀어본 문제는 백준 알고리즘 사이트에 있는 1904, 11053, 12865번 문제다.</p>
@@ -249,7 +311,9 @@
             
         </h1>
         <div class="content">
-            <p>퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.<br>분할정복 알고리즘은 <code>재귀용법</code>을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)<br>자, 퀵정렬과 병합정렬을 구현해보자.</p>
+            <p>퀵정렬과 병합정렬은 분할정복 알고리즘을 이용한 대표적인 정렬방법이다.<br>
+분할정복 알고리즘은 <code>재귀용법</code>을 사용한다. (동적프로그래밍에서는 메모이제이션 활용)<br>
+자, 퀵정렬과 병합정렬을 구현해보자.</p>
         </div>
         
         
@@ -308,7 +372,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.</p>
+            <h1 id="문제">문제</h1>
+<p>양의 정수가 리스트로 주어졌을 때, 그 숫자들을 조합해서 만들 수 있는 가장 큰 수를 리턴하시오.</p>
         </div>
         
         
@@ -367,7 +432,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>Given an unsorted array nums, reorder it such that nums[0] &lt; nums[1] &gt; nums[2] &lt; nums[3]….</p>
+            <h1 id="문제">문제</h1>
+<p>Given an unsorted array nums, reorder it such that nums[0] &lt; nums[1] &gt; nums[2] &lt; nums[3]…</p>
         </div>
         
         
@@ -426,7 +492,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="문제상황"><a href="#문제상황" class="headerlink" title="문제상황"></a>문제상황</h2><p>이번에 <code>Mojave</code>에서 <code>Catalina</code>로 Mac os를 업데이트하고 나서 <code>CLI</code>로 <code>git</code>명령어를 사용하려니 아래와 같은 에러가 발생했다.</p>
+            <h2 id="문제상황">문제상황</h2>
+<p>이번에 <code>Mojave</code>에서 <code>Catalina</code>로 Mac os를 업데이트하고 나서 <code>CLI</code>로 <code>git</code>명령어를 사용하려니 아래와 같은 에러가 발생했다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></table></figure>
         </div>
         
@@ -486,7 +553,8 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+            <h1 id="문제">문제</h1>
+<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
         </div>
         
         
@@ -545,7 +613,9 @@
             
         </h1>
         <div class="content">
-            <h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>삽입정렬을 이용해서 링크드리스트를 정렬하세요.<br>출처 - <a href="https://leetcode.com/problems/insertion-sort-list/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/insertion-sort-list/</a></p>
+            <h2 id="문제">문제</h2>
+<p>삽입정렬을 이용해서 링크드리스트를 정렬하세요.<br>
+출처 - <a href="https://leetcode.com/problems/insertion-sort-list/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/insertion-sort-list/</a></p>
         </div>
         
         
@@ -613,65 +683,6 @@
             <div class="level-start">
                 <div class="level-item">
                 <a class="button is-size-7 is-light" href="/2019/12/29/Programming/Algorithm/sort-implement/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2019/12/26/Programming/Algorithm/heap-implement/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="힙(Heap) 구현">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-26T13:58:44.000Z">2019-12-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 minutes read (About 1607 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/12/26/Programming/Algorithm/heap-implement/">힙(Heap) 구현</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="힙-Heap-이란"><a href="#힙-Heap-이란" class="headerlink" title="힙 (Heap) 이란?"></a>힙 (Heap) 이란?</h2><p>힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 <code>완전 이진 트리(Complete Binary Tree)</code><br>완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/26/Programming/Algorithm/heap-implement/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -761,7 +772,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -773,7 +784,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -785,7 +796,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -846,7 +857,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -913,6 +924,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -936,6 +955,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -969,7 +1007,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -1013,25 +1051,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1049,7 +1068,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1234,6 +1253,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -1264,7 +1302,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -1308,25 +1346,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1344,7 +1363,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

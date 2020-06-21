@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>호이스팅이란? - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/25/programming/javascript/hoisting/">  <meta name="description" content="내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다.그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다.하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/25/programming/javascript/hoisting/">  <meta name="description" content="내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다. 그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다. 하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="호이스팅이란?">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/25/Programming/JavaScript/hoisting/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다.그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다.하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.">
+<meta property="og:description" content="내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다. 그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다. 하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1558409306-5de35f1c63c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-25T08:01:47.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="호이스팅이란?">
-<meta name="twitter:description" content="내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다.그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다.하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.">
+<meta name="twitter:description" content="내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다. 그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다. 하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1558409306-5de35f1c63c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,35 +135,40 @@
             
         </h1>
         <div class="content">
-            <p>내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다.<br>그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다.<br>하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.</p>
+            <p>내가 알고 있는 호이스팅은 var로 선언한 변수는 최상단으로 끌어올려진다.<br>
+그래서 선언하기 전에도 미리 사용할 수 있는 것처럼 보인다.<br>
+하지만 변수 선언 후 변수 사용이라는 규칙을 깨면서 정확히 어디서 이슈가 발생하는지 파악하기 힘들 수가 있다.</p>
 <a id="more"></a>
-
-<p>그래서 ES6부터 let, const로 선언된 변수는 호이스팅이 안 된다.<br>변수나 함수를 사용하기 전에 미리 선언하고 값을 할당해야만 사용할 수 있다.<br>코드를 순차적으로 실행하게 되므로 보다 직관적으로 코드를 이해할 수 있다.</p>
+<p>그래서 ES6부터 let, const로 선언된 변수는 호이스팅이 안 된다.<br>
+변수나 함수를 사용하기 전에 미리 선언하고 값을 할당해야만 사용할 수 있다.<br>
+코드를 순차적으로 실행하게 되므로 보다 직관적으로 코드를 이해할 수 있다.</p>
 <p>여기까지가 내가 알고 있는 호이스팅의 전부다. 이직을 위해 인터뷰 준비를 하면서 좀 더 자세히 호이스팅에 대해 알아보고 정리를 해보았다.</p>
 <hr>
-<h3 id="호이스팅-정의"><a href="#호이스팅-정의" class="headerlink" title="호이스팅 정의"></a>호이스팅 정의</h3><p><strong>hoist</strong> 라는 단어의 사전적인 의미는 <strong>끌어올리기 lift something up</strong>이다.</p>
-<p>var 로 선언된 모든 변수들은 호이스트된다.<br>중요한 것은 여기서 최상단으로 호이스팅되는 것은 <strong>변수의 선언</strong>이다.</p>
+<h3 id="호이스팅-정의">호이스팅 정의</h3>
+<p><strong>hoist</strong> 라는 단어의 사전적인 의미는 <strong>끌어올리기 lift something up</strong>이다.</p>
+<p>var 로 선언된 모든 변수들은 호이스트된다.<br>
+중요한 것은 여기서 최상단으로 호이스팅되는 것은 <strong>변수의 선언</strong>이다.</p>
 <p>변수가 함수 내에서 정의되었을 경우, 함수의 최상단으로 변수의 선언이 호이스팅되고, 함수 바깥에서 정의되었을 경우, 전역 컨텍스트의 최상위로 선언이 호이스팅된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(y) <span class="hljs-comment">// undefined : 선언은 했지만, 값이 할당되지 않았다.</span></span><br><span class="line">  <span class="hljs-comment">//=&gt; 호이스팅 때문에 변수의 선언이 함수의 맨 윗쪽으로 끌어올려짐</span></span><br><span class="line">  <span class="hljs-keyword">var</span> y = <span class="hljs-number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>위의 코드를 실제 동작하는 방식대로 변경하면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> y <span class="hljs-comment">// 변수의 선언 호이스팅</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(y)</span><br><span class="line">  y = <span class="hljs-number">1</span> <span class="hljs-comment">// 값의 할당은 원래 위치에서</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>선언문은 항상 자바스크립트 엔진 구동시 가장 먼저 해석하므로 호이스팅되고, <strong>할당하는 것은 런타임 과정</strong>에서 이루어지기 때문에 호이스팅되지 않는다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">foo()</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"hello"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>함수 선언문으로 정의한 함수는 자바스크립트 엔진에 의해 전체 코드의 맨 위로 호이스팅되므로 정의한 위치에 상관없이 함수를 사용할 수 있다.<br>아래와 같이 함수를 함수 리터럴(함수 표현식)로 할당하는 구조에서는 호이스팅되지 않는다.<br>bar()이 실행될 때에는 아직 변수 bar에 담긴 것이 함수인지 모르므로 bar()를 실행하면 <em>bar is not a function</em>라고 에러가 발생한다.</p>
+<p>함수 선언문으로 정의한 함수는 자바스크립트 엔진에 의해 전체 코드의 맨 위로 호이스팅되므로 정의한 위치에 상관없이 함수를 사용할 수 있다.<br>
+아래와 같이 함수를 함수 리터럴(함수 표현식)로 할당하는 구조에서는 호이스팅되지 않는다.<br>
+bar()이 실행될 때에는 아직 변수 bar에 담긴 것이 함수인지 모르므로 bar()를 실행하면 <em>bar is not a function</em>라고 에러가 발생한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">bar() <span class="hljs-comment">// bar is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> bar = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"world"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <hr>
-<h3 id="funcion-foo-와-var-foo-function-사이에서-foo-사용의-차이에-대해-설명"><a href="#funcion-foo-와-var-foo-function-사이에서-foo-사용의-차이에-대해-설명" class="headerlink" title="funcion foo() {} 와 var foo = function(){} 사이에서 foo 사용의 차이에 대해 설명"></a>funcion foo() {} 와 var foo = function(){} 사이에서 foo 사용의 차이에 대해 설명</h3><p>function foo() {} 는 함수선언식!!!</p>
+<h3 id="funcion-foo-와-var-foo-function-사이에서-foo-사용의-차이에-대해-설명">funcion foo() {} 와 var foo = function(){} 사이에서 foo 사용의 차이에 대해 설명</h3>
+<p>function foo() {} 는 함수선언식!!!</p>
 <p>자바스크립트 엔진에게 내가 함수다!!! 바로 알려준다</p>
 <p>그래서 호이스팅 된다 ⇒ 함수의 선언 위치에 상관없이 foo함수를 사용할 수 있다.</p>
 <p>var foo = function(){} 는 함수 표현식!!!</p>
 <p>자바스크립트 엔진이 변수 foo의 선언을 호이스팅하지만 foo에 함수가 할당되는 것은 런타임시, 함수는 호이스팅되지 않는다. 함수 실행 전에 반드시 함수를 정의해줘야한다.</p>
 <p>함수 정의 전에 함수를 실행하려고 하면 foo is not function 이라는 에러가 뜬다.</p>
 <hr>
-<p>[참고]<br><a href="https://www.youtube.com/watch?v=7tGmS2SPxBo" rel="external nofollow noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=7tGmS2SPxBo</a></p>
+<p>[참고]<br>
+<a href="https://www.youtube.com/watch?v=7tGmS2SPxBo" rel="external nofollow noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=7tGmS2SPxBo</a></p>
 
         </div>
         
@@ -276,7 +281,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -288,7 +293,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -300,7 +305,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -361,7 +366,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -428,6 +433,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -474,6 +487,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -504,7 +536,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -548,25 +580,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -584,7 +597,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -789,6 +802,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -819,7 +851,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -863,25 +895,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -899,7 +912,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

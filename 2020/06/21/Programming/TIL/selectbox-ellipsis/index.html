@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> 
+<meta name="generator" content="Hexo 3.9.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>셀렉트 박스에서 text-overflow: ellipsis 구현하기 - Mina&#39;s World</title>
+<link rel="canonical" href="https://minami-choi.github.io/2020/06/21/programming/til/selectbox-ellipsis/">  <meta name="description" content="최근에 셀렉트박스에서 선택된 text가 overflow할 경우 ellisis 하도록 구현한 적이 있는데 잊기 전에 간단히 정리해보려고 한다.">
+<meta name="keywords" content="scss,css,select,ellipsis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+<meta property="og:url" content="https://minami-choi.github.io/2020/06/21/Programming/TIL/selectbox-ellipsis/index.html">
+<meta property="og:site_name" content="Mina&#39;s World">
+<meta property="og:description" content="최근에 셀렉트박스에서 선택된 text가 overflow할 경우 ellisis 하도록 구현한 적이 있는데 잊기 전에 간단히 정리해보려고 한다.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
+<meta property="og:updated_time" content="2020-06-21T08:04:32.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+<meta name="twitter:description" content="최근에 셀렉트박스에서 선택된 text가 overflow할 경우 ellisis 하도록 구현한 적이 있는데 잊기 전에 간단히 정리해보려고 한다.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">    
+<link rel="icon" href="/images/favicon.svg">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123533454-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-123533454-1');
+</script>
+  <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>   <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+  <div class="container">
+    <div class="navbar-brand is-flex-center">
+      <a class="navbar-item navbar-logo" href="/">
+        
+        <img src="/images/logo2.png" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기" height="28">
+        
+      </a>
+    </div>
+    <div class="navbar-menu">
+      
+      <div class="navbar-start">
+        
+        <a class="navbar-item" href="/">Home</a>
+        
+        <a class="navbar-item" href="/archives">Archives</a>
+        
+        <a class="navbar-item" href="/categories">Categories</a>
+        
+        <a class="navbar-item" href="/tags">Tags</a>
+        
+        <a class="navbar-item" href="/about">About</a>
+        
+      </div>
+      
+      <div class="navbar-end">
+         
+        <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+          
+          <i class="fab fa-github"></i>
+          
+        </a>
+          
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+          <i class="fas fa-list-ul"></i>
+        </a>
+         
+        <a class="navbar-item search" title="Search" href="javascript:;">
+          <i class="fas fa-search"></i>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 771 words)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                셀렉트 박스에서 text-overflow: ellipsis 구현하기
+            
+        </h1>
+        <div class="content">
+            <p>최근에 셀렉트박스에서 선택된 text가 overflow할 경우 ellisis 하도록 구현한 적이 있는데 잊기 전에 간단히 정리해보려고 한다.</p>
+<a id="more"></a>
+<p>일반적으로 text-overflow: ellipsis 속성은 block container element에 overflow 와 white-space 속성이 적용되어 있을 때 가능하다. 예를 들면,</p>
+<figure class="highlight css hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">hidden</span>;</span><br><span class="line"><span class="hljs-selector-tag">white-space</span>: <span class="hljs-selector-tag">nowrap</span>;</span><br></pre></td></tr></table></figure>
+<p>그리고 text-overflow 속성은 block container element의 직렬 방향으로 넘치는 텍스트에 대해서만 영향을 미친다.<br>
+참고 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow</a></p>
+<hr>
+<p>하지만 위의 경우는 일반적인 경우고 select 박스에서 선택된 값에 대해 text-overflow: ellipsis를 적용시키기 위해서는 css만으로는 불가능하다. javascript의 도움이 필요하다.</p>
+<p>메인 아이디어는 select 박스에서 선택된 값을 select 박스를 감싸는 container element의 data-content 어트리뷰트에 담아서 보여주는 것이다.</p>
+<figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line">&lt;div className=<span class="hljs-string">"SelectBox-wrapper"</span> ref=&#123;selectBoxRef&#125; data-content=<span class="hljs-string">""</span>&gt;</span><br><span class="line">  &lt;select className=<span class="hljs-string">"SelectBox__select"</span> onChange=&#123;handleChange&#125;&gt;</span><br><span class="line">    &#123;options.map(<span class="hljs-function">(<span class="hljs-params">opt</span>) =&gt;</span> (</span><br><span class="line">      &lt;option className=<span class="hljs-string">"SelectBox__option"</span> key=&#123;opt&#125; value=&#123;opt&#125;&gt;</span><br><span class="line">        &#123;opt&#125;</span><br><span class="line">      &lt;<span class="hljs-regexp">/option&gt;</span></span><br><span class="line"><span class="hljs-regexp">    ))&#125;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;/</span>select&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>select 태그를 감싸는 <code>SelectBox-wrapper</code>에 선택된 값을 담을 <code>data-content</code> 어트리뷰트와 엘리먼트에 접근하기 위해서 ref에 <code>selectBoxRef</code>를 전달해준다.</p>
+<figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> handleChange = useCallback(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  selectBoxRef.current.dataset.content = e.target.value</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
+<p>select 태그에서 onChange 이벤트가 발생할 때, <code>selectBoxRef.current.dataset.content</code>에 value를 저장해주면 된다.</p>
+<p>마지막으로 scss에서 해줘야 할 것은 <code>SelectBox__select</code>의 color를 투명하게 하고 <code>SelectBox-wrapper</code>의 pseudo element를 이용해서 <code>data-content</code> 어트리뷰트에 있는 값을 <code>text-overflow: ellipsis</code> 스타일을 입혀서 보여주는 것이다.</p>
+<figure class="highlight scss hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-class">.SelectBox-wrapper</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">  <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="line">  &amp;::after &#123;</span><br><span class="line">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;</span><br><span class="line">    <span class="hljs-attribute">content</span>: attr(data-content);</span><br><span class="line">    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">12px</span>;</span><br><span class="line">    <span class="hljs-attribute">pointer-events</span>: none;</span><br><span class="line">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">    <span class="hljs-attribute">right</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">white-space</span>: nowrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.SelectBox__select</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: transparent;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="전체-코드-확인하기">전체 코드 확인하기</h3>
+<iframe src="https://codesandbox.io/embed/modest-ritchie-o9r06?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="modest-ritchie-o9r06" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<hr>
+<p>하지만 끝날 때까지 끝난 것이 아니었다…</p>
+<p>내 작업 환경인 맥os에서의 모던 웹 브라우저에서는 무사히 잘 작동했지만 윈도우 환경에서는 3가지 문제를 발견했다.</p>
+<p><strong>문제 1</strong><br>
+윈도우 크롬에서 option들이 transparent 하게 나왔다.</p>
+<p><img src="./option-transparent.png" alt="option-transparen"></p>
+<p>이 문제는 간단하게 <code>SelectBox__option</code>에 color 값을 주므로써 해결했다.</p>
+<figure class="highlight scss hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-class">.SelectBox__option</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>문제 2</strong><br>
+윈도우 ie11에서 select tag에서 <code>color:transparent</code> 가 먹지 않았던 것이었다!</p>
+<p><img src="./no-transparent.png" alt="아이고 두야"></p>
+<p><a href="https://caniuse.com/#feat=mdn-css_types_color_transparent" rel="external nofollow noopener noreferrer" target="_blank">Can I use</a> 에서 확인해보면 IE9이상부터는 <code>color:transparent</code>를 지원하는 것으로 나오지만 ㅠㅠ 이상하게 select tag에서는 적용되지 않았다.</p>
+<p>야매로 ie일 경우에는 흰 색을 적용하도록 했다.</p>
+<figure class="highlight scss hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-class">.SelectBox__select</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>문제 3</strong><br>
+select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-content 값을 변경했는데, IE에서는 변경된 data-content 값이 화면에 그려지지 않고 처음 화면 렌더링이 될 때는 value가 계속 그대로 보이는 문제가 있었다.<br>
+-&gt; 결국 IE에서는 select tag에서 <code>text-overflow: ellipsis</code> 하는 것을 포기했다!</p>
+<p>끝!</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/css/">css</a>, <a class="has-link-grey -link" href="/tags/ellipsis/">ellipsis</a>, <a class="has-link-grey -link" href="/tags/scss/">scss</a>, <a class="has-link-grey -link" href="/tags/select/">select</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/07/Programming/Server/prometheus-monitoring/">
+                <span class="level-item">모니터링 시스템 구축 - 프로메테우스</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://minami-choi.github.io/2020/06/21/Programming/TIL/selectbox-ellipsis/';
+        this.page.identifier = '2020/06/21/Programming/TIL/selectbox-ellipsis/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'https-minami-choi-github-io-1' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="is-rounded" src="/img/minasprofile.jpg" alt="Mina Choi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Mina Choi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Connecting the dots
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Seoul, South Korea</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            106
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            106
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
+                Follow</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Facebook" href="https://www.facebook.com/minaminachoi" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/mina-choi-985a8015a/" rel="external nofollow noopener noreferrer">
+                
+                <i class="fab fa-linkedin"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Essay/">
+            <span class="level-start">
+                <span class="level-item">Essay</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/">
+            <span class="level-start">
+                <span class="level-item">Programming</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">102</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Programming/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">52</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Angular/">
+            <span class="level-start">
+                <span class="level-item">Angular</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">16</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/ElasticSearch/">
+            <span class="level-start">
+                <span class="level-item">ElasticSearch</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">13</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/Server/">
+            <span class="level-start">
+                <span class="level-item">Server</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/etc/">
+            <span class="level-start">
+                <span class="level-item">etc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#전체-코드-확인하기">
+        <span class="has-mr-6">1</span>
+        <span>전체 코드 확인하기</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-07T14:00:23.000Z">2020-06-07</time></div>
+                    <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="title has-link-black-ter is-size-6 has-text-weight-normal">모니터링 시스템 구축 - 프로메테우스</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/05/25/Programming/TIL/git-rebase/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="깃 rebase 실수 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/Essay/highwire-fear/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://img.huffingtonpost.com/asset/5d806e792300001c05551eb8.jpeg?ops=scalefit_630_noupscale" alt="요즘 나의 상태, 그리고 하늘을 걷는 남자">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T09:55:17.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/Essay/highwire-fear/" class="title has-link-black-ter is-size-6 has-text-weight-normal">요즘 나의 상태, 그리고 하늘을 걷는 남자</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Essay/">Essay</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    Catalogue
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#전체-코드-확인하기">
+        <span class="has-mr-6">1</span>
+        <span>전체 코드 확인하기</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-07T14:00:23.000Z">2020-06-07</time></div>
+                    <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="title has-link-black-ter is-size-6 has-text-weight-normal">모니터링 시스템 구축 - 프로메테우스</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Server/">Server</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/05/25/Programming/TIL/git-rebase/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="깃 rebase 실수 모음">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
+                    <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/Essay/highwire-fear/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://img.huffingtonpost.com/asset/5d806e792300001c05551eb8.jpeg?ops=scalefit_630_noupscale" alt="요즘 나의 상태, 그리고 하늘을 걷는 남자">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T09:55:17.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/Essay/highwire-fear/" class="title has-link-black-ter is-size-6 has-text-weight-normal">요즘 나의 상태, 그리고 하늘을 걷는 남자</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Essay/">Essay</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
+                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">18</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">22</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">17</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo2.png" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Mina Choi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow noopener noreferrer">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                Visited by <span id="busuanzi_value_site_uv">0</span> users
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/minami-choi" rel="external nofollow noopener noreferrer">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: false,
+            fold: ''
+        }
+    }
+};
+</script>
+
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" rel="external nofollow noopener noreferrer" target="_blank">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

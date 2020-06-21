@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>엑셀에서 json파일 추출하기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/28/programming/etc/excel-to-json/">  <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/28/programming/etc/excel-to-json/">  <meta name="description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="keywords" content="엑셀,csv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="엑셀에서 json파일 추출하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/28/Programming/etc/excel-to-json/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta property="og:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:23:45.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="엑셀에서 json파일 추출하기">
-<meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
+<meta name="twitter:description" content="회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다. 앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -131,16 +131,27 @@
             
         </h1>
         <div class="content">
-            <p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
+            <p>회사서비스에서 다국어를 지원하기 위해 번역 데이터를 하나로 정리해 둘 필요가 생겼다.<br>
+앵귤러에서 다국어 서비스를 하기 위해서는 i18n 모듈을 사용하는데 나라별로 json파일이 필요하다. ( ko.json, en.json, cn.json 등등)</p>
 <a id="more"></a>
-
 <p>약간의 검토를 해보니 excel파일에서 json을 추출하는 방법이 있다는 것을 알게되어 정리를 해두게 되었다.</p>
-<h3 id="1-excel에서-데이터를-정리-후-csv파일로-저장"><a href="#1-excel에서-데이터를-정리-후-csv파일로-저장" class="headerlink" title="1. excel에서 데이터를 정리 후 csv파일로 저장"></a>1. excel에서 데이터를 정리 후 csv파일로 저장</h3><h3 id="2-http-www-convertcsv-com-csv-to-json-htm-에서-변환-작업"><a href="#2-http-www-convertcsv-com-csv-to-json-htm-에서-변환-작업" class="headerlink" title="2. http://www.convertcsv.com/csv-to-json.htm 에서 변환 작업"></a>2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</h3><h4 id="2-1-Option1-변환할-csv-파일-선택"><a href="#2-1-Option1-변환할-csv-파일-선택" class="headerlink" title="2-1. Option1 : 변환할 csv 파일 선택"></a>2-1. Option1 : 변환할 csv 파일 선택</h4><p><img src="/images/choose-csv.png" alt></p>
-<h4 id="2-2-Options2-First-row-is-column-names-옵션-체크"><a href="#2-2-Options2-First-row-is-column-names-옵션-체크" class="headerlink" title="2-2. Options2 : First row is column names 옵션 체크"></a>2-2. Options2 : First row is column names 옵션 체크</h4><h4 id="2-3-Options4-출력할-형태-만들기"><a href="#2-3-Options4-출력할-형태-만들기" class="headerlink" title="2-3. Options4 : 출력할 형태 만들기"></a>2-3. Options4 : 출력할 형태 만들기</h4><blockquote>
-<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" rel="external nofollow noopener noreferrer" target="_blank">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>{lb} : left bracket {<br>{br} : Line break<br>{rb} : right bracket }<br>{f1} : 첫번째 필드값<br>{h1} : 첫번째 헤드값</p>
+<h3 id="1-excel에서-데이터를-정리-후-csv파일로-저장">1. excel에서 데이터를 정리 후 csv파일로 저장</h3>
+<h3 id="2-http-www-convertcsv-com-csv-to-json-htm-에서-변환-작업">2. <code>http://www.convertcsv.com/csv-to-json.htm</code> 에서 변환 작업</h3>
+<h4 id="2-1-option1-변환할-csv-파일-선택">2-1. Option1 : 변환할 csv 파일 선택</h4>
+<p><img src="/images/choose-csv.png" alt></p>
+<h4 id="2-2-options2-first-row-is-column-names-옵션-체크">2-2. Options2 : First row is column names 옵션 체크</h4>
+<h4 id="2-3-options4-출력할-형태-만들기">2-3. Options4 : 출력할 형태 만들기</h4>
+<blockquote>
+<p><a href="http://www.convertcsv.com/csv-to-template-output.htm" rel="external nofollow noopener noreferrer" target="_blank">http://www.convertcsv.com/csv-to-template-output.htm</a> 참고해서 형태 만들기<br>
+{lb} : left bracket {<br>
+{br} : Line break<br>
+{rb} : right bracket }<br>
+{f1} : 첫번째 필드값<br>
+{h1} : 첫번째 헤드값</p>
 </blockquote>
 <p><img src="/images/option4.png" alt></p>
-<h3 id="3-“Convert-CSV-To-JSON-via-Template”-버튼-클릭하면-결과물이-나온다"><a href="#3-“Convert-CSV-To-JSON-via-Template”-버튼-클릭하면-결과물이-나온다" class="headerlink" title="3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다."></a>3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다.</h3>
+<h3 id="3-convert-csv-to-json-via-template-버튼-클릭하면-결과물이-나온다">3. “Convert CSV To JSON via Template” 버튼 클릭하면 결과물이 나온다.</h3>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -252,7 +263,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -264,7 +275,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -276,7 +287,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -337,7 +348,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -404,6 +415,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -427,6 +446,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -460,7 +498,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -504,25 +542,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -540,7 +559,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -725,6 +744,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -755,7 +793,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -799,25 +837,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -835,7 +854,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

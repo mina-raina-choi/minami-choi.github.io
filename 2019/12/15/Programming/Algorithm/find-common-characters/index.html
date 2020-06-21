@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] Unique Number of Occurrences - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/15/programming/algorithm/find-common-characters/">  <meta name="description" content="문제소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/15/programming/algorithm/find-common-characters/">  <meta name="description" content="문제 소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] Unique Number of Occurrences">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/15/Programming/Algorithm/find-common-characters/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
+<meta property="og:description" content="문제 소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg">
 <meta property="og:updated_time" content="2019-12-29T17:52:28.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] Unique Number of Occurrences">
-<meta name="twitter:description" content="문제소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
+<meta name="twitter:description" content="문제 소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.">
 <meta name="twitter:image" content="https://cdn.pixabay.com/photo/2014/09/27/17/35/dandelion-463928__480.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,33 +135,44 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.</p>
+            <h1 id="문제">문제</h1>
+<p>소문자로 이루어진 문자열 배열 A가 주어졌을 때, 모든 문자열에 등장하는 문자의 리스트를 리턴하세요. 중복도 포함해서.</p>
 <a id="more"></a>
-
 <blockquote>
-<p>Example 1:<br>Input: [“bella”,”label”,”roller”]<br>Output: [“e”,”l”,”l”]</p>
+<p>Example 1:<br>
+Input: [“bella”,“label”,“roller”]<br>
+Output: [“e”,“l”,“l”]</p>
 </blockquote>
 <blockquote>
-<p>Example 2:<br>Input: [“cool”,”lock”,”cook”]<br>Output: [“c”,”o”]</p>
+<p>Example 2:<br>
+Input: [“cool”,“lock”,“cook”]<br>
+Output: [“c”,“o”]</p>
 </blockquote>
 <pre><code>Note:
 1 &lt;= A.length &lt;= 100
 1 &lt;= A[i].length &lt;= 100
-A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.com/problems/find-common-characters/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/find-common-characters/</a></p>
-<h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>먼저 가장 짧은 길이의 문자열을</p>
+A[i][j] is a lowercase letter
+</code></pre>
+<p>출처 - <a href="https://leetcode.com/problems/find-common-characters/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/find-common-characters/</a></p>
+<h1 id="풀이과정">풀이과정</h1>
+<p>먼저 가장 짧은 길이의 문자열을</p>
 <pre><code>{
 &quot;b0&quot;: 1,
 &quot;e1&quot;: 1,
 &quot;l2&quot;: 1,
 &quot;l3&quot;: 1,
 &quot;a4&quot;: 1
-}</code></pre><p>이런 식의 <code>object</code>로 만들었다. <code>key</code>는 중복된 문자도 유니크하게 만들기 위해 <code>문자+index</code>로 구성했고, 이 때의 값은 등장횟수다.<br>이제 가장 짧은 문자열을 <code>forloop</code>으로 돌면서 그 안에서 주어진 문자열 배열을 <code>forloop</code>으로 돈다. 기준이 되는 가장 짧은 문자는 제외하기 때문에 <code>j=1</code>부터 시작한다.</p>
+}
+</code></pre>
+<p>이런 식의 <code>object</code>로 만들었다. <code>key</code>는 중복된 문자도 유니크하게 만들기 위해 <code>문자+index</code>로 구성했고, 이 때의 값은 등장횟수다.<br>
+이제 가장 짧은 문자열을 <code>forloop</code>으로 돌면서 그 안에서 주어진 문자열 배열을 <code>forloop</code>으로 돈다. 기준이 되는 가장 짧은 문자는 제외하기 때문에 <code>j=1</code>부터 시작한다.</p>
 <p>만약 찾는 문자가 존재한다면 <code>shortestObj[shortest[i] + i] += 1</code>을 통해 등장횟수를 1만큼 더해주고 그 문자가 다시 카운트되지 않도록 <code>array.splice(idx, 1)</code> 문자열에서 삭제한다.</p>
 <p>마지막으로, <code>shortestObj</code>의 값이 <code>sorted.length</code>와 같다면 모든 문자열에 등장한 것이므로 그 때의 문자 <code>shortest[i]</code>를 정답 배열에 추가한다.</p>
 <p>이 방법은 이중 forloop를 돌아서 효율이 좋진 않다… discuss를 보며 새로운 방법을 찾아봐야할 것 같다.</p>
-<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string[]&#125; A</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;string[]&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> commonChars = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sorted = A.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.length - b.length)</span><br><span class="line">  <span class="hljs-comment">// 가장 짧은 스트링 찾기</span></span><br><span class="line">  <span class="hljs-keyword">const</span> shortest = sorted[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> shortestObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    shortestObj[shortest[i] + i] = <span class="hljs-number">1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = shortest[i]</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; sorted.length; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> array = sorted[j].split(<span class="hljs-string">""</span>)</span><br><span class="line">      <span class="hljs-keyword">const</span> idx = array.indexOf(value)</span><br><span class="line">      <span class="hljs-keyword">if</span> (idx &gt; <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">        shortestObj[shortest[i] + i] += <span class="hljs-number">1</span></span><br><span class="line">        array.splice(idx, <span class="hljs-number">1</span>)</span><br><span class="line">        sorted[j] = array.join(<span class="hljs-string">""</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (shortestObj[shortest[i] + i] === sorted.length) &#123;</span><br><span class="line">      answer.push(shortest[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="더-공부할-내용-splice의-정확한-사용법"><a href="#더-공부할-내용-splice의-정확한-사용법" class="headerlink" title="더 공부할 내용 : splice의 정확한 사용법"></a>더 공부할 내용 : splice의 정확한 사용법</h3><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
+<h1 id="나의-풀이">나의 풀이</h1>
+<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string[]&#125; A</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;string[]&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> commonChars = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sorted = A.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a.length - b.length)</span><br><span class="line">  <span class="hljs-comment">// 가장 짧은 스트링 찾기</span></span><br><span class="line">  <span class="hljs-keyword">const</span> shortest = sorted[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> shortestObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    shortestObj[shortest[i] + i] = <span class="hljs-number">1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> value = shortest[i]</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; sorted.length; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> array = sorted[j].split(<span class="hljs-string">""</span>)</span><br><span class="line">      <span class="hljs-keyword">const</span> idx = array.indexOf(value)</span><br><span class="line">      <span class="hljs-keyword">if</span> (idx &gt; <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">        shortestObj[shortest[i] + i] += <span class="hljs-number">1</span></span><br><span class="line">        array.splice(idx, <span class="hljs-number">1</span>)</span><br><span class="line">        sorted[j] = array.join(<span class="hljs-string">""</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; shortest.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (shortestObj[shortest[i] + i] === sorted.length) &#123;</span><br><span class="line">      answer.push(shortest[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="더-공부할-내용-splice의-정확한-사용법">더 공부할 내용 : splice의 정확한 사용법</h3>
+<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice</a></p>
 
         </div>
         
@@ -274,7 +285,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -286,7 +297,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -298,7 +309,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -359,7 +370,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -426,6 +437,14 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -480,6 +499,25 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -510,7 +548,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -554,25 +592,6 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -590,7 +609,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -803,6 +822,25 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -833,7 +871,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -877,25 +915,6 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -913,7 +932,7 @@ A[i][j] is a lowercase letter</code></pre><p>출처 - <a href="https://leetcode.
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Angular에서 특정 div 이외의 영역 클릭이벤트 탐지 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/06/19/programming/angular/angular-detect-click-outside/">  <meta name="description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/06/19/programming/angular/angular-detect-click-outside/">  <meta name="description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법 회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
 <meta name="keywords" content="Angular,click outside">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지">
 <meta property="og:url" content="https://minami-choi.github.io/2018/06/19/Programming/Angular/angular-detect-click-outside/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
+<meta property="og:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법 회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-01-13T08:18:52.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지">
-<meta name="twitter:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
+<meta name="twitter:description" content="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법 회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/images/og_image.png">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -129,15 +129,15 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법"><a href="#Angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법" class="headerlink" title="Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법"></a>Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법</h2><p>회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.</p>
+            <h2 id="angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법</h2>
+<p>회사 프로젝트 진행하던 중, 드롭박스 이외의 영역을 클릭했을 때 드롭박스를 닫히도록 하는 기능이 필요했다. select태그를 사용했더라면 신경 쓸 필요가 없는 일이었지만 원활한 스타일적용을 위해 select태그가 아니라 button, li 태그로 드롭박스를 구현한 상태였다.</p>
 <a id="more"></a>
-
 <p><img src="/images/dropbox.png" alt></p>
 <p>해당 기능을 제공하는 <code>ng4-click-outside</code>, <code>ng-click-outside</code> 모듈이 앵귤러 5 프로젝트 내에서는 제대로 동작을 하지않아 직접 구현하는 수 밖에 없었다.</p>
-<h3 id="swap-component-html"><a href="#swap-component-html" class="headerlink" title="swap.component.html"></a>swap.component.html</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"swap-coin-inp-wrap"</span> <span class="hljs-comment">#fromDiv&gt; ... &lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="swap-component-ts"><a href="#swap-component-ts" class="headerlink" title="swap.component.ts"></a>swap.component.ts</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">constructor</span></span>( ) &#123;</span><br><span class="line">  document.addEventListener(<span class="hljs-string">'click'</span>, this.offClickHandler.bind(this)); // <span class="hljs-built_in">bind</span> on doc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">offClickHandler(event: any) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.fromDiv.nativeElement.contains(event.target)) &#123; // check click origin</span><br><span class="line">    this.fromListShow = <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.toDiv.nativeElement.contains(event.target))</span><br><span class="line">    this.toListShow = <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="swap-component-html">swap.component.html</h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="hljs-string">"swap-coin-inp-wrap"</span> <span class="hljs-comment">#fromDiv&gt; ... &lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="swap-component-ts">swap.component.ts</h3>
+<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">constructor</span></span>( ) &#123;</span><br><span class="line">  document.addEventListener(<span class="hljs-string">'click'</span>, this.offClickHandler.bind(this)); // <span class="hljs-built_in">bind</span> on doc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">offClickHandler(event: any) &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.fromDiv.nativeElement.contains(event.target)) &#123; // check click origin</span><br><span class="line">    this.fromListShow = <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">if</span> (!this.toDiv.nativeElement.contains(event.target))</span><br><span class="line">    this.toListShow = <span class="hljs-literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>이렇게 구현했더니, <code>fromDiv</code>, <code>toDiv</code> 이외의 영역을 클릭했을 때 드롭박스가 제대로 닫히는 것을 확인할 수 있었다.</p>
 
         </div>
@@ -251,7 +251,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -263,7 +263,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -275,7 +275,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -336,7 +336,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -403,6 +403,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -428,7 +436,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">
+        <a class="is-flex" href="#angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">
         <span class="has-mr-6">1</span>
         <span>Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법</span>
         </a><ul class="menu-list"><li>
@@ -450,6 +458,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -483,7 +510,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -527,25 +554,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -563,7 +571,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -747,7 +755,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">
+        <a class="is-flex" href="#angular에서-특정-div-이외의-영역-클릭이벤트-탐지하는-방법">
         <span class="has-mr-6">1</span>
         <span>Angular에서 특정 div 이외의 영역 클릭이벤트 탐지하는 방법</span>
         </a><ul class="menu-list"><li>
@@ -769,6 +777,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -802,7 +829,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -846,25 +873,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -882,7 +890,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

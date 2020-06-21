@@ -137,14 +137,13 @@
         <div class="content">
             <p>NodeJS는 아직 CommonJS 기반 모듈 시스템을 사용하기 때문에 ES6의 <code>import</code>나 <code>export</code>와 같은 키워드는 디폴트로 지원하지 않는다.</p>
 <a id="more"></a>
-
 <p>CommonJS가 제공하는 <code>require</code>방식이 아니라 <code>import</code>키워드를 사용하고 싶다면 아래와 같은 작업이 필요한데, 바벨을 통해 ES6문법으로 작성된 js파일을 ES5 문법으로 변환해주는 작업을 해줘야한다.</p>
-<h1 id="1-필요한-모듈-설치"><a href="#1-필요한-모듈-설치" class="headerlink" title="1. 필요한 모듈 설치"></a>1. 필요한 모듈 설치</h1><figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// babel/cli는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 모듈</span></span><br><span class="line">yarn add babel-cli --dev</span><br><span class="line"><span class="hljs-comment">// 프리셋은 버전별로 필요 플러그인들을 모아놓은 세트</span></span><br><span class="line"><span class="hljs-comment">//babel-preset-env 은 그런 프리셋과 플러그인들을 모아 관리하고 있는 모듈</span></span><br><span class="line">yarn add babel-preset-env --dev</span><br><span class="line">yarn add babel-preset-stage-3 --dev</span><br></pre></td></tr></table></figure>
-
-<h1 id="2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성"><a href="#2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성" class="headerlink" title="2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성"></a>2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성</h1><figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 곧 표준으로 받아들여질 stage-3에 있는 문법을 기준으로 트랜스파일 하겠다고 바벨에서 알려준다.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"env"</span>, <span class="hljs-string">"stage-3"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-package-json-에-scripts-추가"><a href="#3-package-json-에-scripts-추가" class="headerlink" title="3. package.json 에 scripts 추가"></a>3. package.json 에 scripts 추가</h1><figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"babel-node index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel-cli"</span>: <span class="hljs-string">"^6.26.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-env"</span>: <span class="hljs-string">"^1.7.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.24.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h1 id="1-필요한-모듈-설치">1. 필요한 모듈 설치</h1>
+<figure class="highlight hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// babel/cli는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 모듈</span></span><br><span class="line">yarn add babel-cli --dev</span><br><span class="line"><span class="hljs-comment">// 프리셋은 버전별로 필요 플러그인들을 모아놓은 세트</span></span><br><span class="line"><span class="hljs-comment">//babel-preset-env 은 그런 프리셋과 플러그인들을 모아 관리하고 있는 모듈</span></span><br><span class="line">yarn add babel-preset-env --dev</span><br><span class="line">yarn add babel-preset-stage-3 --dev</span><br></pre></td></tr></table></figure>
+<h1 id="2-프로젝트-루트-위치에-바벨-설정-파일-babelrc-생성">2. 프로젝트 루트 위치에 바벨 설정 파일 (.babelrc) 생성</h1>
+<figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 곧 표준으로 받아들여질 stage-3에 있는 문법을 기준으로 트랜스파일 하겠다고 바벨에서 알려준다.</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"presets"</span>: [<span class="hljs-string">"env"</span>, <span class="hljs-string">"stage-3"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-package-json-에-scripts-추가">3. package.json 에 scripts 추가</h1>
+<figure class="highlight json hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"start"</span>: <span class="hljs-string">"babel-node index.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"babel-cli"</span>: <span class="hljs-string">"^6.26.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-env"</span>: <span class="hljs-string">"^1.7.0"</span>,</span><br><span class="line">    <span class="hljs-attr">"babel-preset-stage-3"</span>: <span class="hljs-string">"^6.24.1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>위와 같이 작성 후 <code>yarn start</code>를 하면 index.js 파일이 표준 자바스크립트 문법으로 컴파일되어 실행된다.</p>
 
         </div>
@@ -258,7 +257,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -270,7 +269,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -282,7 +281,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -343,7 +342,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -410,6 +409,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -460,6 +467,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -490,7 +516,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -534,25 +560,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -570,7 +577,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -779,6 +786,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -809,7 +835,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -853,25 +879,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -889,7 +896,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

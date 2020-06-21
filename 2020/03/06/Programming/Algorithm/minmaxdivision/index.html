@@ -140,8 +140,8 @@
 <p><strong>먼저 이분 탐색이 무엇인지 알아보자.</strong></p>
 <p>정렬된 배열 a가 주어졌을 때, 특정 요소 x가 배열 a에 존재하는지 체크하기 위해서 일일이 선형탐색(<code>linear search</code>)를 할 수도 있겠지만 이분 탐색(<code>binary search</code>)을 활용하면 좀 더 빠르게 검색할 수 있다.</p>
 <a id="more"></a>
-
-<h3 id="이분-탐색이란"><a href="#이분-탐색이란" class="headerlink" title="이분 탐색이란?"></a>이분 탐색이란?</h3><p>정렬된 배열 a에 대해서 반복적으로 탐색 범위를 반으로 나눠가며 특정 요소를 찾는 방식이다. 보통 아래의 프로세스를 통해 구현하면 된다.</p>
+<h3 id="이분-탐색이란">이분 탐색이란?</h3>
+<p>정렬된 배열 a에 대해서 반복적으로 탐색 범위를 반으로 나눠가며 특정 요소를 찾는 방식이다. 보통 아래의 프로세스를 통해 구현하면 된다.</p>
 <ol>
 <li>탐색하려는 배열의 최대값 <code>high</code>, 최소값 <code>low</code>, 중간값 <code>mid</code>를 잡아준다.</li>
 <li>찾으려는 값 <code>x</code>와 중간값 <code>mid</code>의 값을 비교한다.</li>
@@ -150,21 +150,26 @@
 </ol>
 <p>위의 2~3번 과정이 반복될 때마다 탐색범위가 반으로 줄어들게 된다. 그러므로 시간복잡도는 O(logn)이 된다.</p>
 <p><img src="https://www.geeksforgeeks.org/wp-content/uploads/Binary-Search.png" alt="binarysearch"></p>
-<h3 id="MinMaxDivision-문제를-풀어보자"><a href="#MinMaxDivision-문제를-풀어보자" class="headerlink" title="MinMaxDivision 문제를 풀어보자."></a>MinMaxDivision 문제를 풀어보자.</h3><p>문제를 요약해보면 정수 N개로 이루어진 배열 A를 K조각으로 나눌 때의 부분 배열의 최대합 중 최소값을 구하라는 것이다.</p>
+<h3 id="minmaxdivision-문제를-풀어보자">MinMaxDivision 문제를 풀어보자.</h3>
+<p>문제를 요약해보면 정수 N개로 이루어진 배열 A를 K조각으로 나눌 때의 부분 배열의 최대합 중 최소값을 구하라는 것이다.</p>
 <blockquote>
-<p>N과 K는 정수 범위 [1..100,000]<br>M은 정수 범위 [0..10,000]<br>배열 A의 요소들은 정수 범위 [0..M]</p>
+<p>N과 K는 정수 범위 [1…100,000]<br>
+M은 정수 범위 [0…10,000]<br>
+배열 A의 요소들은 정수 범위 [0…M]</p>
 </blockquote>
 <p>아이고, 두야… 이 문제로 2시간 가까이 보낸 것 같다. 결국 100%까지는 구현 못하고 91%까지 통과했다. 일단 여기까지 진행된 내용을 기록에 남긴다.</p>
 <p><img src="minmaxdivision.png" alt="minmaxdivision"></p>
 <hr>
 <p>이 문제를 풀 핵심 아이디어는 <strong>부분 배열의 합</strong>이 될 수 있는 최소값 <code>low = 0</code>, 최대값 <code>high = 배열 A의 총합</code>을 기준으로 중간값 <code>mid</code>를 구하고, <strong>mid를 부분 배열의 최대합으로 하는 부분 배열을 k 개</strong> 만들 수 있는지 체크한다.</p>
-<p>A배열의 부분 배열을 K개 만큼 만들 수 있거나, k보다 적게 만들 수 있으면 <code>mid</code>를 작게 해봐야 함 -&gt; <code>high = mid</code>를 줄여야한다.<br>반대의 경우 mid를 높여야하므로 <code>low = mid + 1</code><br>이런 식으로 <code>low &lt; high</code>이면 계속 반복한다.</p>
+<p>A배열의 부분 배열을 K개 만큼 만들 수 있거나, k보다 적게 만들 수 있으면 <code>mid</code>를 작게 해봐야 함 -&gt; <code>high = mid</code>를 줄여야한다.<br>
+반대의 경우 mid를 높여야하므로 <code>low = mid + 1</code><br>
+이런 식으로 <code>low &lt; high</code>이면 계속 반복한다.</p>
 <p>통과하지 못한 케이스를 보면 제출한 답이 정답과 1씩 차이가 난다. 엣지케이스 처리를 잘못해 준 것 같다. 다시 살펴봐야겠다.</p>
 <p><img src="failcase.png" alt="failcase"></p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">K, M, A</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> sum = A.reduce(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a + b, <span class="hljs-number">0</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = A.length</span><br><span class="line">  <span class="hljs-keyword">let</span> low = <span class="hljs-number">0</span>,</span><br><span class="line">    high = sum,</span><br><span class="line">    mid</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">    mid = <span class="hljs-built_in">parseInt</span>((low + high) / <span class="hljs-number">2</span>)</span><br><span class="line">    <span class="hljs-comment">// console.log(low, high)</span></span><br><span class="line">    <span class="hljs-comment">// console.log("새로운 mid", mid)</span></span><br><span class="line">    <span class="hljs-keyword">let</span> kCnt = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> tempSum = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">let</span> arrLen = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// mid보다 작은 합으로 구성가능한 갯수 세기</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (A[i] &gt; mid) &#123;</span><br><span class="line">        <span class="hljs-comment">// 불가능한 최소합, mid 크게, low를 크게</span></span><br><span class="line">        low = mid + <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (kCnt == K) &#123;</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      tempSum += A[i]</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (tempSum == mid) &#123;</span><br><span class="line">        kCnt++</span><br><span class="line">        arrLen++</span><br><span class="line">        tempSum = <span class="hljs-number">0</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tempSum &gt; mid) &#123;</span><br><span class="line">        kCnt++</span><br><span class="line">        <span class="hljs-comment">// 이전인덱스로</span></span><br><span class="line">        i--</span><br><span class="line">        tempSum = <span class="hljs-number">0</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// tempSum &lt; mid</span></span><br><span class="line">        arrLen++</span><br><span class="line">        <span class="hljs-keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (arrLen == n) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (kCnt &lt;= K) &#123;</span><br><span class="line">        <span class="hljs-comment">// 최소값을 탐색하기 위해서 더 낮은 mid</span></span><br><span class="line">        high = mid</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        low = mid + <span class="hljs-number">1</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arrLen &lt; n) &#123;</span><br><span class="line">      <span class="hljs-comment">// mid up low up</span></span><br><span class="line">      low = mid + <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      high = mid</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//   console.log("answer", low, mid)</span></span><br><span class="line">  <span class="hljs-keyword">return</span> low</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// solution(3, 5, [2, 1, 5, 1, 2, 2, 2])</span></span><br><span class="line"><span class="hljs-comment">// solution(1, 10, [4, 3, 2, 5, 6, 6, 4, 9])</span></span><br><span class="line">solution(<span class="hljs-number">2</span>, <span class="hljs-number">10</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">4</span>])</span><br><span class="line"><span class="hljs-comment">// ! 맨 마지막 값이 0인 케이스...</span></span><br><span class="line"><span class="hljs-comment">// solution(1, 10000, [0, 10000, 0])</span></span><br><span class="line"><span class="hljs-comment">// !10000</span></span><br></pre></td></tr></table></figure>
-
 <hr>
-<p>[참고] <a href="https://www.geeksforgeeks.org/binary-search/" rel="external nofollow noopener noreferrer" target="_blank">https://www.geeksforgeeks.org/binary-search/</a><br>[문제출처] <a href="https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/" rel="external nofollow noopener noreferrer" target="_blank">https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/</a></p>
+<p>[참고] <a href="https://www.geeksforgeeks.org/binary-search/" rel="external nofollow noopener noreferrer" target="_blank">https://www.geeksforgeeks.org/binary-search/</a><br>
+[문제출처] <a href="https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/" rel="external nofollow noopener noreferrer" target="_blank">https://app.codility.com/programmers/lessons/14-binary_search_algorithm/min_max_division/</a></p>
 
         </div>
         
@@ -277,7 +282,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -289,7 +294,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -301,7 +306,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -362,7 +367,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -429,6 +434,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -458,7 +471,7 @@
         <span class="has-mr-6">1</span>
         <span>이분 탐색이란?</span>
         </a></li><li>
-        <a class="is-flex" href="#MinMaxDivision-문제를-풀어보자">
+        <a class="is-flex" href="#minmaxdivision-문제를-풀어보자">
         <span class="has-mr-6">2</span>
         <span>MinMaxDivision 문제를 풀어보자.</span>
         </a></li></ul>
@@ -472,6 +485,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -505,7 +537,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -549,25 +581,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -585,7 +598,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -773,7 +786,7 @@
         <span class="has-mr-6">1</span>
         <span>이분 탐색이란?</span>
         </a></li><li>
-        <a class="is-flex" href="#MinMaxDivision-문제를-풀어보자">
+        <a class="is-flex" href="#minmaxdivision-문제를-풀어보자">
         <span class="has-mr-6">2</span>
         <span>MinMaxDivision 문제를 풀어보자.</span>
         </a></li></ul>
@@ -787,6 +800,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -820,7 +852,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -864,25 +896,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -900,7 +913,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>크로스 도메인 이슈 해결하기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/29/programming/basic/cors/">  <meta name="description" content="동일 출처 정책 Same Origin Policy(SOP)이란? 같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)  동일한 출처라는 것은 아래의 규칙을 따른다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/29/programming/basic/cors/">  <meta name="description" content="동일 출처 정책 Same Origin Policy(SOP)이란?  같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)  동일한 출처라는 것은 아래의 규칙을 따른다.">
 <meta name="keywords" content="크로스 도메인,CORS,SOP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="크로스 도메인 이슈 해결하기">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/29/Programming/Basic/cors/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="동일 출처 정책 Same Origin Policy(SOP)이란? 같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)  동일한 출처라는 것은 아래의 규칙을 따른다.">
+<meta property="og:description" content="동일 출처 정책 Same Origin Policy(SOP)이란?  같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)  동일한 출처라는 것은 아래의 규칙을 따른다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-17T09:36:17.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="크로스 도메인 이슈 해결하기">
-<meta name="twitter:description" content="동일 출처 정책 Same Origin Policy(SOP)이란? 같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)  동일한 출처라는 것은 아래의 규칙을 따른다.">
+<meta name="twitter:description" content="동일 출처 정책 Same Origin Policy(SOP)이란?  같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)  동일한 출처라는 것은 아래의 규칙을 따른다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -131,41 +131,61 @@
             
         </h1>
         <div class="content">
-            <h4 id="동일-출처-정책-Same-Origin-Policy-SOP-이란"><a href="#동일-출처-정책-Same-Origin-Policy-SOP-이란" class="headerlink" title="동일 출처 정책 Same Origin Policy(SOP)이란?"></a>동일 출처 정책 Same Origin Policy(SOP)이란?</h4><blockquote>
+            <h4 id="동일-출처-정책-same-origin-policy-sop-이란">동일 출처 정책 Same Origin Policy(SOP)이란?</h4>
+<blockquote>
 <p>같은 출처에 있는 리소스만 접근할 수 있도록 제한하는 보안정책이다. XMLHttpRequest 나 Fetch api 호출로 데이터를 요청하는 경우에 적용되고 이미지나 css, 동적으로 로드되는 스크립트에는 적용되지 않는다. (단, 웹폰트는 예외)</p>
 </blockquote>
 <p>동일한 출처라는 것은 아래의 규칙을 따른다.</p>
 <a id="more"></a>
-
 <p><img src="./same-origin.png" alt="동일 출처 규칙"></p>
 <p>만약 나의 api서버를 외부 웹서비스에서 막 접근해서 가져다 쓴다면 보안상으로도 이슈가 있고 트래픽 과부하 문제도 발생할 수 있다. 따라서 이런 행위를 차단하기 위해 동일한 도메인이 아니면 아래처럼 크로스 도메인 이슈를 발생시킨다.</p>
 <p>다음과 같은 에러 메시지가 나면 서버에서 CORS 허용을 해줘야 한다.</p>
 <blockquote>
 <p>Failed to load &lt;요청하려는 api 주소&gt;: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘&lt;오리진 주소&gt;’ is therefore not allowed access.</p>
 </blockquote>
-<h2 id="1-서버의-CORS-허용"><a href="#1-서버의-CORS-허용" class="headerlink" title="1. 서버의 CORS 허용"></a>1. 서버의 CORS 허용</h2><p><code>Cross-Origin Resource Sharing 정책</code>은 추가적인 http 헤더를 사용해 브라우저에게 현재 동작하고 있는 웹 애플리케이션이 다른 출처에서 온 리소스를 액세스 권한이 있는지 알려준다.</p>
-<p>사용자 데이터 상에서 부수 효과를 일으킬 수 있는 HTTP 요청 메서드에 대해, 특히 GET 이외의 메소드에 대해 스펙은 브라우저가 요청을 <code>preflight(사전 전달)</code>하도록 강제한다. 이는 HTTP <code>OPTIONS</code>(<a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/OPTIONS" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/OPTIONS</a>) 요청 메서드를 이용해 서버로부터 지원 중인 메서드들을 내려 받은 뒤, 서버에서 approval(승인) 시에 실제 HTTP 요청 메서드를 이용해 실제 요청을 전송하는 것을 말합니다. 서버들은 또한 클라이언트에게 (Cookie와 HTTP Authentication 데이터를 포함하는) “credentials”이 요청과 함께 전송되어야 하는지를 알려줄 수도 있습니다.</p>
+<h2 id="1-서버의-cors-허용">1. 서버의 CORS 허용</h2>
+<p><code>Cross-Origin Resource Sharing 정책</code>은 추가적인 http 헤더를 사용해 브라우저에게 현재 동작하고 있는 웹 애플리케이션이 다른 출처에서 온 리소스를 액세스 권한이 있는지 알려준다.</p>
+<p>사용자 데이터 상에서 부수 효과를 일으킬 수 있는 HTTP 요청 메서드에 대해, 특히 GET 이외의 메소드에 대해 스펙은 브라우저가 요청을 <code>preflight(사전 전달)</code>하도록 강제한다. 이는 HTTP <code>OPTIONS</code>(<a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/OPTIONS" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/OPTIONS</a>) 요청 메서드를 이용해 서버로부터 지원 중인 메서드들을 내려 받은 뒤, 서버에서 approval(승인) 시에 실제 HTTP 요청 메서드를 이용해 실제 요청을 전송하는 것을 말합니다. 서버들은 또한 클라이언트에게 (Cookie와 HTTP Authentication 데이터를 포함하는) &quot;credentials&quot;이 요청과 함께 전송되어야 하는지를 알려줄 수도 있습니다.</p>
 <p><img src="/images/cors.png" alt></p>
-<h3 id="1-1-모든-요청-허용"><a href="#1-1-모든-요청-허용" class="headerlink" title="1 -1. 모든 요청 허용"></a>1 -1. 모든 요청 허용</h3><p>preflight 요청을 받기 위해 OPTIONS 메소드를 추가한다. 헤더에 아래 내용들을 포함시키면 된다.</p>
+<h3 id="1-1-모든-요청-허용">1 -1. 모든 요청 허용</h3>
+<p>preflight 요청을 받기 위해 OPTIONS 메소드를 추가한다. 헤더에 아래 내용들을 포함시키면 된다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line">Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS</span><br><span class="line">Access-Control-Max-Age: 3600</span><br><span class="line">Access-Control-Allow-Headers: Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-선별적-허용"><a href="#1-2-선별적-허용" class="headerlink" title="1-2. 선별적 허용"></a>1-2. 선별적 허용</h3><p>클라이언트의 헤더값을 보고 서버에서 응답헤더에 해당 출처를 허용하는 걸 담아주면 된다.</p>
-<h4 id="1-2-1-클라이언트-요청-헤더"><a href="#1-2-1-클라이언트-요청-헤더" class="headerlink" title="1-2-1 클라이언트 요청 헤더"></a>1-2-1 클라이언트 요청 헤더</h4><p><strong>Origin</strong><br>요청을 보내는 페이지의 출처(도메인)</p>
-<p><strong>Access-Control-Request-Method</strong><br>실제 요청하려는 메소드,<br>실제 요청이 있을 때 사용될 HTTP 메소드 (<a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)를" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods)를</a> 서버에 알리기 위한 preflight 요청을 보낼 때 사용된다.</p>
-<p><strong>Access-Control-Request-Headers</strong><br>실제 요청에 포함되어 있는 헤더명,<br>실제 요청이 있을 때 사용될 HTTP 헤더를 서버에 알리기 위한 preflight 요청을 보낼 때 사용된다.</p>
-<h4 id="1-2-2-서버의-응답-헤더"><a href="#1-2-2-서버의-응답-헤더" class="headerlink" title="1-2-2 서버의 응답 헤더"></a>1-2-2 서버의 응답 헤더</h4><p><strong>Access-Control-Allow-Origin</strong><br>허용할 출처</p>
-<p><strong>Access-Control-Allow-Credentials</strong><br>클라이언트 요청이 쿠키를 통해서 자격 증명을 해야 하는 경우에 true.<br>true를 응답 받은 클라이언트는 실제요청시 서버에서 정의된 규격의 인증값이 담긴 쿠키를 같이 보내야 한다.</p>
-<p><strong>Access-Control-Allow-Headers</strong><br>요청을 허용하는 헤더.<br>실제 요청을 만들 때 사용될 수 있는 HTTP 헤더를 나타내는 preflight 요청에 대한 응답으로 사용.</p>
-<p><strong>Access-Control-Expose-Headers</strong><br>클라이언트 요청에 포함되어도 되는 사용자 정의 해더.<br>헤더의 이름을 나열하여 어떤 헤더가 응답의 일부로 노출될 수 있는지를 나타낸다.</p>
-<p><strong>Access-Control-Max-Age</strong><br>클라이언트에서 preflight의 요청 결과를 캐시하는 시간(초)</p>
-<p><strong>Access-Control-Allow-Methods</strong><br>요청을 허용하는 메소드.<br>기본값은 GET,POST이며 클라이언트에서는 헤더 값에 해당하는 메서드일 경우에만 실제 요청을 시도하게 된다.<br>preflight 요청에 대한 응답으로 리소스에 접근할 때 허용되는 메소드를 명시.</p>
-<p>[참고] <a href="http://sjh836.tistory.com/93" rel="external nofollow noopener noreferrer" target="_blank">http://sjh836.tistory.com/93</a><br><a href="https://ko.wikipedia.org/wiki/%EB%8F%99%EC%9D%BC-%EC%B6%9C%EC%B2%98_%EC%A0%95%EC%B1%85#cite_note-1" rel="external nofollow noopener noreferrer" target="_blank">https://ko.wikipedia.org/wiki/%EB%8F%99%EC%9D%BC-%EC%B6%9C%EC%B2%98_%EC%A0%95%EC%B1%85#cite_note-1</a></p>
-<h2 id="2-앵귤러에서-CORS-허용하기"><a href="#2-앵귤러에서-CORS-허용하기" class="headerlink" title="2. 앵귤러에서 CORS 허용하기"></a>2. 앵귤러에서 CORS 허용하기</h2><p>추가적으로 <code>localhost</code>에서 우리 서비스 api 서버로 요청을 보냈을 때 제대로 응답을 받으려면 앵귤러의 root 디렉토리에 <code>proxy.conf.json</code>파일을 생성해야한다.</p>
+<h3 id="1-2-선별적-허용">1-2. 선별적 허용</h3>
+<p>클라이언트의 헤더값을 보고 서버에서 응답헤더에 해당 출처를 허용하는 걸 담아주면 된다.</p>
+<h4 id="1-2-1-클라이언트-요청-헤더">1-2-1 클라이언트 요청 헤더</h4>
+<p><strong>Origin</strong><br>
+요청을 보내는 페이지의 출처(도메인)</p>
+<p><strong>Access-Control-Request-Method</strong><br>
+실제 요청하려는 메소드,<br>
+실제 요청이 있을 때 사용될 HTTP 메소드 (<a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods</a>)를 서버에 알리기 위한 preflight 요청을 보낼 때 사용된다.</p>
+<p><strong>Access-Control-Request-Headers</strong><br>
+실제 요청에 포함되어 있는 헤더명,<br>
+실제 요청이 있을 때 사용될 HTTP 헤더를 서버에 알리기 위한 preflight 요청을 보낼 때 사용된다.</p>
+<h4 id="1-2-2-서버의-응답-헤더">1-2-2 서버의 응답 헤더</h4>
+<p><strong>Access-Control-Allow-Origin</strong><br>
+허용할 출처</p>
+<p><strong>Access-Control-Allow-Credentials</strong><br>
+클라이언트 요청이 쿠키를 통해서 자격 증명을 해야 하는 경우에 true.<br>
+true를 응답 받은 클라이언트는 실제요청시 서버에서 정의된 규격의 인증값이 담긴 쿠키를 같이 보내야 한다.</p>
+<p><strong>Access-Control-Allow-Headers</strong><br>
+요청을 허용하는 헤더.<br>
+실제 요청을 만들 때 사용될 수 있는 HTTP 헤더를 나타내는 preflight 요청에 대한 응답으로 사용.</p>
+<p><strong>Access-Control-Expose-Headers</strong><br>
+클라이언트 요청에 포함되어도 되는 사용자 정의 해더.<br>
+헤더의 이름을 나열하여 어떤 헤더가 응답의 일부로 노출될 수 있는지를 나타낸다.</p>
+<p><strong>Access-Control-Max-Age</strong><br>
+클라이언트에서 preflight의 요청 결과를 캐시하는 시간(초)</p>
+<p><strong>Access-Control-Allow-Methods</strong><br>
+요청을 허용하는 메소드.<br>
+기본값은 GET,POST이며 클라이언트에서는 헤더 값에 해당하는 메서드일 경우에만 실제 요청을 시도하게 된다.<br>
+preflight 요청에 대한 응답으로 리소스에 접근할 때 허용되는 메소드를 명시.</p>
+<p>[참고] <a href="http://sjh836.tistory.com/93" rel="external nofollow noopener noreferrer" target="_blank">http://sjh836.tistory.com/93</a><br>
+<a href="https://ko.wikipedia.org/wiki/%EB%8F%99%EC%9D%BC-%EC%B6%9C%EC%B2%98_%EC%A0%95%EC%B1%85#cite_note-1" rel="external nofollow noopener noreferrer" target="_blank">https://ko.wikipedia.org/wiki/동일-출처_정책#cite_note-1</a></p>
+<h2 id="2-앵귤러에서-cors-허용하기">2. 앵귤러에서 CORS 허용하기</h2>
+<p>추가적으로 <code>localhost</code>에서 우리 서비스 api 서버로 요청을 보냈을 때 제대로 응답을 받으려면 앵귤러의 root 디렉토리에 <code>proxy.conf.json</code>파일을 생성해야한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-string">"/*"</span> : &#123;</span><br><span class="line">        <span class="hljs-string">"target"</span> : <span class="hljs-string">"서버api주소"</span>,</span><br><span class="line">        <span class="hljs-string">"secure"</span> : <span class="hljs-literal">false</span>,</span><br><span class="line">        <span class="hljs-string">"logLevel"</span> : <span class="hljs-string">"debug"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>그리고 로컬에서 테스트할 때 <code>npm start</code> 명령어를 사용하면 바로 저 설정파일이 적용되도록 <code>package.json</code>파일을 수정해주면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-string">"scripts"</span> : &#123;</span><br><span class="line">        <span class="hljs-string">"start"</span> : <span class="hljs-string">"ng serve --proxy-config proxy.conf.json"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>[참고] <a href="https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/" rel="external nofollow noopener noreferrer" target="_blank">https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/</a></p>
 
         </div>
@@ -279,7 +299,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -291,7 +311,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -303,7 +323,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -364,7 +384,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -431,6 +451,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -454,6 +482,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -487,7 +534,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -531,25 +578,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -567,7 +595,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -752,6 +780,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -782,7 +829,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -826,25 +873,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -862,7 +890,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

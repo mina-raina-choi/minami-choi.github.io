@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] 3986 좋은 단어 / 9012 괄호 - 자바스크립트 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/08/programming/algorithm/baekjoon-3986/">  <meta name="description" content="3986 문제https://www.acmicpc.net/problem/3986 이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌어">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/08/programming/algorithm/baekjoon-3986/">  <meta name="description" content="3986 문제 https://www.acmicpc.net/problem/3986 이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] 3986 좋은 단어 &#x2F; 9012 괄호 - 자바스크립트">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/08/Programming/Algorithm/baekjoon-3986/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="3986 문제https://www.acmicpc.net/problem/3986 이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌어">
+<meta property="og:description" content="3986 문제 https://www.acmicpc.net/problem/3986 이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-08T13:38:24.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 3986 좋은 단어 &#x2F; 9012 괄호 - 자바스크립트">
-<meta name="twitter:description" content="3986 문제https://www.acmicpc.net/problem/3986 이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌어">
+<meta name="twitter:description" content="3986 문제 https://www.acmicpc.net/problem/3986 이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1461263895214-7761d3a942de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,29 +135,34 @@
             
         </h1>
         <div class="content">
-            <h1 id="3986-문제"><a href="#3986-문제" class="headerlink" title="3986 문제"></a>3986 문제</h1><p><a href="https://www.acmicpc.net/problem/3986" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/3986</a></p>
-<p>이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌어 버렸다! 그래서 평석이는 보고서 작성을 때려치우고 보고서에서 ‘좋은 단어’나 세보기로 마음 먹었다.</p>
+            <h1 id="3986-문제">3986 문제</h1>
+<p><a href="https://www.acmicpc.net/problem/3986" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/3986</a></p>
+<p>이번 계절학기에 심리학 개론을 수강 중인 평석이는 오늘 자정까지 보고서를 제출해야 한다. 보고서 작성이 너무 지루했던 평석이는 노트북에 엎드려서 꾸벅꾸벅 졸다가 제출 마감 1시간 전에 깨고 말았다. 안타깝게도 자는 동안 키보드가 잘못 눌려서 보고서의 모든 글자가 A와 B로 바뀌어 버렸다! 그래서 평석이는 보고서 작성을 때려치우고 보고서에서 '좋은 단어’나 세보기로 마음 먹었다.</p>
 <a id="more"></a>
-
-<p>평석이는 단어 위로 아치형 곡선을 그어 같은 글자끼리(A는 A끼리, B는 B끼리) 쌍을 짓기로 하였다. 만약 선끼리 교차하지 않으면서 각 글자를 정확히 한 개의 다른 위치에 있는 같은 글자와 짝 지을수 있다면, 그 단어는 ‘좋은 단어’이다. 평석이가 ‘좋은 단어’ 개수를 세는 것을 도와주자.</p>
-<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 단어의 수 N이 주어진다. (1 ≤ N ≤ 100)</p>
+<p>평석이는 단어 위로 아치형 곡선을 그어 같은 글자끼리(A는 A끼리, B는 B끼리) 쌍을 짓기로 하였다. 만약 선끼리 교차하지 않으면서 각 글자를 정확히 한 개의 다른 위치에 있는 같은 글자와 짝 지을수 있다면, 그 단어는 '좋은 단어’이다. 평석이가 ‘좋은 단어’ 개수를 세는 것을 도와주자.</p>
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 단어의 수 N이 주어진다. (1 ≤ N ≤ 100)</p>
 <p>다음 N개 줄에는 A와 B로만 이루어진 단어가 한 줄에 하나씩 주어진다. 단어의 길이는 2와 100,000사이이며, 모든 단어 길이의 합은 1,000,000을 넘지 않는다.</p>
-<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 좋은 단어의 수를 출력한다.</p>
+<h2 id="출력">출력</h2>
+<p>첫째 줄에 좋은 단어의 수를 출력한다.</p>
 <hr>
-
-<h2 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h2><p>단어 문자하나하나를 <code>stack</code>에 넣고 만약 <code>stack</code>의 맨 위 2개의 문자가 같으면 pop 해준다.<br>단어의 길이만큼 for문을 돌고나서 <code>stack</code> 이 비어있으면 <code>answer++</code>을 해주면 된다.</p>
+<h2 id="해결방법">해결방법</h2>
+<p>단어 문자하나하나를 <code>stack</code>에 넣고 만약 <code>stack</code>의 맨 위 2개의 문자가 같으면 pop 해준다.<br>
+단어의 길이만큼 for문을 돌고나서 <code>stack</code> 이 비어있으면 <code>answer++</code>을 해주면 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = <span class="hljs-built_in">parseInt</span>(input[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> strs = input.slice(<span class="hljs-number">1</span>)</span><br><span class="line">  <span class="hljs-keyword">let</span> answer = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> stack = []</span><br><span class="line">    <span class="hljs-keyword">const</span> elem = strs[i]</span><br><span class="line">    stack.push(elem[<span class="hljs-number">0</span>])</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; elem.length; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> element = elem[j]</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">// 스택 맨위의 문자와 같으면 pop</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (element == stack[stack.length - <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">        stack.pop()</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        stack.push(element)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (stack.length == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">      answer++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(answer)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`3</span></span><br><span class="line"><span class="hljs-string">ABAB</span></span><br><span class="line"><span class="hljs-string">AABB</span></span><br><span class="line"><span class="hljs-string">ABBA`</span>)</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`3</span></span><br><span class="line"><span class="hljs-string">ABBABB</span></span><br><span class="line"><span class="hljs-string">ABBBBA</span></span><br><span class="line"><span class="hljs-string">AAAAABBAAAAA`</span>)</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`1</span></span><br><span class="line"><span class="hljs-string">BABBAB`</span>)</span><br></pre></td></tr></table></figure>
-
 <hr>
-
 <p>동일한 풀이법으로 해결가능한 9012번 괄호 문제도 풀어보았다.</p>
-<h1 id="9012-문제"><a href="#9012-문제" class="headerlink" title="9012 문제"></a>9012 문제</h1><p>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다. 그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다. 예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</p>
+<h1 id="9012-문제">9012 문제</h1>
+<p>괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다. 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다. 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다. 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다. 그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다. 예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.</p>
 <p>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다.</p>
-<h1 id="입력-1"><a href="#입력-1" class="headerlink" title="입력"></a>입력</h1><p>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다. 각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다.</p>
-<h1 id="출력-1"><a href="#출력-1" class="headerlink" title="출력"></a>출력</h1><p>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다.</p>
-<p>이 문제를 풀 핵심 아이디어는<br>괄호를 차례대로 <code>stack</code>에 넣고, <code>열린괄호 닫힌괄호</code>가 한 세트가 되면 pop해준다.<br>괄호문자열의 길이만큼 다 돌았을 때, <code>stack</code>의 길이가 0이면 <code>올바른 괄호 문자열</code>이다.</p>
+<h1 id="입력-v2">입력</h1>
+<p>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다. 각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다.</p>
+<h1 id="출력-v2">출력</h1>
+<p>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다.</p>
+<p>이 문제를 풀 핵심 아이디어는<br>
+괄호를 차례대로 <code>stack</code>에 넣고, <code>열린괄호 닫힌괄호</code>가 한 세트가 되면 pop해준다.<br>
+괄호문자열의 길이만큼 다 돌았을 때, <code>stack</code>의 길이가 0이면 <code>올바른 괄호 문자열</code>이다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = <span class="hljs-built_in">parseInt</span>(input[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> pairs = input.slice(<span class="hljs-number">1</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> elem = pairs[i]</span><br><span class="line">    <span class="hljs-keyword">const</span> stack = [elem[<span class="hljs-number">0</span>]]</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">1</span>; j &lt; elem.length; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> char = elem[j]</span><br><span class="line">      <span class="hljs-keyword">if</span> (char == <span class="hljs-string">")"</span> &amp;&amp; stack[stack.length - <span class="hljs-number">1</span>] == <span class="hljs-string">"("</span>) &#123;</span><br><span class="line">        stack.pop()</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        stack.push(char)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (stack.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"NO"</span>)</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"YES"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`6</span></span><br><span class="line"><span class="hljs-string">(())())</span></span><br><span class="line"><span class="hljs-string">(((()())()</span></span><br><span class="line"><span class="hljs-string">(()())((()))</span></span><br><span class="line"><span class="hljs-string">((()()(()))(((())))()</span></span><br><span class="line"><span class="hljs-string">()()()()(()()())()</span></span><br><span class="line"><span class="hljs-string">(()((())()(`</span>)</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -270,7 +275,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -282,7 +287,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -294,7 +299,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -355,7 +360,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -422,6 +427,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -467,11 +480,11 @@
         <span class="has-mr-6">2</span>
         <span>9012 문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-1">
+        <a class="is-flex" href="#입력-v2">
         <span class="has-mr-6">3</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-1">
+        <a class="is-flex" href="#출력-v2">
         <span class="has-mr-6">4</span>
         <span>출력</span>
         </a></li></ul>
@@ -485,6 +498,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -518,7 +550,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -562,25 +594,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -598,7 +611,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -802,11 +815,11 @@
         <span class="has-mr-6">2</span>
         <span>9012 문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-1">
+        <a class="is-flex" href="#입력-v2">
         <span class="has-mr-6">3</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-1">
+        <a class="is-flex" href="#출력-v2">
         <span class="has-mr-6">4</span>
         <span>출력</span>
         </a></li></ul>
@@ -820,6 +833,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -853,7 +885,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -897,25 +929,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -933,7 +946,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

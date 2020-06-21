@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>formGroup 하위에 [(ngModel)] 사용시 발생하는 error - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/08/06/programming/angular/angular-formgroup-error/">  <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/08/06/programming/angular/angular-formgroup-error/">  <meta name="description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="keywords" content="Angular,formgroup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/06/Programming/Angular/angular-formgroup-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta property="og:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:18:52.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="formGroup 하위에 [(ngModel)] 사용시 발생하는 error">
-<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용문제 상황Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
+<meta name="twitter:description" content="Angular에서 formGroup 하위에 [(ngModel)] 사용 문제 상황 Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,17 +135,21 @@
             
         </h1>
         <div class="content">
-            <h2 id="Angular에서-formGroup-하위에-ngModel-사용"><a href="#Angular에서-formGroup-하위에-ngModel-사용" class="headerlink" title="Angular에서 formGroup 하위에 [(ngModel)] 사용"></a>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2 id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</h2>
+<h3 id="문제-상황">문제 상황</h3>
+<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
 <a id="more"></a>
-
 <p><img src="/images/formgrouperror.png" alt></p>
-<h3 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h3><ol>
-<li><p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
+<h3 id="해결-방법">해결 방법</h3>
+<ol>
+<li>
+<p>formGroup 안에서는 ngModel 쓰지말고 <code>formControlName</code> 디렉티브를 사용한다. (ts파일에서 FormBuilder를 통해 group 생성시 <code>formControlName</code>에 있는 값들도 전부 넣어줘야 함.)</p>
 </li>
-<li><p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
+<li>
+<p>굳이 ngModel을 사용하고 싶다면, <code>[ngModelOptions]=&quot;{standalone: true}&quot;</code> 와 함께 사용해야한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment"># 1번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> formControlName=<span class="hljs-string">"selectedToken"</span></span><br><span class="line">(change)=<span class="hljs-string">"selectSendToken()"</span>  [(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span>&gt;</span><br><span class="line">    &lt;option *ngFor=<span class="hljs-string">"let token of global.sendTokenOptions"</span> [ngValue]=<span class="hljs-string">"token"</span>&gt;</span><br><span class="line">        &#123;&#123;token.symbol&#125;&#125;(&#123;&#123;token.name&#125;&#125;)</span><br><span class="line">    &lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 2번 방법</span></span><br><span class="line">&lt;select class=<span class="hljs-string">"form-control"</span> (change)=<span class="hljs-string">"selectSendToken()"</span></span><br><span class="line">[(ngModel)]=<span class="hljs-string">"global.sendInfo.token"</span> [ngModelOptions]=<span class="hljs-string">"&#123;standalone: true&#125;"</span>&gt;</span><br><span class="line">....</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<pre><code></code></pre></li>
+<pre><code></code></pre>
+</li>
 </ol>
 
         </div>
@@ -259,7 +263,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -271,7 +275,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -283,7 +287,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -344,7 +348,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -411,6 +415,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -436,7 +448,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular에서-formGroup-하위에-ngModel-사용">
+        <a class="is-flex" href="#angular에서-formgroup-하위에-ngmodel-사용">
         <span class="has-mr-6">1</span>
         <span>Angular에서 formGroup 하위에 [(ngModel)] 사용</span>
         </a><ul class="menu-list"><li>
@@ -458,6 +470,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -491,7 +522,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -535,25 +566,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -571,7 +583,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -755,7 +767,7 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Angular에서-formGroup-하위에-ngModel-사용">
+        <a class="is-flex" href="#angular에서-formgroup-하위에-ngmodel-사용">
         <span class="has-mr-6">1</span>
         <span>Angular에서 formGroup 하위에 [(ngModel)] 사용</span>
         </a><ul class="menu-list"><li>
@@ -777,6 +789,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -810,7 +841,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -854,25 +885,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -890,7 +902,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

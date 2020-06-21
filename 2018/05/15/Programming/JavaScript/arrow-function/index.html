@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>화살표 함수(arrow-function)와 function 차이점 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/05/15/programming/javascript/arrow-function/">  <meta name="description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.(원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
+<link rel="canonical" href="https://minami-choi.github.io/2018/05/15/programming/javascript/arrow-function/">  <meta name="description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다. (원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
 <meta name="keywords" content="화살표 함수,arrow-function,function,this">
 <meta property="og:type" content="article">
 <meta property="og:title" content="화살표 함수(arrow-function)와 function 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/05/15/Programming/JavaScript/arrow-function/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.(원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
+<meta property="og:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다. (원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-29T15:29:11.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="화살표 함수(arrow-function)와 function 차이점">
-<meta name="twitter:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.(원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
+<meta name="twitter:description" content="function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다. (원래 나타내던 this를 그대로 쓴다) 앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,13 +135,12 @@
             
         </h1>
         <div class="content">
-            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>(원래 나타내던 this를 그대로 쓴다)</p>
+            <p>function에서 this는 함수 자신을 나타내고, 화살표함수는 this를 따로 변경하지 않는다.<br>
+(원래 나타내던 this를 그대로 쓴다)</p>
 <p>앵귤러의 ts파일에서의 this는 컴포넌트 인스턴스를 의미한다.</p>
 <a id="more"></a>
-
 <p>앵귤러에서 가끔 function을 이용해야할 경우, 컴포넌트 인스턴스의 변수들을 참조하려면 <code>let _this = this</code>를 이용하면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">dismissModal</span></span>() &#123;</span><br><span class="line">	<span class="hljs-built_in">let</span> _this = this;</span><br><span class="line">	$(<span class="hljs-function"><span class="hljs-title">function</span></span>() &#123;</span><br><span class="line">		$(<span class="hljs-string">"#myModal"</span>).on(<span class="hljs-string">"hidden.bs.modal"</span>, <span class="hljs-function"><span class="hljs-title">function</span></span>() &#123;</span><br><span class="line">			_this.userPwd = <span class="hljs-string">""</span>;</span><br><span class="line">			_this.userEmail = <span class="hljs-string">""</span>;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>function안에서 this를 그냥 쓰면, this는 function 자체를 나타내기 때문에 <code>userPwd</code>과 <code>userEmail</code>이 <code>undefined</code>되었다는 에러가 뜬다.</p>
 <p>그래서 <code>let _this = this</code>를 이용해 컴포넌트 인스턴스를 <code>_this</code>에 담아서 function 내부에서 컴포넌트 인스턴스를 참조할 수 있도록 하면 된다.</p>
 
@@ -256,7 +255,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -268,7 +267,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -280,7 +279,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -341,7 +340,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -408,6 +407,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -432,6 +439,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -465,7 +491,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -509,25 +535,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -545,7 +552,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -731,6 +738,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -761,7 +787,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -805,25 +831,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -841,7 +848,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

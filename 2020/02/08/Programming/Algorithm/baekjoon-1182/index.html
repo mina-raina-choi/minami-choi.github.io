@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] 1182 부분 수열의 합 - 자바스크립트 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/08/programming/algorithm/baekjoon-1182/">  <meta name="description" content="문제N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/08/programming/algorithm/baekjoon-1182/">  <meta name="description" content="문제 N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] 1182 부분 수열의 합 - 자바스크립트">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/08/Programming/Algorithm/baekjoon-1182/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.">
+<meta property="og:description" content="문제 N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-08T13:13:33.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 1182 부분 수열의 합 - 자바스크립트">
-<meta name="twitter:description" content="문제N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.">
+<meta name="twitter:description" content="문제 N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1465145177017-c5b156cd4d14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -135,17 +135,18 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.</p>
+            <h1 id="문제">문제</h1>
+<p>N개의 정수로 이루어진 수열이 있을 때, 크기가 양수인 부분수열 중에서 그 수열의 원소를 다 더한 값이 S가 되는 경우의 수를 구하는 프로그램을 작성하시오.</p>
 <a id="more"></a>
-
-<h1 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h1><p>첫째 줄에 정수의 개수를 나타내는 N과 정수 S가 주어진다. (1 ≤ N ≤ 20, |S| ≤ 1,000,000) 둘째 줄에 N개의 정수가 빈 칸을 사이에 두고 주어진다. 주어지는 정수의 절댓값은 100,000을 넘지 않는다.</p>
-<h1 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h1><p>첫째 줄에 합이 S가 되는 부분수열의 개수를 출력한다.</p>
+<h1 id="입력">입력</h1>
+<p>첫째 줄에 정수의 개수를 나타내는 N과 정수 S가 주어진다. (1 ≤ N ≤ 20, |S| ≤ 1,000,000) 둘째 줄에 N개의 정수가 빈 칸을 사이에 두고 주어진다. 주어지는 정수의 절댓값은 100,000을 넘지 않는다.</p>
+<h1 id="출력">출력</h1>
+<p>첫째 줄에 합이 S가 되는 부분수열의 개수를 출력한다.</p>
 <p><a href="https://www.acmicpc.net/problem/1182" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1182</a></p>
 <hr>
-
-<p>일반적인 <code>subsequence</code>문제이다.<br>주의해야하는 부분은 연속된 부분수열이 아니어도 된다는 것!</p>
+<p>일반적인 <code>subsequence</code>문제이다.<br>
+주의해야하는 부분은 연속된 부분수열이 아니어도 된다는 것!</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> conditions = input[<span class="hljs-number">0</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = conditions[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> s = conditions[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> array = input[<span class="hljs-number">1</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 인덱스 i 까지 배열에서 가질 수 잇는 모든 부분 수열의 합을 배열에 저장한다.</span></span><br><span class="line">  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-literal">null</span>).map(<span class="hljs-function">(<span class="hljs-params">a, i</span>) =&gt;</span> [array[i]])</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> k = <span class="hljs-number">0</span>; k &lt; dp[j].length; k++) &#123;</span><br><span class="line">        dp[i].push(dp[i][<span class="hljs-number">0</span>] + dp[j][k])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// dp를 돌면서 부분수열의 합이 s와 같은 경우 answer++를 해준다.</span></span><br><span class="line">  <span class="hljs-keyword">let</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  dp.forEach(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span></span><br><span class="line">    a.forEach(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (a == s) answer++</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(answer)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`5 0</span></span><br><span class="line"><span class="hljs-string">-7 -3 -2 5 8`</span>)</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -258,7 +259,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -270,7 +271,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -282,7 +283,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -343,7 +344,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -410,6 +411,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -460,6 +469,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -490,7 +518,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -534,25 +562,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -570,7 +579,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -779,6 +788,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -809,7 +837,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -853,25 +881,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -889,7 +898,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

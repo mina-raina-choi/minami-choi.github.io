@@ -137,72 +137,62 @@
         <div class="content">
             <p>자바스크립트에서 가장 오해하기 쉬운 개념 중 하나가 this 키워드다. 이 글에서 this 키워드가 무엇을 참조하는지 알아낼 수 있는 5가지 법칙을 배울거다. 암묵적 바인딩, 명시적 바인딩, new 바인딩, window 바인딩, lexical 바인딩. 더불어서 javascript에서 헷갈리는 부분 중 하나인 .call, .apply, .bind 그리고 new 키워드에 대한 것도 살펴볼것이다.</p>
 <a id="more"></a>
-
 <p>this 키워드에 대해 구체적으로 알아보기 전에 애초에 왜 this 키워드라는 것이 있을까? 생각을 해보자.</p>
 <p>this 키워드는 다른 컨텍스트에서 함수를 재사용할 수 있게 한다. 다르게 말하면, <strong>this 키워드는 함수나 메소드가 호출될 때 어떤 object 에 초점을 맞출 것인지 결정할 수 있게 한다.</strong> 앞으로 이런 관점에서 this에 대해 알아볼거다. 우리는 다른 컨텍스트나 다른 object에서 함수, 메소드를 재사용할 수 있게 하고 싶다.</p>
 <p><strong>this 키워드가 무엇을 참조하고 있는가</strong></p>
 <p>⇒ <strong>이 함수가 어디에서 호출되는가?</strong></p>
 <p>this 키워드가 무엇을 참조하는지 알 수 있는 유일한 방법은 this 키워드를 이용하는 함수가 호출된 위치를 확인하는 것이다.</p>
-<h3 id="Implicit-Binding"><a href="#Implicit-Binding" class="headerlink" title="Implicit Binding"></a>Implicit Binding</h3><p>가장 일반적인 규칙이다. 거의 80% 정도가 this가 무엇을 참조하는지 이 규칙을 통해 알 수 있다.</p>
+<h3 id="implicit-binding">Implicit Binding</h3>
+<p>가장 일반적인 규칙이다. 거의 80% 정도가 this가 무엇을 참조하는지 이 규칙을 통해 알 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="hljs-string">"Tyler"</span>,</span><br><span class="line">  age: <span class="hljs-number">27</span>,</span><br><span class="line">  greet() &#123;</span><br><span class="line">    alert(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">user.greet() <span class="hljs-comment">// Hello, my name is Tyler</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>look to the left of the dot when the function is invoked</strong></p>
 <p>만약 . 이 있다면 . 의 왼쪽에 있는 object를 찾아라. 그게 this가 참조하고 있는 것이다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="hljs-string">"Tyler"</span>,</span><br><span class="line">  age: <span class="hljs-number">27</span>,</span><br><span class="line">  greet() &#123;</span><br><span class="line">    alert(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span>`</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  mother: &#123;</span><br><span class="line">    name: <span class="hljs-string">"Stacey"</span>,</span><br><span class="line">    greet() &#123;</span><br><span class="line">      alert(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">user.greet() <span class="hljs-comment">// Hello, my name is Tyler</span></span><br><span class="line">user.mother.greet() <span class="hljs-comment">// Hello, my name is Stacey</span></span><br></pre></td></tr></table></figure>
-
 <p>위의 예제에서도 동일하게 <strong>left of the dot</strong> 규칙이 통하는 것을 볼 수 있다.</p>
 <p>그런데 만약 . 이 없으면?</p>
-<h3 id="Explicit-Binding"><a href="#Explicit-Binding" class="headerlink" title="Explicit Binding"></a>Explicit Binding</h3><p>아래와 같이 greet 함수가 user object에 속한 메서드가 아니라 단독 함수라면</p>
+<h3 id="explicit-binding">Explicit Binding</h3>
+<p>아래와 같이 greet 함수가 user object에 속한 메서드가 아니라 단독 함수라면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="hljs-string">"Tyler"</span>,</span><br><span class="line">  age: <span class="hljs-number">27</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>this 가 user obejct를 참조하도록 하면서 greet함수를 호출하려면 어떻게 해야할까?</p>
 <p><strong>call</strong> 함수를 통해 가능하다.</p>
 <p>call은 모든 함수에 있는 메소드로, 함수가 호출될 컨텍스트를 지정하여 함수를 호출할 수 있게 한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">greet.call(user)</span><br></pre></td></tr></table></figure>
-
 <p>이것이 바로 명시적 바인딩이다. this 키워드가 무엇을 참조할 지 명시적으로 알려주는 방법이다.</p>
 <p>만약 파라미터가 필요한 함수라면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">greet</span>(<span class="hljs-params">l1, l2, l3</span>) </span>&#123;</span><br><span class="line">  alert(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span> and I know <span class="hljs-subst">$&#123;l1&#125;</span>, <span class="hljs-subst">$&#123;l2&#125;</span>, and <span class="hljs-subst">$&#123;l3&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">const</span> languages = [<span class="hljs-string">"JavaScript"</span>, <span class="hljs-string">"Ruby"</span>, <span class="hljs-string">"Python"</span>]</span><br><span class="line">greet.call(user, languages[<span class="hljs-number">0</span>], languages[<span class="hljs-number">1</span>], languages[<span class="hljs-number">2</span>])</span><br></pre></td></tr></table></figure>
-
 <p>call 함수의 첫번째 인자로 컨텍스트를 넣은 다음, 차례대로 인자를 넣어주면 된다.</p>
 <p>하지만 이렇게 일일이 인자를 넣어주는 게 귀찮다면, .apply 함수를 사용해서 인자를 한번에 배열로 넣어주면 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> languages = [<span class="hljs-string">"JavaScript"</span>, <span class="hljs-string">"Ruby"</span>, <span class="hljs-string">"Python"</span>]</span><br><span class="line">greet.apply(user, languages)</span><br></pre></td></tr></table></figure>
-
 <p>마지막으로 .bind를 살펴보면, .call 함수와 동일한데 즉시 함수를 호출하는 게 아니라 바인딩된 새로운 함수를 리턴하는 것이 다르다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> newFn = greet.bind(user, languages[<span class="hljs-number">0</span>], languages[<span class="hljs-number">1</span>], languages[<span class="hljs-number">2</span>])</span><br><span class="line">newFn()</span><br></pre></td></tr></table></figure>
-
-<h3 id="new-Binding"><a href="#new-Binding" class="headerlink" title="new Binding"></a>new Binding</h3><p>new 키워드로 함수를 호출하면 자바스크립트 인터프리터는 새로운 object를 리턴하는데 this는 그 새로운 object를 참조한다.</p>
+<h3 id="new-binding">new Binding</h3>
+<p>new 키워드로 함수를 호출하면 자바스크립트 인터프리터는 새로운 object를 리턴하는데 this는 그 새로운 object를 참조한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">User</span>(<span class="hljs-params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.name = name</span><br><span class="line">  <span class="hljs-keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> me = <span class="hljs-keyword">new</span> User(<span class="hljs-string">"Tyler"</span>, <span class="hljs-number">27</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Lexical-Binding"><a href="#Lexical-Binding" class="headerlink" title="Lexical Binding"></a>Lexical Binding</h3><p>ES6부터 도입된 arrow function은 일반 function과 다르게 함수 자체의 this를 가지고 있지 않다. 대신 lexical하게 this를 결정짓는다. 예제로 알아보자.</p>
+<h3 id="lexical-binding">Lexical Binding</h3>
+<p>ES6부터 도입된 arrow function은 일반 function과 다르게 함수 자체의 this를 가지고 있지 않다. 대신 lexical하게 this를 결정짓는다. 예제로 알아보자.</p>
 <p>( lexical scope : 바깥에서 선언한 변수는 안쪽에서 접근 가능하다)</p>
 <p>아래와 같이 user object를 만든다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="hljs-string">"Tyler"</span>,</span><br><span class="line">  age: <span class="hljs-number">27</span>,</span><br><span class="line">  languages: [<span class="hljs-string">"JavaScript"</span>, <span class="hljs-string">"Ruby"</span>, <span class="hljs-string">"Python"</span>],</span><br><span class="line">  greet() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> hello = <span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">const</span> langs = <span class="hljs-keyword">this</span>.languages.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (i === <span class="hljs-keyword">this</span>.languages.length - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> and <span class="hljs-subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> <span class="hljs-subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;, <span class="hljs-string">""</span>)</span><br><span class="line"></span><br><span class="line">    alert(hello + langs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">user.greet() <span class="hljs-comment">// Uncaught TypeError: Cannot read property 'length' of undefined</span></span><br></pre></td></tr></table></figure>
-
-<p>this.languages 가 undefined 여서 Cannot read property ‘length’ of undefined 에러가 발생한다.<br>원래 바라는 바는 this가 user object를 참조하는 것인데, 어디서 잘못됐는지 차근차근 확인해보자.</p>
+<p>this.languages 가 undefined 여서 Cannot read property ‘length’ of undefined 에러가 발생한다.<br>
+원래 바라는 바는 this가 user object를 참조하는 것인데, 어디서 잘못됐는지 차근차근 확인해보자.</p>
 <p>어디서 함수가 호출되었나? → language 문자열을 합치는 함수는 reduce 함수에 전달되었다. reduce 함수내에서 어떻게 함수가 호출되는지 정확히 알 수 없다.</p>
 <p>이 부분이 문제다! 우리는</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">str, lang, i</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (i === <span class="hljs-keyword">this</span>.languages.length - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> and <span class="hljs-subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> <span class="hljs-subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 <p>이 함수가 user 컨텍스트에서 호출될 수 있도록 명시적으로 알려줘야 한다. bind를 이용해서 user 를 참조하는 this를 바인딩해주면 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line">greet() &#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> hello = <span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.name&#125;</span> and I know`</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> langs = <span class="hljs-keyword">this</span>.languages.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">str, lang, i</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (i === <span class="hljs-keyword">this</span>.languages.length - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> and <span class="hljs-subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> <span class="hljs-subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">  &#125;.bind(<span class="hljs-keyword">this</span>), <span class="hljs-string">""</span>)</span><br><span class="line"></span><br><span class="line">  alert(hello + langs)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>하지만 좀 보기 복잡한 면이 있다.</p>
 <p>arrow function 은 렉시컬 스코프에 의해 this를 결정짓는다고 이전에 언급했었다. arrow function을 이용하면 this를 명시적으로 바인딩해주지 않아도 부모 스코프의 this를 참조한다.</p>
 <p>(Arrow functions don’t have their own this.)</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> langs = <span class="hljs-keyword">this</span>.languages.reduce(<span class="hljs-function">(<span class="hljs-params">str, lang, i</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (i === <span class="hljs-keyword">this</span>.languages.length - <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> and <span class="hljs-subst">$&#123;lang&#125;</span>.`</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span> <span class="hljs-subst">$&#123;lang&#125;</span>,`</span></span><br><span class="line">&#125;, <span class="hljs-string">""</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="window-Binding"><a href="#window-Binding" class="headerlink" title="window Binding"></a>window Binding</h3><p>자바스크립트는 기본적으로 this 키워드는 window object를 참조하고 있다. (Node.js에서는 global object)</p>
+<h3 id="window-binding">window Binding</h3>
+<p>자바스크립트는 기본적으로 this 키워드는 window object를 참조하고 있다. (Node.js에서는 global object)</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayAge</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`My age is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> user = &#123;</span><br><span class="line">  name: <span class="hljs-string">"Tyler"</span>,</span><br><span class="line">  age: <span class="hljs-number">27</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="hljs-comment">// My age is undefined</span></span><br></pre></td></tr></table></figure>
-
 <p>하지만 window object에 age 프로퍼티를 추가하면 정상적으로 age가 출력된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.age = <span class="hljs-number">27</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayAge</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`My age is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="hljs-comment">// My age is 27</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>참고로 ES5부터 “엄격 모드”를 활성화하면 JavaScript가 올바른 작업을 수행하며 창 객체를 기본값으로 사용하는 대신 “this”를 정의되지 않은 상태로 유지한다.</p>
+<p>참고로 ES5부터 &quot;엄격 모드&quot;를 활성화하면 JavaScript가 올바른 작업을 수행하며 창 객체를 기본값으로 사용하는 대신 &quot;this&quot;를 정의되지 않은 상태로 유지한다.</p>
 </blockquote>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">"use strict"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">window</span>.age = <span class="hljs-number">27</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayAge</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`My age is <span class="hljs-subst">$&#123;<span class="hljs-keyword">this</span>.age&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayAge() <span class="hljs-comment">// TypeError: Cannot read property 'age' of undefined</span></span><br></pre></td></tr></table></figure>
-
 <p>다시 한번 정리해보자면, this 키워드가 무엇을 참조하는지는 아래의 순서에 따라 판단하면 된다.</p>
 <ol>
 <li>함수가 어디에서 호출됐는지 확인</li>
@@ -329,7 +319,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -341,7 +331,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -353,7 +343,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -414,7 +404,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -481,6 +471,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -506,23 +504,23 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Implicit-Binding">
+        <a class="is-flex" href="#implicit-binding">
         <span class="has-mr-6">1</span>
         <span>Implicit Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#Explicit-Binding">
+        <a class="is-flex" href="#explicit-binding">
         <span class="has-mr-6">2</span>
         <span>Explicit Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#new-Binding">
+        <a class="is-flex" href="#new-binding">
         <span class="has-mr-6">3</span>
         <span>new Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#Lexical-Binding">
+        <a class="is-flex" href="#lexical-binding">
         <span class="has-mr-6">4</span>
         <span>Lexical Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#window-Binding">
+        <a class="is-flex" href="#window-binding">
         <span class="has-mr-6">5</span>
         <span>window Binding</span>
         </a></li></ul>
@@ -536,6 +534,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -569,7 +586,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -613,25 +630,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -649,7 +647,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -833,23 +831,23 @@
                     Catalogue
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#Implicit-Binding">
+        <a class="is-flex" href="#implicit-binding">
         <span class="has-mr-6">1</span>
         <span>Implicit Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#Explicit-Binding">
+        <a class="is-flex" href="#explicit-binding">
         <span class="has-mr-6">2</span>
         <span>Explicit Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#new-Binding">
+        <a class="is-flex" href="#new-binding">
         <span class="has-mr-6">3</span>
         <span>new Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#Lexical-Binding">
+        <a class="is-flex" href="#lexical-binding">
         <span class="has-mr-6">4</span>
         <span>Lexical Binding</span>
         </a></li><li>
-        <a class="is-flex" href="#window-Binding">
+        <a class="is-flex" href="#window-binding">
         <span class="has-mr-6">5</span>
         <span>window Binding</span>
         </a></li></ul>
@@ -863,6 +861,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -896,7 +913,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -940,25 +957,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -976,7 +974,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

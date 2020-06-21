@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/04/25/programming/javascript/study-modular-code-2/">  <meta name="description" content="지난 글에 이어서 함수 파이프라인을 합성문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정람다JS 함수 R.compose로 두">
+<link rel="canonical" href="https://minami-choi.github.io/2019/04/25/programming/javascript/study-modular-code-2/">  <meta name="description" content="지난 글에 이어서 함수 파이프라인을 합성 문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분 함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정 람다JS 함수 R.compose로">
 <meta name="keywords" content="함수형 자바스크립트,재사용 가능한, 모듈적인 코드로">
 <meta property="og:type" content="article">
 <meta property="og:title" content="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
 <meta property="og:url" content="https://minami-choi.github.io/2019/04/25/Programming/JavaScript/study-modular-code-2/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="지난 글에 이어서 함수 파이프라인을 합성문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정람다JS 함수 R.compose로 두">
+<meta property="og:description" content="지난 글에 이어서 함수 파이프라인을 합성 문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분 함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정 람다JS 함수 R.compose로">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2019-11-29T15:28:18.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="스터디 - 재사용 가능한, 모듈적인 코드로 - 두번째">
-<meta name="twitter:description" content="지난 글에 이어서 함수 파이프라인을 합성문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정람다JS 함수 R.compose로 두">
+<meta name="twitter:description" content="지난 글에 이어서 함수 파이프라인을 합성 문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성! 함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것 함수 합성: 서술과 평가를 구분 함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정 람다JS 함수 R.compose로">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -136,39 +136,56 @@
         </h1>
         <div class="content">
             <p>지난 글에 이어서</p>
-<h2 id="함수-파이프라인을-합성"><a href="#함수-파이프라인을-합성" class="headerlink" title="함수 파이프라인을 합성"></a>함수 파이프라인을 합성</h2><p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
+<h2 id="함수-파이프라인을-합성">함수 파이프라인을 합성</h2>
+<p>문제를 더 작고 단순한 하위문제들로 쪼갠 다음 이것들을 다시 조합해서 해결하는 방안을 찾는 능력의 중요성!</p>
 <p>함수형 프로그램의 목표는 합성을 유도하는 필요한 자료구조를 얻는 것</p>
-<h3 id="함수-합성-서술과-평가를-구분"><a href="#함수-합성-서술과-평가를-구분" class="headerlink" title="함수 합성: 서술과 평가를 구분"></a>함수 합성: 서술과 평가를 구분</h3><p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
+<h3 id="함수-합성-서술과-평가를-구분">함수 합성: 서술과 평가를 구분</h3>
+<p>함수 합성이란 한마디로 복잡한 작업을 한데 묶어 간단한 작업으로 쪼개는 과정<br>
+람다JS 함수 R.compose로 두 순수함수를 합성하는 예제</p>
 <a id="more"></a>
-
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> R = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ramda"</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">"lodash"</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> str = <span class="hljs-string">`We can only see a short distance ahead</span></span><br><span class="line"><span class="hljs-string">            but we can see plenty there that needs to be done.`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> explode = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.split(<span class="hljs-regexp">/\s+/</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> count = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.length</span><br><span class="line"><span class="hljs-keyword">const</span> countWords = R.compose(count, explode)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"countWords(str)"</span>, countWords(str))</span><br></pre></td></tr></table></figure>
-
-<p>흥미로운 사실은 countWords를 실행하기 전에는 아무 평가도 하지 않는다는 점<br>합성이 끝나면 해당 인수(countWords에 전달하는 인수)를 받아 호출되기를 기다리는 또다른 함수가 반환된다.<br>함수의 서술부와 평가부를 분리하는 함수합성의 미학!</p>
+<p>흥미로운 사실은 countWords를 실행하기 전에는 아무 평가도 하지 않는다는 점<br>
+합성이 끝나면 해당 인수(countWords에 전달하는 인수)를 받아 호출되기를 기다리는 또다른 함수가 반환된다.<br>
+함수의 서술부와 평가부를 분리하는 함수합성의 미학!</p>
 <p>합성은 함수의 출력과 입력을 연결하여 진정한 함수 파이프라인을 완성한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// compose 구현부</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compose</span>(<span class="hljs-params"><span class="hljs-regexp">/* 함수 */</span></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> args = <span class="hljs-built_in">arguments</span></span><br><span class="line">  <span class="hljs-keyword">let</span> start = args.length - <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// compose는 실제 인수를 넣고 호출한 또다른함수를 출력</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> i = start</span><br><span class="line">    <span class="hljs-comment">// 전달된 인수를 넣고 동적으로 함수를 적용</span></span><br><span class="line">    <span class="hljs-keyword">let</span> result = args[start].apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>)</span><br><span class="line">    <span class="hljs-keyword">while</span> (i--)</span><br><span class="line">      <span class="hljs-comment">// 이전 단계 반환값을 다시 인수로 넣고 그다음함수를 계속 반복</span></span><br><span class="line">      result = args[i].call(<span class="hljs-keyword">this</span>, result)</span><br><span class="line">    <span class="hljs-keyword">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> trim = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.replace(<span class="hljs-regexp">/\s*|\s$/g</span>, <span class="hljs-string">""</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> nomarlize = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> str.replace(<span class="hljs-regexp">/\-/g</span>, <span class="hljs-string">""</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> validLength = <span class="hljs-function">(<span class="hljs-params">param, str</span>) =&gt;</span> str.length === param</span><br><span class="line"><span class="hljs-keyword">const</span> checkLengthSsn = _.partial(validLength, <span class="hljs-number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> clearInput = R.compose(nomarlize, trim)</span><br><span class="line"><span class="hljs-keyword">const</span> isValidSsn = R.compose(checkLengthSsn, clearInput)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"clearInput(` 444-44-444`)"</span>, clearInput(<span class="hljs-string">` 444-44-444`</span>))</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"isValidSsn(` 444-44-444`)"</span>, isValidSsn(<span class="hljs-string">` 444-44-444`</span>))</span><br></pre></td></tr></table></figure>
-
 <p>이런 개념을 바탕으로 단순한 함수들을 조합해서 전체 프로그램을 구축하는 것.</p>
 <p><img src="compose.jpg" alt="compose"></p>
 <p>합성은 결합 가능한 연산 conjunctive operation 이라서 논리 AND 연산자로 원소를 합칠 수 있다.</p>
-<h3 id="함수형-라이브러리로-합성"><a href="#함수형-라이브러리로-합성" class="headerlink" title="함수형 라이브러리로 합성"></a>함수형 라이브러리로 합성</h3><p>람다JS 같은 함수형 라이브러리는 처음부터 커링을 염두에 두고 모든 함수를 구성했기 때문에 파이프라인으로 합성하면 함수를 다용도로 활용할 수 있다.</p>
+<h3 id="함수형-라이브러리로-합성">함수형 라이브러리로 합성</h3>
+<p>람다JS 같은 함수형 라이브러리는 처음부터 커링을 염두에 두고 모든 함수를 구성했기 때문에 파이프라인으로 합성하면 함수를 다용도로 활용할 수 있다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> students = [<span class="hljs-string">"Rosser"</span>, <span class="hljs-string">"Turing"</span>, <span class="hljs-string">"Kleene"</span>, <span class="hljs-string">"Church"</span>]</span><br><span class="line"><span class="hljs-keyword">const</span> grades = [<span class="hljs-number">80</span>, <span class="hljs-number">100</span>, <span class="hljs-number">90</span>, <span class="hljs-number">99</span>]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 가장 똑똑한 학생 구하기</span></span><br><span class="line"><span class="hljs-keyword">const</span> smartestStudent = R.compose(R.head, R.pluck(<span class="hljs-number">0</span>), R.reverse, R.sortBy(R.prop(<span class="hljs-number">1</span>)), R.zip)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ret = smartestStudent(students, grades)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"ret"</span>, ret)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 알기 쉽게 함수 별칭을 사용</span></span><br><span class="line"><span class="hljs-keyword">const</span> first = R.head</span><br><span class="line"><span class="hljs-keyword">const</span> getName = R.pluck(<span class="hljs-number">0</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> reverse = R.reverse</span><br><span class="line"><span class="hljs-keyword">const</span> sortByGrade = R.sortBy(R.prop(<span class="hljs-number">1</span>))</span><br><span class="line"><span class="hljs-keyword">const</span> combine = R.zip</span><br><span class="line"></span><br><span class="line">R.compose(first, getName, reverse, sortByGrade, combine)</span><br></pre></td></tr></table></figure>
-
-<h3 id="순수-분순-함수-다루기"><a href="#순수-분순-함수-다루기" class="headerlink" title="순수/분순 함수 다루기"></a>순수/분순 함수 다루기</h3><p>불순한 impure한 코드는 실행 후 부수효과가 드러나고 외부 디펜던시 탓에 구성함수의 스코프 바깥에서 데이터에 접근할 수 밖에 없다.<br>실세계에서는 순수/불순한 코드가 섞여있을 수 밖에 없으므로 양쪽을 확실하게 구분하고 가급적 불순코드를 (가장 좋게는 단일함수로) 격리하는 방법을 찾아야한다.</p>
+<h3 id="순수-분순-함수-다루기">순수/분순 함수 다루기</h3>
+<p>불순한 impure한 코드는 실행 후 부수효과가 드러나고 외부 디펜던시 탓에 구성함수의 스코프 바깥에서 데이터에 접근할 수 밖에 없다.<br>
+실세계에서는 순수/불순한 코드가 섞여있을 수 밖에 없으므로 양쪽을 확실하게 구분하고 가급적 불순코드를 (가장 좋게는 단일함수로) 격리하는 방법을 찾아야한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 커링 및 합성을 응용한 showStudent 프로그램</span></span><br><span class="line"><span class="hljs-keyword">const</span> findObject = R.curry(<span class="hljs-function">(<span class="hljs-params">db, id</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-comment">// 리팩터링한 find() 메서드는 저장소 객체를 매개변수로 받기 때문에 합성하기 쉽다</span></span><br><span class="line">  <span class="hljs-keyword">const</span> obj = find(db, id)</span><br><span class="line">  <span class="hljs-keyword">if</span> (obj === <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">`IDrk [<span class="hljs-subst">$&#123;id&#125;</span>]인 객체는 없습니다`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> obj</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// students 객체 저장소를 가리키게 하여 findObject를 부분평가하면 결국 findStudent라는 새함수가 생성</span></span><br><span class="line"><span class="hljs-keyword">const</span> findStudent = findObject(DB(<span class="hljs-string">"students"</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> csv = <span class="hljs-function">(<span class="hljs-params">&#123; ssn, firstname, lastname &#125;</span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">$&#123;ssn&#125;</span>, <span class="hljs-subst">$&#123;firstname&#125;</span>, <span class="hljs-subst">$&#123;lastname&#125;</span>`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> append = R.curry(<span class="hljs-function">(<span class="hljs-params">elementId, info</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="hljs-built_in">document</span>.querySelector(elementId).innerHTML = info</span><br><span class="line">  <span class="hljs-keyword">return</span> info</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> showStudent = R.compose(append(<span class="hljs-string">"#student-info"</span>), csv, findStudent, normalize, trim)</span><br><span class="line"></span><br><span class="line">showStudent(<span class="hljs-string">"4444-4444"</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="무인수-프로그래밍"><a href="#무인수-프로그래밍" class="headerlink" title="무인수 프로그래밍"></a>무인수 프로그래밍</h3><p><code>R.compose(first, getName, reverse, sortByGrade, combine)</code><br>기존의 함수 선언과 달리 자신의 구성함수의 매개변수를하나도 드러내지 않는다.<br>compose또는 pipe 함수를 사용하면 인수를 선언할 필요가 없기 때문에 간결하면서도 선언적인 무인수 코드를 작성할 수 있다.</p>
-<p>무인수스타일코드<br>이 함수들이 어떤 형식의 인수를 받는지, 전체 표현식 안에서 어떻게 연결되는지 아무 선언도 하지 않는다.</p>
+<h3 id="무인수-프로그래밍">무인수 프로그래밍</h3>
+<p><code>R.compose(first, getName, reverse, sortByGrade, combine)</code><br>
+기존의 함수 선언과 달리 자신의 구성함수의 매개변수를하나도 드러내지 않는다.<br>
+compose또는 pipe 함수를 사용하면 인수를 선언할 필요가 없기 때문에 간결하면서도 선언적인 무인수 코드를 작성할 수 있다.</p>
+<p>무인수스타일코드<br>
+이 함수들이 어떤 형식의 인수를 받는지, 전체 표현식 안에서 어떻게 연결되는지 아무 선언도 하지 않는다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> runProgram = R.pipe(R.map(R.toLower), R.uniq, R.sortBy(R.identity))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ret = runProgram([</span><br><span class="line">  <span class="hljs-string">"Functional"</span>,</span><br><span class="line">  <span class="hljs-string">"Programming"</span>,</span><br><span class="line">  <span class="hljs-string">"CUrry"</span>,</span><br><span class="line">  <span class="hljs-string">"Memoization"</span>,</span><br><span class="line">  <span class="hljs-string">"Partial"</span>,</span><br><span class="line">  <span class="hljs-string">"Curry"</span>,</span><br><span class="line">  <span class="hljs-string">"Programming"</span></span><br><span class="line">])</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"ret"</span>, ret)</span><br></pre></td></tr></table></figure>
-
-<h2 id="함수-조합기로-제어흐름을-관리"><a href="#함수-조합기로-제어흐름을-관리" class="headerlink" title="함수 조합기로 제어흐름을 관리"></a>함수 조합기로 제어흐름을 관리</h2><p>조건 로직을 구사하거나 다수의 함수를 차례로 실행하는 경우, 애플리케이션의 제어흐름을 관리하는 데 유용한 유틸리티</p>
-<p>조합기 - 함수 또는 다른 조합기 같은 기본 장치를 조합하여 제어로직처럼 작동시킬 수 있는 고계함수, 조합기는 대부분 함수형 프로그램이 잘 흘러가도록 조정하는 일이 주임무라 자신의 변수를 선언하거나 비즈니스 로직을 두진않는다.<br>compose, pipe이외에도 종류가 많지만 자주 쓰는 것들 정리해보면</p>
-<p><code>항등(identity)</code><br>주어진 인수와 똑같은 값을 반환하는 함수<br>identity :: (a) -&gt; a</p>
-<p><code>탭(tap)</code><br>코드 추가 없이 void 함수(로깅이나 파일/HTML 페이지 쓰기 등)를 연결하여 합성할 때 유용. 자신을 함수에 넘기고 자신을 돌려받는다.<br>tap :: (a -&gt; *) -&gt; a -&gt; a</p>
-<p><code>선택(alternation) - OR-조합기</code><br>alt 조합기는 함수 호술시 기본 응답을 제공하는 단순 조건 로직을 수행<br>함수2개를 받아 false, null, undefined가 아닌 값이 있으면 첫 번째 함수의 결과를, 그렇지 않으면 두번째 함수의 결과를 반환.</p>
-<p><code>순차열(sequence) - S-조합기</code><br>함수 순차열의 순회, 2개 또는 더 많은 함수를 인수로 받아, 동일한 값에 대해 각 함수를 차례로 실행하는 또다른 함수를 반환.<br>이 조합기를 이용하면 서로 연관되어 있지만 독립적인 일련의 연산을 수행할 수 있다.</p>
-<p><code>포크(fork) 또는 조인(join)</code><br>포크 조합기는 하나의 자원을 두가지방법으로 처리후 그 결과를 다시 조합한다.<br>하나의 조인 함수와 주어진 입력을 처리할 종단함수 2개를 받는다.</p>
+<h2 id="함수-조합기로-제어흐름을-관리">함수 조합기로 제어흐름을 관리</h2>
+<p>조건 로직을 구사하거나 다수의 함수를 차례로 실행하는 경우, 애플리케이션의 제어흐름을 관리하는 데 유용한 유틸리티</p>
+<p>조합기 - 함수 또는 다른 조합기 같은 기본 장치를 조합하여 제어로직처럼 작동시킬 수 있는 고계함수, 조합기는 대부분 함수형 프로그램이 잘 흘러가도록 조정하는 일이 주임무라 자신의 변수를 선언하거나 비즈니스 로직을 두진않는다.<br>
+compose, pipe이외에도 종류가 많지만 자주 쓰는 것들 정리해보면</p>
+<p><code>항등(identity)</code><br>
+주어진 인수와 똑같은 값을 반환하는 함수<br>
+identity :: (a) -&gt; a</p>
+<p><code>탭(tap)</code><br>
+코드 추가 없이 void 함수(로깅이나 파일/HTML 페이지 쓰기 등)를 연결하여 합성할 때 유용. 자신을 함수에 넘기고 자신을 돌려받는다.<br>
+tap :: (a -&gt; *) -&gt; a -&gt; a</p>
+<p><code>선택(alternation) - OR-조합기</code><br>
+alt 조합기는 함수 호술시 기본 응답을 제공하는 단순 조건 로직을 수행<br>
+함수2개를 받아 false, null, undefined가 아닌 값이 있으면 첫 번째 함수의 결과를, 그렇지 않으면 두번째 함수의 결과를 반환.</p>
+<p><code>순차열(sequence) - S-조합기</code><br>
+함수 순차열의 순회, 2개 또는 더 많은 함수를 인수로 받아, 동일한 값에 대해 각 함수를 차례로 실행하는 또다른 함수를 반환.<br>
+이 조합기를 이용하면 서로 연관되어 있지만 독립적인 일련의 연산을 수행할 수 있다.</p>
+<p><code>포크(fork) 또는 조인(join)</code><br>
+포크 조합기는 하나의 자원을 두가지방법으로 처리후 그 결과를 다시 조합한다.<br>
+하나의 조인 함수와 주어진 입력을 처리할 종단함수 2개를 받는다.</p>
 <p><img src="fork-join.jpg" alt="fork-join"></p>
 <p>함수형 프로그래밍은 불변성, 순수성이 기본 원리이므로 프로그램을 구성하는 함수의 모듈성과 재사용성을 세세하게 조절할 수 있다. 자바스크립트에서는 함수를 이용해서 모듈을 구현할 수 있다고 했는데 마찬가지로 전체 모듈을 합성하고 재사용하는 일도 얼마든지 가능하다</p>
 <p>이장에서 배운 기법들로 순수함수를 추상하여 합성 가능한 형태로 만드는 게 목적이다.</p>
@@ -284,7 +301,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            105
+                            106
                         </p>
                     </a>
                 </div>
@@ -296,7 +313,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            11
+                            12
                         </p>
                     </a>
                 </div>
@@ -308,7 +325,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            102
+                            106
                         </p>
                     </a>
                 </div>
@@ -369,7 +386,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">100</span>
+                <span class="level-item tag">102</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -436,6 +453,14 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/Programming/TIL/">
+            <span class="level-start">
+                <span class="level-item">TIL</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/etc/">
             <span class="level-start">
                 <span class="level-item">etc</span>
@@ -498,6 +523,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -528,7 +572,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -572,25 +616,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -608,7 +633,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -829,6 +854,25 @@
         
         <article class="media">
             
+            <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1520387294843-fd994fd872e7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="셀렉트 박스에서 text-overflow: ellipsis 구현하기">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-21T06:25:59.000Z">2020-06-21</time></div>
+                    <a href="/2020/06/21/Programming/TIL/selectbox-ellipsis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">셀렉트 박스에서 text-overflow: ellipsis 구현하기</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/06/07/Programming/Server/prometheus-monitoring/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="https://images.unsplash.com/photo-1505051508008-923feaf90180?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="모니터링 시스템 구축 - 프로메테우스">
@@ -859,7 +903,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-25T13:52:41.000Z">2020-05-25</time></div>
                     <a href="/2020/05/25/Programming/TIL/git-rebase/" class="title has-link-black-ter is-size-6 has-text-weight-normal">깃 rebase 실수 모음</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/TIL/">TIL</a>
                     </p>
                 </div>
             </div>
@@ -903,25 +947,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="코딜리티 MinMaxDivision 문제풀이">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-06T08:30:39.000Z">2020-03-06</time></div>
-                    <a href="/2020/03/06/Programming/Algorithm/minmaxdivision/" class="title has-link-black-ter is-size-6 has-text-weight-normal">코딜리티 MinMaxDivision 문제풀이</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/Algorithm/">Algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -939,7 +964,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
