@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -137,25 +137,20 @@
         <div class="content">
             <p>대부분의 프로그래밍 언어는 운영체제 OS 위에서 실행되지만 웹 애플리케이션의 자바스크립트는 브라우저에서 HTML, CSS와 함께 실행된다. 그러므로 브라우저의 동작 원리를 이해하면 보다 효율적으로 자바스크립트 프로그래밍을 할 수 있다.</p>
 <a id="more"></a>
+
 <p>브라우저의 핵심 기능은 사용자가 원하는 웹페이지를 서버에 요청하고, 서버의 응답을 받아 브라우저에 표시하는 것이다. 이것을 <strong>중요 렌더링 경로(Critical Rendering Path)</strong> 라고 부른다.</p>
 <p>간단하게 나타내면</p>
 <p><img src="critical-render-path.png" alt="중요 렌더링 경로"></p>
 <ol>
-<li>
-<p>서버에서 응답으로 받은 HTML 데이터를 파싱한다.</p>
+<li><p>서버에서 응답으로 받은 HTML 데이터를 파싱한다.</p>
 </li>
-<li>
-<p>HTML 파싱 결과로 DOM tree를 만든다.</p>
+<li><p>HTML 파싱 결과로 DOM tree를 만든다.</p>
 </li>
-<li>
-<p>파싱하는 중에 CSS 파일 링크를 만나면 CSS 파일을 요청해서 받아온다.</p>
+<li><p>파싱하는 중에 CSS 파일 링크를 만나면 CSS 파일을 요청해서 받아온다.</p>
 </li>
-<li>
-<p>CSS 파일을 파싱해서 CSSOM tree를 만든다.</p>
+<li><p>CSS 파일을 파싱해서 CSSOM tree를 만든다.</p>
 </li>
-<li>
-<p>DOM 과 CSSOM 를 결합해서 렌더 트리를 만든다.<br>
-렌더 트리에는 페이지를 렌더링하는 데 필요한 노드만 포함</p>
+<li><p>DOM 과 CSSOM 를 결합해서 렌더 트리를 만든다.<br>렌더 트리에는 페이지를 렌더링하는 데 필요한 노드만 포함</p>
 <blockquote>
 <p>참고: visibility: hidden은 display: none과 다르다. 전자는 요소를 보이지 않게 만들지만, 이 요소는 여전히 레이아웃에서 공간을 차지한다.(즉, 비어 있는 상자로 렌더링됨). 반면, 후자(display: none)는 요소가 보이지 않으며 레이아웃에 포함되지도 않도록 렌더링 트리에서 요소를 완전히 제거한다.</p>
 </blockquote>
@@ -176,16 +171,13 @@
 <p>스타일 시트는 DOM 트리를 변경하지 않기 때문에 문서 파싱을 기다리거나 중단할 이유가 없다.</p>
 <p>참고로</p>
 <p><strong>하위 리소스(subresource) 로딩</strong></p>
-<p>웹 사이트는 일반적으로 이미지, CSS, JavaScript와 같은 외부 리소스를 사용한다. 이러한 파일은 네트워크나 캐시에서 로딩해야 한다. DOM을 구축하기 위해 파싱하는 동안 이런 리소스를 만날 때마다 메인 스레드가 하나하나 요청할 수도 있을 것이다. 하지만 속도를 높이기 위해 <strong>프리로드(Preload) 스캐너</strong>가 동시에 실행된다. HTML 문서에 <code>&lt;img&gt;</code> 또는 <code>&lt;link&gt;</code> 와 같은 태그가 있으면 프리로드 스캐너는 HTML 파서가 생성한 토큰을 확인하고 브라우저 프로세스의 네트워크 스레드에 요청을 보낸다.</p>
+<p>웹 사이트는 일반적으로 이미지, CSS, JavaScript와 같은 외부 리소스를 사용한다. 이러한 파일은 네트워크나 캐시에서 로딩해야 한다. DOM을 구축하기 위해 파싱하는 동안 이런 리소스를 만날 때마다 메인 스레드가 하나하나 요청할 수도 있을 것이다. 하지만 속도를 높이기 위해 <strong>프리로드(Preload) 스캐너</strong>가 동시에 실행된다. HTML 문서에 <code>&lt;img&gt;</code> 또는 <code>&lt;link&gt;</code> 와 같은 태그가 있으면 프리로드 스캐너는 HTML 파서가 생성한 토큰을 확인하고 브라우저 프로세스의 네트워크 스레드에 요청을 보낸다.</p>
 <p><img src="subresource-request.png" alt="하위 리소스 로딩"></p>
 <hr>
 <p>[참고]</p>
-<p><a href="https://d2.naver.com/helloworld/59361" rel="external nofollow noopener noreferrer" target="_blank">https://d2.naver.com/helloworld/59361</a><br>
-<a href="https://www.youtube.com/watch?v=DuSURHrZG6I" rel="external nofollow noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=DuSURHrZG6I</a></p>
-<p>객체 모델 생성<br>
-<a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko" rel="external nofollow noopener noreferrer" target="_blank">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko</a></p>
-<p>렌더링 트리<br>
-<a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=ko" rel="external nofollow noopener noreferrer" target="_blank">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=ko</a></p>
+<p><a href="https://d2.naver.com/helloworld/59361" rel="external nofollow noopener noreferrer" target="_blank">https://d2.naver.com/helloworld/59361</a><br><a href="https://www.youtube.com/watch?v=DuSURHrZG6I" rel="external nofollow noopener noreferrer" target="_blank">https://www.youtube.com/watch?v=DuSURHrZG6I</a></p>
+<p>객체 모델 생성<br><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko" rel="external nofollow noopener noreferrer" target="_blank">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=ko</a></p>
+<p>렌더링 트리<br><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=ko" rel="external nofollow noopener noreferrer" target="_blank">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=ko</a></p>
 <p>렌더러 프로세스의 내부 동작 <a href="https://d2.naver.com/helloworld/5237120" rel="external nofollow noopener noreferrer" target="_blank">https://d2.naver.com/helloworld/5237120</a></p>
 <p><a href="https://poiemaweb.com/js-browser" rel="external nofollow noopener noreferrer" target="_blank">https://poiemaweb.com/js-browser</a></p>
 
@@ -234,7 +226,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -296,11 +288,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -308,7 +300,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -320,11 +312,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -333,7 +325,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -368,7 +360,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -385,7 +377,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -433,7 +425,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -482,8 +474,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -561,25 +572,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -587,9 +579,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -778,8 +781,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -857,25 +879,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -883,9 +886,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1189,7 +1203,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1221,10 +1235,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

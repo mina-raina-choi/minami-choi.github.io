@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>힙(Heap) 구현 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/26/programming/algorithm/heap-implement/">  <meta name="description" content="힙 (Heap) 이란? 힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree) 완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/26/programming/algorithm/heap-implement/">  <meta name="description" content="힙 (Heap) 이란?힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree)완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리">
 <meta name="keywords" content="Heap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="힙(Heap) 구현">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/26/Programming/Algorithm/heap-implement/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="힙 (Heap) 이란? 힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree) 완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리">
+<meta property="og:description" content="힙 (Heap) 이란?힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree)완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2019-12-26T14:44:12.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="힙(Heap) 구현">
-<meta name="twitter:description" content="힙 (Heap) 이란? 힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree) 완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리">
+<meta name="twitter:description" content="힙 (Heap) 이란?힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 완전 이진 트리(Complete Binary Tree)완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,52 +135,36 @@
             
         </h1>
         <div class="content">
-            <h2 id="힙-heap-이란">힙 (Heap) 이란?</h2>
-<p>힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 <code>완전 이진 트리(Complete Binary Tree)</code><br>
-완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리</p>
+            <h2 id="힙-Heap-이란"><a href="#힙-Heap-이란" class="headerlink" title="힙 (Heap) 이란?"></a>힙 (Heap) 이란?</h2><p>힙: 데이터에서 최대값과 최소값을 빠르게 찾기 위해 고안된 <code>완전 이진 트리(Complete Binary Tree)</code><br>완전 이진 트리: 노드를 삽입할 때 최하단 왼쪽 노드부터 차례대로 삽입하는 트리</p>
 <a id="more"></a>
-<h3 id="힙을-사용하는-이유">힙을 사용하는 이유</h3>
-<p>배열에 데이터를 넣고, 최대값과 최소값을 찾으려면 O(n) 이 걸림<br>
-이에 반해, 힙에 데이터를 넣고, 최대값과 최소값을 찾으면, 𝑂(𝑙𝑜𝑔𝑛) 이 걸림<br>
-(이진트리이므로 depth가 깊어질수록 탐색해야하는 노드가 50%씩 줄어든다.)<br>
-우선순위 큐와 같이 <code>최대값 또는 최소값을 빠르게 찾아야</code> 하는 자료구조 및 알고리즘 구현 등에 활용됨</p>
+
+<h3 id="힙을-사용하는-이유"><a href="#힙을-사용하는-이유" class="headerlink" title="힙을 사용하는 이유"></a>힙을 사용하는 이유</h3><p>배열에 데이터를 넣고, 최대값과 최소값을 찾으려면 O(n) 이 걸림<br>이에 반해, 힙에 데이터를 넣고, 최대값과 최소값을 찾으면, 𝑂(𝑙𝑜𝑔𝑛) 이 걸림<br>(이진트리이므로 depth가 깊어질수록 탐색해야하는 노드가 50%씩 줄어든다.)<br>우선순위 큐와 같이 <code>최대값 또는 최소값을 빠르게 찾아야</code> 하는 자료구조 및 알고리즘 구현 등에 활용됨</p>
 <p><img src="https://www.fun-coding.org/00_Images/completebinarytree.png" alt="heap의 구조"></p>
-<h2 id="힙-heap-구조">힙 (Heap) 구조</h2>
-<p>힙은 최대값을 구하기 위한 구조 (<code>최대 힙, Max Heap</code>) 와, 최소값을 구하기 위한 구조 (<code>최소 힙, Min Heap</code>) 로 분류할 수 있음</p>
+<h2 id="힙-Heap-구조"><a href="#힙-Heap-구조" class="headerlink" title="힙 (Heap) 구조"></a>힙 (Heap) 구조</h2><p>힙은 최대값을 구하기 위한 구조 (<code>최대 힙, Max Heap</code>) 와, 최소값을 구하기 위한 구조 (<code>최소 힙, Min Heap</code>) 로 분류할 수 있음</p>
 <p>힙은 다음과 같이 두 가지 조건을 가지고 있는 자료구조임</p>
 <ol>
 <li>각 노드의 값은 해당 노드의 자식 노드가 가진 값보다 크거나 같다. (최대 힙의 경우)</li>
 <li>최소 힙의 경우는 각 노드의 값은 해당 노드의 자식 노드가 가진 값보다 크거나 작음</li>
 </ol>
 <p><code>완전 이진 트리</code> 형태를 가짐</p>
-<h3 id="힙과-이진-탐색-트리의-공통점과-차이점">힙과 이진 탐색 트리의 공통점과 차이점</h3>
-<p><code>공통점</code>: 힙과 이진 탐색 트리는 <code>모두 이진 트리</code>임<br>
-<code>차이점</code>: 힙은 각 노드의 값이 자식 노드보다 크거나 같음(Max Heap의 경우)<br>
-이진 탐색 트리는 왼쪽 자식 노드의 값이 가장 작고, 그 다음 부모 노드, 그 다음 오른쪽 자식 노드 값이 가장 큼<br>
-힙은 위와 같은 조건이 없다.<br>
-힙의 왼쪽 및 오른쪽 자식 노드의 값은 오른쪽이 클 수도 있고, 왼쪽이 클 수도 있음<br>
-<code>이진 탐색 트리는 탐색</code>을 위한 구조, <code>힙은 최대/최소값 검색</code>을 위한 구조 중 하나로 이해하면 됨</p>
-<h2 id="힙-구현-원리">힙 구현 원리</h2>
-<h3 id="힙-삽입-max-heap의-경우">힙 삽입 (Max Heap의 경우)</h3>
-<ol>
+<h3 id="힙과-이진-탐색-트리의-공통점과-차이점"><a href="#힙과-이진-탐색-트리의-공통점과-차이점" class="headerlink" title="힙과 이진 탐색 트리의 공통점과 차이점"></a>힙과 이진 탐색 트리의 공통점과 차이점</h3><p><code>공통점</code>: 힙과 이진 탐색 트리는 <code>모두 이진 트리</code>임<br><code>차이점</code>: 힙은 각 노드의 값이 자식 노드보다 크거나 같음(Max Heap의 경우)<br>이진 탐색 트리는 왼쪽 자식 노드의 값이 가장 작고, 그 다음 부모 노드, 그 다음 오른쪽 자식 노드 값이 가장 큼<br>힙은 위와 같은 조건이 없다.<br>힙의 왼쪽 및 오른쪽 자식 노드의 값은 오른쪽이 클 수도 있고, 왼쪽이 클 수도 있음<br><code>이진 탐색 트리는 탐색</code>을 위한 구조, <code>힙은 최대/최소값 검색</code>을 위한 구조 중 하나로 이해하면 됨</p>
+<h2 id="힙-구현-원리"><a href="#힙-구현-원리" class="headerlink" title="힙 구현 원리"></a>힙 구현 원리</h2><h3 id="힙-삽입-Max-Heap의-경우"><a href="#힙-삽입-Max-Heap의-경우" class="headerlink" title="힙 삽입 (Max Heap의 경우)"></a>힙 삽입 (Max Heap의 경우)</h3><ol>
 <li>먼저 삽입된 데이터는 완전 이진 트리 구조에 맞추어, <code>최하단부 왼쪽 노드부터</code> 채워진다.</li>
 <li>채워진 노드 위치에서, 부모 노드보다 값이 클 경우, 부모 노드와 위치를 바꿔주는 작업을 반복함 (swap)</li>
 </ol>
-<h3 id="힙-제거-max-heap의-경우">힙 제거 (Max Heap의 경우)</h3>
-<p>힙에서 삭제의 경우는 <code>루트 노드</code>를 삭제하는 것이다. 힙의 용도 자체가 최대값, 최소값을 루트 노드에 위치하도록 해서 최대값과 최소값을 바로 꺼낼 수 있도록 하는 것이다.</p>
+<h3 id="힙-제거-Max-Heap의-경우"><a href="#힙-제거-Max-Heap의-경우" class="headerlink" title="힙 제거 (Max Heap의 경우)"></a>힙 제거 (Max Heap의 경우)</h3><p>힙에서 삭제의 경우는 <code>루트 노드</code>를 삭제하는 것이다. 힙의 용도 자체가 최대값, 최소값을 루트 노드에 위치하도록 해서 최대값과 최소값을 바로 꺼낼 수 있도록 하는 것이다.</p>
 <ol>
 <li>루트 노드 삭제, 가장 마지막으로 추가한 노드를 루트 노드로 이동</li>
 <li>새로운 루트 노드를 자식노드들과 비교하면서, root 노드의 child node 중 가장 큰 값을 가진 노드와 root 노드 위치를 바꿔주는 작업을 반복함 (swap)</li>
 </ol>
-<h2 id="힙-구현">힙 구현</h2>
-<p>힙은 일반적으로 배열을 사용해서 구현한다.<br>
-배열은 인덱스가 0번부터 시작하지만, 힙 구현의 편의를 위해, root 노드 인덱스 번호를 1로 지정하면, 구현이 좀더 수월하다.</p>
+<h2 id="힙-구현"><a href="#힙-구현" class="headerlink" title="힙 구현"></a>힙 구현</h2><p>힙은 일반적으로 배열을 사용해서 구현한다.<br>배열은 인덱스가 0번부터 시작하지만, 힙 구현의 편의를 위해, root 노드 인덱스 번호를 1로 지정하면, 구현이 좀더 수월하다.</p>
 <blockquote>
 <p>부모 노드 인덱스 번호 = parseInt(자식 노드 인덱스 번호 / 2)</p>
 <p>왼쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 * 2</p>
 <p>오른쪽 자식 노드 인덱스 번호 = 부모 노드 인덱스 번호 * 2 + 1</p>
 </blockquote>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Heap</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="hljs-comment">// 편의를 위해 0은 0으로 채워주고 루트 노드는 this._array[1]에 넣어줬음.</span></span><br><span class="line">    <span class="hljs-keyword">this</span>._array = [<span class="hljs-number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 상위노드와 바꿔야하는지 판단하는 함수</span></span><br><span class="line">  moveUp(insertedIndex) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (insertedIndex &lt;= <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> parentIndex = <span class="hljs-built_in">parseInt</span>(insertedIndex / <span class="hljs-number">2</span>)</span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[insertedIndex] &gt; <span class="hljs-keyword">this</span>._array[parentIndex]) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  insert(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>._array.push(data)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> insertedIndex = <span class="hljs-keyword">this</span>._array.length - <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 부모노드와 값 비교</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">this</span>.moveUp(insertedIndex)) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> parentIndex = <span class="hljs-built_in">parseInt</span>(insertedIndex / <span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">// 부모노드와 바꾸기</span></span><br><span class="line">      <span class="hljs-keyword">const</span> temp = <span class="hljs-keyword">this</span>._array[insertedIndex]</span><br><span class="line">      <span class="hljs-keyword">this</span>._array[insertedIndex] = <span class="hljs-keyword">this</span>._array[parentIndex]</span><br><span class="line">      <span class="hljs-keyword">this</span>._array[parentIndex] = temp</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">// 비교할 노드 인덱스 변경</span></span><br><span class="line">      insertedIndex = parentIndex</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  moveDown(poppedIndex) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> leftChildIndex = poppedIndex * <span class="hljs-number">2</span></span><br><span class="line">    <span class="hljs-keyword">const</span> rightChildIndex = poppedIndex * <span class="hljs-number">2</span> + <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 1. 왼쪽 자식노드가 없으면 더이상 내려갈 데가 없다. 끝~~</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (leftChildIndex &gt;= <span class="hljs-keyword">this</span>._array.length) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 2. 왼쪽 자식노드는 있고, 오른쪽 자식노드는 없다.</span></span><br><span class="line">    <span class="hljs-comment">// 왼쪽노드 비교해서 swap결정</span></span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (rightChildIndex &gt;= <span class="hljs-keyword">this</span>._array.length) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[poppedIndex] &lt; <span class="hljs-keyword">this</span>._array[leftChildIndex]) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 3. 두 자식노드 둘다 있을 경우,</span></span><br><span class="line">    <span class="hljs-comment">// 3-1. 자식노드끼리 먼저 비교, 더 큰 자식노드 찾아서</span></span><br><span class="line">    <span class="hljs-comment">// 3-2. 더 큰 자식노드와 부모노드를 비교해서 swap</span></span><br><span class="line">    <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[leftChildIndex] &gt; <span class="hljs-keyword">this</span>._array[rightChildIndex]) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[poppedIndex] &lt; <span class="hljs-keyword">this</span>._array[leftChildIndex]) &#123;</span><br><span class="line">          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[poppedIndex] &lt; <span class="hljs-keyword">this</span>._array[rightChildIndex]) &#123;</span><br><span class="line">          <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 보통 삭제는 최상단 노드 (root 노드)를 삭제하는 것이 일반적임</span></span><br><span class="line"><span class="hljs-comment">힙의 용도는 최대값 또는 최소값을 root 노드에 놓아서, 최대값과 최소값을 바로 꺼내 쓸 수 있도록 하는 것임 */</span></span><br><span class="line">  pop() &#123;</span><br><span class="line">    <span class="hljs-comment">// 1. 루트 노드를 삭제</span></span><br><span class="line">    <span class="hljs-comment">// 2. 다시 트리의 균형을 맞추는 것</span></span><br><span class="line">    <span class="hljs-comment">// 가장 마지막에 추가한 노드) 를 root 노드로 이동</span></span><br><span class="line">    <span class="hljs-comment">// root 노드의 값이 child node 보다 작을 경우,</span></span><br><span class="line">    <span class="hljs-comment">// root 노드의 child node 중 가장 큰 값을 가진 노드와 root 노드 위치를 바꿔주는 작업을 반복함 (swap)</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array.length &lt;= <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 편의를 위해 0은 0으로 채워주고 루트 노드는 this._array[1]에 넣어줬음.</span></span><br><span class="line">    <span class="hljs-keyword">const</span> returnedData = <span class="hljs-keyword">this</span>._array[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 마지막 노드를 루트노드로 옮기기</span></span><br><span class="line">    <span class="hljs-keyword">this</span>._array[<span class="hljs-number">1</span>] = <span class="hljs-keyword">this</span>._array[<span class="hljs-keyword">this</span>._array.length - <span class="hljs-number">1</span>]</span><br><span class="line">    <span class="hljs-keyword">this</span>._array.splice(<span class="hljs-keyword">this</span>._array.length - <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">let</span> poppedIndex = <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">this</span>.moveDown(poppedIndex)) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> leftChildIndex = poppedIndex * <span class="hljs-number">2</span></span><br><span class="line">      <span class="hljs-keyword">const</span> rightChildIndex = poppedIndex * <span class="hljs-number">2</span> + <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (rightChildIndex &gt;= <span class="hljs-keyword">this</span>._array.length) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[poppedIndex] &lt; <span class="hljs-keyword">this</span>._array[leftChildIndex]) &#123;</span><br><span class="line">          <span class="hljs-comment">// swap</span></span><br><span class="line">          <span class="hljs-keyword">const</span> temp = <span class="hljs-keyword">this</span>._array[poppedIndex]</span><br><span class="line">          <span class="hljs-keyword">this</span>._array[poppedIndex] = <span class="hljs-keyword">this</span>._array[leftChildIndex]</span><br><span class="line">          <span class="hljs-keyword">this</span>._array[leftChildIndex] = temp</span><br><span class="line">          poppedIndex = leftChildIndex</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">// 3. 두 자식노드 둘다 있을 경우,</span></span><br><span class="line">      <span class="hljs-comment">// 3-1. 자식노드끼리 먼저 비교, 더 큰 자식노드 찾아서</span></span><br><span class="line">      <span class="hljs-comment">// 3-2. 더 큰 자식노드와 부모노드를 비교해서 swap</span></span><br><span class="line">      <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[leftChildIndex] &gt; <span class="hljs-keyword">this</span>._array[rightChildIndex]) &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[poppedIndex] &lt; <span class="hljs-keyword">this</span>._array[leftChildIndex]) &#123;</span><br><span class="line">            <span class="hljs-comment">// swap</span></span><br><span class="line">            <span class="hljs-keyword">const</span> temp = <span class="hljs-keyword">this</span>._array[poppedIndex]</span><br><span class="line">            <span class="hljs-keyword">this</span>._array[poppedIndex] = <span class="hljs-keyword">this</span>._array[leftChildIndex]</span><br><span class="line">            <span class="hljs-keyword">this</span>._array[leftChildIndex] = temp</span><br><span class="line">            poppedIndex = leftChildIndex</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._array[poppedIndex] &lt; <span class="hljs-keyword">this</span>._array[rightChildIndex]) &#123;</span><br><span class="line">            <span class="hljs-comment">// swap</span></span><br><span class="line">            <span class="hljs-keyword">const</span> temp = <span class="hljs-keyword">this</span>._array[poppedIndex]</span><br><span class="line">            <span class="hljs-keyword">this</span>._array[poppedIndex] = <span class="hljs-keyword">this</span>._array[rightChildIndex]</span><br><span class="line">            <span class="hljs-keyword">this</span>._array[rightChildIndex] = temp</span><br><span class="line">            poppedIndex = rightChildIndex</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> returnedData</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> heap = <span class="hljs-keyword">new</span> Heap()</span><br><span class="line">heap.insert(<span class="hljs-number">15</span>)</span><br><span class="line">heap.insert(<span class="hljs-number">8</span>)</span><br><span class="line">heap.insert(<span class="hljs-number">10</span>)</span><br><span class="line">heap.insert(<span class="hljs-number">5</span>)</span><br><span class="line">heap.insert(<span class="hljs-number">4</span>)</span><br><span class="line">heap.insert(<span class="hljs-number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(heap._array)</span><br><span class="line"><span class="hljs-comment">/* [</span></span><br><span class="line"><span class="hljs-comment">    0, 20,  8, 15,</span></span><br><span class="line"><span class="hljs-comment">    5,  4, 10</span></span><br><span class="line"><span class="hljs-comment">  ] */</span></span><br><span class="line">heap.pop()</span><br><span class="line"><span class="hljs-built_in">console</span>.log(heap._array)</span><br><span class="line"><span class="hljs-comment">/* [ 0, 15, 8, 10, 5, 4 ] */</span></span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -227,7 +211,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -289,11 +273,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -301,7 +285,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -313,11 +297,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -326,7 +310,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -361,7 +345,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -378,7 +362,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -426,7 +410,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -475,10 +459,10 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#힙-heap-이란">
+        <a class="is-flex" href="#힙-Heap-이란">
         <span class="has-mr-6">1</span>
         <span>힙 (Heap) 이란?</span>
         </a><ul class="menu-list"><li>
@@ -486,7 +470,7 @@
         <span class="has-mr-6">1.1</span>
         <span>힙을 사용하는 이유</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#힙-heap-구조">
+        <a class="is-flex" href="#힙-Heap-구조">
         <span class="has-mr-6">2</span>
         <span>힙 (Heap) 구조</span>
         </a><ul class="menu-list"><li>
@@ -498,11 +482,11 @@
         <span class="has-mr-6">3</span>
         <span>힙 구현 원리</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#힙-삽입-max-heap의-경우">
+        <a class="is-flex" href="#힙-삽입-Max-Heap의-경우">
         <span class="has-mr-6">3.1</span>
         <span>힙 삽입 (Max Heap의 경우)</span>
         </a></li><li>
-        <a class="is-flex" href="#힙-제거-max-heap의-경우">
+        <a class="is-flex" href="#힙-제거-Max-Heap의-경우">
         <span class="has-mr-6">3.2</span>
         <span>힙 제거 (Max Heap의 경우)</span>
         </a></li></ul></li><li>
@@ -518,8 +502,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -597,25 +600,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -623,9 +607,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -814,10 +809,10 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#힙-heap-이란">
+        <a class="is-flex" href="#힙-Heap-이란">
         <span class="has-mr-6">1</span>
         <span>힙 (Heap) 이란?</span>
         </a><ul class="menu-list"><li>
@@ -825,7 +820,7 @@
         <span class="has-mr-6">1.1</span>
         <span>힙을 사용하는 이유</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#힙-heap-구조">
+        <a class="is-flex" href="#힙-Heap-구조">
         <span class="has-mr-6">2</span>
         <span>힙 (Heap) 구조</span>
         </a><ul class="menu-list"><li>
@@ -837,11 +832,11 @@
         <span class="has-mr-6">3</span>
         <span>힙 구현 원리</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#힙-삽입-max-heap의-경우">
+        <a class="is-flex" href="#힙-삽입-Max-Heap의-경우">
         <span class="has-mr-6">3.1</span>
         <span>힙 삽입 (Max Heap의 경우)</span>
         </a></li><li>
-        <a class="is-flex" href="#힙-제거-max-heap의-경우">
+        <a class="is-flex" href="#힙-제거-Max-Heap의-경우">
         <span class="has-mr-6">3.2</span>
         <span>힙 제거 (Max Heap의 경우)</span>
         </a></li></ul></li><li>
@@ -857,8 +852,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -936,25 +950,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -962,9 +957,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1268,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1300,10 +1306,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

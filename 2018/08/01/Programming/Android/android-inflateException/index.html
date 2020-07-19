@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>android.view.InflateException 해결 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/08/01/programming/android/android-inflateexception/">  <meta name="description" content="문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
-<meta name="keywords" content="안드로이드,android,InflateException">
+<link rel="canonical" href="https://minami-choi.github.io/2018/08/01/programming/android/android-inflateexception/">  <meta name="description" content="문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="keywords" content="android,안드로이드,InflateException">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android.view.InflateException 해결">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/01/Programming/Android/android-inflateException/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta property="og:description" content="문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/574282/pexels-photo-574282.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 <meta property="og:updated_time" content="2019-12-04T12:24:48.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android.view.InflateException 해결">
-<meta name="twitter:description" content="문제 상황 Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
+<meta name="twitter:description" content="문제 상황Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/574282/pexels-photo-574282.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,21 +135,22 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황">문제 상황</h1>
-<p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
+            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
 <a id="more"></a>
+
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Binary XML file line #25: Error inflating class fragment</span></span><br><span class="line">Caused by: android.view.InflateException: Binary XML file line <span class="hljs-comment">#25: Error inflating class fragment</span></span><br><span class="line">Caused by: java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
+
 <p>검색을 통해 알아보니 <code>android.view.InflateException</code> 에러는 아래와 같은 경우 발생한다고 한다.</p>
 <ol>
 <li>xml에 값을 잘못 넣었을 경우</li>
 <li>CustomView의 생성자 함수를 제대로 만들어주지 않았을 경우</li>
 </ol>
-<p>[참고]<br>
-CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
+<p>[참고]<br>CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 함!</p>
 <figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CustomView</span><span class="hljs-params">(Context context, AttributeSet attrs)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>(context, attrs);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="해결-방법">해결 방법</h1>
-<p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
+
+<h1 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h1><p>내 경우에는 위의 2가지 사례에 해당하지 않았고, 좀 더 찾아보니 <code>fragment에 class 속성을 명시</code>하지 않아서 생기는 문제였다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">&lt;fragment</span><br><span class="line">android:id=<span class="hljs-string">"@+id/mapFragment"</span></span><br><span class="line">android:layout_width=<span class="hljs-string">"match_parent"</span></span><br><span class="line">android:layout_height=<span class="hljs-string">"wrap_content"</span></span><br><span class="line">app:layout_constraintLeft_toLeftOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintRight_toRightOf=<span class="hljs-string">"parent"</span></span><br><span class="line">app:layout_constraintTop_toBottomOf=<span class="hljs-string">"@+id/guideline"</span></span><br><span class="line">app:layout_constraintBottom_toBottomOf=<span class="hljs-string">"parent"</span></span><br><span class="line">class=<span class="hljs-string">"com.example.minachoi.findjuyou.fragment.MapFragment"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
 <p>이렇게 class값을 넣어주니 제대로 build되었다.</p>
 
         </div>
@@ -197,7 +198,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -259,11 +260,11 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -271,7 +272,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -283,11 +284,11 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -296,7 +297,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -331,7 +332,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -348,7 +349,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -396,7 +397,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -445,7 +446,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제-상황">
@@ -464,8 +465,27 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -543,25 +563,6 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -569,9 +570,20 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -760,7 +772,7 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제-상황">
@@ -779,8 +791,27 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -858,25 +889,6 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -884,9 +896,20 @@ CustomView 생성자의 매개변수에 context가 꼭 들어가야 한다고 �
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1190,7 +1213,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1222,10 +1245,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

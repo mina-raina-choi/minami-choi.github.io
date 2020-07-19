@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://minami-choi.github.io/tags/javascript/</loc>
+        <lastmod>2020-07-19T12:34:37.476Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/inheritance/</loc>
+        <lastmod>2020-07-19T12:34:37.476Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://minami-choi.github.io/tags/composition/</loc>
+        <lastmod>2020-07-19T12:34:37.476Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/ellipsis/</loc>
         <lastmod>2020-06-21T08:04:32.745Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -479,6 +500,13 @@
     </url>
 
     <url>
+        <loc>https://minami-choi.github.io/tags/ngrx/</loc>
+        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://minami-choi.github.io/tags/injector-tree/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -487,13 +515,6 @@
 
     <url>
         <loc>https://minami-choi.github.io/tags/injector/</loc>
-        <lastmod>2020-01-13T08:18:52.631Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://minami-choi.github.io/tags/ngrx/</loc>
         <lastmod>2020-01-13T08:18:52.631Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -542,14 +563,14 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/Component/</loc>
+        <loc>https://minami-choi.github.io/tags/architecture/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/architecture/</loc>
+        <loc>https://minami-choi.github.io/tags/Component/</loc>
         <lastmod>2020-01-13T08:18:52.627Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -640,14 +661,14 @@
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/android/</loc>
+        <loc>https://minami-choi.github.io/tags/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/</loc>
         <lastmod>2019-12-04T12:26:03.770Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://minami-choi.github.io/tags/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/</loc>
+        <loc>https://minami-choi.github.io/tags/android/</loc>
         <lastmod>2019-12-04T12:26:03.770Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

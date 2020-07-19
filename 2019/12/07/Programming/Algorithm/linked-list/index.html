@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -137,11 +137,14 @@
         <div class="content">
             <p>자료구조를 공부하는 중에 링크드 리스트의 개념이 잘 와닿지 않아 자바스크립트로 링크드 리스트를 구현해봤다.</p>
 <a id="more"></a>
+
 <p>겨우겨우 구현을 해봤는데 여전히 많이 헷갈린다.</p>
 <p>(도식화 이미지 정리 필요)</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.data = data</span><br><span class="line">    <span class="hljs-keyword">this</span>.next = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinkedList</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>._length = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">this</span>._head = <span class="hljs-literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// append(데이터): 리스트의 맨 끝에 데이터를 추가한다.</span></span><br><span class="line">  append(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> item = <span class="hljs-keyword">new</span> Node(data)</span><br><span class="line">    <span class="hljs-keyword">let</span> node = <span class="hljs-keyword">this</span>._head</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (node) &#123;</span><br><span class="line">      <span class="hljs-keyword">while</span> (node.next) &#123;</span><br><span class="line">        node = node.next</span><br><span class="line">      &#125;</span><br><span class="line">      node.next = item</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = item</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>._length++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// removeAt(위치): 해당 위치에 있는 데이터를 삭제한다.</span></span><br><span class="line">  removeAt(index) &#123;</span><br><span class="line">    <span class="hljs-comment">// index가 유효한 값인지 일단 먼저 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (index &gt; <span class="hljs-number">-1</span> &amp;&amp; index &lt; <span class="hljs-keyword">this</span>._length) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> node = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">let</span> prev = <span class="hljs-literal">null</span></span><br><span class="line">      <span class="hljs-comment">// 헤드를 삭제하는 경우라면, 그 다음 값을 헤드로 셋팅</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (index == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>._head = node.next</span><br><span class="line">        <span class="hljs-keyword">this</span>._length--</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 삭제하려는 index-1 값을 찾아서 next를 그 다음 next 값으로</span></span><br><span class="line">        <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt; index) &#123;</span><br><span class="line">          prev = node</span><br><span class="line">          node = node.next</span><br><span class="line">          i++</span><br><span class="line">        &#125;</span><br><span class="line">        prev.next = node.next</span><br><span class="line">        <span class="hljs-keyword">this</span>._length--</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">return</span> node.data</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// indexOf(데이터): 해당 데이터의 인덱스를 반환한다. 존재하지 않을 경우 결과 값은 -1이다.</span></span><br><span class="line">  indexOf(data) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (curr.next) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (curr.data === data) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> index</span><br><span class="line">      &#125;</span><br><span class="line">      curr = curr.next</span><br><span class="line">      index++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// remove(데이터): 데이터를 삭제한다.</span></span><br><span class="line">  remove(item) &#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>._head) <span class="hljs-keyword">return</span> <span class="hljs-string">"빈 리스트입니다"</span></span><br><span class="line">    <span class="hljs-comment">// head일경우</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (curr.data === item) &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>._head = curr.next</span><br><span class="line">      <span class="hljs-keyword">this</span>._length--</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">while</span> (curr.next) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (curr.next.data === item) &#123;</span><br><span class="line">          curr.next = curr.next.next</span><br><span class="line">          <span class="hljs-keyword">this</span>._length--</span><br><span class="line">          <span class="hljs-keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        curr = curr.next</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// insert(위치, 데이터): 해당 위치에 데이터를 삽입한다.</span></span><br><span class="line">  insert(index, item) &#123;</span><br><span class="line">    <span class="hljs-comment">// index가 유효한 값인지 일단 먼저 체크</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (index &gt; <span class="hljs-number">-1</span> &amp;&amp; index &lt;= <span class="hljs-keyword">this</span>._length) &#123;</span><br><span class="line">      <span class="hljs-keyword">let</span> curr = <span class="hljs-keyword">this</span>._head</span><br><span class="line">      <span class="hljs-keyword">const</span> newNode = <span class="hljs-keyword">new</span> Node(item)</span><br><span class="line">      <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span></span><br><span class="line">      <span class="hljs-comment">// 헤드로</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>._head = newNode</span><br><span class="line">        <span class="hljs-keyword">this</span>._head.next = curr</span><br><span class="line">        <span class="hljs-keyword">this</span>._length++</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 추가하려는 index-1 값을 찾아서</span></span><br><span class="line">        <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">let</span> prev = <span class="hljs-literal">null</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt; index) &#123;</span><br><span class="line">          prev = curr</span><br><span class="line">          curr = curr.next</span><br><span class="line">          i++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">let</span> nextTemp = prev.next</span><br><span class="line">        prev.next = newNode</span><br><span class="line">        newNode.next = nextTemp</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">this</span>._length++</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// isEmpty(): 데이터가 하나도 없다면 true를, 그 외엔 false를 반환한다.</span></span><br><span class="line">  isEmpty() &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._length === <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//size(): 데이터 개수를 반환한다. 배열의 length 프로퍼티와 비슷하다.</span></span><br><span class="line">  size() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>실행시켜보면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> linked = <span class="hljs-keyword">new</span> LinkedList()</span><br><span class="line"></span><br><span class="line">linked.append(<span class="hljs-number">1</span>)</span><br><span class="line">linked.append(<span class="hljs-number">2</span>)</span><br><span class="line">linked.append(<span class="hljs-number">3</span>)</span><br><span class="line">linked.append(<span class="hljs-number">4</span>)</span><br><span class="line">linked.append(<span class="hljs-number">5</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(linked)</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">LinkedList &#123;</span></span><br><span class="line"><span class="hljs-comment">  _length: 5,</span></span><br><span class="line"><span class="hljs-comment">  _head: Node &#123; data: 1, next: Node &#123; data: 2, next: [Node] &#125; &#125;</span></span><br><span class="line"><span class="hljs-comment">&#125; </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line">linked.insert(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(linked))</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">&#123;"_length":6,"_head":&#123;"data":1,"next":&#123;"data":2,"next":&#123;"data":3,"next":&#123;"data":7,"next":&#123;"data":4,"next":&#123;"data":5,"next":null&#125;&#125;&#125;&#125;&#125;&#125;&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(linked.remove(<span class="hljs-number">4</span>))</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(linked))</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">&#123;"_length":5,"_head":&#123;"data":1,"next":&#123;"data":2,"next":&#123;"data":3,"next":&#123;"data":7,"next":&#123;"data":5,"next":null&#125;&#125;&#125;&#125;&#125;&#125; </span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(linked.indexOf(<span class="hljs-number">4</span>))</span><br><span class="line"><span class="hljs-comment">/* </span></span><br><span class="line"><span class="hljs-comment">-1</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -188,7 +191,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -250,11 +253,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -262,7 +265,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -274,11 +277,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -287,7 +290,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -322,7 +325,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -339,7 +342,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -387,7 +390,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -436,8 +439,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -515,25 +537,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -541,9 +544,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -732,8 +746,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -811,25 +844,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -837,9 +851,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1143,7 +1168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1175,10 +1200,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

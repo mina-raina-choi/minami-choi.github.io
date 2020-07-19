@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] DP 문제 모음 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/07/programming/algorithm/leetcode-dp/">  <meta name="description" content="LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다. 53. Maximum Subarray Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/07/programming/algorithm/leetcode-dp/">  <meta name="description" content="LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다. 53. Maximum SubarrayGiven an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] DP 문제 모음">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/07/Programming/Algorithm/leetcode-dp/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다. 53. Maximum Subarray Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.">
+<meta property="og:description" content="LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다. 53. Maximum SubarrayGiven an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-07T06:52:09.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] DP 문제 모음">
-<meta name="twitter:description" content="LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다. 53. Maximum Subarray Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.">
+<meta name="twitter:description" content="LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다. 53. Maximum SubarrayGiven an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1550399504-8953e1a6ac87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -136,21 +136,18 @@
         </h1>
         <div class="content">
             <p>LeetCode에 있는 다이내믹 프로그래밍 문제들을 풀어보았다.</p>
-<h1 id="53-maximum-subarray">53. Maximum Subarray</h1>
-<p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
+<h1 id="53-Maximum-Subarray"><a href="#53-Maximum-Subarray" class="headerlink" title="53. Maximum Subarray"></a>53. Maximum Subarray</h1><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p>
 <a id="more"></a>
+
 <p>Example:</p>
 <blockquote>
-<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>
-Output: 6<br>
-Explanation: [4,-1,2,1] has the largest sum = 6.</p>
+<p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.</p>
 </blockquote>
-<p>Follow up:<br>
-If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.</p>
+<p>Follow up:<br>If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.</p>
 <p><a href="https://leetcode.com/problems/maximum-subarray/" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/maximum-subarray/</a></p>
-<p>연속하는 부분 수열의 합 중 가장 큰 합을 리턴하는 문제다.<br>
-배열 dp에 각 index까지의 부분 수열의 합 중 가장 큰 값을 담아서 그중 가장 큰 값을 리턴하면 된다.</p>
+<p>연속하는 부분 수열의 합 중 가장 큰 합을 리턴하는 문제다.<br>배열 dp에 각 index까지의 부분 수열의 합 중 가장 큰 값을 담아서 그중 가장 큰 값을 리턴하면 된다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> maxSubArray = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">nums</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> n = nums.length</span><br><span class="line">  <span class="hljs-keyword">const</span> dp = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(nums))</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-comment">// 해당 index의 값, 이전까지의 합에 해당 index의 값을 더한 값 중 큰 값을 dp[i]에 셋팅한다.</span></span><br><span class="line">    dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], dp[i - <span class="hljs-number">1</span>] + dp[i])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(dp)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(...dp)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -197,7 +194,7 @@ If you have figured out the O(n) solution, try coding another solution using the
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -259,11 +256,11 @@ If you have figured out the O(n) solution, try coding another solution using the
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -271,7 +268,7 @@ If you have figured out the O(n) solution, try coding another solution using the
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -283,11 +280,11 @@ If you have figured out the O(n) solution, try coding another solution using the
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -296,7 +293,7 @@ If you have figured out the O(n) solution, try coding another solution using the
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -331,7 +328,7 @@ If you have figured out the O(n) solution, try coding another solution using the
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -348,7 +345,7 @@ If you have figured out the O(n) solution, try coding another solution using the
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -396,7 +393,7 @@ If you have figured out the O(n) solution, try coding another solution using the
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -445,10 +442,10 @@ If you have figured out the O(n) solution, try coding another solution using the
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#53-maximum-subarray">
+        <a class="is-flex" href="#53-Maximum-Subarray">
         <span class="has-mr-6">1</span>
         <span>53. Maximum Subarray</span>
         </a></li></ul>
@@ -460,8 +457,27 @@ If you have figured out the O(n) solution, try coding another solution using the
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -539,25 +555,6 @@ If you have figured out the O(n) solution, try coding another solution using the
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -565,9 +562,20 @@ If you have figured out the O(n) solution, try coding another solution using the
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -756,10 +764,10 @@ If you have figured out the O(n) solution, try coding another solution using the
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#53-maximum-subarray">
+        <a class="is-flex" href="#53-Maximum-Subarray">
         <span class="has-mr-6">1</span>
         <span>53. Maximum Subarray</span>
         </a></li></ul>
@@ -771,8 +779,27 @@ If you have figured out the O(n) solution, try coding another solution using the
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -850,25 +877,6 @@ If you have figured out the O(n) solution, try coding another solution using the
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -876,9 +884,20 @@ If you have figured out the O(n) solution, try coding another solution using the
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1182,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1214,10 +1233,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

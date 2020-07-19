@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] 9663 N-Queen, 15649 N과 M(1), 15649 N과 M(4) - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/26/programming/algorithm/backtracking-ps/">  <meta name="description" content="N-Queen N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다. N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/26/programming/algorithm/backtracking-ps/">  <meta name="description" content="N-QueenN-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다. N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] 9663 N-Queen, 15649 N과 M(1), 15649 N과 M(4)">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/26/Programming/Algorithm/backtracking-ps/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="N-Queen N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다. N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.">
+<meta property="og:description" content="N-QueenN-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다. N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1541870730196-cd1efcbf5649?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-26T09:38:56.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 9663 N-Queen, 15649 N과 M(1), 15649 N과 M(4)">
-<meta name="twitter:description" content="N-Queen N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다. N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.">
+<meta name="twitter:description" content="N-QueenN-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다. N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1541870730196-cd1efcbf5649?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,50 +135,39 @@
             
         </h1>
         <div class="content">
-            <h1 id="n-queen">N-Queen</h1>
-<p>N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.</p>
+            <h1 id="N-Queen"><a href="#N-Queen" class="headerlink" title="N-Queen"></a>N-Queen</h1><p>N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.</p>
 <p>N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.</p>
 <a id="more"></a>
-<h2 id="입력">입력</h2>
-<p>첫째 줄에 N이 주어진다. (1 ≤ N &lt; 15)</p>
-<h2 id="출력">출력</h2>
-<p>첫째 줄에 퀸 N개를 서로 공격할 수 없게 놓는 경우의 수를 출력한다.<br>
-<a href="https://www.acmicpc.net/problem/9663" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/9663</a></p>
-<p>체스에서 퀸은 상하좌우, 대각선 어느 방향으로도 이동이 가능하다.<br>
-n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 줄씩 일일이 각 행마다 넣어보면서 검증</code>을 해야한다.</p>
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 N이 주어진다. (1 ≤ N &lt; 15)</p>
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 퀸 N개를 서로 공격할 수 없게 놓는 경우의 수를 출력한다.<br><a href="https://www.acmicpc.net/problem/9663" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/9663</a></p>
+<p>체스에서 퀸은 상하좌우, 대각선 어느 방향으로도 이동이 가능하다.<br>n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 줄씩 일일이 각 행마다 넣어보면서 검증</code>을 해야한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> n = <span class="hljs-built_in">parseInt</span>(params)</span><br><span class="line">  <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-comment">// array[i] 는 i열에 퀸을 놓은 행의 index</span></span><br><span class="line">  <span class="hljs-keyword">const</span> array = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  dfs(<span class="hljs-number">0</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(count)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">x</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 퀸을 n개까지 다 놓았다면 count를 한다.</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (x == n) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(array.join(<span class="hljs-string">" "</span>))</span><br><span class="line">      count++</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-comment">// 각 행에다 퀸을 놓아본다.</span></span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        array[x] = i</span><br><span class="line">        <span class="hljs-comment">// 만약 x위치에 퀸을 놓을 수 있다면 다음 열로 넘어간다.</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (check(x)) &#123;</span><br><span class="line">          dfs(x + <span class="hljs-number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// x 위치에 퀸을 놓을 수 있는지 없는지 확인</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">x</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// x 이전의 열들을 모두 검사</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; x; i++) &#123;</span><br><span class="line">      <span class="hljs-comment">// 같은 행 X</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (array[x] == array[i]) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">// 대각선 X</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.abs(array[x] - array[i]) == x - i) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h1 id="n과-m-1">N과 M (1)</h1>
-<p>자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.</p>
+<h1 id="N과-M-1"><a href="#N과-M-1" class="headerlink" title="N과 M (1)"></a>N과 M (1)</h1><p>자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.</p>
 <p>1부터 N까지 자연수 중에서 중복 없이 M개를 고른 수열</p>
-<h2 id="입력-v2">입력</h2>
-<p>첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)</p>
-<h2 id="출력-v2">출력</h2>
-<p>한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.</p>
-<p>수열은 사전 순으로 증가하는 순서로 출력해야 한다.<br>
-<a href="https://www.acmicpc.net/problem/15649" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/15649</a></p>
-<p>이 문제는 순열을 구하면 되는 문제다.<br>
-숫자는 중복없이 골라야하므로 i번째 숫자를 골랐는지 여부를 <code>visited[i]</code> 저장해뒀다가 <code>false</code>일 때만 수열에 추가할 수 있도록 했다.</p>
+<h2 id="입력-1"><a href="#입력-1" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)</p>
+<h2 id="출력-1"><a href="#출력-1" class="headerlink" title="출력"></a>출력</h2><p>한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.</p>
+<p>수열은 사전 순으로 증가하는 순서로 출력해야 한다.<br><a href="https://www.acmicpc.net/problem/15649" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/15649</a></p>
+<p>이 문제는 순열을 구하면 되는 문제다.<br>숫자는 중복없이 골라야하므로 i번째 숫자를 골랐는지 여부를 <code>visited[i]</code> 저장해뒀다가 <code>false</code>일 때만 수열에 추가할 수 있도록 했다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = input[<span class="hljs-number">0</span>],</span><br><span class="line">    m = input[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> array = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    array.push(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//   console.log(array)</span></span><br><span class="line">  <span class="hljs-keyword">const</span> answer = []</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-literal">false</span>)</span><br><span class="line"></span><br><span class="line">  permutation(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//순서가 다르면 다른 값 -&gt; 순열</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">permutation</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// answer.push(array[curr])</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (answer.length == m) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(answer.join(<span class="hljs-string">" "</span>))</span><br><span class="line">      <span class="hljs-keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 숫자 중복 선택은 제외</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (!visited[i]) &#123;</span><br><span class="line">        answer.push(array[i])</span><br><span class="line">        visited[i] = <span class="hljs-literal">true</span></span><br><span class="line">        permutation()</span><br><span class="line">        visited[i] = <span class="hljs-literal">false</span></span><br><span class="line">        answer.pop()</span><br><span class="line">        <span class="hljs-comment">// console.log("answer", answer)</span></span><br><span class="line">        <span class="hljs-comment">// console.log("visited", visited)</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// solution(`4 2`)</span></span><br><span class="line">solution(<span class="hljs-string">`3 3`</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="n과-m-4">N과 M (4)</h1>
-<p>자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.</p>
+
+<h1 id="N과-M-4"><a href="#N과-M-4" class="headerlink" title="N과 M (4)"></a>N과 M (4)</h1><p>자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.</p>
 <blockquote>
-<p>1부터 N까지 자연수 중에서 M개를 고른 수열<br>
-같은 수를 여러 번 골라도 된다.<br>
-고른 수열은 비내림차순이어야 한다.<br>
-길이가 K인 수열 A가 A1 ≤ A2 ≤ … ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.</p>
+<p>1부터 N까지 자연수 중에서 M개를 고른 수열<br>같은 수를 여러 번 골라도 된다.<br>고른 수열은 비내림차순이어야 한다.<br>길이가 K인 수열 A가 A1 ≤ A2 ≤ … ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.</p>
 </blockquote>
-<h2 id="입력-v3">입력</h2>
-<p>첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)</p>
-<h2 id="출력-v3">출력</h2>
-<p>한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.</p>
+<h2 id="입력-2"><a href="#입력-2" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)</p>
+<h2 id="출력-2"><a href="#출력-2" class="headerlink" title="출력"></a>출력</h2><p>한 줄에 하나씩 문제의 조건을 만족하는 수열을 출력한다. 중복되는 수열을 여러 번 출력하면 안되며, 각 수열은 공백으로 구분해서 출력해야 한다.</p>
 <p>수열은 사전 순으로 증가하는 순서로 출력해야 한다.</p>
 <p><a href="https://www.acmicpc.net/problem/15652" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/15652</a></p>
 <p>위의 <code>15649 N과 M(1)</code>문제와 비슷한 문제이다. 다른 부분이 있다면 숫자선택에서 중복을 허용하고, 수열이 오름차순이어야 한다는 점이다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = input[<span class="hljs-number">0</span>],</span><br><span class="line">    m = input[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> array = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    array.push(i)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//   console.log(array)</span></span><br><span class="line">  <span class="hljs-keyword">const</span> answer = []</span><br><span class="line">  permutation(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//오름차순 체크</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">check</span>(<span class="hljs-params">array</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">let</span> isUp = <span class="hljs-literal">true</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; array.length - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (array[i] &gt; array[i + <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">        isUp = <span class="hljs-literal">false</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> isUp</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">//순서가 다르면 다른 값 -&gt; 순열</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">permutation</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (answer.length == m) &#123;</span><br><span class="line">      <span class="hljs-comment">// 오름차순이어야함</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (check(answer)) <span class="hljs-built_in">console</span>.log(answer.join(<span class="hljs-string">" "</span>))</span><br><span class="line">      <span class="hljs-keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      answer.push(array[i])</span><br><span class="line">      permutation()</span><br><span class="line">      answer.pop()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`4 2`</span>)</span><br><span class="line">solution(<span class="hljs-string">`3 3`</span>)</span><br><span class="line"><span class="hljs-comment">// solution(`5 3`)</span></span><br></pre></td></tr></table></figure>
+
 <hr>
 <p>참고</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 조합 만드는 방법</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combi</span>(<span class="hljs-params">start</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 재귀에서는 탈출구문을 먼저</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (answer.length == m) &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(answer.join(<span class="hljs-string">" "</span>))</span><br><span class="line">    <span class="hljs-keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = start; i &lt; n; i++) &#123;</span><br><span class="line">    answer.push(array[i])</span><br><span class="line">    <span class="hljs-comment">// 똑같아도 되면 i, 중복선택안되면 i+1</span></span><br><span class="line">    combi(i + <span class="hljs-number">1</span>)</span><br><span class="line">    answer.pop()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -225,7 +214,7 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -287,11 +276,11 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -299,7 +288,7 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -311,11 +300,11 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -324,7 +313,7 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -359,7 +348,7 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -376,7 +365,7 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -424,7 +413,7 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -473,10 +462,10 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#n-queen">
+        <a class="is-flex" href="#N-Queen">
         <span class="has-mr-6">1</span>
         <span>N-Queen</span>
         </a><ul class="menu-list"><li>
@@ -488,27 +477,27 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
         <span class="has-mr-6">1.2</span>
         <span>출력</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#n과-m-1">
+        <a class="is-flex" href="#N과-M-1">
         <span class="has-mr-6">2</span>
         <span>N과 M (1)</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.1</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.2</span>
         <span>출력</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#n과-m-4">
+        <a class="is-flex" href="#N과-M-4">
         <span class="has-mr-6">3</span>
         <span>N과 M (4)</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#입력-v3">
+        <a class="is-flex" href="#입력-2">
         <span class="has-mr-6">3.1</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v3">
+        <a class="is-flex" href="#출력-2">
         <span class="has-mr-6">3.2</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -520,8 +509,27 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -599,25 +607,6 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -625,9 +614,20 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -816,10 +816,10 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#n-queen">
+        <a class="is-flex" href="#N-Queen">
         <span class="has-mr-6">1</span>
         <span>N-Queen</span>
         </a><ul class="menu-list"><li>
@@ -831,27 +831,27 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
         <span class="has-mr-6">1.2</span>
         <span>출력</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#n과-m-1">
+        <a class="is-flex" href="#N과-M-1">
         <span class="has-mr-6">2</span>
         <span>N과 M (1)</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.1</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.2</span>
         <span>출력</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#n과-m-4">
+        <a class="is-flex" href="#N과-M-4">
         <span class="has-mr-6">3</span>
         <span>N과 M (4)</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#입력-v3">
+        <a class="is-flex" href="#입력-2">
         <span class="has-mr-6">3.1</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v3">
+        <a class="is-flex" href="#출력-2">
         <span class="has-mr-6">3.2</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -863,8 +863,27 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -942,25 +961,6 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -968,9 +968,20 @@ n개의 퀸들이 서로 공격을 할 수 없게 놓기 위해서는 <code>한 
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1274,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1306,10 +1317,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

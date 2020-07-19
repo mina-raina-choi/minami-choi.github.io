@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -137,6 +137,7 @@
         <div class="content">
             <p>블록체인 노드가 문제 없이 잘 돌아가는지 모니터링을 하고 문제 상황 발생 시 알맞은 알림을 주기 위해 프로메테우스를 활용했다. 프로메테우스로 모니터링을 하기 위해 필요한 작업들을 기록으로 간단히 남기려고 한다.</p>
 <a id="more"></a>
+
 <p>사용한 툴들은 아래와 같다.</p>
 <ul>
 <li>모니터링 툴 : Prometheus</li>
@@ -147,38 +148,37 @@
 <p>위 그림은 내가 활용한 모니터링 시스템의 구조도이다.</p>
 <p>대부분의 모니터링 도구가 Push 방식 즉, 각 서버에 클라이언트를 설치하고 이 클라이언트가 메트릭 데이터를 수집해서 서버로 보내면 서버가 모니터링 상태를 보여주는 방식을 취하는데, 프로메테우스는 Pull 방식을 사용하여, 서버에 클라이언트가 떠 있으면 서버가 주기적으로 클라이언트에 접속해서 데이터를 가져오는 방식으로 동작한다.</p>
 <p>모니터링할 노드에 Node Exporter를 설치해서 프로메테우스 서버가 정보를 pull할 수 있도록 한다. 프로메테우스 서버는 정보를 수집하다가 <code>alert.rules</code> 에 정의한 규칙에 위반되는 상황이 발생하면 <code>alertmanager</code>를 통해 알람을 보낸다. 그리고 수집한 정보를 그라파나를 통해서 시각화를 해준다.</p>
-<p>추가적으로 모니터링할 노드를 추가하려면 <code>prometheus.yml</code> 파일에 <code>scrape_configs</code>에 모니터링할 노드 정보를 넣으면 된다.</p>
+<p>추가적으로 모니터링할 노드를 추가하려면 <code>prometheus.yml</code> 파일에 <code>scrape_configs</code>에 모니터링할 노드 정보를 넣으면 된다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[예시]</span><br><span class="line">  - job_name: &quot;이름 설정&quot;</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&quot;ip:port&quot;]</span><br></pre></td></tr></table></figure>
-<p>모니터링 알림 규칙을 추가하려면 <code>alert_rules.yml</code> 파일에 <code>rules</code>를 추가하면 된다.</p>
+
+<p>모니터링 알림 규칙을 추가하려면 <code>alert_rules.yml</code> 파일에 <code>rules</code>를 추가하면 된다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">[예시]</span><br><span class="line">      - alert: InstanceDown</span><br><span class="line">        expr: up == 0</span><br><span class="line">        for: 30s</span><br><span class="line">        labels:</span><br><span class="line">          severity: critical</span><br><span class="line">        annotations:</span><br><span class="line">          summary: &quot;&#123;&#123; $labels.job &#125;&#125; 응답없음&quot;</span><br><span class="line">          description: &quot;&#123;&#123; $labels.job &#125;&#125; 30초 이상 응답이 없습니다.&quot;</span><br></pre></td></tr></table></figure>
-<p>[참고] 알람 규칙 예시 <a href="https://awesome-prometheus-alerts.grep.to/rules.html" rel="external nofollow noopener noreferrer" target="_blank">https://awesome-prometheus-alerts.grep.to/rules.html</a></p>
-<p><code>/prometheus.yml</code>파일에 정의된 노드에서 <code>/alert_rules.yml</code>에 정의된 알람 상황이 발생할 경우 어디에 어떻게 알람을 보낼지 <code>/alertmanager.yml</code>파일에 정리되어 있다.</p>
+
+<p>[참고] 알람 규칙 예시 <a href="https://awesome-prometheus-alerts.grep.to/rules.html" rel="external nofollow noopener noreferrer" target="_blank">https://awesome-prometheus-alerts.grep.to/rules.html</a></p>
+<p><code>/prometheus.yml</code>파일에 정의된 노드에서 <code>/alert_rules.yml</code>에 정의된 알람 상황이 발생할 경우 어디에 어떻게 알람을 보낼지 <code>/alertmanager.yml</code>파일에 정리되어 있다.</p>
 <hr>
 <p>아래는 최초로 모니터링 서버 구축시 필요한 과정들이다.</p>
-<h2 id="1-프로메테우스-설치-기본포트-9090">1. 프로메테우스 설치 (기본포트 9090)</h2>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">curl -LO https://github.com/prometheus/prometheus/releases/download/v2.5.0/prometheus-2.5.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">// 압축해제</span><br><span class="line">sudo tar xvfz prometheus-2.5.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">prometheus.service 서비스 등록 후 시작</span><br><span class="line"></span><br><span class="line">// prometheus 설치 확인</span><br><span class="line">ip:9090 를 통해 확인가능</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-설정파일-prometheus-yml">1-1 설정파일 prometheus.yml</h3>
-<p>metrics를 수집할 서버 정보를 scrape_configs에 적어주면 된다.</p>
+<h2 id="1-프로메테우스-설치-기본포트-9090"><a href="#1-프로메테우스-설치-기본포트-9090" class="headerlink" title="1. 프로메테우스 설치 (기본포트 9090)"></a>1. 프로메테우스 설치 (기본포트 9090)</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">curl -LO https://github.com/prometheus/prometheus/releases/download/v2.5.0/prometheus-2.5.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">// 압축해제</span><br><span class="line">sudo tar xvfz prometheus-2.5.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">prometheus.service 서비스 등록 후 시작</span><br><span class="line"></span><br><span class="line">// prometheus 설치 확인</span><br><span class="line">ip:9090 를 통해 확인가능</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-설정파일-prometheus-yml"><a href="#1-1-설정파일-prometheus-yml" class="headerlink" title="1-1 설정파일 prometheus.yml"></a>1-1 설정파일 prometheus.yml</h3><p>metrics를 수집할 서버 정보를 scrape_configs에 적어주면 된다.</p>
 <p>[참고] 만약 일시적으로 특정 서버의 모니터링을 멈추고 싶다면 scrape_configs에서 주석처리한 후</p>
 <p>sudo systemctl restart prometheus.service</p>
-<h3 id="1-2-alert-rules-yml">1-2 alert_rules.yml</h3>
-<p>알람을 발생시킬 규칙 정의한다.</p>
-<h3 id="1-3-prometheus-service-등록">1-3 prometheus.service 등록</h3>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus</span><br><span class="line">After=network.target</span><br><span class="line">[Service]</span><br><span class="line">User=prometheus</span><br><span class="line">Group=prometheus</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/<span class="hljs-built_in">local</span>/bin/prometheus \ --config.file /etc/prometheus/prometheus.yml \ --storage.tsdb.path /var/lib/prometheus/ \ --web.console.templates=/etc/prometheus/consoles \ --web.external-url=&lt;외부에서 접속할 url&gt; \ --web.listen-address=<span class="hljs-string">":9090"</span> --storage.tsdb.retention.time=<span class="hljs-string">"7d"</span></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<h2 id="2-그라파나-설치-기본포트-3000">2. 그라파나 설치 (기본포트 3000)</h2>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">wget https://dl.grafana.com/oss/release/grafana_5.4.0_amd64.deb</span><br><span class="line">sudo apt-get install -y adduser libfontconfig</span><br><span class="line">sudo dpkg -i grafana_5.4.0_amd64.deb</span><br><span class="line">sudo systemctl start grafana-server</span><br><span class="line">sudo systemctl status grafana-server</span><br><span class="line">sudo systemctl stop grafana-server</span><br></pre></td></tr></table></figure>
-<h2 id="3-알람매니저-설치-기본포트-9093">3. 알람매니저 설치 (기본포트 9093)</h2>
-<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">wget https://github.com/prometheus/alertmanager/releases/download/v0.15.3/alertmanager-0.15.3.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">// 압축해제</span><br><span class="line">tar -zxvf alertmanager-0.15.3.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">alert.service로 등록 후 서비스 시작</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-alertmanager-yml">3-1 alertmanager.yml</h3>
-<p>어떤 알람을 어떤 리시버에 보낼지 정의한다.</p>
-<h3 id="3-2-alert-service">3-2. alert.service</h3>
-<p>alertmanager.yml 파일에 정의된대로 알람을 보낸다.</p>
+<h3 id="1-2-alert-rules-yml"><a href="#1-2-alert-rules-yml" class="headerlink" title="1-2 alert_rules.yml"></a>1-2 alert_rules.yml</h3><p>알람을 발생시킬 규칙 정의한다.</p>
+<h3 id="1-3-prometheus-service-등록"><a href="#1-3-prometheus-service-등록" class="headerlink" title="1-3 prometheus.service 등록"></a>1-3 prometheus.service 등록</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Prometheus</span><br><span class="line">After=network.target</span><br><span class="line">[Service]</span><br><span class="line">User=prometheus</span><br><span class="line">Group=prometheus</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/<span class="hljs-built_in">local</span>/bin/prometheus \ --config.file /etc/prometheus/prometheus.yml \ --storage.tsdb.path /var/lib/prometheus/ \ --web.console.templates=/etc/prometheus/consoles \ --web.external-url=&lt;외부에서 접속할 url&gt; \ --web.listen-address=<span class="hljs-string">":9090"</span> --storage.tsdb.retention.time=<span class="hljs-string">"7d"</span></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-그라파나-설치-기본포트-3000"><a href="#2-그라파나-설치-기본포트-3000" class="headerlink" title="2. 그라파나 설치 (기본포트 3000)"></a>2. 그라파나 설치 (기본포트 3000)</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">wget https://dl.grafana.com/oss/release/grafana_5.4.0_amd64.deb</span><br><span class="line">sudo apt-get install -y adduser libfontconfig</span><br><span class="line">sudo dpkg -i grafana_5.4.0_amd64.deb</span><br><span class="line">sudo systemctl start grafana-server</span><br><span class="line">sudo systemctl status grafana-server</span><br><span class="line">sudo systemctl stop grafana-server</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-알람매니저-설치-기본포트-9093"><a href="#3-알람매니저-설치-기본포트-9093" class="headerlink" title="3. 알람매니저 설치 (기본포트 9093)"></a>3. 알람매니저 설치 (기본포트 9093)</h2><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">wget https://github.com/prometheus/alertmanager/releases/download/v0.15.3/alertmanager-0.15.3.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">// 압축해제</span><br><span class="line">tar -zxvf alertmanager-0.15.3.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">alert.service로 등록 후 서비스 시작</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-alertmanager-yml"><a href="#3-1-alertmanager-yml" class="headerlink" title="3-1 alertmanager.yml"></a>3-1 alertmanager.yml</h3><p>어떤 알람을 어떤 리시버에 보낼지 정의한다.</p>
+<h3 id="3-2-alert-service"><a href="#3-2-alert-service" class="headerlink" title="3-2. alert.service"></a>3-2. alert.service</h3><p>alertmanager.yml 파일에 정의된대로 알람을 보낸다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description= Alertmanager <span class="hljs-keyword">for</span> Prometheus Server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=alertmanager</span><br><span class="line">Group=alertmanager</span><br><span class="line">ExecStart=/usr/<span class="hljs-built_in">local</span>/bin/alertmanager \ --config.file=/etc/alertmanager/alertmanager.yml \ --web.external-url=&lt;알람매니저 url&gt;</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<h2 id="4-노드-엑스포터-설치-기본포트-9100">4. 노드 엑스포터 설치 (기본포트 9100)</h2>
-<p>모니터링할 노드별로 노드엑스포터를 설치해서 metrics를 수집하고 프로메테우스에 정보를 수집해 갈 수 있도록 한다.</p>
+
+<h2 id="4-노드-엑스포터-설치-기본포트-9100"><a href="#4-노드-엑스포터-설치-기본포트-9100" class="headerlink" title="4. 노드 엑스포터 설치 (기본포트 9100)"></a>4. 노드 엑스포터 설치 (기본포트 9100)</h2><p>모니터링할 노드별로 노드엑스포터를 설치해서 metrics를 수집하고 프로메테우스에 정보를 수집해 갈 수 있도록 한다.</p>
 <figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">wget https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">// 압축해제</span><br><span class="line">tar -zxvf node_exporter-0.17.0.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">// bin 폴더로 이동</span><br><span class="line">sudo mv node_exporter-0.17.0.linux-amd64/node_exporter /usr/local/bin</span><br><span class="line"></span><br><span class="line">// 필요없는 파일 삭제</span><br><span class="line">rm -rf node_exporter-0.17.0.linux-amd64\*</span><br></pre></td></tr></table></figure>
-<h3 id="4-1-node-exporter-service-등록">4-1 node_exporter.service 등록</h3>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Node Exporter</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=node_exporter</span><br><span class="line">Group=node_exporter</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/<span class="hljs-built_in">local</span>/bin/node_exporter</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-node-exporter-service-등록"><a href="#4-1-node-exporter-service-등록" class="headerlink" title="4-1 node_exporter.service 등록"></a>4-1 node_exporter.service 등록</h3><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Node Exporter</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=node_exporter</span><br><span class="line">Group=node_exporter</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/<span class="hljs-built_in">local</span>/bin/node_exporter</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -225,7 +225,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -287,11 +287,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -299,7 +299,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -311,11 +311,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -324,7 +324,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -359,7 +359,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -376,7 +376,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -424,7 +424,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -473,7 +473,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-프로메테우스-설치-기본포트-9090">
@@ -524,8 +524,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -603,25 +622,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -629,9 +629,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -820,7 +831,7 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-프로메테우스-설치-기본포트-9090">
@@ -871,8 +882,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -950,25 +980,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -976,9 +987,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1282,7 +1304,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1314,10 +1336,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

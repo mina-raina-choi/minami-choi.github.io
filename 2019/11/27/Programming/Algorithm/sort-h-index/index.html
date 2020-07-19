@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>정렬 - H-index - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/11/27/programming/algorithm/sort-h-index/">  <meta name="description" content="문제 H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/11/27/programming/algorithm/sort-h-index/">  <meta name="description" content="문제H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="정렬 - H-index">
 <meta property="og:url" content="https://minami-choi.github.io/2019/11/27/Programming/Algorithm/sort-h-index/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.">
+<meta property="og:description" content="문제H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg">
 <meta property="og:updated_time" content="2019-11-26T15:31:08.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="정렬 - H-index">
-<meta name="twitter:description" content="문제 H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.">
+<meta name="twitter:description" content="문제H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.">
 <meta name="twitter:image" content="https://blog.hubspot.com/hubfs/how-to-sort-in-excel.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,9 +135,9 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제">문제</h1>
-<p>H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.</p>
 <a id="more"></a>
+
 <p>어떤 과학자가 발표한 논문 n편 중, h번 이상 인용된 논문이 h편 이상이고 나머지 논문이 h번 이하 인용되었다면 h가 이 과학자의 H-Index입니다.</p>
 <p>어떤 과학자가 발표한 논문의 인용 횟수를 담은 배열 citations가 매개변수로 주어질 때, 이 과학자의 H-Index를 return 하도록 solution 함수를 작성해주세요.</p>
 <pre><code>제한사항
@@ -150,20 +150,13 @@ citations return
 
 입출력 예 설명
 이 과학자가 발표한 논문의 수는 5편이고, 그중 3편의 논문은 3회 이상 인용되었습니다.
-그리고 나머지 2편의 논문은 3회 이하 인용되었기 때문에 이 과학자의 H-Index는 3입니다.
-</code></pre>
-<h1 id="풀이과정">풀이과정</h1>
-<p>논문 배열을 인용횟수 내림차순으로 정렬한다.<br>
-i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대값을 찾아내면 된다~!</p>
-<p>논문인용 배열이 [0, 0, 0] 인 경우 결과값은 0이 나와야 한다.<br>
-정렬후 첫번째 값이 0인 케이스를 예외처리 해주었다.</p>
+그리고 나머지 2편의 논문은 3회 이하 인용되었기 때문에 이 과학자의 H-Index는 3입니다.</code></pre><h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p>논문 배열을 인용횟수 내림차순으로 정렬한다.<br>i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대값을 찾아내면 된다~!</p>
+<p>논문인용 배열이 [0, 0, 0] 인 경우 결과값은 0이 나와야 한다.<br>정렬후 첫번째 값이 0인 케이스를 예외처리 해주었다.</p>
 <p><code>sorted[i] &gt;= i + 1</code>가 아닌 경우를 발견하면 무의미하게 <code>for</code>문을 돌지 않고 바로 <code>break</code>하도록 했다.</p>
-<p>처음에는 오름차순으로 정렬해서<br>
-[0, 1, 3, 5, 6]</p>
-<p><code>i번째 논문의 인용횟수 === i+1</code>인 케이스를 찾을려고 했는데 <code>[22, 42] =&gt; 2</code>일 경우 예외가 발생했다.<br>
-입출력 예제의 경우처럼 <code>i번째 논문의 인용횟수 === i+1</code>인 케이스도 있지만 그렇지 않은 경우도 있을 수 있다는 걸 캐치하지 못했었다.</p>
-<h1 id="나의-풀이">나의 풀이</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">citations</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">const</span> sorted = citations.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b - a)</span><br><span class="line">  <span class="hljs-keyword">const</span> len = sorted.length</span><br><span class="line">  <span class="hljs-keyword">if</span> (sorted[<span class="hljs-number">0</span>] === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> answer</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (sorted[i] &gt;= i + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      answer = i + <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>처음에는 오름차순으로 정렬해서<br>[0, 1, 3, 5, 6]</p>
+<p><code>i번째 논문의 인용횟수 === i+1</code>인 케이스를 찾을려고 했는데 <code>[22, 42] =&gt; 2</code>일 경우 예외가 발생했다.<br>입출력 예제의 경우처럼 <code>i번째 논문의 인용횟수 === i+1</code>인 케이스도 있지만 그렇지 않은 경우도 있을 수 있다는 걸 캐치하지 못했었다.</p>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">citations</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> answer = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-keyword">const</span> sorted = citations.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b - a)</span><br><span class="line">  <span class="hljs-keyword">const</span> len = sorted.length</span><br><span class="line">  <span class="hljs-keyword">if</span> (sorted[<span class="hljs-number">0</span>] === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> answer</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (sorted[i] &gt;= i + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      answer = i + <span class="hljs-number">1</span></span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> answer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -210,7 +203,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -272,11 +265,11 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -284,7 +277,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -296,11 +289,11 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -309,7 +302,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -344,7 +337,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -361,7 +354,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -409,7 +402,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -458,7 +451,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -481,8 +474,27 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -560,25 +572,6 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -586,9 +579,20 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -777,7 +781,7 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -800,8 +804,27 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -879,25 +902,6 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -905,9 +909,20 @@ i번째 논문이 인용된 <code>횟수 &gt;= i+1</code>인 케이스의 최대
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1211,7 +1226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1243,10 +1258,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

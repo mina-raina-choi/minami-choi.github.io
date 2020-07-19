@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[LeetCode] Maximum Number of Balloons - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2019/12/16/programming/algorithm/maximum-number-of-balloons/">  <meta name="description" content="문제 문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 &amp;quot;balloon&amp;quot;을 만들 수 있는 만큼 만들려고 한다. 각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.">
+<link rel="canonical" href="https://minami-choi.github.io/2019/12/16/programming/algorithm/maximum-number-of-balloons/">  <meta name="description" content="문제문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 “balloon”을 만들 수 있는 만큼 만들려고 한다.각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode] Maximum Number of Balloons">
 <meta property="og:url" content="https://minami-choi.github.io/2019/12/16/Programming/Algorithm/maximum-number-of-balloons/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="문제 문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 &amp;quot;balloon&amp;quot;을 만들 수 있는 만큼 만들려고 한다. 각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.">
+<meta property="og:description" content="문제문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 “balloon”을 만들 수 있는 만큼 만들려고 한다.각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/1437618/pexels-photo-1437618.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">
 <meta property="og:updated_time" content="2019-12-29T17:53:11.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode] Maximum Number of Balloons">
-<meta name="twitter:description" content="문제 문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 &amp;quot;balloon&amp;quot;을 만들 수 있는 만큼 만들려고 한다. 각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.">
+<meta name="twitter:description" content="문제문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 “balloon”을 만들 수 있는 만큼 만들려고 한다.각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/1437618/pexels-photo-1437618.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,38 +135,26 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제">문제</h1>
-<p>문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 &quot;balloon&quot;을 만들 수 있는 만큼 만들려고 한다.<br>
-각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.</p>
+            <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><p>문자열 text가 주어졌을 때, text의 문자를 사용해서 단어 “balloon”을 만들 수 있는 만큼 만들려고 한다.<br>각 문자는 최대 한번만 쓸 수 있다. 최대 몇 개의 balloon을 만들 수 있는지 리턴하세요.</p>
 <a id="more"></a>
+
 <blockquote>
-<p>Example 1:<br>
-Input: text = &quot;nlaebolko&quot;<br>
-Output: 1</p>
+<p>Example 1:<br>Input: text = “nlaebolko”<br>Output: 1</p>
 </blockquote>
 <blockquote>
-<p>Example 2:<br>
-Input: text = &quot;loonbalxballpoon&quot;<br>
-Output: 2</p>
+<p>Example 2:<br>Input: text = “loonbalxballpoon”<br>Output: 2</p>
 </blockquote>
 <blockquote>
-<p>Example 3:<br>
-Input: text = &quot;leetcode&quot;<br>
-Output: 0</p>
+<p>Example 3:<br>Input: text = “leetcode”<br>Output: 0</p>
 </blockquote>
 <pre><code>Constraints:
 1 &lt;= text.length &lt;= 10^4
-text consists of lower case English letters only.
-</code></pre>
-<p>출처 - <a href="https://leetcode.com/problems/maximum-number-of-balloons" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/maximum-number-of-balloons</a></p>
-<h1 id="풀이과정">풀이과정</h1>
-<p><code>balloon</code>의 각 문자열을 <code>key</code>로 하고 <code>value=0</code>으로 셋팅한 <code>balloonObj</code>를 만든다.<br>
-<code>text</code>의 길이만큼 forloop을 돌면서 <code>balloonObj</code>의 key와 동일한 문자열이 있으면 <code>value를 +1</code> 해준다.</p>
-<p><code>balloonObj</code>의 key를 배열로 뽑아내서 <code>key가 l, o</code> 이면 <code>value를 1/2</code>해준다.<br>
-balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
+text consists of lower case English letters only.</code></pre><p>출처 - <a href="https://leetcode.com/problems/maximum-number-of-balloons" rel="external nofollow noopener noreferrer" target="_blank">https://leetcode.com/problems/maximum-number-of-balloons</a></p>
+<h1 id="풀이과정"><a href="#풀이과정" class="headerlink" title="풀이과정"></a>풀이과정</h1><p><code>balloon</code>의 각 문자열을 <code>key</code>로 하고 <code>value=0</code>으로 셋팅한 <code>balloonObj</code>를 만든다.<br><code>text</code>의 길이만큼 forloop을 돌면서 <code>balloonObj</code>의 key와 동일한 문자열이 있으면 <code>value를 +1</code> 해준다.</p>
+<p><code>balloonObj</code>의 key를 배열로 뽑아내서 <code>key가 l, o</code> 이면 <code>value를 1/2</code>해준다.<br>balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
 <p>이제 <code>balloonObj</code>의 value값 중 가장 작은 값을 골라 리턴을 하면 우리가 찾는 주어진 text를 이용해 단어 <code>balloon</code>을 만들 수 있는 최대값이다.</p>
-<h1 id="나의-풀이">나의 풀이</h1>
-<figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string&#125; text</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> maxNumberOfBalloons = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> balloonString = <span class="hljs-string">"balloon"</span></span><br><span class="line">  <span class="hljs-keyword">const</span> balloonObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; balloonString.length; i++) &#123;</span><br><span class="line">    balloonObj[balloonString[i]] = <span class="hljs-number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; text.length; j++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (balloonObj[text[j]] === <span class="hljs-number">0</span> || balloonObj[text[j]]) &#123;</span><br><span class="line">      balloonObj[text[j]] += <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(balloonObj)</span><br><span class="line">  keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (key === <span class="hljs-string">"l"</span> || key === <span class="hljs-string">"o"</span>) &#123;</span><br><span class="line">      balloonObj[key] = <span class="hljs-built_in">Math</span>.floor(balloonObj[key] / <span class="hljs-number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Object</span>.values(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.min(...values)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h1><figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * @param &#123;string&#125; text</span></span><br><span class="line"><span class="hljs-comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-keyword">var</span> maxNumberOfBalloons = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> balloonString = <span class="hljs-string">"balloon"</span></span><br><span class="line">  <span class="hljs-keyword">const</span> balloonObj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; balloonString.length; i++) &#123;</span><br><span class="line">    balloonObj[balloonString[i]] = <span class="hljs-number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; text.length; j++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (balloonObj[text[j]] === <span class="hljs-number">0</span> || balloonObj[text[j]]) &#123;</span><br><span class="line">      balloonObj[text[j]] += <span class="hljs-number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(balloonObj)</span><br><span class="line">  keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (key === <span class="hljs-string">"l"</span> || key === <span class="hljs-string">"o"</span>) &#123;</span><br><span class="line">      balloonObj[key] = <span class="hljs-built_in">Math</span>.floor(balloonObj[key] / <span class="hljs-number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">const</span> values = <span class="hljs-built_in">Object</span>.values(balloonObj)</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.min(...values)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -213,7 +201,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -275,11 +263,11 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -287,7 +275,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -299,11 +287,11 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -312,7 +300,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -347,7 +335,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -364,7 +352,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -412,7 +400,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -461,7 +449,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -484,8 +472,27 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -563,25 +570,6 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -589,9 +577,20 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -780,7 +779,7 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#문제">
@@ -803,8 +802,27 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -882,25 +900,6 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -908,9 +907,20 @@ balloon을 만드는데 l, o는 두개씩 필요하기 때문.</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1214,7 +1224,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1246,10 +1256,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

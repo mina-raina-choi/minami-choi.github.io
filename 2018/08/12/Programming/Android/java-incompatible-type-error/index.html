@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>자바에서 Incompatible types error - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/08/12/programming/android/java-incompatible-type-error/">  <meta name="description" content="ArrayList의 타입을 제네릭을 통해 명시하기 문제 상황 private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermission">
+<link rel="canonical" href="https://minami-choi.github.io/2018/08/12/programming/android/java-incompatible-type-error/">  <meta name="description" content="ArrayList의 타입을 제네릭을 통해 명시하기문제 상황private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="자바에서 Incompatible types error">
 <meta property="og:url" content="https://minami-choi.github.io/2018/08/12/Programming/Android/java-incompatible-type-error/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="ArrayList의 타입을 제네릭을 통해 명시하기 문제 상황 private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermission">
+<meta property="og:description" content="ArrayList의 타입을 제네릭을 통해 명시하기문제 상황private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">
 <meta property="og:updated_time" content="2019-12-04T12:17:55.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="자바에서 Incompatible types error">
-<meta name="twitter:description" content="ArrayList의 타입을 제네릭을 통해 명시하기 문제 상황 private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermission">
+<meta name="twitter:description" content="ArrayList의 타입을 제네릭을 통해 명시하기문제 상황private ArrayList findUnAskedPermissions(ArrayList wanted) &amp;#123;    ArrayList result = new ArrayList();    for (String perm : wanted) &amp;#123;        if(!hasPermissions(">
 <meta name="twitter:image" content="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,18 +135,16 @@
             
         </h1>
         <div class="content">
-            <h1 id="arraylist의-타입을-제네릭을-통해-명시하기">ArrayList의 타입을 제네릭을 통해 명시하기</h1>
-<h2 id="문제-상황">문제 상황</h2>
-<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="ArrayList의-타입을-제네릭을-통해-명시하기"><a href="#ArrayList의-타입을-제네릭을-통해-명시하기" class="headerlink" title="ArrayList의 타입을 제네릭을 통해 명시하기"></a>ArrayList의 타입을 제네릭을 통해 명시하기</h1><h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <p><code>for (String perm : wanted)</code> 이 부분에서</p>
 <blockquote>
 <p>Incompatible types required java.lang.string found java.lang.object</p>
 </blockquote>
 <p>이러한 에러가 발생했다.</p>
-<h2 id="해결-방법">해결 방법</h2>
-<p><code>findUnAskedPermissions</code> 의 파라미터 타입을 <code>ArrayList wanted</code> 에서 <code>ArrayList&lt;String&gt; wanted</code>으로 변경하니 에러가 사라졌다.<br>
-ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 잊지말자!</p>
+<h2 id="해결-방법"><a href="#해결-방법" class="headerlink" title="해결 방법"></a>해결 방법</h2><p><code>findUnAskedPermissions</code> 의 파라미터 타입을 <code>ArrayList wanted</code> 에서 <code>ArrayList&lt;String&gt; wanted</code>으로 변경하니 에러가 사라졌다.<br>ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 잊지말자!</p>
 
         </div>
         
@@ -193,7 +191,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -255,11 +253,11 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -267,7 +265,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -279,11 +277,11 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -292,7 +290,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -327,7 +325,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -344,7 +342,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -392,7 +390,7 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -441,10 +439,10 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#arraylist의-타입을-제네릭을-통해-명시하기">
+        <a class="is-flex" href="#ArrayList의-타입을-제네릭을-통해-명시하기">
         <span class="has-mr-6">1</span>
         <span>ArrayList의 타입을 제네릭을 통해 명시하기</span>
         </a><ul class="menu-list"><li>
@@ -464,8 +462,27 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -543,25 +560,6 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -569,9 +567,20 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -760,10 +769,10 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#arraylist의-타입을-제네릭을-통해-명시하기">
+        <a class="is-flex" href="#ArrayList의-타입을-제네릭을-통해-명시하기">
         <span class="has-mr-6">1</span>
         <span>ArrayList의 타입을 제네릭을 통해 명시하기</span>
         </a><ul class="menu-list"><li>
@@ -783,8 +792,27 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -862,25 +890,6 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -888,9 +897,20 @@ ArrayList를 사용할 때 제너릭으로 타입형을 명시해 주는 것을 
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1194,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1226,10 +1246,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

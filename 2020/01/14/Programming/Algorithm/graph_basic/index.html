@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] BFS / DFS 기본 문제풀이 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/01/14/programming/algorithm/graph_basic/">  <meta name="description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다. 아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/01/14/programming/algorithm/graph_basic/">  <meta name="description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다.아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] BFS &#x2F; DFS 기본 문제풀이">
 <meta property="og:url" content="https://minami-choi.github.io/2020/01/14/Programming/Algorithm/graph_basic/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다. 아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
+<meta property="og:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다.아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542216172-f356fdd22653?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-13T07:07:45.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] BFS &#x2F; DFS 기본 문제풀이">
-<meta name="twitter:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다. 아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
+<meta name="twitter:description" content="자료구조 그래프를 이용한 BFS / DFS 알고리즘 문제의 대표적인 유형을 풀어보았다.아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542216172-f356fdd22653?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,30 +135,23 @@
             
         </h1>
         <div class="content">
-            <p>자료구조 그래프를 이용한 <code>BFS / DFS</code> 알고리즘 문제의 대표적인 유형을 풀어보았다.<br>
-아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.</p>
+            <p>자료구조 그래프를 이용한 <code>BFS / DFS</code> 알고리즘 문제의 대표적인 유형을 풀어보았다.<br>아직 익숙하지가 않아 BFS, DFS를 어떻게 구현하는지 일일이 찾아보며 해결했다.</p>
 <a id="more"></a>
-<h1 id="1260문제-dfs와-bfs">1260문제 - DFS와 BFS</h1>
-<h2 id="문제">문제</h2>
-<p>그래프를 DFS로 탐색한 결과와 BFS로 탐색한 결과를 출력하는 프로그램을 작성하시오. 단, 방문할 수 있는 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문하고, 더 이상 방문할 수 있는 점이 없는 경우 종료한다. 정점 번호는 1번부터 N번까지이다.</p>
-<h2 id="입력">입력</h2>
-<p>첫째 줄에 정점의 개수 N(1 ≤ N ≤ 1,000), 간선의 개수 M(1 ≤ M ≤ 10,000), 탐색을 시작할 정점의 번호 V가 주어진다. 다음 M개의 줄에는 간선이 연결하는 두 정점의 번호가 주어진다. 어떤 두 정점 사이에 여러 개의 간선이 있을 수 있다. 입력으로 주어지는 간선은 양방향이다.</p>
-<h2 id="출력">출력</h2>
-<p>첫째 줄에 DFS를 수행한 결과를, 그 다음 줄에는 BFS를 수행한 결과를 출력한다. V부터 방문된 점을 순서대로 출력하면 된다.</p>
+
+<h1 id="1260문제-DFS와-BFS"><a href="#1260문제-DFS와-BFS" class="headerlink" title="1260문제 - DFS와 BFS"></a>1260문제 - DFS와 BFS</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>그래프를 DFS로 탐색한 결과와 BFS로 탐색한 결과를 출력하는 프로그램을 작성하시오. 단, 방문할 수 있는 정점이 여러 개인 경우에는 정점 번호가 작은 것을 먼저 방문하고, 더 이상 방문할 수 있는 점이 없는 경우 종료한다. 정점 번호는 1번부터 N번까지이다.</p>
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 정점의 개수 N(1 ≤ N ≤ 1,000), 간선의 개수 M(1 ≤ M ≤ 10,000), 탐색을 시작할 정점의 번호 V가 주어진다. 다음 M개의 줄에는 간선이 연결하는 두 정점의 번호가 주어진다. 어떤 두 정점 사이에 여러 개의 간선이 있을 수 있다. 입력으로 주어지는 간선은 양방향이다.</p>
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 DFS를 수행한 결과를, 그 다음 줄에는 BFS를 수행한 결과를 출력한다. V부터 방문된 점을 순서대로 출력하면 된다.</p>
 <p><a href="https://www.acmicpc.net/problem/1260" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1260</a></p>
 <p>bfs와 dfs를 구현하는 기본문제.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = param.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> conditions = input</span><br><span class="line">    .shift()</span><br><span class="line">    .split(<span class="hljs-string">" "</span>)</span><br><span class="line">    .map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> numberOfNodes = conditions[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> numberOfEdges = conditions[<span class="hljs-number">1</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> startNode = conditions[<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> graph = setGraph()</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> nodes = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>()</span><br><span class="line">  <span class="hljs-keyword">let</span> visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(numberOfNodes + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">false</span>)</span><br><span class="line">  <span class="hljs-comment">// dfs : 재귀적으로</span></span><br><span class="line">  dfs(startNode)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(nodes.join(<span class="hljs-string">" "</span>))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dfs</span>(<span class="hljs-params">startNode</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// console.log(startNode)</span></span><br><span class="line">    nodes.push(startNode)</span><br><span class="line">    visited[startNode] = <span class="hljs-literal">true</span></span><br><span class="line">    <span class="hljs-keyword">const</span> new_nodes = graph.get(startNode)</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; new_nodes.length; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> node = new_nodes[i]</span><br><span class="line">      <span class="hljs-keyword">if</span> (!visited[node]) &#123;</span><br><span class="line">        dfs(node)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  nodes = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>()</span><br><span class="line">  visited = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(numberOfNodes + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">false</span>)</span><br><span class="line">  <span class="hljs-comment">// bfs : q 이용</span></span><br><span class="line">  bfs(startNode)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(nodes.join(<span class="hljs-string">" "</span>))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 너비우선</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bfs</span>(<span class="hljs-params">startNode</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> q = [startNode]</span><br><span class="line">    visited[startNode] = <span class="hljs-literal">true</span></span><br><span class="line">    <span class="hljs-comment">// console.log(q)</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (q.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> node = q.shift()</span><br><span class="line">      nodes.push(node)</span><br><span class="line">      <span class="hljs-keyword">const</span> new_nodes = graph.get(node)</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; new_nodes.length; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">const</span> new_node = new_nodes[i]</span><br><span class="line">        <span class="hljs-keyword">if</span> (!visited[new_node]) &#123;</span><br><span class="line">          q.push(new_node)</span><br><span class="line">          visited[new_node] = <span class="hljs-literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setGraph</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; numberOfEdges; i++) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> node = input[i].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">      <span class="hljs-keyword">if</span> (map.get(node[<span class="hljs-number">0</span>])) &#123;</span><br><span class="line">        map.get(node[<span class="hljs-number">0</span>]).push(node[<span class="hljs-number">1</span>])</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        map.set(node[<span class="hljs-number">0</span>], [node[<span class="hljs-number">1</span>]])</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">if</span> (map.get(node[<span class="hljs-number">1</span>])) &#123;</span><br><span class="line">        map.get(node[<span class="hljs-number">1</span>]).push(node[<span class="hljs-number">0</span>])</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        map.set(node[<span class="hljs-number">1</span>], [node[<span class="hljs-number">0</span>]])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// sort를 해줘야함</span></span><br><span class="line">    map.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;</span><br><span class="line">      value.sort()</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> map</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h1 id="1697문제-숨바꼭질">1697문제 - 숨바꼭질</h1>
-<h2 id="문제-v2">문제</h2>
-<p>수빈이는 동생과 숨바꼭질을 하고 있다. 수빈이는 현재 점 N(0 ≤ N ≤ 100,000)에 있고, 동생은 점 K(0 ≤ K ≤ 100,000)에 있다. 수빈이는 걷거나 순간이동을 할 수 있다. 만약, 수빈이의 위치가 X일 때 걷는다면 1초 후에 X-1 또는 X+1로 이동하게 된다. 순간이동을 하는 경우에는 1초 후에 2*X의 위치로 이동하게 된다.</p>
+
+<h1 id="1697문제-숨바꼭질"><a href="#1697문제-숨바꼭질" class="headerlink" title="1697문제 - 숨바꼭질"></a>1697문제 - 숨바꼭질</h1><h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제"></a>문제</h2><p>수빈이는 동생과 숨바꼭질을 하고 있다. 수빈이는 현재 점 N(0 ≤ N ≤ 100,000)에 있고, 동생은 점 K(0 ≤ K ≤ 100,000)에 있다. 수빈이는 걷거나 순간이동을 할 수 있다. 만약, 수빈이의 위치가 X일 때 걷는다면 1초 후에 X-1 또는 X+1로 이동하게 된다. 순간이동을 하는 경우에는 1초 후에 2*X의 위치로 이동하게 된다.</p>
 <p>수빈이와 동생의 위치가 주어졌을 때, 수빈이가 동생을 찾을 수 있는 가장 빠른 시간이 몇 초 후인지 구하는 프로그램을 작성하시오.</p>
-<h2 id="입력-v2">입력</h2>
-<p>첫 번째 줄에 수빈이가 있는 위치 N과 동생이 있는 위치 K가 주어진다. N과 K는 정수이다.</p>
-<h2 id="출력-v2">출력</h2>
-<p>수빈이가 동생을 찾는 가장 빠른 시간을 출력한다.<br>
-<a href="https://www.acmicpc.net/problem/1697" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1697</a></p>
+<h2 id="입력-1"><a href="#입력-1" class="headerlink" title="입력"></a>입력</h2><p>첫 번째 줄에 수빈이가 있는 위치 N과 동생이 있는 위치 K가 주어진다. N과 K는 정수이다.</p>
+<h2 id="출력-1"><a href="#출력-1" class="headerlink" title="출력"></a>출력</h2><p>수빈이가 동생을 찾는 가장 빠른 시간을 출력한다.<br><a href="https://www.acmicpc.net/problem/1697" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1697</a></p>
 <p>bfs에서 depth를 어떻게 계산할 것인가!!</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">params</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> input = params.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">const</span> startNode = input[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> endNode = input[<span class="hljs-number">1</span>]</span><br><span class="line">  <span class="hljs-keyword">const</span> MAX = <span class="hljs-number">100000</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 각 노드를 탐색할 때의 depth를 array에 저장해둔다.</span></span><br><span class="line">  <span class="hljs-keyword">const</span> countArray = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(MAX + <span class="hljs-number">1</span>).fill(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  bfs(startNode)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 10만 미만</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bfs</span>(<span class="hljs-params">startNode</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> q = [startNode]</span><br><span class="line">    countArray[startNode] = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (q.length &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">const</span> node = q.shift()</span><br><span class="line">      <span class="hljs-keyword">if</span> (node == endNode) &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(countArray[endNode])</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">const</span> new_nodes = [node - <span class="hljs-number">1</span>, node + <span class="hljs-number">1</span>, <span class="hljs-number">2</span> * node]</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">const</span> elem = new_nodes[i]</span><br><span class="line">        <span class="hljs-keyword">if</span> (elem &gt;= <span class="hljs-number">0</span> &amp;&amp; elem &lt;= MAX &amp;&amp; !countArray[elem]) &#123;</span><br><span class="line">          <span class="hljs-comment">// depth가 깊어질 때마다 이전 depth + 1</span></span><br><span class="line">          countArray[elem] = countArray[node] + <span class="hljs-number">1</span></span><br><span class="line">          q.push(elem)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">solution(<span class="hljs-string">`5 17`</span>)</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -205,7 +198,7 @@
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -267,11 +260,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -279,7 +272,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -291,11 +284,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -304,7 +297,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -339,7 +332,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -356,7 +349,7 @@
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -404,7 +397,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -453,10 +446,10 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#1260문제-dfs와-bfs">
+        <a class="is-flex" href="#1260문제-DFS와-BFS">
         <span class="has-mr-6">1</span>
         <span>1260문제 - DFS와 BFS</span>
         </a><ul class="menu-list"><li>
@@ -476,15 +469,15 @@
         <span class="has-mr-6">2</span>
         <span>1697문제 - 숨바꼭질</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v2">
+        <a class="is-flex" href="#문제-1">
         <span class="has-mr-6">2.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.3</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -496,8 +489,27 @@
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -575,25 +587,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -601,9 +594,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -792,10 +796,10 @@
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#1260문제-dfs와-bfs">
+        <a class="is-flex" href="#1260문제-DFS와-BFS">
         <span class="has-mr-6">1</span>
         <span>1260문제 - DFS와 BFS</span>
         </a><ul class="menu-list"><li>
@@ -815,15 +819,15 @@
         <span class="has-mr-6">2</span>
         <span>1697문제 - 숨바꼭질</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v2">
+        <a class="is-flex" href="#문제-1">
         <span class="has-mr-6">2.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.3</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -835,8 +839,27 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -914,25 +937,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -940,9 +944,20 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1246,7 +1261,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1278,10 +1293,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>ubuntu18.04에 NginX 설치 &amp; SSL 붙이기 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/12/programming/server/ubuntu-nginx/">  <meta name="description" content="1. apt 업데이트 및 업그레이드 (https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/) Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/12/programming/server/ubuntu-nginx/">  <meta name="description" content="1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
 <meta name="keywords" content="ubuntu,nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu18.04에 NginX 설치 &amp; SSL 붙이기">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/12/Programming/Server/ubuntu-nginx/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="1. apt 업데이트 및 업그레이드 (https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/) Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
+<meta property="og:description" content="1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1551462577-9aaf3ff5d927?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-19T07:23:48.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu18.04에 NginX 설치 &amp; SSL 붙이기">
-<meta name="twitter:description" content="1. apt 업데이트 및 업그레이드 (https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/) Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
+<meta name="twitter:description" content="1. apt 업데이트 및 업그레이드(https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/)Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1551462577-9aaf3ff5d927?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,37 +135,36 @@
             
         </h1>
         <div class="content">
-            <h2 id="1-apt-업데이트-및-업그레이드">1. apt 업데이트 및 업그레이드</h2>
-<p>(<a href="https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/" rel="external nofollow noopener noreferrer" target="_blank">https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/</a>)<br>
-Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구</p>
+            <h2 id="1-apt-업데이트-및-업그레이드"><a href="#1-apt-업데이트-및-업그레이드" class="headerlink" title="1. apt 업데이트 및 업그레이드"></a>1. apt 업데이트 및 업그레이드</h2><p>(<a href="https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/" rel="external nofollow noopener noreferrer" target="_blank">https://www.cyberciti.biz/faq/ubuntu-lts-debian-linux-apt-command-examples/</a>)<br>Advanced Package Tool의 약자로 우분투(Ubuntu)를 포함한 데비안(Debian)계열의 리눅스에서 쓰이는 패키지 관리 도구</p>
 <a id="more"></a>
-<h2 id="2-우분투에-apt-이용해서-nginx-설치">2. 우분투에 apt 이용해서 Nginx 설치</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo apt update <span class="hljs-comment"># 패키지 저장소에 업데이트가 존재하는지 확인하는 역할만</span></span><br><span class="line">sudo apt upgrade <span class="hljs-comment"># 실제로 최신 버전 패키지로 업데이트</span></span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
-<h2 id="3-nginx-server-설정파일-생성">3. Nginx server 설정파일 생성</h2>
-<p>위치는 <code>etc/nginx/sites-available/custom_server_name.config</code></p>
+
+<h2 id="2-우분투에-apt-이용해서-Nginx-설치"><a href="#2-우분투에-apt-이용해서-Nginx-설치" class="headerlink" title="2. 우분투에 apt 이용해서 Nginx 설치"></a>2. 우분투에 apt 이용해서 Nginx 설치</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo apt update <span class="hljs-comment"># 패키지 저장소에 업데이트가 존재하는지 확인하는 역할만</span></span><br><span class="line">sudo apt upgrade <span class="hljs-comment"># 실제로 최신 버전 패키지로 업데이트</span></span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Nginx-server-설정파일-생성"><a href="#3-Nginx-server-설정파일-생성" class="headerlink" title="3. Nginx server 설정파일 생성"></a>3. Nginx server 설정파일 생성</h2><p>위치는 <code>etc/nginx/sites-available/custom_server_name.config</code></p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    server_name custom_server_name</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000/;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-etc-nginx-sites-enabled-로-심볼릭-링크-연결">4. <code>/etc/nginx/sites-enabled/</code>로 심볼릭 링크 연결</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> /etc/nginx/sites-enabled/</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># sites-enabled 디렉토리에 있는 config파일은 nginx가 시작할 때 참조하는 파일이다.</span></span><br><span class="line">sudo ln -s /etc/nginx/sites-available/custom_server_name.conf .</span><br></pre></td></tr></table></figure>
-<h2 id="5-enable-and-restart-nginx-server">5. Enable and restart Nginx server</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 설정파일에 문법적 요류가 없는지 체크, 오류내용을 프린트한다</span></span><br><span class="line">sudo nginx -t</span><br><span class="line"><span class="hljs-comment"># 참고로 나는 아래와 같은 오류가 떴다.</span></span><br><span class="line">[emerg] 10619<span class="hljs-comment">#0: a duplicate default server for 0.0.0.0:80</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># /etc/nginx/sites-enabled에 default-server.conf, custom_server_name.conf 셋팅이 중복 그렇다.</span></span><br><span class="line"><span class="hljs-comment"># /etc/nginx/sites-enabled 위치에 custom_server_name.conf만 남기면 Okay</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-etc-nginx-sites-enabled-로-심볼릭-링크-연결"><a href="#4-etc-nginx-sites-enabled-로-심볼릭-링크-연결" class="headerlink" title="4. /etc/nginx/sites-enabled/로 심볼릭 링크 연결"></a>4. <code>/etc/nginx/sites-enabled/</code>로 심볼릭 링크 연결</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> /etc/nginx/sites-enabled/</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># sites-enabled 디렉토리에 있는 config파일은 nginx가 시작할 때 참조하는 파일이다.</span></span><br><span class="line">sudo ln -s /etc/nginx/sites-available/custom_server_name.conf .</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Enable-and-restart-Nginx-server"><a href="#5-Enable-and-restart-Nginx-server" class="headerlink" title="5. Enable and restart Nginx server"></a>5. Enable and restart Nginx server</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># 설정파일에 문법적 요류가 없는지 체크, 오류내용을 프린트한다</span></span><br><span class="line">sudo nginx -t</span><br><span class="line"><span class="hljs-comment"># 참고로 나는 아래와 같은 오류가 떴다.</span></span><br><span class="line">[emerg] 10619<span class="hljs-comment">#0: a duplicate default server for 0.0.0.0:80</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># /etc/nginx/sites-enabled에 default-server.conf, custom_server_name.conf 셋팅이 중복 그렇다.</span></span><br><span class="line"><span class="hljs-comment"># /etc/nginx/sites-enabled 위치에 custom_server_name.conf만 남기면 Okay</span></span><br></pre></td></tr></table></figure>
+
 <p>설정파일에 이상이 없으면 nginx 를 재시작하면 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo service nginx reload</span><br><span class="line">sudo service nginx status</span><br></pre></td></tr></table></figure>
-<h2 id="6-certbot-설치">6. Certbot 설치</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo apt install python-certbot-nginx</span><br></pre></td></tr></table></figure>
-<p>Certbot은 SSL을 자동으로 구성하려면 Nginx 구성에서 올바른 서버 블록을 찾을 수 있어야한다… 특히 인증서를 요청하는 도메인과 일치하는 server_name 지시문을 찾아서 이를 수행한다.</p>
-<h2 id="7-ssl-적용">7. SSL 적용</h2>
-<figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx -d custom_server_name</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Certbot-설치"><a href="#6-Certbot-설치" class="headerlink" title="6. Certbot 설치"></a>6. Certbot 설치</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo apt install python-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<p>Certbot은 SSL을 자동으로 구성하려면 Nginx 구성에서 올바른 서버 블록을 찾을 수 있어야한다.. 특히 인증서를 요청하는 도메인과 일치하는 server_name 지시문을 찾아서 이를 수행한다.</p>
+<h2 id="7-SSL-적용"><a href="#7-SSL-적용" class="headerlink" title="7. SSL 적용"></a>7. SSL 적용</h2><figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">sudo certbot --nginx -d custom_server_name</span><br></pre></td></tr></table></figure>
+
 <p>-nginx 플러그인과 함께 certbot을 실행하고 -d를 사용하여 인증서가 유효한 이름을 지정한다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Output</span><br><span class="line">Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">1: No redirect - Make no further changes to the webserver configuration.</span><br><span class="line">2: Redirect - Make all requests redirect to secure HTTPS access. Choose this <span class="hljs-keyword">for</span></span><br><span class="line">new sites, or <span class="hljs-keyword">if</span> you<span class="hljs-string">'re confident your site works on HTTPS. You can undo this</span></span><br><span class="line"><span class="hljs-string">change by editing your web server'</span>s configuration.</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Select the appropriate number [1-2] <span class="hljs-keyword">then</span> [enter] (press <span class="hljs-string">'c'</span> to cancel):</span><br></pre></td></tr></table></figure>
+
 <p>http -&gt; https로 리다이렉트 시키기 위해서 2번을 입력하고 엔터를 누르면</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">Output</span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line">- Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">/etc/letsencrypt/live/custom_server_name/fullchain.pem</span><br><span class="line">Your key file has been saved at:</span><br><span class="line">/etc/letsencrypt/live/custom_server_name/privkey.pem</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>드디어 인증서가 다운로드되고 로드되었다.<br>
-custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
+
+<p>드디어 인증서가 다운로드되고 로드되었다.<br>custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment"># Redirecting HTTP to HTTPS</span></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server ipv6only=on;</span><br><span class="line"></span><br><span class="line">        server_name custom_server_name;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$host</span> = custom_server_name) &#123;</span><br><span class="line">            <span class="hljs-built_in">return</span> 301 https://<span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;</span><br><span class="line">        &#125; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">return</span> 404; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># Reverse Proxy Server</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line">    listen [::]:443 ssl ipv6only=on; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">    server_name custom_server_name;</span><br><span class="line"></span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/custom_server_name/fullchain.pem; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/custom_server_name/privkey.pem; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line">    include /etc/letsencrypt/options-ssl-nginx.conf; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line">    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; <span class="hljs-comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:3000/;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>[참고]<br>
-<a href="https://www.cyberciti.biz/faq/install-and-configure-nginx-on-ubuntu-linux-18-04-lts/" rel="external nofollow noopener noreferrer" target="_blank">https://www.cyberciti.biz/faq/install-and-configure-nginx-on-ubuntu-linux-18-04-lts/</a><br>
-<a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04" rel="external nofollow noopener noreferrer" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04</a><br>
-<a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04" rel="external nofollow noopener noreferrer" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04</a></p>
+
+<p>[참고]<br><a href="https://www.cyberciti.biz/faq/install-and-configure-nginx-on-ubuntu-linux-18-04-lts/" rel="external nofollow noopener noreferrer" target="_blank">https://www.cyberciti.biz/faq/install-and-configure-nginx-on-ubuntu-linux-18-04-lts/</a><br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04" rel="external nofollow noopener noreferrer" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04</a><br><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04" rel="external nofollow noopener noreferrer" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04</a></p>
 
         </div>
         
@@ -212,7 +211,7 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -274,11 +273,11 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -286,7 +285,7 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -298,11 +297,11 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -311,7 +310,7 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -346,7 +345,7 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -363,7 +362,7 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -411,7 +410,7 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -460,18 +459,18 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-apt-업데이트-및-업그레이드">
         <span class="has-mr-6">1</span>
         <span>1. apt 업데이트 및 업그레이드</span>
         </a></li><li>
-        <a class="is-flex" href="#2-우분투에-apt-이용해서-nginx-설치">
+        <a class="is-flex" href="#2-우분투에-apt-이용해서-Nginx-설치">
         <span class="has-mr-6">2</span>
         <span>2. 우분투에 apt 이용해서 Nginx 설치</span>
         </a></li><li>
-        <a class="is-flex" href="#3-nginx-server-설정파일-생성">
+        <a class="is-flex" href="#3-Nginx-server-설정파일-생성">
         <span class="has-mr-6">3</span>
         <span>3. Nginx server 설정파일 생성</span>
         </a></li><li>
@@ -479,15 +478,15 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
         <span class="has-mr-6">4</span>
         <span>4. /etc/nginx/sites-enabled/로 심볼릭 링크 연결</span>
         </a></li><li>
-        <a class="is-flex" href="#5-enable-and-restart-nginx-server">
+        <a class="is-flex" href="#5-Enable-and-restart-Nginx-server">
         <span class="has-mr-6">5</span>
         <span>5. Enable and restart Nginx server</span>
         </a></li><li>
-        <a class="is-flex" href="#6-certbot-설치">
+        <a class="is-flex" href="#6-Certbot-설치">
         <span class="has-mr-6">6</span>
         <span>6. Certbot 설치</span>
         </a></li><li>
-        <a class="is-flex" href="#7-ssl-적용">
+        <a class="is-flex" href="#7-SSL-적용">
         <span class="has-mr-6">7</span>
         <span>7. SSL 적용</span>
         </a></li></ul>
@@ -499,8 +498,27 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -578,25 +596,6 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -604,9 +603,20 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -795,18 +805,18 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#1-apt-업데이트-및-업그레이드">
         <span class="has-mr-6">1</span>
         <span>1. apt 업데이트 및 업그레이드</span>
         </a></li><li>
-        <a class="is-flex" href="#2-우분투에-apt-이용해서-nginx-설치">
+        <a class="is-flex" href="#2-우분투에-apt-이용해서-Nginx-설치">
         <span class="has-mr-6">2</span>
         <span>2. 우분투에 apt 이용해서 Nginx 설치</span>
         </a></li><li>
-        <a class="is-flex" href="#3-nginx-server-설정파일-생성">
+        <a class="is-flex" href="#3-Nginx-server-설정파일-생성">
         <span class="has-mr-6">3</span>
         <span>3. Nginx server 설정파일 생성</span>
         </a></li><li>
@@ -814,15 +824,15 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
         <span class="has-mr-6">4</span>
         <span>4. /etc/nginx/sites-enabled/로 심볼릭 링크 연결</span>
         </a></li><li>
-        <a class="is-flex" href="#5-enable-and-restart-nginx-server">
+        <a class="is-flex" href="#5-Enable-and-restart-Nginx-server">
         <span class="has-mr-6">5</span>
         <span>5. Enable and restart Nginx server</span>
         </a></li><li>
-        <a class="is-flex" href="#6-certbot-설치">
+        <a class="is-flex" href="#6-Certbot-설치">
         <span class="has-mr-6">6</span>
         <span>6. Certbot 설치</span>
         </a></li><li>
-        <a class="is-flex" href="#7-ssl-적용">
+        <a class="is-flex" href="#7-SSL-적용">
         <span class="has-mr-6">7</span>
         <span>7. SSL 적용</span>
         </a></li></ul>
@@ -834,8 +844,27 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -913,25 +942,6 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -939,9 +949,20 @@ custom_server_name.conf가 아래와 같이 변경됨을 알 수 있다.</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1245,7 +1266,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1277,10 +1298,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

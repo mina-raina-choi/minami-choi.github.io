@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>constructor와 ngOnInit 차이점 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2018/04/26/programming/angular/constructorvsngoninit/">  <meta name="description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<link rel="canonical" href="https://minami-choi.github.io/2018/04/26/programming/angular/constructorvsngoninit/">  <meta name="description" content="constructor와 ngOnInit 차이점앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
 <meta name="keywords" content="Angular,contructor,ngOninit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="constructor와 ngOnInit 차이점">
 <meta property="og:url" content="https://minami-choi.github.io/2018/04/26/Programming/Angular/constructorVsNgOnInit/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta property="og:description" content="constructor와 ngOnInit 차이점앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">
 <meta property="og:updated_time" content="2020-01-13T08:21:59.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="constructor와 ngOnInit 차이점">
-<meta name="twitter:description" content="constructor와 ngOnInit 차이점 앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다. constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
+<meta name="twitter:description" content="constructor와 ngOnInit 차이점앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?">
 <meta name="twitter:image" content="https://minami-choi.github.io/img/header_img/home-bg.jpg">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -131,34 +131,29 @@
             
         </h1>
         <div class="content">
-            <h1 id="constructor와-ngoninit-차이점">constructor와 ngOnInit 차이점</h1>
-<p>앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.<br>
-constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?</p>
+            <h1 id="constructor와-ngOnInit-차이점"><a href="#constructor와-ngOnInit-차이점" class="headerlink" title="constructor와 ngOnInit 차이점"></a>constructor와 ngOnInit 차이점</h1><p>앵귤러의 lifecycle의 ngOnInit()과 constructor의 차이점을 정리해보려 한다.<br>constructor를 사용할 수 있는데도 ngOnInit이 필요한 이유가 뭘까?</p>
 <a id="more"></a>
+
 <p><a href="https://toddmotto.com/angular-constructor-ngoninit-lifecycle-hook" rel="external nofollow noopener noreferrer" target="_blank">https://toddmotto.com/angular-constructor-ngoninit-lifecycle-hook</a> 의 글을 참고했다.</p>
-<h2 id="constructor와-ngoninit은-뭐가-다른걸까">constructor와 ngOnInit은 뭐가 다른걸까?</h2>
-<p>ES6 클래스(앵귤러에서는 TypeScript)에서 constructor 메소드는 클래스 자체의 기능이다. 반면 ngOnInit()은 앵귤러의 기능.<br>
-constructor가 호출될 때는 앵귤러의 컨트롤을 벗어난다.<br>
-이 의미는, 앵귤러가 컴포넌트 초기화를 마쳤는지 알기에는 적당한 위치가 아니다.</p>
+<h2 id="constructor와-ngOnInit은-뭐가-다른걸까"><a href="#constructor와-ngOnInit은-뭐가-다른걸까" class="headerlink" title="constructor와 ngOnInit은 뭐가 다른걸까?"></a>constructor와 ngOnInit은 뭐가 다른걸까?</h2><p>ES6 클래스(앵귤러에서는 TypeScript)에서 constructor 메소드는 클래스 자체의 기능이다. 반면 ngOnInit()은 앵귤러의 기능.<br>constructor가 호출될 때는 앵귤러의 컨트롤을 벗어난다.<br>이 의미는, 앵귤러가 컴포넌트 초기화를 마쳤는지 알기에는 적당한 위치가 아니다.</p>
 <p>컴포넌트를 살펴보면</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent &#123;</span><br><span class="line">  // this is called by the JavaScript engine</span><br><span class="line">  // rather than Angular</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">constructor</span></span>() &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'Constructor initialised'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// internally calls the constructor</span><br><span class="line">new ExampleComponent();</span><br></pre></td></tr></table></figure>
-<p>여기서 가장 중요한 점은! 앵귤러가 아니라 JavaScript 엔진이 constructor를 호출한다는 것! 이 때문에 ngOnInit이라는 lifecycle이 생겼다.<br>
-이 lifehook을 추가하면서, 컴포넌트의 초기화가 끝난 후 앵귤러는 그 메소드를 실행시킨다. ngOnInit()이라는 네이밍에서 알 수 있듯이 이 메소드는 컴포넌트의 lifecycle 중 하나다.</p>
+
+<p>여기서 가장 중요한 점은! 앵귤러가 아니라 JavaScript 엔진이 constructor를 호출한다는 것! 이 때문에 ngOnInit이라는 lifecycle이 생겼다.<br>이 lifehook을 추가하면서, 컴포넌트의 초기화가 끝난 후 앵귤러는 그 메소드를 실행시킨다. ngOnInit()이라는 네이밍에서 알 수 있듯이 이 메소드는 컴포넌트의 lifecycle 중 하나다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, OnInit &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent implements OnInit &#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">constructor</span></span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">  // called on demand by Angular</span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    console.log(<span class="hljs-string">'ngOnInit fired'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const instance = new ExampleComponent();</span><br><span class="line"></span><br><span class="line">// Angular calls this when necessary</span><br><span class="line">instance.ngOnInit();</span><br></pre></td></tr></table></figure>
-<h2 id="constructor의-용도">Constructor의 용도</h2>
-<p>constructor는 컴포넌트에 의존성 주입을 하기에 알맞은 위치다.<br>
-constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존성을 어떤 프로퍼티에 매핑할지 앵귤러에 알려준다.</p>
+
+<h2 id="Constructor의-용도"><a href="#Constructor의-용도" class="headerlink" title="Constructor의 용도"></a>Constructor의 용도</h2><p>constructor는 컴포넌트에 의존성 주입을 하기에 알맞은 위치다.<br>constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존성을 어떤 프로퍼티에 매핑할지 앵귤러에 알려준다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, ElementRef &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">import &#123; Router &#125; from <span class="hljs-string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent &#123;</span><br><span class="line">  constructor(</span><br><span class="line">    private router: Router,</span><br><span class="line">    private el: ElementRef</span><br><span class="line">  ) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>위의 코드에서 Router는 this.router에 바인드되고, 컴포넌트 클래스 안에서 this.router로 접근가능하다.</p>
-<h2 id="ngoninit">ngOnInit</h2>
-<p>ngOnInit은 앵귤러가 컴포넌트를 초기화를 완료했다는 것을 우리에게 알려주기 위해서 만들어졌다.</p>
+<h2 id="ngOnInit"><a href="#ngOnInit" class="headerlink" title="ngOnInit"></a>ngOnInit</h2><p>ngOnInit은 앵귤러가 컴포넌트를 초기화를 완료했다는 것을 우리에게 알려주기 위해서 만들어졌다.</p>
 <p>이 단계는 컴포넌트에서 바인드한 프로퍼티에 첫 변경 감지가 되는 범위까지 포함되어 있다. @Input() 데코레이터를 사용하는 경우를 예로 들 수 있다</p>
 <p>이 때문에 @Input()프로퍼티는 ngOnInit에서 읽어들일 수 있고, constructor에서는 undefined가 된다.</p>
 <figure class="highlight bash hljs"><table><tr><td class="code"><pre><span class="line">import &#123; Component, ElementRef, Input, OnInit &#125; from <span class="hljs-string">'@angular/core'</span>;</span><br><span class="line">import &#123; Router &#125; from <span class="hljs-string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;&#125;)</span><br><span class="line">class ExampleComponent implements OnInit &#123;</span><br><span class="line">  @Input()</span><br><span class="line">  person: Person;</span><br><span class="line"></span><br><span class="line">  constructor(</span><br><span class="line">    private router: Router,</span><br><span class="line">    private el: ElementRef</span><br><span class="line">  ) &#123;</span><br><span class="line">    // undefined</span><br><span class="line">    console.log(this.person);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-function"><span class="hljs-title">ngOnInit</span></span>() &#123;</span><br><span class="line">    this.el.nativeElement.style.display = <span class="hljs-string">'none'</span>;</span><br><span class="line">    // &#123; name: <span class="hljs-string">'Todd Motto'</span>, location: <span class="hljs-string">'England, UK'</span> &#125;</span><br><span class="line">    console.log(this.person);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>ngOnInit()는 바인딩한 값을 읽어들이는 것을 보장하는 lifecycle hook이다.</p>
-<h3 id="contructor에서는-의존성-주입에-대한-작업을-하고-변수-초기화-작업은-ngoninit-에서-하도록하쟈">contructor에서는 의존성 주입에 대한 작업을 하고, 변수 초기화 작업은 ngOnInit()에서 하도록하쟈~!</h3>
-<blockquote>
-<p><strong>[참고] 변경감지(Change Detection)가 일어나는 순서</strong> 1. update bound properties for all child components/directives 2. call ngOnInit, OnChanges and ngDoCheck lifecycle hooks on all child components/directives 3. update DOM for the current component 4. run change detection for a child component call ngAfterViewInit lifecycle hook for all child components/directives</p>
+<h3 id="contructor에서는-의존성-주입에-대한-작업을-하고-변수-초기화-작업은-ngOnInit-에서-하도록하쟈"><a href="#contructor에서는-의존성-주입에-대한-작업을-하고-변수-초기화-작업은-ngOnInit-에서-하도록하쟈" class="headerlink" title="contructor에서는 의존성 주입에 대한 작업을 하고, 변수 초기화 작업은 ngOnInit()에서 하도록하쟈~!"></a>contructor에서는 의존성 주입에 대한 작업을 하고, 변수 초기화 작업은 ngOnInit()에서 하도록하쟈~!</h3><blockquote>
+<p><strong>[참고] 변경감지(Change Detection)가 일어나는 순서</strong> 1. update bound properties for all child components/directives 2. call ngOnInit, OnChanges and ngDoCheck lifecycle hooks on all child components/directives 3. update DOM for the current component 4. run change detection for a child component call ngAfterViewInit lifecycle hook for all child components/directives</p>
 </blockquote>
 
         </div>
@@ -206,7 +201,7 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -268,11 +263,11 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -280,7 +275,7 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -292,11 +287,11 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -305,7 +300,7 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -340,7 +335,7 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -357,7 +352,7 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -405,7 +400,7 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -453,8 +448,27 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -532,25 +546,6 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -558,9 +553,20 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -748,8 +754,27 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -827,25 +852,6 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -853,9 +859,20 @@ constructor는 자바스크립트 엔진이 초기화하는데, 필요한 의존
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1159,7 +1176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1191,10 +1208,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

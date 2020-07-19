@@ -90,6 +90,78 @@
 <div class="card">
     
     <div class="card-image">
+        <a href="/2019/03/07/Programming/JavaScript/study-high-order-javascript/" class="image is-7by1">
+            <img class="thumbnail" src="/img/header_img/home-bg.jpg" alt="스터디 - 고계 자바스크립트">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-07T03:20:46.000Z">2019-03-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    40 minutes read (About 6028 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/07/Programming/JavaScript/study-high-order-javascript/">스터디 - 고계 자바스크립트</a>
+            
+        </h1>
+        <div class="content">
+            <p>이번에 정리할 내용은 Chapter 2. 고계 자바스크립트이다.</p>
+<p>이 장의 내용</p>
+<blockquote>
+<ol>
+<li>자바스크립트가 함수형 언어로 적합한 이유</li>
+<li>자바스크립트는 다중 패러다임 개발이 가능한 언어</li>
+<li>불변성 및 변경에 대한 정책</li>
+<li>고계함수와 일급 함수</li>
+<li>클로저와 스코프 개념</li>
+<li>클로저의 활용</li>
+</ol>
+</blockquote>
+<h2 id="왜-자바스크립트인가"><a href="#왜-자바스크립트인가" class="headerlink" title="왜 자바스크립트인가?"></a>왜 자바스크립트인가?</h2><ol>
+<li><p>편재성(어디에나 있음) - 동적형식(dynamically typed)이고 객체지향적 범용언어이자 프로그래밍 언어 중에 가장 널리 쓰이면서, 모바일, 웹사이트, 웹서버, 데스크톱, 임베디드 애플리케이션, 심지어 DB에 이르기까지 광범위하게 쓰인다.</p></li></ol>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/07/Programming/JavaScript/study-high-order-javascript/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
         <a href="/2018/08/12/Programming/Android/java-incompatible-type-error/" class="image is-7by1">
             <img class="thumbnail" src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" alt="자바에서 Incompatible types error">
         </a>
@@ -122,9 +194,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="arraylist의-타입을-제네릭을-통해-명시하기">ArrayList의 타입을 제네릭을 통해 명시하기</h1>
-<h2 id="문제-상황">문제 상황</h2>
-<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="ArrayList의-타입을-제네릭을-통해-명시하기"><a href="#ArrayList의-타입을-제네릭을-통해-명시하기" class="headerlink" title="ArrayList의 타입을 제네릭을 통해 명시하기"></a>ArrayList의 타입을 제네릭을 통해 명시하기</h1><h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> ArrayList <span class="hljs-title">findUnAskedPermissions</span><span class="hljs-params">(ArrayList wanted)</span> </span>&#123;</span><br><span class="line">    ArrayList result = <span class="hljs-keyword">new</span> ArrayList();</span><br><span class="line">    <span class="hljs-keyword">for</span> (String perm : wanted) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!hasPermissions(perm)) &#123;</span><br><span class="line">            result.add(perm);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -183,8 +253,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="문제-상황">문제 상황</h2>
-<p>clipboard.js 라이브러리를 사용해서 문자열을 복사하는데 특정 경우에 아래와 같은 에러가 떴다.</p>
+            <h2 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h2><p>clipboard.js 라이브러리를 사용해서 문자열을 복사하는데 특정 경우에 아래와 같은 에러가 떴다.</p>
 <blockquote>
 <p>ERROR DOMException: Failed to execute ‘querySelector’ on ‘Document’: ‘#1Aivvfv3etgiaVvSqSFNrGoFAyyxLbHyWL1’ is not a valid selector.</p>
 </blockquote>
@@ -306,9 +375,7 @@
             
         </h1>
         <div class="content">
-            <h2 id="angular에서-formgroup-하위에-ngmodel-사용">Angular에서 formGroup 하위에 [(ngModel)] 사용</h2>
-<h3 id="문제-상황">문제 상황</h3>
-<p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
+            <h2 id="Angular에서-formGroup-하위에-ngModel-사용"><a href="#Angular에서-formGroup-하위에-ngModel-사용" class="headerlink" title="Angular에서 formGroup 하위에 [(ngModel)] 사용"></a>Angular에서 formGroup 하위에 [(ngModel)] 사용</h2><h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>Form태그 안에 있는 select에 [(ngModel)]을 넣으니까 아래와 같은 에러 발생했다.</p>
         </div>
         
         
@@ -367,9 +434,8 @@
             
         </h1>
         <div class="content">
-            <h2 id="angular에서-ngrx도입-시-주의해야할-점">Angular에서 ngrx도입 시 주의해야할 점</h2>
-<p>앵귤러 버전5 프로젝트에서 ngrx 버전6을 의존했더니 아래와 같은 에러를 냈다.</p>
-<p><code>angular ngrx store error Cannot read property 'schedule' of undefined</code></p>
+            <h2 id="Angular에서-ngrx도입-시-주의해야할-점"><a href="#Angular에서-ngrx도입-시-주의해야할-점" class="headerlink" title="Angular에서 ngrx도입 시 주의해야할 점"></a>Angular에서 ngrx도입 시 주의해야할 점</h2><p>앵귤러 버전5 프로젝트에서 ngrx 버전6을 의존했더니 아래와 같은 에러를 냈다.</p>
+<p><code>angular ngrx store error Cannot read property &#39;schedule&#39; of undefined</code></p>
         </div>
         
         
@@ -428,8 +494,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황">문제 상황</h1>
-<blockquote>
+            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><blockquote>
 <p>emulator: ERROR: x86 emulation currently requires hardware acceleration!</p>
 </blockquote>
 <p>위와 같은 에러가 나면서 에뮬레이터가 실행되지 않았다.</p>
@@ -491,8 +556,7 @@
             
         </h1>
         <div class="content">
-            <h1 id="문제-상황">문제 상황</h1>
-<p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
+            <h1 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h1><p>Activity에 두 개의 fragment를 구성한 프로젝트를 build하려고 하자 아래와 같은 에러를 뿜으면서 앱이 build 실패했다.</p>
         </div>
         
         
@@ -551,9 +615,7 @@
             
         </h1>
         <div class="content">
-            <h3 id="문제-상황">문제 상황</h3>
-<p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>
-에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
+            <h3 id="문제-상황"><a href="#문제-상황" class="headerlink" title="문제 상황"></a>문제 상황</h3><p>constraintlayout을 적용하던 중에 testview를 세팅했음에도 design 탭 화면에 나타나지 않는 문제를 발견했다.<br>에러 메시지를 확인해보니 <code>Render problem!!!</code></p>
         </div>
         
         
@@ -612,12 +674,9 @@
             
         </h1>
         <div class="content">
-            <h1 id="angular5-custom-directive">Angular5 / Custom Directive</h1>
-<p>빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자.</p>
+            <h1 id="Angular5-Custom-Directive"><a href="#Angular5-Custom-Directive" class="headerlink" title="Angular5 / Custom Directive"></a>Angular5 / Custom Directive</h1><p>빌트인 디렉티브처럼 사용할 수 있는 커스텀 디렉티브를 만들어보자.</p>
 <p><a href="https://codecraft.tv/courses/angular/custom-directives/overview/" rel="external nofollow noopener noreferrer" target="_blank">https://codecraft.tv/courses/angular/custom-directives/overview/</a> 참고.</p>
-<p>우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!<br>
-컴포넌트는 디렉티브의 모든 특징을 가지고 있다. 거기에 view를 가지고 있는 것이 컴포넌트다.<br>
-that is to say they have a template and some HTML that is injected into the DOM when we use it.</p>
+<p>우리는 이미 커스텀 디렉티브를 이미 생성해봤을거다. 왜냐면 컴포넌트도 디렉티브이기 때문!<br>컴포넌트는 디렉티브의 모든 특징을 가지고 있다. 거기에 view를 가지고 있는 것이 컴포넌트다.<br>that is to say they have a template and some HTML that is injected into the DOM when we use it.</p>
         </div>
         
         
@@ -640,79 +699,15 @@ that is to say they have a template and some HTML that is injected into the
 
 
 
-    
-<div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/07/15/Programming/Android/android-build-gradle/" class="image is-7by1">
-            <img class="thumbnail" src="https://images.pexels.com/photos/1131458/pexels-photo-1131458.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="build.gradle (Project)와 build.gradle (Module)의 차이점">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-15T09:46:01.000Z">2018-07-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Programming/">Programming</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Programming/Android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 272 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/07/15/Programming/Android/android-build-gradle/">build.gradle (Project)와 build.gradle (Module)의 차이점</a>
-            
-        </h1>
-        <div class="content">
-            <p>1년만에 안드로이드 스튜디오를 켰더니만…모든 것이 새롭다.<br>
-머릿속에 확실히 정리가 안 된 내용들은 글로 정리를 해두자.</p>
-<blockquote>
-<p>[참고] build.gradle이란?<br>
-모듈의 빌드 방법이 정의된 빌드스크립트이다. 빌드에 사용할 SDK버전부터 애플리케이션 버전, 사용하는 라이브러리 등 다양한 항목을 설정할 수 있다.</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/07/15/Programming/Android/android-build-gradle/#more">Read More</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/7/">Previous</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/7/">Anterior</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/9/">Next</a>
+            <a class="is-flex-grow has-text-black-ter" href="/archives/9/">Siguiente</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
@@ -774,11 +769,11 @@ that is to say they have a template and some HTML that is injected into the
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -786,7 +781,7 @@ that is to say they have a template and some HTML that is injected into the
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -798,11 +793,11 @@ that is to say they have a template and some HTML that is injected into the
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -811,7 +806,7 @@ that is to say they have a template and some HTML that is injected into the
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -846,7 +841,7 @@ that is to say they have a template and some HTML that is injected into the
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -863,7 +858,7 @@ that is to say they have a template and some HTML that is injected into the
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -911,7 +906,7 @@ that is to say they have a template and some HTML that is injected into the
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -959,8 +954,27 @@ that is to say they have a template and some HTML that is injected into the
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1038,25 +1052,6 @@ that is to say they have a template and some HTML that is injected into the
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -1064,9 +1059,20 @@ that is to say they have a template and some HTML that is injected into the
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1254,8 +1260,27 @@ that is to say they have a template and some HTML that is injected into the
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1333,25 +1358,6 @@ that is to say they have a template and some HTML that is injected into the
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1359,9 +1365,20 @@ that is to say they have a template and some HTML that is injected into the
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1665,7 +1682,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1697,10 +1714,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

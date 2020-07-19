@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -137,38 +137,40 @@
         <div class="content">
             <p>최근에 셀렉트박스에서 선택된 text가 overflow할 경우 ellisis 하도록 구현한 적이 있는데 잊기 전에 간단히 정리해보려고 한다.</p>
 <a id="more"></a>
+
 <p>일반적으로 text-overflow: ellipsis 속성은 block container element에 overflow 와 white-space 속성이 적용되어 있을 때 가능하다. 예를 들면,</p>
 <figure class="highlight css hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">hidden</span>;</span><br><span class="line"><span class="hljs-selector-tag">white-space</span>: <span class="hljs-selector-tag">nowrap</span>;</span><br></pre></td></tr></table></figure>
-<p>그리고 text-overflow 속성은 block container element의 직렬 방향으로 넘치는 텍스트에 대해서만 영향을 미친다.<br>
-참고 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow</a></p>
+
+<p>그리고 text-overflow 속성은 block container element의 직렬 방향으로 넘치는 텍스트에 대해서만 영향을 미친다.<br>참고 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow" rel="external nofollow noopener noreferrer" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow</a></p>
 <hr>
 <p>하지만 위의 경우는 일반적인 경우고 select 박스에서 선택된 값에 대해 text-overflow: ellipsis를 적용시키기 위해서는 css만으로는 불가능하다. javascript의 도움이 필요하다.</p>
 <p>메인 아이디어는 select 박스에서 선택된 값을 select 박스를 감싸는 container element의 data-content 어트리뷰트에 담아서 보여주는 것이다.</p>
 <figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line">&lt;div className=<span class="hljs-string">"SelectBox-wrapper"</span> ref=&#123;selectBoxRef&#125; data-content=<span class="hljs-string">""</span>&gt;</span><br><span class="line">  &lt;select className=<span class="hljs-string">"SelectBox__select"</span> onChange=&#123;handleChange&#125;&gt;</span><br><span class="line">    &#123;options.map(<span class="hljs-function">(<span class="hljs-params">opt</span>) =&gt;</span> (</span><br><span class="line">      &lt;option className=<span class="hljs-string">"SelectBox__option"</span> key=&#123;opt&#125; value=&#123;opt&#125;&gt;</span><br><span class="line">        &#123;opt&#125;</span><br><span class="line">      &lt;<span class="hljs-regexp">/option&gt;</span></span><br><span class="line"><span class="hljs-regexp">    ))&#125;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;/</span>select&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>select 태그를 감싸는 <code>SelectBox-wrapper</code>에 선택된 값을 담을 <code>data-content</code> 어트리뷰트와 엘리먼트에 접근하기 위해서 ref에 <code>selectBoxRef</code>를 전달해준다.</p>
 <figure class="highlight jsx hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> handleChange = useCallback(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  selectBoxRef.current.dataset.content = e.target.value</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
+
 <p>select 태그에서 onChange 이벤트가 발생할 때, <code>selectBoxRef.current.dataset.content</code>에 value를 저장해주면 된다.</p>
 <p>마지막으로 scss에서 해줘야 할 것은 <code>SelectBox__select</code>의 color를 투명하게 하고 <code>SelectBox-wrapper</code>의 pseudo element를 이용해서 <code>data-content</code> 어트리뷰트에 있는 값을 <code>text-overflow: ellipsis</code> 스타일을 입혀서 보여주는 것이다.</p>
 <figure class="highlight scss hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-class">.SelectBox-wrapper</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">  <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="line">  &amp;::after &#123;</span><br><span class="line">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;</span><br><span class="line">    <span class="hljs-attribute">content</span>: attr(data-content);</span><br><span class="line">    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">12px</span>;</span><br><span class="line">    <span class="hljs-attribute">pointer-events</span>: none;</span><br><span class="line">    <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">    <span class="hljs-attribute">right</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">white-space</span>: nowrap;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.SelectBox__select</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: transparent;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="전체-코드-확인하기">전체 코드 확인하기</h3>
-<iframe src="https://codesandbox.io/embed/modest-ritchie-o9r06?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="modest-ritchie-o9r06" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+<h3 id="전체-코드-확인하기"><a href="#전체-코드-확인하기" class="headerlink" title="전체 코드 확인하기"></a>전체 코드 확인하기</h3><iframe src="https://codesandbox.io/embed/modest-ritchie-o9r06?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="modest-ritchie-o9r06" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
 <hr>
 <p>하지만 끝날 때까지 끝난 것이 아니었다…</p>
 <p>내 작업 환경인 맥os에서의 모던 웹 브라우저에서는 무사히 잘 작동했지만 윈도우 환경에서는 3가지 문제를 발견했다.</p>
-<p><strong>문제 1</strong><br>
-윈도우 크롬에서 option들이 transparent 하게 나왔다.</p>
+<p><strong>문제 1</strong><br>윈도우 크롬에서 option들이 transparent 하게 나왔다.</p>
 <p><img src="./option-transparent.png" alt="option-transparen"></p>
 <p>이 문제는 간단하게 <code>SelectBox__option</code>에 color 값을 주므로써 해결했다.</p>
 <figure class="highlight scss hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-class">.SelectBox__option</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>문제 2</strong><br>
-윈도우 ie11에서 select tag에서 <code>color:transparent</code> 가 먹지 않았던 것이었다!</p>
+
+<p><strong>문제 2</strong><br>윈도우 ie11에서 select tag에서 <code>color:transparent</code> 가 먹지 않았던 것이었다!</p>
 <p><img src="./no-transparent.png" alt="아이고 두야"></p>
 <p><a href="https://caniuse.com/#feat=mdn-css_types_color_transparent" rel="external nofollow noopener noreferrer" target="_blank">Can I use</a> 에서 확인해보면 IE9이상부터는 <code>color:transparent</code>를 지원하는 것으로 나오지만 ㅠㅠ 이상하게 select tag에서는 적용되지 않았다.</p>
 <p>야매로 ie일 경우에는 흰 색을 적용하도록 했다.</p>
 <figure class="highlight scss hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-selector-class">.SelectBox__select</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>문제 3</strong><br>
-select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-content 값을 변경했는데, IE에서는 변경된 data-content 값이 화면에 그려지지 않고 처음 화면 렌더링이 될 때는 value가 계속 그대로 보이는 문제가 있었다.<br>
--&gt; 결국 IE에서는 select tag에서 <code>text-overflow: ellipsis</code> 하는 것을 포기했다!</p>
+
+<p><strong>문제 3</strong><br>select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-content 값을 변경했는데, IE에서는 변경된 data-content 값이 화면에 그려지지 않고 처음 화면 렌더링이 될 때는 value가 계속 그대로 보이는 문제가 있었다.<br>-&gt; 결국 IE에서는 select tag에서 <code>text-overflow: ellipsis</code> 하는 것을 포기했다!</p>
 <p>끝!</p>
 
         </div>
@@ -194,6 +196,13 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">자바스크립트에서 상속 vs 합성</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2020/06/07/Programming/Server/prometheus-monitoring/">
@@ -209,7 +218,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -271,11 +280,11 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -283,7 +292,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -295,11 +304,11 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -308,7 +317,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -343,7 +352,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -360,7 +369,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -408,7 +417,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -457,7 +466,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#전체-코드-확인하기">
@@ -472,8 +481,27 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -551,25 +579,6 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -577,9 +586,20 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -768,7 +788,7 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#전체-코드-확인하기">
@@ -783,8 +803,27 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -862,25 +901,6 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -888,9 +908,20 @@ select tag에서 클릭 이벤트가 발생할 때마다 동적으로 data-conte
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1194,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1226,10 +1257,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

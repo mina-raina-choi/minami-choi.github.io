@@ -7,19 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>[백준] 동적프로그래밍 핵심 문제풀이 - Mina&#39;s World</title>
-<link rel="canonical" href="https://minami-choi.github.io/2020/02/07/programming/algorithm/dp-core/">  <meta name="description" content="9251 문제 문제 LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
+<link rel="canonical" href="https://minami-choi.github.io/2020/02/07/programming/algorithm/dp-core/">  <meta name="description" content="9251 문제문제LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
 <meta name="keywords" content="1일1알고리즘풀이">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[백준] 동적프로그래밍 핵심 문제풀이">
 <meta property="og:url" content="https://minami-choi.github.io/2020/02/07/Programming/Algorithm/dp-core/index.html">
 <meta property="og:site_name" content="Mina&#39;s World">
-<meta property="og:description" content="9251 문제 문제 LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
+<meta property="og:description" content="9251 문제문제LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
 <meta property="og:updated_time" content="2020-02-08T07:10:00.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[백준] 동적프로그래밍 핵심 문제풀이">
-<meta name="twitter:description" content="9251 문제 문제 LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
+<meta name="twitter:description" content="9251 문제문제LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다. 예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1490984792589-bc12fe270585?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">    
 <link rel="icon" href="/images/favicon.svg">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css"> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">   
@@ -77,7 +77,7 @@
           
         </a>
           
-        <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+        <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
           <i class="fas fa-list-ul"></i>
         </a>
          
@@ -135,73 +135,54 @@
             
         </h1>
         <div class="content">
-            <h1 id="9251-문제">9251 문제</h1>
-<h2 id="문제">문제</h2>
-<p>LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다.</p>
+            <h1 id="9251-문제"><a href="#9251-문제" class="headerlink" title="9251 문제"></a>9251 문제</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다.</p>
 <p>예를 들어, ACAYKP와 CAPCAK의 LCS는 ACAK가 된다.</p>
 <a id="more"></a>
-<h2 id="입력">입력</h2>
-<p>첫째 줄과 둘째 줄에 두 문자열이 주어진다. 문자열은 알파벳 대문자로만 이루어져 있으며, 최대 1000글자로 이루어져 있다.</p>
-<h2 id="출력">출력</h2>
-<p>첫째 줄에 입력으로 주어진 두 문자열의 LCS의 길이를 출력한다.<br>
-<a href="https://www.acmicpc.net/problem/9251" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/9251</a><br>
-이 문제는 전형적인 LCS 문제이다.</p>
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄과 둘째 줄에 두 문자열이 주어진다. 문자열은 알파벳 대문자로만 이루어져 있으며, 최대 1000글자로 이루어져 있다.</p>
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 입력으로 주어진 두 문자열의 LCS의 길이를 출력한다.<br><a href="https://www.acmicpc.net/problem/9251" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/9251</a><br>이 문제는 전형적인 LCS 문제이다.</p>
 <p>Longest Common Subsequences 접근하는 방법은 아래와 같다.</p>
 <ol>
-<li>
-<p>마지막 문자가 같은 경우<br>
-String A: “ABCD”, String B: &quot;AEBD&quot;<br>
-LCS(“ABCD”, “AEBD”) = 1 + LCS(“ABC”, “AEB”)</p>
+<li><p>마지막 문자가 같은 경우<br>String A: “ABCD”, String B: “AEBD”<br>LCS(“ABCD”, “AEBD”) = 1 + LCS(“ABC”, “AEB”)</p>
 </li>
-<li>
-<p>마지막 문자가 다른 경우<br>
-String A: “ABCDE”, String B: &quot;AEBDF&quot;<br>
-LCS(“ABCDE”, “AEBDF”) = Max(LCS(“ABCDE”, “AEBD”), LCS(“ABCD”, “AEBDF”))</p>
+<li><p>마지막 문자가 다른 경우<br>String A: “ABCDE”, String B: “AEBDF”<br>LCS(“ABCDE”, “AEBDF”) = Max(LCS(“ABCDE”, “AEBD”), LCS(“ABCD”, “AEBDF”))</p>
 </li>
 </ol>
 <p>재귀적으로 이 문제를 풀어보면,</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LCS</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> string1 = input[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> string2 = input[<span class="hljs-number">1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> len1 = string1.length</span><br><span class="line">  <span class="hljs-keyword">var</span> len2 = string2.length</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (len2 == <span class="hljs-number">0</span> || len1 == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (string1[len1 - <span class="hljs-number">1</span>] == string2[len2 - <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + LCS(<span class="hljs-string">`<span class="hljs-subst">$&#123;string1.substring(<span class="hljs-number">0</span>, len1 - <span class="hljs-number">1</span>)&#125;</span>\n<span class="hljs-subst">$&#123;string2.substring(<span class="hljs-number">0</span>, len2 - <span class="hljs-number">1</span>)&#125;</span>`</span>)</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(</span><br><span class="line">      LCS(<span class="hljs-string">`<span class="hljs-subst">$&#123;string1.substring(<span class="hljs-number">0</span>, len1 - <span class="hljs-number">1</span>)&#125;</span>\n<span class="hljs-subst">$&#123;string2.substring(<span class="hljs-number">0</span>, len2)&#125;</span>`</span>),</span><br><span class="line">      LCS(<span class="hljs-string">`<span class="hljs-subst">$&#123;string1.substring(<span class="hljs-number">0</span>, len1)&#125;</span>\n<span class="hljs-subst">$&#123;string2.substring(<span class="hljs-number">0</span>, len2 - <span class="hljs-number">1</span>)&#125;</span>`</span>)</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> count = LCS(<span class="hljs-string">`ACAYKP</span></span><br><span class="line"><span class="hljs-string">CAPCAK`</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(count)</span><br></pre></td></tr></table></figure>
+
 <p>하지만 이렇게 풀면 백준에서 시간초과가 난다.</p>
 <p>DP를 좀 더 활용해서 이 문제를 접근해보면</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LCS</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = inputString.split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> string1 = input[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> string2 = input[<span class="hljs-number">1</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> len1 = string1.length</span><br><span class="line">  <span class="hljs-keyword">var</span> len2 = string2.length</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 0으로 초기화</span></span><br><span class="line">  <span class="hljs-keyword">var</span> dp = <span class="hljs-built_in">Array</span>(len1 + <span class="hljs-number">1</span>)</span><br><span class="line">    .fill(<span class="hljs-literal">null</span>)</span><br><span class="line">    .map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Array</span>(len2 + <span class="hljs-number">1</span>).fill(<span class="hljs-number">0</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= len1; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span>; j &lt;= len2; j++) &#123;</span><br><span class="line">      <span class="hljs-comment">// case1 마지막 글자가 같을 경우</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (string1[i - <span class="hljs-number">1</span>] === string2[j - <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">        dp[i][j] = dp[i - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span></span><br><span class="line">      &#125; <span class="hljs-comment">// case2 마지막 글자가 다를 경우</span></span><br><span class="line">      <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        dp[i][j] = <span class="hljs-built_in">Math</span>.max(dp[i - <span class="hljs-number">1</span>][j], dp[i][j - <span class="hljs-number">1</span>])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="hljs-comment">//   console.log("dp", dp)</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(dp[len1][len2])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="1495-문제">1495 문제</h1>
-<p><a href="https://www.acmicpc.net/problem/1495" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1495</a></p>
-<h2 id="문제-v2">문제</h2>
-<p>Day Of Mourning의 기타리스트 강토는 다가오는 공연에서 연주할 N개의 곡을 연주하고 있다. 지금까지 공연과는 다른 공연을 보여주기 위해서 이번 공연에서는 매번 곡이 시작하기 전에 볼륨을 바꾸고 연주하려고 한다.</p>
+
+<h1 id="1495-문제"><a href="#1495-문제" class="headerlink" title="1495 문제"></a>1495 문제</h1><p><a href="https://www.acmicpc.net/problem/1495" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/1495</a></p>
+<h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제"></a>문제</h2><p>Day Of Mourning의 기타리스트 강토는 다가오는 공연에서 연주할 N개의 곡을 연주하고 있다. 지금까지 공연과는 다른 공연을 보여주기 위해서 이번 공연에서는 매번 곡이 시작하기 전에 볼륨을 바꾸고 연주하려고 한다.</p>
 <p>먼저, 공연이 시작하기 전에 각각의 곡이 시작하기 전에 바꿀 수 있는 볼륨의 리스트를 만들었다. 이 리스트를 V라고 했을 때, V[i]는 i번째 곡을 연주하기 전에 바꿀 수 있는 볼륨을 의미한다. 항상 리스트에 적힌 차이로만 볼륨을 바꿀 수 있다. 즉, 현재 볼륨이 P이고 지금 i번째 곡을 연주하기 전이라면, i번 곡은 P+V[i]나 P-V[i] 로 연주해야 한다. 하지만, 0보다 작은 값으로 볼륨을 바꾸거나, M보다 큰 값으로 볼륨을 바꿀 수 없다.</p>
 <p>곡의 개수 N과 시작 볼륨 S, 그리고 M이 주어졌을 때, 마지막 곡을 연주할 수 있는 볼륨 중 최댓값을 구하는 프로그램을 작성하시오. 모든 곡은 리스트에 적힌 순서대로 연주해야 한다.</p>
-<h2 id="입력-v2">입력</h2>
-<p>첫째 줄에 N, S, M이 주어진다. (1 ≤ N ≤ 100, 1 ≤ M ≤ 1000, 0 ≤ S ≤ M) 둘째 줄에는 각 곡이 시작하기 전에 줄 수 있는 볼륨의 차이가 주어진다. 이 값은 1보다 크거나 같고, M보다 작거나 같다.</p>
-<h2 id="출력-v2">출력</h2>
-<p>첫째 줄에 가능한 마지막 곡의 볼륨 중 최댓값을 출력한다. 만약 마지막 곡을 연주할 수 없다면 (중간에 볼륨 조절을 할 수 없다면) -1을 출력한다.</p>
+<h2 id="입력-1"><a href="#입력-1" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 N, S, M이 주어진다. (1 ≤ N ≤ 100, 1 ≤ M ≤ 1000, 0 ≤ S ≤ M) 둘째 줄에는 각 곡이 시작하기 전에 줄 수 있는 볼륨의 차이가 주어진다. 이 값은 1보다 크거나 같고, M보다 작거나 같다.</p>
+<h2 id="출력-1"><a href="#출력-1" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 가능한 마지막 곡의 볼륨 중 최댓값을 출력한다. 만약 마지막 곡을 연주할 수 없다면 (중간에 볼륨 조절을 할 수 없다면) -1을 출력한다.</p>
 <p>배열 dp에는 index번째 노래를 틀 수 있는 볼륨 배열값을 가진다.</p>
 <blockquote>
-<p>dp[0] = [5]<br>
-dp[1] = [0, 10]</p>
+<p>dp[0] = [5]<br>dp[1] = [0, 10]</p>
 </blockquote>
-<p>맨마지막 곡을 연주할 수 있는 볼륨 크기 중 가장 큰 값을 출력하도록 했다.<br>
-<code>console.log(dp[n].length &gt; 0 ? Math.max(...dp[n]) : -1)</code></p>
-<p>BUT!!!</p>
+<p>맨마지막 곡을 연주할 수 있는 볼륨 크기 중 가장 큰 값을 출력하도록 했다.<br><code>console.log(dp[n].length &gt; 0 ? Math.max(...dp[n]) : -1)</code></p>
+<p>BUT!!!!</p>
 <p>아래와 같이 구현하면 런타임에러가 나네?</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution2</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = inputString.trim().split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> conditions = input[<span class="hljs-number">0</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">var</span> volumes = input[<span class="hljs-number">1</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-comment">//5 3 7</span></span><br><span class="line">  <span class="hljs-comment">//3 5 10</span></span><br><span class="line">  <span class="hljs-keyword">var</span> n = conditions[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> start = conditions[<span class="hljs-number">1</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> max = conditions[<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">null</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>())</span><br><span class="line"></span><br><span class="line">  dp[<span class="hljs-number">0</span>].push(start)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; volumes.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; dp[i].length; j++) &#123;</span><br><span class="line">      <span class="hljs-comment">// 연주할 수 있는 볼륨이면 dp[i+1]에 넣기</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (dp[i][j] + volumes[i] &gt;= <span class="hljs-number">0</span> &amp;&amp; dp[i][j] + volumes[i] &lt;= max) &#123;</span><br><span class="line">        dp[i + <span class="hljs-number">1</span>].push(dp[i][j] + volumes[i])</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (dp[i][j] - volumes[i] &gt;= <span class="hljs-number">0</span> &amp;&amp; dp[i][j] - volumes[i] &lt;= max) &#123;</span><br><span class="line">        dp[i + <span class="hljs-number">1</span>].push(dp[i][j] - volumes[i])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(dp[n].length &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.max(...dp[n]) : <span class="hljs-number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
+
 <p>다른 방법!!</p>
 <p>핵심 아이디어는 <code>dp[i][x]: i번째 음악을 볼륨 x로 연주할 수 있는가?</code>를 true, false로 저장한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution3</span>(<span class="hljs-params">inputString</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = inputString.trim().split(<span class="hljs-string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">var</span> conditions = input[<span class="hljs-number">0</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-keyword">var</span> volumes = input[<span class="hljs-number">1</span>].split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a)</span><br><span class="line">  <span class="hljs-comment">//5 3 7</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">//3 5 10</span></span><br><span class="line">  <span class="hljs-keyword">var</span> n = conditions[<span class="hljs-number">0</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> start = conditions[<span class="hljs-number">1</span>]</span><br><span class="line">  <span class="hljs-keyword">var</span> max = conditions[<span class="hljs-number">2</span>]</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n + <span class="hljs-number">1</span>).fill(<span class="hljs-literal">null</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(max).fill(<span class="hljs-literal">false</span>))</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 시작음악은 볼륨 5로</span></span><br><span class="line">  dp[<span class="hljs-number">0</span>][start] = <span class="hljs-literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> changeVolume = volumes[i]</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;= max; j++) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (!dp[i][j]) <span class="hljs-keyword">continue</span></span><br><span class="line"></span><br><span class="line">      <span class="hljs-comment">// 가능한 볼륨 범위이면</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (j + changeVolume &gt;= <span class="hljs-number">0</span> &amp;&amp; j + changeVolume &lt;= max) &#123;</span><br><span class="line">        dp[i + <span class="hljs-number">1</span>][j + changeVolume] = <span class="hljs-literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">if</span> (j - changeVolume &gt;= <span class="hljs-number">0</span> &amp;&amp; j - changeVolume &lt;= max) &#123;</span><br><span class="line">        dp[i + <span class="hljs-number">1</span>][j - changeVolume] = <span class="hljs-literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">let</span> answer = <span class="hljs-number">-1</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 가장 큰 볼륨값을 구하는 것이므로 역순으로 찾아간다!</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = max; i &gt;= <span class="hljs-number">0</span>; i--) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (dp[n][i]) &#123;</span><br><span class="line">      answer = i</span><br><span class="line">      <span class="hljs-keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(answer)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="2655-문제">2655 문제</h1>
-<p><a href="https://www.acmicpc.net/problem/2655" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/2655</a></p>
-<h2 id="문제-v3">문제</h2>
-<p>밑면이 정사각형인 직육면체 벽돌들을 사용하여 탑을 쌓고자 한다. 탑은 벽돌을 한 개씩 아래에서 위로 쌓으면서 만들어 간다. 아래의 조건을 만족하면서 가장 높은 탑을 쌓을 수 있는 프로그램을 작성하시오.</p>
-<p>벽돌은 회전시킬 수 없다. 즉, 옆면을 밑면으로 사용할 수 없다.<br>
-밑면의 넓이가 같은 벽돌은 없으며, 또한 무게가 같은 벽돌도 없다.<br>
-벽돌들의 높이는 같을 수도 있다.<br>
-탑을 쌓을 때 밑면이 좁은 벽돌 위에 밑면이 넓은 벽돌은 놓을 수 없다.<br>
-무게가 무거운 벽돌을 무게가 가벼운 벽돌 위에 놓을 수 없다.</p>
-<h2 id="입력-v3">입력</h2>
-<p>첫째 줄에는 입력될 벽돌의 수가 주어진다. 입력으로 주어지는 벽돌의 수는 최대 100개이다. 둘째 줄부터는 각 줄에 한 개의 벽돌에 관한 정보인 벽돌 밑면의 넓이, 벽돌의 높이 그리고 무게가 차례대로 양의 정수로 주어진다. 각 벽돌은 입력되는 순서대로 1부터 연속적인 번호를 가진다. 벽돌의 넓이, 높이 무게는 10,000보다 작거나 같은 자연수이다.</p>
-<h2 id="출력-v3">출력</h2>
-<p>탑을 쌓을 때 사용된 벽돌의 수를 빈칸없이 출력하고, 두 번째 줄부터는 탑의 가장 위 벽돌부터 가장 아래 벽돌까지 차례로 한 줄에 하나씩 벽돌 번호를 빈칸없이 출력한다.</p>
+
+<h1 id="2655-문제"><a href="#2655-문제" class="headerlink" title="2655 문제"></a>2655 문제</h1><p><a href="https://www.acmicpc.net/problem/2655" rel="external nofollow noopener noreferrer" target="_blank">https://www.acmicpc.net/problem/2655</a></p>
+<h2 id="문제-2"><a href="#문제-2" class="headerlink" title="문제"></a>문제</h2><p>밑면이 정사각형인 직육면체 벽돌들을 사용하여 탑을 쌓고자 한다. 탑은 벽돌을 한 개씩 아래에서 위로 쌓으면서 만들어 간다. 아래의 조건을 만족하면서 가장 높은 탑을 쌓을 수 있는 프로그램을 작성하시오.</p>
+<p>벽돌은 회전시킬 수 없다. 즉, 옆면을 밑면으로 사용할 수 없다.<br>밑면의 넓이가 같은 벽돌은 없으며, 또한 무게가 같은 벽돌도 없다.<br>벽돌들의 높이는 같을 수도 있다.<br>탑을 쌓을 때 밑면이 좁은 벽돌 위에 밑면이 넓은 벽돌은 놓을 수 없다.<br>무게가 무거운 벽돌을 무게가 가벼운 벽돌 위에 놓을 수 없다.</p>
+<h2 id="입력-2"><a href="#입력-2" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에는 입력될 벽돌의 수가 주어진다. 입력으로 주어지는 벽돌의 수는 최대 100개이다. 둘째 줄부터는 각 줄에 한 개의 벽돌에 관한 정보인 벽돌 밑면의 넓이, 벽돌의 높이 그리고 무게가 차례대로 양의 정수로 주어진다. 각 벽돌은 입력되는 순서대로 1부터 연속적인 번호를 가진다. 벽돌의 넓이, 높이 무게는 10,000보다 작거나 같은 자연수이다.</p>
+<h2 id="출력-2"><a href="#출력-2" class="headerlink" title="출력"></a>출력</h2><p>탑을 쌓을 때 사용된 벽돌의 수를 빈칸없이 출력하고, 두 번째 줄부터는 탑의 가장 위 벽돌부터 가장 아래 벽돌까지 차례로 한 줄에 하나씩 벽돌 번호를 빈칸없이 출력한다.</p>
 <figure class="highlight javascript hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">solution</span>(<span class="hljs-params">stringInput</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> input = stringInput.trim().split(<span class="hljs-string">"\n"</span>)</span><br><span class="line">  <span class="hljs-keyword">const</span> n = <span class="hljs-built_in">parseInt</span>(input[<span class="hljs-number">0</span>])</span><br><span class="line">  <span class="hljs-keyword">const</span> boxes = input.slice(<span class="hljs-number">1</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a.split(<span class="hljs-string">" "</span>).map(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> +a))</span><br><span class="line">  boxes.forEach(<span class="hljs-function">(<span class="hljs-params">a, i</span>) =&gt;</span> a.push(i + <span class="hljs-number">1</span>))</span><br><span class="line">  boxes.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> a[<span class="hljs-number">0</span>] - b[<span class="hljs-number">0</span>])</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// n개 상자를 쌓았을 때의 최대높이</span></span><br><span class="line">  <span class="hljs-keyword">const</span> dp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(n).fill(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 각 상자의 높이로 초기화</span></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    dp[i] = boxes[i][<span class="hljs-number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">      <span class="hljs-comment">// 무게가 더 크면</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (boxes[j][<span class="hljs-number">2</span>] &lt; boxes[i][<span class="hljs-number">2</span>]) &#123;</span><br><span class="line">        dp[i] = <span class="hljs-built_in">Math</span>.max(dp[i], boxes[i][<span class="hljs-number">1</span>] + dp[j])</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> max = <span class="hljs-built_in">Math</span>.max(...dp)</span><br><span class="line">  <span class="hljs-keyword">let</span> answer = []</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = dp.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (max == dp[i]) &#123;</span><br><span class="line">      answer.push(boxes[i][<span class="hljs-number">3</span>])</span><br><span class="line">      max -= boxes[i][<span class="hljs-number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">// console.log("answer", answer)</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(answer.length)</span><br><span class="line">  answer.reverse()</span><br><span class="line">  answer.forEach(<span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(a))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -248,7 +229,7 @@ dp[1] = [0, 10]</p>
 
 <div class="card">
     <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
         
 <script>
     var disqus_config = function () {
@@ -310,11 +291,11 @@ dp[1] = [0, 10]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            106
+                            107
                         </p>
                     </a>
                 </div>
@@ -322,7 +303,7 @@ dp[1] = [0, 10]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
@@ -334,11 +315,11 @@ dp[1] = [0, 10]</p>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            106
+                            109
                         </p>
                     </a>
                 </div>
@@ -347,7 +328,7 @@ dp[1] = [0, 10]</p>
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://www.linkedin.com/in/mina-choi-985a8015a/" target="_blank" rel="external nofollow noopener noreferrer">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -382,7 +363,7 @@ dp[1] = [0, 10]</p>
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             <li>
@@ -399,7 +380,7 @@ dp[1] = [0, 10]</p>
                 <span class="level-item">Programming</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">102</span>
+                <span class="level-item tag">103</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Programming/Algorithm/">
@@ -447,7 +428,7 @@ dp[1] = [0, 10]</p>
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/Programming/React/">
@@ -496,7 +477,7 @@ dp[1] = [0, 10]</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#9251-문제">
@@ -519,15 +500,15 @@ dp[1] = [0, 10]</p>
         <span class="has-mr-6">2</span>
         <span>1495 문제</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v2">
+        <a class="is-flex" href="#문제-1">
         <span class="has-mr-6">2.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.3</span>
         <span>출력</span>
         </a></li></ul></li><li>
@@ -535,15 +516,15 @@ dp[1] = [0, 10]</p>
         <span class="has-mr-6">3</span>
         <span>2655 문제</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v3">
+        <a class="is-flex" href="#문제-2">
         <span class="has-mr-6">3.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v3">
+        <a class="is-flex" href="#입력-2">
         <span class="has-mr-6">3.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v3">
+        <a class="is-flex" href="#출력-2">
         <span class="has-mr-6">3.3</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -555,8 +536,27 @@ dp[1] = [0, 10]</p>
             <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -634,25 +634,6 @@ dp[1] = [0, 10]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -660,9 +641,20 @@ dp[1] = [0, 10]</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -851,7 +843,7 @@ dp[1] = [0, 10]</p>
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
-                    Catalogue
+                    Catálogo
                 </h3>
                 <ul class="menu-list"><li>
         <a class="is-flex" href="#9251-문제">
@@ -874,15 +866,15 @@ dp[1] = [0, 10]</p>
         <span class="has-mr-6">2</span>
         <span>1495 문제</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v2">
+        <a class="is-flex" href="#문제-1">
         <span class="has-mr-6">2.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v2">
+        <a class="is-flex" href="#입력-1">
         <span class="has-mr-6">2.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v2">
+        <a class="is-flex" href="#출력-1">
         <span class="has-mr-6">2.3</span>
         <span>출력</span>
         </a></li></ul></li><li>
@@ -890,15 +882,15 @@ dp[1] = [0, 10]</p>
         <span class="has-mr-6">3</span>
         <span>2655 문제</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#문제-v3">
+        <a class="is-flex" href="#문제-2">
         <span class="has-mr-6">3.1</span>
         <span>문제</span>
         </a></li><li>
-        <a class="is-flex" href="#입력-v3">
+        <a class="is-flex" href="#입력-2">
         <span class="has-mr-6">3.2</span>
         <span>입력</span>
         </a></li><li>
-        <a class="is-flex" href="#출력-v3">
+        <a class="is-flex" href="#출력-2">
         <span class="has-mr-6">3.3</span>
         <span>출력</span>
         </a></li></ul></li></ul>
@@ -910,8 +902,27 @@ dp[1] = [0, 10]</p>
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://images.unsplash.com/photo-1450027179084-b3ff1fce4bb5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="자바스크립트에서 상속 vs 합성">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-07-19T12:07:58.000Z">2020-07-19</time></div>
+                    <a href="/2020/07/19/Programming/JavaScript/inheritance-vs-composition/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 상속 vs 합성</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -989,25 +1000,6 @@ dp[1] = [0, 10]</p>
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2020/04/11/Programming/JavaScript/async-code/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://images.unsplash.com/photo-1584984787900-9417ec4c3369?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-11T08:40:43.000Z">2020-04-11</time></div>
-                    <a href="/2020/04/11/Programming/JavaScript/async-code/" class="title has-link-black-ter is-size-6 has-text-weight-normal">자바스크립트에서 비동기 코드를 처리 하는 방식에 대하여 - callback, promise, async/await</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Programming/">Programming</a> / <a class="has-link-grey -link" href="/categories/Programming/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -1015,9 +1007,20 @@ dp[1] = [0, 10]</p>
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2020/06/">
@@ -1321,7 +1324,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
     
     
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="Kembali ke atas" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -1353,10 +1356,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
